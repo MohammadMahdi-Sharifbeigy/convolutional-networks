@@ -1,0 +1,143 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection%
+    [Classical formulation of \texorpdfstring{$G$}{G}-steerable CNNs on \texorpdfstring{$\R^d$}{R^d}]%
+    {Classical formulation of \textit{G}-steerable CNNs on $\fakebold{\R^d}$}
+\label{sec:steerable_cnns_in_coords}
+
+
+In this section we review the usual notion of convolutions (or cross-correlations%
+\footnote{
+    In deep learning it became common to use the terms ``convolution'' and ``cross-correlation'' synonymously.
+})
+on $\R^d$. 
+When convolving with a $G$-steerable kernel, the convolutions become equivariant under the action of the affine group $\Aff(G)$.
+The following Sections~\ref{sec:euclidean_geometry} and~\ref{sec:euclidean_affine_equiv} will identify these operations on $\R^d$ as coordinate expressions of coordinate free $\GM$-convolutions on Euclidean spaces~$\Euc_d$.
+
+
+\paragraph{Euclidean steerable CNNs:}
+Conventional CNNs consider \emph{feature maps} on $\R^d$, which are functions of the form
+\begin{align}
+    F: \R^d \to \R^c \,.
+\end{align}
+A convolution (actually a correlation) with a matrix-valued kernel $K: \R^d \to \R^{\cout\times\cin}$ is then defined as the integral transform
+\begin{align}
+    \Fout(\mathscr{x}) \,:=\, [K * \Fin] (\mathscr{x}) \,:= \int_{\R^d} K(\mathscr{v})\, \Fin(\mathscr{x} + \mathscr{v})\ d\mathscr{v} \,,
+\end{align}
+which maps an input feature map with $\cin$ channels to an output feature map with $\cout$ channels.
+It can be shown that this operation is the most general linear and translation equivariant mapping between feature maps~\cite{Cohen2019-generaltheory}.%
+\footnote{
+    For full generality, one would actually have to allow for kernels in the distributional sense (generalized functions).
+}
+
+
+Euclidean steerable CNNs~\cite{Cohen2017-STEER,3d_steerableCNNs,Weiler2019_E2CNN} generalize conventional CNNs to convolutional networks that are equivariant under the action of affine groups on feature fields.
+The affine groups of $\R^d$ are hereby defined as semidirect products of the form
+\begin{align}\label{eq:AffG_def}
+    \Aff(G)\ :=\ \Trans_d \rtimes G \,,
+\end{align}
+where $G\leq\GL{d}$.
+Affine groups include the isometries of $\R^d$, visualized in Fig.~\ref{fig:isometries_plane}, as a special case for $G\leq\O{d}$ but allow for more general point groups (structure groups)~$G$, for instance uniform scaling~$\Scale$.
+The following equations give an overview of the most common affine groups in the literature (up to discretizations) and alternative ways of writing them (assuming $\IsomGM$ to be determined by $\Aff(G)$-invariant $G$-structures; see below):
+\begin{alignat}{5}
+    &\Aff(\{e\}) \ &&=\ \Trans_d                \ &&=\ (\R^d,+)\ &&=\ \IsomeM \notag \\
+    &\Aff(\Flip) \ &&=\ \Trans_d \rtimes \Flip    &&           \ &&=\ \IsomRM \notag \\
+    &\Aff(\SO{d})\ &&=\ \Trans_d \rtimes \SO{d} \ &&=\ \SE{d}  \ &&=\ \IsomSOM\ &&=\ \Isom_+\!(\R^d) \\
+    &\Aff(\O{d}) \ &&=\ \Trans_d \rtimes \O{d}  \ &&=\  \E{d}  \ &&=\ \IsomOM \ &&=\ \Isom(\R^d) \notag \\
+    &\Aff(\Scale)\ &&=\ \Trans_d \rtimes \Scale \notag
+\end{alignat}
+The group $\Aff(\GL{d})$ comprises \emph{all} affine transformations of~$\R^d$.
+Since affine groups are defined as semidirect products, any of their elements $tg \in \Aff(G)$ can be uniquely decomposed into a translation $t\in \Trans_d$ and a point group element $g\in G$.
+Their (canonical) action on $\R^d$ is given~by
+\begin{align}
+    \Aff(G)\times\R^d \to \R^d, \quad (tg,\, \mathscr{x})\ \mapsto\ g\mkern1mu \mathscr{x} + t \,.
+\end{align}
+The action of an inverse group element $(tg)^{-1}$ follows to be given by
+\begin{align}
+    \big( (tg)^{-1},\, \mathscr{x}\big)\ \mapsto\ g^{-1} (\mathscr{x} - t) \,.
+\end{align}
+
+
+A feature field of type $\rho$ on $\R^d$ transforms according to the \emph{induced representation} $\Ind_G^{\Aff(G)} \rho$ of $\rho$ as specified by
+\begin{align}\label{eq:induced_rep_affine}
+    (tg) \mkern2mu\rhd_\rho F \ :=\ \big[\Ind_G^{\Aff(G)} \rho\big](tg)\, F \ :=\ \rho(g)\, F\, (tg)^{-1} \,,
+\end{align}
+which can be seen as the analog of the coordinate free action on sections in Eq.~\eqref{eq:pushforward_section_A}.%
+\footnote{
+    Induced representations act in a similar way on fields as shown in Fig.~\ref{fig:active_TpM_equivariance}.
+    In contrast to the transformation in this Figure, induced representations allow additionally for translations (the transformation law in Section~\ref{sec:gauge_conv} is the restriction $\Res_G^{\Aff(G)}\Ind_G^{\Aff(G)}\!\rho$ of the induced representation back to $G$, i.e. the induced representation without translations).
+}
+A convolution with a $G$-steerable kernel $K \in \KG$ is equivariant w.r.t. these actions on the input and output field, that is,
+\begin{align}\label{eq:Euclidean_conv_equiv_in_coords_Rd}
+     K *\, \big(tg \,\rhd_{\rhoin}\! \Fin \big)\ =\ tg \,\rhd_{\rhoout} \big( K*\Fin \big) \qquad \forall\ \ tg \,\in\, \Aff(G) \,.
+\end{align}
+This is easily checked by an explicit computation,
+\begin{align}
+     \pig[ K * (tg \rhd_{\rhoin}\! \Fin) \pig] (\mathscr{x})
+    \ =&\ \pig[ K * \big(\rhoin(g)\, \Fin\, (tg)^{-1}\big) \pig] (\mathscr{x}) \notag \\
+    \ =&\ \int_{\R^d} K(\mathscr{v})\; \rhoin(g)\, \Fin \big((tg)^{-1} (\mathscr{x} + \mathscr{v}) \big)\ d\mathscr{v} \notag \\
+    \ =&\ \int_{\R^d} K(\mathscr{v})\; \rhoin(g)\, \Fin \big(g^{-1}( \mathscr{x} + \mathscr{v} - t)\big)\ d\mathscr{v} \notag \\
+    \ =&\ \int_{\R^d} K(g \tilde{\mathscr{v}})\; \rhoin(g)\, \Fin \big(g^{-1}(\mathscr{x} - t) + \tilde{\mathscr{v}}\big)\ \detg\ d\tilde{\mathscr{v}} \notag \\
+    \ =&\ \int_{\R^d} \rhoout(g)\, K(\tilde{\mathscr{v}})\; \Fin \big(g^{-1}(\mathscr{x} - t) + \tilde{\mathscr{v}}\big)\ d\tilde{\mathscr{v}} \notag \\
+    \ =&\ \rhoout(g)\, \big[ K * \Fin \big] \big(g^{-1}(\mathscr{x}-t)\big) \notag \\
+    \ =&\ tg \rhd_{\rhoout} \big[K * \Fin \big] (\mathscr{x}) \,,
+\end{align}
+which used the $G$-steerability of $K$ in the fifth step and which holds for any $\mathscr{x} \in \R^d$ and any $tg\in \Aff(G)$.
+As~proven in~\cite{3d_steerableCNNs}, such
+\emph{$G$-steerable convolutions are the most general $\Aff(G)$-equivariant linear maps between Euclidean feature fields}.%
+\footnote{
+    Assuming that the feature fields transform according to the induced representation, Eq.~\eqref{eq:induced_rep_affine}, which is required to end up with a convolution.
+}%
+\footnote{
+    This generalizes the well known statement that conventional Euclidean convolutions are the most general translation equivariant linear maps between functions (or feature maps) on Euclidean spaces, which is recovered for $G=\{e\}$.
+}
+
+
+
+
+\paragraph{Relation to Euclidean \textit{GM}-convolutions:}
+How do these steerable convolutions on $\R^d$ relate to $\GM$-convolutions on Euclidean spaces ${M = \Euc_d}$?
+The fact that steerable convolutions rely on $G$-steerable kernels suggests that they are not only globally $\Aff(G)$-equivariant but (more generally) locally $G$-equivariant.
+To draw the connection between classical $G$-steerable CNNs on $\R^d$ and our coordinate free $\GM$-convolutions, we need to identify the geometric structure that is implicitly being considered by the former.
+
+
+In general, $\R^d$ comes canonically equipped with an $\{e\}$-structure, visualized in Fig.~\ref{fig:G_structure_R2_1}.%
+\footnote{
+    Formally, the canonical $\{e\}$-structure of $\R^d$ arises as follows:
+    the vector space $M=\R^d$ comes itself with a canonical basis, given by the basis vectors $e_i \in \R^d$ with elements $(e_i)_j = \delta_{ij}$.
+    The canonical reference frames of tangent spaces $T_p\R^d$ follow from this basis via the canonical isomorphisms
+    $\iota_{\R^d,p}: T_p{\R^d} \xrightarrow{\sim} \R^d$ from Eq.~\eqref{eq:canonical_iso_TRk_Rk}.
+    Intuitively, the local frames of the tangent spaces $T_p\R^d$ are ``aligned'' with the global frame of $\R^d$.
+    This is equivalent to introducing the identity map as global coordinate chart $x = \id_{\R^d} : M=\R^d \to \R^d$ and then defining the canonical $\{e\}$-structure as the field of induced coordinate bases $\big[\frac{\partial}{\partial x_i} \big]_{i=1}^d$.
+}
+It furthermore comes with a Riemannian metric corresponding to the standard inner product of~$\R^d$.%
+\footnote{
+    This standard metric $\eta$ is defined as the pullback of the standard inner product
+    $\langle\cdot,\cdot\rangle_{\R^d}: \R^d\times\R^d \to \R$
+    on~$\R^d$ via the canonical isomorphisms
+    $\iota_{\R^d,p}: T_p{\R^d} \xrightarrow{\sim} \R^d$ from Eq.~\eqref{eq:canonical_iso_TRk_Rk}
+    to the tangent spaces.
+    It is thus for any $v,w\in T_p\R^d$ given by
+    ${\eta_p(v,w) := \langle \iota_{\R^d,p}(v) ,\, \iota_{\R^d,p}(w) \rangle_{\R^d}}$.
+}
+The corresponding Levi-Civita connection gives rise to the parallel transporters in Fig.~\ref{fig:transport_flat}, which keep vectors parallel in the usual sense on Euclidean spaces.
+When being expressed relative to the frames of the canonical $\{e\}$-structure, the parallel transporters become trivial and drop therefore out.
+The exponential maps reduce to a mere summation (after applying some isomorphisms, see below).
+
+
+While we are given an $\{e\}$-structure on $\R^d$, $\GM$-convolutions rely on less specific $G$-structures.
+These $G$-structures could be seen as the (canonical) $G$-\emph{lifts}
+\begin{align}\label{eq:G_lifted_G_structure_Rd}
+    \GM\ =\ \eM\lhd G\ :=\ \pig\{\, [e_i]_{i=1}^d \lhd g \;\pig|\; [e_i]_{i=1}^d \in \eM,\ g\in G \,\pig\}
+\end{align}
+of the canonical $\{e\}$-structure~$\eM$ of~$\R^d$.
+Intuitively, these lifted $G$-structures are defined by augmenting every canonical reference frame in $\eM$ with any other $G$-related frame (its right $G$-orbit in $\FM$).
+Fig.~\ref{fig:G_structures_R2_main} shows such lifted $G$-structures for different structure groups.
+As proven in Theorem~\ref{thm:Aff_GM_in_charts} below, they are invariant under the action of $\Aff(G)$ -- which is in Theorem~\ref{thm:affine_equivariance_Euclidean_GM_conv} shown to explain the $\Aff(G)$-equivariance of the convolutions.
+They are furthermore $G$-compatible with the Levi-Civita connection.
+
+
+The claims made here are more rigorously discussed in the following two Sections.
+This formalizations is, however, not strictly necessary to understand our classification of Euclidean CNNs in the literature, such that the reader may skip them and jump immediately to Section~\ref{sec:euclidean_literature}.
+

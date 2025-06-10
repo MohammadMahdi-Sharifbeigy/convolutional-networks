@@ -1,0 +1,97 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+\section{Integration over tangent spaces}
+\label{apx:tangent_integral}
+
+
+On a Riemannian \emph{manifold} $(M,\eta)$ the volume density%
+\footnote{
+    In contrast to a volume \emph{form} $\omega$, volume \emph{densities} $|\omega|$ assign a positive volume to any frame.
+    They exist both on oriented and non-oriented manifolds.
+}
+$dp$ on $M$ is uniquely specified by demanding that \emph{orthonormal frames} $\big[ e_1^O, \,\dots,\, e_d^O \big]$ with respect to the metric $\eta$ are assigned \emph{unit volume}:
+\begin{align}
+    dp\big(e_1^O, \,\dots,\, e_d^O \big) \ =\ 1
+    \mkern36mu &\textup{for any \emph{orthonormal} frame
+    $\ \big[ e_1^O, \,\dots,\, e_d^O \big]\ $ of $\ \TpM$}
+\intertext{
+Similarly, a volume density $dv$ on the \emph{tangent spaces} $\TpM$ of a Riemannian manifold is uniquely defined by assigning unit volume to its orthonormal frames w.r.t. $\eta_p$:
+}
+    dv\big(\mathfrak{e}_1^O, \,\dots,\, \mathfrak{e}_d^O \big) \ =\ 1
+    \mkern36mu &\textup{for any \emph{orthonormal} frame
+    $\ \big[ \mathfrak{e}_1^O, \,\dots,\, \mathfrak{e}_d^O \big]\ $ of $\ \TvTpM$}
+\end{align}
+
+
+To avoid an unnecessarily complicated discussion of the double tangent bundle $\TTM$, we define the integration over $\TpM$ equivalently by pulling it via some \emph{isometric} (and thus volume preserving) gauge back to~$\R^d$.
+Let $\psiTMp^O$ be such an isometric gauge from an $\O{d}$-atlas, which identifies orthonormal frames in $\TpM$ with orthonormal frames in $\R^d$.
+The integral of a function $f: \TpM \to \R$ is then defined via its pullback
+\begin{align}
+    \int_{\TpM} f(v)\, dv
+    \ :=&\ \int_{\R^d} f \mkern-2mu\circ\mkern-2mu \big(\psiTMp^O \big)^{\!-1} (v^O)\,\ dv^O \notag \\
+    \ =&\ \int_{\R^d} f^O(v^O)\, dv^O \,,
+\end{align}
+where we defined the coordinate expression $f^O := f \circ \big(\psiTMp^O \big)^{-1} : \R^d \to \R$ of $f$ as usual.
+The fact that $\psiTMp^O$ is isometric ensures hereby that $dv$ does indeed assign unit volume to orthonormal frames if $dv^O$ does.
+Since the latter is just the standard Lebesgue measure on $\R^d$, this is the case.
+
+
+
+Let now $\psiTMp^A$ be \emph{any} gauge at $p$, relative to which one might want to express the integration.
+The transition map between both coordinatizations is simply given by the gauge transformation
+$v^O = \psi^O \circ (\psi^A )^{-1} (v^A) = g^{OA}_p (v^A)$.
+By the standard rules for changes of variables in multidimensional integrals, the differentials are required to transform according to the Jacobian determinant of this transformation in order for the volume to be preserved.
+As the transformation is liner, the Jacobian is given by $g_p^{OA}$ itself, such that we obtain
+\begin{align}\label{eq:integral_gOA}
+    \int_{\TpM} f(v)\, dv
+    \ &=\ \int_{\R^d} f^A(v^A)\; \pig|\mkern-2mu \det \!\big(g_p^{OA} \big)\mkern-1mu\pig|\; dv^A \,.
+\end{align}
+
+
+Through the gauge transformation, this expression still depends on the arbitrary choice of isometric gauge~$\psiTMp^O$.
+This dependency can be purged by expressing the integration measure directly in terms of the metric~as
+\begin{align}\label{eq:integral_etaA}
+    \int_{\TpM} f(v)\, dv
+    \ &=\ \int_{\R^d} f^A(v^A)\; \sqrt{|\eta_p^A|}\ dv^A \,,
+\end{align}
+where the factor
+\begin{align}\label{eq:volume_element_def}
+    \sqrt{|\eta_p^A|}\ :=\ \sqrt{\mkern2mu \pig|\det\!\pig( \big[ \eta_p(e_i^A, e_j^A) \big]_{ij} \pig)\pig| \,}
+\end{align}
+measures the (absolute) volume of the reference frame $[e_i^A]_{i=1}^d$ relative to the metric $\eta$.
+To assert the equality of the right-hand sides of Eqs.~\eqref{eq:integral_gOA} and~\eqref{eq:integral_etaA}, we express the metric $\eta_p$ of $\TpM$ in terms of the standard inner product $\langle\cdot,\, \cdot\rangle$ of~$\R^d$, which is once again done by using the isometric gauge $\psiTMp^O$ from the $\O{d}$-atlas:
+\begin{align}
+    \eta_p\big( e_i^A,\, e_j^A \big)
+    \ &=\ \pig\langle \psiTMp^O\big( e_i^A\big),\; \psiTMp^O\big( e_j^A\big) \pig\rangle \notag \\
+    \ &=\ \pig\langle \psiTMp^O \circ \big(\psiTMp^A \big)^{-1} (\epsilon_i),\; \psiTMp^O \circ \big(\psiTMp^A \big)^{-1} (\epsilon_j) \pig\rangle \notag \\
+    \ &=\ \pig\langle g_p^{OA} \epsilon_i,\; g_p^{OA} \epsilon_j \pig\rangle \notag \\
+    \ &=\ \epsilon_i^\top \big(g_p^{OA} \big)^\top \, g_p^{OA} \epsilon_j \notag \\
+    \ &=\ \Big( \big(g_p^{OA} \big)^\top \, g_p^{OA} \Big)_{ij}
+\end{align}
+The absolute value of the determinant in Eq.~\eqref{eq:volume_element_def} is therefore given by
+\begin{align}
+    \pig|\det\!\pig( \big[ \eta_p(e_i^A, e_j^A) \big]_{ij} \pig)\pig|
+    \ &=\ \pig| \det\pig( \big(g_p^{OA} \big)^\top \, g_p^{OA} \pig) \pig| \notag \\
+    \ &=\ \pig| \det\pig( \big(g_p^{OA} \big)^\top \pig) \, \det\pig( g_p^{OA} \pig) \pig| \notag \\
+    \ &=\ \pig| \det\big( g_p^{OA} \big) \big|^2 \,,
+\end{align}
+from which the equality of the right-hand-sides of Eqs.~\eqref{eq:integral_gOA} and~\eqref{eq:integral_etaA} follows by taking the square root.
+
+
+Since the factors $\sqrt{|\eta_p^A|}$ and $\sqrt{|\eta_p^B|}$ measure the volumes of their respective frames, one can easily show that they are related by the \emph{inverse} change of volume $\big|\mkern-2mu \det g_p^{BA} \big|$:
+\begin{alignat}{3}
+    \sqrt{|\eta_p^B|}\ &=\ \frac{1}{\big|\mkern-2mu \det g_p^{BA} \big|}\, \sqrt{|\eta_p^A|}
+    && \qquad\quad \big(\Rightarrow \quad & -1 & \textup{-density} \,\big)
+\intertext{
+Together with the usual change of variables formula
+}
+    dv^B\ &=\ \big|\mkern-2mu \det g_p^{BA} \big|\ dv^A
+    && \qquad\quad \big(\Rightarrow \quad  & +1 & \textup{-density} \,\big) \,,
+\intertext{
+this implies that the coordinatizations of the Riemannian volume element $dv$ are by design invariant under gauge transformations, that is,
+}
+    \qquad\qquad
+    \sqrt{|\eta_p^B|}\ dv^B\ &=\ \sqrt{|\eta_p^A|}\ dv^A
+    && \qquad\quad \big(\Rightarrow \quad  & 0 & \textup{-density} \,\big) \,.
+\end{alignat}
+This relation assures that the integration in Eq.~\eqref{eq:integral_etaA} is well defined, i.e. coordinate independent.

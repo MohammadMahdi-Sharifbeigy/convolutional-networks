@@ -1,0 +1,581 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{Kernel field transforms and \textit{GM}-convolutions}
+\label{sec:global_conv}
+
+We now turn to kernel field transforms and $\GM$-convolutions with spatially extended (convolution) kernels.
+Section~\ref{sec:kernel_fields} introduces general, unconstrained kernel fields and more specific $\GM$-convolutional kernel fields, which are defined in terms of a shared, $G$-steerable template kernel.
+General kernel field transforms and $\GM$-convolutions are introduced in Section~\ref{sec:KFTs_GM-conv_global}.
+As both are defined \emph{globally}, their formulation is necessarily \emph{coordinate free}.
+Section~\ref{sec:KFTs_GM-conv_local} expresses both operations relative to local trivializations, recovering our local definitions from Section~\ref{sec:gauge_conv_main}.
+
+
+
+
+
+\subsubsection[Kernel fields]{Coordinate free kernels fields and \textit{G}-steerable kernels}
+\label{sec:kernel_fields}
+
+To detect spatial pattens in feature fields, convolutional networks apply spatially extended kernels which linearly accumulate features from a local neighborhood around each point.
+In Eq.~\eqref{eq:conv_kernel_unrestricted} we defined (unconstrained) template kernels for a $d$-dimensional manifold and $\cin$- and $\cout$-dimensional input and output feature fields as maps
+$K: \R^d \to \R^{\cout\times\cin}$
+which assign a $\cout\times\cin$ matrix to each point of their domain.
+The definition of convolution kernels as maps with domain $\R^d\cong \TpM$ and codomain $\R^{\cout\times\cin}\cong \Hom(\Ainp,\Aoutp)$ suggests a coordinate free definition of kernels
+as maps between the tangent spaces and the corresponding homomorphism spaces:
+
+\begin{dfn}[Kernel field]
+\label{dfn:kernel_field_general}
+    We define (unconstrained) \emph{kernel fields} of type $\rhoin,\rhoout$ on a manifold $M$ as smooth bundle $M$-morphisms between the tangent bundle $\TM$ and the feature vector homomorphism bundle $\Hom(\Ain,\Aout)$.
+    By its definition as an $M$-morphism, a kernel field $\K$ lets the following diagram commute:
+    \begin{equation}\label{eq:kernel_bundle_map}
+        \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+            % ROW 1
+            \TM  \arrow[rd, start anchor={[xshift=-1ex]}, "\piTM"']
+                \arrow[rr, "\K"]
+            & &
+            \mkern-3mu
+            \Hom(\Ain,\Aout)
+                \arrow[ld, start anchor={[xshift=-3ex]}, shorten >=.1ex, shorten <=-.75ex, "\piHom"] \\
+            % ROW 2
+            & M &
+        \end{tikzcd}
+    \end{equation}
+    Despite smoothly mapping between two vector bundles, $\K$ is \emph{not} assumed to be a \emph{vector} bundle morphism, that is, the restrictions $\Kp: \TpM \to \Hom(\Ainp, \Aoutp)$ are not assumed to be linear.%
+    \footnote{
+        This reflects that convolution kernels are in general not linear as maps $K:\R^d \to \R^{\cout\times\cin}$.
+        Note that this does not interfere with the linearity of $K(\mathscr{v}) \in \R^{\cout\times\cin}$ (as map $\R^{\cin} \to \R^{\cout}$) for any $\mathscr{v}\in\R$ or, here, the linearity of $\Kp(v) \in \Hom(\Ainp,\Aoutp)$ (as map $\Ainp \to \Aoutp$) for any $v\in\TpM$.
+    }
+\end{dfn}
+The name \emph{kernel field} is motivated by the fact that such defined bundle maps $\K$ assign a (potentially different) coordinate free kernel $\Kp: \TpM \to \Hom(\Ainp,\Aoutp)$ to each point $p$ of the manifold.%
+\footnote{
+    We expect that it is possible to work out a well defined notion of \emph{kernel bundles} whose sections are in one to one correspondence to our definition of kernel fields as bundle maps (this reformulation would mirror the transition from Eq.~\eqref{eq:bundle_morphism_onexone} to Eq.~\eqref{eq:hom_bdl_section_unconstrained}).
+}
+In practice, kernels $\Kp$ are often designed to detect local patterns around $p$ and are therefore assumed to be compactly supported around the origin of $\TpM$.
+
+A coordinate free kernel $\Kp$ at $p$ is relative to gauges $\psiTMp^A$ and $\psiHomp^A$ of the $G$-atlases given by the map
+\begin{align}\label{eq:kernel_field_general_coord_expression}
+    \Kp^A: \R^d \to \R^{\cout\times\cin}, \qquad
+    \Kp^A\: :=\: \psiHomp^A \circ \Kp \circ \big(\psiTMp^A\big)^{-1} \,.
+\end{align}
+Fig.~\ref{fig:kernel_coordinatization} visualizes a coordinate free kernel on $\TpM$ and its coordinatizations on $\R^d$ relative to different gauges.
+From the commutative diagram
+\begin{equation}
+    \begin{tikzcd}[column sep=45pt, row sep=30, font=\normalsize]
+        \R^d    \arrow[rrr, pos=.4, "\Kp^A"]
+                \arrow[dd, "g_p^{BA}\cdot"']
+        & & &[-5pt]
+        \R^{\cout\times\cin}
+                \arrow[dd, "\,\rhoHom\big(g_p^{BA}\big)"]
+        \\
+        &
+        \TpM    \arrow[r, "\Kp"]
+                \arrow[lu, pos=.4, "\psiTMp^A"']
+                \arrow[ld, pos=.4, "\psiTMp^B"]
+        &
+        \Hom\!\big(\Ain|_p,\Aout|_p\big)
+                \arrow[ru, start anchor={[xshift=2.em]}, pos=.4, "\psiHomp^A"]
+                \arrow[rd, start anchor={[xshift=2.em]}, pos=.4, "\psiHomp^B"']
+        &
+        \\
+        \R^d    \arrow[rrr, pos=.4, "\Kp^B"']
+        & & &
+        \R^{\cout\times\cin}
+    \end{tikzcd}
+\end{equation}
+it follows that different kernel coordinatizations are related by
+\begin{align}\label{eq:kernel_field_unconstrained_gaugetrafo}
+    \Kp^B \ =\ \rhoHom\big(g_p^{BA}\big) \circ \Kp^A \circ \big(g_p^{BA}\big)^{-1} \,.
+\end{align}
+Note that this relation only implies $\GM$-coordinate independence but does not constrain the coordinate free kernel in any way.
+As before, the situation changes when sharing weights over spatial positions.
+
+
+In order for a kernel field $\KK$ to correspond to a convolution, it needs to be fully specified by a single template kernel $K: \R^d \to \R^{\cout\times\cin}$ which is shared over all spatial positions.
+We are again forced to share weights with all gauges $X \in \mathfrak{X}$ simultaneously in order to preserve their equivalence and thus $\GM$-coordinate independence.
+As argued in Section~\ref{sec:gauge_conv}, the appropriate way of sharing $K$ with kernel coordinatizations $\KKp^X$ involves a normalization by the reference frame volume $\sqrt{|\eta_p^X|}$ and is defined by
+\begin{align}\label{eq:weight_sharing_kernel_62}
+    \KKp^X\ =\ \frac{K}{\sqrt{|\eta_p^X|}}
+    \qquad \textup{for \emph{any} gauge}\,\ X \in \mathfrak{X}\,\ \textup{with}\,\ p\in U^X \,.
+\end{align}
+The reason for the frame normalization factor is that convolutions will later be defined in terms of integrals over the tangent spaces.
+We are therefore actually required to share the integral operator itself in different coordinatizations,
+which is equivalent to identifying the matrix-valued integration measures $\KKp^X(\mathscr{v})\, \sqrt{|\eta_p^X|}\; d\mathscr{v}$ for any gauge $X \in \mathfrak{X}$ at $p\in M$ with a template measure $K(\mathscr{v})\, d\mathscr{v}$.
+The form of the kernel sharing in Eq.~\eqref{eq:weight_sharing_kernel_62} follows by equating both expressions.
+
+
+Together with the relation $\sqrt{|\eta_p^A|} = \big|\!\det(g_p^{BA})\big| \mkern1.5mu \sqrt{|\eta_p^B|}$ between different frame volumes, the kernel transformation law in Eq.~\eqref{eq:kernel_field_unconstrained_gaugetrafo} and the weight sharing in Eq.~\eqref{eq:weight_sharing_kernel_62} imply the \emph{$G$-steerability kernel constraint}
+\begin{align}\label{eq:kernel_constraint_rhohom}
+    \frac{1}{\detg} \, \rhoHom(g) \circ K \circ g^{-1}\ =\ K \qquad\forall\: g\in G \,.
+\end{align}
+Valid template kernels are thus given by the invariants under the simultaneous gauge action of $\detg^{-1}$, $\rhoHom(g)$ and $g^{-1}$.
+Writing out the representation $\rhoHom$, acting on $\R^{\cout\times\cin}$ via multiplication with $\rhoout$ and $\rhoin^{-1}$ from the left and right, respectively, the constraint in Eq.~\eqref{eq:kernel_constraint_rhohom} is seen to be equivalent to that in Eq.~\eqref{eq:kernel_constraint}, i.e.
+$K(g\mkern1mu\mathscr{v}) = \detg^{-1} \rho_\text{out}(g)\, K(\mathscr{v})\, \rho_\text{in}(g)^{-1} \ \ \forall\, g\in G,\ \mathscr{v}\in\R^d$.
+
+We cast these insights into definitions:
+\begin{dfn}[$G$-steerable kernel]
+\label{dfn:G-steerable_kernel_def_43}
+    $G$-steerable kernels are characterized by their \emph{invariance under the gauge action}.
+    The vector space of smooth $G$-steerable kernels that map between field types $\rhoin$ and $\rhoout$ is defined by
+    \begin{align}
+        \KG \!:=&\,
+        \Big\{ K\!: \R^d \to \R^{\cout\times\cin}\ \text{smooth} \,\Big|\,
+        \frac{1}{\detg}\, \rhoHom(g) \circ K \circ g^{-1} =\, K \ \ \ \forall g\in G \Big\} \,,
+        \label{eq:G_steerable_space_in_dfn_Hom} \\[1ex]
+        =&\ 
+        \Big\{ K\!: \R^d \to \R^{\cout\times\cin}\ \text{smooth} \,\Big|\,
+        \frac{1}{\detg}\mkern1mu \rhoout(g) K(g^{-1}\mathscr{v}) \rhoin(g)^{-1} \mkern-2mu= K(\mathscr{v}) \ \ \ \forall\, g\in G,\ \mathscr{v} \in \R^d \Big\} ,
+        \label{eq:G_steerable_space_in_dfn_classical}
+    \end{align}
+    where $\rhoHom(g)H := \rhoout(g)H \rhoin(g)^{-1}$ for any $H\in \R^{\cout\times\cin}$ and $G\leq\GL{d}$.
+    The gauge invariance of $G$-steerable kernels allows for $\GM$-coordinate independent weight sharing.
+\end{dfn}
+$G$-steerable kernels were in~\cite{Cohen2017-STEER} introduced to equivariant deep learning, where finite groups were assumed.
+The current formulation in Def.~\ref{dfn:G-steerable_kernel_def_43} was proposed in~\cite{3d_steerableCNNs}.
+A complete solution for the $G$-steerable kernel spaces for arbitrary representations $\rhoin$ and $\rhoout$ of structure groups $G\leq\O2$ has been derived in~\cite{Weiler2019_E2CNN}, an implementation is publicly available at \url{https://quva-lab.github.io/e2cnn/api/e2cnn.kernels.html}.
+Mathematically, steerable kernel are equivalent to \emph{representation operators} like for instance the spherical tensor operators from quantum mechanics.
+A generalization of the \emph{Wigner-Eckart theorem} describes $G$-steerable kernels as being composed from harmonic basis functions, Clebsch-Gordan coefficients and endomorphisms of irreducible representations~\cite{lang2020WignerEckart}.
+
+
+
+\begin{dfn}[$\GM$-convolutional kernel field]
+\label{dfn:conv_kernel_field}
+    A \emph{$\GM$-convolutional kernel field} $\KK$ of type $\rhoin,\rhoout$ is a kernel field which is determined by a shared, \emph{$G$-steerable} template kernel $K \in \KG$.
+    It is in \emph{arbitrary gauges} $\psiTMp^X$ and $\psiHomp^X\,$ from the considered $G$-atlas pointwise defined by:
+    \begin{align}\label{eq:conv_kernel_field_def_ptwise}
+        \KKp \,:=\ \big(\psiHomp^X\big)^{\mkern-2mu-1} \circ \frac{K}{\sqrt{|\eta_p^X|}} \circ \psiTMp^X
+    \end{align}
+    The smoothness of $\KK$ follows from the smoothness of the gauges, the metric and the template kernel.
+\end{dfn}
+As in the case of \onexoneGMs, the arbitrariness of the particular choice of gauge in Eq.~\eqref{eq:conv_kernel_field_def_ptwise} -- and therefore the $\GM$-coordinate independence of the definition -- is guaranteed by the $G$-steerability of $K\in\KG\!$.
+To show this explicitly, one may define the kernel field relative to some gauge $B$ and then apply a transformation to any other gauge $A$, which cancels out and therefore leads to an equivalent expression:
+\begin{align}\label{eq:arbitrariness_gauge_GM_kernel_field_def}
+    \KKp
+    \,\ =&\,\ \big(\psiHomp^B \big)^{-1} \,\circ \,\frac{K}{\sqrt{|\eta^B|}} \circ \psiTMp^B \notag \\
+    \,\ =&\,\ \big( \rhoHom\big(g_p^{BA}\big)\, \psiHomp^A \big)^{-1} \,\circ \,\frac{K}{\sqrt{|\eta^A|} \,/\, |\! \det(g_p^{BA})| } \circ \big( g_p^{BA}\cdot \psiTMp^A \big) \notag \\
+    \,\ =&\,\ \big(\psiHomp^A \big)^{-1} \,\circ \frac{\,\big|\! \det(g_p^{BA})\big|\, \rhoHom\big(g_p^{BA}\big)^{-1} \circ K \circ g_p^{BA}}{\sqrt{|\eta^A|}} \circ \psiTMp^A \notag \\
+    \,\ =&\,\ \big(\psiHomp^A \big)^{-1} \,\circ \,\frac{K}{\sqrt{|\eta^A|}} \circ \psiTMp^A
+\end{align}
+Fig.~\ref{fig:triv_kernel_bundle_morphism} gives an overview of the local trivializations of $\GM$-convolutional kernel fields in terms of a commutative diagram.
+
+\begin{figure}
+    \centering
+    \begin{tikzcd}[row sep=4.5em, column sep=5.2em]
+        % ROW 1
+          U\times\R^d
+                        \arrow[rrrr, pos=.48, rounded corners, to path={ 
+                                -- ([yshift=2.5ex]\tikztostart.north) 
+                                --node[above]{\small$
+                                    \KK^B = \big(\id\times K/\mkern-2mu \sqrt{|\eta^B|} \,\big)
+                                $} ([yshift=2.5ex]\tikztotarget.north) 
+                                -- (\tikztotarget.north)
+                                }]
+        & &[-3.25em] &[-3.25em] &
+        U\times\R^{c_\text{out}\times c_\text{in}}
+        \\
+        % ROW 2
+        U\times\R^d
+                        \arrow[u, "\big(\id\times g^{BA}\!\!\cdot\big)"]
+                        \arrow[rrd, "\proj_1"']
+                        \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                                -- ([yshift=-16.ex]\tikztostart.south) 
+                                --node[below]{\small$
+                                    \KK^A = \big(\id\times K/\mkern-2mu \sqrt{|\eta^A|} \,\big)
+                                $} ([yshift=-16.ex]\tikztotarget.south) 
+                                -- (\tikztotarget.south)
+                                }]
+        &
+        \piTM^{-1}(U)   
+                        \arrow[rd, "\piTM\!\!"', pos=0.3]
+                        \arrow[rr, "\KK"]
+                        \arrow[lu, "\PsiTM^B"']
+                        \arrow[l,  "\PsiTM^A"']
+        & &
+        \piHom^{-1}(U)
+                        \arrow[ld, "\!\piHom", pos=0.3]
+                        \arrow[r,  "\PsiHom^A"]
+                        \arrow[ru, "\PsiHom^B"]
+        &
+        U\times\R^{c_\text{out}\times c_\text{in}}
+                        \arrow[u, "\big(\id\times \rhoHom\big(g^{BA}\big)\!\cdot\big)"']
+        \arrow[lld, "\proj_1"] \\
+        % ROW 3
+        & &
+        U
+        & &
+    \end{tikzcd}
+    \caption{\small
+        Commutative diagram showing local coordinatizations of a $\GM$-\emph{convolutional kernel field} $\KK$ as defined in Def.~\ref{dfn:conv_kernel_field}.
+        Convolutional weight sharing requires the coordinate expression of the kernel field $\KK$ at any point $p\in M$ and any gauge~$X$ at~$p$ to be determined by the shared template kernel ${K: \R^d \to \R^{\cout\times\cin}}$ as
+         $\KKp^X = K/\sqrt{|\eta_p^X|}$.
+        The commutativity of the diagram then implies the $G$-steerability constraint ${\detg^{-1} \rhoHom(g) \circ K \circ g^{-1} = K} \ \ \forall g\in G$ on the space~$\KG$ of template kernels.
+        We want to emphasize that, despite looking similar to the diagram in Fig.~\ref{fig:triv_bundle_morphism_onexone}, the diagram in the current figure should be seen as analog to that in Fig.~\ref{fig:trivialization_hom_onexone_section}.
+        The difference between the current diagram and that in Fig.~\ref{fig:trivialization_hom_onexone_section} is that the linear maps in the homomorphism bundle are via $\KK: \TM\to \Hom(\Ain,\Aout)$ determined by an element of the tangent bundle $\TM$ instead of the section $\sigma_{K_{1\!\times\!1}}: M\to \Hom(\Ain,\Aout)$.
+    }
+    \label{fig:triv_kernel_bundle_morphism}
+\end{figure}
+
+
+Note that the $G$-steerability constraint in Eq.~\eqref{eq:G_steerable_space_in_dfn_classical} or~\eqref{eq:G_steerable_space_in_dfn_Hom} reduces to the constraint on \onexoneGM\ kernels in Eq.~\eqref{eq:onexone_kernel_constraint} or~\eqref{eq:onexone_intertwiner_constraint_rhoHom} when being evaluated at the origin $\mathscr{v}=0$ of $\R^d$, which is invariant under the action of any~$g\in G$.
+The results on \onexoneGMs, derived in the previous section, are therefore seen to be a special case for the choice of point-like kernels.%
+\footnote{
+    To make this statement precise, one would have to generalize Def.~\ref{dfn:G-steerable_kernel_def_43} to operator-valued distributions and define \onexoneGM\ kernels as operator-valued Dirac deltas.
+    We omit this generalization here for brevity.
+}
+We further want to mention that the constraint on spatially extended kernels does in general not require their codomain to be restricted to $\Hom_G(\rhoin,\rhoout)$, i.e. the space of intertwiners.
+In contrast to \onexoneGMs, this allows $\GM$-convolutions with spatially extended kernels to map between fields that transform according to non-isomorphic irreducible representations.
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Kernel field transforms and \textit{GM}-convolutions}
+\label{sec:KFTs_GM-conv_global}
+
+Having defined both feature fields and kernel fields, we are ready to introduce kernel field transforms and $\GM$-convolutions.
+They are pointwise defined in terms of integral operators which compute output feature vectors $\fout(p)$ at points~$p\in M$ by matching the kernel $\Kp$ at~$p$ with the feature field~$\fin$ ``as seen from~$p$''.
+
+The local representation of an input field ``as seen from~$p$'' is formally given by its \emph{transporter pullback}, which is visualized in Fig.~\ref{fig:pullback_field_exp_TpM}.
+It~is defined as the usual pullback from $M$ to $\TM$ via the Riemannian exponential map%
+\footnote{
+    We define the exponential map on the full tangent bundle as
+    $\exp: \TM \!\to M,\ \ v \mapsto \exp_{\scalebox{.85}{$\pi_{\overset{}{\protect\scalebox{.6}{$T\mkern-2muM$}}}\mkern-1mu(v)$}}(v)$.
+    Recall that we assumed the manifold to be geodesically complete, such that the exponential map is well defined on the whole tangent bundle (and resort to zero-padding if this assumption fails to hold).
+}
+with the additional application of a parallel transporter (Eq.~\eqref{eq:transporter_A_def}), which is necessary in order to express the pulled back features in $\mathcal{A}_{\textup{in},\exp(v)}$ as features in~$\Ainp$.
+Denoting this parallel transporter along the geodesic path $\gamma_v(t) := \exp((1-t) \,v)$ between $\gamma(0) = \exp(v)$ and $\gamma(1) = \pi(v) =: p$ by
+\begin{align}
+    \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.75}{$\, p\!\leftarrow\!\exp(v)$}}}
+    : \A_{\exp(v)} \to \A_p \,,
+\end{align}
+we thus define the pulled back feature field representations on the tangent spaces as follows:
+\begin{dfn}[Transporter pullback of feature field to \textit{TM}]
+\label{dfn:Expf_pullback_field}
+    Given a feature field $f \in \Gamma(\A)$, we define its (redundant) representation on the tangent bundle as
+    \begin{align}
+        \Expsf :\ \TM \to \A, \quad\ 
+        v \,\mapsto\, \PAexpv \!\circ f \circ \exp(v) \,.
+    \end{align}
+    The Riemannian exponential map $\exp$ corresponds hereby to the Levi-Civita connection, while the transporter $\PAexpv$ relies on some $G$-compatible connection; see Sections~\ref{sec:transport_local} and~\ref{sec:bundle_transport}.
+
+    From the construction it is clear that $\Expsf(v) \in \A_p\,$ for any $v \in \TpM$, that is, $\Expsf$ is a bundle $M$-morphism, satisfying the following commutative diagram:
+    \begin{equation}\label{eq:pullback_field_bundle_map}
+        \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+            % ROW 1
+            \TM  \arrow[rd, start anchor={[xshift=.6ex]}, "\piTM"']
+                \arrow[rr, "\Expsf"]
+            & &
+            \mkern-3mu
+            \A
+                \arrow[ld, "\piA"] \\
+            % ROW 2
+            & M &
+        \end{tikzcd}
+    \end{equation}
+    Despite smoothly mapping between two vector bundles, $\Expsf$ is \emph{not} assumed to be a \emph{vector} bundle morphism, that is, the restrictions $\Expspf: \TpM \to \A_p$ are usually not linear.
+\end{dfn}
+The restriction $\Expspf := \Expsf\big|_{\TpM}$ of the transporter pullback's domain to $\TpM$ captures the feature field from the perspective of an observer at~$p$ as shown in Fig.~\ref{fig:pullback_field_exp_TpM}.
+Note that this definition resembles a local representation of the feature field in terms of \emph{geodesic normal coordinates}, with the difference that it is not restricted to the injectivity radius of the exponential map.%
+\footnote{
+    Any feature vector $f(q)$ might therefore be represented multiple times on the same tangent space $\TpM$, once for each $v\in\TpM$ with $\exp(v)=q$.
+    If this is not desired, one may restrict the kernel support to the injectivity radius of the exponential map, such that only the geodesically nearest occurrence will be measured.
+}
+We furthermore want to mention that the transporter may be replaced with any other isomorphism between $\A_{\exp(v)}$ and $\A_p$, as done for instance in~\cite{sommer2019horizontal}.
+
+
+As stated before, kernel field transforms and $\GM$-convolutions are defined as matching the local feature field representations on the tangent spaces with kernels.
+Working towards these definitions, note that the bundle $M$-morphisms of kernels $\K: \TM \to \Hom(\Ain,\Aout)$ and local field representations $\Expsfin: \TM \to \Ain$, can be combined to yet another (nonlinear) $M$-morphism from $\TM$ to $\Aout$,
+\begin{equation}\label{eq:integrand_bundle_map}
+    \quad
+    \begin{tikzcd}[row sep=3.5em, column sep=6.5em]
+        % ROW 1
+        \TM  \arrow[rd, start anchor={[xshift=-1ex]}, "\piTM"']
+            \arrow[r, "\K \mkern-1mu\times\mkern-1mu \Expsfin"]
+        &
+        \mkern-3mu
+        \Hom(\Ain,\Aout) \!\times\! \Ain
+            \arrow[r, "\ev"]
+        &
+        \Aout
+            \arrow[ld, "\piAout"] \\
+        % ROW 2
+        & M &
+    \end{tikzcd}
+    \quad,
+\end{equation}
+where $\ev: \big(\K(v),\, \Expsfin(v)\big) \mapsto \K(v) \Expsfin(v)$ is the evaluation map on $\Hom(\Ain,\Aout) \!\times\! \Ain$.
+Kernel field transforms compute output feature vectors at~$p$ by integrating this product of kernels and input fields over the respective tangent space $\TpM$:
+\begin{dfn}[Kernel field transform]
+\label{dfn:kernel_field_trafo}
+    Let $\K$ be any smooth kernel field.
+    The corresponding \emph{kernel field transform} is a smooth integral transform
+    \begin{align}\label{eq:kernel_field_trafo_def_signature}
+        \TK: \Gamma(\Ain)\to \Gamma(\Aout)
+    \end{align}
+    which is pointwise defined by%
+    \footnote{
+        The integration over $\TpM$ via the Riemannian volume density $dv$ is discussed in Appendix~\ref{apx:tangent_integral}.
+    }
+    \begin{align}\label{eq:kernel_field_trafo_def_ptwise}
+        \big[ \TK (\fin)\big] (p)
+        \,\ :=\, \int\limits_{\TpM}\!\!
+            \K(v) \,
+            \Expsfin (v)
+            \ dv
+        \,\ =\, \int\limits_{\TpM}\!\!
+            \K(v) \ 
+            \PAinexppv \; \fin(\exp_p\!v)
+            \ dv \,.
+    \end{align}
+    In order to be well defined, the integral needs to exist and the resulting output field $\TK(f)$ needs to be smooth.
+    This requires $\K$ to be chosen suitably, e.g. by assuming it to decay rapidly or to be compactly supported.
+\end{dfn}
+Note that general kernel field transforms do not necessarily model convolutions as they do not assume weights (kernels) to be shared between spatial positions.
+Such general kernel field transforms will become handy in Section~\ref{sec:isometry_intro}, where we derive a requirement for spatial weight sharing from the requirement for isometry equivariance.
+
+
+Appendix~\ref{apx:smoothness_kernel_field_trafo} discusses the existence and smoothness of kernel field transforms.
+A sufficient condition for kernel field transforms to be well defined is the restriction of kernel supports to balls of a fixed radius $R>0$:
+\begin{thm}[Kernel field transform existence for compactly supported kernels]
+\label{thm:existence_kernel_field_trafo_compact_kernels}
+    Let $\K$ be a kernel field whose individual kernels $\Kp$ at any $p\in M$ are (at most) supported on a closed ball of radius $R>0$ around the origin of $\TpM$, that is,
+    \begin{align}
+        \supp\!\big(\Kp\big)\ \subseteq\ \big\{ v\in\TpM \,\big|\, \lVert v\rVert \leq R \big\} \quad \forall p\in M \,.
+    \end{align}
+    The corresponding kernel field transform $\TK$ is then guaranteed to be well defined, i.e. the integral in Eq.~\eqref{eq:kernel_field_trafo_def_ptwise} exists and the output field $\TK(f) \in \Gamma(\Aout)$ is smooth for any smooth input field $f\in\Gamma(\Ain)$.
+\end{thm}
+\begin{proof}
+    See Appendices~\ref{apx:smoothness_kernel_field_trafo} and~\ref{apx:proof_sufficiency_ball_kernel_support}.
+\end{proof}
+The requirement to restrict the kernel support to a closed ball of certain radius is common practice in deep learning.
+Note, however, that a compactly supported kernel is at odds with scale equivariant convolutions, which, by the corresponding $G$-steerability kernel constraints, require infinitely far extending kernels.
+Current implementations of scale equivariant convolutions usually approximate scale equivariant kernel spaces by restricting their support~\cite{marcos2018scale,Worrall2019DeepScaleSpaces,ghosh2019scale,zhu2019scale,bekkers2020bspline,Sosnovik2020scale,naderi2020scalesteerable} and are therefore covered by Theorem~\ref{thm:existence_kernel_field_trafo_compact_kernels}.
+
+
+Based on general kernel field transforms, we define \emph{coordinate free $\GM$-convolutions} by adding the assumption of spatial weight sharing, i.e. by assuming $\GM$-\emph{convolutional kernel fields}:
+\begin{dfn}[$\GM$-convolution]
+\label{dfn:coord_free_conv}
+    Let $\Ain$ and $\Aout$ be $G$-associated feature vector bundles with types $\rhoin$ and $\rhoout \,$, respectively.
+    We define the \emph{$\GM$-convolution} with a $G$-steerable kernel $K\in\KG$ as the kernel field transform with the corresponding $\GM$-\emph{convolutional kernel field}~$\KK$:
+    \begin{align}\label{eq:coord_free_conv_def_signature}
+        K\,\star\,:\, \Gamma(\Ain)\to \Gamma(\Aout), \quad
+        \fin \mapsto K\star \fin \,:=\, \TKK(\fin)
+        \,=\! \int\limits_{\TpM}\! \KK(v)\ \Expsfin(v)\ dv
+    \end{align}
+\end{dfn}
+As $\GM$-convolutions do not prefer any reference frame in the $G$-structure, they are guaranteed to generalize their inference over all ``poses'' of patterns which are related by the action of the structure group~$G$; see Eq.~\eqref{eq:active_local_gauge_trafo} and Fig.~\ref{fig:active_TpM_equivariance}.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Kernel field transforms and \textit{GM}-convolutions in local coordinates}
+\label{sec:KFTs_GM-conv_local}
+
+What is left to show is that the coordinate free definitions of transporter pullbacks, kernel field transforms and $\GM$-convolutions introduced in this section reduce to the coordinate expressions from Section~\ref{sec:gauge_conv_main} when being expressed relative to some local trivialization.
+
+The local coordinate expression of the transporter pullback $\Expsf$ of a feature field $f$ is, as usual, defined by pre- and post-composing it with local trivializations of the corresponding bundles, that is:
+\begin{align}\label{eq:kft_coordinate_expression_62}
+    \big[\Expsf \big]^A: U\times \R^d \to U\times \R^c,\ \ \ 
+    (p,\mathscr{v}) \mapsto&\phantom{=} \PsiA^A \circ \Expsf \circ \big(\PsiTM^A \big)^{-1} (p, \mathscr{v}) \notag \\
+                           &= \pig(p,\,\ \psiAp^A \circ \Expspf \circ \big(\psiTMp^A \big)^{-1} (\mathscr{v}) \pig)
+\end{align}
+Local gauge transformations at $p\in M$ are from this definition seen to be given by
+\begin{align}
+    \big[\Expspf \big]^B \ =\ \rho\big( g_p^{BA}\big) \circ \big[\Expspf \big]^A \circ \big(g_p^{BA}\big)^{-1} \,.
+\end{align}
+We visualize these coordinate expressions in terms of a commutative diagram, which is very similar to that for the local trivializations of kernel fields in Fig.~\ref{fig:triv_kernel_bundle_morphism}:
+\begin{equation}
+\begin{tikzcd}[row sep=4.5em, column sep=5.2em]
+    % ROW 1
+      U\times\R^d
+                    \arrow[rrrr, pos=.48, rounded corners, to path={ 
+                            -- ([yshift=2.5ex]\tikztostart.north) 
+                            --node[above]{\small$
+                                \big[\Expsf \big]^B
+                            $} ([yshift=2.5ex]\tikztotarget.north) 
+                            -- (\tikztotarget.north)
+                            }]
+    & &[-3.25em] &[-3.25em] &
+    U\times\R^c
+    \\
+    % ROW 2
+    U\times\R^d
+                    \arrow[u, "\big(\id\times g^{BA}\!\!\cdot\big)"]
+                    \arrow[rrd, "\proj_1"']
+                    \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                            -- ([yshift=-16.ex]\tikztostart.south) 
+                            --node[below]{\small$
+                                \big[\Expsf \big]^A
+                            $} ([yshift=-16.ex]\tikztotarget.south) 
+                            -- (\tikztotarget.south)
+                            }]
+    &
+    \piTM^{-1}(U)   
+                    \arrow[rd, "\piTM\!\!"', pos=0.3]
+                    \arrow[rr, "\Expsf"]
+                    \arrow[lu, "\PsiTM^B"']
+                    \arrow[l,  "\PsiTM^A"']
+    & &
+    \piA^{-1}(U)
+                    \arrow[ld, "\!\piA", pos=0.3]
+                    \arrow[r,  "\PsiA^A"]
+                    \arrow[ru, "\PsiA^B"]
+    &
+    U\times\R^c
+                    \arrow[u, "\big(\id\times \rho\big(g^{BA}\big)\!\cdot\big)"']
+    \arrow[lld, "\proj_1"] \\
+    % ROW 3
+    & &
+    U
+    & &
+\end{tikzcd}
+\end{equation}
+
+For an implementation it is useful to further resolve the coordinate expression of the transporter pullback into those of its individual components, i.e. of the transporter
+$\mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.75}{$\, p\!\leftarrow\!\exp(v)$}}}$,
+the feature field $f$ and the exponential map $\exp$.
+This is achieved by expanding it with an identity of the form
+$\id_{\A_{\exp(v)}} = \big(\psiAexpnop^{\widetilde{A}} \big)^{-1} \circ \psiAexpnop^{\widetilde{A}}$,
+where the choice of gauge $\widetilde{A}$ at $\exp(v)$ is irrelevant as it ultimately drops out:
+\begin{align}\label{eq:coordinate_expression_transporter_pullback_62}
+    \big[\Expspf \big]^A (\mathscr{v})
+    \ &=\ \pig[ \psiAp^A \circ \Expspf \circ \big(\psiTMp^A \big)^{-1} \pig] (\mathscr{v}) \notag \\
+    \ &=\ \psiAp^A \circ 
+        \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.75}{$\, p\!\leftarrow\!\exp(v)$}}}
+     \circ f \big( \exp \circ \big(\psiTMp^A\big)^{-1} (\mathscr{v})\big) \notag \\
+    \ &=\ \psiAp^A \circ 
+        \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.75}{$\, p\!\leftarrow\!\exp(v)$}}}
+     \circ \big(\psiAexpnop^{\widetilde{A}_v} \big)^{-1} \circ \psiAexpnop^{\widetilde{A}_v}
+     \circ f \big( \exp \circ \big(\psiTMp^A\big)^{-1} (\mathscr{v})\big) \notag \\
+    \ &=\ \rho\pig( g^{A\widetilde{A}}_{p\leftarrow\exp\circ (\psiTMp^A)^{-1}(\mathscr{v})} \pig) \mkern1mu
+     \cdot f^{\widetilde{A}} \big( \exp \circ \big(\psiTMp^A\big)^{-1} (\mathscr{v})\big) \notag \\
+\end{align}
+As expected, we recover our definition from Eq.~\eqref{eq:transporter_pullback_in_coords} in Section~\ref{sec:observers_view}, which approves that Def.~\ref{dfn:Expf_pullback_field} is indeed its coordinate free counterpart.
+
+
+The coordinate expression of a kernel field transform, which coincides with Eq.~\eqref{eq:kft_coord_expression} in Section~\ref{sec:observers_view}, is given by the following theorem:
+\begin{thm}[Kernel field transform in coordinates]
+\label{thm:kernel_field_trafo_in_coords}
+    Relative to some gauge $A$ at $p\in U^A$, the kernel field transform is given by the coordinate expression
+    \begin{align}\label{eq:kernel_field_trafo_in_coords}
+        \!\big[ \TK(\fin) \big]^A (p)
+        \ &=
+        \int\limits_{\R^d}
+        \Kp^A (v^A) \ 
+        \big[\Expspfin\big]^A (v^A)
+        \ \sqrt{|\eta_p^A|}\,\ dv^A
+        \notag \\
+        \ &=
+        \int\limits_{\R^d}
+        \Kp^A (v^A) \ 
+        \rho\pig( g^{A\widetilde{A}}_{p\leftarrow\exp\circ (\psiTMp^A)^{-1}(v^A)} \pig)
+         \cdot \fin^{\widetilde{A}} \big( \exp \circ \big(\psiTMp^A\big)^{-1} (v^A) \big)
+        \ \sqrt{|\eta_p^A|}\ dv^A ,\!
+    \end{align}
+    where the gauges $\widetilde{A}$ at $\exp(v)$ are chosen arbitrarily as they cancel out.%
+    \footnote{
+        Note that the gauges at $\exp(v)$ might differ for different $v\in\TpM$ and should more correctly be labeled by $\widetilde{A}_v$.
+        We suppress this dependency for brevity.
+    }
+\end{thm}
+\begin{proof}
+    The first expression is derived by a simple calculation which translates all involved quantities into their corresponding coordinate expressions:
+    \begin{align}
+        % ROW 1
+        & \ 
+            \big[ \TK(\fin) \big]^A (p) \notag \\[.5ex]
+        % ROW 2
+        \overset{(1)}{=} & \ \ 
+            \psiAoutp^A \big[ \TK(\fin) \big] (p) \notag \\[.5ex]
+        % ROW 3
+        \overset{(2)}{=} & \ \ 
+            \psiAoutp^A
+            \int\limits_{\TpM}\mkern-4mu
+            \Kp(v) \,
+            \big[\Expspfin\big] (v)
+            \,\ dv
+        \notag \\[.5ex]
+        % ROW 4
+        \overset{(3)}{=} & \ \ 
+            \psiAoutp^A
+            \int\limits_{\R^d}
+            \Kp \pig(\! \big(\psiTMp^A\big)^{-1}(v^A) \pig) \;
+            \big[\Expspfin\big] \pig(\!\big( \psiTMp^A \big)^{-1} (v^A) \pig)
+            \ \sqrt{|\eta_p^A|}\,\ dv^A
+        \notag \\[.5ex]
+        % ROW 5
+        \overset{(4)}{=} & \ \ 
+            \int\limits_{\R^d}
+            \Big[ \psiAoutp^A \circ
+            \Kp \pig(\! \big(\psiTMp^A\big)^{-1}(v^A) \pig) \circ
+            \big( \psiAinp^A \big)^{-1} \Big]
+            \Big[ \psiAinp^A \circ
+            \big[\Expspfin\big] \circ \big( \psiTMp^A \big)^{-1} \Big] (v^A)
+            \ \sqrt{|\eta_p^A|}\,\ dv^A
+        \notag \\[.5ex]
+        % ROW 6
+        \overset{(5)}{=} & \ \ 
+            \int\limits_{\R^d}
+            \Big[ \psiHomp^A \circ \Kp \circ \big(\psiTMp^A\big)^{-1} \Big] (v^A) \,\ 
+            \Big[ \psiAinp^A \circ \big[\Expspfin\big] \circ \big( \psiTMp^A \big)^{-1} \Big] (v^A)
+            \,\ \sqrt{|\eta_p^A|}\,\ dv^A
+        \notag \\[.5ex]
+        % ROW 7
+        \overset{(6)}{=} & \ \ 
+            \int\limits_{\R^d}
+            \Kp^A (v^A) \ 
+            \big[\Expspfin\big]^A (v^A)
+            \ \sqrt{|\eta_p^A|}\,\ dv^A
+    \end{align}
+    Step~(1) expresses the output feature vector at $p$ explicitly in terms of gauge $\psiAoutp^A$, acting on the coordinate free kernel field transform.
+    This coordinate free expression is in step~(2) expanded as defined in Def.~\ref{dfn:kernel_field_trafo}.
+    Step~(3) pulls the integral over $\TpM$ via the chosen gauge back to $\R^d$, which is in more detail described in Appendix~\ref{apx:tangent_integral}.
+    Step~(4) inserts an identity map of the form $\id = \big(\psiAinp^A \big)^{-1} \circ \psiAinp^A$ and pulls $\psiAoutp^A$ into the integral
+    while step~(5) identifies the definition of $\psiHomp^A$ from Eq.~\eqref{eq:Hom_bdl_triv_ptwise}.
+    Lastly, we identify the coordinate expressions of $\Kp$ and $\Expspfin$ from Eqs.~\eqref{eq:kernel_field_general_coord_expression} and~\eqref{eq:kft_coordinate_expression_62}.
+
+    The second expression follows from the first one by expanding the coordinate expression of the transporter pullback according to Eq.~\eqref{eq:coordinate_expression_transporter_pullback_62}.
+\end{proof}
+
+
+
+The coordinate expression for the coordinate free $\GM$-convolutions follows immediately:
+\begin{thm}[$\GM$-convolutions in coordinates]
+\label{thm:gauge_equiv_conv_from_coordinate_free}
+    A coordinate free $\GM$-convolution
+    $K\star:\, \Gamma(\Ain) \to \Gamma(\Aout)$
+    with a $G$-steerable kernel $K\in\KG$ is relative to some gauge $A$ at $p\in U^A$ given by
+    \begin{align}
+        &\mkern-40mu
+        \big[ K\star f \big]^A (p)
+        \ =\ \big[ \TKK(f) \big]^A(p)
+        \ =\ \int\limits_{\R^d}
+            K \mkern-1mu (v^A) \,\ 
+            \big[ \Expspf \big]^A (v^A)
+            \,\ dv^A \,,
+    \end{align}
+    that is, by the coordinate expression that was introduced in Eq.~\eqref{eq:gauge_conv_coord_expression}.
+    This expression may be written out further as done for general kernel field transforms in Eq.~\eqref{eq:kernel_field_trafo_in_coords}.
+\end{thm}
+\begin{proof}
+    The result follows from Theorem~\ref{thm:kernel_field_trafo_in_coords} by observing that the coordinate free $\GM$-convolution $K\star$ is just a kernel field transform with the corresponding $\GM$-convolutional kernel field $\KK$; see Def.~\ref{dfn:coord_free_conv}.
+    Specifically, the coordinate expression of a $\GM$-convolutional kernel field $\KK$ is according to Def.~\ref{dfn:conv_kernel_field} given by the frame volume normalized $G$-steerable kernel $K$, that is, $\KKp^A = K/ \sqrt{|\eta_p^A|}$.
+    Inserting this identity in Eq.~\eqref{eq:kernel_field_trafo_in_coords} leads to the claimed coordinate expression for $\GM$-convolutions.
+\end{proof}
+
+This result assures that a global, coordinate free $\GM$-convolution can be implemented in terms of its local coordinate expressions relative to some $G$-atlas of local trivializations that cover $M$.
+
+

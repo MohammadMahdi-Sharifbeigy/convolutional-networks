@@ -1,0 +1,305 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{\{\textit{e}\}-steerable surface convolutions}
+\label{sec:e_surface_conv}
+
+
+This section reviews the networks from 
+\cite{monti2017geometric,jin2018learning,schonsheck2018parallel,tatarchenko2018tangent,jin2019NPTCnet,li2019crossAtlas},
+which have in common that they rely on $\{e\}$-structures on the surfaces.
+From the viewpoint of $\GM$-convolutions, these architectures differ mainly in the specific choice of \emph{heuristic that determines the $\{e\}$-structure}.
+
+
+Assuming a trivial structure group $G=\{e\}$, the models apply $\{e\}$-steerable (i.e. unconstrained) kernels, which are aligned along the frames of the chosen $\{e\}$-structure.
+The field types (group representations) are necessarily trivial.
+The same holds for all parallel transporters, which are necessarily $\{e\}$-structure compatible.
+Transporter pullbacks $\Expspf$ of feature fields $f$ to the tangent spaces reduce therefore to pullbacks $\exp_p^*f$ by the usual exponential map, that is, they don't apply (non-trivial) transporters.
+Recall that continuous $\{e\}$-structures exist only on parallelizable manifolds, implying that the networks' inference is inevitably discontinuous on non-parallelizable surfaces.
+The heuristics that determine the frame fields are furthermore not always well defined, or are instable under deformations of the surfaces' geometry, as further discussed below.
+
+The models of \citet{monti2017geometric}, \citet{jin2018learning} and \citet{schonsheck2018parallel} operate on triangular meshes and process feature fields that are sampled at the vertices.
+\citet{tatarchenko2018tangent} and \citet{jin2019NPTCnet} propose networks that operate on surface point clouds while the architecture of \citet{li2019crossAtlas} defines convolutions on texture atlases of meshes.
+
+
+
+
+
+\paragraph{Geodesic MoNets:}
+The first model family that we discuss are the \emph{MoNets} by \citet{monti2017geometric}.
+The authors discuss a variety of models on graphs and manifolds, most of which are not explained as $\GM$-convolutions.
+These models have in common that they apply kernels relative to some choice of ``pseudo-coordinates'' on the manifold or graph
+-- we are here only interested in those MoNets that rely on geodesic normal coordinates and are therefore identified as $\GM$-convolutions.
+
+As stated above, the main difference between $\{e\}$-steerable surface convolutions is their particular choice of $\{e\}$-structure.
+Inspired by previous work of \citet{boscaini2016learning}%
+\footnote{
+    The \emph{Anisotropic CNNs} by \citet{boscaini2016learning} assume the same principal curvature direction based $\{e\}$-structure.
+    However, their kernels are not defined in geodesic normal coordinates but are based on anisotropic heat kernels on the manifold.
+    \citet{monti2017geometric} claim that such heat kernels correspond to anisotropic Gaussian kernels in geodesic coordinates -- if this statement is true, Anisotropic CNNs can be viewed as $\GM$-convolutions.
+},
+the authors choose to align the reference frames of the $\{e\}$-structure with the \emph{principal curvature direction} of the manifold.
+Note that this heuristic is not well defined when the principal curvatures $\kappa_{\textup{max}} = \kappa_{\textup{min}}$ agree, i.e. when the principal curvature direction is degenerate.
+An extreme example is the 2-sphere $S^2$, where the principal curvature direction is nowhere well defined.
+Even when the principal curvatures are unequal, they determine only an undirected line, disambiguating reference frames up to a $\C2$-structure (with the two constituent frames pointing along the two directions along the line).
+To make the network independent form the choice of frame, they should therefore actually apply $\C2$-steerable kernels.
+Moreover, the principal curvature directions are instable under deformations of the surface.
+As an example, imagine the principal curvature direction at the north pole (on the positive $z$-axis) of the 2-sphere $S^2$:
+an infinitesimal squeezing of the sphere along the $x$-axis results in a principal curvature direction along the $x$-axis while an infinitesimal stretching along the $x$-axis results in a principal curvature direction along the $y$-axis.
+We furthermore want to mention that principal curvatures depend on the embedding of a manifold, that is, the approach is non-intrinsic.
+
+
+
+
+
+\paragraph{3DMCNN:}
+\citet{jin2018learning} proposed a \emph{3D Mesh CNN} (3DMCNN) that convolves over the surfaces of scanned faces to recognize expressions like happiness, anger or surprise.
+As the face-masks are topologically planes (with holes at the eyes) they are parallelizable, which allows for smooth $\GM$-convolutions for ${G=\{e\}}$.
+
+The convolution kernel is discretized into one central sampling point and eight other points at a fixed radial distance $R$ and angles $\varphi_k = k\frac{2\pi}{8},\ k=0,\dots,7$ in polar coordinates.
+The kernels -- and thus the frames that constitute the $\{e\}$-structure -- are rotated such that they are aligned with the $z$-axis of the embedding space~$\R^3$.
+This approach seems reasonable since the face masks are parallelizable and, more importantly, aligned upright.
+To match a such oriented kernel with a feature field, geodesics of length $R$ are shot in the eight directions.
+Barycentric coordinates are used to interpolate the signal from the surrounding vertices to the end point of the geodesic.
+
+
+
+
+
+
+
+
+\paragraph{Parallel Transport Convolutions:}
+As a last mesh-based $\{e\}$-steerable convolution we discuss the \emph{Parallel Transport Convolutions} (PTCs) by \citet{schonsheck2018parallel}.
+The key idea of PTCs is to define the convolution kernel at some ``origin'' $p_0 \in M$ and share it with any other location $p\in M$ by Levi-Civita transporting it along the shortest geodesics between $p_0$ and~$p$.
+To formulate this weight sharing procedure in more detail, consider the closed disks $B_{\TpM}(0,R) \subset\TpM$ of radius $R$ around the origins of the tangent spaces, where $R\in\R_+$ is the injectivity radius of the manifold.
+Let furthermore $M_{p,R} := \exp_p( B_{\TpM}(0,R)) \subset M$ be the images of these disks under the exponential map, which include all points whose geodesic distance from~$p$ is smaller than or equal to~$R$.
+\citet{schonsheck2018parallel} define their (unconstrained) scalar convolution kernels than as real-valued functions
+\begin{align}
+    \widehat{K}_{p_0} \!: M_{p_0,R} \to \R
+\end{align}
+on the neighborhood around the origin~$p_0$, i.e. directly on the manifold.
+To share the kernel with other locations $p\in M$, the authors compute the shortest geodesics between $p_0$ and the target locations $p$ via Fast Marching.
+They parallel transport the kernel then along these geodesics, which is done by pulling them back to the tangent spaces.
+In equations, the kernel at $p$ is defined as
+\begin{align}\label{eq:PTCs_kernel_transport}
+    \widehat{K}_p \!: M_{p,R} \to \R ,\quad
+    q \mapsto \widehat{K}_p(q) \,:=\,
+    \widehat{K}_{p_0} \circ \exp_{p_0} \circ\,
+    \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!T\!M$}\mkern-2mu,\mkern1mu p_0\to p}}^{-1}
+    \circ \log_p (q) \,,
+\end{align}
+which is visualized by the following commutative diagram:
+\begin{equation}\label{cd:PTC_kernel_1}
+\begin{tikzcd}[column sep=50, row sep=10, font=\normalsize]
+    M_{p_0,R}
+        \arrow[drr, rounded corners, to path={ 
+                |-node[below, pos=.8]{\small$\widehat{K}_{p_0}$} ([xshift=-5.ex]\tikztotarget.west) 
+                -- (\tikztotarget.west)
+                }]
+    & B_{T_{\mkern-1.mu p_0}\!M}(0,R)
+        \arrow[l, "\exp_{p_0}"']
+        \arrow[rr, "\mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!T\!M$}\mkern-2mu,\mkern1mu p_0\to p}}"]
+    &[-30pt]
+    &[-30pt]
+      B_{\TpM}(0,R)
+        \arrow[r, "\exp_p"]
+    & M_{p,R}
+        \arrow[dll, rounded corners, to path={ 
+                |-node[below, pos=.8]{\small$\widehat{K}_p$} ([xshift=5.ex]\tikztotarget.east) 
+                -- (\tikztotarget.east)
+                }]
+    \\
+    & & \R
+\end{tikzcd}
+\end{equation}
+The existence of the logarithmic map is guaranteed since the domain is restricted to points~$q$ within the injectivity radius.
+To compute the convolution response at $p$, the transported kernel is matched with the (scalar) feature field on~$M_{p,R}$.
+
+
+In order to describe PTCs as $\GM$-convolutions, we need to identify the corresponding $\{e\}$-structure and $\{e\}$-steerable kernel on~$\R^2$.
+A compatible $\{e\}$-structure is fixed by choosing an arbitrary frame $\big[e^A_i(p_0)\big]_{i=1}^d$ at the \mbox{origin}~$p_0$.
+The frames at any other location $p$ are then determined by Levi-Civita transporting this initial frame along the shortest geodesics, that is, they are defined as%
+\footnote{
+    Since this relation \emph{defines} the $\{e\}$-structure, we need to use the Levi-Civita transporters on the full frame bundle~$\FM$.
+}
+\begin{align}
+    \big[e^A_i(p) \big]_{i=1}^d\ :=\ 
+    \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!F\!M$}\mkern-2mu,\mkern1mu p_0\to p}}
+    \big[e^A_i(p_0)\big]_{i=1}^d \,.
+\end{align}
+Note that this definition implies in particular the following equivalent relation for the corresponding gauges, which is easily seen by applying it to the frame field:
+\begin{align}\label{eq:PTC_e-structure_gauges}
+    \psiGMp^A
+    \ =\ 
+    \psi_{\protect\scalebox{.6}{$G\!M,\mkern2mu$}\protect\scalebox{.7}{$p_0$}}^A
+    \circ
+    \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!G\!M$}\mkern-2mu,\mkern1mu p_0\to p}}^{-1}
+\end{align}
+Given the reference frame at~$p_0$, we can express $\widehat{K}_{p_0}$ in geodesic normal coordinates, which gives rise to our usual notion of template kernel on $\R^2$:
+\begin{align}\label{eq:PTCs_kernel_lift_R2}
+    K: B_{\R^2}(0,R) \to \R,
+    \quad \mathscr{v} \mapsto K(\mathscr{v}) :=
+    \widehat{K}_{p_0} \circ \exp_{p_0} \circ\mkern2mu
+    \big( \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$p_0$}}^A \big)^{-1} (\mathscr{v})
+\end{align}
+To show that our weight sharing via the such constructed $\{e\}$-structure is indeed consistent with that by \citet{schonsheck2018parallel}, we reproduce the kernels $\widehat{K}_p$ at $p$ by mapping our template kernel $K$ down to the manifold:
+\begin{align}
+    K \circ \psiTMp^A \circ \log_p
+    \ =&\ \widehat{K}_{p_0} \circ \exp_{p_0} \circ\,
+        \big( \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$p_0$}}^A \big)^{-1}
+        \circ \psiTMp^A \circ \log_p \notag \\
+    \ =&\ \widehat{K}_{p_0} \circ \exp_{p_0} \circ\,
+        \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!T\!M$}\mkern-2mu,\mkern1mu p_0\to p}}^{-1}
+        \circ \log_p \notag \\
+    \ =&\ \widehat{K}_p
+\end{align}
+The second step in this calculation used the equivalent to Eq.~\eqref{eq:PTC_e-structure_gauges} for the tangent bundle transporter and gauges.
+All definitions, and their consistency, are concisely summarized by the statement that the following diagram commutes:
+\begin{equation}\label{cd:PTC_kernel_2}
+\begin{tikzcd}[column sep=50, row sep=24, font=\normalsize]
+    M_{p_0,R}
+        \arrow[ddrr, rounded corners, to path={ 
+                |-node[left, pos=.36]{\small$\widehat{K}_{p_0}$} ([xshift=-5.ex]\tikztotarget.west) 
+                -- (\tikztotarget.west)
+                }]
+    & B_{T_{\mkern-1.mu p_0}\!M}(0,R)
+        \arrow[l, "\exp_{p_0}"']
+        \arrow[rr, "\mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!T\!M$}\mkern-2mu,\mkern1mu p_0\to p}}"]
+        \arrow[dr, "\psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$p_0$}}^A"']
+    &[-45pt]
+    &[-45pt]
+      B_{\TpM}(0,R)
+        \arrow[dl, "\psiTMp^A"]
+        \arrow[r, "\exp_p"]
+    & M_{p,R}
+        \arrow[ddll, rounded corners, to path={ 
+                |-node[right, pos=.36]{\small$\widehat{K}_p$} ([xshift=5.ex]\tikztotarget.east) 
+                -- (\tikztotarget.east)
+                }]
+    \\
+    & & B_{\R^2}(0,R)
+        \arrow[d, "K"]
+    \\
+    & & \R
+\end{tikzcd}
+\end{equation}
+Since we constructed our $\{e\}$-structure by choosing an initial frame at $p_0$, the reader might wonder about the implications of this choice.
+A different choice of initial frame will result in a corresponding transformation of the geodesic normal coordinates at $p_0$, and therefore of the template kernel~$K$ (Eq.~\eqref{eq:PTCs_kernel_lift_R2}).
+However, since the $\{e\}$-structure is constructed by transporting the initial frame, all of its reference frames will transform accordingly.
+The transformation of the template kernel will then cancel out with the transformation of the $\{e\}$-structure such that all choices of initial frames are ultimately equivalent.
+
+
+The $\{e\}$-structures underlying PTCs depend crucially on the choice of origin $p_0$ from which the frame field is constructed
+-- different choices of origins can lead to very different $\{e\}$-structures.
+As most manifolds do not come with a canonical notion of origin, the proposed heuristic seems somewhat arbitrary.
+Transport based $\{e\}$-structures, and thus PTCs, are furthermore discontinuous at the cut locus.
+This implies in particular that they are close to the cut locus unstable under deformations of the surfaces' geometry since such deformations may shift the cut locus.
+In contrast to the heuristics of the previous models, the heuristic of PTCs depends solely on the intrinsic geometry of the surface, that is, it is not based on its embedding in ambient space.
+
+
+To avoid confusion, we need to mention that \citet{schonsheck2018parallel} construct in their implementation (Section~3.2) another frame field, which should not be confused the $\{e\}$-structure that we described above.
+This frame field is required for the numerical computation of the Levi-Civita connection on the mesh, according to which the kernels are then transported.
+Our analysis above is purely based on their coordinate free definition of the model, most importantly the definition of weight sharing in (our) Eq.~\eqref{eq:PTCs_kernel_transport}.
+
+Note furthermore that the implicitly assumed feature vector transporters in the transporter pullback rely necessarily on the $\{e\}$-compatible trivial connection that is implied by the $\{e\}$-structure.
+The feature transport agrees along the geodesics emanating from $p_0$, based on which the $\{e\}$-structure was constructed, with Levi-Civita transporters.
+Transporters along any other path differ in general from the Levi-Civita transport.
+
+
+
+
+
+\paragraph{Tangent convolutions:}
+The \emph{tangent convolutions} by \citet{tatarchenko2018tangent} operate on \emph{point clouds} ${P\subset \R^3}$ whose points are assumed to lie on a surface.
+Tangent spaces at the sampling points are computed via a \emph{local principal component analysis} (LPCA).
+The LPCA at~$p\in P$ is essentially computing the \mbox{eigenvectors} ${e_i \!\in \R^3}$, ${i=\!1,2,3}$, of the covariance matrix of all points within a spherical neighborhood ${\mathcal{N}_p =} {\{q\in P | \lVert q-p\rVert<R \}}$ of radius~$R$ around~$p$.
+As the point cloud is sampled from a surface, one of the eigenvalues should be close to zero.
+The corresponding eigenvector $e_3$ is taken as the normal vector of the embedded tangent plane $\TpM \subset \R^3$ at~$p$.
+The two other eigenvectors span an orthonormal frame $[e_1,e_2]$ on the tangent plane, such that the collection of LPCA eigenvectors implies an $\{e\}$-structure on the point cloud.
+Note that the eigenvector with the largest eigenvalue points in the direction of minimal principal curvature, that is, one has $\kappa_n(e_1) = \kappa_{\min}$ and $\kappa_n(e_2) = \kappa_{\max}$.
+The considered $\{e\}$-structure is therefore similar to that of \citet{boscaini2015learning} and \citet{monti2017geometric}, however, the frames are rotated by $\pi/2$ since they are aligned with the minimal instead of maximal curvature direction.%
+\footnote{
+    Since all reference frames are rotated by the same angle, this difference is irrelevant if the kernels are learned.
+}
+Since the sign of the eigenvectors is arbitrary, this heuristic fixes frames actually only up to rotations by $\pi$.
+To address this ambiguity, tangent convolutions would either have to disambiguate between the two directions or fall back to $\C2$-steerable kernels.
+
+Instead of representing the feature field in geodesic normal coordinates, tangent convolutions project the features along the normal direction on the tangent plane.%
+\footnote{
+    This choice makes tangent convolutions (and NPTC-nets) different from $\GM$-convolutions.
+    In the limit of small kernels relative to the curvature of the surface both projections of feature fields to the tangent spaces become equivalent.
+}
+They are then interpolated to a regular grid of ${N\times N}$ pixels.
+As this grid is aligned with the reference frame, it can be viewed as a discretization of the tangent space coordinatization $\psiTMp^A(\TpM) = \R^2$.
+The convolution computes features then by taking the inner product with a ${N\times N}$ pixel kernel.
+
+
+
+
+
+\paragraph{NPTC-net:}
+\citet{jin2019NPTCnet} proposed \emph{NPTC-nets} on surface point clouds~${P\subset\R^3}$.
+Like tangent convolutions, NPTC-nets compute tangent planes via a local principal component analysis,
+however, their $\{e\}$-structure is independent from the LPCA.
+The $\{e\}$-structure that is underlying NPTC-nets is rather aligned with the gradient of the geodesic distance function from some initial point~$p_0 \in P$.
+To solve for the distance function, \citet{jin2019NPTCnet} solve the Eikonal equation via a Fast Marching algorithm.
+Instead of operating directly on the point cloud as done for instance in~\cite{Crane2017HeatMethodDistance}, the authors propose to use a sparse voxel grid whose voxels lie in a narrow band around the point cloud.
+Having computed the distance function on the voxel grid, which should produce approximately geodesic distances, its gradient is computed and projected on the tangent planes.
+The projected vector determines the first frame axes of the $\{e\}$-structure.
+Note that such defined frame fields are singular at~$p_0$.
+
+\citet{jin2019NPTCnet} observe that this $\{e\}$-structure implies a trivial connection on the surface (defined such that the frame field is closed under this transport).
+The frame field (or convolution kernels) can be understood as being transported according to this trivial connection, which motivates the ``PTC'' (parallel transport convolution) in the model name.
+Note, however, that NPTC-nets rely in contrast to the PTCs of \citet{schonsheck2018parallel} not on the Levi-Civita transport.
+Moreover, this statement can be made for \emph{any} $\{e\}$-structure and corresponding trivial connection.
+
+Like tangent convolutions, NPTC-nets project the features in the ambient space to the tangent plane.
+Instead of using a projection along the normal direction, the authors use a nearest neighbor interpolation with distances measured in ambient space.
+The convolution kernel is then oriented along the frames of the $\{e\}$-structure and matched with the interpolated feature field.
+Given a convolution kernel $K: \R^2 \to \R$, the authors formulate its assignment to that tangent spaces as $K \circ \psiTMp^A: \TpM \to \R$ where $\psiTMp^A := (\langle e_1^A,\,v\rangle,\, \langle e_2^A,v\rangle )^\top$.
+This procedure matches our definition of weight sharing and gauges (Eq.~\eqref{eq:embedding_gauge_map_orthonormal_frame}) exactly.
+
+
+
+
+
+
+
+
+\paragraph{Cross-atlas convolutions:}
+An entirely different approach was followed by \citet{li2019crossAtlas}.
+Their \emph{cross-atlas convolutions} compute a texture atlas whose charts are optimized to be approximately isometric.
+The convolution operation is then performed on the texture atlas, with pixel offset maps modeling the transition maps between charts.
+
+Before running the actual convolutions, an atlas of charts is computed.
+From an abstract viewpoint, the charts map patches of the surface to $\R^2$, such that the whole surface is covered.
+Concretely, they map patches of a $c$-channel input feature field (texture) in a non-overlapping way to an array of dimensions $(X,Y,c)$.
+Since the patches in the array should approximately represent geodesic neighborhoods on the surface, the charts should be approximately isometric, i.e. minimize distortions.
+To satisfy this requirement, the surface is cut such into patches that the mutual angles between all triangle normals within a patch stay below a user specified threshold -- note that this approach is based on the surfaces' extrinsic geometry.
+After optimizing the patches on the surface, the feature field is on each patch projected along a dominant projection direction.
+A bin-packing algorithm packs the projected patches densely into the texture map of shape $(X,Y,c)$.
+To resolve the directional ambiguity of the patches they are required to be \emph{rotation aligned}.
+This is achieved by demanding that the projections of the ambient space's $z$-axis to each patch are all aligned in the texture map.
+
+The convolution operates directly on the texture map.
+It groups the pixels into three different categories which are processed in a different manner.
+Pixels which are in the interior of a patch, such that the kernel does not range out of the patch, are convolved via conventional Euclidean convolutions.
+Since the charts are approximately isometric, this corresponds approximately to a geodesic convolution on the patch interior regions on the surface.
+Pixels that are outside of the patches are not processed, their value is fixed to zero.
+The interesting case is that of pixels which are close to the boundary of the patches.
+As the convolution kernel ranges for such pixels out of the current patch, it requires transition maps which query features from a neighboring patch on the surface.
+The query location is computed by
+1) finding the original point on the surface that corresponds to the current kernel location,
+2) shooting a geodesic to find the kernel sampling location on the surface and
+3) mapping this location to the corresponding pixel in the texture map.
+Using these transition maps the patches are stitched together according to the surface geometry and the convolution on the texture map corresponds approximately to a geodesic convolution on the surface.
+In the limit of the normal angle threshold going to zero, the approximating converges to an exact geodesic convolution.
+However, the patches shrink then down to individual faces, leading to more non-trivial transition maps.
+
+Cross-atlas convolutions correspond in this limit to $\GM$-convolutions whose $\{e\}$-structure is induced from the charts.
+The $\{e\}$-structure is at the boundaries between adjacent patches discontinuous, however, the jumps should due to the rotation alignment of the patches in the texture map in most cases be minimized.
+The discontinuities are expected to be large at patches of the surface which are approximately horizontal.
+
+For completeness, we want to point to the atlas based methods by \citet{sinha2016deep} and \citet{maron2017convolutional}.
+Both consider \emph{non-isometric} projections of the surface to a planar domain, which implies that the subsequent Euclidean convolutions do not correspond to geodesic convolutions on the surface.

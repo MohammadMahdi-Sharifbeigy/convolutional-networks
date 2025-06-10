@@ -1,0 +1,393 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Quotient representative kernel fields -- proofs}
+
+In this appendix we give proofs for Theorems~\ref{thm:tangent_quotient_repr_kernel_fields} and~\ref{thm:GM_conv_homogeneous_equivalence}.
+
+
+\toclesslab\subsection{Proof of Theorem~\ref{thm:tangent_quotient_repr_kernel_fields} -- Isomorphism between isometry invariant and quotient representative kernel fields}{apx:lifting_iso_proof}
+
+
+Theorem~\ref{thm:tangent_quotient_repr_kernel_fields} claims that the spaces $\KIfull$ of isometry invariant kernel fields in Eq.~\eqref{eq:KIfull_def} and $\KIquot$ of quotient representative kernel fields in Eq.~\eqref{eq:KIquot_def} are isomorphic to each other and that the isomorphism is given by the lift $\Lambda$ whose inverse $\Lambda^{-1}$ is the restriction to $\rTM(\ITM)$.
+Here we present a proof for this statement which consists of showing that
+\textit{1)} $\Lambda^{-1}$ is indeed an inverse of $\Lambda$,
+\textit{2)} the defining properties of $\KIfull$ and $\KIquot$ are satisfied after lifting and restricting and
+\textit{3)} the constructions do not depend on arbitrary choices.
+
+
+\begin{itemize}[leftmargin=0cm]
+
+    \item[] {\textit{1)} $\Lambda^{\!-1}$ in Eq.~\eqref{eq:lifting_isomorphism_lambda_inv} is a well defined inverse of $\Lambda$ in Eq.~\eqref{eq:lifting_isomorphism_lambda} : }
+
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+
+        \item[\it 1\hspace{1pt}a)]
+            $\Lambda \circ \Lambda^{-1} = \id_{\KIfull}$,
+            that is, $\Lambda^{-1}$ is a right inverse of $\Lambda$ :
+
+            This claim follows for any $\K\in \KIfull$ and any $v \in TM$ from
+            \begin{align}
+                \big[\Lambda \circ \Lambda^{-1} (\K) \big](v)
+                \ =&\ \big[ \Lambda(\Krestr) \big](v) \notag \\
+                \ =&\ \dPhirHom{v} \, \Krestr     \, \rTM \QTM (v) \notag \\
+                \ =&\ \dPhirHom{v} \, \K          \, \rTM \QTM (v) \notag \\
+                \ =&\ \K           \, \dPhirTM{v} \, \rTM \QTM (v) \notag \\
+                \ =&\ \K(v) \,,
+            \end{align}
+            where the invariance (equivariance) of the kernel field in Eq.~\eqref{eq:kernel_constraint_isom_full_1} allowed to swap the order of the isometry action and the evaluation of the kernel field in the penultimate step.
+
+        \item[\it 1\hspace{1pt}b)]
+            $\Lambda^{-1} \circ \Lambda = \id_{\KIquot}$,
+            that is, $\Lambda^{-1}$ is a left inverse of $\Lambda$ :
+
+            Let $\Q\in \KIquot$ and $w \in \rTM(\ITM)$.
+            Note that $\rTM\QTM(w) = w$ since $w$ is an orbit representative.
+            Furthermore, since $w = \dPhirTM{w}\, \rTM\QTM(w) = \dPhirTM{w} (w)$ it follows that $\Phir{w} \in \Stab{w}$ such that, by the constraint in Eq.~\eqref{eq:KIquot_def}, $\dPhirHom{w} \Q(w) = \Q(w)$.
+            Together, this proves the claim:
+            \begin{align}
+                \big[\Lambda^{-1} \circ \Lambda (\Q) \big](w)
+                \ =&\ \Lambda(\Q) \big|_{\rTM(\ITM)}(w) \notag \\
+                \ =&\ \Lambda(\Q)(w) \notag \\
+                \ =&\ \dPhirHom{w} \Q\, \rTM \QTM(w) \notag \\
+                \ =&\ \dPhirHom{w} \Q(w) \notag \\
+                \ =&\ \Q(w)
+            \end{align}
+
+    \end{itemize}
+
+
+
+
+
+
+
+    \item[] {\emph{2)} The defining properties of $\KIfull$ and $\KIquot$ are satisfied after lifting and restricting : }
+
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[\it 2\hspace{1pt}a)]
+            $\piHom \mkern-5mu\circ\mkern-2mu \Lambda(\Q) = \piTM$ for any $\Q \in \KIquot$,
+            that is, the lift $\Lambda(\Q)$ is a bundle $M$-morphism :
+
+            For any $\Q\in \KIquot$ and for any $v\in TM$ this claim follows from
+            \begin{align}
+                \big[ \piHom \Lambda(\Q) \big](v)
+                \ =&\ \piHom \dPhirHom{v} \Q\, \rTM \QTM(v) \notag \\
+                \ =&\ \Phir{v} \piHom \Q\, \rTM \QTM(v) \notag \\
+                \ =&\ \Phir{v} \piTM\, \rTM \QTM(v) \notag \\
+                \ =&\ \Phir{v} \rM \piITM\, \QTM(v) \notag \\
+                \ =&\ \Phir{v} \rM \QM \piTM(v) \notag \\
+                \ =&\ \piTM(v) \,,
+            \end{align}
+            where the last step made use of Eq.~\eqref{eq:reconstruction_isometry_basespace}.
+
+        \item[\it 2\hspace{1pt}b)]
+            ${\piHom \mkern-5mu\circ\mkern-2mu \Lambda^{-1}(\K) = \piTM}$ for any $\K \in \KIfull$,
+            that is, $\Lambda^{-1}(\K)$ is a bundle $\rM(\IM)$-morphism :
+
+            This property follows immediately from the corresponding property of $\K$ after restricting to $\rTM(\ITM) \subseteq \piTM^{-1}\big(\rM(\IM)\big)$.
+            For any $w \in \rTM(\ITM)$:
+            \begin{align}
+                \piHom \big[ \Lambda^{-1}(\K) \big](w)
+                \ =&\ \piHom \Krestr(w) \notag \\
+                \ =&\ \piHom \K(w) \notag \\
+                \ =&\ \piTM(w) \notag \\
+            \end{align}
+
+        \item[\it 2\hspace{1pt}c)]
+            $\dphiHom \Lambda(\Q)\, \dphiTMinv = \Lambda(\Q)\ \ \forall \phi \in \I$,
+            that is, $\Lambda(\Q)$ satisfies the full isometry invariance constraint :
+
+            Let $v\in TM$ and $\phi \in \I$.
+            Due to the invariance of the quotient map $\QTM$ under isometries we have $\QTM(\dphiTMinv v) = \QTM(v)$.
+            Note further that
+            \begin{align}
+                & \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$TM$}} \rTM \QTM(v) \notag \\
+                \ =\ & \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$TM$}} \rTM \QTM\big( \dphiTMinv v\big) \notag \\
+                \ =\ & \big[\Phir{v}^{-1}\, \phi \big]_{*,\scalebox{.58}{$TM$}}\, \dphiTMinv\, v \notag \\
+                \ =\ & \dPhirTM{v}^{-1}\, v \notag \\
+                \ =\ & \rTM \QTM(v)
+            \end{align}
+            implies
+            \begin{align}
+                \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]\ \in\ \Stab{\rTM\QTM(v)} \,,
+            \end{align}
+            which, via the stabilizer constraint in Eq.~\eqref{eq:KIquot_def}, leads to
+            \begin{align}
+                \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$\Hom$}} \Q\; \rTM \QTM(v)
+                \ =\ \Q\; \rTM \QTM(v) \,.
+            \end{align}
+            Putting these observations together proves the claim:
+            \begin{align}
+                \dphiHom \Lambda(\Q)\, \dphiTMinv(v)
+                \ =&\ \dphiHom \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM \big(\dphiTMinv v\big) \notag \\
+                \ =&\ \dphiHom \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM(v) \notag \\
+                \ =&\ \big[\Phir{v}\, \Phir{v}^{-1}\big]_{*,\scalebox{.58}{$\Hom$}} \dphiHom\, \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM(v) \notag \\
+                \ =&\ \dPhirHom{v}\, \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$\Hom$}} \Q\; \rTM \QTM(v) \notag \\
+                \ =&\ \dPhirHom{v}\, \Q\; \rTM \QTM(v) \notag \\
+                \ =&\ \Lambda(\Q)
+            \end{align}
+
+
+        \item[\it 2\hspace{1pt}d)]
+            $\dxiHom \big[\Lambda^{-1}(\K)\big](w) = \big[\Lambda^{-1}(\K)\big](w) \ \ \
+               \forall\; w \mkern-2mu\in\mkern-1mu \rTM(\ITM),\ \xi \mkern-1mu\in\mkern-1mu \Stab{w}$,\ 
+            that is, $\Lambda^{-1}(\K)$ satisfies the stabilizer constraint :
+
+            This statement is easily proven since the invariance (equivariance) properties of $\K$ carry over to its restriction $\Lambda^{-1}(\K)$.
+            We obtain for arbitrary $w\in \rTM(\ITM)$ and $\xi\in \Stab{w}$, that:
+            \begin{align}
+                \dxiHom \big[\Lambda^{-1}(\K)\big](w)
+                \ =&\ \dxiHom \Krestr (w) \notag \\
+                \ =&\ \dxiHom \K(w) \notag \\
+                \ =&\ \K \big(\dxiTM w\big) \notag \\
+                \ =&\ \K(w) \notag \\
+                \ =&\ \Krestr(w) \notag \\
+                \ =&\ \big[\Lambda^{-1}(\K)\big](w)
+            \end{align}
+
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+
+    \item[] {\emph{3)} All constructions and proofs are independent from the particular choice of $\PhirNoArg$ : }
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[]%
+            The definition
+            \begin{align}
+                \PhirNoArg: TM \to \I \quad \textup{such that}\quad \dPhirTM{v} \rTM \QTM(v) = v
+            \end{align}
+            from Eq.~\eqref{eq:reconstruction_isometry} is unique up to right multiplication of $\PhirNoArg$ with \emph{any}
+            \begin{align}
+                \xirNoArg: TM \to \I \quad \textup{such that}\quad \xir{v} \in \Stab{\rTM\QTM(v)}
+            \end{align}
+            since, obviously, $\dPhirTM{v}\, \dxirTM{v}\, \rTM\QTM(v)\ =\ \dPhirTM{v}\, \rTM\QTM(v)\ =\, v\,$ for any $v\in TM$.
+            As argued in footnote~\ref{footnote:ambiguity_reconstruction_isometry}, this covers all degrees of freedom in the definition of reconstruction isometries.
+            From the stabilizer constraint in Eq.~\eqref{eq:KIquot_def} it follows that $\dxirHom{v} \Q\, \rTM\QTM(v) = \Q\, \rTM\QTM(v)$ such that the lift $\Lambda$ is seen to be invariant w.r.t. the ambiguity of $\PhirNoArg$:
+            \begin{align}
+                \Lambda(\Q)
+                \ =&\ \dPhirHom{v} \Q\, \rTM\QTM(v) \notag \\
+                \ =&\ \dPhirHom{v}\, \dxirHom{v} \Q\, \rTM\QTM(v) \notag \\
+            \end{align}
+            Except from the definition of the lifting isomorphism, $\PhirNoArg$ is only used (in a slightly different context) in step \textit{2\,c)}, where the ambiguity is seen to drop out by similar arguments.
+
+    \end{itemize}
+
+\end{itemize}
+
+\noindent Together, these steps prove that $\Lambda: \KIquot \to \KIfull$ is an isomorphism.
+\hfill$\Box$
+
+
+
+
+
+
+
+\toclesslab\subsection{Proof of Theorem~\ref{thm:GM_conv_homogeneous_equivalence} -- Equivalence of equivariant kernel field transforms and convolutions on homogeneous spaces}{apx:homogeneous_equivalence_proof}
+
+To keep a better overview, we split the proof in two parts, proving the claims made in the first and second statement of Theorem~\ref{thm:GM_conv_homogeneous_equivalence}, respectively.
+
+\paragraph{Part 1) -- Constructing \textit{H}, \textit{HM} and Isom\textsubscript{\textit{HM}}:}
+Let $r\in M$ be any representative point and, without loss of generality, let $\psiGMr^{\widetilde{A}}$ be any isometric gauge at $r$.
+We set
+\begin{align}
+    H\ :=\ \psiGMr^{\widetilde{A}} \,\Stab{r} \big(\psiGMr^{\widetilde{A}} \big)^{-1} \,,
+\end{align}
+which is just a particular representation of $\Stab{r}$ relative to the chosen coordinatization.
+Since the gauge maps are isomorphisms, we get an isomorphism between the two groups:
+\begin{align}\label{eq:stabr_H_iso}
+    \alpha: \Stab{r} \to H,\ \ \ \xi \to \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} =: h_\xi^{\widetilde{A}\widetilde{A}}(r)
+\end{align}
+Since $\Stab{r} \leq \I \leq \IsomGM$, Theorem~\ref{thm:isom_GM_in_coords} assures that $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ is for any $\xi \in \Stab{p}$ an element of $G$ and thus that $H \leq G$.
+We furthermore have that $H\leq\O{d}$, which is seen by the following calculation, which holds for any $\mathscr{v},\mathscr{w} \in \R^d$:
+\begin{align}
+    \pig\langle h_\xi^{\widetilde{A}\widetilde{A}}(r) \cdot\mathscr{v} \,,\,\ h_\xi^{\widetilde{A}\widetilde{A}}(r) \cdot\mathscr{w} \pig\rangle
+    \ \overset{(1)}{=}&\ \ \pig\langle \pig( \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} \pig) \cdot \mathscr{v} \,,\,\ \pig( \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} \pig) \cdot \mathscr{w} \pig\rangle \notag \\
+    \ \overset{(2)}{=}&\ \ \pig\langle \psiTMr^{\widetilde{A}} \;\dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \psiTMr^{\widetilde{A}} \;\dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig\rangle \notag \\
+    \ \overset{(3)}{=}&\ \ \eta_r\pig( \dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig) \notag \\
+    \ \overset{(4)}{=}&\ \ \eta_r\pig( \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig) \notag \\
+    \ \overset{(5)}{=}&\ \ \langle \mathscr{v} \,, \mathscr{w} \rangle
+\end{align}
+Step~$(1)$ made use of Eq.~\eqref{eq:stabr_H_iso}.
+In step~$(2)$ we identified the expression of $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ via $\psiGMr^{\widetilde{A}}$ with its expression via $\psiTMr^{\widetilde{A}}$, which is justified by the commutativity of the diagrams in Eqs.~\eqref{cd:pushforward_GM_coord_extended} and~\eqref{cd:pushforward_TM_coord}.
+As we assumed~$\psiTMr^{\widetilde{A}}$ w.l.o.g. to be isometric, we can identify the inner product $\langle\,\cdot,\cdot\,\rangle$ on~$\R^d$ in step~$(3)$ with the Riemannian metric~$\eta_r$.
+Step~$(4)$ uses that $\xi \in \Stab{r} \leq \I$ is an isometry, which preserves the metric by definition; see Eq.~\eqref{eq:isometry_def}.
+Lastly, we pull the metric in step~$(5)$ via the isometric gauge back to the inner product on~$\R^d$.
+The equality of the initial and final expression shows that $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ preserves the inner product on $\R^d$ -- this is exactly the requirement that \emph{defines} the orthogonal group.
+We therefore have that $H\leq \O{d}$, and, together with $H\leq G$, that
+\begin{align}
+    H \,\leq\, G \cap \O{d} \,.
+\end{align}
+This proves the first statement of part 1) of Theorem~\ref{thm:GM_conv_homogeneous_equivalence}.
+We move on to the second statement of part 1), the construction of $\HM$ and $\IsomHM$.
+
+Given that $\Stab{r}$ is a subgroup of $\I$, we have the canonical quotient map
+\begin{align}
+    \mathscr{q}: \I \to \I/\Stab{r},\ \ \ \phi \to \phi.\Stab{r}
+\end{align}
+which sends group elements $\phi \in \I$ to the left coset $\phi.\Stab{r} := \{\phi\,\xi \,|\, \xi\in\Stab{r} \}$ of $\Stab{r}$.
+It is well known that this quotient map makes $\I$ to a principal $\Stab{r}$-bundle over the base space $\I/\Stab{r}$, with the right action given by the right multiplication $\blacktriangleleft \,: \I \times \Stab{r} \to \I,\ (\phi,\xi) \mapsto \phi\,\xi$ with stabilizer elements~\cite{gallier2019diffgeom2,neeb2010differential}.
+Furthermore, $\I/\Stab{r}$ is isomorphic to the homogeneous space~$M$.
+The isomorphism is given by
+\begin{align}
+    \beta: \I/\Stab{r} \to M,\ \ \ \phi.\Stab{r} \mapsto \phi(r) \,,
+\end{align}
+which is obviously independent of the choice of coset representative since different representatives differ by group elements that stabilize~$r$.
+Note that we could equally well view $\mathscr{q}: \I \to \I/\Stab{r}$ as a principal $H$-bundle since the typical fiber is only defined up to isomorphism.
+
+
+With these preparations we define the $H$-structure $\HM$ as an embedding of the principal $H$-bundle $\I$ into $\GM$ (and therefore into $\FM$).
+We define the embedding map as
+\begin{align}
+    \mathscr{E}: \I \to \GM,\ \ \ \phi \mapsto \dphiGM\, \sigma^{\widetilde{A}}(r) \,,
+\end{align}
+which depends once again on our choice of gauge since $\sigma^{\widetilde{A}}(r) = \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e)$.
+It can be thought of as tracing out an embedded copy of $\I$ in $\GM$ by pushing around the frame $\sigma^{\widetilde{A}}(r) \in \GrM$.
+That this gives indeed a valid embedding is guaranteed since the action of $\I$ on frames is fixed point free.
+The embedding $\mathscr{E}$ is a bundle map over $\beta$, that is, $\beta\circ\mathscr{q} = \piGM \circ \mathscr{E}$.
+To show this, it is sufficient to apply both sides on an arbitrary element $\phi\in\I$, which gives the same result:
+$\beta \circ \mathscr{q} (\phi) = \beta\big( \phi.\Stab{r} \big) = \phi(r)$ and
+$\piGM \circ \mathscr{E} (\phi) = \piGM\, \dphiGM\, \sigma^{\widetilde{A}}(r) = \phi\; \piGM\, \sigma^{\widetilde{A}}(r) = \phi(r)$.
+The embedding map is furthermore right equivariant:
+For any $\xi \in \Stab{r}$ and any $\phi \in \I$ one has
+\begin{align}
+    \mathscr{E}(\phi\,\xi)
+    \ =&\ \ \dphiGM\, \dxiGM \sigma^{\widetilde{A}}(r) \notag \\
+    \ =&\ \ \dphiGM\, \dxiGM \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \notag \\
+    \ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1} \psiGMr^{\widetilde{A}}\, \dxiGM \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \notag \\
+    \ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1} \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big) \notag \\
+    \ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \lhd h_\xi^{\widetilde{A}\widetilde{A}}(r) \notag \\
+    \ =&\ \ \mathscr{E}(\phi) \lhd h_\xi^{\widetilde{A}\widetilde{A}}(r) \,,
+\end{align}
+where we used the right $G$ (and thus $H$) equivariance of $\psiGMr^{\widetilde{A}}$ (and thus $\big(\psiGMr^{\widetilde{A}}\big)^{-1}$) in the penultimate step.
+Together, these properties show that $\mathscr{E}$ is a principal bundle map that makes the following diagram commutative:
+\begin{equation}\label{cd:GM_def_embedding}
+\begin{tikzcd}[row sep=3.em, column sep=6.5em]
+    \I \times \Stab{r}
+        \arrow[r, "\mathscr{E}\times\alpha", hook]
+        \arrow[d, "\blacktriangleleft\,"']
+    & \GM \times H
+        \arrow[d, "\,\lhd"]
+    \\
+    \I
+        \arrow[r, pos=.55, "\mathscr{E}", hook]
+        \arrow[d, "\mathscr{q}"']
+    & \GM
+        \arrow[d, "\piGM"]
+    \\
+    \I/\Stab{r}
+        \arrow[r, pos=.45, "\beta"']
+    & M
+\end{tikzcd}
+\end{equation}
+The claimed $H$-structure is then defined as the image
+\begin{align}
+    \HM\ :=\ \mathscr{E}(\I)\ =\ \big\{ \dphiGM\, \sigma^{\widetilde{A}}(r) \,\big|\, \phi \in \I \big\}
+\end{align}
+of $\mathscr{E}$ together with the restricted right action and projection map of $\GM$.
+Since embeddings are necessarily injective, we have in particular that $\I$ and $\HM$ are isomorphic as principal bundles.
+
+
+As a last point we argue that $\I$ and $\IsomHM = \{ \theta \in \IsomM \,|\, \dthetaGM \HM = \HM \}$ coincide.
+The equality $\dthetaGM \HM = \HM$ holds for a given $\theta \in \IsomM$ if $\dthetaGM \HM$ is at the same time a subset and a superset of~$\HM$.
+The first case, $\dthetaGM \HM \subseteq \HM$, requires that for any element $\dthetaGM\, \dphiGM \sigma^{\widetilde{A}}(r) \in \dthetaGM \HM$, there exists some $\dphiGM' \sigma^{\widetilde{A}}(r) \in \HM$ such that $\dthetaGM\, \dphiGM \sigma^{\widetilde{A}}(r) = \dphiGM' \sigma^{\widetilde{A}}(r)$.
+Since the action of isometries on the frame bundle is free, this requires $\dthetaGM = \dphiGM' \dphiGM^{-1}$, which in turn implies $\theta = \phi' \phi^{-1}$.
+As one can easily check, the second case results in the same requirement.
+Both $\phi'$ and $\phi$ are elements of $\I$ such that $\theta$ is required to be an element of $\I$.
+This proves the claim
+\begin{align}\label{eq:IsomHM_I}
+    \IsomHM = \I \,.
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Part 2) -- Equivalence of $\bm\I$-equivariant kernel field transforms and \textit{HM}-convolutions:}
+
+To prove the second statement of the theorem, we construct an $\I$-equivariant kernel field transform on $M$ and show that it is equivalent to a $\HM$-convolution.
+Theorem~\ref{thm:isometry_equivariant_kernel_field_trafos} proved that $\I$-equivariant kernel field transforms require $\I$-invariant kernel fields, which can, according to Theorem~\ref{thm:manifold_quotient_repr_kernel_fields}, be equivalently encoded in terms of a field of representative kernels $\Qhat: \piTM^{-1}(\rM(\IM)) \to \piHom^{-1}(\rM(\IM))$.
+For the case of a homogeneous space $M$, the quotient space $\IM$ consists of a single element, which we represent by $r=\rM(\IM) \in M$.
+The full invariant kernel field is therefore described by a single kernel $\Qhat|_r = \Qhat: \TrM \to \Hom(\Ainr,\Aoutr)$.
+This kernel is required to satisfy the stabilizer constraint
+$\dxiHom \Qhat\; \dxiTM^{-1} = \Qhat \quad \forall\ \xi \in \Stab{r}$
+and is shared over $M$ via the lifting isomorphism
+$\widehat{\Lambda}(\Qhat)(v) = \dPhirHom{v} \Qhat\ \rTM \QTM(v) = \dPhirHom{v} \Qhat\ \dPhirTM{v}^{-1}(v)$.
+As shown below, the single $\Stab{r}$-constrained representative kernel corresponds exactly to an $H$-steerable template kernel, while the weight sharing via the lifting isomorphism $\widehat{\Lambda}$ from Theorem~\ref{thm:manifold_quotient_repr_kernel_fields} corresponds exactly to the convolutional weight sharing in Def.~\ref{dfn:conv_kernel_field}.
+
+
+To make the equivalence of the kernel constraints explicit, we express the kernel $\Qhat$ via Eq.~\eqref{eq:conv_kernel_field_def_ptwise} relative to the same gauge~$\widetilde{A}$ as considered before as
+$K := \psiHomr^{\widetilde{A}}\, \Qhat\, \big(\psiTMr^{\widetilde{A}} \big)^{-1}$.
+The frame volume factor $\sqrt{|\eta_r^{\widetilde{A}}|}$ drops hereby out since we assumed the gauge w.l.o.g. to be isometric.
+The stabilizer constraint relative to this gauge then leads to
+\begin{alignat}{3}
+    K
+    \ &=&\ \ \psiHomr^{\widetilde{A}}\, &\Qhat\ \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+    \ &=&\ \ \psiHomr^{\widetilde{A}}\, \dxiHom\, &\Qhat\,\ \dxiTM^{-1}\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+    \ &=&\ \ \psiHomr^{\widetilde{A}}\, \dxiHom\, \big(\psiHomr^{\widetilde{A}})^{-1}\, &K\ \psiTMr^{\widetilde{A}}\, \dxiTM^{-1}\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+    \ &=&\ \ \rhoHom\big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)\, &K\ \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)^{-1} \notag \\
+    \ &=&\ \ \frac{1}{\big|\mkern-2mu \det h_\xi^{\widetilde{A}\widetilde{A}}(r) \big|} \;
+        \rhoHom\big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)\, &K\ \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)^{-1}
+\end{alignat}
+for any $\xi$ in $\Stab{r}$.
+Note that we can include the determinant factor in the last step since $h_\xi^{\widetilde{A}\widetilde{A}}(r) \in \O{d}$, as shown above.
+The isomorphism between $\Stab{r}$ and $H$ in Eq.~\eqref{eq:stabr_H_iso} thus allows us to rewrite the stabilizer constraint as the $H$-steerability constraint
+\begin{align}
+    K\ =\ \frac{1}{|\mkern-2mu \det h \mkern1mu|}\; \rhoHom(h) \circ K \circ h^{-1} \qquad \forall\ h \in H \,.
+\end{align}
+on template kernels $K$ of a $\HM$-convolution.%
+\footnote{
+    Since $h\in H \leq G\cap\O{d}$, the determinant factor always drops out and could therefore be omitted.
+}
+
+
+
+What remains to be shown is the equivalence of the two ways of sharing weights.
+The weight sharing via $\widehat{\Lambda}$, expressed via gauge $\widetilde{A}$ in terms of $K$, reads
+\begin{alignat}{3}\label{eq:weight_sharing_lifting_homogeneous}
+    \widehat{\Lambda}(\Qhat)(v)
+    \ &=&\ \dPhirHom{v}\; &\Qhat\,\ \rTM\, \QTM (v) \notag \\
+    \ &=&\ \dPhirHom{v}\; &\Qhat\,\ \dPhirTM{v}^{-1}(v) \notag \\
+    \ &=&\ \dPhirHom{v}\, \big(\psiHomr^{\widetilde{A}}\big)^{-1}\, \psiHomr^{\widetilde{A}}\; &\Qhat\,\ \big(\psiTMr^{\widetilde{A}}\big)^{-1}\, \psiTMr^{\widetilde{A}}\; \dPhirTM{v}^{-1}(v) \notag \\
+    \ &=&\ \Big( \psiHomr^{\widetilde{A}}\, \dPhirHom{v}^{-1} \Big)^{-1}\, &K\, \Big( \psiTMr^{\widetilde{A}}\, \dPhirTM{v}^{-1} \Big)(v) \,.
+\end{alignat}
+The last line already looks quite similar to the definition of $\HM$-convolutional kernel fields in Def.~\ref{dfn:conv_kernel_field}.
+To prove their equivalence, we need to show
+1) that the isometry induced gauges 
+$\psiTMr^{\widetilde{A}}\, \dPhirTM{v}^{-1}$ and $\psiHomr^{\widetilde{A}}\, \dPhirHom{v}^{-1}$ at~$\piTM(v)$
+are $H$-compatible with the original gauges $\psiTMr^{\widetilde{A}}$ and $\psiHomr^{\widetilde{A}}$ and
+2) that the induced gauges correspond to reference frames of unit volume (to explain the missing frame volume factor in Eq.~\eqref{eq:weight_sharing_lifting_homogeneous}).
+For the first point, note that the codomain of the reconstruction isometry $\PhirNoArg: \TM \to \I$ coincides by Eq.~\eqref{eq:IsomHM_I} with~$\IsomHM$.
+Theorem~\ref{thm:isom_GM_in_coords} therefore asserts that these induced gauges are compatible with any $H$-atlas of~$\HM$.
+The second point follows immediately since $H \leq \O{d}$ (or since $\Phir{v}$ is an isometry and $\widetilde{A}$ is isometric).
+The weight sharing of $\Qhat$ via the lifting isomorphism in Eq.~\ref{eq:weight_sharing_lifting_homogeneous} is therefore seen to coincide with the $\HM$-convolutional weight sharing of the $H$-steerable kernel~$K$ in Def.~\ref{dfn:conv_kernel_field}.
+Together with the result that the stabilizer kernel constraint results in the $H$-steerability constraint, this implies that the lifted kernel field is equivalent to a $\HM$-convolutional kernel field, which proves part 2) of the theorem.
+
+
+
+
+
+
+
+A different choice of gauge $\widetilde{A}$ might for $G<\O{d}$ result in a conjugate subgroup $\overline{H}$ to $H$ and an embedding $\overline{H}\mkern-2muM$ of $\I$ that differs from $\HM$.
+As one can easily check, the $\overline{H}$-steerability constraint allows to describe the same kernel relative to $\overline{H}\mkern-2muM$ like the $H$-steerability constraint in relation to $\HM$, since the transformation falls out.

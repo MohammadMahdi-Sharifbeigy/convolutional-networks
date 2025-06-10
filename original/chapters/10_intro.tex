@@ -1,0 +1,227 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Introduction}
+
+
+\begin{figure}
+    \centering
+    \vspace*{-2ex}
+    \includegraphics[width=.94\textwidth]{figures/satellite_kernels.pdf}
+    \caption{\small
+        Different observers $A$ and $B$ may perceive a pattern of features from a different ``viewpoint''.
+        The satellites in our application are convolution kernels which summarize their local field of view around~$p$ into a feature vector at~$p$.
+        Their ``viewpoint'' is a choice of local reference frame (gauge) at~$p$, along which the kernel is aligned.
+        Since the observations from both viewpoints represent the same pattern, the kernel responses should contain equivalent information, that is, the inference should be \emph{coordinate independent}.
+        This constrains the convolution kernels to be \emph{equivariant under local gauge transformations}, i.e. changes of reference frames.
+        The level of gauge equivariance is determined by the \emph{structure group}~$G$, which depends both on the manifold and the application.
+        {\\
+        \color{gray}
+        \scriptsize
+            (Lizards adapted under the Creative Commons Attribution 4.0 International
+            \href{https://github.com/twitter/twemoji/blob/gh-pages/LICENSE-GRAPHICS}{\underline{license}}
+            by courtesy of Twitter.)
+        }
+    }
+    \label{fig:satellite}
+\end{figure}
+
+
+In recent years, deep neural networks have become the models of choice for a wide range of tasks in machine learning.
+The success of deep models is often rooted in a task-specific design, reflecting the mathematical structure of the data to process.
+A prominent example are convolutional neural networks (CNNs), which exploit the spatial structure of the data via a local connectivity and spatial weight sharing.
+As the same kernel is applied at each point in space, convolutional networks are translation equivariant, which means that they generalize learned patterns automatically over spatial positions.
+Given the considerable empirical success of Euclidean CNNs, there is a big interest in extending convolutional models to process signals on more general domains and to make them equivariant under larger symmetry groups.
+
+
+This work investigates the generalization of convolutional networks to \emph{Riemannian manifolds}.
+A major complication in generalizing convolutional networks from Euclidean spaces $\R^d$ to general Riemannian manifolds is that \emph{manifolds do not come with a preferred choice of reference direction}, along which a convolution kernel could be aligned to measure features.
+Since no reference direction is preferred, the kernel needs to be aligned \emph{arbitrarily} on the manifold.
+The central theme of this work is to regulate this arbitrariness by making the networks' inference independent from the specific alignment of convolution kernels.
+It turns out that this requires kernels to be \emph{gauge equivariant}, i.e. equivariant under transformations of the kernel alignment.
+The response of a gauge equivariant kernel transforms predictably when its alignment is changed
+-- the extracted information content is therefore guaranteed to be the same for any (arbitrary) choice of alignment.
+
+
+We formalize the alignment of a kernel at some point~$p$ of a manifold $M$ as a choice of \emph{local reference frame} -- or \emph{gauge} -- of the corresponding tangent space $\TpM$.
+\emph{Gauge transformations} are therefore transformations between choices of reference frames.
+Fig.~\ref{fig:intro_kernel_alignment_trivial} visualizes the concept of aligning kernels along reference frames.
+Aligning the kernel relative to the canonical (uniquely preferred) \emph{frame field} of the Euclidean plane $\R^2$, as shown in the top, results in the usual \emph{kernel field} of Euclidean CNNs.
+A different frame field, as shown in the bottom, implies an alternative kernel field and thus network.
+As stated above, on most manifolds the choice of frames is inherently ambiguous such that no specific kernel alignment is preferred.
+Fig.~\ref{fig:satellite} visualizes this issue for the sphere $S^2$, where frames are only unique up to rotations.
+
+
+\begin{figure}
+    \hspace*{.5ex}
+    \begin{subfigure}[b]{0.105\textwidth}
+        \centering
+        \includegraphics[width=.66\textwidth]{figures/GpM_trivial.pdf}
+        \\~\vspace*{-2pt}
+        \caption{\small
+            $G=\{e\}$
+        }
+        \label{fig:GpM_a}
+    \end{subfigure}
+    \hspace*{.5ex}
+    \begin{subfigure}[b]{0.14\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{figures/GpM_reflect.pdf}
+        \\~\vspace*{-2pt}
+        \caption{\small
+            $G=\Flip$
+        }
+        \label{fig:GpM_b}
+    \end{subfigure}
+    \hspace*{.5ex}
+    \begin{subfigure}[b]{0.14\textwidth}
+        \centering
+        \includegraphics[width=.8\textwidth]{figures/GpM_SO2.pdf}
+        \caption{\small
+            $G=\SO2$
+        }
+        \label{fig:GpM_c}
+    \end{subfigure}
+    \hspace*{.5ex}
+    \begin{subfigure}[b]{0.14\textwidth}
+        \centering
+        \includegraphics[width=.66\textwidth]{figures/GpM_scale.pdf}
+        \\~\vspace*{-6pt}
+        \caption{\small
+            $G=\Scale$
+        }
+        \label{fig:GpM_d}
+    \end{subfigure}
+    \par
+    % (manually) wrapped caption, adapted from
+    % https://tex.stackexchange.com/questions/158868/is-it-possible-to-let-captions-wrap-a-bit-around-includegraphics-within-figures
+    % https://tex.stackexchange.com/questions/51839/wrap-caption-around-tikz-figure/51842#51842
+    % The caption
+    \vspace*{\dimexpr-\parskip-66.pt\relax}% Skip backwards over last left-aligned image
+    \parshape 8 % Set flow of caption: N lines...
+        .6\textwidth .4\textwidth % First N-1 start @ .6\textwidth with a width of .4\textwidth
+        .6\textwidth .4\textwidth
+        .6\textwidth .4\textwidth
+        .6\textwidth .4\textwidth
+        .6\textwidth .4\textwidth
+        .6\textwidth .4\textwidth
+        .6\textwidth .4\textwidth
+        .0\textwidth 1\textwidth % the last (N-th) line flows from 0 to .99 = .62+.37 = .01+.98 ad infinitum
+    \makeatletter
+    % Setting of actual caption (this is taken from latex.ltx)
+    \setcounter{\@captype}{\value{\@captype}-1} % \setcounter{CounterName}{number}
+    \refstepcounter{\@captype}% Increase float/caption counter
+    \addcontentsline{\csname ext@\@captype\endcsname}{\@captype}% Add content to "List of..."
+        {\protect\numberline{\csname the\@captype\endcsname}{ToC entry}}%
+    \small % switch to small font for caption and Figure XX:
+    \csname fnum@\@captype\endcsname: % Float caption + #
+    \makeatother
+    \hyphenpenalty = 300 % default should be 50, however, without setting this parameter no hyphens occurred
+    % Actual caption
+        The choice of reference frames of a tangent space $\TpM$ is not always unique.
+        The geometric structure ($G$-structure) of a manifold implies a preferred subset of reference frames such that gauge transformations between these frames lie in the structure group~$G\leq\GL{d}$.
+        Figs.~\ref{fig:GpM_a}, \ref{fig:GpM_b}, \ref{fig:GpM_c} and~\ref{fig:GpM_d}
+        show such subsets of frames for the trivial group $G=\{e\}$, reflection group $G=\Flip$, rotation group $G=\SO2$ and scaling group~$G=\Scale$, respectively.
+        Features encode measurements relative to any of the distinguished frames.
+        Their numerical coefficients relative to different frames are related by the action of some group representation $\rho$ of~$G$.
+    \label{fig:GpM_examples}
+\end{figure}
+
+
+The level of ambiguity in the choice of reference frames depends on the \emph{geometric structure} of the manifold.
+Such structure often allows to
+\emph{disambiguate reference frames up to certain symmetry transformations} (gauge transformations); see Fig.~\ref{fig:GpM_examples}.
+This statement is best explained with a few examples:
+\begin{itemize}[leftmargin=1.2cm]
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    a naked \emph{smooth manifold} does not come with any preference in the choice of frames.
+    Gauge transformations between general frames are arbitrary invertible linear maps, that is, they take values in the \emph{general linear group} ${G=\GL{d}}$.
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    an \emph{orientation} of the manifold allows to distinguish left-handed from right-handed frames.
+    Gauge transformations between frames of either handedness are orientation preserving, i.e. they are elements of ${G=\operatorname{GL}^+(d)}$ (invertible linear maps with positive determinant).
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    a \emph{volume form} allows to distinguish \emph{unit volume frames}.
+    Gauge transformations are then volume preserving, that is, they take values in the \emph{special linear group} $G=\operatorname{SL}(d)$.
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    the \emph{metric structure} of a Riemannian manifold allows to measure distances and angles in the tangent spaces and therefore allows to distinguish \emph{orthonormal frames}.
+    Gauge transformations between orthonormal frames are rotations and reflections in the \emph{orthogonal group} $G=\O{d}$.
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    together, an \emph{orientation and metric} imply \emph{oriented orthonormal frames}.
+    Gauge transformations are then only rotations in the \emph{special orthogonal group} $G=\SO{d}$.
+\item[{\rule[2.2pt]{2pt}{2pt}}]
+    a \emph{frame field} on the manifold consists of a \emph{unique frame} at every point of the manifold.
+    Gauge transformations are in this case trivial, which is described by the \emph{trivial group} $G=\{e\}$.
+\end{itemize}
+All of these geometric structures have in common that they define a preferred subset (subbundle) of frames such that gauge transformations take values in some \emph{structure group}~$G\leq\GL{d}$.
+To emphasize the central role of the structure group $G$, such structures are denoted as $G$-\emph{structures}~$\GM$.
+Visual examples of $G$-structures for different structure groups $G$ and manifolds~$M$ are given in Fig.~\ref{fig:G_structures_intro}.
+
+
+As the choice of reference frames is inherently ambiguous, any geometric quantity and network operation should be equally well representable relative to arbitrary frames of the $G$-structure~$\GM$, that is, they should be $\GM$-\emph{coordinate independent}.
+Feature vectors are therefore associated with some \emph{group representation} (linear group action) $\rho$ of the structure group $G$, which determines their transformation law under gauge transformations ($G$-valued transitions between reference frames).
+The particular choice of group representation determines the geometric type of a feature vector field.
+Typical examples are scalar, vector or tensor fields, however, more general field types are used in practice as well.
+Fig.~\ref{fig:gauge_trafos} visualizes the coordinate independence of geometric quantities at the well known example of tangent vectors.
+
+
+Any network layer is required to respect the transformation laws of features, that is, it needs to guarantee that its outputs transform as expected.
+Specifically for convolutions, $\GM$-coordinate independence demands that applying the shared kernel relative to different frames of the $G$-structure at some point $p\in M$ should evoke the \emph{same response up to a gauge transformation}.
+We show that this requires the $G$-steerability (gauge equivariance, Eq.~\eqref{eq:G-steerable_kernel_space}) of convolution kernels.
+Intuitively, one may think of $G$-steerable kernels as measuring features \emph{relative} to reference frames, which is necessary since no choice of frame, i.e. \emph{absolute} kernel alignment, is to be preferred.%
+\footnote{
+    Note the similarity to Einstein's \emph{principle of special relativity}, which relies on the equivalence of inertial frames instead of frames of the $G$-structure.
+}
+Examples of $G$-steerable kernels for the reflection group $G=\Flip$ are shown in Fig.~\ref{fig:intro_steerable_kernel}.
+Fig.~\ref{fig:intro_kernel_alignment_reflect} visualizes the sharing of such kernels relative to different frames of some $\Flip$-structure.
+The $\Flip$-steerability constraint enforces some symmetry on the kernels, such that the different alignments will indeed result in responses that differ exactly by gauge transformations $\rho(g)$.
+We abbreviate $\GM$-coordinate independent convolutions in the following as $\GM$-\emph{convolutions}.
+
+
+Besides applying \emph{gauge equivariant} kernels, $\GM$-convolutions may be \emph{isometry equivariant}, which means that they commute with the action of isometries on feature fields as illustrated in Fig.~\ref{fig:lizard_conv_egg_intro}.
+Let $\phi \in \IsomM$ be some isometry (symmetry) of the manifold~$M$.
+A neural network is exactly then equivariant w.r.t. the action of this isometry, if patterns at any point $p\in M$ are processed in the same way as patterns at~$\phi(p)$.
+The isometry equivariance of a network is therefore in one-to-one correspondence with the \emph{isometry invariance of its neural connectivity} (kernel field); see Fig.~\ref{fig:isom_invariant_kernel_field_intro}.
+Since our convolutions apply kernels relative to (arbitrary) frames of the $G$-structure $\GM$, the symmetries of the kernel field coincide with those of the $G$-structure.
+Denoting the (distance preserving) \emph{symmetries of a $G$-structure} $\GM$ as $\IsomGM \leq \IsomM$, this implies that our convolutions are exactly $\IsomGM$-equivariant.
+Fig.~\ref{fig:intro_invariant_kernel_fields_plane} visualizes the fact that $G$-structures and the corresponding kernel fields share the same symmetries.
+The reader is encouraged to review the $G$-structures~in Fig.~\ref{fig:G_structures_intro} with regard to their symmetries and the implied equivariance properties of the corresponding $\GM$-convolutions.
+
+
+The design of $\GM$-coordinate independent convolutional networks on Riemannian manifolds requires a choice of $G$-structure, which depends on multiple considerations.
+Firstly, the choice of structure group~$G$ determines the \emph{local gauge equivariance} of the convolution:
+a $G$-steerable kernel will automatically generalize learned patterns over all $G$-related poses of patterns; see Fig.~\ref{fig:intro_lizard}.
+Secondly, the specific choice of $G$-structure determines the \emph{global isometry equivariance} of the convolution.
+In medical imaging applications, patterns occur often in arbitrary rotations, reflections and positions
+-- one should therefore choose an $\IsomGM = \E{d}$-invariant $\O{d}$-structure on $\R^d$, similar to the $\SO2$-structure that is shown in Fig.~\ref{fig:G_structure_intro_g}.
+Images like portrait photos have a distinguished vertical axis, however, reflections over this axis leave the image statistics invariant
+-- this calls for a $\Flip$-structure as in Fig.~\ref{fig:G_structure_intro_d}.
+Besides such symmetry considerations, it is important to note that not any manifold (topology) admits \emph{smooth} $G$-structures for any choice of structure group~$G$.
+An example is the M\"obius strip, whose twisted topology (non-orientability) prevents a smoothly varying assignment of frame orientations.
+A \emph{smooth} coordinate independent convolution operation on the M\"obius strip thus \emph{necessarily} relies on reflection-steerable kernels.
+
+
+This work includes an extensive \emph{literature review} on convolutional networks, which demonstrates the generality of our theory.
+It covers different types of CNNs on Euclidean spaces, spherical CNNs and convolutions on general surfaces (e.g. surface meshes).
+We identify the specific choices of $G$-structures that were implicitly made by the authors by analyzing the global and local equivariance properties of their models.
+Table~\ref{tab:network_instantiations} gives an overview on the resulting taxonomy of $\GM$-coordinate independent convolutional networks.
+
+
+To give a detailed example on how to instantiate our theory in practice, we discuss an implementation of $\GM$-convolutions on the M\"obius strip for~$G=\Flip$.
+This includes a derivation of reflection-steerable kernels for different field types (group representations) and an empirical evaluation of the theoretically predicted isometry equivariance.
+As expected, $\GM$-coordinate independent convolutions outperform a naive coordinate dependent implementation.
+The code is available at \url{https://github.com/mauriceweiler/MobiusCNNs}.
+
+A \emph{coordinate free} formulation of our theory is devised in the language of \emph{fiber bundles}.
+$G$-structures $\GM$ are principal $G$-subbundles of the frame bundle $\FM$ over~$M$.
+Feature fields are \emph{sections} of $G$-\emph{associated feature vector bundles}.
+Gauges are \emph{local bundle trivialization}, while gauge transformations are transition maps between such trivializations.
+The isometries w.r.t. which a $\GM$-convolution is equivariant are \emph{principal bundle automorphisms} of the $G$-structure.
+
+
+Our coordinate independent CNNs are generalizations of \emph{steerable CNNs}~\cite{Cohen2017-STEER,3d_steerableCNNs,Weiler2019_E2CNN,Cohen2019-generaltheory,lang2020WignerEckart} from Euclidean (or homogeneous) spaces to Riemannian manifolds.
+While steerable CNNs focus on \emph{active, global} transformations of feature fields, coordinate independent CNNs consider \emph{passive, local} transformations between reference frames.%
+\footnote{
+    This resembles the shift of focus from \emph{global Lorentz covariance} in \emph{special relativity} to \emph{local Lorentz covariance} in \emph{general relativity}.
+}
+We proposed early versions of the theory of coordinate independent CNNs (``gauge equivariant CNNs'') in previous work~\cite{gaugeIco2019,deHaan2020meshCNNs}.
+In contrast to these publications, the present work develops the theory in much greater detail, formulates it in terms of fiber bundles, proves the equivariance under the action of isometries and provides a literature review.

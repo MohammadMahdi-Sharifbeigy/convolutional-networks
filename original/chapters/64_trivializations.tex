@@ -1,0 +1,528 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection%
+    [Local bundle trivializations of \texorpdfstring{\textit{TM}, \textit{FM}, \textit{GM} and $            \A $}{TM, GM and A}]%
+    {Local bundle trivializations of \texorpdfstring{\textit{TM}, \textit{FM}, \textit{GM} and $\boldsymbol{\A}$}{TM, GM and A}}
+\label{sec:bundle_trivializations}
+
+While the global theory of coordinate independent CNNs is elegantly formalized in terms of coordinate free fiber bundles, a numerical implementation requires coordinate free feature vectors $f(p)\in\A_p$ to be expressed by coefficient vectors ${f^A(p):=\psiAp^A\big(f(p)\big)\in\R^c}$ relative to some choice of reference frame $\big[e_{i}^A\big]_{i=1}^d\in \GpM$ as described in Section~\ref{sec:feature_fields}.
+In the language of fiber bundles, this corresponds to a choice of local trivializations or gauges $\PsiGM^A$, $\PsiTM^A$, $\PsiFM^A$ and $\PsiA^A$, all of which transform simultaneously if $\GM$, $\TM$, $\FM$ and $\A$ are taken to be $G$-associated to each other.
+Recall that a local description and thus implementation via a $G$-atlas, consisting of local trivializations which cover $M$ and satisfy the three conditions~\eqref{eq:transition_condition_1}, \eqref{eq:transition_condition_2} and~\eqref{eq:transition_condition_3}, is fully equivalent to the global, coordinate free theory.
+
+
+In this section we work out the associated trivializations of $\TM$, $\FM$, $\GM$ and $\A$ and their synchronous gauge transformations.
+To stay consistent with Section~\ref{sec:21_main}, we start out by assuming trivializations of $\TM$ to be given and discuss how they induce trivializations of $\FM$ and corresponding local frame fields.
+If a $G$-atlas is chosen for $\TM$ and thus $\FM$, it gives rise to a $G$-structure $\GM$ whose $G$-atlas agrees with that of $\FM$.
+The local trivializations of any associated $G$-bundle, in particular those of the feature vector bundles $\A$, follow from those of $\GM$.
+These trivializations recover the transformation law of feature fields from Section~\ref{sec:feature_fields}.
+
+
+
+
+
+
+
+\paragraph{Trivializations of \textit{TM}:}
+
+As the tangent bundle has $\R^d$ as typical fiber, its local trivializations are given by maps of the form
+\begin{align}\label{eq:trivialization_TM}
+    {\PsiTM: \piTM^{-1}\!\left(U\right) \to U\times\R^d} .
+\end{align}
+These trivializations correspond to the (spatially smoothly varying) pointwise gauges
+\begin{align}\label{eq:def_psiTMp}
+    \psiTMp: \TpM \to \R^d
+\end{align}
+from Eq.~\eqref{eq:gauge_definition} by identifying $\PsiTM(v) = \left(\piTM(v),\, \psiTMp(v) \right)$ for $p=\piTM(v)$.
+In order to respect the vector space structures of the fiber $\R^d$ and the tangent spaces $\TpM$, the trivializations $\PsiTM$ are defined as \emph{vector bundle isomorphisms} between $\piTM^{-1}(U)$ and $U\times\R^d$, that is, the maps $\psiTMp$ are required to be linear and invertible (i.e. vector space isomorphisms).
+The transition maps between different trivializations of $\TM$ will in general take values in the general linear group $\GL{d}$, the (linear) automorphism group of $\R^d$.
+
+
+If further structure is specified on the tangent bundle, the trivializations are required to respect this structure.
+For instance, if a metric is defined on $M$ and thus $\TM$, the maps $\psiTMp$ are required to be isometric, i.e. to map vectors in $\TpM$ in such a way to vectors in $\R^d$ that norms and angles are preserved.
+As the trivializations are then only allowed to differ in their direction and orientation, different trivializations are guaranteed to be related by a reduced structure group $\O{d}$, corresponding to the metric as $\O{d}$-structure.
+More generally, a $G$-structure on $\TM$ requires -- or is implied by -- a choice of $G$-atlas $\big\{ \big(U^X, \PsiTM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$.
+Two different trivializations $\PsiTM^A$ and $\PsiTM^B$ of such a $G$-atlas are on $U^A\cap U^B$ related by ${\PsiTM^B\circ\big(\PsiTM^A\big)^{-1}}$ as defined in Eq.~\eqref{eq:transition_function_general_bdl} with $G$-valued transition functions
+\begin{align}\label{eq:transition_fct_TM_gAB}
+    g^{BA}: U^A\mkern-1mu \cap\mkern-1mu U^B \to G,\ \ \ p \mapsto \psiTMp^B\circ \big(\psiTMp^A\big)^{-1} \,,
+\end{align}
+which define the left action $\btr: G\times \R^d \to \R^d,\ \ (g,\mathscr{v}) \mapsto g\cdot \mathscr{v}$ on the typical fiber.
+For a graphical intuition on the pointwise action of the transition functions on individual fibers we refer back to Fig.~\ref{fig:gauge_trafos}.
+A diagrammatic visualization of local trivializations of $\TM$ and their transitions is given in Fig.~\ref{fig:trivialization_TM}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=3.5em, column sep=5.em]
+            % ROW 1
+            & U\times \R^d
+            \\
+            % ROW 2
+              \piTM^{-1}(U) \arrow[d, swap, "\piTM"]
+                            \arrow[r, "\PsiTM^A"]
+                            \arrow[ru, "\PsiTM^B"]
+            & U\times \R^d  \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+                            \arrow[ld, "\proj_1"]
+            \\
+            % ROW 3
+              U
+        \end{tikzcd}
+        \caption{\small
+            Trivializations of
+            $\TM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\TM$}}\,$}}} M$.
+        }
+        \label{fig:trivialization_TM}
+    \end{subfigure}
+    \hspace*{7ex}
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=3.5em, column sep=5.em]
+            % ROW 1
+            & U \!\times\mkern-2mu \GL{d} 
+            \\
+            % ROW 2
+              \piFM^{-1}(U) \arrow[d, swap, "\piFM"]
+                            \arrow[r, "\PsiFM^A"]
+                            \arrow[ru, "\PsiFM^B"]
+            & U \!\times\mkern-2mu \GL{d}
+                            \arrow[u, swap, "(\id\times g^{BA}\cdot)\ "]
+                            \arrow[ld, "\proj_1"]
+            \\
+            % ROW 3
+              U
+        \end{tikzcd}
+        \caption{\small
+            Trivializations of
+            $\FM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\FM$}}\,$}}} M$.
+        }
+        \label{fig:trivialization_FM_simplified}
+    \end{subfigure}
+    \\[3ex]
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=3.5em, column sep=5.em]
+            % ROW 1
+            & U\times G 
+            \\
+            % ROW 2
+              \piGM^{-1}(U) \arrow[d, swap, "\piGM"]
+                            \arrow[r, "\PsiGM^A"]
+                            \arrow[ru, "\PsiGM^B"]
+            & U\times G     \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+                            \arrow[ld, "\proj_1"]
+            \\
+            % ROW 3
+              U
+        \end{tikzcd}
+        \caption{\small
+            Trivializations of
+            $\GM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\GM$}}\,$}}} M$.
+        }
+        \label{fig:trivialization_FM_simplified}
+    \end{subfigure}
+    \hspace*{7ex}
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=3.5em, column sep=5.em]
+            % ROW 1
+            & U\times \R^c
+            \\
+            % ROW 2
+              \piA^{-1}(U)  \arrow[d, swap, "\piA"]
+                            \arrow[r, "\PsiA^A"]
+                            \arrow[ru, "\PsiA^B"]
+            & U\times \R^c  \arrow[u, swap, "(\id\times \rho\big(g^{BA}\big)\cdot)"]
+                            \arrow[ld, "\proj_1"]
+            \\
+            % ROW 3
+            U
+        \end{tikzcd}
+        \caption{\small
+            Trivializations of
+            $\A {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\A$}}\,$}}} M$.
+        }
+        \label{fig:trivialization_A}
+    \end{subfigure}
+    \vspace*{1ex}
+    \caption{\small
+        Visualization of the local trivializations of the associated $G$-bundles $\TM$, $\FM$, $\GM$ and $\A$ in terms of commutative diagrams where we abbreviate $U=U^A\cap U^B$.
+        A~$G$-atlas $\big\{ U^X, \PsiTM^X \big\}$ of the tangent bundle with transition maps $g^{BA}: U \to G$ implies a $G$-structure $\GM$ and induces $G$-atlases for $\FM$, $\GM$ and $\A$ with compatible transition functions.
+        More detailed commutative diagrams which show sections $\sigma:U\to\pi_{\scriptstyle\!F\!M}^{-1}(U)$ and the right action $\lhd$ on the frame bundle are given in Figs.~\ref{fig:trivialization_FM_non-collapsed} and~\ref{fig:trivialization_FM_section}.
+        Feature fields, modeled as sections $f:M\to\A$ of the associated feature vector bundle $\A$, and their local trivializations $f^A:U^A\to\R^c$ are shown in Fig.~\ref{fig:trivialization_A_sections}.
+        A graphical interpretation of the commutative diagram for $\TM$, restricted to one single tangent space $\TpM$, is given in Fig.~\ref{fig:gauge_trafos}.
+    }
+    \label{fig:trivializations_TM_FM_A}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Induced trivializations of \textit{FM} and frame fields:}
+
+Any atlas
+$\big\{ \big(U^X, \PsiTM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$
+of the tangent bundle is in one-to-one correspondence to an atlas
+$\big\{ \big(U^X, \PsiFM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$
+of the frame bundle.
+Specifically, given a local trivialization $\PsiTM^A$ of $\TM$, a corresponding local trivialization
+\begin{align}\label{eq:trivialization_FM}
+    \PsiFM^A: \piFM^{-1}\big(U^A\big)\to U^A\times \GL{d}, \quad
+    [e_{i}]_{i=1}^d \mapsto \pig(p,\ \psiFMp^A\big([e_{i}]_{i=1}^d\big) \pig) \,,
+\end{align}
+of $\FM$, where we abbreviated $p=\piFM\left( [e_{i}]_{i=1}^d\right)$, is induced by defining
+\begin{align}\label{eq:trivialization_FM_p}
+    \psiFMp^A: \FpM\to \GL{d}, \quad
+    [e_{i}]_{i=1}^d \mapsto\, \psiFMp^A \big([e_{i}]_{i=1}^d\big) := \big(\psiTMp^A(e_{i})\big)_{i=1}^d
+\end{align}
+as a map from tangent frames to invertible $d\!\times\!d$ matrices whose $i$-\emph{th} column is given by $\psiTMp^A(e_{i})\in\R^d$.
+As~required for associated bundles, the trivializations of $\TM$ and $\FM$ share the \emph{same transition functions},
+\begin{align}\label{eq:transition_functions_FM}
+    \psiFMp^B\big([e_{i}]_{i=1}^d\big)
+    \ &=\ \big(\psiTMp^B(e_{i}) \big)_{i=1}^d \notag \\
+    \ &=\ \big(g_p^{BA} \psiTMp^A(e_{i}) \big)_{i=1}^d \notag \\
+    \ &=\ g_p^{BA} \big(\psiTMp^A(e_{i}) \big)_{i=1}^d \notag \\
+    \ &=\ g_p^{BA} \psiFMp^A\big([e_{i}]_{i=1}^d \big) \ ,
+\end{align}
+since the action of $g^{BA}$ on the individual trivialized frame axes in the second line agrees with its action on the trivialized frame matrix in the third line.
+Furthermore, as claimed for principal bundles in Eq.~\eqref{eq:right_G_equiv_principal_bdl_general}, the trivializations of the frame bundle are \emph{right $\GL{d}$-equivariant}, that is, for any $h\in \GL{d}$ one has:
+\begin{align}\label{eq:right_equivariance_FM}
+    \psiFMp^A\big([e_{i}]_{i=1}^d \lhd h\big)
+    \ &=\ \psiFMp^A\left(\left(\sum\nolimits_j e_{j}\, h_{ji} \right)_{i=1}^d\right) \notag \\
+    \ &=\ \left(\psiTMp^A\left(\sum\nolimits_j e_{j}\, h_{ji} \right)\right)_{i=1}^d \notag \\
+    \ &=\ \left(\sum\nolimits_j \psiTMp^A\left(e_{j}\right) h_{ji} \right)_{i=1}^d \notag \\
+    \ &=\ \left( \psiTMp^A\left(e_{i}\right) \right)_{i=1}^d  \cdot h \notag \\
+    \ &=\ \psiFMp^A\big( [e_{i}]_{i=1}^d \big) \cdot h
+\end{align}
+Here we used the linearity of $\psiTMp^A$ in the third step and identified the index expression as a right matrix multiplication in the fourth step.
+Fig.~\ref{fig:trivialization_FM_non-collapsed} summarizes the left action on the trivialization via transition functions $\PsiFM^B \circ \left(\PsiFM^A\right)^{-1} = (\id\times g^{BA}\cdot)$ as derived in Eq.~\eqref{eq:transition_functions_FM} and the right equivariance $\PsiFM^A\circ(\lhd\, h) = (\id\times\cdot h)\circ\PsiFM^A$ of the trivializations as derived in Eq.~\eqref{eq:right_equivariance_FM}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \begin{tikzcd}[row sep=3.5em, column sep=3.5em]
+            % ROW 1
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+            \\
+            % ROW 2
+              \piFM^{-1}(U) \arrow[r, "\PsiFM^A"]
+                            \arrow[ru, "\PsiFM^B"]
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+                            \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+            \\
+            % ROW 3
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+                            \arrow[uu, swap, "(\id\times \cdot\,h)", bend right=90, looseness=1.6]
+            \\
+            % ROW 4
+            \piFM^{-1}(U)   \arrow[d, swap, "\piFM"]
+                            \arrow[r, "\PsiFM^A"]
+                            \arrow[ru, "\PsiFM^B"]
+                            \arrow[uu, "\lhd\,h"]
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+                            \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+                            \arrow[ld, "\proj_1"]
+                            \arrow[uu, swap, "(\id\times \cdot\,h)", bend right=90, looseness=1.6]
+            \\
+            % ROW 5
+            U
+        \end{tikzcd}
+        \hfill
+        \caption{\small
+            The trivializations of the frame bundle are right equivariant, i.e. they satisfy
+            $\PsiFM\circ\lhd\, h\, =\, (\id\times\cdot h)\circ\PsiFM$ for any $h\in \GL{d}$.
+        }
+        \label{fig:trivialization_FM_non-collapsed}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \hfill
+        \begin{tikzcd}[row sep=5em, column sep=4em,
+                       execute at end picture={
+                            \node [] at (-1.83, -1.4) {$\noncommutative$};
+                            }]
+            % ROW 1
+              \piFM^{-1}(U)
+                            \arrow[r, "\PsiFM^A"]
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+            \\
+            % ROW 2
+              \piFM^{-1}(U) \arrow[d, "\piFM", bend left=0]
+                            \arrow[r, "\PsiFM^A"]
+                            \arrow[ru, "\PsiFM^B"]
+                            \arrow[u, "\lhd\,g^{BA}"]
+            & U\mkern-3mu\times\mkern-2.5mu \GL{d}
+                            \arrow[u, swap, "$\phantom{=}\,(\id\times g^{BA}\cdot)$\\$=\!(\id\times \cdot\,g^{BA})$" align=left]
+                            \arrow[ld, "\proj_1"]
+            \\
+            % ROW 3
+              U             \arrow[u,  "\sigma^B", pos=0.5, shift left=.5, bend left=22.5]
+                            \arrow[uu, "\sigma^A", pos=0.45, bend left=80, looseness=.8]
+        \end{tikzcd}
+        \vspace*{8ex}
+        \caption{\small
+            If identity sections $\sigma^A$ and $\sigma^B$ are added to the diagram, the left and right actions agree with each other
+            since $\psiFMp^A\circ\sigma^A(p)=e$ and $g\cdot e=e\cdot g\ \ \forall g\in \GL{d}$.
+        }
+        \label{fig:trivialization_FM_section}
+    \end{subfigure}
+    \caption{\small
+        Extended diagrams of the frame bundle trivializations which capture the interplay of the transition functions $g^{BA}\cdot$, the right actions $\lhd\,h$ and $\,\cdot\,h$ and the identity sections $\sigma^A$ and $\sigma^B$.
+        As before, we abbreviate $U=U^{AB}=U^A\cap U^B$.
+        Except for $\sigma^A\circ\piFM \neq \id_{\FM}$ and $\sigma^B\circ\piFM \neq \id_{\FM}$, the diagrams commute.
+        If the trivializations are part of some $G$-atlas, similar diagrams, with $\FM$ and $\GL{d}$ being replaced by $\GM$ and $G$, apply to the corresponding $G$-structure.
+    }
+    \label{fig:trivializations_FM_complete}
+\end{figure}
+
+
+As indicated in Eq.~\eqref{eq:framefield_gauge_equivalence} and visualized in Figs.~\ref{fig:gauge_trafos} and~\ref{fig:gauge_trafos_manifold}, a smooth local trivialization $\PsiTM^A$ on $U^A$ of the tangent bundle induces a \emph{frame field} on $U^A$.
+It is formalized as a smooth \emph{local section}
+\begin{align}\label{eq:section_FM}
+    \sigma^A:U^A\to \piFM^{-1}\!\left(U^A\right),\ \ p\mapsto \left[\big(\psiTMp^A\big)^{-1}(\epsilon_i)\right]_{i=1}^d
+\end{align}
+of the frame bundle, defined by mapping the standard frame vectors $\epsilon_i$ of $\R^d$ back to the tangent spaces in $\piTM^{-1}\big(U^A\big)\subseteq \TM$.
+Following Eq.~\ref{eq:frame_rightaction}, a gauge transformation from $\PsiTM^A$ to $\PsiTM^B = (\id\times g^{BA}\cdot)\PsiTM^A$ corresponds to a transformation
+\begin{align}\label{eq:section_FM_rightaction}
+    \sigma^B(p)\ =\ \sigma^A(p) \lhd \left(g^{BA}_p\right)^{-1}
+\end{align}
+of sections on $U^{AB}$.
+Being defined in terms of $\PsiTM^A,$ the trivializations $\PsiFM^A$ of $\FM$ have the nice property that they map the corresponding sections $\sigma^A$ to the identity frame $e \in \GL{d} \subset \R^{d\times d}$ of $\R^d$, which can be seen by inserting both definitions:
+\begin{align}\label{eq:identity_section_prop}
+    \psiFMp^A\circ\sigma^A(p)
+    \ =\ \psiFMp^A \Big(\Big[ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big]_{i=1}^d \Big)
+    \ =\ \Big(\psiTMp^A \circ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big)_{i=1}^d
+    \ =\ (\epsilon_i)_{i=1}^d
+    \ =\ e
+\end{align}
+This property is often used to define sections of $\FM$ given trivializations $\PsiFM^A$ as
+\begin{align}\label{eq:identity_section_def}
+    \sigma^A\!:U^A\to\piFM^{-1}\big(U^A\big),\ \ \ p \mapsto \big(\PsiFM^A\big)^{-1}(p,e) = \big(\psiFMp^A\big)^{-1}(e) \,,
+\end{align}
+which ultimately coincides with our definition in Eq.~\eqref{eq:section_FM}.
+Since $\sigma^A$ and $\PsiFM^A$ constructed this way imply each other they are sometimes called \emph{identity sections} and \emph{canonical local trivializations}.
+Extending the diagram in Fig.~\ref{fig:trivialization_FM_non-collapsed} with identity sections $\sigma^A$ and $\sigma^B$, related by Eq.~\ref{eq:section_FM_rightaction}, fixes $h=g^{BA}$ and thus leads to the commutative diagram in Fig.~\ref{fig:trivialization_FM_section}.
+The left and right multiplications with $g^{BA}$ on the typical fiber $\GL{d}$ coincide hereby only since $\psiFMp^A\circ\sigma^A = \psiFMp^B\circ\sigma^B = e$ for which $g^{BA}\cdot e = g^{BA} = e\cdot g^{BA}$.
+Compare Fig.~\ref{fig:trivialization_FM_section} to Fig.~\ref{fig:frame_bundle}, which shows the left gauge action $g_p^{BA}\cdot$ on $\GL{d}$ and the right action $\lhd\big( g_p^{BA} \big)^{-1}$ of the inverse group element which transforms between the corresponding identity section frames.
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{\textit{G}-atlas induced \textit{G}-structure \textit{GM}:}
+
+The agreement of the transition functions of the tangent bundle and the frame bundle in Eq.~\eqref{eq:transition_functions_FM} implies that a $G$-atlas of $\TM$ induces a $G$-atlas for $\FM$.
+As we will derive in the following, such $G$-atlases fix a corresponding $G$-structure $\GM$, i.e. a principal $G$-subbundle of $\FM$, consisting of preferred frames.
+
+To motivate the definition of $\GM$ in terms of a given $G$-atlas $\big\{ \big(U^X, \PsiFM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$ of $\FM$, consider two of its local trivializations $\PsiFM^A$ and $\PsiFM^B$ with overlapping domains and let $p \in U^A\cap U^B$.
+The trivializations define reference frames $\sigma^A(p)$ and $\sigma^B(p)$ in $\FpM$, which are according to Eq.~\eqref{eq:section_FM_rightaction} related by the right action of some element $g_p^{BA}$ of the reduced structure group $G \leq \GL{d}$.
+Any such defined frame is therefore seen to be an element of a $G$-orbit $\GpM \cong G$ in $\FpM \cong \GL{d}$.
+Specifically, expressing the identity sections via Eq.~\eqref{eq:identity_section_def} as $\sigma^A(p) = \big( \psiFMp^A \big)^{-1} (e)$ and
+$
+\sigma^B(p)
+= \big( \psiFMp^B \big)^{-1} (e)
+= \big( g_p^{BA} \psiFMp^A \big)^{-1} (e)
+= \big( \psiFMp^A \big)^{-1} \pig( \big( g_p^{BA} \big)^{-1} \pig)
+$
+suggests the pointwise definition of the $G$-structure in terms of inverse images of~$G$ by (arbitrary) gauge maps:
+\begin{align}\label{eq:G_atlas_induced_G_structure_GM_def_ptwise}
+    \GpM\ :=\ \pig\{ \big(\psiFMp^A \big)^{-1}(g) \;\pig|\; g\in G\, \pig\} \ =\ \big( \psiFMp^A \big)^{-1} (G)
+\end{align}
+The independence from the chosen gauge of the $G$-atlas is clear as any other choice
+$
+  \big( \psiFMp^B \big)^{-1} (G)
+= \big( \psiFMp^A \big)^{-1} \pig( \big(g_p^{BA}\big)^{-1} G \pig)
+= \big( \psiFMp^A \big)^{-1} (G)
+$
+would yield the same result.
+As one can easily check, $\GpM$ is indeed a right $G$-torsor since~$G$ is a right $G$-torsor and $\psiFMp^A$ is by Eq.~\eqref{eq:right_equivariance_FM} a right $\GL{d}$-equivariant -- and thus in particular right $G$-equivariant -- isomorphism.
+The required smoothness of $\GM = \coprod_{p\in M} \GpM$ follows from the smoothness of the trivializations $\PsiFM^A$.
+
+A $G$-atlas of local trivializations of $\GM$ is given by restricting the trivializations in the $G$-atlas of $\FM$ to frames in $\GM$, that is,
+\begin{align}
+    \PsiGM^A := \PsiFM^A \big|_{\piGM^{-1}(U^A)} :\ \ \piGM^{-1} \big(U^A\big) \to U^A \times G \,,
+\end{align}
+or, locally,
+\begin{align}
+    \psiGMp^A := \psiFMp^A \big|_{\GpM} :\ \ \GpM \to G \,.
+\end{align}
+It follows immediately that the $G$-valued transition functions agree with those of $\TM$ and $\FM$, that is,
+\begin{align}\label{eq:transition_functions_GM}
+    \psiGMp^B\big([e_{i}]_{i=1}^d\big)
+    \ =\ g_p^{BA} \psiGMp^A\big([e_{i}]_{i=1}^d \big) \,,
+\end{align}
+and that the trivializations are right $G$-equivariant:
+\begin{align}\label{eq:right_equivariance_GM}
+    \psiGMp^A\big([e_{i}]_{i=1}^d \lhd h\big)
+    \ =\ \psiGMp^A\big( [e_{i}]_{i=1}^d \big) \cdot h \qquad \forall h \in G
+\end{align}
+The frame fields are also given by an equivalent expression
+\begin{align}\label{eq:GM_section_psi_inverse_def}
+    \sigma^A(p)\ =\ \big( \psiGMp^A \big)^{-1}(e)
+\end{align}
+to that in Eq.~\eqref{eq:identity_section_def}.
+The commutative diagrams in Figs.~\ref{fig:trivialization_FM_non-collapsed} and~\ref{fig:trivialization_FM_section} hold as well when replacing $\FM$ with $\GM$ and $\GL{d}$ with $G$.
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Induced trivializations of associated bundles $\A$:}
+
+A $G$-atlas
+$\big\{ \big(U^X, \PsiA^X \big) \big\}_{\!X\in\mathfrak{X}}\,$,
+consisting of local trivializations
+$\PsiA^X:\piA^{-1}\big(U^X\big)\to U^X\times\R^c$
+of the associated feature vector bundles
+$\A=(\GM\times\R^c)/\!\sim_{\!\rho}$
+is induced from the corresponding trivializations $\PsiGM^X$ of the $G$-structure.
+In order to construct these trivializations, recall that $\A$ is defined in terms of equivalence classes
+$\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]$
+consisting of pairs of reference frames and feature coefficient vectors which are related by the equivalence relation $\sim_{\!\rho}$ defined in Eq.~\eqref{eq:equiv_relation_A}.
+A natural idea is thus to trivialize
+$\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\in\A_p$
+by picking one representative of its equivalent coefficient vectors in~$\R^c$.
+A preferred choice of representative is hereby given by that coefficient vector belonging to the identity section frame $\sigma^A(p)$ corresponding to $\PsiGM^A$.
+
+Let $[e_{i}]_{i=1}^d := \sigma^A(p)\lhd h\ \in \GpM$ be some frame that is defined by an offset $h\in G$ relative to section~$\sigma^A$.
+This offset can be recovered by the trivialization of the $G$-structure:
+\begin{align}
+    \psiGMp^A \!\left([e_{i}]_{i=1}^d\right)
+    \ =\ \psiGMp^A \!\left( \sigma^A(p)\lhd h \right)
+    \ =\ \psiGMp^A \!\left( \sigma^A(p) \right) \cdot h
+    \ =\ h
+\end{align}
+Here we used the right $G$-equivariance of $\psiGMp^A$ and that $\sigma^A$ is defined as identity section; see Eqs.~\eqref{eq:right_equivariance_GM} and~\eqref{eq:identity_section_prop}, the latter adapted to $\psiGMp^A$.
+We can therefore rewrite any frame via its offset as:
+\begin{align}
+    [e_{i}]_{i=1}^d
+    \ =\ \sigma^A(p) \lhd \psiGMp^A \!\left([e_{i}]_{i=1}^d\right)
+\end{align}
+Similarly, we can rewrite any feature vector $\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\in\A_p$ by different representatives of the equivalence class:
+\begin{align}
+    \left[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\right]
+    \ =\ \left[ \sigma^A(p) \lhd \psiGMp^A\big([e_{i}]_{i=1}^d\big),\,\ \mathscr{f}\,\right]
+    \ =\ \left[ \sigma^A(p),\ \rho\left(\psiGMp^A\big([e_{i}]_{i=1}^d\big)\right) \mathscr{f}\,\right]
+\end{align}
+
+Based on these insights we define induced trivializations of $\A$ by setting
+\begin{align}\label{eq:trivialization_A}
+    \PsiA^A: \piA^{-1}\big(U^A\big)\to U^A\times\R^c,\quad
+    \big[[e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\ \mapsto\ 
+    \Big(\piGM \big([e_{i}]_{i=1}^d \big),\ \psiAp^A \pig(\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\pig) \Big) \ ,
+\end{align}
+with
+\begin{align}\label{eq:trivialization_A_p}
+    \psiAp^A:\A_p\to\R^c,\quad
+    \big[[e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]
+    \, =\, \Big[\sigma^A(p),\ \rho\pig( \psiGMp^A \big([e_{i}]_{i=1}^d \big)\pig) \mathscr{f}\,\Big]
+    \ \mapsto\ \rho\pig(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\pig)\, \mathscr{f} \,,
+\end{align}
+which picks that particular representative coefficient vector
+$f^A = \rho\left(\psiGMp^A \left([e_{i}]_{i=1}^d\right)\right) \mathscr{f}\in\R^c$
+that is distinguished by the reference frame $\sigma^A(p)$ corresponding to the chosen gauge.
+For later convenience we note that this implies in particular that the inverse of Eq.~\eqref{eq:trivialization_A_p} is given by
+\begin{align}\label{eq:trivialization_A_p_inv}
+    \big(\psiAp^A\big)^{-1}\!: \R^c \to \A_p:\ \ 
+    \mathscr{f} \,\mapsto \big[\sigma^A(p),\; \mathscr{f}\,\big] \ .
+\end{align}
+The such defined trivialization is independent of the chosen representative since for any $k\in G$ we have:
+\begin{align}
+    \psiAp^A \pig(\big[ [e_{i}]_{i=1}^d \!\lhd k^{-1},\,\ \rho(k)\mathscr{f} \,\big]\pig)
+    \ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \!\lhd k^{-1} \big)\big) \rho(k)\mathscr{f} \notag\\
+    \ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big) \cdot k^{-1}\big) \rho(k)\mathscr{f} \notag\\
+    \ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+    \ &=\ \psiAp^A \pig(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\,\big]\pig)
+\end{align}
+By construction, the transition functions are given by $\rho\big(g_p^{BA}\big)$:
+\begin{align}\label{eq:transition_fct_A}
+    \psiAp^B \pig(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\, \big]\pig)
+    \ &=\ \rho\big(\psiGMp^B \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+    \ &=\ \rho\big(g_p^{BA}\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+    \ &=\ \rho\big(g_p^{BA}\big) \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+    \ &=\ \rho\big(g_p^{BA}\big) \psiAp^A \big(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\,\big]\big)
+\end{align}
+If the tangent bundle is taken as a $G$-associated vector bundle $\TM\cong(\GM\times\R^d)/G$, its trivializations are recovered from Eq.~\eqref{eq:trivialization_A} for the specific choice $\rho(g)=g$.
+
+
+\begin{figure}
+    \centering
+    \begin{tikzcd}[row sep=4.em, column sep=7.em, crossing over clearance=.6ex,
+                   execute at end picture={
+                        \node [] at (-4.27, -1.1) {$\noncommutative$};
+                        }]
+        % ROW 1
+        & U\times \R^c  \arrow[r, "\proj_2"]
+        &[7ex] \R^c
+        \\
+        % ROW 2
+          \piA^{-1}(U)  \arrow[d, "\piA"] \arrow[r, "\PsiA^A"] \arrow[ru, "\PsiA^B"]
+        & U\times \R^c  \arrow[u, swap, "\big(\id\times \rho\big(g^{BA}\big)\cdot\big)"]
+                        \arrow[ld, "\proj_1"']
+                        \arrow[r, "\proj_2"']
+        & \R^c          \arrow[u, "\rho\big(g^{BA}\big)\cdot"']
+        \\
+        % ROW 3
+            U           \arrow[u, bend left=25, shift left=.6, "f"]
+                        \arrow[rru, bend right=13, "f^A"']
+                        \arrow[rruu, bend right=12, "f^B"', crossing over]
+    \end{tikzcd}
+    \caption{\small
+        Coordinate free feature fields are defined as global sections $f\in\Gamma(\A)$.
+        On local neighborhoods $U^A$ and $U^B$ they trivialize to fields of feature coefficient vectors $f^A:U^A\mapsto\R^c$ and $f^B:U^B\mapsto\R^c$ which are on $U=U^A\cap U^B$ related by $f^B(p)=\rho\big(g_p^{BA}\big)f^A(p)$.
+        Except for $f\circ\piA \neq \id_{\A}$, the diagram commutes.
+    }
+    \label{fig:trivialization_A_sections}
+\end{figure}
+
+
+Assume a coordinate free feature field $f\in\Gamma(\A)$ to be given.
+Relative to gauge $\PsiA^A$, it can be locally represented as a coefficient vector field $f^A:U^A\to\R^c$ by defining
+\begin{align}
+    f^A\ :=\ \proj_2 \circ\mkern2mu \PsiA^A \circ f
+\end{align}
+which is equivalent to the pointwise definition
+\begin{align}
+    f^A(p)\ =\ \psiAp^A \circ f(p) \,.
+\end{align}
+As apparent from the commutative diagram in Fig.~\ref{fig:trivialization_A_sections}, the transition functions in Eq.~\eqref{eq:transition_fct_A} carry over to the local coefficient fields such that we get
+\begin{align}
+    f^B(p)\ =\ \rho\left(g_p^{BA}\right) f^A(p)
+\end{align}
+for $p\in U^A\cap U^B$.
+This agrees with and justifies our definition of the gauge transformations of feature coefficient vectors in Eq.~\eqref{eq:gauge_trafo_features}.
+
+
+
+
+
+
+\paragraph{Summarizing remarks:}
+
+The here defined local trivializations and transition functions formalize and justify the definitions of gauges and gauge transformations from Section~\ref{sec:feature_fields}.
+Local trivializations of $\TM$ and $\FM$ were shown to induce each other.
+If a $G$-atlas is chosen for either of both, it defines a $G$-structure $\GM$, whose $G$-atlas essentially coincides with that of $\FM$.
+It furthermore induces a $G$-atlas for any other associated bundle, including $\A$.
+As visualized in Fig.~\ref{fig:trivializations_TM_FM_A}, the transition functions of all $G$-atlases for $\TM$, $\FM$, $\GM$ and $\A$ agree, making the bundles $G$-associated to each other.
+Specifically, when switching from gauge $A$ to gauge $B$, the trivializations of $\TM$, $\FM$ and $\GM$ transform according to a left multiplication with $g^{BA}$ while the feature vector bundle trivializations transform according to a left multiplication with $\rho\big(g^{BA}\big)$; see Eqs.~\eqref{eq:transition_fct_TM_gAB}, \eqref{eq:transition_functions_FM}, \eqref{eq:transition_functions_GM} and~(Eq.~\eqref{eq:transition_fct_A}).
+At the same time, frame fields transform according to the right action $\lhd \big( g^{BA} \big)^{-1}$ (Eq.~\eqref{eq:section_FM_rightaction}).

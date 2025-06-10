@@ -1,0 +1,222 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\filbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Existence and smoothness of kernel field transforms}
+\label{apx:smoothness_kernel_field_trafo}
+
+
+In Def.~\ref{dfn:kernel_field_trafo} we proposed \emph{kernel field transforms} $\TK$ as smooth integral transforms
+\begin{align}
+    \TK: \Gamma(\Ain)\to \Gamma(\Aout)
+\end{align}
+which are parameterized by some kernel field $\K$ (Def.~\ref{dfn:kernel_field_general}) and are pointwise given by
+\begin{align}\label{eq:APX_kernel_field_trafo_def_ptwise}
+    \big[ \TK (f)\big] (p)
+    \ \ :=\ 
+    \int\limits_{\TpM}\!\!
+    \K(v) \,
+    \Expspf(v)
+    \ dv
+    \ \ =\ 
+    \int\limits_{\TpM}\!\!
+    \K(v) \ 
+    \PAinexppv \,
+    f(\exp_p\!v)
+    \ dv \,.
+\end{align}
+Kernel field transforms include $\GM$-convolutions from Def.~\ref{dfn:coord_free_conv} as a special cases for $\GM$-convolutional kernel fields.
+
+Here we briefly discuss the well-definedness of kernel field transforms.
+It is clear that the integrand of Eq.~\eqref{eq:APX_kernel_field_trafo_def_ptwise} lies for any $p\in M$ and $v \in \TpM$ in $\Aoutp$.
+What remains to be shown is the \emph{existence} of the integral and the \emph{smoothness} of the resulting feature field.
+In the following we will first give some general remarks on how to approach these questions.
+We will then prove Theorem~\ref{thm:existence_kernel_field_trafo_compact_kernels}, i.e. the well-definedness of kernel field transforms for the specific case of fields of kernels which are compactly supported on a ball of fixed radius around the origin.
+
+
+
+
+
+
+
+\paragraph{Existence:}
+The existence and smoothness of kernel field transforms requires a suitable choice of kernel field~$\K$.
+Similar to the case of conventional convolutions on $M=\R$, the requirements on $\K$ in order for the kernel field transform to exist depend on the specific properties of the input feature field $f\in\Gamma(\Ain)$.%
+\footnote{
+    See the discussion at \url{https://en.wikipedia.org/wiki/Convolution\#Domain_of_definition}.
+}
+In~general, $\K$ needs to decay sufficiently rapidly in order to make the integrand in Eq.~\eqref{eq:APX_kernel_field_trafo_def_ptwise} integrable.
+
+
+A special case of great practical importance is that of kernels $\Kp: \TpM \to \Hom(\Ainp,\Aoutp)$ which are at any $p\in M$ \emph{compactly supported}.
+In this case the integral is always guaranteed to exist.
+To see this, note that (input) feature fields and kernel fields are defined to be smooth.
+The smoothness of the metric further implies that the
+Riemannian volume density, the exponential map and the parallel transport are smooth~\cite{gallier2019diffgeom1}.
+In combination, the whole integrand in Eq.~\eqref{eq:APX_kernel_field_trafo_def_ptwise} is seen to be a smooth and thus continuous function from~$TM$ to~$\Aout$.
+If~$\Kp$ is in addition compactly supported, the integrand becomes continuous and compactly supported on $\TpM$, which, by a generalization of the extreme value theorem, implies that its image is compact (and in a local trivialization $\R^{c}$ of $\Aoutp$ bounded)~\cite{rudin1976analysis}.
+This guarantees the existence of the integral~\cite{forster2012analysis3,spivak2019calculus}.
+
+
+Depending on the application, the requirement on the support of $\K$ might be relaxed.
+For instance, images on $M=\R^d$ are usually compactly supported themselves, such that no additional properties of $\K$ except for its smoothness are required.
+
+
+
+
+
+
+
+\paragraph{Smoothness:}
+
+We turn to discuss the smoothness of kernel field transforms, that is, their property to map smooth input fields $\fin\in\Gamma(\Ain)$ to smooth output fields $\fout := \TK(\fin) \in \Gamma(\Aout)$.
+By definition, a map $\fout: M\to \Aout$ \emph{between manifolds} $M$ and $\Aout$ is said to be smooth if its coordinate representations are smooth.
+In equations, $\fout$ is smooth if for any $p\in M$ there exist smooth charts $(U,\phi)$ about $p$ in $M$ and $(\widetilde{U}, \widetilde{\phi})$ about $\fout(p)$ in $\Aout$ with $\fout(U) \subseteq \widetilde{U}$ such that $\widetilde{\phi} \circ \fout \circ \phi^{-1}: \phi(U) \to \widetilde{\phi}(\widetilde{U})$ is smooth as a map between (subsets of) Euclidean spaces.
+Given $(U,\phi)$, a convenient choice for $(\widetilde{U}, \widetilde{\phi})$ would be
+$ \widetilde{\phi} := \big(\phi \times \id\big) \circ \PsiAout\!:\ 
+  \piAout^{-1}(U) \mapsto \phi(U) \times \R^c\, \subseteq\, \R^d \times \R^c \,, $
+however, the following discussion is independent from this choice.%
+\footnote{
+    Note that $\piAout^{-1}(U)$ is guaranteed to be trivializable given that $(\phi,U)$ is a chart of $M$.
+    This is clear since the coordinate bases $\big[ \frac{\partial}{\partial \phi_\mu} \big]_{\mu=1}^d$ of $(\phi,U)$ yields a trivialization of $\piTM^{-1}(U)$ (see Appendix~\ref{apx:coordinate_bases}) and since the local trivializations of $FM$ and $\A$ were in Section~\ref{sec:bundle_trivializations} induced from those of $TM$.
+}
+A map between (subsets of) Euclidean spaces is smooth if it is smooth in each component of its image, here in each of the $d+c$ dimensions of $\phi(U)\times\R^c$.
+We are therefore interested in the smoothness of the maps
+\begin{align}
+    F_i: \phi(U) \to \R,\ \ x \mapsto \Big[\, \widetilde{\phi} \circ \fout \circ \phi^{-1} \Big]_i
+\end{align}
+for any $i = 1,\dots,d+c$.
+By writing out $\fout$ and expressing the integral over $\TpM$ by an integral over $\R^d$ as discussed in Appendix~\ref{apx:correspondences_bundle_trivializations}, the $F_i$ are seen to be of the form
+\begin{align}\label{eq:integral_smoothness_component}
+    F_i(x) = \int_{\R^d} I_i(\mathscr{v},x)\,\ d\mathscr{v} \,.
+\end{align}
+The coordinate expressions of the integrands $I_i$ are hereby for any $i = 1,\dots,d+c$ given by
+\begin{align}\label{eq:integrand_smoothness_full}
+    I_i\!: \R^d \mkern-2mu\times\mkern-2mu \phi(U) &\to \R, \\
+    (\mathscr{v},x) &\mapsto
+    \bigg[ \widetilde{\phi} \circ
+    \K\pig(\mkern-1mu \psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{$\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)$}}^{-1} \mkern-2mu(\mathscr{v}) \mkern-1mu\pig) \circ
+    \mathcal{P}_{\mkern-4mu\protect\scalebox{.8}{$\!\Ain$},\protect\scalebox{.83}{$\,\phi^{\mkern-1mu\shortminus1}(x)\!\leftarrow\!\exp \circ\mkern1mu \psi_{\protect\scalebox{.7}{$T\!M\mkern-1mu,\mkern1mu$}\protect\scalebox{.9}{$\phi^{\mkern-1mu\shortminus1}(x)$}}\!(\mathscr{v}) $}} \mkern-1mu\circ
+    \fin \circ \exp \circ \,
+    \psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,$}\protect\scalebox{.7}{$\phi^{\mkern-1mu\shortminus1}(x)$}}^{-1} \mkern-2mu(\mathscr{v})
+    \bigg]_i
+    \nonumber \,,
+\end{align}
+where we assumed, for convenience and without loss of generality, that
+$\psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{$\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)$}}$
+is an \emph{isometric} gauge of $T_{\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)}M$, such that the volume scaling factor $\sqrt{|\! \det\eta_p|} = 1$ drops out.
+Note that the integrands $I_i$ are composed of smooth maps and are therefore smooth as well.
+
+
+From the previous discussion it is clear that the smoothness of $\fout$ holds if all $F_i$ are smooth, i.e. infinitely often partially differentiable.
+To prove the smoothness of the $F_i$, it is sufficient to show that the partial differentiations and the integration in Eq.~\eqref{eq:integral_smoothness_component} commute -- which is not always the case.
+If they do commute, partial derivatives of arbitrary orders $(n_1,\dots,n_d) \in \N^d$ are given by
+\begin{align}\label{eq:APX_smoothness_partial_diff_swapping}
+    \Big[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: F_i \Big](x)
+    \ =\ \int_{\R^d} \Big[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: I_i\Big] (\mathscr{v},x)\,\ d\mathscr{v}
+\end{align}
+where
+1) the partial derivatives $\pig[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: I_i\pig]$ of the integrand exist (due to the smoothness of $I_i$ their existence is guaranteed) and
+2) their integral exists.
+Whether or not the differentiations commute with the integral can be investigated by making use of the following lemma
+from~\cite{forster2012analysis3},%
+\footnote{
+    Similar versions of this lemma in English language can be found in \cite{klenke2006probability} or at
+    \url{https://en.wikipedia.org/wiki/Leibniz_integral_rule\#Measure_theory_statement}.
+    In contrast to those versions, the version from~\cite{forster2012analysis3} allows for $T$ being any non-degenerate interval, including closed intervals, which saves us some additional steps below.
+}
+which is a consequence of the dominated convergence theorem.
+\begin{thm}[Differentiation lemma~\cite{forster2012analysis3}]
+\label{thm:differentiation_lemma}
+    Let $\mathscr{V}$ be a measure space, let $T\subset\R$ be a non-degenerate interval and let $I: \mathscr{V} \times T \to \R$ be a map with the following properties:
+    \begin{itemize}
+        \item[(i)]  For any fixed $t\in T$ the map $\mathscr{v} \mapsto I(\mathscr{v},t)$ is Lebesgue integrable on $\mathscr{V}$
+        \item[(ii)] For any fixed $\mathscr{v} \in \mathscr{V}$ the map $t\mapsto I(\mathscr{v},t)$ is differentiable in $T$
+        \item[(iii)] There exists a Lebesgue integrable function $\mathscr{B}: \mathscr{V} \to \R$ such that
+                    $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
+                    for any $(\mathscr{v},t) \in \mathscr{V} \times T$
+    \end{itemize}
+     Then the function $F: T \to \R,\ t \mapsto \int_\mathscr{V} I(\mathscr{v},t)\, d\mathscr{v}$ is differentiable
+     with derivative
+    \begin{align*}
+        \frac{\partial}{\partial t} F(t)\ =\ \int_\mathscr{V} \frac{\partial}{\partial t} I(\mathscr{v},t)\; d\mathscr{v} \,.
+    \end{align*}
+\end{thm}
+The applicability of this lemma (repeatedly for every single partial differentiation) depends on the properties of the integrand, which in turn depends on the specific properties of the kernel field $\K$ and the input feature field $\fin$.
+For the case of a kernel field which is compactly supported on balls of fixed radius around the origin of each tangent space, the lemma applies.
+Based on this, we give a proof of Theorem~\ref{thm:existence_kernel_field_trafo_compact_kernels} in the remainder of this appendix.
+
+
+
+
+
+
+
+
+
+
+\toclesslab\subsection{Proof of Theorem~\ref{thm:existence_kernel_field_trafo_compact_kernels} (Sufficiency of compact kernel support on tangent balls)}{apx:proof_sufficiency_ball_kernel_support}
+
+Denote by
+$B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\TpM \,\big|\, \lVert v\rVert \leq R \big\}$
+the closed ball of radius $R>0$ around the origin of $\TpM$ and by
+$B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\R^d \,\big|\, \lVert v\rVert \leq R \big\}$
+the corresponding ball around the origin of $\R^d$.
+Note that any isometric gauge satisfies $\psiTMp\big(B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R)\big) = B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R)$.
+Let $\widetilde{\K}$ be a kernel field whose support falls within balls of the same radius $R$ in each tangent space, i.e. which satisfies
+\begin{align}
+    \supp\!\big(\widetilde{\K}_p\big) \subseteq B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+\end{align}
+and thus, for any isometric gauge $\psiTMp$:
+\begin{align}
+    \supp\! \pig(\widetilde{\K}_p \circ \big(\psiTMp\big)^{-1} \pig) \subseteq B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+\end{align}
+According to Theorem~\ref{thm:existence_kernel_field_trafo_compact_kernels} this property is sufficient to guarantee that the corresponding kernel field transform $\mathscr{T}_{\mathcal{K}_{\mkern-1muR}}$ is well defined.
+A proof of this statement is given in the following.
+
+\begin{proof}
+    As already stated in the beginning of this appendix, the existence of the integral is guaranteed given that the kernel supports are compact:
+    The compactness of the kernels carries over to the integrands of the kernel field transform.
+    Their smoothness further implies their continuity and integrals of compactly supported continuous functions always exists.
+
+    To prove the smoothness of the resulting output feature field $\fout$, we proceed with the discussion earlier in this section.
+    We aim to apply the differentiation lemma~\ref{thm:differentiation_lemma} to swap partial derivatives $\frac{\partial}{\partial x_\mu}$ for any $\mu=1,\dots,d$ in Eq.~\eqref{eq:APX_smoothness_partial_diff_swapping} at any $x_0 \in \phi(U)$ with the integration over $\R^d$.
+    For this purpose, we introduce the auxiliary functions
+    \begin{align}
+        I_{i,x_0,\mu}: \R^d \times [-\varepsilon,\varepsilon] \to \R,\ \ (\mathscr{v},t) \mapsto I(\mathscr{v}, x_0 + t\epsilon_\mu)
+    \end{align}
+    and
+    \begin{align}
+        F_{i,x_0,\mu}: [-\varepsilon,\varepsilon] \to \R,\ \ t \mapsto F(x_0 + t\epsilon_\mu) = \int_{\R^d} I_{i,x_0,\mu}(\mathscr{v},t)\ d\mathscr{v} \,,
+    \end{align}
+    where $\epsilon_\mu \in \R^d$ is the unit vector in $\mu$-direction and
+    $\varepsilon > 0$ is chosen such that $\big\{ x_0 + t\epsilon_\mu \,\big|\, t\in [-\varepsilon,\varepsilon] \big\} \subset \phi(U)$, which is always possible since $\phi(U)$ is open.
+    Then $I_{i,x_0,\mu}$ is with the identifications $\mathscr{V}=\R^d$ and $T=[-\varepsilon,\varepsilon]$ of the form required by lemma~\ref{thm:differentiation_lemma}.
+    It satisfies property $(i)$ by the assumption that the kernel field transform exists as discussed earlier.
+    Property $(ii)$ holds due to the smoothness of the full integrand in Eq.~\eqref{eq:integrand_smoothness_full}.
+    For property $(iii)$, observe that both $I_{i,x_0,\mu}$ and its derivative are smooth such that the absolute value $\big| \frac{\partial}{\partial t} I_{i,x_0,\mu} \big|$ is continuous.
+    Since it is in addition compactly supported on $B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]$, it is by (a generalization of) the extreme value theorem bounded by some number $b\geq0$.
+    We therefore set $\mathscr{B}(\mathscr{v}) = b\cdot \mathbb{I}_{B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]}$ where $\mathbb{I}$ is the indicator function.
+    This choice satisfies 
+    $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
+    for any $(\mathscr{v},t) \in \mathscr{V} \times T$
+    and is integrable such that property $(iii)$ is fulfilled as well.
+    We can therefore swap the order of differentiation and integration for arbitrary choices of $x_0$ and $\mu$, which we use to pull arbitrary partial derivatives into the integral:
+    \begin{align}
+        \bigg[ \frac{\partial}{\partial x_\mu} F_i \bigg](x_0)
+        \,=\, \bigg[ \frac{\partial}{\partial t} F_{i,x_0,\mu} \bigg](0)
+        \,=\, \int_{\R^d} \frac{\partial}{\partial t} I_{i,x_0,\mu}(\mathscr{v},t) \Big|_{t=0}\ d\mathscr{v}
+        \,=\, \int_{\R^d} \frac{\partial}{\partial x_\mu} I_i(\mathscr{v},x) \Big|_{x=x_0}\ d\mathscr{v}
+    \end{align}
+
+    Due to the smoothness and compact support of the integrand $I_i$, its partial derivatives $\frac{\partial}{\partial x_\mu} I$ are smooth and compactly supported as well.
+    They do therefore satisfy properties $(i)$, $(ii)$ and $(iii)$ as well (with a potentially adapted bound $b$).
+    It is thus possible to repeat the partial differentiation of $F_i$ infinitely often, which proves its smoothness.
+    Since the derivations were independent from the particular choices for the point $p\in M$, charts $(U,\phi)$ and $(\widetilde{U},\widetilde{\phi})$, points $x_0\in\phi(U)$ and indices $i$ and $\mu$, this result proves the smoothness of the whole output feature field $\fout = \TK(\fin)$.
+
+\NoEndMark
+$~\hfill\Box$
+\end{proof}

@@ -1,0 +1,22 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\mypart{Theory of coordinate independent CNNs}
+\label{part:bundle_theory}
+
+Part~\ref{part:local_theory} introduced feature fields and network layers in terms of their coordinate expressions relative to some choice of gauge on \emph{local} neighborhoods $U\subseteq M$.
+As the existence of \emph{global} gauges is in general topologically obstructed, global coordinate representations of feature fields do in general not exist.
+Part~\ref{part:local_theory} addressed this issue by assembling the global content of feature fields from their local coordinate expressions relative to an atlas of gauges that cover~$M$.
+A more elegant alternative is to define global feature fields in an abstract, \emph{coordinate free} formalism in terms of fiber bundles.
+Bundle trivializations allow to recover the local coordinate expressions of feature fields and network layers.
+
+\etocsettocdepth{2}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+~
+
+The following sections develop a global, coordinate free description of the neural networks and feature spaces from Part~\ref{part:local_theory}.
+Section~\ref{sec:bundles_fields} introduces fiber bundles, in particular the tangent bundle, $G$-structures and $G$-associated feature vector bundles.
+Neural network operations like kernel field transforms and $\GM$-convolutions are defined in Section~\ref{sec:gauge_CNNs_global}.
+Section~\ref{sec:isometry_intro} investigates the isometry equivariance of these operations.

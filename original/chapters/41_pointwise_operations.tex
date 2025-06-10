@@ -1,0 +1,300 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{Pointwise gauge equivariant operations}
+\label{sec:pointwise_operations}
+
+
+To begin with, we consider some neural network operations for which the constraints coming from the required coordinate independence and weight sharing are particularly easy to derive.
+All of these operations have in common that they act pointwise on feature vectors, that is, they compute output feature vectors $\fout(p)$ at $p\in M$ solely based on the input feature vectors $\fin(p)$ at the same location.
+In order to satisfy the principle of covariance, the coordinatizations of these operations are all required to transform according to a precomposition with $\rhoin$ and a postcomposition with $\rhoout$.
+When demanding that the operations are determined in terms of shared weights, these transformation laws imply a requirement for the gauge equivariance (or invariance) of the operations.
+
+
+The derivations for the different pointwise operations in the following Sections~\ref{sec:gauge_1x1}, \ref{sec:gauge_bias_summation} and~\ref{sec:gauge_nonlinearities} are in the first steps mostly analogous and lead to essentially the same covariance and equivariance constraints on the template functions.
+They could therefore be treated together, keeping the particular operation (or template function) abstract.
+However, since the implications of the resulting constraints differ for the particular instantiations, and since we want to keep the discussion close to the application, we will omit such an abstract formulation and directly consider particular instantiations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection[Gauge equivariant \texorpdfstring{\onexones}{1x1-convolutions}]%
+              {Gauge equivariant ${\bf1\mkern-5.mu\boldsymbol{\times}\mkern-5.mu1}$-convolutions}
+\label{sec:gauge_1x1}
+
+
+As a first example of pointwise operations, we consider the action of a family of \emph{linear maps} $\mathcal{C}_p$, which send the input feature vector $\fin(p)$ at each $p\in M$ to an output feature vector
+\begin{align}
+    \fout(p) := \mathcal{C}_p\, \fin(p) \,.
+\end{align}
+If we add the assumption of spatial weight sharing, the linear maps $\mathcal{C}_p$ and $\mathcal{C}_q$ at different locations $p$ and~$q$ will be coupled, and the operation can be seen as a convolution with a linear operator-valued Dirac delta kernel.
+This operation is quite common in computer vision, where it is usually denoted as \onexoneit, since the spatial discretization of a linear Dirac kernel which operates on two-dimensional images is given by a (matrix-valued) kernel with a spatial extent of $1\!\times\!1$ pixels.
+We will in the following derive that the demand for spatial weight sharing will result in a constraint, which forces the matrix-valued template kernels to be \emph{intertwiners}, that is, gauge equivariant matrices.
+
+
+Prior to the assumption of weight sharing, the coordinate expressions of the linear maps $\mathcal{C}_p$ and the gauge transformations between them behave very similar to those of the linear maps on $\TpM$, which we discussed in Section~\ref{sec:gauges_TpM_functions}.
+Since the input and output feature vectors are in coordinates represented by coefficient vectors $\fin^A(p) \in \R^{\cin}$ and $\fout^A(p) \in \R^{\cout}$, the linear map is naturally represented by that matrix $\mathcal{C}_p^A \in \R^{\cout\times\cin}$ that satisfies
+\begin{align}\label{eq:linear_op_coord_A}
+    \fout^A(p) = \mathcal{C}_p^A \cdot \fin^A(p) \,.
+\end{align}
+This relation does of course hold for arbitrary coordinatizations, such that we have $\fout^B(p) = \mathcal{C}_p^B \cdot \fin^B(p)$ for any other gauge, labeled by $B$.
+The transformation law which relates $\mathcal{C}_p^B$ to $\mathcal{C}_p^A$ follows by the principle of covariance from the transformation laws of the input and output features.
+Since these are given by $\fin^B(p) = \rhoin\big( g_p^{BA}\big) \fin^A(p)$ and $\fout^B(p) = \rhoout\big( g_p^{BA}\big) \fout^A(p)$, one has
+\begin{alignat}{3}
+    && \fout^B(p)\ &=\ \mathcal{C}_p^B \cdot \fin^B(p)
+    \notag \\ \Leftrightarrow \qquad
+    && \rhoout\big( g_p^{BA}\big)\, \fout^A(p)\ &=\ \mathcal{C}_p^B\, \rhoin\big( g_p^{BA}\big)\, \fin^A(p)
+    \notag \\ \Leftrightarrow \qquad
+    && \fout^A(p)\ &=\ \rhoout\big( g_p^{BA}\big)^{-1}\, \mathcal{C}_p^B\, \rhoin\big( g_p^{BA}\big)\, \fin^A(p) \,.
+\end{alignat}
+A comparison with Eq.~\eqref{eq:linear_op_coord_A} implies that the two coordinate expressions of $\mathcal{C}_p$ are necessarily related by
+\begin{align}\label{eq:linear_op_trafo_law}
+    \mathcal{C}_p^B\ =\ \rhoout\big( g_p^{BA}\big)\, \mathcal{C}_p^A\, \rhoin\big( g_p^{BA}\big)^{-1}
+\end{align}
+if they should respect the transformation laws of the feature vectors.
+As usual, these considerations are concisely captured by a commutative diagram:
+\begin{equation}\label{cd:linear_op_trafo_law}
+\begin{tikzcd}[column sep=60pt, row sep=30pt, font=\normalsize]
+    \R^{\cin}
+        \arrow[d, "\rhoin\big(g_p^{BA}\big)\cdot\,"']
+        \arrow[r, "\mathcal{C}_p^A \cdot"]
+    &
+    \R^{\cout}
+        \arrow[d, "\ \rhoout\big(g_p^{BA}\big) \cdot"]
+    \\
+    \R^{\cin}
+        \arrow[r, "\mathcal{C}_p^B \cdot"']
+    &
+    \R^{\cout}
+\end{tikzcd}
+\end{equation}
+The important practical implication of this result so far is that the linear map $\mathcal{C}_p$ is not restricted in any way.
+Differently formulated: as long as the coordinate expressions in different gauges are related by Eq.~\eqref{eq:linear_op_trafo_law}, one is free to parameterize $\mathcal{C}_p$ in an arbitrary, fixed gauge $A$ by an \emph{unconstrained} matrix $\mathcal{C}_p^A$.
+As we will see, the situation changes when requiring the linear maps to share weights.
+
+
+Consider now the case where the linear maps $\mathcal{C}_p$ and $\mathcal{C}_q$ share weights.
+This means that we assume them to be parameterized by a shared set of parameters, given by a \onexone\ template kernel $K_{\!1\!\times\!1} \in \R^{\cout\times\cin}$.
+The open question is how exactly the coordinate free maps should be parameterized in terms of this template kernel.
+Our requirement for $\GM$-coordinate independence demands that we do not prefer any particular reference frame in the weight sharing process, that is, that we treat all coordinatizations in the same manner.
+It is therefore necessary to \emph{share the template kernel with all coordinatizations at the same time}, that is, to set
+\begin{align}\label{eq:weight_sharing_1x1}
+    \mathcal{C}_p^X = K_{\!1\!\times\!1}
+    \quad \textup{for \emph{any} gauge}\ \ \big(U^X,\psi^X) \in \mathscr{A}^G\ \ \textup{with}\ \ p\in U^X \,,
+\end{align}
+where $\mathscr{A}^G$ is the (maximal) $G$-atlas corresponding to the considered $G$-structure; see Eq.~\eqref{eq:G_atlas_dfn}.
+As the covariance constraint in Eq.~\eqref{eq:linear_op_trafo_law} needs to hold for arbitrary $G$-related gauges, and the coordinatizations $\mathcal{C}_p^A = \mathcal{C}_p^B = K_{\!1\!\times\!1}$ of the linear maps do all coincide, the joint demand for weight sharing and $\GM$-coordinate independence is seen to imply a constraint
+\begin{align}\label{eq:Konexone_constraint_intertwiner}
+    K_{\!1\!\times\!1}\ =\ \rhoout(g)\, K_{\!1\!\times\!1}\, \rhoin(g)^{-1} \qquad \forall\ g\in G
+\end{align}
+on the template kernel.
+The corresponding adaptation of the commutative diagram in Eq.~\eqref{cd:linear_op_trafo_law} with weight sharing is given by:
+\begin{equation}
+\begin{tikzcd}[column sep=60pt, row sep=30pt, font=\normalsize]
+    \R^{\cin}
+        \arrow[d, "\rhoin\big(g_p^{BA}\big)\cdot\,"']
+        \arrow[r, "K_{\!1\!\times\!1} \cdot"]
+    &
+    \R^{\cout}
+        \arrow[d, "\ \rhoout\big(g_p^{BA}\big) \cdot"]
+    \\
+    \R^{\cin}
+        \arrow[r, "K_{\!1\!\times\!1} \cdot"']
+    &
+    \R^{\cout}
+\end{tikzcd}
+\end{equation}
+
+
+The conclusion of this analysis is that the template kernels which can be \emph{unambiguously shared} are exactly those which are \emph{invariant under the gauge action}.
+The vector space of such gauge invariant \onexone\ kernels is simply the space of \emph{intertwining maps} between the representations $\rhoin$ and $\rhoout$, that is,
+\begin{align}\label{eq:gauge_onexone_solution_space}
+    \Hom_G(\rhoin,\rhoout)\ :=\ 
+    \pig\{ K_{\!1\!\times\!1} \in \R^{\cout\times\cin}\ \pig|\ 
+    K_{\!1\!\times\!1} = \rhoout(g)\, K_{\!1\!\times\!1}\, \rhoin(g)^{-1}\ \ \ \forall g\in G \pig\}
+    \,\ \subseteq\ \R^{\cout\times\cin} \,.
+\end{align}
+Note that, according to \emph{Schur's Lemma}~\cite{gallier2019harmonicRepr}, the requirement on $K_{\!1\!\times\!1}$ to be an intertwiner prevents a mapping between fields that transform under non-isomorphic irreducible representations via \onexones.
+This severe restriction is unavoidable with \onexone\ kernels but will be resolved later when allowing for spatially extended kernels.
+
+At this point we want to mention that we use the terms ``gauge equivariant template function'' and ``gauge invariant template function'' interchangeably.
+This is justified by the observation that the invariance constraint in Eq.~\eqref{eq:Konexone_constraint_intertwiner} can be written as an equivariance constraint
+$K_{\!1\!\times\!1}\, \rhoin(g) = \rhoout(g)\, K_{\!1\!\times\!1}\ \ \forall g\in G$.
+It is in general possible to view functions which are equivariant w.r.t. some group action in their domain and codomain as the invariants of the corresponding action on the function itself.
+In our application, the equivariance viewpoint highlights that a transformation of the input field will lead to a corresponding transformation of the output field, which ensures that all involved quantities transform covariantly with each other.
+On the other hand, the invariance viewpoint emphasizes that the template function can be shared in an arbitrary gauge.
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Gauge equivariant bias summation}
+\label{sec:gauge_bias_summation}
+
+After applying a convolution operation, it is common to sum a (shared) bias vector to the individual feature vectors.
+Together with the requirement of coordinate independence, the weight sharing will again lead to a linear constraint.
+This constraint will only allow for biases to be summed to the invariant subspaces of the gauge action on the input feature field.
+
+
+As before, we first consider the bias summation without requiring weight sharing.
+We thus have biases~$\mathscr{b}_p$, depending on the position $p$ on the manifold, which are summed to an input feature vector to produce an output feature vector
+\begin{align}
+    \fout(p) = \fin(p) + \mathscr{b}_p \,.
+\end{align}
+Relative to gauges $\psi_p^A$ and $\psi_p^B$, the bias is represented by those coefficient vectors $\mathscr{b}_p^A$ and $\mathscr{b}_p^B$ in $\R^c$ that satisfy $\fout^A(p) = \fin^A(p) + \mathscr{b}_p^A$ and $\fout^B(p) = \fin^B(p) + \mathscr{b}_p^B$.
+Since the summation of vectors does not allow to change their transformation laws, the group representations associated with the input and output feature necessarily agree, that is,
+\begin{align}
+    \rhoin = \rhoout =: \rho \,.
+\end{align}
+Together with the requirement for coordinate independence, this implies that the diagram
+\begin{equation}\label{eq:bias_trafo_law}
+\begin{tikzcd}[column sep=75pt, row sep=30pt, font=\normalsize]
+    \R^c
+        \arrow[d, "\rho \big(g_p^{BA}\big)\cdot\,"']
+        \arrow[r, "+\mathscr{b}_p^A"]
+    &
+    \R^c
+        \arrow[d, "\ \rho\big( g_p^{BA}\big) \cdot"]
+    \\
+    \R^c
+        \arrow[r, "+\mathscr{b}_p^B"']
+    &
+    \R^c
+\end{tikzcd}
+\ \ ,
+\end{equation}
+which is the analog of that in Eq.~\eqref{cd:linear_op_trafo_law}, needs to commute.
+Written out as an equation, this demands the relation
+$\rho\big(g_p^{BA}\big) f^A_p + \mathscr{b}_p^B \ =\ \rho\big(g_p^{BA}\big) \big(f^A_p + \mathscr{b}_p^A\big)$
+to hold.
+Since the linearity of $\rho(g)$ allows to rewrite the right-hand side as
+$\rho\big(g_p^{BA}\big) f^A_p + \rho\big(g_p^{BA}\big) \mathscr{b}_p^A$,
+a subtraction of the input feature vector leads to
+\begin{align}\label{eq:bias_trafo_non_shared}
+    \mathscr{b}_p^B\ =\ \rho\big(g_p^{BA}\big) \, \mathscr{b}_p^A \,.
+\end{align}
+The coefficient vectors which represent a coordinate independent bias relative to different gauges therefore need to transform exactly like the feature vectors to which they are summed.
+As in the case of \onexones, the coordinate independence does \emph{not} restrict the bias $\mathscr{b}_p$ in any way, but only requires different coordinatizations of the same bias to be consistent with each other.
+An implementation could therefore pick an arbitrary gauge and freely parameterize the bias in that gauge by parameters in $\R^{\cin}$.
+
+
+The situation changes again when asking for spatial weight sharing.
+Let $b \in \R^{\cin}$ be a template bias vector to be shared over the manifold.
+Since the only way to do this without arbitrarily preferring any coordinatization is to share the bias vector in all gauges simultaneously, we have to require
+\begin{align}
+    \mathscr{b}_p^X = b
+    \quad \textup{for \emph{any} gauge}\ \ \big(U^X,\psi^X) \in \mathscr{A}^G\ \ \textup{with}\ \ p\in U^X \,.
+\end{align}
+in analogy to Eq.~\eqref{eq:weight_sharing_1x1}.
+The combination of the covariance constraint in Eq.~\eqref{eq:bias_trafo_non_shared} with this gauge independent weight sharing then leads to the invariance constraint
+\begin{align}\label{eq:bias_invariance_constraint}
+    b\ =\ \rho(g)\, b \qquad \forall\ g\in G
+\end{align}
+on the bias vector template.
+To complete the analogy to the case of \onexones, we show the adapted version of the commutative diagram in Eq.~\eqref{eq:bias_trafo_law} with shared weights:
+\begin{equation}
+\begin{tikzcd}[column sep=75pt, row sep=30pt, font=\normalsize]
+    \R^c
+        \arrow[d, "\rho\big( g_p^{BA}\big)\cdot\,"']
+        \arrow[r, "+b"]
+    &
+    \R^c
+        \arrow[d, "\ \rho\big( g_p^{BA}\big)\cdot"]
+    \\
+    \R^c
+        \arrow[r, "+b"']
+    &
+    \R^c
+\end{tikzcd}
+\end{equation}
+
+
+To get an insight in the implications of the invariance constraint in Eq.~\eqref{eq:bias_invariance_constraint}, assume it to be satisfied for a given template vector~$b$.
+Due to the linearity of the constraint, any scaled vector $\alpha \!\cdot\! b$ for $\alpha\in\R$ will then satisfy it as well, that is, any solution spans a \emph{one-dimensional subspace of~$\R^c$} which is \emph{invariant under the action of~$\rho$}.
+Such an invariant subspace is denoted as a subrepresentation of~$\rho$.
+Since the subspaces in consideration are one-dimensional, they have themselves no proper subspace and are therefore trivial irreducible subrepresentations.
+If follows that the vector space
+\begin{align}\label{eq:gauge_bias_solution_space}
+    \mathscr{B}^G_\rho\ :=\ \big\{ b \in\R^c \;\big|\; b = \rho(g)\mkern2mu b\ \ \ \forall g\in G \big\}
+\end{align}
+of gauge equivariant biases coincides with the (subspaces of) trivial subrepresentations of $\rho$.
+The dimensionality of $\mathscr{B}^G_\rho$ -- and therefore the number of learnable parameters -- coincides with the multiplicity of trivial subrepresentations contained in~$\rho$.
+For compact groups~$G$, Schur's orthogonality relations imply that this dimensionality is given by $\dim\!\big(\mathscr{B}^G_\rho\big) = \int_G \tr\big(\rho(g)\big) dg$.
+This statement covers the practically important cases of the orthogonal groups $G=\O{d}$ and all of its subgroups.
+
+
+Two simple examples of feature fields to which one might want to sum shared biases are scalar fields and tangent vector fields.
+By definition, the coefficient field of a scalar field is invariant under gauge transformations, that is, it transforms according the trivial representation ${\rho(g)=1\ \ \forall g\in G}$.
+One can therefore sum a (scalar) bias $b \in \R$ to them.
+In contrast, the coefficient field of a tangent vector field transforms according to the non-trivial, irreducible group representation $\rho(g)=g$.
+Since this representation does not contain any trivial subrepresentation, it is impossible to sum a shared bias vector to tangent vector fields while maintaining coordinate independence.
+As a third example, consider regular representations of compact groups, which describe for instance the feature fields of group convolutional networks.
+By the Peter-Weyl theorem, it is known that regular representations contain exactly one trivial subrepresentation~\cite{gurarie1992symmetries,gallier2019harmonicRepr}.
+The bias to be summed to regular feature fields is therefore seen to be described by a single parameter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Gauge equivariant nonlinearities}
+\label{sec:gauge_nonlinearities}
+
+
+Except from linear (convolution) operations and bias summations, the most basic operations used in any neural network are nonlinearities.
+We will here consider the usual case of nonlinearities $\sigma_p$ which act in a spatially localized way, that is, which compute output feature vectors as $\fout(p) = \sigma_p\big( \fin(p) \big)$.
+A shared nonlinearity will again be required to be gauge equivariant.
+As the reasoning which leads to this conclusion is similar to that in the previous cases, we will only summarize it shortly.
+Due to the generality of nonlinear maps it is impossible to derive linear solution spaces as in Eqs.~\eqref{eq:gauge_onexone_solution_space} and~\eqref{eq:gauge_bias_solution_space}, however, we will discuss some specific examples.
+
+
+Similar to before, any coordinate free nonlinearity $\sigma_p$ is relative to gauges $A$ and $B$ given by coordinate expressions $\sigma_p^A: \R^{\cin} \to \R^{\cout}$ and $\sigma_p^B: \R^{\cin} \to \R^{\cout}$, which are by the demand for coordinate independence required to be related by $\sigma_p^B = \rhoout\big( g_p^{BA}\big) \circ \sigma_p^A \circ \rhoin\big( g_p^{BA}\big)^{-1}$.
+A nonlinear template function $\mathscr{s}: \R^{\cin} \to \R^{\cout}$ can only be shared in a coordinate independent way when sharing it with all gauges simultaneously.
+This turns the covariance constraint in an invariance constraint $\mathscr{s} = \rhoout(g) \circ \mathscr{s} \circ \rhoin(g)^{-1}\ \ \forall g\in G$ on the template function, or, equivalently, in the corresponding equivariance constraint
+\begin{align}\label{eq:gauge_constraint_nonlinearities}
+    \rhoout(g) \circ \mathscr{s} = \mathscr{s} \circ \rhoin(g)^{-1} \qquad \forall\ g\in G \,.
+\end{align}
+
+
+Due to the nonlinearity of this constraint we are forced to investigate it on a case-by-case basis -- we will therefore limit our discussion to some specific examples.
+The arguably most simple case is that of nonlinearities which map between scalar fields, i.e. for which $\rhoin(g) = \rhoout(g) = 1$ are for any $g \in G$ invariant.
+In this case the equivariance constraint in Eq.~\eqref{eq:gauge_constraint_nonlinearities} becomes $\mathscr{s} = \mathscr{s}$, which is trivially satisfied for \emph{any} nonlinearity $\mathscr{s}: \R \to \R$.
+A more interesting example is that of unitary representation $\rhoin$.
+One possible nonlinearity for this case is given by the norm of feature vectors.
+Since $\lVert \rhoin(g) \fin^A(p) \rVert = \lVert \fin^A(p) \rVert$ is due to the unitarity of $\rhoin$ invariant, $\rhoout$ will be the trivial representation.
+Taking the norm is thus seen to be a nonlinear, gauge equivariant operation that maps any unitary field to a scalar field.
+A nonlinear map which preserves the field type, i.e. which satisfies $\rhoout = \rhoin$, can very similarly be defined as $\fin^A(p) \mapsto \lVert\fin^A(p)\rVert \cdot \fin^A(p)$.
+Another option, which might play a role in learning physical interactions, and which was investigated in~\cite{kondor2018ClebschGordan,Kondor2018-NBN,anderson2019cormorant,alex2020lorentz}, are tensor product nonlinearities.
+Given two fields $f_\textup{\;\!\!in,1}^A(p)$ and $f_\textup{\;\!\!in,2}^A(p)$, transforming according to
+$\rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{in},1}}}$ and $\rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{in},2}}}$,
+respectively, such nonlinearities compute a tensor product feature $\fout^A = f_\textup{\;\!\!in,1}^A(p) \otimes f_\textup{\;\!\!in,2}^A(p)$, which transforms equivariantly according to the tensor product representation
+$\rhoout = \rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{in},1}}} \otimes \rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{in},2}}}$.
+
+
+All of these examples satisfy the gauge equivariance constraint in Eq.~\eqref{eq:gauge_constraint_nonlinearities}.
+Which particular nonlinearity works well in practice is, however, still an open research question, which requires much more empirical investigation before it can be answered.
+A first attempt in this direction has been made in~\cite{Weiler2019_E2CNN}.

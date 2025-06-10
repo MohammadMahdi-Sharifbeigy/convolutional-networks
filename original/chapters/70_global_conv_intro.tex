@@ -1,0 +1,36 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Coordinate free kernel field transforms and \textit{GM}-convolutions}
+\label{sec:gauge_CNNs_global}
+
+
+The associated $G$-bundles introduced in Section~\ref{sec:bundles_fields} allow to describe feature fields -- and therefore convolutional networks -- on a global level.
+Given a sequence
+${\A_0\! \xrightarrow{\scalebox{.85}{$\pi_{{\scalebox{.65}{$\!\!\A_0$}}}$}}\! M ,}\ \dots,\ 
+ {\A_N\! \xrightarrow{\scalebox{.85}{$\pi_{{\scalebox{.65}{$\!\!\A_N$}}}$}}\! M}$,
+of $G$-associated feature vector bundles over $M$, we describe coordinate free convolutional networks as sequences
+\begin{align}
+    \Gamma(\A_0)\, \xrightarrow{\ \ L_1\ \ }\, \Gamma(\A_1)\, \xrightarrow{\ \ L_2\ \ }\ \ \dots\ \ \xrightarrow{\ \ L_N\ \ }\, \Gamma(\A_N)
+\end{align}
+of parameterized layers $L_1,\dots, L_N$ which map between the feature spaces $\Gamma(\A_0), \dots, \Gamma(\A_N)$, i.e. between spaces of feature fields modeled by the corresponding bundles.
+While the field types (or transformation laws) ${\rho_i:G\to\GL{{c_i}}}$ of the intermediate bundles
+$\A_i := (\GM\times\R^{c_i})/\!\sim_{\!\rho_i}$ for $i=1,\dots,N-1$
+have to be specified by the user as a hyperparameter, the field types $\rho_0:G\to\GL{{c_0}}$ and $\rho_N:G\to\GL{{c_N}}$ of the network input and output are typically determined by the learning task.
+The modular construction of neural networks allows to restrict attention to individual layers, mapping between feature spaces $\Gamma(\Ain)$ and $\Gamma(\Aout)$ of dimensionality $\cin$ and $\cout$ and type $\rhoin$ and $\rhoout$.
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+The main goal of this section is to introduce coordinate free $\GM$-convolutions, which are the central building blocks of $\GM$-coordinate independent networks on Riemannian manifolds.
+To get started, and to introduce concepts which are required later on, we will in Section~\ref{sec:onexone} first focus on the simpler case of \onexoneGMsit, which apply point-like kernels.
+Section~\ref{sec:global_conv} shifts the focus to $\GM$-convolutions and kernel field transforms with spatially extended kernels.
+They are parameterized in terms of smooth, global \emph{kernel fields}, which are introduced in Section~\ref{sec:kernel_fields}.
+$\GM$-\emph{convolutional kernel fields} are required to share weights between different spatial positions.
+In order for this weight sharing to be $\GM$-coordinate independent, the template kernels that parameterize $\GM$-convolutional kernel fields are required to be $G$-steerable (Eq.~\eqref{eq:kernel_constraint_rhohom}).
+The actual kernel field transforms and $\GM$-convolutions are introduced in Section~\ref{sec:KFTs_GM-conv_global}.
+Their global definition is guided by replacing the local coordinate expressions from Section~\ref{sec:gauge_conv_main} with their global, coordinate free counterparts.
+As shown in Section~\ref{sec:KFTs_GM-conv_local}, these coordinate free definitions reduce in local trivializations to the coordinate expressions form Section~\ref{sec:gauge_conv_main}.

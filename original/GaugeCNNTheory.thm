@@ -1,0 +1,62 @@
+\contentsline {dfn}{{Definition}{7.{1}}{\onexoneGM }}{98}{pro.7.1}
+\contentsline {dfn}{{Definition}{7.{2}}{Kernel field}}{101}{pro.7.2}
+\contentsline {dfn}{{Definition}{7.{3}}{$G$-steerable kernel}}{102}{pro.7.3}
+\contentsline {dfn}{{Definition}{7.{4}}{$\GM $-convolutional kernel field}}{103}{pro.7.4}
+\contentsline {dfn}{{Definition}{7.{5}}{Transporter pullback of feature field to \textit {TM}}}{104}{pro.7.5}
+\contentsline {dfn}{{Definition}{7.{6}}{Kernel field transform}}{105}{pro.7.6}
+\contentsline {thm}{{Theorem}{7.{7}}{Kernel field transform existence for compactly supported kernels}}{105}{pro.7.7}
+\contentsline {proof}{{Proof}{1}{}}{106}{proof.1}
+\contentsline {dfn}{{Definition}{7.{8}}{$\GM $-convolution}}{106}{pro.7.8}
+\contentsline {thm}{{Theorem}{7.{9}}{Kernel field transform in coordinates}}{107}{pro.7.9}
+\contentsline {proof}{{Proof}{2}{}}{108}{proof.2}
+\contentsline {thm}{{Theorem}{7.{10}}{$\GM $-convolutions in coordinates}}{108}{pro.7.10}
+\contentsline {proof}{{Proof}{3}{}}{108}{proof.3}
+\contentsline {dfn}{{Definition}{8.{1}}{$G$-structure preserving isometries}}{114}{pro.8.1}
+\contentsline {dfn}{{Definition}{8.{2}}{Isometry pushforward of feature field:}}{116}{pro.8.2}
+\contentsline {thm}{{Theorem}{8.{3}}{$\IsomGM $ in local trivializations}}{119}{pro.8.3}
+\contentsline {proof}{{Proof}{4}{}}{119}{proof.4}
+\contentsline {thm}{{Theorem}{8.{4}}{Isometry action on transporter pullbacks of feature fields}}{122}{pro.8.4}
+\contentsline {proof}{{Proof}{5}{}}{122}{proof.5}
+\contentsline {dfn}{{Definition}{8.{5}}{Isometry equivariant kernel field transform}}{123}{pro.8.5}
+\contentsline {dfn}{{Definition}{8.{6}}{Isometry action on kernel fields}}{124}{pro.8.6}
+\contentsline {dfn}{{Definition}{8.{7}}{Isometry invariant kernel fields}}{125}{pro.8.7}
+\contentsline {thm}{{Theorem}{8.{8}}{Equivariant kernel field transform $\Leftrightarrow $ invariant kernel field}}{125}{pro.8.8}
+\contentsline {proof}{{Proof}{6}{}}{125}{proof.6}
+\contentsline {thm}{{Theorem}{8.{9}}{Isometry equivariance of $\GM $-convolutions}}{128}{pro.8.9}
+\contentsline {proof}{{Proof}{7}{}}{128}{proof.7}
+\contentsline {thm}{{Theorem}{8.{10}}{Full isometry equivariance of $\OM $-convolutions}}{129}{pro.8.10}
+\contentsline {proof}{{Proof}{8}{}}{129}{proof.8}
+\contentsline {thm}{{Theorem}{8.{11}}{$\IsomplusM $ equivariance of $\SOM $-convolutions}}{129}{pro.8.11}
+\contentsline {proof}{{Proof}{9}{}}{129}{proof.9}
+\contentsline {thm}{{Theorem}{8.{12}}{Tangent quotient representative kernel fields}}{136}{pro.8.12}
+\contentsline {proof}{{Proof}{10}{}}{137}{proof.10}
+\contentsline {thm}{{Theorem}{8.{13}}{Manifold quotient representative kernel fields}}{137}{pro.8.13}
+\contentsline {proof}{{Proof}{11}{}}{137}{proof.11}
+\contentsline {thm}{{Theorem}{8.{14}}{Equivariance on homogeneous \textit {M} implies convolution}}{138}{pro.8.14}
+\contentsline {proof}{{Proof}{12}{}}{139}{proof.12}
+\contentsline {dfn}{{Definition}{9.{1}}{$\Aff (G)$-atlas of Euclidean space}}{150}{pro.9.1}
+\contentsline {thm}{{Theorem}{9.{2}}{$\Aff (G)$-atlases of charts induce $G$-atlases of gauges}}{150}{pro.9.2}
+\contentsline {proof}{{Proof}{13}{}}{151}{proof.13}
+\contentsline {thm}{{Theorem}{9.{3}}{Principal bundle isomorphism between Aff(\textit {G}) and \textit {GM}}}{152}{pro.9.3}
+\contentsline {proof}{{Proof}{14}{}}{152}{proof.14}
+\contentsline {dfn}{{Definition}{9.{4}}{\textit {G}-structure preserving affine transformations}}{153}{pro.9.4}
+\contentsline {thm}{{Theorem}{9.{5}}{$\AffGM $ in local trivializations}}{153}{pro.9.5}
+\contentsline {proof}{{Proof}{15}{}}{153}{proof.15}
+\contentsline {thm}{{Theorem}{9.{6}}{$\AffGM $ in global affine charts}}{153}{pro.9.6}
+\contentsline {proof}{{Proof}{16}{}}{154}{proof.16}
+\contentsline {thm}{{Theorem}{9.{7}}{$\GM $-convolutions on Euclidean spaces recover convolutions on $\fakebold {\R }^{\boldmath {d}}$}}{156}{pro.9.7}
+\contentsline {proof}{{Proof}{17}{}}{156}{proof.17}
+\contentsline {thm}{{Theorem}{9.{8}}{Affine equivariance of Euclidean $\GM $-convolutions}}{157}{pro.9.8}
+\contentsline {proof}{{Proof}{18}{}}{157}{proof.18}
+\contentsline {thm}{{Theorem}{11.{1}}{Spherical steerable kernels in geodesic coordinates}}{178}{pro.11.1}
+\contentsline {proof}{{Proof}{19}{}}{179}{proof.19}
+\contentsline {thm}{{Theorem}{11.{2}}{Spherical steerable convolutions as \textit {GM}-convolutions}}{179}{pro.11.2}
+\contentsline {proof}{{Proof}{20}{}}{179}{proof.20}
+\contentsline {thm}{{Theorem}{11.{3}}{Gnomonic projections as warped exponential maps}}{180}{pro.11.3}
+\contentsline {proof}{{Proof}{21}{}}{181}{proof.21}
+\contentsline {proof}{{Proof}{22}{}}{252}{proof.22}
+\contentsline {proof}{{Proof}{23}{}}{254}{proof.23}
+\contentsline {thm}{{Theorem}{G.{1}}{Differentiation lemma~\cite {forster2012analysis3}}}{256}{pro.G.1}
+\contentsline {proof}{{Proof}{24}{}}{257}{proof.24}
+\contentsline {thm}{{Theorem}{H.{1}}{Regular feature fields as scalar functions on $G$-structure}}{258}{pro.H.1}
+\contentsline {proof}{{Proof}{25}{}}{258}{proof.25}

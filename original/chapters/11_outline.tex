@@ -1,0 +1,168 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+~ % <<=== newline
+
+This work is organized into an introduction, three main parts and an appendix.
+
+Part~\ref{part:local_theory} attempts to introduce coordinate independent neural networks in an easily accessible language.
+Feature fields and network layers are expressed relative to \emph{local coordinates} (bundle trivializations).
+The demanded \emph{coordinate independence} requires features to be associated with some \emph{transformation law}.
+Network layers are required to guarantee the correct transformation behavior of features.
+
+Part~\ref{part:bundle_theory} formalizes the theory of coordinate independent neural networks in terms of \emph{fiber bundles}.
+This allows for a \emph{global, coordinate free} formulation, which is particularly useful when investigating the networks' isometry equivariance.
+The definitions from Part~\ref{part:local_theory} are recovered when expressing the coordinate free operations in local bundle trivializations (coordinates).
+
+Part~\ref{part:literature_review} embeds our theory in \emph{related work}.
+It provides detailed reviews of convolutional network architectures on various geometries and reformulates them as coordinate independent CNNs.
+To facilitate the development of new network architectures, we discuss relevant characteristics of the specific geometries before reviewing the networks that operate on them.
+
+The reader may skip Part~\ref{part:bundle_theory} at a first pass
+-- the formulation from Part~\ref{part:local_theory} is fully sufficient to read the literature review in Part~\ref{part:literature_review}.
+
+An overview of the main concepts and results of our work is provided in the following Section~\ref{sec:visual_intro}.
+This overview avoids equations and builds on geometric intuition in terms of visualizations.
+We hope that this Sections allows a non-technical audience to get an idea about the content of our work.
+
+
+
+
+
+
+\subsubsection*{Detailed Overview}
+
+
+\paragraph{Part~\ref{part:local_theory}:}
+
+The goal of Section~\ref{sec:gauge_cnns_intro_local} is to devise coordinate independent feature spaces.
+Specifically, Section~\ref{sec:21_main} introduces \emph{gauges, gauge transformations and $G$-structures}.
+Gauges are a formal way to express (coordinate free) tangent vectors and functions on the tangent spaces relative to reference frames.
+Gauge transformations translate between such coordinate expressions in different gauges.
+Section~\ref{sec:feature_fields} introduces coordinate independent \emph{feature vector fields}.
+As in the case of tangent vectors, the numerical coefficients of feature vectors transform when transitioning between reference frames.
+The transformation laws of feature vectors determine in particular their \emph{parallel transport} and their pushforward when being acted on by \emph{isometries}, which are described in Sections~\ref{sec:transport_local} and~\ref{sec:isometries_local}, respectively.
+
+Section~\ref{sec:gauge_CNNs_local} develops \emph{neural networks} that map between feature fields.
+\emph{Pointwise operations}, like bias summation, \onexones\ and nonlinearities, are discussed in Section~\ref{sec:pointwise_operations}.
+Section~\ref{sec:gauge_conv_main} focuses on \emph{convolutions} with spatially extended kernels.
+Each of these operations is initially introduced without the weight sharing assumption, that is, allowing for instance for a different kernel at each point of the manifold.
+These kernels (or biases or nonlinearities) are not constrained in any way.
+However, when requiring spatial weight sharing, they become constrained to be gauge equivariant since only equivariant quantities can be shared in a coordinate independent manner.
+Section~\ref{sec:gauge_conv_isom_equiv} gives a concise proof of the isometry equivariance of $\GM$-convolutions in terms of local coordinate expressions.
+The key idea here is that isometries can be viewed as inducing gauge transformations (passive interpretation), which are explained away by the kernels' gauge equivariance.
+
+Section~\ref{sec:mobius_conv} describes an implementation of \emph{orientation independent convolutions on the M\"obius strip}.
+After reviewing the geometry of the M\"obius strip in Section~\ref{sec:mobius_geometry}, multiple types of feature fields are defined in Section~\ref{sec:mobius_representations}.
+The following Section~\ref{sec:mobius_cnn_ops_analytical} describes orientation independent CNNs analytically.
+In particular, we derive gauge equivariant convolution kernels, biases and nonlinearities for each of the field types.
+Section~\ref{sec:mobius_experiment_main} closes with a numerical implementation and evaluation of the corresponding models.
+
+
+
+
+\paragraph{Part~\ref{part:bundle_theory}:}
+
+Section~\ref{sec:bundles_fields} mirrors the content of Section~\ref{sec:gauge_cnns_intro_local}, however, globally and in terms of \emph{fiber bundles}.
+A~general introduction to fiber bundles is given in Section~\ref{sec:fiber_bundles_general}.
+Sections~\ref{sec:GL_associated_bundles} and~\ref{sec:G_associated_bundles} introduce the tangent bundle $\TM$, the frame bundle $\FM$, $G$-structures $\GM$ and $G$-associated feature vector bundles~$\A$.
+Feature fields are globally defined as sections of feature vector bundles.
+\emph{Local bundle trivializations} (gauges), which are discussed in Section~\ref{sec:bundle_trivializations}, express these bundles in coordinates, thereby recovering our definitions from Section~\ref{sec:gauge_cnns_intro_local}.
+We demonstrate in particular how local trivializations of the different bundles induce each other, such that their gauge transformations (transition maps) are synchronized.
+Section~\ref{sec:bundle_transport} discusses \emph{parallel transporters} on $G$-bundles.
+
+Section~\ref{sec:gauge_CNNs_global} reformulates the coordinate independent networks from Section~\ref{sec:gauge_CNNs_local} in terms of fiber bundles.
+\onexonesit\ are in Section~\ref{sec:onexone} described as specific vector bundle $M$-morphisms.
+Alternatively, they may be viewed as sections of a homomorphism bundle.
+Section~\ref{sec:global_conv} introduces \emph{coordinate free kernel fields} and \emph{kernel field transforms}.
+These operations are similar to $\GM$-convolutions but are not required to share weights, i.e. may apply a different kernel at each spatial location.
+A $\GM$-\emph{convolutional kernel field} is constructed by sharing a single $G$-steerable (gauge equivariant) kernel over the whole manifold.
+\emph{Coordinate free $\GM$-convolutions} are then defined as kernel field transforms with $\GM$-convolutional kernel fields.
+When expressing the coordinate free formulation of $\GM$-convolutions relative to local trivializations (gauges), we recover the coordinate expressions of $\GM$-convolutions from Section~\ref{sec:gauge_conv_main}.
+
+The \emph{isometry equivariance} of $\GM$-convolutions is investigated in Section~\ref{sec:isometry_intro}.
+After introducing isometries, Section~\ref{sec:isom_background} discusses their \emph{pushforward action} on the fiber bundles.
+These action may again be expressed in local trivializations, resulting in the formulation from Section~\ref{sec:isometries_local}.
+Section~\ref{sec:isometry_equivariance} defines the action of isometries on kernel fields and proves that \emph{the isometry equivariance of a kernel field transform implies the isometry invariance of its kernel field and vice versa}.
+$\GM$-convolutions are proven to be equivariant under the action of those isometries which are bundle automorphisms (symmetries) of the $G$-structure~$\GM$.
+Section~\ref{sec:quotient_kernel_fields} investigates isometry invariant kernel fields in greater detail and proves that they are equivalent to \emph{kernel fields on quotient spaces} of the isometry action
+-- intuitively speaking, isometry invariant kernel fields are required to share kernels over the isometry orbits.
+This result implies in particular that isometry equivariant kernel field transforms on \emph{homogeneous spaces} are necessarily $\GM$-convolutions.
+
+
+
+
+\paragraph{Part~\ref{part:literature_review}:}
+
+The third part of this work demonstrates that a vast number of convolutional networks from the literature can be interpreted as applying $\GM$-convolutions for some choice of $G$-structure and field types.
+It starts with a general discussion about the design choices of coordinate independent CNNs.
+Table~\ref{tab:network_instantiations} gives an overview and classification of the models that are reviewed.
+The reader is invited to have a look at the $G$-structures that are visualized in Part~\ref{part:literature_review} as these give an intuitive idea about the properties of the corresponding $\GM$-convolutions.
+
+\emph{Euclidean CNNs} that are not only isometry equivariant but more generally equivariant under the action of \emph{affine groups} are reviewed in Section~\ref{sec:instantiations_euclidean}.
+These models are essentially equivalent to \emph{steerable CNNs} on Euclidean \emph{vector} spaces $\R^d$ \cite{Cohen2017-STEER,3d_steerableCNNs,Weiler2019_E2CNN}.
+Section~\ref{sec:steerable_cnns_in_coords} reviews steerable CNNs and discusses their relation to $\GM$-convolutions.
+This approach is somewhat unsatisfactory since $\R^d$ comes with a canonical frame field ($\{e\}$-structure), which is implicitly ignored by equivariant models.
+Section~\ref{sec:euclidean_geometry} takes a more principled approach, defining Euclidean \emph{affine} spaces $\Euc_d$ which are equipped with precisely those $G$-structures that result in $\Aff(G)$-equivariant $\GM$-convolutions.
+The actual $\GM$-convolutions are defined in Section~\ref{sec:euclidean_affine_equiv}.
+Section~\ref{sec:euclidean_literature} reviews affine equivariant Euclidean CNNs found in the literature.
+They differ mainly in the assumed choices of structure groups and group representations.
+
+Section~\ref{sec:instantiations_euclidean_polar} covers CNNs on \emph{punctured Euclidean spaces} $\Euc_d\backslash\{0\}$, whose origin $\{0\}$ was removed.
+These models are rotation equivariant around the origin, however, they are not translation equivariant.
+They are based on $G$-structures that correspond to polar coordinates, log-polar coordinates or spherical coordinates.
+
+\emph{Spherical CNNs} are covered in Section~\ref{sec:instantiations_spherical}.
+Section~\ref{sec:sphere_geometry} discusses the geometry of the (embedded) 2-sphere~$S^2$.
+Interpreting the tangent spaces as two-dimensional subspaces of an embedding space~$\R^3$, we derive closed form expressions of exponential and logarithm maps, frames, gauges, transporters and isometry actions.
+Section~\ref{sec:spherical_CNNs_fully_equivariant} reviews $\SO3$ and $\O3$-equivariant spherical CNNs.
+We prove in particular that our theory includes the general formulation of spherical convolutions by~\citet{Cohen2019-generaltheory} as a special case.
+Spherical CNNs that are merely $\SO2$ rotation equivariant around a fixed axis are described in Section~\ref{sec:spherical_CNNs_azimuthal_equivariant}.
+Section~\ref{sec:spherical_CNNs_icosahedral} reviews icosahedral CNNs.
+The icosahedron approximates the sphere but consists of locally flat faces which allow for an efficient implementation of convolution operations.
+
+A survey of convolutional networks on \emph{general two-dimensional surfaces} is found in Section~\ref{sec:instantiations_mesh}.
+Section~\ref{sec:surfaces_geom_main} provides a brief introduction to the classical differential geometry of embedded surfaces and their discretization in terms of triangle meshes.
+The surface convolutions in the literature are categorized in two classes:
+The first class, covered in Section~\ref{sec:so2_surface_conv}, is based on $G=\SO2$-steerable kernels.
+These models are independent from the specific choice of right-handed, orthonormal frame.
+Section~\ref{sec:e_surface_conv} reviews the second category of models, which are based on $\{e\}$-steerable, i.e. non-equivariant kernels.
+These models rely explicitly on a choice of frame field.
+They differ therefore mainly in the heuristics that are used to determine reference frames.
+Note that such models are necessarily discontinuous on non-parallelizable manifolds like for instance topological spheres.
+
+
+
+
+\paragraph{Appendix:}
+
+The appendix covers some additional information and long proofs.
+
+Gauges formalize an immediate assignment of reference frames to tangent spaces but refer to points on the manifold in a coordinate free manner.
+A popular alternative is to choose \emph{coordinate charts}, which induce so called \emph{coordinate bases} (holonomic bases) of the tangent spaces.
+Appendix~\ref{apx:coordinate_bases} gives an introduction to the chart formalism and puts it in relation to the more general gauge formalism.
+
+Appendix~\ref{apx:coord_indep_weight_sharing} comments on the \emph{coordinate independence} of kernels and \emph{weight sharing} along reference frames.
+A $\GM$-coordinate independent sharing of weights is only possible for $G$-steerable kernels.
+
+$\GM$-convolutions are computed by expressing feature fields in geodesic normal coordinates, where they are matched with $G$-steerable convolution kernels.
+This process involves an \emph{integration over the tangent spaces} which is described in Appendix~\ref{apx:tangent_integral}.
+
+\citet{Kondor2018-GENERAL}, \citet{Cohen2019-generaltheory} and \citet{bekkers2020bspline} proposed quite general theories of \emph{convolutions on homogeneous spaces}.
+As these models share weights via the action of some symmetry group, they are very similar to our isometry equivariant kernel field transforms from Sections~\ref{sec:isometry_equivariance} and~\ref{sec:quotient_kernel_fields}.
+Appendix~\ref{apx:homogeneous_conv} reviews these models and explains how they relate to our $\GM$-convolutions.
+
+Appendix~\ref{apx:lifting_iso_proof} proves that isometry invariant kernel fields on the manifold are equivalent to kernel fields on quotient spaces of the isometry action.
+The special case of homogeneous spaces, on which isometry equivariant kernel field transforms are equivalent to $\GM$-convolutions, is covered in Appendix~\ref{apx:homogeneous_equivalence_proof}.
+
+The spherical convolutions of \citet{Cohen2019-generaltheory} are in Appendix~\ref{apx:spherical_conv_main} proven to be a special case of our spherical $\GM$-convolutions
+-- any spherical CNN that is covered by their theory is therefore explained by our theory as well.
+
+Appendix~\ref{apx:smoothness_kernel_field_trafo} asserts that our kernel field transforms and $\GM$-convolutions are well defined if the kernel field is smooth and consists of compactly supported kernels.
+Well-definedness means here that the integrals exist and that the resulting feature fields are smooth.
+
+Finally, Appendix~\ref{apx:regular_field_scalar_GM} argues that feature fields that transform according to the regular representation of the structure group $G$~are equivalent to scalar fields on the $G$-structure.
+This is relevant since some models, specifically group convolutions, take this viewpoint.

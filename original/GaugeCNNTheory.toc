@@ -1,0 +1,257 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {paragraph}{Part\nobreakspace {}\ref {part:local_theory}:}{7}{section*.6}
+\contentsline {paragraph}{Part\nobreakspace {}\ref {part:bundle_theory}:}{8}{section*.7}
+\contentsline {paragraph}{Part\nobreakspace {}\ref {part:literature_review}:}{8}{section*.8}
+\contentsline {paragraph}{Appendix:}{9}{section*.9}
+\contentsline {section}{\numberline {2}Overview and visual intuition}{10}{section.2}
+\contentsline {subsubsection}{\numberline {2.1.1}\textit {G}-structures}{11}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}\textit {GM}-coordinate independent networks}{12}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}\textit {GM}-coordinate independent convolutions}{14}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.2.1}Isometry invariant kernel fields}{16}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Isometry equivariance of \textit {GM}-convolutions}{17}{subsubsection.2.2.2}
+\contentsline {paragraph}{Isometry invariant \textit {G}-structures:}{17}{section*.17}
+\contentsline {paragraph}{Isometry induced gauge transformations:}{18}{section*.19}
+\contentsline {subsubsection}{\numberline {2.2.3}Diffeomorphisms, isometries and affine transformations:}{18}{subsubsection.2.2.3}
+\contentsline {part}{I\hspace {1em}An introduction to coordinate independent CNNs}{21}{part.1}
+\etoc@startlocaltoc {2}
+\contentsline {section}{\numberline {3}Coordinate independent feature fields}{22}{section.3}
+\etoc@startlocaltoc {3}
+\contentsline {subsection}{\numberline {3.1}Gauges, gauge transformations and \textit {G}-structures}{22}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Tangent spaces and reference frames}{22}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Coordinate independent functions on tangent spaces}{26}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Structure groups, \textit {G}-structures and \textit {G}-atlases}{28}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Coordinate independent feature vector fields}{30}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Individual feature vector fields}{30}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Stacked feature fields and coordinate independent feature spaces}{33}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Parallel transport of feature vectors}{34}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Tangent vector transporters}{34}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Feature vector transporters}{36}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Compatibility of connections and \textit {G}-structures}{36}{subsubsection.3.3.3}
+\contentsline {subsection}{\numberline {3.4}Isometry actions and induced gauge transformations}{37}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Pushforward of tangent vectors}{38}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Pushforward of reference frames and symmetries of the \textit {G}-structure}{39}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}Pushforward of feature vectors}{39}{subsubsection.3.4.3}
+\contentsline {section}{\numberline {4}Coordinate independent networks and \textit {GM}-convolutions}{40}{section.4}
+\etoc@startlocaltoc {4}
+\contentsline {subsection}{\numberline {4.1}Pointwise gauge equivariant operations}{41}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Gauge equivariant \unhbox \voidb@x \hbox {${1\kern -2.65pt\times \kern -3pt1}$-convolutions}}{41}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Gauge equivariant bias summation}{43}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Gauge equivariant nonlinearities}{44}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}Kernel field transforms and \textit {GM}-convolutions}{45}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}A local observer's view on feature fields}{45}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Coordinate independent kernels and kernel field transforms}{47}{subsubsection.4.2.2}
+\contentsline {paragraph}{Coordinate independent kernels:}{47}{section*.34}
+\contentsline {paragraph}{Coordinate independent kernel field transforms:}{49}{section*.36}
+\contentsline {subsubsection}{\numberline {4.2.3}\textit {GM}-convolutions and \textit {G}-steerable kernels}{50}{subsubsection.4.2.3}
+\contentsline {paragraph}{Convolutional weight sharing:}{50}{section*.37}
+\contentsline {paragraph}{\textit {GM}-coordinate independent convolutions:}{52}{section*.39}
+\contentsline {subsection}{\numberline {4.3}Isometry equivariance}{54}{subsection.4.3}
+\contentsline {paragraph}{Invariant kernel fields:}{56}{section*.42}
+\contentsline {paragraph}{Homogeneous spaces:}{56}{section*.43}
+\contentsline {paragraph}{Diffeomorphism equivariance:}{56}{section*.44}
+\contentsline {paragraph}{Affine equivariance:}{57}{section*.45}
+\contentsline {section}{\numberline {5}Toy model: reflection equivariant M{\"o}bius convolutions}{57}{section.5}
+\etoc@startlocaltoc {5}
+\contentsline {subsection}{\numberline {5.1}Geometry of the M\"obius strip}{58}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Orientation independent feature fields}{60}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Orientation independent convolutional networks}{61}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Orientation independent bias summation}{61}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Orientation independent nonlinearities}{62}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Orientation independent convolutions}{63}{subsubsection.5.3.3}
+\contentsline {subsection}{\numberline {5.4}Numerical implementation and evaluation of M\"obius convolutions}{66}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Numerical implementation}{66}{subsubsection.5.4.1}
+\contentsline {paragraph}{Feature spaces:}{66}{section*.49}
+\contentsline {paragraph}{Bias summation:}{66}{section*.51}
+\contentsline {paragraph}{Nonlinearities:}{67}{section*.52}
+\contentsline {paragraph}{\textit {GM}-convolutions:}{67}{section*.53}
+\contentsline {paragraph}{Pooling:}{69}{section*.54}
+\contentsline {paragraph}{Unit tests:}{69}{section*.55}
+\contentsline {subsubsection}{\numberline {5.4.2}Empirical evaluation}{69}{subsubsection.5.4.2}
+\contentsline {part}{II\hspace {1em}Theory of coordinate independent CNNs}{73}{part.2}
+\etoc@startlocaltoc {6}
+\contentsline {section}{\numberline {6}Associated bundles and coordinate free feature fields}{73}{section.6}
+\contentsline {subsection}{\numberline {6.1}A brief introduction to fiber bundles}{74}{subsection.6.1}
+\contentsline {paragraph}{Fiber bundles in general:}{74}{section*.59}
+\contentsline {paragraph}{Vector bundles:}{76}{section*.60}
+\contentsline {paragraph}{\textit {G}-bundles}{77}{section*.61}
+\contentsline {paragraph}{Associated \textit {G}-bundles:}{77}{section*.63}
+\contentsline {paragraph}{Principal \textit {G}-bundles:}{78}{section*.64}
+\contentsline {paragraph}{Sections and fields:}{79}{section*.65}
+\contentsline {paragraph}{Bundle morphisms:}{79}{section*.66}
+\contentsline {subsection}{\numberline {6.2}The tangent bundle \textit {TM} and frame bundle \textit {FM}}{80}{subsection.6.2}
+\contentsline {paragraph}{Tangent bundle \textit {TM}:}{80}{section*.67}
+\contentsline {paragraph}{Frame bundle \textit {FM}:}{81}{section*.69}
+\contentsline {paragraph}{\textit {TM} as GL(\textit {d})-associated vector bundle (\textit {FM}$\bm {\times \mathds {R}^d)/}$GL(\textit {d})\tmspace +\thinmuskip {.1667em}:}{82}{section*.70}
+\contentsline {subsection}{\numberline {6.3}\textit {G}-structures \textit {GM} and associated feature vector bundles $\mathcal {A}$}{83}{subsection.6.3}
+\contentsline {paragraph}{\textit {G}\hspace {.5pt}-\hspace {.5pt}structures \textit {GM}:}{83}{section*.71}
+\contentsline {paragraph}{\textit {TM} as \textit {G}-associated vector bundle (\textit {GM}$\bm {\times \mathds {R}^d)/}$\textit {G}\tmspace +\thinmuskip {.1667em}:}{85}{section*.72}
+\contentsline {paragraph}{Associated feature vector bundles $\bm {\mathcal {A}}$:}{85}{section*.73}
+\contentsline {paragraph}{Associated feature vector field and feature spaces:}{86}{section*.74}
+\contentsline {subsection}{\numberline {6.4}Local bundle trivializations of \textit {TM}, \textit {FM}, \textit {GM} and $ \mathcal {A}$}{86}{subsection.6.4}
+\contentsline {paragraph}{Trivializations of \textit {TM}:}{86}{section*.75}
+\contentsline {paragraph}{Induced trivializations of \textit {FM} and frame fields:}{87}{section*.77}
+\contentsline {paragraph}{\textit {G}-atlas induced \textit {G}-structure \textit {GM}:}{89}{section*.79}
+\contentsline {paragraph}{Induced trivializations of associated bundles $\mathcal {A}$:}{90}{section*.80}
+\contentsline {paragraph}{Summarizing remarks:}{92}{section*.82}
+\contentsline {subsection}{\numberline {6.5}Parallel transporters on associated bundles}{92}{subsection.6.5}
+\contentsline {paragraph}{Transport on \textit {TM}:}{93}{section*.83}
+\contentsline {paragraph}{Transport on \textit {FM}:}{93}{section*.84}
+\contentsline {paragraph}{Compatibility of connections and \textit {G}-structures:}{94}{section*.85}
+\contentsline {paragraph}{Transport on \textit {GM}:}{94}{section*.86}
+\contentsline {paragraph}{Transport on $\bm {\mathcal {A}}$:}{95}{section*.87}
+\contentsline {section}{\numberline {7}Coordinate free kernel field transforms and \textit {GM}-convolutions}{96}{section.7}
+\etoc@startlocaltoc {7}
+\contentsline {subsection}{\numberline {7.1}${1\kern -2.7pt\times \kern -2.9pt1}$ \textit {GM}-convolutions}{96}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}${1\kern -2.7pt\times \kern -2.9pt1}$ \textit {GM}-convolutions as vector bundle \textit {M}-morphisms}{97}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}${1\kern -2.7pt\times \kern -2.9pt1}$ \textit {GM}-convolutions as homomorphism bundle sections}{98}{subsubsection.7.1.2}
+\contentsline {paragraph}{Summarizing remarks:}{100}{section*.90}
+\contentsline {subsection}{\numberline {7.2}Kernel field transforms and \textit {GM}-convolutions}{101}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Kernel fields}{101}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Kernel field transforms and \textit {GM}-convolutions}{103}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}Kernel field transforms and \textit {GM}-convolutions in local coordinates}{106}{subsubsection.7.2.3}
+\contentsline {section}{\numberline {8}Isometry equivariance}{109}{section.8}
+\etoc@startlocaltoc {8}
+\contentsline {subsection}{\numberline {8.1}Isometries and their action on manifolds, bundles and fields}{110}{subsection.8.1}
+\contentsline {subsubsection}{\numberline {8.1.1}Isometry groups}{111}{subsubsection.8.1.1}
+\contentsline {subsubsection}{\numberline {8.1.2}Isometry action on fiber bundles}{111}{subsubsection.8.1.2}
+\contentsline {paragraph}{Isometry action on the tangent bundle \textit {TM}:}{112}{section*.94}
+\contentsline {paragraph}{Isometry action on the frame bundle \textit {FM}:}{112}{section*.95}
+\contentsline {paragraph}{Isometry action on \textit {G}-structures \textit {GM}:}{113}{section*.96}
+\contentsline {paragraph}{Isometry action on associated vector bundles $\mathcal {A}$:}{114}{section*.99}
+\contentsline {paragraph}{Isometry action on feature fields:}{116}{section*.100}
+\contentsline {subsubsection}{\numberline {8.1.3}Isometry action in local coordinates}{116}{subsubsection.8.1.3}
+\contentsline {paragraph}{Pushforward on \textit {TM} in coordinates:}{117}{section*.101}
+\contentsline {paragraph}{Pushforward on \textit {FM} in coordinates:}{117}{section*.102}
+\contentsline {paragraph}{Pushforward on \textit {GM} in coordinates:}{119}{section*.103}
+\contentsline {paragraph}{Pushforward on $\mathcal {A}$ in coordinates:}{120}{section*.104}
+\contentsline {subsubsection}{\numberline {8.1.4}Commutativity of isometry actions with the exponential map and transporters}{121}{subsubsection.8.1.4}
+\contentsline {paragraph}{Isometries and the exponential map:}{121}{section*.105}
+\contentsline {paragraph}{Isometries and parallel transporters:}{121}{section*.107}
+\contentsline {paragraph}{Isometries and transporter pullbacks of feature fields:}{122}{section*.108}
+\contentsline {subsection}{\numberline {8.2}Isometry equivariance of kernel field transforms and \textit {GM}-convolutions}{123}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Isometry equivariance of general kernel field transforms}{124}{subsubsection.8.2.1}
+\contentsline {subsubsection}{\numberline {8.2.2}Isometry equivariance of \textit {GM}-convolutions}{126}{subsubsection.8.2.2}
+\contentsline {subsection}{\numberline {8.3}Quotient kernel fields}{129}{subsection.8.3}
+\contentsline {subsubsection}{\numberline {8.3.1}Isometry induced quotient spaces}{130}{subsubsection.8.3.1}
+\contentsline {paragraph}{Manifold quotients:}{130}{section*.110}
+\contentsline {paragraph}{Bundle quotients:}{131}{section*.112}
+\contentsline {subsubsection}{\numberline {8.3.2}Quotient representative kernel fields and stabilizer constraints}{133}{subsubsection.8.3.2}
+\contentsline {paragraph}{Reconstruction isometries:}{133}{section*.114}
+\contentsline {paragraph}{Quotient representative kernel fields:}{135}{section*.115}
+\contentsline {paragraph}{Relation to \emph {GM}-convolutions:}{138}{section*.116}
+\contentsline {part}{III\hspace {1em}A literature review on coordinate independent CNNs}{140}{part.3}
+\etoc@startlocaltoc {9}
+\contentsline {paragraph}{Discretizations of manifolds and feature fields:}{142}{section*.119}
+\contentsline {paragraph}{\textit {G}-structures \textit {GM} and structure groups \textit {G}:}{143}{section*.120}
+\contentsline {paragraph}{\textit {G}-compatible connections:}{143}{section*.121}
+\contentsline {paragraph}{Transporter pullbacks and alternative projections to $\bm {T_{\mkern -1.5mu p}\mkern -.5muM}$:}{144}{section*.122}
+\contentsline {paragraph}{\textit {G}-representations and nonlinearities:}{144}{section*.123}
+\contentsline {paragraph}{\textit {G}-steerable kernel spaces:}{144}{section*.124}
+\contentsline {section}{\numberline {9}Euclidean coordinate independent CNNs}{145}{section.9}
+\etoc@startlocaltoc {10}
+\contentsline {subsection}{\numberline {9.1}Classical formulation of $G$-steerable CNNs on $\mathbb {R}^d$}{146}{subsection.9.1}
+\contentsline {paragraph}{Euclidean steerable CNNs:}{147}{section*.126}
+\contentsline {paragraph}{Relation to Euclidean \textit {GM}-convolutions:}{148}{section*.127}
+\contentsline {subsection}{\numberline {9.2}Affine geometry of Euclidean spaces $\mathbb {E}_d$}{149}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Affine charts and Aff(\textit {G})-atlases}{150}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Induced \textit {G}-atlases and \textit {G}-structures}{150}{subsubsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.3}Coordinate free affine transformations}{153}{subsubsection.9.2.3}
+\contentsline {subsection}{\numberline {9.3}Affine group equivariant CNNs on Euclidean spaces $\mathbb {E}_d$}{155}{subsection.9.3}
+\contentsline {paragraph}{Recovering conventional convolutions on $\pmb {\mathbb {R}^d}$:}{155}{section*.130}
+\contentsline {paragraph}{Affine group equivariance}{156}{section*.131}
+\contentsline {subsection}{\numberline {9.4}Euclidean CNNs in the literature}{158}{subsection.9.4}
+\contentsline {paragraph}{Irrep features:}{159}{section*.132}
+\contentsline {paragraph}{Regular features and group convolutions:}{159}{section*.133}
+\contentsline {paragraph}{Regular to scalar and vector pooling:}{160}{section*.134}
+\contentsline {paragraph}{Quotient features:}{161}{section*.135}
+\contentsline {paragraph}{Induced representations:}{161}{section*.136}
+\contentsline {section}{\numberline {10}Rotation equivariant CNNs on punctured Euclidean spaces}{161}{section.10}
+\contentsline {section}{\numberline {11}Spherical coordinate independent CNNs}{169}{section.11}
+\etoc@startlocaltoc {11}
+\contentsline {subsection}{\numberline {11.1}Geometry of the 2-sphere $S^2$}{171}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Fully rotation equivariant spherical CNNs}{174}{subsection.11.2}
+\contentsline {paragraph}{Spherical \textit {GM}-convolutions:}{174}{section*.148}
+\contentsline {paragraph}{Spherical graph convolutions:}{175}{section*.149}
+\contentsline {paragraph}{Spherical convolutions with kernels on $\bm {S^2}$:}{176}{section*.150}
+\contentsline {subsection}{\numberline {11.3}Azimuthal rotation equivariant spherical CNNs on cylindrical topologies}{179}{subsection.11.3}
+\contentsline {subsection}{\numberline {11.4}Icosahedral approximations of spherical CNNs}{184}{subsection.11.4}
+\contentsline {paragraph}{Icosahedral geometry:}{184}{section*.155}
+\contentsline {paragraph}{Icosahedral \textit {G}-structures:}{185}{section*.157}
+\contentsline {paragraph}{Implementations:}{186}{section*.159}
+\contentsline {section}{\numberline {12}Coordinate independent CNNs on general surfaces}{189}{section.12}
+\etoc@startlocaltoc {12}
+\contentsline {paragraph}{Surface CNNs beyond \textit {GM}-convolutions:}{189}{section*.160}
+\contentsline {subsection}{\numberline {12.1}Geometry of embedded surfaces}{190}{subsection.12.1}
+\contentsline {subsubsection}{\numberline {12.1.1}Classical differential geometry of embedded surfaces}{191}{subsubsection.12.1.1}
+\contentsline {subsubsection}{\numberline {12.1.2}Discretized geometry of surface meshes}{192}{subsubsection.12.1.2}
+\contentsline {paragraph}{Topology, geometry and embedding of triangle meshes:}{193}{section*.162}
+\contentsline {paragraph}{Tangent spaces and vector fields:}{195}{section*.163}
+\contentsline {paragraph}{Riemannian metric and isometries:}{196}{section*.164}
+\contentsline {paragraph}{Connections, transporters and geodesics on triangle meshes:}{196}{section*.165}
+\contentsline {subsection}{\numberline {12.2}Rotation-steerable surface convolutions}{199}{subsection.12.2}
+\contentsline {paragraph}{General remarks and overview:}{199}{section*.167}
+\contentsline {paragraph}{Harmonic Surface Networks:}{200}{section*.168}
+\contentsline {paragraph}{Multi Directional Geodesic CNNs:}{201}{section*.170}
+\contentsline {paragraph}{Parallel Frame CNNs:}{202}{section*.171}
+\contentsline {paragraph}{Gauge equivariant Mesh CNNs:}{203}{section*.174}
+\contentsline {paragraph}{Geodesic CNNs:}{204}{section*.175}
+\contentsline {paragraph}{ZerNet:}{205}{section*.176}
+\contentsline {paragraph}{TextureNet:}{206}{section*.177}
+\contentsline {subsection}{\numberline {12.3}\{\textit {e}\}-steerable surface convolutions}{206}{subsection.12.3}
+\contentsline {paragraph}{Geodesic MoNets:}{207}{section*.179}
+\contentsline {paragraph}{3DMCNN:}{207}{section*.180}
+\contentsline {paragraph}{Parallel Transport Convolutions:}{207}{section*.181}
+\contentsline {paragraph}{Tangent convolutions:}{209}{section*.182}
+\contentsline {paragraph}{NPTC-net:}{210}{section*.183}
+\contentsline {paragraph}{Cross-atlas convolutions:}{210}{section*.184}
+\contentsline {part}{IV\hspace {1em}Conclusion}{212}{part.4}
+\contentsline {paragraph}{Summary:}{212}{section*.185}
+\contentsline {paragraph}{Outlook:}{213}{section*.186}
+\contentsline {part}{V\hspace {1em}Appendix}{216}{part.5}
+\contentsline {section}{\numberline {A}Relation to the coordinate chart formalism of differential geometry}{216}{appendix.A}
+\etoc@startlocaltoc {13}
+\contentsline {subsection}{\numberline {A.1}Tangent spaces, cotangent spaces and dual bases}{217}{subsection.A.1}
+\contentsline {subsubsection}{\numberline {A.1.1}Tangent spaces in terms of directional derivatives}{217}{subsubsection.A.1.1}
+\contentsline {subsubsection}{\numberline {A.1.2}Cotangent spaces}{217}{subsubsection.A.1.2}
+\contentsline {subsubsection}{\numberline {A.1.3}Dual bases}{218}{subsubsection.A.1.3}
+\contentsline {subsection}{\numberline {A.2}Differentials, gradients and Jacobians}{218}{subsection.A.2}
+\contentsline {paragraph}{Differentials in general:}{218}{section*.189}
+\contentsline {paragraph}{Gradients:}{219}{section*.190}
+\contentsline {paragraph}{Jacobians:}{220}{section*.191}
+\contentsline {subsection}{\numberline {A.3}Chart induced coordinate bases}{220}{subsection.A.3}
+\contentsline {subsubsection}{\numberline {A.3.1}Charts and induced coordinate bases}{220}{subsubsection.A.3.1}
+\contentsline {paragraph}{Coordinate bases for $\bm {T_{\mkern -1.5mu p}\mkern -.5muM}$:}{220}{section*.192}
+\contentsline {paragraph}{Dual coordinate bases for $\bm {T_{\mkern -1.5mu p}^{\mkern -0mu *}\mkern -1muM}$:}{221}{section*.193}
+\contentsline {paragraph}{Chart differentials as canonical local trivialization:}{221}{section*.194}
+\contentsline {subsubsection}{\numberline {A.3.2}Chart transition maps and induced gauge transformations}{222}{subsubsection.A.3.2}
+\contentsline {paragraph}{Transformation of tangent coordinate bases:}{222}{section*.195}
+\contentsline {paragraph}{Transformation of cotangent coordinate bases:}{223}{section*.196}
+\contentsline {paragraph}{Transformation of chart differentials:}{223}{section*.197}
+\contentsline {paragraph}{Transformation of vector coefficients:}{224}{section*.198}
+\contentsline {subsection}{\numberline {A.4}Coordinate bases as local bundle trivializations}{224}{subsection.A.4}
+\contentsline {subsubsection}{\numberline {A.4.1}Correspondences to pointwise trivializations of $ T_{\mkern -1.5mu p}\mkern -.5muM$}{224}{subsubsection.A.4.1}
+\contentsline {paragraph}{Gauges and chart differentials:}{224}{section*.199}
+\contentsline {paragraph}{Vector components:}{225}{section*.200}
+\contentsline {paragraph}{Induced reference frames:}{225}{section*.201}
+\contentsline {subsubsection}{\numberline {A.4.2}Chart induced local trivializations of $ \pi _{T\mkern -1.5muM}^{-1}(U) $}{225}{subsubsection.A.4.2}
+\contentsline {subsection}{\numberline {A.5}\textit {G}-structures and vielbein fields}{226}{subsection.A.5}
+\contentsline {section}{\numberline {B}Coordinate independent weight sharing and \textit {G}-steerable kernels}{230}{appendix.B}
+\contentsline {section}{\numberline {C}Integration over tangent spaces}{231}{appendix.C}
+\contentsline {section}{\numberline {D}Equivariant convolutions on homogeneous spaces}{232}{appendix.D}
+\contentsline {paragraph}{Homogeneous spaces:}{233}{section*.205}
+\contentsline {paragraph}{Group convolutions and group correlations:}{235}{section*.206}
+\contentsline {paragraph}{\citet {Kondor2018-GENERAL} :}{236}{section*.207}
+\contentsline {paragraph}{\citet {bekkers2020bspline} :}{237}{section*.208}
+\contentsline {paragraph}{Relation to \emph {GM}-convolutions:}{238}{section*.209}
+\contentsline {paragraph}{Feature fields and induced representations:}{239}{section*.210}
+\contentsline {paragraph}{Intertwiners between induced representations and steerable kernels:}{241}{section*.211}
+\contentsline {paragraph}{Relation to \textit {GM}-convolutions:}{243}{section*.212}
+\contentsline {section}{\numberline {E}Quotient representative kernel fields -- proofs}{245}{appendix.E}
+\contentsline {paragraph}{Part 1) -- Constructing \textit {H}, \textit {HM} and Isom\textsubscript {\textit {HM}}:}{248}{section*.213}
+\contentsline {paragraph}{Part 2) -- Equivalence of $\bm {\mathcal {I}}$-equivariant kernel field transforms and \textit {HM}-convolutions:}{250}{section*.214}
+\contentsline {section}{\numberline {F}Spherical steerable convolutions as \textit {GM}-convolutions -- proofs}{251}{appendix.F}
+\contentsline {section}{\numberline {G}Existence and smoothness of kernel field transforms}{255}{appendix.G}
+\contentsline {paragraph}{Existence:}{255}{section*.215}
+\contentsline {paragraph}{Smoothness:}{255}{section*.216}
+\contentsline {section}{\numberline {H}Regular feature fields as scalar functions on \textit {G}-structure}{258}{appendix.H}

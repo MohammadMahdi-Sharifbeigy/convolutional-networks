@@ -1,0 +1,204 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection%
+    [\textit{G}-structures \textit{GM} and associated feature vector bundles \texorpdfstring{$\A$}{A}]%
+    {\textit{G}-structures \textit{GM} and associated feature vector bundles $\boldsymbol{\A}$}
+\label{sec:G_associated_bundles}
+
+
+We will now introduce $G$-structures $\GM$ as distinguished subsets of frames in $\FM$, which encode additional geometric structure on $M$ that is to be respected by coordinate independent CNNs.
+The tangent bundle is via a similar associated bundle construction to that in the last section reintroduced as an associated $G$-bundle.
+This approach can be generalized to construct any other associated $G$-bundle, which we use to define the feature vector bundles $\A$.
+All such constructed bundles are associated to each other, that is, they differ only in their fiber $F$ but share the same base space $M$, structure group $G$ and transition functions $g^{BA}$ between trivializing neighborhoods.
+The local trivializations of the bundles and their mutual gauge transformations are discussed in detail in the next Section~\ref{sec:bundle_trivializations}.
+
+
+
+
+
+
+\paragraph{\textit{G}\hspace{.5pt}-\hspace{.5pt}structures \textit{GM}:}
+As discussed in Section~\ref{sec:21_main} and Table~\ref{tab:G_structures}, it is often possible to work with a \emph{distinguished subset of reference frames} which are related by the action of a \emph{reduced structure group} $G \leq \GL{d}$.
+This is best understood by discussing a few examples before coming to a technical definition below.
+For instance, a restriction to orthonormal frames 
+\begin{align}
+    \OpM\ :=\ \pig\{ \big[e_{1},\dots,e_{d}\big]\, \pig|\ 
+    \{e_{1},\dots,e_{d}\}\ \text{is an \emph{orthonormal} basis of } \TpM\ \text{w.r.t.}\ \eta \pig\}\ \cong\ \O{d}
+\end{align}
+gives rise to a principal subbundle $\OM$ of $\FM$ with structure group $\O{d}$.
+Note that the orthonormality of reference frames is judged by the metric $\eta$ on $M$ -- different choices of metrics on a manifold therefore correspond to different subsets of preferred reference frames for the same structure group $\O{d}$.
+As a second example, consider a choice of orientation on an orientable manifold, which allows to specify a preferred notion of frames%
+\footnote{
+    Conversely, non-orientable manifolds do not allow for a reduction of structure group to $\operatorname{GL}^{\!+}\!(d)$.
+}
+\begin{align}
+    \operatorname{GL}^{\!+}_p\!M\ :=\ \pig\{ \big[e_{1},\dots,e_{d}\big]\, \pig|\ \{e_{1},\dots,e_{d}\}\ \text{is a \emph{positively oriented} basis of } \TpM \pig\}\ \cong\ \operatorname{GL}^{\!+}\!(d)
+\end{align}
+and a corresponding principal subbundle $\operatorname{GL}^{\!+}\!(d)M$ of $\FM$ with structure group $\operatorname{GL}^{\!+}\!(d)$.
+Again, the two different choices of orientations correspond to two different choices of subbundles of accordingly oriented frames.
+Combining both requirements for the orthonormality and right-handedness of frames results in an $\SO{d}$-structure with fibers
+\begin{align}
+    \SOpM\ :=\ \pig\{ \big[e_{1},\dots,e_{d}\big]\, \pig|\ 
+    \{e_{1},\dots,e_{d}\}\ \text{is a \emph{positively oriented}, \emph{orthonormal} basis of } \TpM \pig\}\ \cong\ \SO{d} \,,
+\end{align}
+Fig.~\ref{fig:frame_bundle} can be thought of as showing an $\SO{2}$-structure since only right-handed, orthonormal frames are shown (the typical fiber $\GL{d}$ should then be labeled $\SO2$).
+Different choices of $\SO{d}$-structures correspond either to an opposite handedness of frames, sticking to the same notion of orthonormality, or to a different choice of metric (or both).
+The exact same pattern repeats for volume forms $\omega$ (on orientable manifolds $M$):
+they allow to specify a preferred notion of frames
+\begin{align}
+    \operatorname{SL}_p\!M\ :=\ \pig\{ \big[e_{1},\dots,e_{d}\big]\, \pig|\ \{e_{1},\dots,e_{d}\}\ \text{is a basis of }\, \TpM\ \text{with \emph{unit volume} w.r.t.}\ \omega \pig\}\ \cong\ \operatorname{SL}(d)
+\end{align}
+and thus principal subbundles $\operatorname{SL}\!M$ of $\FM$ with structure group $\operatorname{SL}(d)$.
+The specific set of frames which are preferred depends here on the specific choice of volume form.
+As a last example, consider $\{e\}$-structures, corresponding to a trivial structure group $G=\{e\}$ and therefore consisting of one single frame at each point~$p$.
+By definition, $\{e\}$-structures are equivalent to global (smooth) frame fields $\sigma \in \Gamma(\FM)$:
+\begin{align}
+    \epM\ :=\ \pig\{ \big[e_{1},\dots,e_{d}\big] = \sigma(p) \pig\}\ \cong\ \{e\}
+\end{align}
+They do therefore only exist on trivial manifolds.
+Figs.~\ref{fig:frame_field_automorphism_1} and~\ref{fig:frame_field_automorphism_2} visualize two different choices of $\{e\}$-structures~$\eM$ on~$M=\R^2$.
+
+
+All of these examples represent specific choices of $G$\emph{-structures} $\GM$ on $M$.
+In general, a $G$-structure on~$M$ is a principal $G$-\emph{subbundle} of $\FM$, that is, a ``smoothly varying'' choice of \emph{subsets} $\GpM \subseteq \FpM$ which are right $G$-torsors w.r.t. $\lhd$ for any $p\in M$ \cite{sternberg1999lectures,piccione2006theory,crainic2013GStructuresExamples}.%
+\footnote{\label{footnote:GpM_G_orbit_in_FpM}
+    As $\FpM$ is a right $\GL{d}$-torsor, any $G$-orbit $\GpM$ in $\FpM$ is automatically guaranteed to be a right $G$-torsor.
+}
+The smoothness can hereby be formalized by requiring that around each frame $[e_i]_{i=1}^d \in \GpM$ there exists a neighborhood $U$ of $p$ on which a smooth section $\sigma: U \mapsto \piGM^{-1}(U) \subseteq GM$ with $\sigma(p) = [e_i]_{i=1}^d$ exists.
+The projection
+\begin{align}
+    \piGM :=\, \piFM\mkern-2mu \big|_{\scalebox{.6}{$\GM$}}:\ \ \GM \to M
+\end{align}
+of $\GM$ is hereby simply given by the restriction of the projection map of $\FM$ to $\GM$.
+Together with the restriction
+\begin{align}\label{eq:rightaction_GM}
+    \lhd:\ \GM\times G \to \GM, \quad
+    \big( [e_i]_{i=1}^d,\ g \big)
+    \ \mapsto\ 
+    [e_i]_{i=1}^d\! \lhd g \ :=\ 
+    \left[ \sum\nolimits_j e_j\, g_{ji} \right]_{i=1}^d
+\end{align}
+of the right action of $\GL{d}$ on $\FM$ in Eq.~\eqref{eq:rightaction_FM} to an action of $G \leq \GL{d}$ on $\GM \subseteq \FM$, this makes the $G$-structure to a \emph{principal $G$-bundle} $\GM\!\xrightarrow{\piGM}\!M$.
+However, it is important to note that there are \emph{multiple choices} of such subbundles, corresponding to different $G$-structures for the same structure group~$G$; compare this claim with the examples above.
+As discussed earlier, the topology of a bundle might obstruct the reduction to a structure group~$G$, and thus the existence of a corresponding $G$-structure $\GM$.
+
+
+While the above definition of $G$-structures would be sufficient, it is instructive to briefly review some alternative, equivalent definitions.
+The claim that $\GM$ is a principal $G$-\emph{subbundle} of $\FM$ is made precise by defining it as a tuple $(P, \mathscr{E})$ consisting of a choice of an (also non-unique) principal $G$-bundle $P$ over $M$ together with a smooth, right $G$-equivariant embedding $\mathscr{E}: P \to \FM$ (over $M$).%
+\footnote{
+    The embedding is a principal $G$-bundle $M$-morphism as introduced in Section~\ref{sec:fiber_bundles_general} with the group homomorphism $\theta:G\to\GL{d}$ being the canonical inclusion of the subgroup $G\leq\GL{d}$ into $\GL{d}$.
+}
+This is visualized by the following diagram, which is required to commute for any $g\in G$:
+\begin{equation}\label{cd:GM_def_embedding}
+\begin{tikzcd}[row sep=3.em, column sep=2.5em]
+    P
+        \arrow[rr, "\mathscr{E}", hook]
+    && \FM
+    \\
+    P
+        \arrow[rr, "\mathscr{E}", hook]
+        \arrow[u, "\lhd_{\overset{}{\mkern-2muP}}\mkern2mu g\:"]
+        \arrow[dr, "\pi_P"']
+    && \FM
+        \arrow[u, "\:\lhd\mkern2mu g"']
+        \arrow[dl, "\piFM"]
+    \\
+    & M
+\end{tikzcd}
+\end{equation}
+Different subsets of preferred frames correspond in this viewpoint to different choices of embeddings ${\GM = \mathscr{E}(P)}$ of $P$ in $\FM$.
+$G$-structures are furthermore equivalent to sections of the form $s: M \mapsto \FM/G$ with $\GM = s(M)$, which emphasizes that $\GpM = s(p) \in \FpM/G$ is indeed a choice of $G$-orbit in $\FpM$ as stated in footnote~\ref{footnote:GpM_G_orbit_in_FpM}.
+Yet another definition of $G$-structures is in terms of (equivalence classes of) $G$-atlases~\cite{wendlLectureNotesBundles2008}.
+As this is the viewpoint which might be taken in an implementation of $\GM$-convolutions, we discuss it in more detail in the following Section~\ref{sec:bundle_trivializations}.
+For the interested reader we want to mention that $G$-structures are a specific case of the more general concept of a \emph{reduction (or lift) of structure groups}~\cite{sternberg1999lectures,piccione2006theory,crainic2013GStructuresExamples}.
+
+
+
+$G$-structures are of pivotal importance for the theory of $\GM$-convolutions.
+The particular choice of $G$-structure determines the specific set of reference frames over which the $G$-steerable template kernel is shared.
+By the gauge equivariance of the kernels, $\GM$-convolutions are guaranteed to respect the $G$-structure, i.e. to be $\GM$-\emph{coordinate independent}.
+As derived in Section~\ref{sec:isometry_intro}, the isometries with respect to which a $\GM$-convolution is equivariant are exactly those which preserve the $G$-structure (i.e. those which induce automorphisms of~$\GM$).
+
+
+
+
+
+
+
+
+\paragraph{\textit{TM} as \textit{G}-associated vector bundle (\textit{GM}$\boldsymbol{\times \mathds{R}^d)/}$\textit{G}\,:}
+
+Given a $G$-structure $\GM$, one can adapt the associated $\GL{d}$-bundle construction of $\TM$ from $\FM$ in Section~\ref{sec:GL_associated_bundles} to a similar associated $G$-bundle construction of $\TM$ based on $\GM$.
+Instead of expressing tangent vectors relative to general frames in $\FM$, they will thereby be expressed relative to the distinguished frames in~$\GM$ and the quotient is taken w.r.t. the reduced structure group~$G$ instead of~$\GL{d}$.
+The resulting bundle is by design associated to $\GM$ (or to $\FM$ with a $G$-atlas, which is equivalent as explained in the next section) and therefore has transition functions which take values in~$G$.
+The restriction of $\chi$ in Eq.~\eqref{eq:A_TM_isomorphism} to $(\GM\times\R^d)/G$ yields a vector bundle isomorphism
+\begin{align}
+    \TM\, \cong\, (\GM\times\R^d)/G \,.
+\end{align}
+While all three bundles $\TM$, $(\FM\times\R^d)/\GL{d}$ and $(\GM\times\R^d)/G$ are thus isomorphic \emph{as vector bundles}, they are only isomorphic as associated $G$-bundles if $\TM$ and $(\FM\times\R^d)/\GL{d}$ are endowed with a $G$-structure (or $G$-atlas), which is a-priori not the case.
+In contrast, the bundle $(\GM\times\R^d)/G$ comes with a $G$-structure by design.
+For a precise definition of associated $G$-bundle isomorphisms we refer to \cite{schullerGeometricalAnatomy2016}.
+
+
+
+
+
+
+
+
+
+\paragraph{Associated feature vector bundles $\boldsymbol{\A}$:}
+The associated $G$-bundle construction $(\GM\times\R^d)/G$ can be generalized to attach other fibers with other group actions to the $G$-structure $\GM$.
+Indeed, \emph{any} bundle associated to $\GM$ can be constructed in this way.
+Important examples in differential geometry are the cotangent bundle $\TsM$ with its typical fiber being the dual $\R^{d*}$ of $\R^d$, acted on by the dual action, or the $(r,s)$ tensor bundles $T^r_s\!M$ with fibers $\big(\R^d\big)^{\otimes r}\! \otimes\! \big(\R^{d*}\big)^{\otimes s}$ being acted on by the corresponding tensor product representation of~$G$.
+
+In the following we consider \emph{associated feature vector bundles} with feature vector coefficients $\R^c$ as typical fibers.
+Under gauge transformations, these fibers are acted on from the left by a multiplication with a group representation $\rho:G\to\GL{c}$, that is, Eq.~\eqref{eq:gauge_trafo_leftaction} is instantiated by $\blacktriangleright_\rho:\ {G\times\R^c \to \R^c,}\ \ {(g,\mathscr{f}) \mapsto \rho(g)\mathscr{f}}$.
+Similar to before, feature vector bundles are then constructed as a quotient
+\begin{align}\label{eq:associated_bundle_def}
+    \A\ :=\ (\GM\times\R^c)/\!\sim_{\!\rho}
+\end{align}
+with the equivalence relation $\sim_{\!\rho}$ here given by
+\begin{align}\label{eq:equiv_relation_A}
+    \big([e_i]_{i=1}^d,\, \mathscr{f} \mkern1mu\big)\ \sim_{\!\rho}\ 
+    \big([e_i]_{i=1}^d\!\lhd g^{-1},\ \rho(g) \mathscr{f} \mkern1mu\big) \qquad\forall g\in G.
+\end{align}
+The elements of $\A$ are the equivalence classes $\big[[e_i]_{i=1}^d,\ \mathscr{f}\big]$ of feature vector coefficients relative to reference frames and are therefore \emph{coordinate free}.
+A (well defined) projection map is again induced from the projection of the $G$-structure:
+\begin{align}\label{eq:associated_A_proj}
+    \piA: \A \to M,\ \ 
+    \big[[e_i]_{i=1}^d,\,\mathscr{f}\big] \mapsto \piGM \big( [e_i]_{i=1}^d \big)
+\end{align}
+Linear combinations on the fibers are defined in analogy to Eq.~\eqref{eq:associated_bdl_linear_combination}.
+Since such defined feature vector bundles are associated to $\GM$, their structure group is $G\leq\GL{d}$, as we will explicitly derive in the next Section~\ref{sec:bundle_trivializations}.%
+\footnote{
+    Strictly speaking, the transition functions will take values in $\rho(G) \leq \GL{c}$ instead of $G \leq \GL{d}$, however, since the resulting transitions are still $G$\emph{-compatible}, the term ``$G$-valued'' is usually adapted to include such cases~\cite{wendlLectureNotesBundles2008}.
+}
+Note that this definition includes tangent vector fields and scalar fields, which can of course be processed as feature fields, for $\rho(g)=g$ and $\rho(g)=1$, respectively.
+
+
+The construction of $\A$ as an associated $G$-bundle models $\GM$-coordinate independent feature vectors on~$M$:
+features $f_p \in \A$ are equivalently expressed relative to arbitrary frames in $\GM$, with feature coefficients in different coordinatizations being related via Eq.~\eqref{eq:equiv_relation_A}, but do not have a well defined coordinate expression relative to other frames.
+From an engineering viewpoint, this is reflected in the $G$-steerability of convolution kernels which ensures that measurements of features are performed \emph{relative} to frames in $\GM$ but allows to discriminate between patterns whose poses are not related by a $G$-valued gauge transformation in an \emph{absolute} sense.
+
+
+
+\paragraph{Associated feature vector field and feature spaces:}
+Smooth, coordinate free feature fields are defined as smooth global sections $f\in\Gamma(\A)$ of the feature vector bundles, that is, as smooth maps $f:M\to\A$ satisfying $\piA\circ f=\id_M$.
+As discussed before, such feature fields are guaranteed to exist since vector bundles always admit smooth global sections.
+In the following Section~\ref{sec:bundle_trivializations} we show how a local bundle trivialization over $U^A$ allows to represent $f$ by a field $f^A:U^A\to\R^c$ of feature vector coefficients.
+A different trivialization over $U^B$ will lead to a different coefficient field $f^B:U^B\to\R^c$ representing $f$ locally.
+From the transition maps between bundle trivializations it will follow that both coefficient fields are on the overlap $U^{AB}=U^A\cap U^B$ of their domains related by $f^B(p)=\rho\big(g_p^{BA}\big) f^A(p)$.
+The commutative diagram in Fig.~\ref{fig:trivialization_A_sections} visualizes the relations between feature vector fields and their local trivializations.
+
+
+The feature spaces of coordinate independent CNNs usually consist of multiple independent feature fields over the same base space.
+The bundle describing a feature space as a whole is the \emph{Whitney sum} $\bigoplus_i\A_i$ of the feature vector bundles $\A_i\xrightarrow{\scalebox{.85}{$\pi_{\scalebox{.6}{$\!\A_i$}}$}}M$ underlying its individual fields.
+As such it has the same base space $M$, a typical fiber $\bigoplus_i\R^{c_i} \cong \R^{\sum_i\!c_i}$ defined as direct sum of the individual fields' fibers and is equipped with the obvious projection map.
+It is associated to $\TM$, $\FM$, $\GM$ and the $\A_i$ as $G$-bundles and can therefore equivalently be defined as
+\begin{align}
+    \scalebox{1.1}{$\bigoplus$}_i\,\A_i\ \ \cong\,\ \left(\GM\times\R^{\sum_i\!c_i}\right)\!\!\Big/\!\!\sim_{\oplus_i\rho_i}
+\end{align}
+Note that the direct sum $\bigoplus_i\rho_i$ of representations $\rho_i$ defining $\A_i$ guarantees that the transition maps of $\bigoplus_i\A_i$ transform each individual field independently.
+The feature spaces are then defined as the spaces $\Gamma\!\left(\bigoplus_i\A_i\right)$ of global sections of the Whitney sum bundle.

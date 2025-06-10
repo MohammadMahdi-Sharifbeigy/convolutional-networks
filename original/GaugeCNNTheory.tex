@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage{arxiv} % arxiv.sty style file adapted from https://github.com/kourgeorge/arxiv-style
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{dsfont} % for doublestroke 1 (\mathbb{1} does not work)
+
+% for lowercase calligraphic letters f and v (used in def of associated bundles [p, v] and [p, f])
+% \usepackage{dutchcal} % replaces default uppercase mathcal !!!
+\usepackage[
+    scr=dutchcal, scrscaled=1.05,
+  ]{mathalfa} % adds dutchcal as \mathscr
+\usepackage{bm}
+\usepackage{phoenician}
+
+\usepackage{anyfontsize}
+
+\usepackage{mathtools}
+
+\usepackage{graphicx}
+
+\usepackage{float}
+
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\color{darkgray}\small}
+
+\usepackage{wrapfig}
+
+\usepackage{sidecap}
+
+\usepackage[font=small]{caption}
+\usepackage[font=small]{subcaption}
+
+\usepackage{booktabs}
+\usepackage{makecell} % multi-line cells in tabular
+\usepackage{diagbox}
+\usepackage{multirow}
+\newcounter{magicrownumbers} % row counter in tabular
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+
+\usepackage{pdflscape} % similar to lscape but additionally rotates pdf page
+
+\usepackage{enumitem}
+\setlist[description]{
+    labelwidth=0pt,
+    leftmargin=35pt, % overall indentation of list
+    itemindent=-20pt, % indentation of [title] relative to text
+    font=\normalfont\bfseries\rule[2.2pt]{2pt}{2pt}\space
+}
+
+\usepackage[table]{xcolor} % loads also »colortbl« (for \rowcolors)
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+
+\usepackage{tikz-cd}
+\tikzcdset{every label/.append style = {font = \small}}
+
+\usepackage{nicefrac}
+
+\usepackage{accents}
+
+\usepackage{afterpage}
+
+\usepackage{hyperref}
+
+% prevents section from appearing in table of contents via \tocless\section{...}
+% also breaks \label referencing !
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+% workaround for \label
+% usage: \toclesslab\section{SecName}{sec:SecLabel}
+\newcommand{\toclesslab}[3]{\bgroup\let\addcontentsline=\nocontentsline#1{#2\label{#3}}\egroup}
+
+\usepackage{etoc} % local table of concents for each section
+
+\usepackage[numbers]{natbib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% thmmarks necessary for the qed symbox, amsmath necessary for compatibility if thmmarks and amsmath are used together
+\usepackage[amsmath,thmmarks,thref,hyperref]{ntheorem}
+
+% needed to patch \listtheorems to same indent of theorem names
+% https://tex.stackexchange.com/questions/63726/align-the-names-in-listtheorems-ntheorem
+\makeatletter
+\def\thm@@thmline@name#1#2#3#4{%
+        \@dottedtocline{-2}{0em}{2.3em}%
+                   {\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+                   {#4}}
+\@ifpackageloaded{hyperref}{
+\def\thm@@thmline@name#1#2#3#4#5{%
+    \ifx\\#5\\%
+        \@dottedtocline{-2}{0em}{2.3em}%
+            {\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+            {#4}
+    \else
+        \ifHy@linktocpage\relax\relax
+            \@dottedtocline{-2}{0em}{2.3em}%
+                {\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+                {\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+        \else
+            \@dottedtocline{-2}{0em}{2.3em}%
+                {\hyper@linkstart{link}{#5}%
+                  {\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}\hyper@linkend}%
+                    {#4}%
+        \fi
+    \fi}
+}
+\makeatother
+\newlength\widesttheorem
+\AtBeginDocument{
+  \settowidth{\widesttheorem}{Proposition 10\quad}
+}
+
+\theoremstyle{plain}
+\theoremindent20pt 
+\theoremheaderfont{\normalfont\bfseries\hspace{-\theoremindent}}
+\theoremseparator{.}
+\theorembodyfont{\itshape}
+\theoremstyle{plain}
+\newtheorem{pro}{Proposition}[section]
+\newtheorem{lem}[pro]{Lemma}
+\newtheorem{cor}[pro]{Corollary}
+\newtheorem{thm}[pro]{Theorem}
+\newtheorem{dfn}[pro]{Definition}
+\newtheorem{exa}[pro]{Example}
+\newtheorem*{rem*}{Remark}
+
+\theoremheaderfont{\sc}\theorembodyfont{\upshape}
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\it\hspace{-\theoremindent}}
+\theoremseparator{:}
+\theoremsymbol{$\Box$}
+\newtheorem{proof}{Proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{custom_commands}
+
+\usepackage{sectsty}
+\partfont{\fontsize{16.2}{19.2}\bfseries\textsl}
+
+\renewcommand\part{%
+    \markboth{}{}\secdef\@part\@spart
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Coordinate Independent Convolutional Networks}
+\newcommand{\subtitle}{\\[1.25ex]
+    \fontsize{11.5}{13.8}\selectfont
+    Isometry and Gauge Equivariant Convolutions on Riemannian Manifolds
+}
+
+\date{}
+
+\author{%
+    Maurice Weiler \\
+    University of Amsterdam \\
+    \texttt{m.weiler.ml@gmail.com} \\
+    \And
+    Patrick Forré \\
+    University of Amsterdam \\
+    \texttt{p.d.forre@uva.nl} \\
+    \AND
+    Erik Verlinde \\
+    University of Amsterdam \\
+    \texttt{e.p.verlinde@uva.nl} \\
+    \And
+    Max Welling \\
+    University of Amsterdam, \\
+    Qualcomm AI Research \\
+    \texttt{m.welling@uva.nl} \\
+}
+
+
+\begin{document}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{-5ex}
+\input{chapters/00_abstract.tex}
+\newpage
+
+\input{chapters/10_intro.tex}
+\input{chapters/11_outline.tex}
+
+\input{chapters/20_visual_intro.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/P1_intro.tex}
+
+\input{chapters/30_local_intro.tex}
+\input{chapters/31_gauges.tex}
+\input{chapters/32_feature_fields.tex}
+\input{chapters/33_local_transport.tex}
+\input{chapters/34_isometries.tex}
+
+\input{chapters/40_local_gauge_cnns_intro.tex}
+\input{chapters/41_pointwise_operations.tex}
+\input{chapters/42_gauge_conv.tex}
+\input{chapters/43_isometry_equivariance.tex}
+
+\input{chapters/50_mobius_conv.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/P2_intro.tex}
+
+\input{chapters/60_bundles_intro.tex}
+\input{chapters/61_general_bundles.tex}
+\input{chapters/62_TM_FM_associated_GL.tex}
+\input{chapters/63_associated_G_bundles.tex}
+\input{chapters/64_trivializations.tex}
+\input{chapters/65_bundle_transport.tex}
+
+\input{chapters/70_global_conv_intro.tex}
+\input{chapters/71_global_onexone.tex}
+\input{chapters/72_GMconv.tex}
+
+\input{chapters/80_isom_intro.tex}
+\input{chapters/81_isom_action.tex}
+\input{chapters/82_isom_equivariance.tex}
+\input{chapters/83_quotient_kernel_fields.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/P3_intro.tex}
+
+\input{chapters/90_Euclidean_intro.tex}
+\input{chapters/91_Euclidean_steerable_Rd.tex}
+\input{chapters/92_Euclidean_affine_geom.tex}
+\input{chapters/93_Euclidean_GM_conv.tex}
+\input{chapters/94_Euclidean_literature.tex}
+
+\input{chapters/100_polar_intro.tex}
+\input{chapters/101_polar_Euc2_rot.tex}
+\input{chapters/102_polar_Euc2_logpolar.tex}
+\input{chapters/103_polar_Euc3.tex}
+
+\input{chapters/110_spherical_intro.tex}
+\input{chapters/111_spherical_geometry.tex}
+\input{chapters/112_spherical_SO3.tex}
+\input{chapters/113_spherical_SO2.tex}
+\input{chapters/114_spherical_ico.tex}
+
+\input{chapters/120_mesh_intro.tex}
+\input{chapters/121_mesh_geometry.tex}
+\input{chapters/122_mesh_SO2.tex}
+\input{chapters/123_mesh_e-steer.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\input{chapters/130_conclusions.tex}
+
+\newpage
+\appendix
+\mypart{Appendix}
+
+\input{chapters/apx01_coordinate_bases.tex}
+\input{chapters/apx02_kernel_figures.tex}
+\input{chapters/apx03_tangent_integral.tex}
+\input{chapters/apx04_homogeneous_conv.tex}
+\input{chapters/apx05_lifting_iso_proof.tex}
+\input{chapters/apx06_spherical_kernels.tex}
+\input{chapters/apx07_smoothness_kernel_field_trafo.tex}
+\input{chapters/apx08_regular_fields_as_GM_functions.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+
+\end{document}

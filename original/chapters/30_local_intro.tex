@@ -1,0 +1,24 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Coordinate independent feature fields}
+\label{sec:gauge_cnns_intro_local}
+
+The feature spaces of coordinate independent neural networks are spaces of feature vector fields.
+The goal of this section is to define such feature fields and their geometric properties.
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+Feature vectors are in practice represented relative to some reference frame and are characterized by their transformation laws when transitioning between different frames.
+Section~\ref{sec:21_main} begins therefore with a discussion of the coordinatization of tangent spaces.
+In particular, Section~\ref{sec:gauges_gauge_trafos} introduces gauges and gauge transformations of the tangent spaces as a formal way of describing choices of local reference frames and transformations between them.
+Section~\ref{sec:gauges_TpM_functions} explains how functions on tangent spaces are represented relative to different coordinatizations
+-- this introduces the idea of coordinate independent mappings, which we use later to define coordinate independent network layers.
+Section~\ref{sec:local_G-structure_G-atlas} defines $G$-structures and $G$-atlases.
+Coordinate independent feature fields and their gauge transformations are introduced in Section~\ref{sec:feature_fields}.
+While Section~\ref{sec:individual_fields} describes the construction of individual feature fields,
+Section~\ref{sec:stacked_fields} defines full feature spaces, consisting of multiple independent feature fields.
+Parallel transporters of feature vectors and their representation relative to different coordinatizations are introduced in Section~\ref{sec:transport_local}.
+Section~\ref{sec:isometries_local} discusses isometries and their action on geometric quantities like tangent vectors and feature vectors.

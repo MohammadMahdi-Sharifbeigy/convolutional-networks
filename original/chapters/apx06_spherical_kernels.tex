@@ -1,0 +1,218 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+\section{Spherical steerable convolutions as \textit{GM}-convolutions -- proofs}
+\label{apx:spherical_conv_main}
+
+
+This Section presents the proofs of Theorems~\ref{thm:spherical_kernel_space_iso} and~\ref{thm:spherical_conv_GM_conv} from Section~\ref{sec:spherical_CNNs_fully_equivariant} in the following two subsections.
+Together, these theorems assert that the $\Stab{n}$-steerable spherical convolution kernels by \citet{Cohen2019-generaltheory} are equivalent to certain $\Stab{n} \cong G$-steerable kernels, and that the $\I$-equivariant spherical convolutions with these kernels are equivalent to our corresponding $\GM$-convolutions.
+
+
+
+\toclesslab\subsection{Proof of Theorem~\ref{thm:spherical_kernel_space_iso} -- Kernel space isomorphism}{apx:spherical_conv_kernel_space_iso}
+
+Theorem~\ref{thm:spherical_kernel_space_iso} establishes an isomorphism
+\begin{align}
+  \Omega:\ 
+  \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}
+  \xrightarrow{\,\sim\,}\,
+  \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}
+\end{align}
+between the space $\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ of $G$-steerable kernels on the open ball $B_{\R^2}\mkern-1mu(0,\pi) \subset \R^2$ and the space $\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ of $G\cong \Stab{n}$-steerable kernels on $S^2 \backslash \mkern-1mu\minus\mkern1mu n$, which are defined in Eqs.~\eqref{eq:G_steer_kernel_space_open_ball_pi} and~\eqref{eq:spherical_steerable_kernel_space}.
+Given arbitrary gauges $N$ at the north pole $n$, around which the kernel is centered, and gauges $P$ at any other point $p$, this isomorphism is given by
+\begin{alignat}{4}
+    \Omega(K)\! &:&\,\ S^2 \backslash \mkern-1mu\minus\mkern1mu n \,&\to&\, \R^{\cout\times\cin},
+    \quad p \,&\mapsto\,
+    \big[\Omega(K)\big](p)\ &:=&\ K\big( \psiTMn^N \log_n p \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)\, \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \,.
+\intertext{
+    Abbreviating $p := \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v}$, its inverse is given by
+}
+    \Omega^{-1}(\kappa)\! &:&\,\ B_{\R^2}\mkern-1mu(0,\pi) &\to& \R^{\cout\times\cin},
+    \quad \mathscr{v} \,&\mapsto\,
+    \big[\Omega^{-1}(\kappa)\big](\mathscr{v})\ &:=&\ \kappa\big(\! \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v} \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{\!-1} \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \!,
+\end{alignat}
+
+\begin{proof}
+    That $\Omega^{-1}$ is a well defined inverse of $\Omega$ is easily shown by inserting their expressions and verifying that
+    \begin{align}
+        \Omega \circ \Omega^{-1} = \id_{\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}}
+        \qquad \textup{and} \qquad
+        \Omega^{-1} \circ \Omega = \id_{\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}}
+    \end{align}
+    hold.
+    To see this, note that gauges $\psiTMn^N$, the transporters $\rhoin\big( g_{n\leftarrow p}^{NP} \big)$ and the (non-zero) volume factor $\sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$ are always invertible and the latter two commute since the volume scaling factor is a scalar.
+    The exponential map $\exp_n: B_{\R^2}\mkern-1mu(0,\pi) \to S^2 \backslash \mkern-1mu\minus\mkern1mu n$ on $B_{\R^2}\mkern-1mu(0,\pi)$ is inverted by $\log_n: S^2 \backslash \mkern-1mu\minus\mkern1mu n \to B_{\R^2}\mkern-1mu(0,\pi)$.
+
+
+    The kernel constraints of the two kernel spaces furthermore imply each other.
+    Given any $G$-steerable kernel $K \in \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$, the kernel $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ satisfies the $\Stab{n}$-steerability constraint from Eq.~\eqref{eq:spherical_steerable_kernel_space}.
+    This is for any $p\in S^2 \backslash \mkern-1mu\minus\mkern1mu n$, any $\xi \in \Stab{n}$ and any gauge $X$ at $\xi(p)$ shown by:
+    \begin{align}
+        \big[\Omega(K)\big]\big( \xi(p) \big)
+        \,&\overset{(1)}{=}\, K\big( \psiTMn^N \log_n \xi(p) \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(2)}{=}\, K\big( \psiTMn^N \dxiTM \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(3)}{=}\, K\big( g_\xi^{NN}(n) \psiTMn^N \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(4)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(5)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)
+               \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(6)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow p}^{NP} \big) \rhoin\big( g_\xi^{XP}(p) \big)^{-1} 
+               \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(7)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \big[\Omega(K)\big](p) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}
+    \end{align}
+    The first step just expanded $\Omega(K)$, while the second step used $\log_n\xi(p) = \dxiTM \log_{\xi^{-1}(n)} p$, which follows from Eq.~\eqref{eq:exp_isom_commutation}, together with $\xi^{-1}(n) = n$ since $\xi\in\Stab{n}$.
+    In the third step, we used the definition of isometry induced gauge transformations in Eq.~\eqref{eq:pushforward_TM_coord}.
+    Step four used the $G$-steerability constraint from Eq.~\eqref{eq:G_steer_kernel_space_open_ball_pi}.
+    The firth step replaced the volume element 
+    $\sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$
+    with that at
+    $\sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$,
+    which is possible since the whole Riemannian geometry of the sphere, including the metric and exponential map and therefore the volume factors of the geodesic normal coordinates, is invariant under the action of~$\Stab{n}$.
+    Before identifying $\Omega(K)$ in the last step, step six used the identity
+    \begin{align}
+        \rhoin\big( g_\xi^{NN}(n) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)
+        \ =&\ \pig[ \psiAinn^N\, \dxiAin^{-1}\, \big(\psiAinn^N \big)^{-1} \pig] \pig[ \psiAinn^N\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \pig] \notag \\
+        \ =&\ \psiAinn^N\; \dxiAin^{-1}\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \notag \\
+        \ =&\ \psiAinn^N\; \PAinnp\, \dxiAin^{-1}\ \big(\psiAinxip^X \big)^{-1} \notag \\
+        \ =&\ \pig[ \psiAinn^N\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \pig] \pig[ \psiAinp^P\, \dxiAin^{-1}\, \big(\psiAinxip^X \big)^{-1} \pig] \notag \\
+        \ =&\ \rhoin\big( g_{n\leftarrow p}^{NP} \big)\ \rhoin\big( g_\xi^{XP}(p) \big)^{-1} \,,
+    \end{align}
+    which relies crucially on the commutativity of transporters and isometry pushforwards from Eq.~\eqref{eq:transport_isom_commutation}.
+
+
+    For the opposite direction, assume a $\Stab{n}$-steerable kernel $\kappa\in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ to be given.
+    The corresponding kernel $\Omega^{-1}(\kappa)$ satisfies then the $G$-steerability constraint from Eq.~\eqref{eq:G_steer_kernel_space_open_ball_pi}.
+    To show this, let $\mathscr{v} \in B_{\R^2}\mkern-1mu(0,\pi)$, let $g\in G$ and let $\xi\in\Stab{n}$ be the unique stabilizer element such that $g_\xi^{NN}(n) = \psiTMn^N\, \dxiTM \big(\psiTMn^N\big)^{-1} = g$.
+    For brevity, we abbreviate $p := \exp_n \big(\psiTMn^N\big)^{-1} \mathscr{v}$ and thus $\xi(p) = \exp_n \big(\psiTMn^N\big)^{-1} g\mathscr{v}$, which is as justified by steps 1-3 below.
+    We then find:
+    \begin{align}
+        \big[\Omega^{-1}(\kappa)\big](g\mathscr{v})
+        \,&\overset{(1)}{=}\, \kappa\big(\! \exp_n\! \big(\psiTMn^N\big)^{-1} (g\mathscr{v}) \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(2)}{=}\, \kappa\big(\! \exp_n\! \dxiTM \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(3)}{=}\, \kappa\big(\xi \exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(4)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+               \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(5)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+               \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(6)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{-1}\, \rhoin\big( g_\xi^{NN}(n) \big)^{-1}
+               \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(7)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \big[\Omega^{-1}(\kappa)\big](\mathscr{v}) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \notag \\
+        \,&\overset{(8)}{=}\, \rhoout(g) \cdot \big[\Omega^{-1}(\kappa)\big](\mathscr{v}) \cdot \rhoin(g)^{-1}
+    \end{align}
+    The first three steps expanded $\Omega^{-1}(\kappa)$, used the definition of $\xi$ in terms of $g$ and the commutativity of exponential maps with isometry pushforwards, Eq.~\eqref{eq:exp_isom_commutation}.
+    In the fourth step, the $\Stab{n}$-steerability constraint of $\kappa$ from Eq.~\eqref{eq:spherical_steerable_kernel_space} is used.
+    Step five replaced again the Riemannian volume element at $\xi(p)$ with that at $p$ since they are equal.
+    The sixth step used the relation
+    \begin{align}
+        \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+        \ =&\ \rhoin\big( g_{n\leftarrow\xi(p)}^{NX}\, g_\xi^{XP}(p) \big)^{-1} \notag \\
+        \ =&\ \Big( \pig[ \psiAinn^N\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \pig] \pig[ \psiAinxip^X\, \dxiAin\, \big(\psiAinp^P \big)^{-1} \pig] \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \PAinnxip\, \dxiAin\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \dxiAin\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \dxiAin\, \big(\psiTMn^N\big)^{-1}\, \psiTMn^N\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{-1}\, \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \,,
+    \end{align}
+    which relies again on the commutativity of transporters and isometry pushforwards from Eq.~\eqref{eq:transport_isom_commutation}.
+    The last two steps identify $\Omega^{-1}(\kappa)$ and, by definition of $\xi$, that $g_\xi^{NN}(n) = g$.
+
+    Together, these arguments that $\Omega$ is indeed an isomorphism between the kernel spaces.
+\end{proof}
+
+
+
+
+
+
+
+
+\toclesslab\subsection{Proof of Theorem~\ref{thm:spherical_conv_GM_conv} -- Equivalence of steerable spherical and \textit{GM}-convolutions}{apx:spherical_conv_equivalence}
+
+
+Theorem~\ref{thm:spherical_conv_GM_conv} claims that $\GM$-convolutions with a $G$-steerable kernel $K \in \mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ are equivalent to the spherical convolution with the $\Stab{n}$-steerable kernel $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$.
+The spherical convolution with a $\Stab{n}$-steerable kernel $\kappa \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ from \citet{Cohen2018-intertwiners,Cohen2019-generaltheory} was hereby in Eq.~\eqref{eq:spherical_steerable_conv} pointwise defined as
+\begin{align}
+    \big[\kappa \star_{\mkern-2mu S^2}\! f\big]^P(p)
+    \ = \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu \kappa\big(\phi_p^{-1}q)\, \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\, f^Q(q)\ dq \,,
+\end{align}
+where $P$, $Q$ and $X$ denote arbitrary gauges at $p$, $q$ and $\phi_p^{-1}(q)$, respectively.
+The isometry $\phi_p \in \I$ is uniquely specified by demanding that $\dphipGM \sigma^N(n) = \sigma^P(p)$.
+Note that this implies in particular that
+\begin{align}\label{eq:phipn_sphere_action}
+    \phi_p(n) \ =\ p
+\end{align}
+and, using the definition of sections of $\GM$ (frame fields) in terms of inverse gauges from Eq.~\eqref{eq:GM_section_psi_inverse_def}, that
+\begin{align}\label{eq:phipn_gauges}
+    \psiTMn^N \circ \dphipGM^{-1} \ =\ \psiTMp^P \,,
+\end{align}
+both of which we will use below.
+With these preparations, we turn to the proof of Theorem~\ref{thm:spherical_conv_GM_conv}, i.e. the equivalence
+\begin{align}
+    \Omega(K) \star_{\mkern-2mu S^2}\! f\ =\ K \star_{\mkern-1mu\scalebox{.64}{$\GM$}} f
+\end{align}
+of the convolutions.
+
+\begin{proof}
+    Since $\Omega(\kappa)$ is defined on $S^2 \backslash \mkern-1mu\minus\mkern1mu n$, the transformed kernel $\Omega(\kappa) \circ \phi_p^{-1}$ is defined on $S^2 \backslash \mkern-2mu -p$.
+    Inserting $\Omega(\kappa)$ in the pointwise definition of the spherical convolution in Eq.~\eqref{eq:spherical_steerable_conv} leads therefore to
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu \big[\Omega(\kappa)\big] \big(\phi_p^{-1}q)\; \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\; f^Q(q)\ dq \\
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu K\big( \psiTMn^N \log_n \phi_p^{-1}q)\; \rhoin\big( g_{n\leftarrow \phi_p^{-1}(q)}^{NX} \big) \; \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\; f^Q(q)\; \sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} dq \,, \notag
+    \end{align}
+    where the second step follows by expanding $\Omega(K)$ as defined in Eq.~\eqref{eq:spherical_kernel_space_iso_Omega}.
+    To simplify this expression, note that 
+    \begin{align}
+        \psiTMn^N\, \log_n\, \phi_p^{-1} (q)
+        \ =\ \psiTMn^N\, \dphipTM^{-1}\, \log_{\phi_p(n)} (q)
+        \ =\ \psiTMp^P\, \log_p (q) \,,
+    \end{align}
+    which follows from Eq.~\eqref{eq:exp_isom_commutation} in the first step and Eqs.~\eqref{eq:phipn_sphere_action} and~\eqref{eq:phipn_gauges} in the second step.
+    Note furthermore, that
+    \begin{alignat}{3}
+        \qquad
+           &\ \rho\big( g_{n\leftarrow \phi_p^{-1}(q)}^{NX} \big) \; \rho\big( g_{\phi_p^{-1}}^{XQ}(q) \big) \notag \\
+        \ =&\ \pig[ \psiAn^N\, \mathcal{P}_{\A, n\leftarrow \phi_p^{-1}(q)}\, \big(\psiAphipinvq^X\big)^{-1} \pig]
+              \pig[ \psiAphipinvq^X\, \dphipA^{-1}\, \big(\psiAq^Q\big)^{-1} \pig]
+            \qquad && \big( \text{\small Eqs.~\eqref{eq:transporter_gauge_A} and~\eqref{cd:pushforward_A_coord} } \big) \notag\\
+        \ =&\ \psiAn^N\, \mathcal{P}_{\A, n\leftarrow \phi_p^{-1}(q)}\, \dphipA^{-1}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small canceled inverse gauges } \big) \notag\\
+        \ =&\ \psiAn^N\, \dphipA^{-1}\, \mathcal{P}_{\A, \phi_p(n)\leftarrow q}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small Eq.~\eqref{eq:transport_isom_commutation} } \big) \notag\\
+        \ =&\ \psiAp^P\, \mathcal{P}_{\A, p\leftarrow q}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small Eq.~\eqref{eq:phipn_gauges} } \big) \notag\\
+        \ =&\ \rho\big( g_{p\leftarrow q}^{PQ} \big) \,.
+            \qquad && \big( \text{\small Eq.~\eqref{eq:transporter_gauge_A} } \big) \notag
+    \end{alignat}
+    Inserting these two identities, we obtain
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu K\big( \psiTMp^P \log_p q)\; \rhoin\big( g_{p\leftarrow q}^{PQ} \big)\; f^Q(q)\; \sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} dq \,, \notag
+    \end{align}
+    To proceed, we express the integral in geodesic normal coordinates 
+    $\mathscr{v}: S^2\backslash \mkern-1mu\minus\mkern1mu p \to B_{\R^2}(0,\pi),\ \ q \mapsto \mathscr{v}(q) := \psiTMp^P \log_p q$
+    of $S^2 \backslash \mkern-2mu -p$, which are centered at point $p$.
+    This cancels the Riemannian volume factor
+    $\sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$
+    (and thus justifies its appearance in the definition of $\Omega$),
+    such that the spherical convolution becomes
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ =& \int\limits_{B_{\R^2}\mkern-1mu(0,\pi)} \mkern-8mu K(\mathscr{v})\; \rhoin\pig( g_{p\leftarrow \exp_p (\psiTMp^P)^{-1} \mathscr{v}}^{PQ} \pig)\; f^Q\big( \exp_p (\psiTMp^P)^{-1} \mathscr{v} \big)\ d\mathscr{v} \,, \notag \\
+        \ =& \int\limits_{B_{\R^2}\mkern-1mu(0,\pi)} \mkern-8mu K(\mathscr{v})\; \big[\Expspf\big]^P(\mathscr{v})\ d\mathscr{v} \,, \notag \\
+       =&\ \big[K \star_{\mkern-1mu\scalebox{.64}{$\GM$}}\! f\big]^P(p) \,.
+    \end{align}
+    Since all arguments are independent form the chosen point $p$ and the chosen gauges, this implies
+    \begin{align}
+        \Omega(K) \star_{\mkern-2mu S^2}\! f\ =\ K \star_{\mkern-1mu\scalebox{.64}{$\GM$}} f \,,
+    \end{align}
+    in a coordinate free setting, which proves the theorem.
+\end{proof}
+
+
+

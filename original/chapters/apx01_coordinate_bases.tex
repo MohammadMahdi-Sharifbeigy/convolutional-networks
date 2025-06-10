@@ -1,0 +1,946 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Relation to the coordinate chart formalism of differential geometry}
+\label{apx:coordinate_bases}
+
+
+This appendix serves the purpose of drawing connections between the \emph{bundle formalism}, underlying the theory of coordinate independent CNNs, and the \emph{coordinate chart formalism}, which one likely encounters in a first study of differential geometry.
+The main difference between both is that the bundle formalism refers to points~$p$ of the base space $M$ in a \emph{coordinate free} way.
+If required, coordinates are directly assigned to the fibers (e.g. tangent spaces) via local bundle trivializations.
+In contrast, the chart formalism relies on \emph{coordinate charts} (diffeomorphisms)
+\begin{align}
+    x: M \supseteq U \to V \subseteq \R^d \,,
+\end{align}
+which assign coordinates to local patches $U$ of the manifold.
+Local bundle trivializations and gauge transformations between them are \emph{induced as differentials of charts and chart transition functions}.
+In this section we work out the connection between both formalisms.
+An overview of the results is given in Table~\ref{tab:coord_charts_gauge_trafos}.
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+We start in Section~\ref{apx:tangent_cotangent_dual_bases} by briefly introducing tangent spaces $\TpM$ as spaces of directional derivative operators, from which the cotangent spaces $\TspM$ follow as dual spaces.
+Section~\ref{apx:differentials_gradients_jacobians} defines general differentials and the more specific gradients and Jacobians.
+Based on these preparations, we will in Section~\ref{apx:coord_basis_def} define \emph{coordinate bases} (holonomic bases)
+${\pig[ \frac{\partial}{\partial x_1}\big|_p, \ \dots,\ \frac{\partial}{\partial x_d}\big|_p \pig]\ \in \FpM}$
+of the tangent spaces $\TpM$, which are spanned by directional derivative operators along the coordinate grid that is pulled by the chart from $V$ to~$U$.
+The dual bases
+${\pig[ \hat{d}x_\mu|_p, \ \dots,\ \hat{d}x_\mu|_p \pig]}$
+of the cotangent spaces $\TspM$ are given by the gradients of the chart components $x_\mu$.
+Transition maps between charts induce covariant and contravariant gauge transformations between the corresponding bases, which are derived in Section~\ref{apx:chart_transition_induced_gauge_trafos}.
+Section~\ref{apx:correspondences_bundle_trivializations} interprets the coordinate bases as local bundle trivializations and makes the connection between the bundle formalism and the chart formalism precise.
+The bases and trivializations induced from coordinate charts do not cover all possible trivializations, such that one distinguishes between coordinate bases and non-coordinate bases (the bundle formalism allows with general non-coordinate bases).
+In the physics literature, non-coordinate bases are usually introduced via \emph{vielbein fields}.
+Section~\ref{apx:vielbein_fields} argues that these vielbein fields are just $\GL{d}$-valued gauge transformations from general frames in $\FM$ into a given $G$-structure~$\GM$, within which one can subsequently apply $G$-valued gauge transformations that preserve the $G$-structure.
+
+Comprehensive introductions to the chart formalism are given in~\cite{nakahara2003geometry,schullerGeometricalAnatomy2016,carroll2004spacetime}.
+A more rigorous exposition is found in~\cite{schullerGeometricalAnatomy2016}.
+
+We want to remind the reader that we are \emph{not} making use of covariant and contravariant indices.
+Indices will always appear as subscripts, with Greek letters $\mu,\nu,\dots$ signaling coordinate chart related indices and Latin letters $i,j,\dots$ signaling indices of general gauges.
+Superscripts $A,B,\dots$ are preserved for labeling different charts or gauges.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Tangent spaces, cotangent spaces and dual bases}
+\label{apx:tangent_cotangent_dual_bases}
+
+\subsubsection{Tangent spaces in terms of directional derivatives}
+A common definition of the tangent spaces $\TpM$ of a manifold $M$ is as vector spaces of directional derivative operators at $p \in M$, which we will briefly motivate here.
+Let $f\in C^\infty(M)$, that is, $f:M\to\R$ is a smooth map, and, for some interval $I\subseteq\R$ containing $0$, let $\gamma: I \to M$ be a smooth curve which passes at time $t = 0$ through~$p$, i.e. satisfies $\gamma(0) = p$.
+One then defines the \emph{directional derivative operator} at~$p$ along~$\gamma$ as the linear operator
+\begin{align}\label{eq:tangent_vector_directional_derivative}
+    v_\gamma: C^\infty(M) \to \R,\ \ \ f \mapsto \big(f \circ \gamma \big)'(0) \,.
+\end{align}
+As the derivative is taken along the direction of $\gamma$, that is, tangential to it, $v_\gamma$ is called \emph{tangent vector}.
+It can be thought of as the velocity of a particle with trajectory $\gamma$ at time $t=0$.
+For later reference we give the following simple commutative diagram, which shows the pullback $f\circ\gamma$ of $f$ from $M$ to $\R$ via $\gamma$, in terms of which the directional derivative is defined:
+\begin{equation}\label{cd:directional_derivative}
+    \begin{tikzcd}[row sep=2.5em, column sep=4em]
+          \R \supset I
+                \arrow[r, "\gamma"]
+                \arrow[rr, rounded corners, to path={ 
+                        |- node[below, pos=.75]{\small$f \circ \gamma$} ([yshift=-3.5ex]\tikztotarget.south)
+                        -- (\tikztotarget.south)
+                        }]
+        & M     \arrow[r, "f"]
+        & \R
+    \end{tikzcd}
+\end{equation}
+
+One can show that the space of all tangent vectors to curves at $p$ forms a $d$-dimensional vector space
+\begin{align}
+    \TpM\ :=\ \big\{ v_\gamma \,\big|\, \gamma\ \text{is a smooth curve through}\ p \big\} \,,
+\end{align}
+known as the tangent space at~$p$.
+For more details on the definition of tangent vectors and the vector space structure of the tangent spaces we refer to~\cite{schullerGeometricalAnatomy2016}.
+
+Having defined the tangent spaces as vector spaces, one might choose to treat tangent vectors as abstract geometric vectors, thereby ``forgetting'' about their definition via directional derivatives (or any alternative definition made).
+We do this at most places, but refer back to the definition via directional derivatives in the following sections to derive differentials of smooth maps and coordinate bases.
+
+
+
+\subsubsection{Cotangent spaces}
+\label{apx:cotangent_spaces}
+As real vector spaces, the tangent spaces $\TpM$ have corresponding \emph{dual spaces} $\TspM := (\TpM)^*$, the \emph{cotangent spaces}.
+By the definition of dual spaces, they consist of linear functionals
+\begin{align}
+    \omega: \TpM \to \R \,,
+\end{align}
+which are in differential geometry usually called \emph{covectors} or \emph{1-forms}.
+Together with the (co)vector addition
+$(\omega + \widetilde{\omega})(v) = \omega(v) + \widetilde{\omega}(v)$
+and scalar multiplication 
+$(\lambda \cdot \omega)(v) = \lambda\cdot (\omega(v))$,
+the cotangent spaces are vector spaces themselves.
+
+As finite-dimensional duals of each other, $\TpM$  and $\TspM$ are isomorphic and are thus in particular of the same dimensionality $d = \dim(M) = \dim(\TpM) = \dim(\TspM)$.
+The isomorphism between both is, however, not canonical.
+A vector space isomorphism can be specified via a (non-degenerate) bilinear form $\eta_p: \TpM \times \TpM \to \R$ on $\TpM$, for instance a Riemannian metric, via
+\begin{align}
+    \widehat{\eta}_p:\ \TpM \to \TspM,\ \ v \mapsto \eta_p(v, \cdot) \,,
+\end{align}
+which determines the linear functional
+$\widehat{\eta}_p(v):\ \TpM \to \R,\ \ w \mapsto \eta_p(v, w)$.
+
+
+
+\subsubsection{Dual bases}
+Any basis $\big[e_i\big]_{i=1}^d$ of $\TpM$ canonically induces a \emph{dual basis} $\big[e_i^*\big]_{i=1}^d$ of $\TspM$, defined to satisfy the relations
+\begin{align}
+    e^*_i e_j = \delta_{ij} \quad \textup{for any }\ i,j \in 1,\dots,d \,.
+\end{align}
+Let $\big[e^A_i\big]_{i=1}^d$ and $\big[e^B_i\big]_{i=1}^d = \big[e^A_i\big]_{i=1}^d \lhd \big(g^{BA}\big)^{-1}$ be two bases of $\TpM$, which are related by the right action~$\lhd$ of the (inverse) structure group element $\big(g^{BA}\big)^{-1} \in \GL{d}$ in Eq.~\eqref{eq:frame_rightaction}, that is, for $j=1,\dots,d$\ :
+\begin{align}\label{eq:general_tangent_basis_gauge_trafo}
+    e^B_j\ =\ \sum_l e^A_l \big(g^{BA}\big)^{-1}_{lj}
+\end{align}
+The dual basis $\big[e^{A,*}_i\big]_{i=1}^d$ transforms accordingly under that left action which sends $e_i^{A,*}$ to
+\begin{align}\label{eq:general_cotangent_basis_gauge_trafo}
+    e_i^{B,*}\ =\ \sum_k g^{BA}_{ik} e_k^{A,*} \,.
+\end{align}
+This is affirmed by pairing
+\begin{align}
+    e_i^{B,*} e_j^B
+    \ &=\ \sum_{k,l} g^{BA}_{ik} e_k^{A,*} e_l^A \big(g^{BA}\big)^{-1}_{lj}  \notag \\
+    \ &=\ \sum_{k,l} g^{BA}_{ik} \delta_{kl} \big(g^{BA}\big)^{-1}_{lj} \notag \\
+    \ &=\ \sum_{k} g^{BA}_{ik} \big(g^{BA}\big)^{-1}_{kj} \notag \\
+    \ &=\ \delta_{ij} \,.
+\end{align}
+The inverse transformation behavior of bases and dual bases is usually referred to as \emph{covariant} and \emph{contravariant} transformation.
+Note the similarity of the dual basis transformation to the contravariant transformations $\psi^B = g^{BA} \psi^A$ of gauges in Eq.~\eqref{eq:gauge_trafo_local_def_21} and $v^B = g^{BA} v^A$ of vector components in \eqref{eq:components_leftaction}.
+Indeed, gauges are just choices of a cotangent basis as further discussed below.
+
+
+
+
+
+
+
+
+\subsection{Differentials, gradients and Jacobians}
+\label{apx:differentials_gradients_jacobians}
+
+In vector calculus one considers functions $\phi: \R^m \to \R^n$, which can at any point $p\in \R^m$ be linearly approximated by their Jacobian matrix (or total derivative or differential) $d\phi_p = \big(\frac{\partial\phi_i}{\partial x_j} \big|_p \big)_{ij}$.
+Here we introduce the generalization of this concept to differentials of smooth functions between smooth manifolds.
+
+\paragraph{Differentials in general:}
+Let $\phi: M \to N$ be a smooth map between smooth manifolds $M$ and $N$.
+At any point $p\in M$, such a map induces a differential (or pushforward)
+\begin{align}
+    d\phi_p : \TpM \to \TphipN,\ \ v \mapsto d\phi_p(v)
+\end{align}
+which linearly maps tangent vectors at~$p$ to tangent vectors at $\phi(p)$.
+For the definition of tangent spaces in terms of directional derivatives in Eq.~\eqref{eq:tangent_vector_directional_derivative}, the pushforward of $v \in \TpM$ along $\phi$ is explicitly given by
+\begin{align}
+    d\phi_p(v): C^\infty(N) \to \R,\ \ \ f \mapsto \big( d\phi_p(v) \big)(f)\ :=\ v(f \circ \phi) \,,
+\end{align}
+that is, by the application of~$v$ on the pullback $f \circ \phi: M \to \R$ of $f: N\to \R$ via $\phi$.
+These definitions are clarified by the following two commutative diagrams:
+\begin{equation}
+\begin{tikzcd}[column sep=70pt, row sep=30, font=\normalsize]
+    M
+        \arrow[r, "\phi"]
+        \arrow[dr, "f \circ \phi"']
+    &
+    N
+        \arrow[d, "\ f"]
+    \\
+    & \R
+\end{tikzcd}
+\qquad\qquad
+\begin{tikzcd}[column sep=60pt, row sep=30, font=\normalsize]
+    C^\infty(M)
+        \arrow[d, "v\ "']
+    &
+    C^\infty(N)
+        \arrow[l, "(\,\cdot\,) \circ \phi"']
+        \arrow[dl, "d\phi(v)"]
+    \\
+    \R
+\end{tikzcd}
+\end{equation}
+
+From this definition it follows immediately that the differential of the composition of smooth maps equals the composition of their individual differentials, which is just the chain rule:
+\begin{align}
+    d(\phi \circ \psi)_p\ =\ d\phi_{\psi(p)} \circ d\psi_p
+\end{align}
+If $\phi$ is invertible (a diffeomorphism) it furthermore follows that its differential is a vector space isomorphism whose inverse equals the differential of $\phi^{-1}$, that is,
+\begin{align}\label{eq:differential_inverse}
+    \big( d\phi_{p} \big)^{-1}\ =\ d\big( \phi^{-1} \big)_{\phi(p)} \,.
+\end{align}
+
+Together, the differentials $d\phi_p$ at individual points $p\in M$ imply a vector bundle morphism (a fiber-wise linear bundle map, see Sections~\ref{sec:fiber_bundles_general}) between the tangent bundles of $M$ and $N$:
+\begin{equation}
+\begin{tikzcd}[column sep=60pt, row sep=35, font=\normalsize]
+    TM
+        \arrow[r, "d\phi"]
+        \arrow[d, "\piTM"']
+    &
+    TN
+        \arrow[d, "\piTM"]
+    \\
+    M
+        \arrow[r, "\phi"']
+    &
+    N
+\end{tikzcd}
+\end{equation}
+
+Note that we are in this appendix using a different notation, namely $d\phi$, than in the main paper, where we instead write $\dphiTM$.
+We decided for the former to connect to the usual notation $dx_\mu$ for the chart induced bases of cotangent spaces.
+The latter is used in the main text to emphasize the similarity to the bundle maps $\dphiFM$, $\dphiGM$ and $\dphiA$, which are induced on the associated bundles $\FM$, $\GM$ and $\A$.
+
+
+
+\paragraph{Gradients:}
+In the case of smooth real-valued functions $\phi: M \to \R$, i.e. $\phi \in C^\infty(M)$, the differential $d\phi_p: \TpM \to T_{\phi(p)}\R$ pushes vectors $v$ in $\TpM$ to vectors $d\phi(v): C^\infty(\R) \to \R,\ f \mapsto v(f \circ \phi)$ in $T_{\phi(p)}\R$.
+By leveraging the canonical isomorphism
+\begin{align}\label{eq:canon_isom_TR_R}
+    \iota_{\R}: T_{\phi(p)}\R \xrightarrow{\sim} \R,\ \ v \mapsto v(\id_{\R})
+\end{align}
+one defines the \emph{gradient operator}
+\begin{align}
+    \hat{d}_p: C^\infty(M) \to \TspM,\ \ \phi \mapsto  \hat{d}\phi_p := \iota_{\R} \circ d\phi_p = \big( d\phi_p(\,\cdot\,) \big)(\id_{\R}) \,,
+\end{align}
+which sends smooth functions $\phi$ to covectors%
+\footnote{
+    The gradient field is often defined as a \emph{vector} field $\nabla f := (\hat{d}f)^{\sharp^\eta}$ which is computed from the \emph{covector} field $\hat{d}f$ via the musical isomorphism $\sharp^\eta: \TsM \to \TM$ corresponding to the metric (``raising indices'').
+}
+$\hat{d}\phi$, which in turn act on vectors as
+\begin{align}\label{eq:gradient_vector_action}
+    \hat{d}\phi_p: \TpM \to \R,\ \ v \mapsto \hat{d}\phi_p(v) = \big( d\phi_p(v) \big)(\id_{\R}) = v(\id_{\R} \circ \phi) = v(\phi) \,.
+\end{align}
+By an \emph{abuse of notation} one usually drops the ``hat'' on $\hat{d}$ and immediately defines $d\phi_p(v) := v(\phi)$.
+While this notation is very common, we stick in the following with the ``hat'' to make the requirement for the canonical isomorphism $\iota_{\R}$ explicit.
+
+In Section~\ref{apx:coord_basis_def} below we will see that the bases of $\TspM$ which are dual to coordinate bases of $\TpM$ are given by the gradient 1-forms $\hat{d}x_\mu|_p$, where $x_\mu$ are the components of the coordinate chart.
+
+
+
+\paragraph{Jacobians:}
+Specifically for functions $\phi: \R^n \to \R^m$ between (subsets of) Euclidean spaces the differential
+$d\phi_{x_0}: {T_{x_0}\R^n \to T_{\phi(x_0)}\R^m}$
+is easily seen to coincide with the \emph{Jacobian} $\frac{\partial \phi}{\partial x} \big|_{x_0}: \R^n \to \R^m$
+after canonically identifying $T_p\R^k \cong \R^k$ in both the domain and codomain.
+The canonical isomorphism is here given by
+\begin{align}\label{eq:canonical_iso_TRk_Rk}
+    \iota_{\R^k}: v \mapsto \big( v(\proj_1), \dots, v(\proj_k) \big) \,,
+\end{align}
+which generalizes $\iota_{\R}$ from Eq.~\eqref{eq:canon_isom_TR_R} to multiple dimensions.
+As the calculation is mostly similar as in the case of gradients, we will not repeat it here but visualize the idea via a commutative diagram:
+\begin{equation}\label{cd:jacobian_def}
+    \begin{tikzcd}[row sep=2.5em, column sep=4em]
+          \R^n
+                \arrow[rrr, rounded corners, to path={ 
+                        |- node[below, pos=.75]{$\frac{\partial \phi}{\partial x} \Big|_{x_0}$} ([yshift=-3.5ex]\tikztotarget.south)
+                        -- (\tikztotarget.south)
+                        }]
+        & T_{x_0}\R^n
+                \arrow[l, "\iota_{\R^n}"']
+                \arrow[r, "d\phi |_{x_0}"]
+        & T_{\phi(x_0)}\R^m
+                \arrow[r, "\iota_{\R^m}"]
+        & \R^m
+    \end{tikzcd}
+\end{equation}
+
+If $\phi$ is invertible, the identity in Eq.~\eqref{eq:differential_inverse} becomes
+\begin{align}\label{eq:inv_fct_thm_jacobian}
+    \frac{\partial \phi}{\partial x} \bigg|_{x_0}^{-1} \ =\ 
+    \frac{\partial \phi^{-1}}{\partial x} \bigg|_{\phi(x_0)} \,,
+\end{align}
+which is just the inverse function theorem.
+We will use this identity later on to invert gauge transformations between different coordinate bases which are induced as Jacobians of chart transition maps.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Chart induced coordinate bases}
+\label{apx:chart_induced_bases_main}
+
+In this Section we consider \emph{coordinate charts} of the form
+\begin{align}
+  x: U \to V \,,
+\end{align}
+which diffeomorphically assign coordinates $x(p) \in V \subseteq \R^d$ to each point $p \in U \subseteq M$.
+Any such chart induces a natural choice of bases for the tangent spaces $\TpM$ over~$U$, known as \emph{coordinate bases}.
+The dual spaces $\TspM$ of the tangent spaces over~$U$ are accordingly endowed with dual coordinate bases of cotangent vectors.
+Transition maps between the coordinates of two charts induce gauge transformations which translate between the corresponding coordinate bases.
+These gauge transformations are given by the Jacobians of the transition maps.
+
+
+
+
+\subsubsection{Charts and induced coordinate bases}
+\label{apx:coord_basis_def}
+
+\paragraph{Coordinate bases for $\bm\TpM$:}
+To motivate the definition of coordinate bases, observe that~$x$ implies a \mbox{``coordinate grid''} on~$U$ by pulling the canonical coordinate grid on $V$ back to the manifold.
+The coordinate basis at a specific point $p \in U$ can then be thought of as consisting of those $d$ many \emph{directional derivative operators} which are going \emph{along the coordinate grid lines of~$x$ on~$U$}.
+
+To make this more precise, consider first the curves
+\begin{align}
+    \widetilde{\gamma}_\mu: I \to V,\ \ \ t \mapsto x(p) + t \epsilon_\mu \quad\qquad \mu = 1,\dots,d
+\end{align}
+which pass at time $t=0$ with unit velocity in $\mu$-direction through~$x(p) \in V$.
+Mapping those $\widetilde{\gamma}_\mu$ via the chart to~$U$ defines the above mentioned curves
+\begin{align}
+    \gamma_\mu: I \to U,\ \ \ t \mapsto\,
+    x^{-1}\mkern-2mu \circ \widetilde{\gamma}_\mu (t) \ =\ 
+    x^{-1} \big( x(p) + t \epsilon_\mu \big)
+\end{align}
+which pass at time $t=0$ along the coordinate grid of~$x$ on~$U$ through~$p$.
+The $d$-dimensional coordinate basis of~$\TpM$ induced by~$x$ is then given by the directional derivative operators in Eq.~\eqref{eq:tangent_vector_directional_derivative} along the paths~$\gamma_\mu$.
+Denoting the $\mu$-th basis vector by the usual abuse of notation as $\frac{\partial}{\partial x_\mu}\big|_p$ one therefore defines:
+\begin{align}\label{eq:coord_basis_def}
+    \frac{\partial}{\partial x_\mu} \bigg|_p \!:\ \ f\, \mapsto\,
+    \frac{\partial}{\partial x_\mu} \bigg|_p f
+    \ \ :=&\ \ \big(f \circ \gamma_\mu \big)'(0) \notag \\
+    \ \  =&\ \ \big(f \circ x^{-1} \circ \widetilde{\gamma}_\mu \big)'(0) \notag \\
+    \ \  =&\ \ \big(f \circ x^{-1}\big( x(p) + t\epsilon_\mu \big) \big)'(0) \notag \\
+    \ \  =&\ \ \pig[\mkern1.5mu \partial_\mu \big(f \circ x^{-1} \big)\pig] \big(x(p)\big)
+\end{align}
+In the last step we identified the usual $\mu$-th partial derivative of the pullback $f\circ x^{-1}: V \to \R$, which motivates the notation $\frac{\partial}{\partial x_\mu}\big|_p$.
+These definitions are visualized in the following commutative diagram which extends the diagram in Eq.~\eqref{cd:directional_derivative}:
+\begin{equation}
+    \begin{tikzcd}[row sep=4.em, column sep=6.em]
+        & V     \arrow[rd, "f\circ x^{-1}"]
+        \\
+          \R \supset I
+                \arrow[r, "\gamma_\mu"]
+                \arrow[ru, "\widetilde{\gamma}_\mu"]
+                \arrow[rr, rounded corners, to path={ 
+                        |- node[below, pos=.75]{\small$f \circ \gamma_\mu$} ([yshift=-3.5ex]\tikztotarget.south)
+                        -- (\tikztotarget.south)
+                        }]
+        & U     \arrow[r, pos=.4, "f"]
+                \arrow[u, pos=.4, "x"]
+        &[1.4em] \R
+    \end{tikzcd}
+\end{equation}
+
+
+
+
+\paragraph{Dual coordinate bases for $\bm\TspM$:}
+
+As stated in Section~\ref{apx:tangent_cotangent_dual_bases}, any basis of $\TpM$ induces a \emph{dual basis} of $\TspM$.
+Specifically for coordinate bases, spanned by vectors $\frac{\partial}{\partial x_\mu} \big|_p$, the dual basis elements are given by the \emph{gradients $\hat{d}x_\mu|_p = \hat{d}(x_\mu)_p \in \TspM$ of the chart components} $x_\mu = \proj_\mu \circ x: U \to \R$.
+That these gradients do indeed make up the dual basis, is easily seen by acting on the basis vectors as defined in Eq.~\eqref{eq:gradient_vector_action}:
+\begin{align}
+    \hat{d}x_\mu \big|_p\ \frac{\partial}{\partial x_\nu} \bigg|_p
+    \ &=\ \frac{\partial}{\partial x_\nu} \bigg|_p x_\mu \notag \\
+    \ &=\ \pig[ \partial_\nu \big( x_\mu \circ x^{-1} \big) \pig] \big(x(p)\big) \notag \\
+    \ &=\ \pig[ \partial_\nu \big( \proj_\mu \big) \pig] \big(x(p)\big) \notag \\
+    \ &=\ \delta_{\mu\nu} \,.
+\end{align}
+
+
+
+
+
+\paragraph{Chart differentials as canonical local trivialization:}
+
+Given that the chart maps from $U \subseteq M$ to $V \subseteq \R^d$, its differentials at $p\in U$ are maps of the form
+\begin{align}
+    dx_p: \TpM \to T_{x(p)}\R^d \,.
+\end{align}
+Employing the canonical isomorphism $\iota_{\R^d}$ from $T_{x(p)}\R^d$ to $\R^d$ from Eq.~\eqref{eq:canonical_iso_TRk_Rk} once again, we obtain a map
+\begin{align}\label{eq:chart_differential_via_gradients}
+    \qquad
+    \hat{d}x_p: \TpM \to \R^d,\ \ \ v\ \mapsto\ \hat{d}x_p (v)
+    :=\ &\iota_{\R^d} \circ dx_p (v) \notag \\
+     =\ & \Big( \big(dx_p(v) \big)(\proj_1) \,,\,\dots,\, \big(dx_p(v) \big)(\proj_d) \Big)^\top \notag \\
+     =\ & \Big( v\big(\proj_1 \circ x \circ x^{-1}\big)(x(p)) \,,\,\dots,\, v\big(\proj_1 \circ x \circ x^{-1}\big)(x(p)) \Big)^\top \notag \\
+     =\ & \Big( v(x_1(p)) \,,\,\dots,\, v(x_d(p)) \Big)^\top \notag \\
+     =\ & \Big( \hat{d}x_1 |_p(v) \,,\,\dots,\, \hat{d}x_d |_p(v) \Big)^\top
+\end{align}
+after identifying the individual chart component gradients in the last step.
+Note that the action of this chart differential on the $\mu$-th coordinate basis yields
+\begin{align}
+    \hat{d}x_p \: \frac{\partial}{\partial x_\mu} \bigg|_p
+     \ &=\ \bigg( \hat{d}x_1|_p \: \frac{\partial}{\partial x_\mu} \bigg|_p \,,\,\dots,\, \hat{d}x_d|_p \: \frac{\partial}{\partial x_\mu} \bigg|_p \bigg)^\top \notag \\
+     \ &=\ \big( \delta_{\mu1} \,,\,\dots,\, \delta_{\mu d} \big)^\top \notag \\
+     \ &=\ \epsilon_\mu \,,
+\end{align}
+that is, the $\mu$-th unit vector $\epsilon_\mu$ of $\R^d$.
+This implies that $\hat{d}x_p: \TpM \to \R^d$ plays the role of a \emph{gauge} $\psi_p$ at~$p$.
+One could therefore equally well have started by defining a cotangent basis and setting
+\begin{align}\label{eq:coord_basis_vector_via_chart_differential}
+    \frac{\partial}{\partial x_\mu} \bigg|_{x(p)}\ =\ \hat{d}x_p^{-1} (\epsilon_\mu) \,,
+\end{align}
+which is the analog of Eq.~\eqref{eq:framefield_gauge_equivalence} in the chart formalism.
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Chart transition maps and induced gauge transformations}
+\label{apx:chart_transition_induced_gauge_trafos}
+
+Different charts induce different coordinate bases.
+Chart transitions therefore induce gauge transformations, i.e. transformations of bases and vector coefficients, which we derive in this section.
+
+In the following we consider two arbitrary, overlapping charts $x^A: U^A \to V^A$ and $x^B: U^B\to V^B$.
+The different coordinates which they assign to the overlap $U^A \cap U^B \neq \varnothing$ are then related via \emph{chart transition maps}
+\begin{align}\label{eq:chart_transition_fct}
+  x^B\circ\left(x^A\right)^{-1} \!:\ x^A\big(U^A\cap U^B\big)\to x^B\big(U^A\cap U^B\big) \,.
+\end{align}
+
+
+
+\paragraph{Transformation of tangent coordinate bases:}
+The coordinate bases of $\TpM$ which are induced by the two charts are according to the last line of Eq.~\eqref{eq:coord_basis_def} by their action on $f \in C^\infty(M)$ defined as
+\begin{align}
+    \frac{\partial}{\partial x^A_\mu} \bigg|_p f
+    \ =\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^A\big)^{-1} \pig)\Big] \big(x^A(p)\big)
+    \qquad \text{and} \qquad
+    \frac{\partial}{\partial x^B_\mu} \bigg|_p f
+    \ =\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^B\big)^{-1} \pig)\Big] \big(x^B(p)\big) \ ,
+    \quad
+\end{align}
+which is visualized by the following commutative diagram:
+\begin{equation}\label{cd:scalar_field_chart_expressions}
+    \begin{tikzcd}[row sep=4.em, column sep=6.em] %,
+        V^A \supset x^A \big( U^A \cap U^B \big)
+                \arrow[rd, "
+                    f\circ \big(x^A\big)^{-1}
+                    "]
+                \arrow[dd, rounded corners, to path={ 
+                        -| node[left, pos=.75]{\small$x^B \circ \big(x^A\big)^{-1}$} ([xshift=-3.5ex]\tikztotarget.west)
+                        -- (\tikztotarget.west)
+                        }]
+        \\
+        U^A \cap U^B
+                \arrow[r, pos=.4, "f"]
+                \arrow[u, "x^A"]
+                \arrow[d, "x^B"']
+        &
+        \R
+        \\
+        V^B \supset x^B \big( U^A \cap U^B \big)
+                \arrow[ru, "
+                    f\circ \big(x^B\big)^{-1}
+                    "']
+    \end{tikzcd}
+\end{equation}
+
+Via the chart transition maps, the different coordinate bases relate by
+\begin{align}\label{eq:coord_basis_trafo_action_f}
+    \frac{\partial}{\partial x^B_\mu} \bigg|_p f
+    \ &=\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^B\big)^{-1} \pig) \Big] \big(x^B(p)\big) \notag \\
+    \ &=\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^A\big)^{-1} \circ x^A \circ \big(x^B\big)^{-1} \pig) \Big] \big(x^B(p)\big) \,, \notag
+\intertext{
+which, making use of the multivariate chain rule, further leads to:
+}
+    \frac{\partial}{\partial x^B_\mu} \bigg|_p f
+    \ &=\ \sum_{\nu=1}^d
+        \Big[\mkern1.5mu \partial_\nu \pig(f \circ \big(x^A\big)^{-1} \pig)\Big] \big(x^A(p)\big) \cdot
+        \Big[\mkern1.5mu \partial_\mu \pig(x^A_\nu \circ \big(x^B\big)^{-1} \pig)\Big] \big(x^B(p)\big) \notag \\
+    \ &=\ \sum_{\nu=1}^d \,
+        \frac{\partial f}{\partial x^A_\nu} \bigg|_p \ 
+        \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+\end{align}
+In the last step we introduced the usual abuse of notation%
+\footnote{
+    The ``abuse'' is that $x^A$ is interpreted as a function of $x^B(p)$, and should therefore rather be written $x^A \circ \big(x^B\big)^{-1}$ as made precise on the right-hand side.
+}
+\begin{align}\label{eq:abuse_of_notation_jacobian}
+    \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+    :=\ \partial_\mu \pig(x^A_\nu \circ \big(x^B\big)^{-1} \pig) \big( x^B(p) \big)
+\end{align}
+for the components of the \emph{Jacobian}
+\begin{align}
+    \frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)}
+    =\ \hat{d}x^A_p \circ \hat{d}(x^B_p)^{-1}
+\end{align}
+\emph{of the transition maps}.
+Dropping~$f$ from Eq.~\eqref{eq:coord_basis_trafo_action_f}, we identify the transformation law
+\begin{align}\label{eq:coord_bases_trafo_law}
+    \frac{\partial}{\partial x^B_\mu} \bigg|_p
+    \ =\ \sum_{\nu=1}^d \,
+        \frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+        \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+\end{align}
+of tangent coordinate bases.
+We did hereby choose to write the Jacobian on the right of the basis vector to emphasize that the change of basis is to be understood as a \emph{right action}.
+Doing so, we need to warn the reader that $\frac{\partial}{\partial x_\nu}\big|_p$ is just an abuse of notation for the basis vector but does not imply an action of a differential operator on the Jacobian on the right.
+
+
+
+
+\paragraph{Transformation of cotangent coordinate bases:}
+The contravariant transformation law of cotangent space coordinate bases follows from the inverse transformation of dual bases in Eq.~\eqref{eq:general_cotangent_basis_gauge_trafo} relative to~\eqref{eq:general_tangent_basis_gauge_trafo}.
+To apply this relation, we first adapt Eq.~\eqref{eq:coord_bases_trafo_law} to our convention that bases transform according to a right action with an \emph{inverse} group element.
+This is achieved by applying Eq.~\eqref{eq:inv_fct_thm_jacobian} to invert the Jacobian (remember the abuse of notation)
+\begin{align}
+    \frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)} \ =\ 
+    \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}^{-1}
+\end{align}
+which implies:
+\begin{align}\label{eq:coord_bases_trafo_law_with_inv}
+    \frac{\partial}{\partial x^B_\mu} \bigg|_p
+    \ =\ \sum_{\nu=1}^d \,
+        \frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+        \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+    \ =\ \sum_{\nu=1}^d \,
+        \frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+        \bigg( \frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)} \bigg)_{\nu\mu}
+    \ =\ \sum_{\nu=1}^d \,
+        \frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+        \bigg( \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}^{-1} \bigg)_{\nu\mu}
+\end{align}
+The cotangent basis elements therefore transform according to Eqs.~\eqref{eq:general_tangent_basis_gauge_trafo} and ~\eqref{eq:general_cotangent_basis_gauge_trafo} like
+\begin{align}\label{eq:chart_component_gradient_trafo_law}
+    \hat{d}x^B_\mu|_p \ =\ 
+    \sum_{\nu=1}^d\ 
+        \frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+        \hat{d}x^A_\nu|_p \,.
+\end{align}
+
+
+
+\paragraph{Transformation of chart differentials:}
+The expression of chart differentials $\hat{d}x^A|_p$ in terms of chart component gradients $\hat{d}x^A_\mu|_p$ in Eq.~\eqref{eq:chart_differential_via_gradients} allows to deduce their transformation law from that in Eq.~\eqref{eq:chart_component_gradient_trafo_law}.
+Alternatively, one obtains the transformation law by right multiplying with the identity in the form $\id_{\TpM} = \hat{d}x^A|_p \circ \big( \hat{d}x^A|_p \big)^{-1}$ and identify a left multiplication with the Jacobian of the chart transition maps:
+\begin{align}\label{eq:chart_differential_trafo_law}
+    \hat{d}x^B|_p
+    \ &=\ \hat{d}x^B|_p \circ \big( \hat{d}x^A|_p \big)^{-1} \circ \hat{d}x^A|_p \notag \\
+    \ &=\ \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} \hat{d}x^A|_p
+\end{align}
+Note that this result is simply the matrix expression of Eq.~\eqref{eq:chart_component_gradient_trafo_law}.
+
+
+\paragraph{Transformation of vector coefficients:}
+Vectors $v \in \TpM$ are relative to a coordinate basis
+$\big[\frac{\partial}{\partial x^B_\mu} \big|_p \big]_{\mu=1}^d$
+expressed by coefficients $v^A \in \R^d$:
+\begin{align}
+    v\ =\
+    \sum_{\mu=1}^d \,
+    v_\mu^A \frac{\partial}{\partial x^A_\mu} \bigg|_p
+\end{align}
+The individual coefficients are recovered by the action of the cotangent basis:
+\begin{align}
+    \hat{d}x^A_\mu \big|_p(v)
+    \ =\ \hat{d}x^A_\mu \big|_p\ \sum_{\nu=1}^d \, v_\nu^A \frac{\partial}{\partial x^A_\nu} \bigg|_p
+    \ =\ \sum_{\nu=1}^d \, v_\nu^A \delta_{\mu\nu}
+    \ =\ v^A_\mu
+\end{align}
+This implies that the coefficients transform contravariantly, just as the cotangent coordinate basis:
+\begin{align}
+    v^B_\mu
+    \ =\ \hat{d}x^B_\mu \big|_p (v)
+    \ =\ \sum_{\nu=1}^d\ 
+        \frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+        \hat{d}x^A_\nu|_p (v)
+    \ =\ \sum_{\nu=1}^d\ 
+        \frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+        v^A_\nu
+\end{align}
+It is easily asserted that this transformation law does indeed lead to a coordinate independent representation of coordinate free vectors $v\in\TpM$:
+\begin{align}
+    \sum_\mu \frac{\partial}{\partial x^B_\mu} \bigg|_p v_\mu^B
+    \ =\ \sum_{\mu,\nu,\rho} \frac{\partial}{\partial x^A_\nu} \bigg|_p \,
+        \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)} \,
+        \frac{\partial x^B_\mu}{\partial x^A_\rho} \bigg|_{x^A(p)} \,
+        v^A_\rho
+    \ =\ \sum_{\nu,\rho} \frac{\partial}{\partial x^A_\nu} \bigg|_p \,
+        \delta_{\nu\rho} \,
+        v^A_\rho
+    \ =\ \sum_\nu \frac{\partial}{\partial x^A_\nu} \bigg|_p v_\nu^A
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Coordinate bases as local bundle trivializations}
+\label{apx:correspondences_bundle_trivializations}
+
+The chart transition map induced transformation laws in Section~\ref{apx:chart_transition_induced_gauge_trafos} coincide the gauge transformations as formulated in Section~\ref{sec:21_main} when identifying the Jacobians
+$\frac{\partial x^B}{\partial x^A} \big|_{x^A(p)}$ with $g_p^{BA}$.
+In Section~\ref{apx:correspondences_chart_gauge_ptwise} we make these connections precise by listing all correspondences.
+Section~\ref{apx:correspondences_chart_gauge_local} extends these results by deriving expressions for chart induced bundle trivializations on extended domains~$U \subseteq M$ as introduced in Section~\ref{sec:bundles_fields}.
+A dictionary which summarizes the correspondences is given in Table~\ref{tab:coord_charts_gauge_trafos}.
+
+
+
+\subsubsection[Correspondences to pointwise trivializations of \texorpdfstring{$   \TpM$}{TpM}]%
+              {Correspondences to pointwise trivializations of \texorpdfstring{$\bm\TpM$}{TpM}}
+\label{apx:correspondences_chart_gauge_ptwise}
+
+
+\paragraph{Gauges and chart differentials:}
+The bundle formalism relies on the definition of gauges (Eq.~\eqref{eq:gauge_definition})
+\begin{align}
+    \psiTMp^A: \TpM \to \R^d \,,
+\end{align}
+which are vector bundle isomorphisms, assigning coordinates to tangent spaces with $p\in U^A$.
+In the chart formalism, gauges over $U^A$ are \emph{induced} as chart differentials (Eq.~\eqref{eq:chart_differential_via_gradients}):
+\begin{align}
+    \hat{d}x^A_p: \TpM \to \R^d
+\end{align}
+Different gauges are related by gauge transformations (Eq.~\eqref{eq:gauge_trafo_local_def_21})
+\begin{align}
+    \psiTMp^B\ =\ g^{BA}_p\, \psiTMp^A \,\ \qquad
+    \qquad &\textup{with} \qquad
+    g^{BA}_p\ :=\ \psiTMp^B \circ \big(\psiTMp^A\big)^{-1} \ \ \in\ G \,.
+\intertext{
+The same definition holds for the chart induced gauges, where gauge transformations turn out to coincide with the Jacobian of the chart transition maps (Eq.~\eqref{eq:chart_differential_trafo_law}):
+}
+    \hat{d}x^B_p\ =\ \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} \hat{d}x^A_p
+    \qquad &\textup{with} \qquad
+    \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}
+    \!=\ \hat{d}x^B_p \circ \big( \hat{d}x^A_p \big)^{-1}
+    \ \  \in\ \GL{d}
+\end{align}
+
+
+
+\paragraph{Vector components:}
+As vector components $v^A = \psiTMp^A(v)$ or $v^A = \hat{d}x^A|_p(v)$ are given by the action of gauges, they show the same covariant transformation behavior
+\begin{align}
+    v^B = g_p^{BA} v^A
+    \qquad &\textup{and} \qquad
+    v^B = \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} v^A \,.
+\intertext{In terms of components, these relations are written as}
+    v^B_i = \sum_{j=1}^d \big(g_p^{BA}\big)_{ij}\, v^A_j
+    \qquad &\textup{and} \qquad
+    v^B_\mu = \sum_{\nu=1}^d \frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)} v^A_\nu \,.
+\end{align}
+
+
+
+
+\paragraph{Induced reference frames:}
+
+Reference frames are in the bundle formalism induced by mapping the vectors~$\epsilon_i$ of the standard frame $e\in G$ of $\R^d$ through the gauge map back to $\TpM$ (Eq.~\ref{eq:framefield_gauge_equivalence}):
+\begin{align}
+    \big[ e_i^A \big]_{i=1}^d\ =\ \Big[ \big(\psiTMp^A \big)^{-1} (\epsilon_i) \Big]_{i=1}^d
+\end{align}
+The corresponding relation in the chart formalism is according to Eq.~\eqref{eq:coord_basis_vector_via_chart_differential} given by 
+\begin{align}
+    \bigg[ \frac{\partial}{\partial x^A_\mu} \bigg|_p \bigg]_{\mu=1}^d\ =\ \Big[ \big(\hat{d}x_p^A \big)^{-1} (\epsilon_\mu) \Big]_{\mu=1}^d
+\end{align}
+Eq.~\eqref{eq:frame_rightaction} shows that the transformation laws of reference frames is given by the right action
+\begin{align}\label{eq:trafo_law_comparison_basis_gauge}
+    \left[e_{i}^B\right]_{i=1}^d
+    \  =\ \left[ e_{i}^A \right]_{i=1}^d \!\lhd \left(g_p^{BA}\right)^{-1}
+    \ :=\ \left[ \sum\nolimits_{j=1}^d e_{j}^A\, \big(g_p^{BA}\big)^{-1}_{ji} \right]_{i=1}^d
+    \ =\ \left[ \sum\nolimits_{j=1}^d e_{j}^A\, \big(g_p^{AB}\big)_{ji} \right]_{i=1}^d \,.
+\end{align}
+In analogy, the transformation law of coordinate bases is from Eq.~\eqref{eq:coord_bases_trafo_law_with_inv} seen to be given by
+\begin{align}\label{eq:trafo_law_comparison_basis_chart}
+    \bigg[\frac{\partial}{\partial x^B_\mu} \bigg|_p \bigg]_{\mu=1}^d
+    =\ \bigg[\frac{\partial}{\partial x^A_\mu} \bigg|_p \bigg]_{\mu=1}^d \mkern-6mu\lhd \frac{\partial x^B}{\partial x^A} \bigg|_{x^{\mkern-1muA}\mkern-1mu(p)}^{\;-1}
+    &=\ \Bigg[ \sum_{\nu=1}^d \,
+            \frac{\partial        }{\partial x^A_\nu} \bigg|_p \ 
+            \bigg( \frac{\partial x^B}{\partial x^A} \bigg|_{x^{\mkern-1muA}\mkern-1mu(p)} \bigg)^{-1}_{\nu\mu}
+          \Bigg]_{\mu=1}^d 
+    \notag \\
+    &=\ \Bigg[ \sum_{\nu=1}^d \,
+            \frac{\partial        }{\partial x^A_\nu} \bigg|_p \ 
+            \frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^{\mkern-1muB}\mkern-1mu(p)}
+          \Bigg]_{\mu=1}^d 
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection[Chart induced local trivializations of \texorpdfstring{$    \pi_{\TM}^{-1}(U) $}{TU}]%
+              {Chart induced local trivializations of \texorpdfstring{$\bm{\pi_{\TM}^{-1}(U)}$}{TU}}
+\label{apx:correspondences_chart_gauge_local}
+
+The correspondences laid out in the last section were relating \emph{pointwise} trivializations $\psiTMp$ of $\TpM$ to chart differentials $\hat{d}x_p$.
+In order to complete this picture, this section adds expressions for local trivializations
+\begin{align}
+    \PsiTM: \piTM^{-1}(U) \to U \times \R^d
+\end{align}
+which are induced by charts.
+
+A good candidate to construct $\PsiTM$ from is the chart differential
+\begin{align}
+    dx: \piTM^{-1}(U) \to TV
+\end{align}
+which is a vector bundle isomorphism that differs from the vector space isomorphisms $dx_p$ by not being restricted to a single point $p \in U$.
+To proceed, we generalize the canonical isomorphism $\iota_{\R^d}$ in Eq.~\eqref{eq:canonical_iso_TRk_Rk} from a single point to all the tangent spaces $T_xV \cong \R^d$ over $V \subseteq \R^d$, resulting in the following \emph{canonical local trivialization} of $TV$:
+\begin{align}
+    \iota_{TV}: TV \to V\times\R^d,\ \ v \mapsto \big( \piTV(v),\, \iota_{\R^d}(v) \big) \,.
+\end{align}
+This allows to generalize $\hat{d}x_p$ from a single point to a map
+\begin{align}
+    \hat{d}x\, :=\, \iota_{V\times\R^d} \circ dx \,:\ \piTM^{-1}(U) \to V \times \R^d \,,
+\end{align}
+which is, however, still not the local trivialization sought for.
+By mapping the first factor via the inverse chart from $V$ to $U$, we obtain the \emph{chart induced local bundle trivialization}:
+\begin{align}
+    \PsiTM\ :=\ \big(x^{-1} \times \id \big) \circ \hat{d}x
+\end{align}
+As usual, we visualize the definitions made in a commutative diagram:
+\begin{equation}\label{cd:coordinate_basis_bundle_trivialization}
+    \begin{tikzcd}[row sep=3.5em, column sep=6em]
+        V \times \R^d
+            \arrow[rrr, rounded corners, to path={ 
+                    ([xshift=-1ex]\tikztostart.north)
+                    |- node[above, pos=.75]{\small$\big( x^{-1} \times \id \big)$} ([yshift=10ex]\tikztotarget.north)
+                    -- (\tikztotarget.north)
+                    }]
+            \arrow[dr, "\proj_1"']
+        &
+        TV  \arrow[d, "\piTV"]
+            \arrow[l, "\iota_{V \times \R^d}"']
+        &
+        \piTM^{-1}(U)
+            \arrow[d, "\piTM"']
+            \arrow[r, "\PsiTM"]
+            \arrow[l, "dx"']
+            \arrow[ll, rounded corners, to path={ 
+                    |- node[above, pos=.75]{\small$\hat{d}x$} ([yshift=4ex, xshift=1ex]\tikztotarget.north)
+                    -- ([xshift=1ex]\tikztotarget.north)
+                    }]
+        &
+        U \times \R^d
+            \arrow[ld, "\proj_1"]
+        \\
+        &
+        V
+        &
+        U
+            \arrow[l, "x"]
+    \end{tikzcd}
+\end{equation}
+
+Considering two overlapping charts $x^A: U^A \to V^A$ and $x^B: U^B \to V^B$ and denoting $U^{AB} = U^A \cap U^B$, one obtains transition maps
+\begin{align}
+    \hat{d}x^B \circ \big( \hat{d}x^A \big)^{-1} \,=\,
+    \left( x^B \mkern-5mu\circ\mkern-3mu (x^A)^{-1} \times \frac{\partial x^B}{\partial x^A} \right)
+    \,:\ x^A\big( U^{AB}\big) \times \R^d \to x^A\big( U^{AB}\big) \times \R^d
+\end{align}
+and
+\begin{align}
+    \PsiTM^B \circ \big( \PsiTM^A \big)^{-1} \,=\,
+    \left( \id \times \frac{\partial x^B}{\partial x^A} \right)
+    \,:\ U^{AB} \times \R^d \to U^{AB} \times \R^d \,.
+\end{align}
+These definitions and their mutual relation is shown in the following commutative diagram:
+\begin{equation}\label{cd:coordinate_basis_bundle_trivialization_transition}
+    \begin{tikzcd}[row sep=3.5em, column sep=4em]
+        x^B\big(U^{AB}\big) \times \R^d
+            \arrow[rr, "\big( (x^B)^{-1} \times \id \,\big)\ "]
+        & &
+        U^{AB} \times \R^d
+        \\
+        &
+        \piTM^{-1}\big(U^{AB}\big)
+            \arrow[ul, "\hat{d}x^B"]
+            \arrow[dl, "\hat{d}x^A"']
+            \arrow[ur, "\PsiTM^B"']
+            \arrow[dr, "\PsiTM^A"]
+        \\
+        x^A\big(U^{AB}\big) \times \R^d
+            \arrow[rr, "\big( (x^A)^{-1} \times \id \,\big)"']
+            \arrow[uu, "\pig( x^B \mkern-5mu\circ\mkern-3mu (x^A)^{-1} \times \frac{\partial x^B}{\partial x^A} \pig)\ "]
+        &&
+        U^{AB} \times \R^d
+            \arrow[uu, "
+                    \hspace*{10pt}
+                    $\big(\id \times g^{BA} \big)$
+                    \\ \rule{0pt}{16pt}
+                    $ = \pig( \id \times \frac{\partial x^B}{\partial x^A} \pig)$
+                    "' align = left]
+    \end{tikzcd}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{\textit{G}-structures and vielbein fields}
+\label{apx:vielbein_fields}
+
+
+As discussed in Sections~\ref{sec:G_associated_bundles} and~\ref{sec:bundle_trivializations}, any $G$-atlas $\{(\PsiTM^X, U^X)\}$ of local tangent bundle trivializations specifies a corresponding $G$-structure, that is, a subbundle~$\GM$ of distinguished reference frames which respect (or define) some geometric structure on~$M$.
+By definition, the transition maps $g^{BA}$ of associated $G$-bundles take values in a reduced structure group $G\leq\GL{d}$.
+This raises the question whether one can similarly find ``$G$-atlases of charts'' $\{(x^X, U^X)\}$, whose Jacobians $\frac{\partial x^B}{\partial x^A}$ take values in a reduced structure group $G \leq \GL{d}$ and therefore encode a $G$-structure.
+For some structure groups this is certainly possible; for instance, an orientation of an orientable manifold can always be fixed by specifying some $\operatorname{GL}^+(d)$-atlas of positively oriented charts, whose transition Jacobians take values in $\operatorname{GL}^+(d)$.
+In general, it is, however, impossible to find coordinate charts which induce coordinate bases that lie in a given $G$-structure.
+One therefore resorts to \emph{explicit gauge transformation from coordinate bases into the $G$-structure}, known as \emph{vielbein fields}~\cite{yepez2011einstein, zhou2016gauge, nakahara2003geometry, carroll2004spacetime}.
+After initially transforming from coordinate bases to the $G$-structure, the gauge freedom within the $G$-structure allows for further $G$-valued gauge transformations.
+
+
+An important example in physics are $\O{d}$-structures (or $\O{1,\, d-1}$-structures for spacetimes), which consist of orthonormal reference frames relative to the (pseudo) Riemannian metric $\eta$ of~$M$.%
+\footnote{
+    The symbol $\eta$ is in the physics literature commonly preserved for the Minkowski metric $\operatorname{diag}(+1,\, -1,\, \dots,\, -1)$ while the (pseudo) Riemannian metric of~$M$ is denoted by~$g$.
+    In contrast, we are writing group elements in the structure group as $g\in G$ and thus use $\eta$ for the (pseudo) Riemannian metric of~$M$.
+}
+Such orthonormal frames represent the possible laboratory frames of an inertial observer.
+They are for instance used to formulate relativistic quantum field theories, specifically the Dirac equation, in curved spacetimes.
+Recall that a given $G$-structure is to be respected by local bundle trivializations, which means that the gauge maps $\psiGMp$ need to map the $G$-structure $\GpM$ at~$p\in M$ to the canonical standard $G$-structure $G$ of $\R^d$.
+For the specific case of $\O{d}$-structures this is equivalent to the requirement on bundle trivializations to preserve the metric, i.e. $\eta_p(v,w) = \langle \psiTMp(v), \psiTMp(w) \rangle$ for any $p\in M$ and $v,w \in \TpM$, which is accomplished without problems in the bundle formalism.
+Given a coordinate chart $x: U \to V$, the induced gauges on $p\in U$ were in the previous sections shown to be given by $\psiTMp = \hat{d}x_p: \TpM \to \R^d$.
+The requirement on them to preserve the metric therefore becomes
+\begin{align}
+    \eta_p(v,w) = \pig\langle \hat{d}x_p(v) \,,\, \hat{d}x_p(w) \pig\rangle \,,
+\end{align}
+which is exactly the defining property for~$x$ being an \emph{isometry}.
+This result implies that \emph{coordinate bases only define an $\O{d}$-structures if $U$ and $V$ are isometric} -- which is only the case if $M$ is locally flat on $U$.
+For any non-flat region of $M$ it is therefore impossible to describe an $\O{d}$-structures via coordinate bases directly.
+This incompatibility expresses itself for instance in the fact that the components~$\eta_{\mu\nu}$ of the Riemannian metric on~$M$ relative to the chosen coordinate basis differ from $\delta_{\mu\nu}$ (or $\operatorname{diag}(+1,-1,\dots,-1)_{\mu\nu}$).
+
+As mentioned before, the orthonormal frames of an $\O{d}$-structure $\OM$ are in the physics literature typically defined via a gauge transformation relative to some chart induced frame field $\big[ \frac{\partial}{\partial x_\mu} \big]_{\mu=1}^d$.
+Denoting this gauge transformation, which is called \emph{vielbein field}, by
+\begin{align}
+    \mathfrak{e}^A: U \to \GL{d} \,,
+\end{align}
+the orthonormal frame field is defined by%
+\footnote{
+    In the physics literature this relation is expressed as
+    $e^A_i = (\mathfrak{e}^A)^{\mu}_{\,\ i} \frac{\partial}{\partial x^\mu}$
+    The inverse is here merely signaled by the opposite position of the indices
+    $(\mathfrak{e}^A)^\mu_{\,\ i} := (\mathfrak{e}^A)^{-1}_{\mu i}$ 
+    in comparison to
+    $(\mathfrak{e}^A)_\mu^{\,\ i} := \mathfrak{e}^A_{\mu i}$.
+}
+\begin{align}
+    \big[e^A_i\big]_{i=1}^d
+    \ :=\ \bigg[ \frac{\partial}{\partial x_\mu} \bigg]_{i=1}^d \lhd \big(\mathfrak{e}^A\big)^{-1}
+    \  =\ \bigg[ \sum_\mu \frac{\partial}{\partial x_\mu} \big(\mathfrak{e}^A\big)^{-1}_{\mu i} \bigg]_{i=1}^d
+    \ \ \in\ \Gamma(U, \OM) \,.
+\end{align}
+The orthonormality of the resulting frame field is usually expressed as%
+\footnote{
+    In the physics literature this relation is usually written
+    $\eta_{\mu\nu}\ (\mathfrak{e}^A)^\mu_{\,\ i}\ (\mathfrak{e}^A)^\nu_{\,\ j}\, =\, \delta_{ij}$.
+}
+\begin{align}
+    \delta_{ij}
+    \ &=\ \eta\big( e_i^A,\, e_j^A \big) \notag \\
+    \ &=\ \eta\bigg( \sum_\mu \frac{\partial}{\partial x_\mu} \big(\mathfrak{e}^A\big)^{-1}_{\mu i}  \,,\; \sum_\nu \frac{\partial}{\partial x_\nu} \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \bigg) \notag \\
+    \ &=\ \sum_{\mu\nu} \eta\bigg( \frac{\partial}{\partial x_\mu} \,,\, \frac{\partial}{\partial x_\nu} \bigg)\, \big(\mathfrak{e}^A\big)^{-1}_{\mu i}\, \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \notag \\
+    \ &=\ \sum_{\mu\nu} \eta_{\mu\nu}\, \big(\mathfrak{e}^A\big)^{-1}_{\mu i}\, \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \,,
+\end{align}
+which explains why the vielbein field is sometimes called ``square root of the metric''.
+As usual, vector components are translated via the non-inverted gauge transformation, that is:%
+\footnote{
+    Again, in the usual notation in physics this relation reads $(v^A)^i\, =\, (\mathfrak{e}^A)_\mu^{\,\ i} v^\mu$.
+}
+\begin{align}
+    v^A_i\ =\ \sum_\mu \mathfrak{e}^A_{i\mu}\, v_\mu
+\end{align}
+
+A simple dimension counting argument illustrates the gauge freedom in the $\O{d}$-structure:%
+\footnote{
+    In physics, one rather considers local Lorentz transformations $\Lambda \in \O{1,3}$, which describe rotations and boosts of local reference frames.
+}
+Being an element of the general linear group, a vielbein $\mathfrak{e}^A(p) \in \GL{d}$ has $d^2$ degrees of freedom, while the metric $\eta$, as a symmetric, bilinear form, has $d(d+1)/2$ degrees of freedom.
+The missing $d(d-1)/2$ degrees of freedom correspond exactly to gauge transformations by structure group elements $g^{BA} \in \O{d}$.
+Alternatively, from the viewpoint of $G$-structures, $\FpM \cong \GL{d}$ has $d^2$ degrees of freedom while $\OpM \cong \O{d}$ has $d(d-1)/2$ degrees of freedom, fixing $d(d+1)/2$ degrees of freedom which correspond to the choice of metric.
+
+
+All constructions are obviously generalized to arbitrary $G$-structures with $\GL{d}$-valued vielbein fields mapping coordinate bases into $\GM$ and the freedom to apply $G$-valued gauge transformation afterwards.
+
+
+
+\begin{landscape}
+\begin{table}[h!]
+    \vspace*{8ex}
+    \centering%
+    \scalebox{1.}{%
+        \input{chapters/tab_coord_basis_comparison.tex}
+    }%
+    \vspace*{4ex}%
+    \captionsetup{width=.9\linewidth}
+    \caption{
+        An overview of different types of coordinatizations on manifolds.
+        The bundle formalism (3rd column), which is used in this work, directly assigns coordinates to the tangent spaces, while referring to the points~$p$ of the base space~$M$ in a coordinate free fashion.
+        In contrast, the chart formalism (4th column) assigns coordinates to local subsets $U^X \subseteq M$ of the manifold.
+        Local trivializations of the tangent bundle and bundle transition maps between them are induced as differentials of the charts and their transition maps, the latter usually referred to as Jacobians.
+        The second last row gives expressions for the reference frames which are induced as identity sections of local trivializations of $\TM$ (3rd column) or as chart induced coordinate bases (4th column).
+        Similarly, the last row compares definitions of $G$-structures -- for instance orthonormal frames -- via an $G$-atlas for $\TM$ (3rd column) and via vielbein fields as gauge transformations relative to coordinate bases (4th column).
+        As usual, we abbreviate $U^A \cap U^B$ by $U^{AB}$ and assume $p\in U^{AB}$.
+    }
+    \label{tab:coord_charts_gauge_trafos}
+\end{table}
+\end{landscape}

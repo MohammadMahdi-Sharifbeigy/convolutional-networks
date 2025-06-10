@@ -1,0 +1,125 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Coordinate independent CNNs on general surfaces}
+\label{sec:instantiations_mesh}
+
+
+Instead of operating on a fixed geometry, the $\GM$-convolutions in the current section are defined on general manifolds.
+We restrict our review to surfaces ($d=2$) since we are not aware of implementations on (general) higher-dimensional manifolds.
+The signals to be processed could either be directly given by the dataset or are computed from the surfaces' geometries.
+Examples for the former would be color textures or physical quantities like temperature fields or the wall stress of a pressurized container.
+The latter could for instance be Gaussian and principal curvatures, SHOT descriptors or wave kernel signatures.
+Most applications so far focus on classifying the surfaces~\cite{huang2019texturenet,jin2018learning,Wiersma2020}, segmenting parts of them~\cite{poulenard2018multi,huang2019texturenet,Wiersma2020,Yang2020parallelFrameCNN} or finding correspondences between different surfaces~\cite{masci2015geodesic,boscaini2016learning,schonsheck2018parallel,Wiersma2020,deHaan2020meshCNNs}.
+Further applications are the prediction of physical quantities like mechanical stress~\cite{sun2018zernet} or the synthesis of color textures~\cite{turk2001texture,ying2001texture} or geometric deformations~\cite{hertz2020GeomTextureSynthesis}.
+
+
+The design of Euclidean and spherical CNNs is strongly guided by the requirement for global symmetry equivariance.
+Since general surfaces come usually with trivial isometry groups this guiding principle falls away, which leaves us with a large freedom in the choice of $G$-structures.
+The models that we review in this section can be classified into \emph{rotation-steerable} and \emph{$\{e\}$-steerable} surface convolutions.
+Both approaches address the issue of a missing canonical direction on surfaces, however, they do it in a fundamentally different way.
+Rotation-steerable models account for the lack of reference direction by their equivariant design, treating all directions equivalently.
+Their underlying $\SO2$-structure is -- up to a practically irrelevant choice of orientation%
+\footnote{
+    The chosen orientation is on a (connected, orientable) manifold arbitrary since the kernels are learned.
+    If the opposite orientation was chosen, the training would just result in oppositely oriented kernels.
+}
+-- fixed by the Riemannian metric.
+The rotation steerable models differ therefore mainly in their choice of field types.
+The $\{e\}$-steerable models are non-equivariant and are therefore not associated to a (non-trivial) field type.
+However, they differ from each other by the specific choice of $\{e\}$-structure that is used to determine the kernel alignments.
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+This section is organized as follows:
+we start in Section~\ref{sec:surfaces_geom_classical_smooth} with a (very) short introduction to the classical differential geometry of surfaces, discussing in particular the difference between their intrinsic and extrinsic geometry.
+In practice, most implementations operate on discretized surfaces.
+Section~\ref{sec:surfaces_geom_mesh} gives an overview of the geometry of triangular surface meshes, which are arguably the most common surface discretizations in the deep learning literature.
+In Section~\ref{sec:so2_surface_conv} we discuss rotation-steerable surface convolutions.
+Heuristics for fixing the frame fields that define $\{e\}$-steerable surface convolutions are reviewed in Section~\ref{sec:e_surface_conv}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+For completeness, we mention in the following paragraph a few alternative approaches to define surface convolutions
+before coming to the actual content of this section.
+
+\paragraph{Surface CNNs beyond \textit{GM}-convolutions:}
+
+While quite some surface CNNs can be interpreted as $\GM$-convolutions, many alternative network designs have been proposed.
+These methods rely for instance on
+graph convolutions on surface meshes,
+spectral approaches,
+multi view renderings of surface embeddings,
+volumetric methods in the embedding space,
+differential operators,
+or other operators which operate immediately on the mesh data structures.
+The following brief review is intended to give an overview on the different directions which have been explored.
+
+
+One method to classify or segment embedded surfaces is to \emph{render them from multiple viewpoints} and process the renderings with conventional Euclidean CNNs.
+The resulting features are then aggregated by
+pooling over the viewpoints~\cite{su2015multi,qi2016volumetric}
+or via a consensus method~\cite{paulsen2018multi}.
+\citet{esteves2019multiView} choose to place the camera viewpoints on a sphere according to a discrete subgroup of $\SO3$, for instance the icosahedral group.
+The resulting features are then processed jointly via a discrete group convolution (not a surface convolution).
+
+
+Instead of projecting the surface by rendering it, it can be projected to $\R^2$ by defining a \emph{chart}.
+\citet{sinha2016deep} define approximately authalic (area preserving) global charts on spherical topologies.
+These charts are discontinuous and in general not conformal (angle preserving).
+A conventional Euclidean CNN is used to process the resulting images.
+The discontinuities can be circumvented by pulling the surface features back along toric~\cite{maron2017convolutional} or more general~\cite{haim2018surface,benhamu2018multichart} covering maps.
+The subsequent Euclidean convolution on the pullback can not be interpreted as a $\GM$-convolution since the sheets of the covering map induce different, incompatible $\{e\}$-structures on the surface.
+\citet{li2019crossAtlas} use an atlas of (approximately) isometric charts -- as discussed at the end of Section~\ref{sec:e_surface_conv}, this corresponds indeed to a $\GM$-convolution.
+
+
+\emph{Volumetric methods} process embedded surfaces with CNNs in the embedding space~$\R^3$, for instance by interpreting the vertices of a surface mesh as a \emph{point cloud}~\cite{qi2017pointnet,qi2017pointnet++,thomas2019kpconv} or by \emph{voxelizing} the input.
+Point cloud based methods are reviewed in~\cite{guo2020deep}.
+\citet{mescheder2019occupancyNets} and \citet{peng2020occupancyCNNs} argue that an implicit surface parametrization is more economical and propose networks which model surfaces as decision boundaries.
+
+
+\emph{Spectral approaches} are inspired by the convolution theorem.
+The Fourier basis on a manifold is thereby given by the eigenfunctions of the Laplace-Beltrami operator.
+Spectral neural networks process feature maps by manipulating their Fourier spectrum with learned linear operators.
+As the Fourier basis is non-localized, \citet{boscaini2015learning} use instead a windowed Fourier transform; an alternative are the localized manifold harmonics of~\citet{melzi2018localized}.
+\citet{bruna2013spectral} interpret surface meshes as graphs.
+They are therefore applying graph Fourier transforms, which are based on the eigenfunctions of the graph Laplacian.
+
+
+\citet{sharp2020diffusion} suggest a model which is based on \emph{differential operators}.
+Scalar features are propagated via heat diffusion with a learnable diffusion time.
+As the Laplacian (occurring in the heat equation) is isotropic, it can not respond selectively to pattern in specific rotations.
+The authors are therefore additionally applying a gradient operator, followed by taking scalar products of the resulting tangent vector-valued features.
+Note that both operations are gauge invariant.
+The networks can be implemented on all data structures which admit partial differential operators, for instance point clouds or meshes.
+
+
+Quite some networks do not operate on the \emph{Riemannian manifold structure} but rather on the \emph{data structure} which represents the surfaces numerically.
+An example are networks which interpret the nodes and edges of a surface mesh as forming a graph and consequently apply \emph{graph networks}.
+The isometry equivariance of graph networks was investigated in~\cite{khasanova2018isometric,horie2020isometric}.
+\citet{verma2018feastnet} proposed a graph network with dynamic filters, i.e. filters that are during the forward pass predicted from the features.
+The model of \citet{milano2020primaldual} operates on the primal and dual graphs of meshes and utilizes attention mechanisms.
+
+Spiral nets process features on meshes via local spiral operators~\cite{lim2018simple,gong2019spiralnet++}.
+These operators enumerate features by following a spiral path outwards from the central node.
+A response is computed by applying a LSTM to the resulting sequence of features or an MLP to their concatenation.
+The choice of first neighbor and spiraling direction corresponds to a choice of $\{e\}$-structure.
+\citet{hanocka2019meshcnn} and \citet{hertz2020GeomTextureSynthesis} define convolutions on mesh faces and edges, respectively.
+Both models are made invariant to the arbitrariness in the mesh element ordering, which could be generalized to a permutation equivariant design.
+
+For more in-depth reviews of such methods we point the reader to \citet{bronstein2017geometric} and \citet{guo2020deep}.

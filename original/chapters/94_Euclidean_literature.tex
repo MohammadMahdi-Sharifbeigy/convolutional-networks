@@ -1,0 +1,181 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{Euclidean CNNs in the literature}
+\label{sec:euclidean_literature}
+
+All of the models in rows~(1-26) of Table~\ref{tab:network_instantiations} are $\Aff(G)$-equivariant $\GM$-convolutions on Euclidean spaces~$\Euc_d$ as discussed in the previous sections.
+They differ in the dimensionality~$d$ of the Euclidean space, the structure group~$G$ and thus global symmetry group $\Aff(G)$, the group representations or field types~$\rho$ and choices of discretizations.
+This section discusses the models briefly by grouping them by their field types into irrep models, regular representation models (corresponding to group convolutions) and variations of them, quotient representation models and others.
+Conventional CNNs, which we review first, fall a bit out of this classification as their trivial structure group leads to feature fields and kernels without any symmetry constraints.
+
+
+Row~(1) lists Euclidean $\GM$-convolutions on translation invariant $\{e\}$-structures as visualized in Fig.~\ref{fig:G_structure_R2_1}.
+Due to the triviality of the structure group $G=\{e\}$ no (non-trivial) gauge transformations exist and the only possible choice of group representation is the trivial representation.
+The $G$-steerability constraint becomes therefore trivial, such that the space of admissible convolution kernels remains unrestricted.
+When being pulled back to $\R^d$ via a chart, the $\GM$-convolution becomes by Theorem~\ref{thm:Euclidean_GM_conv_is_conventional_conv} a conventional convolution (correlation).
+Theorem~\ref{thm:affine_equivariance_Euclidean_GM_conv} asserts its translational equivariance.
+The models are therefore seen to correspond to the conventional convolutional networks by~\citet{LeCun1990CNNs}.
+
+
+All of the other Euclidean models in rows~(2-26) consider non-trivial structure groups.
+They can be thought of as conventional convolutions on~$\R^d$ with the additional constraint on the kernels to be $G$-steerable, which guarantees their $\Aff(G)$-equivariance.
+
+
+\paragraph{Irrep features:}
+The networks in rows~(4, 9, 10, 17, 23) and (26) operate on feature fields that transform according to \emph{irreducible representations} (irreps) of~$G$.
+For $G=\SO2$, listed in row~(4), this leads to so-called harmonic networks~\cite{Worrall2017-HNET,Weiler2019_E2CNN}.
+This name is motivated by the fact that the kernel constraint allows in this case only for spectrally localized circular harmonics of frequency $m-n$ when mapping between fields that transform according to irreps of order~$n$ in the input and order~$m$ in the output.%
+\footnote{
+    Only frequency $m-n$ is allowed when considering \emph{complex} irreps of~$\SO2$.
+    For \emph{real} irreps, the constraint allows for frequencies $|m-n|$ and $m+n$.
+    More details can be found in Appendices F.5 of~\cite{Weiler2019_E2CNN} and E.1 and E.2 of~\cite{lang2020WignerEckart}.
+}
+The additional reflectional constraint for $G=\O2$, listed in row~(10), adds parity selection rules that fix the phase of the circular harmonics, suppressing half of the degrees of freedom as compared to the $G=\SO2$ case~\cite{Weiler2019_E2CNN}.
+The models by \cite{3d_steerableCNNs,Thomas2018-TFN,miller2020relevance,Kondor2018-NBN,anderson2019cormorant} in row~(17) consider irreps of $G=\SO3$ and can therefore be seen as the analog to the models in row~(4) in three dimensions.
+The space of valid kernels to map between fields that transform according to irreps (Wigner D-matrices) of orders $n$ and $m$ is here spanned by all spherical harmonics of the $2(\min(m,n)+1)$ orders $j$ with $|m-n| \leq j \leq m+n$.
+As proven in~\cite{lang2020WignerEckart}, this generalizes to any compact structure group, with the admissible frequencies of the harmonics being determined by the corresponding Clebsch-Gordan coefficients labeled by $m,n$ and~$j$.
+A variation of this approach is listed in row~(23) \cite{poulenard2019effective}.
+A convolution of an input scalar field with spherical harmonics yields irrep fields of the corresponding order.
+However, instead of processing these irrep features further via convolutions, the authors compute their norm.
+This results in scalar fields, which are in the next layer processed in the same manner.
+The model from~\cite{shutty2020learning} in row~(26) does not assume the standard Euclidean metric but the Minkowski metric.
+Its structure group is the Lorentz group $G=\SO{d-1,1}$ and the global symmetry group is the Poincar\'{e} group.
+In addition to building the equivariant network, the authors propose an algorithm to compute the irreps of Lie groups from the structure constants of their Lie algebra.
+
+
+A special case of irreps are \emph{trivial representations}, which describe $G$-invariant feature vectors (scalars).
+Due to their invariance, such features can not encode differences between any patterns in $G$-related poses.
+The constraint on kernels that map between scalar fields becomes $K(g\mkern1mu \mathscr{v}) = K(\mathscr{v})$ for any $\mathscr{v} \in \R^d$ and any $g\in G$, enforcing kernels that are (in every channel individually) invariant under the action of $G$.
+This is for reflections $G=\Flip$ visualized in the upper left entry of Table~\ref{tab:reflection_steerable_kernels}.
+Interpreting the pixel grid of an image as a graph and applying a standard graph convolution to it corresponds to a trivially steerable convolution with $\O2$-invariant kernels since standard graph convolutions apply isotropic kernels~\cite{khasanova2018isometric}.
+
+An advantage of irrep features from a practical viewpoint is their low dimensionality and thus memory consumption per feature field.
+However, empirical results show that irrep field based steerable convolutions usually achieve a lower performance than other field types, for instance those based on regular representations.
+This statement is reflected in our evaluation of M\"{o}bius convolutions in Section~\ref{sec:mobius_evaluation} and the benchmark of isometry equivariant Euclidean convolutions in~\cite{Weiler2019_E2CNN}.
+
+
+
+\paragraph{Regular features and group convolutions:}
+The probably most prominent class of group representations in equivariant deep learning are \emph{regular representations} of the structure groups.
+Regular representations operate on a suitable%
+\footnote{
+    For instance, for topological groups, the functions are typically required to be continuous.
+    For locally compact groups one usually considers the space $L^2(G)$ of square integrable functions on $G$.
+}
+space of functions $\digamma: G \to \R$ by translating them, that is,
+$\big[ \rho_\textup{reg} (\tilde{g}) \digamma \big](g) = \digamma\big( \tilde{g}^{-1}g \big)$.%
+\footnote{
+    Regular representations over a different field $\mathbb{K}$ than the reals take values in this field, i.e. $\digamma: G \to \mathbb{K}$.
+}
+For finite groups this implies feature fields with the number of channels $c = |G|$ given by the order of the group.
+As non-finite groups imply non-finite regular representations, the corresponding features are in practice discretized, which is mostly done by considering a finite subgroup of the structure group.
+Since regular feature fields $f \in \Gamma(\A)$ assign a function $f^A(p): G \to \R$ to each point $p\in M$ (when being expressed relative to any gauge $A$ at $p$), they are equivalent to real-valued functions $\tilde{f}: \GM \to \R$ on the $G$-structure~$\GM$.%
+\footnote{
+    Theorem~\ref{thm:regular_field_scalar_GM} in Appendix~\ref{apx:regular_field_scalar_GM} proves this isomorphism
+    $C^\infty(\GM)\ \cong\ \Gamma(\A_{\rho_\textup{reg}})$
+    for the practically relevant case of $G$ being a finite group.
+}
+For the case of $\GM$ being induced by an $\Aff(G)$-atlas, this is furthermore equivalent to real-valued functions $\accentset{\approx}{f}: \Aff(G) \to \R$ on $\Aff(G) \cong \GM$ (along the isomorphism in Eq.~\eqref{eq:principal_bundle_iso_AffG_GM}).
+Equivariant linear maps between functions on the group $\Aff(G)$ are \emph{group convolutions} (see Eq.~\eqref{eq:group_conv_def} in Section~\ref{apx:homogeneous_conv} and Section~7.11 in~\cite{gallier2019harmonicRepr}), which means that affine group convolution based CNNs are covered by our framework~\cite{Cohen2016-GCNN,Kondor2018-GENERAL,bekkers2020bspline}.
+
+
+$\Aff(G)$-group convolutions are in Table~\ref{tab:network_instantiations} listed in rows (2,3,5,11,15,19,21,24) and (25).
+As these models typically process gray-scale or scalar images, they apply an initial convolution from scalar fields to regular fields, followed by group convolutions, i.e. convolutions from regular to regular fields.
+As regular representations are permutation representations, they typically apply pointwise nonlinearities like ReLUs to each of the field channels individually.%
+\footnote{
+    As the action of nonlinear maps depends on the chosen basis, this is what really distinguishes regular (or any other non-irreducible) feature fields from their decomposition into irrep fields; see footnote~\ref{footnote:feature_field_irrep_decomposition} and the discussion in Section~\ref{sec:mobius_representations}.
+}
+The reflection equivariant CNN on $\Euc_2$ from~\cite{Weiler2019_E2CNN} in 
+row (3)
+applies $\Flip$-steerable kernels, as derived in Section~\ref{sec:mobius_conv} and visualized in the bottom right entry of Table~\ref{tab:reflection_steerable_kernels}.
+As the reflection group is finite with order $|\Flip| = 2$, the regular feature fields have two channels, each of which is associated to one of the two frame orientations of the $\Flip$-structure in Fig.~\ref{fig:G_structure_R2_3}.
+The resulting model is globally $\Trans_2 \rtimes \Flip = \Aff(\Flip)$ equivariant.
+% 
+To construct $\SE2 = \Aff(\SO2)$ equivariant group convolutions one would in theory have to consider the $\SO2$-structure in Fig.~\ref{fig:G_structure_R2_2} with feature fields transforming according to the regular representation of $\SO2$.
+In practice, most of the models in 
+row (5)
+of Table~\ref{tab:network_instantiations}
+approximate this via regular representations of the cyclic groups $\CN \leq \SO2$, which are finite subgroups of discrete rotations by multiples of $2\pi/N$.
+As the order of these groups is $|\!\CN\!|=N$, the corresponding feature fields are $N$-dimensional.
+While the model performance is initially significantly increasing with $N$, it is empirically found to saturate at approximately $8$ to $12$ sampled directions~\cite{Weiler2018SFCNN,Weiler2019_E2CNN,bekkers2020bspline}.
+For an intuition on the spaces of $\CN$-steerable kernels we refer to the visualizations in~\cite{Weiler2018SFCNN,bekkers2018roto,bekkers2020bspline}.
+%
+The $\E2 = \Aff(\O2)$ equivariant group convolutions in
+row (11)
+are similarly approximated via dihedral subgroups $\DN \leq \O2$, which consist of $N$ rotations, each in two reflections.
+The feature fields are in this case $|\!\DN\!| = 2N$-dimensional.
+% 
+Simultaneous equivariance under translations and scaling is achieved by the $\Trans_d \rtimes \Scale = \Aff(\Scale)$ group convolutions in
+rows (2) and (15).
+The scaling group is hereby commonly discretized.
+As this would still lead to a (countably) infinite group order, the implementations introduce cutoffs, i.e. minimal and maximal scales as shown by the frames in Fig.~\ref{fig:G_structure_R2_4}.
+Note that this leads to similar boundary effects as for conventional convolutions at the border of an image.
+% 
+The models in
+rows (19) and (21)
+are equivariant w.r.t. translations, rotations and, for the latter, reflections on three-dimensional Euclidean spaces~$\Euc_3$.
+While \citet{finzi2020generalizing} choose a Monte-Carlo discretization of the regular representation,
+the models in \cite{Worrall2018-CUBENET,winkels3DGCNNsPulmonary2018} are based on different discrete subgroups of $\SO3$ or $\O3$.
+A current limitation of group convolution based rotation and reflection equivariant models in three dimensions is their high memory and compute requirement.
+For instance, the symmetry group of the cube, which has still a quite coarse resolution of rotations by $\pi/2$, already consists of $48$ group elements, implying $48$-dimensional feature fields in three-dimensional space.
+On the other hand, the large number of symmetries reflects the greatly enhanced data efficiency of such models:
+the authors of \cite{winkels3DGCNNsPulmonary2018} report the same performance of an equivariant model in comparison to a non-equivariant ($\{e\}$-steerable) network despite training on a $10$ times smaller dataset.
+% 
+The models in
+rows (24) and (25)
+convolve on $\Euc_3$, however, they consider cyclic and dihedral structure groups $\C4$ and $\D4$, i.e. planar rotations and reflections around the (thus defined) $z$-axis.
+Their steerable kernels are therefore similar to those of the models from
+rows (5) and (11)
+but extend additionally in a new $z$-direction.
+
+
+\paragraph{Regular to scalar and vector pooling:}
+A variation of group convolutional networks are the models in
+rows (7,8,13,16) and (20),
+which are labeled by regular$\xrightarrow{\textup{pool}}$trivial and regular$\xrightarrow{\textup{pool}}$vector.
+After applying a convolution to regular feature fields, they perform a $\operatorname{max}$-\emph{pooling} operation over channels, which results in scalar (trivial) fields \cite{Cohen2016-GCNN,marcos2016learning,Weiler2019_E2CNN,ghosh2019scale,andrearczyk2019exploring}, or a $\operatorname{max}$-pooling together with an $\operatorname{argmax}$, from which vector fields can be computed~\cite{Marcos2017-VFN,Weiler2019_E2CNN}.
+Subsequent convolutions map from the resulting scalar or vector fields back to regular feature fields.
+As the pooling operations reduce the number of channels significantly from $|G|$ to $1$ or $d$, respectively, the models become more memory and compute efficient than conventional group convolutions.
+On the downside the pooling is accompanied with a loss of information, which is empirically found to decrease the model performance~\cite{Weiler2019_E2CNN}.
+
+
+
+\paragraph{Quotient features:}
+Rows (6,12) and (22) list models whose feature fields transform according to \emph{quotient representations} of the structure group, which are permutation representations that are similar to regular representations.
+Given a subgroup~$\widehat{G}$ of~$G$, the corresponding quotient representation acts on scalar functions $\digamma: G/\widehat{G} \to \R$ on the quotient space $G/\widehat{G}$ via translation, that is,
+$\big[\rho_\textup{quot}^{G/\widehat{G}} (\tilde{g})\mkern2mu \digamma\big] (g\mkern1mu \widehat{G}) = \digamma(\tilde{g}^{-1}g \mkern2mu \widehat{G})$.
+The dimensionality of the feature fields is therefore given by the index ${|G:\mkern-2mu\widehat{G}|}$ of $\widehat{G}$ in $G$, which is for finite groups equal to~$|G|/|\widehat{G}|$.
+Feature fields that transform under quotient representations can be seen as symmetry-constrained regular feature fields that are forced to take the same value on all group elements in the same coset $g\widehat{G}$ of $\widehat{G}$ in~$G$.
+A specific example are the representations in row (22), which are associated with the quotient $\O3/\O2 \cong S^2$.
+Instead of allowing for arbitrary convolution kernels, the kernel constraint leads here to kernels which are invariant under rotations around the $z$-axis; see the visualizations in~\cite{janssen2018design}.
+More details and a graphical intuition on quotient representation based feature fields can be found in Appendix~C of~\cite{Weiler2019_E2CNN}.
+The theory proposed in \cite{Kondor2018-GENERAL} covers quotient fields from an alternative viewpoint of group convolutions on right quotient spaces.
+
+
+\paragraph{Induced representations:}
+A generalization of regular and quotient representations are induced representations like the \emph{induced $\SO2$ irreps} in row (14)
+of Table~\ref{tab:network_instantiations}.
+Given any $\SO2$-irrep $\rho: \SO2 \to \GL{n}$, the induced representation $\Ind_{\SO2}^{\O2}\rho: \O2 \to \GL{c}$ of~$\O2$ with $c = n \mkern-2mu\cdot\! {|\O2:\SO2|} = 2n$
+acts in the following way:
+reflections permute two $n$-dimensional, orthogonal subspaces of $\R^{2n}$ which correspond to the two cosets in $\O2/\SO2$ while rotations act on the individual subspaces via~$\rho$.
+For $\rho$ being the trivial representation of $\SO2$ this recovers quotient representations as discussed above.
+In comparison to $\O2$-irrep feature fields, the induced $\SO2$-irrep fields show a significantly improved performance.
+A more detailed description and empirical evaluation of these field types can be found in~\cite{Weiler2019_E2CNN}.
+
+
+The last type of representation listed in Table~\ref{tab:network_instantiations} is the quaternion representation of three-dimensional rotations in row (18)~\cite{zhang2019quaternion}.
+It makes use of the usual representation of rotations via quaternions, which relies the identification of unit quaternions with $\operatorname{SU}(2)$ and the existence of a surjective group homomorphism from $\operatorname{SU}(2)$ to~$\SO3$.
+Note that the quaternion representation is actually a projective representation of $\SO3$.
+
+
+While our theory is formulated on continuous Euclidean spaces, implementations sample feature fields on discrete subsets.
+The most common discretization of $\Euc_d$ is in terms of the pixel grid $\Z^d$.
+An alternative are hexagonal planar grids on $\Euc_2$ as investigated by~\citet{Hoogeboom2018-HEX}.
+If such regular pixel grids are chosen, a basis of $G$-steerable kernels can be precomputed and sampled on this grid.
+Data like events in spacetime~\cite{shutty2020learning} or molecules in $\R^3$ \cite{Thomas2018-TFN,Kondor2018-NBN,anderson2019cormorant,miller2020relevance} are instead usually represented by irregular point clouds.
+In this case the kernels need to be given analytically, which allows their online sampling during the forward pass.
+
+
+Finally, we want to mention that there exist \emph{globally} $\Aff(G)$-equivariant models which are \emph{not locally} $G$-equivariant.
+An example is TI-pooling (transformation-invariant pooling)~\cite{Laptev_2016_CVPR}, which feeds a set of globally transformed feature fields through a conventional CNN and finally pools the resulting features over these transformations, which results in an invariant descriptor.

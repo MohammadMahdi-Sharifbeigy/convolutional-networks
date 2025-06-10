@@ -1,0 +1,81 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\def\arraystretch{2.75}%  1 is the default
+\setlength\tabcolsep{2.8ex}
+\small
+\begin{tabular}{ @{\ \ } l r@{\,}r@{\ }c@{\ }l cc @{\ \ } } 
+    \toprule 
+    \\[-8.0ex]
+    & \multicolumn{4}{c}{isomorphism}
+    & bundle formalism
+    & chart formalism \\
+    \midrule[0.07em] % default width = 0.05
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    chart
+        & $x^A :\ $
+        & $U^A$
+        & $\xrightarrow{\sim}$
+        & $V^A$
+        & ---
+        & any diffeomorphism
+    \\
+    transition map
+        & $x^B \!\circ\! \big(x^A\big)^{-1} :\ $
+        & $x^B \mkern-1mu\big( U^{\mkern-2muA\mkern-2muB} \big)$
+        & $\xrightarrow{\sim}$
+        & $x^A \mkern-1mu\big( U^{\mkern-2muA\mkern-2muB} \big)$
+        & ---
+        & implied by charts
+    \\
+    \midrule[0.04em] % default width = 0.05
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    pointwise trivialization \hspace*{-3ex}
+        & $\psiTMp^A :\ $
+        & $\TpM$
+        & $\xrightarrow{\sim}$
+        & $\R^d$
+        & linear isomorphism from $G$-atlas
+        & $\hat{d}x^A_p = \big( \hat{d}x^A_1|_p,\, \dots,\, \hat{d}x^A_d|_p\, \big)^{\!\top}$
+    \\
+    transition map
+        & $\psiTMp^B \mkern-2mu\circ\! \big(\psiTMp^A\big)^{\mkern-2mu-1} \!:\ $
+        & $\R^d$
+        & $\xrightarrow{\sim}$
+        & $\R^d$
+        & structure group element $g_p^{BA} \in G$
+        & $\hat{d}x^B_p \circ \big(\hat{d}x^A_p\big)^{-1}
+           =\, \displaystyle \frac{\partial x^B}{\partial x^A} \bigg|_{\mkern-1mu x^{\mkern-1mu A}\mkern-2mu(p)} $
+    \\
+    \midrule[0.04em] % default width = 0.05
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    local trivialization
+        & $\PsiTM^A :\ $
+        & $\piTM^{-1} \big(U^A\big)$
+        & $\xrightarrow{\sim}$
+        & $U^A \times \R^d$
+        & $v \mapsto \big( \piTM\mkern-1mu(v),\ \psiTMpiv(v) \big)$
+        & $\big((x^A)^{-1} \times \id\big) \circ \hat{d}x^A$
+    \\
+    transition map
+        & $\PsiTM^B \mkern-2mu\circ\! \big(\PsiTM^A\big)^{\mkern-2mu-1} :\ $
+        & $U^{\mkern-2muA\mkern-2muB} \mkern-4mu\times\! \R^d$
+        & $\xrightarrow{\sim}$
+        & $U^{\mkern-2muA\mkern-2muB} \mkern-4mu\times\! \R^d$
+        & $\big(\id \times g^{BA} \big)$
+        & $\displaystyle \bigg( \id \times \frac{\partial x^B}{\partial x^A} \bigg)$
+    \\
+    \midrule[0.07em] % default width = 0.05
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    general frame
+        & \multicolumn{4}{c}{$\big[ e^A_i \big]_{i=1}^d \in \FpM$}
+        & $\Big[ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big]_{i=1}^d$\ from $\GL{d}$-atlas
+        & $\displaystyle \bigg[\frac{\partial}{\partial x^A_\mu} \bigg|_p \,\bigg]_{\mu=1}^d = \Big[ \big(\hat{d}x^A_p \big)^{-1} (\epsilon_i) \Big]_{\mu=1}^d$
+    \\
+    $G$-structure frame
+        & \multicolumn{4}{c}{$\big[ e^A_i \big]_{i=1}^d \in \GpM$}
+        & $\Big[ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big]_{i=1}^d$\ from $G$-atlas \kern16pt
+        & $\displaystyle \bigg[\sum\nolimits_{\mu}\, \frac{\partial}{\partial x_\mu} \bigg|_p\, \big( \mathfrak{e}^A \big)^{-1}_{\!\mu i}\, \bigg]_{i=1}^d$
+    \\
+    \bottomrule
+\end{tabular}

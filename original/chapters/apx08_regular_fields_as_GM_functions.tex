@@ -1,0 +1,152 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\filbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Regular feature fields as scalar functions on \textit{G}-structure}
+\label{apx:regular_field_scalar_GM}
+
+
+Real-valued functions $\digamma: \GM \to \R$ on the $G$-structure are equivalent to regular feature fields $f: M \to \A_{\textup{reg}}$ on the manifold, that is, that there is an isomorphism
+\begin{align}
+    C^\infty(\GM)\ \cong\ \Gamma(\A_{\textup{reg}}) \,.
+\end{align}
+This appendix presents a proof of this claim for the case of finite structure groups~$G$.
+We start with the usual definition of (real) regular representations of finite structure groups, which act on the (free) vector spaces $\R^{|G|}$.
+One defines a basis $\big\{ \epsilon_g \in \R^{|G|} \,\big|\, g\in G \big\}$ of $\R^{|G|}$, which is labeled by the group elements~$g\in G$.
+The (left) regular representation's action on $\R^{|G|}$ is then defined in terms of its action on these basis vectors, which is given by left translation.
+Specifically, for any $h,g\in G$, the regular representation acts as follows:
+\begin{align}\label{eq:finite_regular_rep_action}
+    \rho_{\textup{reg}}(h)\, \epsilon_g\ :=\ \epsilon_{hg} \,.
+\end{align}
+Note that the action on \emph{coefficients} of a vector is inverse
+\begin{align}\label{eq:finite_regular_rep_action}
+    \rho_{\textup{reg}}(h)\, \sum_{g\in G} \mathscr{f}_g\, \epsilon_g
+    \ =\ \sum_{g\in G} \mathscr{f}_g\, \epsilon_{hg}
+    \ =\ \sum_{{\widetilde{g}}\in G} \mathscr{f}_{h^{-1}\widetilde{g}}\ \epsilon_{\widetilde{g}} \,,
+\end{align}
+which is useful to know, however, we won't need this property in the following.
+As the regular representation permutes the basis vectors of $\R^{|G|}$, it is a \emph{permutation representation}.
+Some visualizations for the cyclic group $G=\C4$ are found in Appendix~B of~\cite{Weiler2019_E2CNN}.
+Regular feature fields are defined as smooth sections of the associated $G$-bundle
+\begin{align}
+    \A_{\textup{reg}}\ =\ \big(\GM \times \R^{|G|}) /\! \sim_{\rho_\textup{reg}} \,.
+\end{align}
+
+
+The isomorphism $C^\infty(\GM) \cong \Gamma(\A_{\textup{reg}})$ substantiates our claim in Section~\ref{sec:instantiations_mesh} that the \emph{Parallel Frame CNNs} by~\citet{Yang2020parallelFrameCNN} are specific $\GM$-convolutions between regular feature fields.
+It furthermore establishes the link between \emph{group convolutions} (see Section~\ref{apx:homogeneous_preliminaries}) and \emph{regular $\GM$-convolutions} that was claimed in Section~\ref{sec:euclidean_literature} and~\cite{Weiler2019_E2CNN}.
+
+
+With these preparations and remarks we are ready to formulate the theorem:
+\begin{thm}[Regular feature fields as scalar functions on $G$-structure]
+\label{thm:regular_field_scalar_GM}
+    Let $G \leq \GL{d}$ be a finite structure group, let $\GM$ be a $G$-structure over $M$ and let $\A_{\textup{reg}}$ be the bundle that is associated by the action of the regular representation $\rho_\textup{reg}$ of $G$.
+    Regular feature fields are then identical to smooth, real-valued functions on the $G$-structure, that is, there is an isomorphism
+    \begin{align}\label{eq:regular_field_associated_bundle_def}
+        \Lambda: C^\infty(\GM) \xrightarrow{\sim} \Gamma(\A_{\textup{reg}}) \,.
+    \end{align}
+    This isomorphism is defined by
+    \begin{align}
+    \label{eq:regular_field_scalar_GM_iso_lambda}
+        \big[\Lambda\digamma\big](p)
+        \ &=\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d\lhd g\big)\, \epsilon_g \Big] \,,
+    \intertext{
+    where $[e_i]_{i=1}^d \in\GpM$ is an arbitrarily chosen representative frame at~$p$.
+    Its inverse is given by
+    }
+    \label{eq:regular_field_scalar_GM_iso_lambda_inv}
+        \big[\Lambda^{-1}f\big] \big([e_i]_{i=1}^d\big)
+        \ &=\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle \,,
+    \end{align}
+    where we abbreviated $p = \piGM(E)$ and denote by $\psiAp^{[e_i]_{i=1}^d}$ that (unique) gauge that corresponds to the frame ${[e_i]_{i=1}^d}$, i.e. which satisfies $\psiAp^{[e_i]_{i=1}^d}\big( [e_i]_{i=1}^d\big) = e$.
+\end{thm}
+\begin{proof}
+    To prove this statement, we need to show that
+    \textit{1)} the isomorphism preserves the smoothness of the maps,
+    \textit{2)} that the choice of representative frame $[e_i]_{i=1}^d \in\GpM$ in the definition of $\Lambda$ is indeed arbitrary and
+    \textit{3)} that $\Lambda^{-1}$ is indeed a left and right inverse of $\Lambda$.
+
+    \item[] {\textit{1)} smoothness : }
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[]
+        That the isomorphism preserves the smoothness of the equivalent field representations is clear since all involved morphisms (right action, gauge map, inner product) are smooth.
+    \end{itemize}
+
+    \item[] {\textit{2)} independence of the definition of $\Lambda$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda}, from the choice of representative frame ${[e_i]_{i=1}^d \in \GpM}$: }
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[]
+        Suppose that we used \emph{any} other frame $[e_i]_{i=1}^d \lhd h$ for an arbitrary $h\in G$.
+        This arbitrary gauge transformation drops then out by making use of the equivalence relation $\sim_{\rho_\textup{reg}}$ that is underlying the associated bundle construction, Eq.~\eqref{eq:regular_field_associated_bundle_def}:
+        \begin{alignat}{3}
+            \big[\Lambda\digamma\big](p)
+            \ =&\ \Big[ [e_i]_{i=1}^d \lhd h \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_g \Big]
+                \qquad && \big( \text{\small def. of $\Lambda$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \rho_\textup{reg}(h) \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_g \Big]
+                \qquad && \big( \text{\small equivalence relation $\sim_{\rho_\textup{reg}}$, Eq.~\eqref{eq:equiv_relation_A} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_{hg} \Big]
+                \qquad && \big( \text{\small $\rho_{\textup{reg}}$ action on basis $\epsilon_g$, Eq.~\eqref{eq:finite_regular_rep_action} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_{\widetilde{g}} \digamma\big( [e_i]_{i=1}^d \lhd \widetilde{g})\, \epsilon_{\widetilde{g}} \Big]
+                \qquad && \big( \text{\small substitution $\widetilde{g} = hg$ } \big)
+        \end{alignat}
+    \end{itemize}
+
+    \item[] {\textit{3)} $\Lambda^{\!-1}$ in Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} is a well defined inverse of $\Lambda$ in Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda} : }
+
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+
+        \item[\it 3\hspace{1pt}a)]
+            $\Lambda^{-1} \!\circ\! \Lambda = \id_{C^\infty(\GM)}$,
+            that is, $\Lambda^{-1}$ is a left inverse of $\Lambda$ :
+
+            For any $\digamma\in C^{\infty}(\GM)$ and any $[e_i]_{i=1}^d$ this is shown as follows:
+            \begin{align}
+                &\ \big[\Lambda^{-1} \!\circ\! \Lambda\, \digamma \big] \big( [e_i]_{i=1}^d \big) \notag \\
+                \ =&\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} [\Lambda\digamma](p) \Big\rangle
+                    && \big( \text{\small def. of $\Lambda^{-1}$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} } \big) \notag\\
+                \ =&\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} \big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\, \epsilon_g \big] \Big\rangle
+                    && \big( \text{\small def. of $\Lambda$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+                \ =&\ \Big\langle \epsilon_e \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\, \epsilon_g \Big\rangle
+                    && \big( \text{\small def. of $\psiAp$, Eq.~\eqref{eq:trivialization_A_p} } \big) \notag\\
+                \ =&\ \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\,
+                    \langle \epsilon_e, \epsilon_g \rangle
+                    && \big( \text{\small pull inner product into sum\,} \big) \notag\\
+                \ =&\ \digamma\big( [e_i]_{i=1}^d \big)
+                    && \big( \text{\small Kronecker delta $\delta_{e,g} = \langle \epsilon_e, \epsilon_g \rangle$} \big) \notag\\
+            \end{align}
+
+
+
+        \item[\it 3\hspace{1pt}b)]
+            $\Lambda \!\circ\! \Lambda^{-1} = \id_{\Gamma(\A_{\textup{reg}})}$,
+            that is, $\Lambda^{-1}$ is a right inverse of $\Lambda$ :
+
+            Let $f\in\Gamma(\A_{\textup{reg}})$ and $p\in M$, then:
+            \begin{align}
+                &\ \big[\Lambda \!\circ\! \Lambda^{-1} f \big] (p) \notag \\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \big[\Lambda^{-1}f]\big( [e_i]_{i=1}^d\lhd g\big)\, \epsilon_g \Big]
+                    && \big( \text{\small def. of $\Lambda$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d\lhd g} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small def. of $\Lambda^{-1}$, Eq.~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} } \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_e \,,\, \rho_{\textup{reg}}(g)^{-1} \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small gauge transformation, Eq.~\eqref{eq:transition_fct_A}} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \rho_{\textup{reg}}(g) \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small unitarity of $\rho_{\textup{reg}}$} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_g \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small $\rho_{\textup{reg}}$ action on basis $\epsilon_e$, Eq.~\eqref{eq:finite_regular_rep_action}} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big]
+                    && \big( \text{\small remove expansion in basis $\epsilon_g$} \big) \notag\\
+                \ =&\ f(p)
+                    && \big( \text{\small def. of $\psiAp$, Eq.~\eqref{eq:trivialization_A_p}} \big)
+            \end{align}
+
+    \end{itemize}
+
+    This concludes our prove of the equivalence of $C^\infty(\GM)$ and $\Gamma(\A_\textup{reg})$.
+\end{proof}

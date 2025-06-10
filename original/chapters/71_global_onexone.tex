@@ -1,0 +1,362 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection[\texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions]%
+           {\texorpdfstring{$\bm{1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions}
+\label{sec:onexone}
+
+
+\onexoneGMs\ map input feature fields $\fin\in\Gamma(\Ain)$ to output feature fields $\fout\in\Gamma(\Aout)$ by linearly mapping each individual input feature vector $\fin(p)\in\Ainp\cong\R^{\cin}$ to an output feature vector $\fout(p)\in\Aoutp\cong\R^{\cout}$ at the same location $p\in M$.
+The convolutional character is implemented by \emph{sharing} the linear map from $\Ainp$ to $\Aoutp$ between different spatial locations.
+However, while the feature spaces $\Ainp$ and $\Ainq$ as well as $\Aoutp$ and $\Aoutq$ are for different $p,q\in M$ isomorphic to each other, there is no canonical isomorphism between them given if the considered structure group~$G$ is non-trivial.
+It is therefore not obvious how the linear map could be shared between different locations.
+As already suggested in the introduction of this section, this issue is resolved by considering $G$-equivariant kernels which are indifferent to the specific choice of isomorphism or gauge.
+The arbitrariness of the trivialization which is chosen from the $G$-atlas reflects the $\GM$-coordinate independence of \onexoneGMs.
+
+
+Mathematically, \onexoneGMs\ can be formulated either as specific vector bundle $M$-morphisms or via the corresponding sections of (associated) homomorphism bundles $\Hom(\Ain,\Aout)$.
+Since we require both concepts later on, we will introduce both viewpoints in the following Sections~\ref{sec:onexone_M_morphism} and~\ref{sec:onexone_hom_section}.
+
+
+\subsubsection[\texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions as vector bundle \textit{M}-morphisms]%
+              {\texorpdfstring{$\bm{1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions as vector bundle \textit{M}-morphisms}
+\label{sec:onexone_M_morphism}
+
+
+\onexoneGMs\ can be formalized in terms of specific smooth \emph{vector bundle $M$-morphisms} which share weights over spatial positions.
+Ignoring the requirement for shared weights for now, such a vector bundle $M$-morphism $\mathcal{C}$ is a smooth bundle map satisfying the following commutative diagram:
+\begin{equation}\label{eq:bundle_morphism_onexone}
+    \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+        % ROW 1
+        \Ain
+            \arrow[rd, "\piAin"']
+            \arrow[rr, "\mathcal{C}"]
+        & &
+        \Aout
+            \arrow[ld, "\piAout"]
+        \\
+        % ROW 2
+        & M
+    \end{tikzcd}
+\end{equation}
+The commutativity $\piAin = \piAout \!\circ\, \mathcal{C}$ ensures that each fiber $\Ainp$ is mapped to the fiber $\Aoutp$ over the same point $p\in M$ (which gives rise to the ``$M$'' in the term $M$-morphism).
+As a vector bundle morphism, the restriction $\mathcal{C}\!\!\;|_p: \Ainp\to\Aoutp$ to a single fiber is further defined to be linear.
+Relative to a local trivialization $\PsiAin^A$ of $\Ain$ and $\PsiAout^A$ of $\Aout$, the bundle map is therefore at each point $p\in U^A$ represented by a matrix
+\begin{align}\label{eq:bundle_morphism_onexone_triv_local}
+    \mathcal{C}^A\!\!\;|_p\ :=\  \psiAoutp^A \circ \mathcal{C}\!\;|_p \circ \big(\psiAinp^A\big)^{-1}\ \in\, \R^{\cout\times\cin} \,.
+\end{align}
+Its relationship to a second coordinatization $\mathcal{C}^B$ is at $p\in U^A\cap U^B$ given by
+\begin{align}\label{eq:onexone_gaugetrafo}
+    \mathcal{C}^B\!\!\;|_p \ =\ \rhoout\big(g_p^{BA}\big)\; \mathcal{C}^A\!\!\;|_p\; \rhoin\big(g_p^{BA}\big)^{-1} \,,
+\end{align}
+which is evident from the commutative diagram below:
+\begin{equation}
+\begin{tikzcd}[column sep=65pt, row sep=30, font=\normalsize]
+    \R^{\cin}
+        \arrow[dd, "\rhoin\big(g_p^{BA}\big)\ "']
+        \arrow[rrr, "\mathcal{C}^A\!\!\;|_p"]
+    & &[-3ex] &
+    \R^{\cout}
+        \arrow[dd, "\ \rhoout\big(g_p^{BA}\big)"]
+    \\
+    &
+    \Ainp
+        \arrow[r, "\mathcal{C}\!\!\;|_p"]
+        \arrow[ul, "\psiAinp^A"]
+        \arrow[dl, "\psiAinp^B"']
+    &
+    \Aoutp
+        \arrow[ur, "\psiAoutp^A"']
+        \arrow[dr, "\psiAoutp^B"]
+    \\
+    \R^{\cin}
+        \arrow[rrr, "\mathcal{C}^B\!\!\;|_p"']
+    & & &
+    \R^{\cout}
+\end{tikzcd}
+\end{equation}
+
+
+The bundle map $\mathcal{C}$ acts on input feature fields $\fin \in \Gamma(\Ain)$ to produce output feature fields
+\begin{align}
+    \fout = \mathcal{C} \circ \fin
+    \quad \in\ \ \Gamma(\Aout) \,.
+\end{align}
+In terms of a commutative diagram, this mapping is visualized as:
+\begin{equation}\label{eq:bundle_morphism_onexone_section}
+    \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+        % ROW 1
+        \Ain
+            \arrow[rr, "\mathcal{C}"]
+        & &
+        \Aout
+        \\
+        % ROW 2
+        & M \arrow[ul, "\fin"]
+            \arrow[ur, "\fout"']
+    \end{tikzcd} ,
+\end{equation}
+
+
+In order for a vector bundle $M$-morphism $\mathcal{C}_{K_{\!1\!\times\!1}}$ to represent a \onexoneGM, it needs to be parameterized in terms of a \onexoneGM\ kernel template $K_{\!1\!\times\!1} \in \R^{\cout\times\cin}$ which is shared with coordinatizations at all spatial positions.
+As argued before, no particular gauge must thereby be preferred in order to ensure \emph{$\GM$-coordinate independence}.
+It is therefore necessary to \emph{share the weights with all trivializations $X \in \mathfrak{X}$ of the $G$-atlas $\mathscr{A}^G$ simultaneously}, that is, to require:
+\begin{align}\label{eq:weight_sharing_onexone}
+    \mathcal{C}_{K_{\!1\!\times\!1}}^X\!\big|_p\ =\ K_{\!1\!\times\!1}
+    \qquad \textup{for \emph{any} gauge}\,\ X \in \mathfrak{X}\,\ \textup{with}\,\ p\in U^X \,.
+\end{align}
+From the transformation behavior between different coordinatizations in Eq.~\eqref{eq:onexone_gaugetrafo} it follows that the kernel template has to satisfy the linear constraint
+\begin{align}\label{eq:onexone_kernel_constraint}
+    \rhoout(g)\, K_{\!1\!\times\!1}\, \rhoin(g)^{-1}  =\, K_{\!1\!\times\!1} \qquad\forall g\in G,
+\end{align}
+that is, it has to be an intertwiner (an equivariant linear map).
+The vector space
+\begin{align}
+    \Hom_G(\rhoin,\rhoout)\ :=\ 
+    \pig\{ K_{\!1\!\times\!1} \in \R^{\cout\times\cin}\ \pig|\ 
+    K_{\!1\!\times\!1} \rhoin(g) = \rhoout(g) K_{\!1\!\times\!1}\ \ \forall g\in G \pig\}
+\end{align}
+of intertwining maps characterizes the space of $\GM$-coordinate independent \onexone\ kernels fully.
+As already mentioned in Section~\ref{sec:gauge_1x1}, \emph{Schur's Lemma}~\cite{gallier2019harmonicRepr} implies that the requirement on $K_{\!1\!\times\!1}$ to be an intertwiner prevents a mapping between fields which transform under non-isomorphic irreducible representations via \onexoneGMs.
+The more general $\GM$-convolutions with spatially extended kernels, defined in Section~\ref{sec:global_conv}, will resolve this issue.
+
+
+With these preparations we are ready to give a concise definition of \onexoneGMs:
+\begin{dfn}[\onexoneGM]
+\label{dfn:onexone}
+    A \onexoneGM\ is a map
+    \begin{align}
+        K_{\!1\!\times\!1} \ostar :\ \Gamma(\Ain) \to \Gamma(\Aout),\ \ \ 
+        \fin \,\mapsto\, K_{\!1\!\times\!1} \,\ostar\, \fin \,:=\, \mathcal{C}_{K_{\!1\!\times\!1}}\! \circ \fin
+    \end{align}
+    which is parameterized by an \emph{intertwining} \onexoneGM\ kernel $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout)$.
+    Here $\mathcal{C}_{K_{\!1\!\times\!1}}$ is the unique smooth vector bundle $M$-morphism between $\Ain$ and $\Aout$ which is in \emph{arbitrary} gauges $\psiAinp$ and $\psiAoutp$ from the considered $G$-atlas pointwise defined by
+    \begin{align}
+        \mathcal{C}_{K_{\!1\!\times\!1}}|_p\ :=\ \psiAoutp^{-1} \circ K_{\!1\!\times\!1} \circ \psiAinp \,.
+    \end{align}
+    The independence of the chosen gauges ($\GM$-coordinate independence) is guaranteed by $K_{\!1\!\times\!1}$ being an intertwiner.
+\end{dfn}
+To show the independence of the chosen gauge explicitly, consider any $G$-related trivializations $\rhoin(g)\,\psiAinp$ and $\rhoout(g)\,\psiAoutp$ for an arbitrary structure group element $g\in G$, which leave the construction of
+\begin{align}
+    \mathcal{C}_{K_{\!1\!\times\!1}} \mkern-2mu\big|_p\ 
+    =\ \ &\big(\rhoout(g)\, \psiAoutp \big)^{-1} \circ K_{\!1\!\times\!1} \circ \big(\rhoin(g)\, \psiAinp\big) \notag \\
+    =\ \ &\psiAoutp^{-1} \circ \big( \rhoout(g)^{-1} K_{\!1\!\times\!1}\, \rhoin(g) \big) \circ \psiAinp \notag \\
+    =\ \ &\psiAoutp^{-1} \circ K_{\!1\!\times\!1} \circ \psiAinp
+\end{align}
+invariant.
+That such defined \onexoneGMs\ are indeed mapping to sections in $\Gamma(\Aout)$ follows from $\mathcal{C}_{K_{\!1\!\times\!1}}$ being a bundle map.
+An overview of local coordinatizations of \onexoneGMs\ is given in Fig.~\ref{fig:triv_bundle_morphism_onexone}.
+
+\begin{figure}
+    \centering
+    \begin{tikzcd}[row sep=4.5em, column sep=4.35em, crossing over clearance=.6ex,
+                   execute at end picture={
+                        \node [] at (-1.16, -1.05) {$\noncommutative$};
+                        \node [] at ( 1.09, -1.05) {$\noncommutative$};
+                        }]
+        % ROW 1
+          U\times \R^{\cin}
+                            \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                                    -- ([yshift=2.5ex]\tikztostart.north) 
+                                    --node[above]{\small$
+                                        \mathcal{C}_{K_{\!1\!\times\!1}}^B
+                                        := (\id\times K_{\!1\!\times\!1})
+                                    $} ([yshift=2.5ex]\tikztotarget.north) 
+                                    -- (\tikztotarget.north)
+                                    }]
+        &[-3.0ex] & &
+        &[-3.0ex] U\times \R^{\cout}
+        \\
+        % ROW 2
+          U\times \R^{\cin}
+                            \arrow[drr, pos=.5, "\proj_1"']
+                            \arrow[u, "\big(\id\!\times\! \rhoin\big(g^{BA}\big)\!\cdot\big)"]
+                            \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                                    -- ([yshift=-17.5ex]\tikztostart.south) 
+                                    --node[below]{\small$
+                                        \mathcal{C}_{K_{\!1\!\times\!1}}^A
+                                        := (\id\times K_{\!1\!\times\!1})
+                                    $} ([yshift=-17.5ex]\tikztotarget.south) 
+                                    -- (\tikztotarget.south)
+                                    }]
+        & \piAin^{-1}(U)    \arrow[dr, shorten <=-3pt, shift right=.25, pos=.2, "\piAin\mkern-12mu"']
+                            \arrow[l,  "\PsiAin^A"']
+                            \arrow[lu, "\PsiAin^B"']
+                            \arrow[rr,  "\mathcal{C}_{K_{\!1\!\times\!1}}"]
+        &
+        & \piAout^{-1}(U)   \arrow[dl, shorten <=-2pt, shift left=.25, pos=.2, "\mkern-6mu\piAout"]
+                            \arrow[r,  "\PsiAout^A"]
+                            \arrow[ru, "\PsiAout^B"]
+        & U\times \R^{\cout}
+                            \arrow[u, swap, "\big(\id\!\times\! \rhoout\big(g^{BA}\big)\!\cdot\big)"]
+                            \arrow[lld, pos=.5, "\proj_1"]
+        \\[1.5ex]
+        % ROW 3
+        &&
+          U \arrow[ul, shorten >=-5pt, bend right=22, looseness=.5, pos=.6, "\!\fin"']
+            \arrow[ur, shorten >=-5pt, bend left =22, looseness=.5, pos=.6, "K_{\!1\!\times\!1} \mkern-1mu\ostar\mkern-1mu \fin\!\!"]
+    \end{tikzcd}
+    \caption{\small
+        Coordinatization of an \onexoneGM\ $K_{\!1\!\times\!1} \protect\ostar: \Gamma(\Ain) \to \Gamma(\Aout)$ and its corresponding vector bundle $M$-morphism $\mathcal{C}_{K_{\!1\!\times\!1}}$.
+        The convolutional character is encoded into the morphism by sharing a kernel matrix $K_{\!1\!\times\!1}\in\R^{\cout\times\cin}$ over different spatial positions $p\in M$.
+        Since no gauge is to be preferred, the kernel is furthermore shared over different trivializations
+        $\mathcal{C}_{K_{\!1\!\times\!1}}^A$ and $\mathcal{C}_{K_{\!1\!\times\!1}}^B$.
+        The commutativity of the diagram for any choices
+        $\Psi_{\!\!\A_\text{in} }^A$,
+        $\Psi_{\!\!\A_\text{out}}^A$ and
+        $\Psi_{\!\!\A_\text{in} }^B$,
+        $\Psi_{\!\!\A_\text{out}}^B$
+        therefore enforces the constraint
+        $\rho_\text{out}(g) K_{\!1\!\times\!1} \rho_\text{in}(g)^{-1} = K_{\!1\!\times\!1}\,\ \forall g\!\in G$
+        which restricts the kernel matrix to be an intertwiner (an equivariant linear map), that is,
+        $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \subseteq \R^{\cout\times\cin}$.
+        Except for $\fin \circ \piAin \neq \id_{\Ain}$ and $\big[K_{\!1\!\times\!1} \protect\ostar \fin\big] \circ \piAout \neq \id_{\Aout}$, the diagram commutes.
+    }
+    \label{fig:triv_bundle_morphism_onexone}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+\subsubsection[\texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions as homomorphism bundle sections]%
+              {\texorpdfstring{$\bm{1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} \textit{GM}-convolutions as homomorphism bundle sections}
+\label{sec:onexone_hom_section}
+
+
+While the vector bundle $M$-morphism with gauge independent coordinatizations from Def.~\ref{dfn:onexone} and Fig.~\ref{fig:triv_bundle_morphism_onexone} fully specifies a \onexoneGM, we will now adopt an alternative viewpoint which describes \onexoneGMs\ in terms of the \emph{homomorphism bundle} $\Hom(\Ain,\Aout) \xrightarrow{\,\piHom\,} M$.
+To this end, recall that the vector bundle morphism $\mathcal{C}$ in Eq.~\eqref{eq:bundle_morphism_onexone} restricts to linear maps ${\mathcal{C}\!\:|_p}: \Ainp\to\Aoutp$ over each $p\in M$.
+The set of such linear maps (or vector space homomorphisms) between $\Ainp$ and $\Aoutp$ is denoted as $\Hom(\Ainp,\Aoutp)$.
+Since it is closed under linear combinations, it forms a vector space itself.
+It can be shown that the disjoint union
+\begin{align}
+    \Hom(\Ain,\Aout)\ :=\ \coprod_{p\in M} \Hom(\Ainp,\Aoutp)
+\end{align}
+of these homomorphism spaces forms a vector bundle, the homomorphism bundle between $\Ain$ and $\Aout$, when being equipped with the projection map $\piHom: \Hom(\Ain,\Aout) \to M$ which sends elements in $\Hom(\Ainp,\Aoutp)$ to $p$ and a smooth structure induced from that of $\Ain$ and $\Aout$~\cite{dundas2018differentialTopology}.
+The fibers over~$p$ satisfy $\Hom(\Ainp,\Aoutp) \cong \Hom(\R^\cin,\R^\cout) \cong \R^{\cout\times\cin}$ such that we can take the typical fiber to be the vector space of real-valued ${\cout\!\times\!\cin}$ matrices.
+The trivializations
+\begin{align}
+    \PsiHom:\ \piHom^{-1}(U) \to U\!\times\R^{\cout\times\cin},\ \ H\mapsto \big(p,\ \psiHomp(H)\big) ,
+\end{align}
+where we abbreviated $p=\piHom(H)$, are \emph{induced} from the trivializations of $\Ain$ and $\Aout$ by defining
+\begin{align}\label{eq:Hom_bdl_triv_ptwise}
+    \psiHomp\!:\ \Hom(\Ainp,\Aoutp) \to \R^{\cout\times\cin} ,\ \ \ H\mapsto \psiAoutp \circ H \circ \big(\psiAinp\big)^{-1}
+\end{align}
+in analogy to Eqs.~\eqref{eq:bundle_morphism_onexone_triv_local} and \eqref{eq:matrix_trivialization}.
+This implies transition maps
+\begin{alignat}{3}
+    H^B
+    \ &=&\ \psiAoutp^B \circ\,&H \circ \big(\psiAinp^B\big)^{-1} \notag \\
+    \ &=&\ \psiAoutp^B \circ \big(\psiAoutp^A\big)^{-1}\,&H^A\ \psiAinp^A \circ \big(\psiAinp^B\big)^{-1} \notag \\
+    \ &=&\ \rhoout\big(g^{BA}\big)\, &H^A\, \rhoin\big(g^{BA}\big)^{-1} \notag \\
+    \ &=:&\ \rhoHom\big(g^{BA}\big)\, &H^A
+\end{alignat}
+between gauges $\PsiHom^A$ and $\PsiHom^B$ on $U^A\cap U^B$, where we introduced the homomorphism group representation $\rhoHom:G\to\GL{\R^{\cout\times\cin}}$ as left and right multiplication with $\rhoout$ and $\rhoin$ for notational convenience.%
+\footnote{
+    In general, a homomorphism bundle between two \emph{non-associated} vector bundles with structure groups $G_1$ and $G_2$ would have a structure group $G_1\times G_2$.
+    Since $\Ain$ and $\Aout$ are associated, they transform synchronously under the same structure group $G_1=G_2=G$ such that their transition maps take values in the diagonal subgroup $G$ of $G\times G$.
+}
+The homomorphism bundle $\Hom(\Ain,\Aout)$ is by construction associated to $\TM$, $\GM$, $\Ain$ and $\Aout$, that is, its trivializations transform synchronously with those of the other bundles.
+As a $G$-associated vector bundle, it can be identified with $(\GM\times\R^{\cout\times\cin})/\!\sim_{\!\rhoHom}$.
+Fig.~\ref{fig:trivialization_hom} gives an overview of the local trivializations of $\Hom(\Ain,\Aout)$.
+Note the similarity to the trivializations of the other associated $G$-bundles in Fig.~\ref{fig:trivializations_TM_FM_A}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \begin{tikzcd}[row sep=4.em, column sep=5.5em]
+            & U\times \R^{\cout\times\cin} \\
+              \piHom^{-1}(U)
+                    \arrow[d, swap, "\piHom"]
+                    \arrow[r, "\PsiHom^A"]
+                    \arrow[ru, "\PsiHom^B"]
+            & U\times \R^{\cout\times\cin}
+                    \arrow[u, swap, "\big( \id\times \rhoHom\big(g^{BA}\big)\!\cdot \big)"]
+                    \arrow[ld, "\proj_1"] \\
+            U
+        \end{tikzcd}
+        \centering
+        \caption{\small
+            Trivialization of $\Hom(\Ain,\Aout)$.
+            Being associated to $\TM$, $\GM$, $\Ain$ and $\Aout$, the transition maps of the homomorphism bundle are determined by the same group element $g^{BA}$ of the shared structure group $G$ (compare this to Fig.~\ref{fig:trivializations_TM_FM_A}).
+            Unconstrained vector bundle $M$-morphisms as shown in Eq.~\eqref{eq:bundle_morphism_onexone} correspond to unconstrained smooth sections of $\Hom(\Ain,\Aout)$.
+        }
+        \label{fig:trivialization_hom}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=5.5em, column sep=7.em, crossing over clearance=.6ex,
+                       execute at end picture={
+                            \node [] at (-2.98, -.11) {$\noncommutative$};
+                            }]
+            % ROW 1
+              \piHom^{-1}(U)    \arrow[d, "\piHom", shift left=.2]
+                                \arrow[r, "\PsiHom^A"', bend right=3, shift right=.5, looseness=.5, pos=.45]
+                                \arrow[r, "\PsiHom^B",  bend left=3,  shift left=.5,  looseness=.5, pos=.45]
+            & U\!\times\! \underbrace{\Hom_G(\rhoin,\rhoout)}_{\subseteq\ \R^{\cout\times\cin}}
+                                \arrow[loop, distance=3.5em, in=125, out=55, "\big(\id\times \rhoHom\big(g^{BA}\big)\!\cdot\!\big)"']
+                                \arrow[ld, "\proj_1", shorten <= -15pt]
+            \\
+            % ROW 2
+              U                 \arrow[u, bend left=20, shift left=.5, "\sigma_{K_{1\!\times\!1}}"]
+        \end{tikzcd}
+        \caption{\small
+            The sections $\sigma_{K_{1\!\times\!1}}: M\to \Hom(\Ain,\Aout)$ of the homomorphism bundle which correspond to \onexoneGMs\ are exactly those which trivialize to the \emph{same} (intertwining) matrix
+            $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \subseteq \R^{\cout\times\cin}$
+            in all gauges.
+            Such sections correspond to bundle maps which trivialize as specified in Fig.~\ref{fig:triv_bundle_morphism_onexone}.
+            \\~
+        }
+        \label{fig:trivialization_hom_onexone_section}
+    \end{subfigure}
+    \caption{\small
+        Local trivializations of the homomorphism bundle $\Hom(\Ain,\Aout)$, which is the vector bundle of linear maps between the spaces $\Ainp$ and $\Aoutp$ for any $p\in M$.
+        As usual we abbreviate $U=U^A\cap U^B$.
+        Except for $\sigma_{K_{1\!\times\!1}} \circ \piHom \neq \id_{\Hom(\Ain,\Aout)}$ the diagrams commute.
+    }
+    \label{fig:trivializations_hom_bundle}
+\end{figure}
+
+
+From the viewpoint of homomorphism bundles, unconstrained bundle maps as in Eq.~\eqref{eq:bundle_morphism_onexone} correspond to the action of unconstrained smooth homomorphism bundle sections
+\begin{align}\label{eq:hom_bdl_section_unconstrained}
+    \sigma_{\Hom}:M \mapsto \Hom(\Ain,\Aout)
+    \quad \textup{such that} \quad
+    \piHom \circ \sigma_{\Hom} = \id_M
+\end{align}
+which can be interpreted as $1\!\times\!1$ \emph{kernel fields} that do not share weights.
+Their global existence is guaranteed by $\Hom(\Ain,\Aout)$ being a vector bundle.
+Sections corresponding to \onexoneGMsit\ require in addition that the linear transformations $\sigma_{\Hom}(p)\in\Hom(\Ainp,\Aoutp)$ are determined by a template kernel $K_{\!1\!\times\!1} \in\R^{\cout\times\cin}$ which is shared over different positions $p\in M$ and any choice of gauge.
+They can therefore for any $p \in \!M$ be defined as
+\begin{align}
+    \sigma_{K_{1\!\times\!1}}(p)\ :=\ \psiHomp^{-1}\big(K_{\!1\!\times\!1}\big), \qquad K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \,,
+\end{align}
+where the chosen trivialization $\PsiHom$ is arbitrary if (and only if) $K_{\!1\!\times\!1}$ satisfies the intertwiner constraint
+\begin{align}\label{eq:onexone_intertwiner_constraint_rhoHom}
+    \rhoHom(g) K_{\!1\!\times\!1} = K_{\!1\!\times\!1} \qquad\forall g\in G \,,
+\end{align}
+which is equivalent to Eq.~\eqref{eq:onexone_kernel_constraint}.%
+\footnote{
+    The required smoothness of the section follows from the smoothness of the local trivializations.
+}
+The gauge irrelevance of such sections is visualized in the commutative diagram in Fig.~\ref{fig:trivialization_hom_onexone_section} (compare this to the equivalent bundle map trivialization in Fig.~\ref{fig:triv_bundle_morphism_onexone}).
+
+
+\paragraph{Summarizing remarks:}
+A smooth \onexoneGM\ layer $K_{\!1\!\times\!1} \ostar: \Gamma(\Ain)\to \Gamma(\Aout),\ \fin\mapsto \fout$ can equivalently be defined via a smooth bundle map as $\fout(p) := \mathcal{C}_{K_{\!1\!\times\!1}} \!\circ \fin(p)$ or via a smooth homomorphism bundle section as $\fout(p) := \sigma_{K_{\!1\!\times\!1}}(p) \circ \fin(p)$.
+By definition, both trivialize in an arbitrarily chosen gauge $\PsiHom^A$ to $\fout^A(p) = K_{\!1\!\times\!1} \fin^A(p)$.
+The $\GM$-coordinate independence of this definition is guaranteed by the intertwining property of the kernel in Eq.~\eqref{eq:onexone_kernel_constraint} or, equivalently, Eq.~\eqref{eq:onexone_intertwiner_constraint_rhoHom}.
+This can be seen by considering a different trivialization via~$\PsiHom^B$:
+\begin{align}
+    K_{\!1\!\times\!1} \fin^B(p)
+    \ &=\ K_{\!1\!\times\!1} \left( \rhoin\big(g^{BA}_p\big) \fin^A(p) \right) \notag \\
+    \ &=\ \rhoout\big(g^{BA}_p\big) K_{\!1\!\times\!1} \fin^A(p) \notag \\
+    \ &=\ \rhoout\big(g^{BA}_p\big) \fout^A(p) \notag \\
+    \ &=\ \fout^B(p)
+\end{align}

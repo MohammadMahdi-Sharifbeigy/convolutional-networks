@@ -1,0 +1,42 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Coordinate independent networks and \textit{GM}-convolutions}
+\label{sec:gauge_CNNs_local}
+
+
+Neural networks process data by applying a series of parameterized mappings (layers) to an input signal -- in our case to a set of feature fields on a Riemannian manifold.
+The \emph{principle of covariance} requires thereby that the individual network layers should be $\GM$-coordinate independent operations.
+The coordinate representations of such layers will therefore have to transform such that they respect the transformation laws of their input- and output feature field.
+Except form this consistency requirement, general coordinate independent layers remain \emph{unconstrained}.
+
+
+A common design principle of neural networks which operate on spatial signals (feature fields) is that they are in some generalized sense convolutional.
+The main characteristic which most generalizations of the convolution operation share is that their inference is \emph{position independent}.
+This is achieved by \emph{sharing template functions}, for instance convolution kernels or biases, between different locations.
+Whenever the structure group $G$ is non-trivial, the weight sharing process is ambiguous since template functions could be shared relative to different reference frames.
+As we will argue in the following, this ambiguity is resolved by designing the shared template functions to be \emph{equivariant under $G$-valued gauge transformations}.
+Gauge equivariant template functions will be indifferent to the specific reference frame in which they are applied and therefore allow for a coordinate independent weight sharing.
+
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+
+In this section we will consider network layers which take fields $\fin$ of type $\rhoin$ as input and produce field $\fout$ of type $\rhoout$ as output.
+Section~\ref{sec:pointwise_operations} discusses the specific case of layers which operate pointwise, that is, whose output $\fout(p)$ at any $p\in M$ depends only on the single input feature vector $\fin(p)$ at the same location.
+The practically relevant examples considered here are gauge equivariant \onexones\ in Section~\ref{sec:gauge_1x1}, bias summation in Section~\ref{sec:gauge_bias_summation} and nonlinearities in Section~\ref{sec:gauge_nonlinearities}.
+The more complicated case of convolutions with spatially extended kernels is treated in Section~\ref{sec:gauge_conv_main}.
+As a preparation, Section~\ref{sec:observers_view} discusses feature fields as seen from the viewpoints of local observers (reference frames), relative to which the (convolution) kernels will be applied.
+Such observations are formalized as a pullback of the feature field to an observer's tangent space; see Fig.~\ref{fig:pullback_field_exp_TpM}.
+Section~\ref{sec:kernel_field_trafos} introduces so called kernel field transforms, which are similar to convolutions but do not assume spatial weight sharing and are therefore parameterized by a (smoothly varying) kernel field on~$M$.
+The actual $\GM$-convolutions are in Section~\ref{sec:gauge_conv} defined as those kernel field transforms that are parameterized by a single, shared template kernel.
+In order to ensure the coordinate independence of the weight sharing process, the convolution kernels are required to be $G$-\emph{steerable}, i.e. to satisfy a gauge equivariance constraint.
+Section~\ref{sec:gauge_conv_isom_equiv} shows that $\GM$-convolutions are automatically equivariant under those isometries that are symmetries of the $G$-structure ($\IsomGM$-equivariant).
+This means that $\GM$-convolutions commute with the action of isometries on feature fields as visualized in Fig.~\ref{fig:lizard_conv_egg}.
+
+
+

@@ -1,0 +1,49 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Isometry equivariance}
+\label{sec:isometry_intro}
+
+
+A main characteristic of the convolution operation and its various generalizations is their equivariance w.r.t. symmetries of the underlying manifold.
+For instance, the conventional convolution on Euclidean spaces is translation equivariant while spherical convolutions are rotation equivariant.
+More generally, any locally compact group and their homogeneous spaces admit group convolutions%
+~\cite{gurarie1992symmetries,kowalski2010introduction,chirikjian2001engineering,gallier2019harmonicRepr},
+which were recently picked up by the deep learning community to generalize convolutional networks to such spaces~\cite{Cohen2016-GCNN,Kondor2018-GENERAL,Cohen2019-generaltheory,bekkers2020bspline}.
+However, as these approaches rely fundamentally on the global, \emph{transitive} symmetries of the homogeneous space, they do not immediately apply to general Riemannian manifolds.
+
+$\GM$-convolutions on the other hand shift the focus from \emph{global symmetries of the space itself} to \emph{local symmetries in the coordinatization of the space}.
+As it turns out, the local gauge equivariance of $\GM$-convolutions, together with convolutional weight sharing, induces their equivariance under \mbox{the action of global symmetries.}
+Stated more precisely, $\GM$-convolutions are equivariant under the action of \emph{$G$-structure preserving isometries} (Def.~\ref{dfn:IsomGM}), which form a subgroup $\IsomGM \leq \IsomM$ of the full isometry group.
+The requirement on the symmetry to be an isometry (i.e. to preserve the metric) comes hereby from the use of exponential maps, which rely on the Levi-Civita connection and thus Riemannian metric.
+The additional requirement on these isometries to preserve the $G$-structure is a consequence of the definition of feature vector bundles as associated $G$-bundles, whose elements have a well defined meaning only relative to those reference frames that are contained in~$\GM$.
+Note that the latter is not really a restriction, as one may always choose structure groups $G\geq\O{d}$, for which \emph{any} isometry respects the corresponding $G$-structure.
+On the contrary, this design allows for a precise control of the level of isometry equivariance.
+For instance, the conventional convolution on Euclidean vector spaces relies on the canonical $\{e\}$-structure of $\R^d$, visualized in Fig.~\ref{fig:frame_field_automorphism_1}, and is therefore solely translation equivariant.
+An $\SO{d}$-structure on $\R^d$, visualized in Fig.~\ref{fig:SO2_structure_SE2}, is additionally preserved by rotations, and thus corresponds to $\SE{d}$-equivariant convolutions.
+Equivariance under the full isometry group $\E{d}$ of $\R^d$ is implied when choosing an $\O{d}$-structure on $\R^d$.
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+The goal of this section is to derive theorems which formally characterize the isometry equivariance of $\GM$-convolutions and kernel field transforms.
+Section~\ref{sec:isom_background} lays the foundations of this investigation by introducing isometry groups of Riemannian manifolds and discussing a range of well known relation and constructions which they induce.
+Specifically, Section~\ref{sec:isometry_groups} introduces isometries and isometry groups while Section~\ref{sec:isom_action_bundles} defines their induced action (``pushforwards'') on the associated bundles in a coordinate free setting.
+In Section~\ref{sec:isom_coordinatization} we express these actions on bundles relative to local trivializations and discuss their passive interpretation as isometry induced gauge transformations, visualized in Figs.~\ref{fig:intro_gauge_isom_induction} (right) and~\ref{fig:pushforward_vector_components}.
+Section~\ref{sec:isom_expmap_transport} briefly states how the quantities involved in kernel field transforms behave under the action of isometries.
+
+
+Based on these properties, we study the isometry equivariance of kernel field transforms and $\GM$-convolutions in Section~\ref{sec:isometry_equivariance}.
+After defining the term ``isometry equivariance'' formally, Section~\ref{sec:isometry_constraint} proves a central result, which asserts that the demand for \emph{isometry equivariance requires the invariance of the kernel field under isometries}; see Fig.~\ref{fig:isom_invariant_kernel_field_multiple_orbits}.
+Section~\ref{sec:isom_equiv_GM_conv} considers the more specific $\GM$-convolutions and proves that they are by design equivariant under any isometry that preserves the $G$-structure.
+This result implies in particular, that $\OM$-convolutions are equivariant w.r.t. any isometry.
+
+
+The invariance constraint on kernel fields enforces that they share weights over the orbits of the isometry group.
+This suggests that invariant kernel fields can equivalently be described by representative kernels on orbit representatives, which we formalize in Section~\ref{sec:quotient_kernel_fields}.
+Section~\ref{sec:isom_quotients} discussed isometry induced quotient spaces and their representatives.
+In Section~\ref{sec:quotient_kernels_stabilizers} we use these mathematical definitions to prove that the space of isometry invariant kernel fields is indeed isomorphic to kernel fields on quotient representatives.
+This implies in particular that isometry equivariant kernel field transforms on homogeneous spaces are necessarily convolutions, which closes the loop to prior work.

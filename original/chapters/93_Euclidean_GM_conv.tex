@@ -1,0 +1,278 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection
+    [Affine group equivariant CNNs on Euclidean spaces \texorpdfstring{$\Euc_d$}{}]%
+    {Affine group equivariant CNNs on Euclidean spaces $\fakebold{\Euc}_{\boldsymbol{d}}$}
+\label{sec:euclidean_affine_equiv}
+
+We now turn to investigate Euclidean $\GM$-convolutions on $\Aff(G)$-atlas induced $G$-structures.
+When being expressed in a chart, these convolutions boil down to classical $G$-steerable convolutions on $\R^d$, as we show next.
+Their affine equivariance is in Theorem~\ref{thm:affine_equivariance_Euclidean_GM_conv} proven in a coordinate free setting.
+
+
+\paragraph{Recovering conventional convolutions on $\pmb{\R^d}$:}
+
+$\GM$-convolutions rely crucially on the transporter pullback $\Expspf$ of feature fields, which in turn depends on parallel transporters and the exponential map.
+On Euclidean spaces, these operations take a particularly simple form, which we discuss first.
+
+As stated before, Levi-Civita transporters move tangent vectors such over Euclidean spaces that they remain parallel in the usual sense on Euclidean spaces; see Fig.~\ref{fig:transport_flat}.
+Let $x^A: \Euc_d \to \R^d$ be any global chart of an $\Aff(G)$-atlas.
+As the induced frame field is ``parallel'', the transporters along \emph{any} path $\gamma$ become trivial when being expressed relative to the induced gauges $\hat{d}x_p^A$:
+\begin{alignat}{3}
+    g_\gamma^{AA} \,&=\, e&
+    \qquad &\textup{for \emph{any} path}\ \gamma
+\intertext{
+    This implies in particular that the feature vector transporters are in this gauge given by identity maps, i.e.
+}
+    \rho\big( g_\gamma^{AA} \big) \,&=\, \id_{\R^c}&
+    \qquad &\textup{for \emph{any} path}\ \gamma \,.
+\end{alignat}
+When expressing the exponential map in a chart, it reduces to a summation of the point and vector coordinate expressions:
+\begin{align}\label{eq:exp_map_euclidean}
+    x^A \big( \exp_p v \big)\ =\ x^A(p) + \hat{d}x_p^A(v)
+\end{align}
+
+We furthermore need to express feature fields in coordinates, that is, we pull them via the (global, inverse) chart from $\Euc_d$ back to $\R^d$,
+\begin{align}
+    F^A\ :=\ f^A \circ \big(x^A \big)^{-1}\, :\,\ \R^d \to \R^c \,,
+\end{align}
+which is visualized by the following commutative diagram:
+\begin{equation}\label{cd:feature_field_chart_pullback_Rd}
+    \begin{tikzcd}[row sep=2.5em, column sep=5em]
+        \R^d
+            \arrow[rr, rounded corners, to path={ 
+                    |- node[above, pos=.75]{\small$F^A$} ([yshift=3.ex, xshift=1ex]\tikztotarget.north)
+                    -- ([xshift=1ex]\tikztotarget.north)
+                    }]
+        &
+        \Euc_d
+            \arrow[l, "x^A"]
+            \arrow[r, "f^A"']
+        &
+        \R^c
+    \end{tikzcd}
+\end{equation}
+
+With these ingredients at hand, the transporter pullback, Eq.~\eqref{eq:transporter_pullback_in_coords}, of feature fields on Euclidean spaces can in coordinates be expressed as
+\begin{align}\label{eq:transporter_pullback_Euclidean}
+    \big[\mkern-2mu \Expspf \big]^A (\mathscr{v})
+    \ =&\,\ \rho\pig( g^{AA}_{p \,\leftarrow\, \exp_p (\hat{d}x_p^A)^{\shortminus1}(v^A)} \pig) \,
+          f^A\, \exp_p \!\pig(\! \big(\hat{d}x_p^A\big)^{\mkern-2mu-1}(\mathscr{v}) \pig) \notag \\
+    \ =&\,\ f^A\, \big(x^A\big)^{-1}\, x^A \exp_p \!\pig(\! \big(\hat{d}x_p^A\big)^{\mkern-2mu-1}(\mathscr{v}) \pig) \notag \\
+    \ =&\,\ F^A \big( x^A(p) + \mathscr{v} \big) \,.
+\end{align}
+The coordinate expression of the $\GM$-convolution, Eq.~\eqref{eq:gauge_conv_coord_expression}, becomes therefore
+\begin{align}\label{eq:Euclidean_GM_conv_in_coords}
+    \fout^A(p)
+    \ =\ \big[K \star \fin \big]^A (p)
+    \ =\ \int_{\R^d} K(\mathscr{v})\, \big[\mkern-2mu \Expspfin\big]^A (\mathscr{v})\ d\mathscr{v}
+    \ =\ \int_{\R^d} K(\mathscr{v})\, \Fin^A\big( x^A(p) + \mathscr{v} \big)\ d\mathscr{v} \,.
+\end{align}
+This shows that $\GM$-convolutions on Euclidean spaces are conventional convolutions (correlations).
+\begin{thm}[$\GM$-convolutions on Euclidean spaces recover convolutions on $\fakebold{\R}^{\boldmath{d}}$]
+\label{thm:Euclidean_GM_conv_is_conventional_conv}
+    Let $\GM$ be a $G$-structure induced by an $\Aff(G)$-atlas of charts as defined in Section~\ref{sec:euclidean_geometry}.
+    When being expressed relative to any global chart $x^A: \Euc_d \to \R^d$ of this $\Aff(G)$-atlas, the $\GM$-convolution takes the form of a conventional convolution (correlation) $*$\,:
+    \begin{align}
+        \Fout^A(\mathscr{x})
+        \ =\ \int_{\R^d} K(\mathscr{v})\, \Fin^A\big( \mathscr{x} + \mathscr{v} \big)\ d\mathscr{v}
+        \ =\ \big[ K * \Fin^A \big] (\mathscr{x})
+    \end{align}
+\end{thm}
+\begin{proof}
+    The statement follows by evaluating Eq.~\eqref{eq:Euclidean_GM_conv_in_coords} at $p = \big(x^A\big)^{-1}(\mathscr{x})$ and identifying $\Fout^A = \fout^A \circ \big(x^A\big)^{-1}$ on the l.h.s.
+\end{proof}
+
+
+Before proceeding to our proof of the Euclidean $\GM$-convolutions' equivariance in a \emph{coordinate free} setting, we consider its \emph{coordinate independence} -- as we will see, both notions are closely related.
+All that is required to demonstrate the coordinate independence is the transformation law of the feature field pullbacks to $\R^d$ via charts.
+The transformation law follows directly from transition functions and can from the commutativity of the diagram
+\begin{equation}\label{cd:feature_field_chart_pullback_Rd_transitions}
+    \begin{tikzcd}[row sep=2.5em, column sep=6em]
+        \R^d
+            \arrow[rr, "F^A"]
+            \arrow[dd, "t^{BA} g^{BA}\ "']
+        & &
+        \R^c
+            \arrow[dd, "\ \rho\big( g^{BA} \big)"]
+        \\
+        &
+        \Euc_d
+            \arrow[ul, pos=.4, "x^A"']
+            \arrow[dl, pos=.4, "x^B"]
+            \arrow[ur, pos=.4, "f^A"]
+            \arrow[dr, pos=.4, "f^B"']
+        \\
+        \R^d
+            \arrow[rr, "F^B"']
+        & &
+        \R^c
+    \end{tikzcd}
+\end{equation}
+be read off to be given by
+\begin{align}
+    F^B\ =\ \rho\big( g^{BA} \big) \,F^A\, \big( t^{BA} g^{BA} \big)^{-1} \,.
+\end{align}
+Note that this transformation law is exactly the induced representation $F^B = t^{BA}g^{BA} \rhd_\rho F^A$ as introduced in Eq.~\eqref{eq:induced_rep_affine}.
+Leveraging the equivariance of the conventional convolution with $G$-steerable kernels from Eq.~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd}, this implies
+\begin{align}\label{eq:Euclidean_conv_coordinate_independence}
+    K*\Fin^B
+    \ =\ K* \big( t^{BA} g^{BA} \rhd_{\rhoin} \Fin^A \big)
+    \ =\ t^{BA} g^{BA} \rhd_{\rhoout} \big( K * \Fin^A \big)
+    \ =\ t^{BA} g^{BA} \rhd_{\rhoout} \Fout^A
+    \ =\ \Fout^B
+\end{align}
+The \emph{active $\Aff(G)$-equivariance} of classical $G$-steerable convolutions on $\R^d$ from Section~\ref{sec:steerable_cnns_in_coords} is therefore seen to imply the \emph{passive $\Aff(G)$ coordinate independence} of Euclidean $\GM$-convolutions and vice versa.
+The two are two sides of the same coin.
+In addition, one can prove the $\Aff(G)$-equivariance of the $\GM$-convolution in the coordinate free setting, which we will do next.
+
+
+
+
+\paragraph{Affine group equivariance}
+
+To prove the affine group equivariance of Euclidean $\GM$-convolutions, we first define the transformation law of coordinate free feature fields $f\in \Gamma(\A)$ under affine transformations $\phi \in \AffGM$ as
+\begin{align}\label{eq:affine_action_sections}
+    \phi \,\rhd f\ =\ \dphiA\, f\: \phi^{-1} \,,
+\end{align}
+i.e. as for isometries in Def.~\ref{dfn:isometry_pushforward}.%
+\footnote{
+    Since the feature vector bundle is defined as a $G$-bundle, i.e. associated to $\GM$, pushforwards can only be defined for the $G$-structure preserving affine transformations in $\AffGM$.
+}
+The (Levi-Civita) transporter pullback of an affine transformed feature field $\phi \rhd\! f$ is relative to an affine chart $x^A$ given by:
+\begin{align}\label{eq:affine_transformed_transporter_pullback}
+    &\ \ 
+        \big[\mkern-2mu \Expsp (\phi \rhd\! f) \big]^A (\mathscr{v})
+    \notag \\[.8ex]
+    \ \overset{(1)}{=}&\ \ 
+        \big[\mkern-2mu \Expsp (\dphiA f\, \phi^{-1}) \big]^A (\mathscr{v})
+    \notag \\[.8ex]
+    \ \overset{(2)}{=}&\ \ 
+        \underbrace{\rho\big( g^{AA}_{p \,\leftarrow\, \exp_p (\hat{d}x_p^A)^{-1}(\mathscr{v})} \big)}_{=\, \id_{\R^c}} \,
+        \psiAp^A\, (\dphiA f\, \phi^{-1})\,
+        \exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig)
+    \notag \\[.8ex]
+    \ \overset{(3)}{=}&\ \ 
+        \psiAp^A\, \dphiA\,
+        \pig[ \big( \psiAphiinvp^A \big)^{-1} \psiAphiinvp^A\pig]\, 
+        f\: 
+        \pig[ \big(x^A \big)^{-1}\, x^A\pig]\, 
+        \phi^{-1} 
+        \pig[ \big(x^A \big)^{-1}\, x^A\pig]\, 
+        \exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig)
+    \notag \\[.8ex]
+    \ \overset{(4)}{=}&\ \ 
+        \pig[\psiAp^A\, \dphiA\, \big(\psiAphiinvp^A \big)^{-1}\pig]
+        \pig[\psiAphiinvp^A\, f\, \big(x^A \big)^{-1}\pig]
+        \pig[x^A\, \phi^{-1} \big(x^A \big)^{-1}\pig]
+        \pig[x^A \exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig) \pig]
+    \notag \\[.8ex]
+    \ \overset{(5)}{=}&\ \ 
+        \rho\big( g_\phi^{AA} \big)\, F^A\, \big( t_\phi^{AA} g_\phi^{AA} \big)^{-1} \big(x^A(p) + \mathscr{v} \big)
+    \notag \\[.8ex]
+    \ \overset{(6)}{=}&\ \ 
+         \pig[\big( t_\phi^{AA} g_\phi^{AA} \big) \rhd_\rho F^A \pig]\, \big(x^A(p) + \mathscr{v} \big)
+\end{align}
+It relates to the transporter pullback of the untransformed field via the induced representation (Eq.~\eqref{eq:induced_rep_affine}), acting with the coordinate expression $t_\phi^{AA} g_\phi^{AA}$ of $\phi$ (Eq.~\eqref{eq:AffGM_in_charts_eq}).
+The first two steps make use of Eq.~\eqref{eq:affine_action_sections} and the definition of the transporter pullback in coordinates, where $(\dphiA f\, \phi^{-1})^A := \psiAp^A(\dphiA f\, \phi^{-1})$.
+To translate all morphisms into the corresponding coordinate expressions, step three inserts identities $\id_{\R^c} = \big( \psiAphiinvp^A \big)^{-1} \psiAphiinvp^A$ and $\id_{\R^d} = \big( x^A \big)^{-1} x^A$, which are in step four rebracketed to clarify which combinations result in the coordinate expressions after step five.
+Recall for step 5 that, by Theorem~\ref{thm:Aff_GM_in_charts}, $g_\phi^{AA}(p) = g_\phi^{AA}$ for any $p$ in $\Euc_d$.
+As stated above, the last step identifies the resulting transformation law in coordinates as the action of the induced representation.
+
+
+With this result we can prove the $\AffGM$-equivariance of Euclidean convolutions in the coordinate free setting.
+This generalizes Theorem~\ref{thm:isom_equiv_GM_conv}, proving the isometry equivariance of $\GM$-convolutions for the specific case of Euclidean spaces.
+\begin{thm}[Affine equivariance of Euclidean $\GM$-convolutions]
+\label{thm:affine_equivariance_Euclidean_GM_conv}
+    Let $\GM$ be a $G$-structure that is induced by some $\Aff(G)$-atlas of the Euclidean space~${M = \Euc_d}$ and assume feature vectors to be transported according to the Levi-Civita connection on~$\Euc_d$.
+    The corresponding $\GM$-convolutions is then guaranteed to be equivariant under the action of $G$-structure preserving affine transformations $\AffGM \cong \Aff(G)$.
+    In equations, we have for arbitrary feature fields $\fin \in \Gamma(\Ain)$ and $G$-steerable kernels $K\in\KG$ that
+    \begin{align}
+        \big[K \star (\phi\rhd \fin) \big]\ =\ \phi\rhd \big[K \star \fin \big] \qquad \forall\, \phi\in\AffGM \,,
+    \end{align}
+    i.e. that the following diagram commutes for any $\phi$ in $\AffGM$:
+    \begin{equation}\label{cd:}
+    \begin{tikzcd}[row sep=3.5em, column sep=5.em]
+        \Gamma(\Ain)
+            \arrow[r, pos=.5, "\phi \,\rhd"]
+            \arrow[d, "K\star\,"']
+        & \Gamma(\Ain)
+            \arrow[d, "\,K\star"]
+        \\
+        \Gamma(\Aout)
+            \arrow[r, pos=.5, "\phi \,\rhd"']
+        & \Gamma(\Aout)
+    \end{tikzcd}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Let $x^A: \Euc_d \to \R^d$ be any global chart of the considered $\Aff(G)$-atlas and let $p\in\Euc_d$.
+    Our proof of the $\AffGM$-equivariance is then performed by expressing the convolution relative to these coordinates and making use of the $\Aff(G)$-equivariance of classical $G$-steerable convolutions on $\R^d$ from Eq.~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd}:
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align}
+        &\ \ 
+            \psiAoutp^A\, \big[K \star (\phi\rhd \fin) \big] (p)
+            \\[.8ex]
+        =&\ \ 
+            \int_{\R^d} K(\mathscr{v})\ 
+            \big[\mkern-2mu \Expsp (\phi \rhd \fin) \big]^A (\mathscr{v})
+            \,\ d\mathscr{v}
+        \quad && \big( \text{\small $\GM$-convolution in coordinates, Eq.~\eqref{eq:gauge_conv_coord_expression} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \int_{\R^d} K(\mathscr{v})\ 
+            \pig[\big( t_\phi^{AA} g_\phi^{AA} \big) \rhd_{\rhoin}\! \Fin^A \pig]\, \big(x^A(p) + \mathscr{v} \big)
+            \,\ d\mathscr{v}
+        \quad && \big( \text{\small transformed transporter pullback, Eq.~\eqref{eq:affine_transformed_transporter_pullback} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \pig[ K * \big( t_\phi^{AA} g_\phi^{AA} \rhd_{\rhoin}\! \Fin^A \big) \pig] \big( x^A(p) \big)
+        \quad && \big( \text{\small identified convolution $*$ on $\R^d$ } \big) \notag \\[.8ex]
+        =&\ \ 
+            \pig[ t_\phi^{AA} g_\phi^{AA} \rhd_{\rhoout} \big( K * \Fin^A \big) \pig] \big( x^A(p) \big)
+        \quad && \big( \text{\small $\Aff(G)$-equivariance on $\R^d$, Eq.~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \rhoout \big( g_\phi^{AA} \big) \big( K * \Fin^A \big) \pig(\big( t_\phi^{AA} g_\phi^{AA} \big)^{-1} x^A(p) \pig)
+        \quad && \big( \text{\small induced representation $\rhd_{\rhoout}$, Eq.~\eqref{eq:induced_rep_affine} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \rhoout \big( g_\phi^{AA} \big) \big( K * \Fin^A \big) \big( x^A (\phi^{-1}(p)) \big)
+        \quad && \big( \text{\small coordinate expression of $\phi$, Eq.~\eqref{eq:AffGM_in_charts_eq} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \rhoout\big( g_\phi^{AA} \big)
+            \int_{\R^d} K( \mathscr{v} )\ 
+            \Fin^A \big( x^A\big( \phi^{-1}(p) \big) + \mathscr{v} \big)
+            \,\ d\mathscr{v}
+        \quad && \big( \text{\small expanded convolution $*$ on $\R^d$ } \big) \notag \\[.8ex]
+        =&\ \ 
+            \rhoout\big( g_\phi^{AA} \big)
+            \int_{\R^d} K( \mathscr{v} )\ 
+            \big[ \Expsphiinvpfin \big]^A (\mathscr{v})
+            \,\ d\mathscr{v}
+        \quad && \big( \text{\small Euclidean transporter pullback, Eq.~\eqref{eq:transporter_pullback_Euclidean} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \rhoout\big( g_\phi^{AA} \big)
+            \psiAoutphiinvp^A \big[K \star \fin \big]\, \phi^{-1} (p)
+        \quad && \big( \text{\small $\GM$-convolution in coordinates, Eq.~\eqref{eq:gauge_conv_coord_expression} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \psiAoutp^A\, \dphiAout
+            \big[K \star \fin \big] \phi^{-1} (p)
+        \quad && \big( \text{\small pushforward in coordinates, Eq.~\eqref{cd:pushforward_A_coord} } \big) \notag \\[.8ex]
+        =&\ \ 
+            \psiAoutp^A\, \pig[ \phi\rhd
+            \big[K \star \fin \big] \pig] (p)
+        \quad && \big( \text{\small $\AffGM$ action on feature fields, Eq.~\eqref{eq:affine_action_sections} } \big) \notag
+    \end{align}
+    \endgroup
+    The statement follows since $\psiAoutp^A$ is an isomorphism.
+\end{proof}
+
+In summary, Euclidean $\GM$-convolutions with $\Aff(G)$-atlas induced $G$-structures have the following two properties:
+\begin{itemize}[leftmargin=15em]
+    \item[\it $\Aff(G)$-coordinate independence:]
+        They are guaranteed to produce equivalent results in any chart of the $\Aff(G)$-atlas $\mathscr{A}^{\Aff(G)}_{\Euc_d}$.
+        This property was shown in Eq.~\eqref{eq:Euclidean_conv_coordinate_independence} and is in Fig.~\ref{fig:affine_charts} visualized as the transformation \emph{between charts}.
+    \item[\it active $\Aff(G)$-equivariance:]
+        As proven in Theorem~\ref{thm:affine_equivariance_Euclidean_GM_conv} they are equivariant under active transformations of feature fields by $\AffGM \cong \Aff(G)$.
+        In Fig.~\ref{fig:affine_charts}, this would correspond to an transformation of the signal on $\Euc_d$, which would reflect in an active transformation on its representation relative to the \emph{same chart}.
+\end{itemize}
+The proofs of both properties rely ultimately on the active $\Aff(G)$-equivariance of classical $G$-steerable convolutions on~$\R^d$ in Eq.~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd}.

@@ -1,0 +1,283 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\mypart{A literature review on coordinate independent CNNs}
+\label{part:literature_review}
+
+
+The formulation of coordinate independent CNNs in terms of associated $G$-bundles over Riemannian manifolds is quite general and covers a wide range of possible model instantiations.
+To substantiate this claim, we review a large body of convolutional models from the literature and explain them from the unifying viewpoint of coordinate independent CNNs.
+Most of the papers in the literature do not explicitly formulate their models in terms of $G$-structures and associated $G$-bundles.
+The \emph{implicitly assumed} $G$-structures and group representations are therefore \emph{deduced} from the models' weight sharing patterns, kernel symmetries and equivariance properties; see for instance Fig.~\ref{fig:G_structure_R3_no_origin}.
+Table~\ref{tab:network_instantiations} summarizes the resulting taxonomy of coordinate independent CNNs.
+The following sections discuss the covered models and their properties in detail.
+
+
+\etocsettocdepth{2}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+Section~\ref{sec:instantiations_euclidean} covers $\Aff(G)$ (affine group) equivariant convolutions on Euclidean spaces $\Euc_d$.
+They rely on $\Aff(G)$-invariant $G$-structures as shown in Fig.~\ref{fig:G_structures_R2_main}.
+The models in Section~\ref{sec:instantiations_euclidean_polar} operate on punctured Euclidean spaces $\Euc_d\backslash\{0\}$; see Figs.~\ref{fig:G_structures_R2_no_origin}, \ref{fig:G_structure_R2_no_origin_logpolar} or~\ref{fig:G_structure_R3_no_origin}.
+They are equivariant w.r.t. rotations around the chosen origin $\{0\}$ but are not translation equivariant.
+Spherical and icosahedral CNNs are discussed in Section~\ref{sec:instantiations_spherical}.
+Most of these models assume the $G$-structures that are visualized in Figs.~\ref{fig:G_structure_S2_1} and~\ref{fig:G_structure_S2_2} and are therefore $\SO3$ or $\SO2$-equivariant, respectively.
+Section~\ref{sec:instantiations_mesh} reviews $\GM$-convolutions on general surfaces, which are mostly discretized as meshes.
+
+The next few pages discuss various design choices of coordinate independent CNNs and give a first overview of the models in Table~\ref{tab:network_instantiations}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\afterpage{ % execute argument of this command *after* end of current page
+\clearpage % clear any pending floats
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{table}
+        \begin{center}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % center overwide table
+        \addtolength{\leftskip} {-2cm} % increase (absolute) value if needed
+        \addtolength{\rightskip}{-2cm}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \vspace*{-6.5ex}
+            \input{chapters/tab_instantiations.tex}
+            \vspace*{10pt}
+            \captionsetup{width=1.06\columnwidth}
+            \caption{
+                Classification of convolutional networks in the literature from the viewpoint of coordinate independent CNNs.
+                Bold lines separate different geometries.
+                The affine group equivariant convolutions on Euclidean spaces $\Euc_d$
+            (rows 1-26)
+                are reviewed in Section~\ref{sec:instantiations_euclidean}.
+                Section~\ref{sec:instantiations_euclidean_polar} discusses $\GM$-convolutions on punctured Euclidean spaces
+                ${\Euc_d \backslash \{0\}} \cong {S^{d-1} \mkern-4mu\times\! \R^+}$
+            (rows 27-30).
+                Details on spherical CNNs
+            (rows 31-36)
+                are found in Section~\ref{sec:instantiations_spherical}.
+                The models in
+            rows (37-41)
+                operate on general surfaces, mostly represented by triangle meshes; see Section~\ref{sec:instantiations_mesh}.
+                The last two lines list our M\"obius convolutions from Section~\ref{sec:mobius_conv}.
+                $\Trans_d$,~$\Flip$ and $\Scale$ denote the translation, reflection and scaling group, respectively, while $\CN$ and $\DN$ are cyclic and dihedral groups.
+                Infinite-dimensional representations are in implementations discretized or sampled.
+                For instance, the regular representations of $\SO2$ or $\O2$ are typically approximated by the regular representations of cyclic or dihedral groups $\CN$ or $\DN$.
+            }
+            \label{tab:network_instantiations}
+        \end{center}
+    \end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\clearpage % force a page break
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\newpage % necessary to prevent compile error 
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+\subsection*{Design choices and overview}
+\label{sec:instantiations_taxonomy}
+
+A coordinate independent CNN is \emph{in theory} fully specified by
+\begin{itemize}
+    \item[1)] a choice of \emph{Riemannian manifold} $(M,\eta)$
+    \item[2)] its \emph{$G$-structure} $\GM$,
+    \item[3)] a \emph{$G$-compatible connection} which specifies feature transporters $\PAgamma$,
+    \item[4)] the \emph{field types} or $G$-representations $\rho$ of each feature space, and
+    \item[5)] a choice of $G$-equivariant \emph{nonlinearities}.
+\end{itemize}
+The \emph{geodesics, exponential} and \emph{logarithmic maps} follow from the canonical Levi-Civita connection on~$M$.%
+\footnote{
+    It might seem strange to compute geodesics and feature transporters based on potentially different connections.
+    When the transporter connection differs from Levi-Civita, this is usually due to the Levi-Civita connection not being $G$-compatible with the chosen $G$-structure when~$G<\O{d}$.
+    Some examples are given in the paragraph on $G$-compatible connections below.
+}
+The \emph{isometry group} $\IsomGM$ w.r.t. which the network is equivariant follows from the metric and the $G$-structure.
+All \emph{kernel spaces} $\KG$ are determined by the group representations of the feature spaces between which they map.
+\emph{Weight sharing} is performed by placing a $G$-steerable template kernel relative to an arbitrary $G$-frame in $\GpM$ for each point $p\in M$.
+
+In practice, the user is faced with additional design questions, for instance concerning the discretization of the geometry, the encoding of feature fields, numerical algorithms for computing geodesics and transporters,~etc.
+This section gives a high level overview of all relevant design choices.
+More specific details are found in the following Sections~\ref{sec:instantiations_euclidean}, \ref{sec:instantiations_euclidean_polar}, \ref{sec:instantiations_spherical} and~\ref{sec:instantiations_mesh}.
+
+
+
+\paragraph{Discretizations of manifolds and feature fields:}
+The implementations differ in their representation of the manifolds and sampling of the feature fields.
+
+Euclidean spaces $\Euc_d$ admit regular pixels grids, for instance $\Z^d$ or the hexagonal grid~\cite{Hoogeboom2018-HEX}.
+More generally, locally regular grids are suitable for locally flat manifolds like the M\"obius strip and the icosahedron; see Figs.~\ref{fig:mobius_conv_numerical} and~\ref{fig:ico_cutting}.
+Feature fields on Euclidean spaces may furthermore be sampled on a non-regular point cloud.
+This is for instance useful when processing atomic environments, where the atom positions serve as sampling locations~\cite{Thomas2018-TFN}.
+
+An important difference between the two approaches is that regular pixel grids are not equivariant w.r.t. continuous translations in $\Trans_d = (\R^d,+)$, but only w.r.t. the subgroup of discrete translations which preserves the grid, for instance~$(\Z^d,+)$.
+CNNs on regular grids are furthermore usually applying spatial pooling operations which reduce the models' equivariance even further.
+Specifically, given that the pooling operation has a stride of $n$~pixels, it is equivariant w.r.t. translations in $(n\Z^d,+)$.
+After $L$ pooling layers in a convolutional network, this implies that the model as a whole is only equivariant w.r.t. translations in $(n^L\Z^d,+)$
+-- this issue was empirically investigated in~\cite{azulay2018shift}.
+\citet{zhang2019CNNsShiftInvariant} propose to remedy this issue by replacing stride $n$ pooling layers with stride 1 pooling layers (with the same pooling window size), a low-pass filtering, and an $n$-pixel subsampling.
+The additional low-pass filtering between the pooling and subsampling operations prevents aliasing effects, which is shown to make the networks sufficiently more stable under translations which are not elements of $(n\Z^d,+)$.
+
+
+Curved spaces like the 2-sphere $S^2$ do in general not admit regular sampling grids.
+A seemingly obvious discretization is in terms of a regular sampling grid in spherical coordinates (Eq.~\eqref{eq:spherical_coords} and Fig.~\ref{fig:spherical_equirectangular_1}), however, as these coordinates are non-isometric, they oversample the signal towards the poles~\cite{zhao2018distortion,tateno2018distortion}.
+Approximately uniform sampling grids on $S^2$ are the ``generalized spiral set''~\cite{coors2018spherenet} or the icospherical grid~\cite{jiang2019spherical,kicanaoglu2019gaugeSphere}.
+Alternatively, feature fields may be discretized in the spectral domain.
+For the sphere, this is done via an expansion in terms of spherical harmonics for scalar fields, spin-weighted spherical harmonics for irrep fields or Wigner D-matrices for general feature fields~\cite{esteves2018zonalSpherical,esteves2020spinweighted,Cohen2018-S2CNN,kondor2018ClebschGordan}.
+
+General surfaces are most commonly represented by triangle meshes; see Section~\ref{sec:surfaces_geom_mesh}.
+Feature fields can then be sampled on the mesh vertices, edges or faces~\cite{deGoes2016VectorFieldProcessing}.
+A higher resolution of the feature fields can be achieved by encoding them via texture maps~\cite{li2019crossAtlas,huang2019texturenet}.
+Alternatively, surfaces may be represented as point clouds~\cite{tatarchenko2018tangent,jin2019NPTCnet}.
+
+
+
+
+
+
+\paragraph{\textit{G}-structures \textit{GM} and structure groups \textit{G}:}
+The specific choice of $G$-structure to be respected by the network depends on the learning task and the topology of~$M$ (if continuity or smoothness of the convolution is demanded).
+In general, $M$ comes equipped with an $\O{d}$-structure, i.e. a bundle of orthonormal reference frames with respect to the given Riemannian metric.
+A \emph{lift} to structure groups $G$ with ${\O{d} < G \leq \GL{d}}$ is uniquely determined by $G$-valued gauge transformations of orthonormal frames.
+\emph{Reductions} of the structure group to $G < \O{d}$ are, in contrast, not necessarily unique, and encode additional geometric information.
+For instance, a reduction to $G=\SO{d}$ requires an orientation on the manifold.%
+\footnote{
+    For a single, connected manifold, this choice is arbitrary as long as the kernel initialization is symmetric w.r.t. both orientations.
+    In this case the network will simply learn reflected kernels for different orientations.
+    When considering a dataset consisting of multiple manifolds, their relative orientation is relevant for a correct generalization.
+}
+The following sections discuss further (mostly implicitly made) choices of $G$-structures found in the literature; see for instance
+Figs.~\ref{fig:G_structures_R2_main},
+\ref{fig:G_structures_R2_no_origin},
+\ref{fig:G_structure_R2_no_origin_O2},
+\ref{fig:G_structure_R2_no_origin_logpolar},
+\ref{fig:G_structure_R3_no_origin}
+\ref{fig:G_structures_S2_main},
+or~\ref{fig:G_structures_ico}.
+They are either determined by a demand for the equivariance under the isometry group $\IsomGM$, canonically given on the manifold or, specifically for $\{e\}$-structures, algorithmically fixed via some heuristic.
+Recall that $\{e\}$-structures are on non-parallelizable manifolds (by definition) necessarily discontinuous.
+
+
+
+The most commonly encountered structure groups in the literature are the following:
+\begin{itemize}
+    \item[{\rule[2.0pt]{2pt}{2pt}}]
+        \emph{trivial} group $\{e\}$, corresponding to non-coordinate independent CNNs with unconstrained kernels
+    \item[{\rule[2.0pt]{2pt}{2pt}}]
+        \emph{reflection} group $\Flip \cong \Z/2\Z$, flipping the first frame axis
+    \item[{\rule[2.0pt]{2pt}{2pt}}]
+        \emph{special orthogonal} groups $\SO{d}$
+        \ \ (continuous rotations)
+    \item[{\rule[2.0pt]{2pt}{2pt}}]
+        \emph{orthogonal} groups $\O{d}$
+        \ \ (continuous rotations and reflections)
+    \item[{\rule[2.0pt]{2pt}{2pt}}]
+        \emph{scaling} group $\Scale \cong (\R^+,*)$,
+\end{itemize}
+Since the last three groups are continuous Lie groups, they are in numerical implementations sometimes approximated by finite subgroups.
+For instance, $\SO2$ and $\O2$ are often modeled by \emph{cyclic} groups $\CN$ or \emph{dihedral} groups~$\DN$, while three-dimensional rotations and reflections in $\O3$ can be approximated by \emph{polyhedral} groups (symmetry groups of Platonic solids, e.g. the icosahedron).
+To reduce the complexity of the classification of models in Table~\ref{tab:network_instantiations} we chose to not distinguish between the continuous symmetries and their approximations by finite subgroups.
+We will, however, state such approximations in our detailed discussion of the models in the following sections.
+
+
+
+
+
+\paragraph{\textit{G}-compatible connections:}
+All of the models consider either the canonical \emph{Levi-Civita} connection on $M$ or the unique \emph{trivial connection} which is induced by an $\{e\}$-structure.
+The choice of connection becomes irrelevant (thus unspecified) for networks which operate solely on \emph{scalar fields}, whose transport is always trivial.
+
+More specifically, all Euclidean CNNs from Section~\ref{sec:instantiations_euclidean} use Levi-Civita transporters, which transport vectors such that they remain parallel in the usual sense on Euclidean spaces $\Euc_d$; see Fig.~\ref{fig:transport_flat}.
+This is possible since the Levi-Civita connection is $G$-compatible with the models' $G$-structures (defined in Eq.~\eqref{eq:G_lifted_G_structure_Rd} and visualized in Fig.~\ref{fig:G_structures_R2_main}).%
+\footnote{
+    In contrast, the Euclidean $\{e\}$-structure in Fig.~\ref{fig:frame_field_automorphism_2} would be incompatible with the Levi-Civita connection on~$\Euc_2$.
+}
+
+The models on the punctured Euclidean spaces $\Euc_d \backslash \{0\}$ from Section~\ref{sec:instantiations_euclidean_polar} are either based on $\{e\}$-structures and/or consider scalar fields.
+They utilize therefore trivial connections which differ from the canonical Levi-Civita connection on~$\Euc_d \backslash \{0\}$.
+
+All spherical CNNs that rely on the $\SO2$-structure in Fig.~\ref{fig:G_structure_S2_1} (reviewed in Section~\ref{sec:spherical_CNNs_fully_equivariant}) transport features according to the Levi-Civita connection on $S^2$ (Fig.~\ref{fig:transport_sphere}).
+Those which operate on the $\{e\}$-structure in Fig.~\ref{fig:G_structure_S2_2} (reviewed in Section~\ref{sec:spherical_CNNs_azimuthal_equivariant}) are again considering a trivial connection since the spherical Levi-Civita connection is incompatible with this $\{e\}$-structure.
+The icosahedral CNN with $\C6$-structure, Fig.~\ref{fig:G_structure_ico_3}, transports features according to the $\C6$-compatible icosahedral Levi-Civita connection.%
+\footnote{
+    Discrete Levi-Civita connections on meshes are discussed in Section~\ref{sec:surfaces_geom_mesh} and~\cite{craneDiscreteDifferentialGeometry2014,craneTrivialConnectionsDiscrete2010}.
+}
+
+All CNNs on general surfaces that are listed in rows~(37-39) of Table~\ref{tab:network_instantiations}
+assume oriented surfaces that are equipped with an $\SO2$-structure.
+They transport features with the $\SO2$-compatible Levi-Civita connection of the surfaces.
+The other surface CNNs are based on $\{e\}$-structures and/or operate on scalar fields -- their feature transport is therefore trivial.
+
+Our M\"obius strip convolutions transport features via the Levi-Civita connection, which is compatible with the assumed $\Flip$-structure.
+
+Recall that the Levi-Civita connection is uniquely determined by the metric, and is therefore generally isometry invariant; cf. footnote~\ref{footnote:LeviCivita_isometry_invariance} in Section~\ref{sec:isom_expmap_transport}.
+As trivial $\{e\}$-compatible connections are uniquely specified by the $\{e\}$-structure they share its symmetries, that is, they are invariant under the action of~$\IsomeM$.
+This implies by Theorem~\ref{thm:isom_equiv_GM_conv} that the $\GM$-convolutions, which are based on these connections, are $\IsomGM$-equivariant.
+
+
+
+
+\paragraph{Transporter pullbacks and alternative projections to $\boldsymbol{\TpM}$:}
+The transporter pullback $\Expspf$, defined in Def.~\ref{dfn:Expf_pullback_field} and Eq.~\eqref{eq:transporter_pullback_in_coords}, represents a feature field $f$ in a geodesic parametrization on the tangent space~$\TpM$.
+The transportation part of the operation is determined by the $G$-compatible connection.
+Geodesics -- and therefore exponential maps $\exp_p: \TpM\to M$ -- have closed form expressions on Euclidean spaces $\Euc_d$ and the sphere~$S^2$.
+Specifically, the exponential maps on $\Euc_d$ reduce in Cartesian coordinates to the vector summation in Eq.~\eqref{eq:exp_map_euclidean}, such that Euclidean $\GM$-convolutions reduce to conventional convolutions on~$\R^d$; see Theorem~\ref{thm:Euclidean_GM_conv_is_conventional_conv}.
+Geodesics on $S^2$ are well known to be given by the great circles of the sphere.
+If the sphere is viewed as being embedded in $\R^3$, the exponential map is explicitly given by Eq.~\eqref{eq:sphere_expmap_explicit}.
+The geodesics on general surface meshes are not described by closed form solutions but are computed numerically; see Section~\ref{sec:surfaces_geom_mesh}.
+In contrast to the smooth setting, one needs to distinguishes between ``shortest'' and ``straightest'' geodesics on meshes~\cite{polthier1998straightest}.
+
+
+The pullback of feature fields into geodesic normal coordinates is not the only way of representing feature fields on the tangent spaces.
+In the literature on spherical CNNs it is rather common to use gnomonic projections, which are visualized in Fig.~\ref{fig:gnomonic_proj}.
+Theorem~\ref{thm:gnomonic} shows that this projection can be viewed as a special case of our more general geodesic parameterization after applying a radial warp to the kernels.
+The corresponding models are therefore exactly identified as $\GM$-convolutions.
+Surfaces which are embedded in an ambient space like $\R^3$ might furthermore rely on various projections in the embedding space; see for instance the last three models that are discussed in Section~\ref{sec:e_surface_conv}.
+Note that these approaches are truly different from ours, i.e. these three models are not exactly $\GM$-convolutions.
+
+
+
+
+
+
+
+\paragraph{\textit{G}-representations and nonlinearities:}
+Almost all models consider either of the trivial representation, irreducible representations or regular representations as field types.
+Exceptions are quotient representations, more general induced representations, tensor product representations and, specifically for $G=\SO3$, the quaternion representation.
+Infinite-dimensional representations, in particular regular and quotient representations of Lie groups, are in implementations discretized.
+This can either happen via Monte Carlo sampling or by falling back to the corresponding representations of finite subgroups as discussed above.
+
+The nonlinearities are required to be equivariant w.r.t. the action of the chosen $G$-representations.
+Since scalar fields are $G$-invariant, they are acted on by usual nonlinearities like ReLU.
+Feature fields that transform according to permutation representations, most importantly regular representations, are acted on channel-wise.
+All other field types require custom-tailored nonlinearities -- we refer to~\cite{Weiler2019_E2CNN} for a discussion of specific choices.
+
+
+
+
+\paragraph{\textit{G}-steerable kernel spaces:}
+$\GM$-convolutions map input fields of type $\rhoin$ to output fields of type~$\rhoout$ by convolving them with $G$-steerable kernels~$K\in\KG$.
+Since the space $\KG$ of $G$-steerable kernels, Def.~\ref{dfn:G-steerable_kernel_def_43}, is a vector space, it is usually parameterized in terms of a basis $\{K_1,\,\dots,\,K_N\}$ of~$\KG$.
+\mbox{Before} computing the convolution, the learned kernel $K = \sum_{i=1}^N w_i K_i$ is expanded in this basis, where $\{w_1,\dots,w_N\}$ are real-valued weights to be optimized.
+Provably complete kernel spaces for the groups $G\leq\O2$ were implemented in~\cite{Weiler2019_E2CNN}.%
+\footnote{\url{https://quva-lab.github.io/e2cnn/api/e2cnn.kernels.html}}
+A generalization of the Wigner-Eckart theorem characterizes the kernel space bases for general compact structure groups~$G$~\cite{lang2020WignerEckart}.
+
+
+In practice, the majority of authors does not use a representation theoretic formulation of feature fields and steerable kernels, but formulate them based on intuition.
+Specifically, most authors assume a given input field type and propose various convolution operations which are engineered such that the resulting output field transforms in an equivariant (or coordinate independent) manner.%
+\footnote{
+    This is opposed to our approach, which fixes the input and output fields and subsequently asks for the resulting constraint on convolution kernels.
+}
+While these approaches propose certain $G$-steerable kernels that map between $\rhoin$-fields and $\rhoout$-fields, these kernels do sometimes not span the complete space of possible kernels.
+This applies for instance to the \emph{MDGCNNs} and \emph{PFCNNs}, which are discussed in Section~\ref{sec:so2_surface_conv}.

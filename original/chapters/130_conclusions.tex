@@ -1,0 +1,134 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\mypart{Conclusion}
+
+We conclude with a summary of our work and an outlook on potential future developments.
+\vspace*{-1ex}
+
+
+\paragraph{Summary:}
+
+In this work we investigated the design of convolutional networks on Riemannian manifolds.
+In contrast to Euclidean vector spaces~$\R^d$, manifolds do in general not come with a canonical choice of reference frames relative to which features and kernels could be expressed.
+Given that no specific choice of frames may be geometrically preferred, it is natural to demand geometric quantities like feature vectors to be coordinate independent.
+They are therefore associated with some transformation law (field type) which determines how their coordinate expressions in different gauges relate to each other.
+The layers of coordinate independent networks are required to respect the features' transformation laws in the sense that the action of a transformed layer on a transformed input feature results in a correspondingly transformed output feature.
+As argued and exemplified at multiple examples, this does in general not imply a constraint on the network's connectivity.
+However, local template functions like convolution kernels, biases or nonlinearities may only then be shared in a coordinate independent manner if they are $G$-steerable, i.e. equivariant w.r.t. gauge transformations.
+In a nutshell, coordinate independent convolutional networks are models that apply a shared $G$-steerable kernel in geodesic normal coordinates at each point of the manifold.
+
+
+While the construction of coordinate independent CNNs focuses solely on their local gauge equivariance, the models are automatically equivariant w.r.t. the action of isometries on feature fields.
+The relevant subgroup $\IsomGM \leq \IsomM$ of isometries consists thereby of those symmetries of the Riemannian manifold that are simultaneously symmetries of the $G$-structure~$\GM$
+-- this connection allows to reduce the design of isometry equivariant convolutions to the design of invariant $G$-structures.
+Investigating isometry equivariant networks beyond convolutions we find that weights need not necessarily be shared over the whole manifold but just over the isometry orbits.
+For the specific case of homogeneous spaces there is one single orbit which agrees with the manifold itself
+-- weight sharing becomes in this case global and implies a convolution.
+This finding recovers the results from previous work on convolutions on homogeneous spaces by
+\citet{Kondor2018-GENERAL}, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} and \citet{bekkers2020bspline};
+see Appendix~\ref{apx:homogeneous_conv} for a detailed comparison.
+
+
+To clarify the practical application of our theory and to evaluate it empirically, we implemented orientation independent convolutions on the M\"obius strip.%
+\footnote{
+    The code is publicly available at \url{https://github.com/mauriceweiler/MobiusCNNs}.
+}
+This required us to solve the equivariance constraints on reflection steerable kernels, biases and nonlinearities for the different field types under consideration.
+Since the M\"obius strip is locally flat, the network is implemented via conventional Euclidean convolutions on a chart codomain.
+Parallel transporters are either trivial or incur a reflection -- they are in practice implemented via a reflect-padding operation at the line where the strip was cut open.
+Orientation-independent convolutions were empirically shown to outperform a naive coordinate dependent baseline model.
+They were furthermore shown to be equivariant under the action of the M\"obius strip's isometry group.
+
+
+As our differential geometric theory of convolutional networks allows for arbitrary Riemannian manifolds, $G$-structures, connections and field types, it describes a wide range of related work in a unified framework.%
+\footnote{
+    Any of the models is -- up to discretization -- fully specified by the design choices listed in the intro of Part~\ref{part:literature_review}.
+}
+We substantiated this claim in an extensive literature review which covers affine group equivariant Euclidean CNNs, rotation equivariant CNNs on punctured Euclidean spaces, spherical and icosahedral CNNs and CNNs on more general surfaces;
+see Table~\ref{tab:network_instantiations}.
+Besides discussing the specific design choices of each network architecture in detail, our review gives an introduction to the underlying manifolds' geometries from the viewpoint of our gauge formalism.
+We hope that this facilitates the future design of network architectures.
+
+
+
+
+
+\paragraph{Outlook:}
+
+Our work suggests a number of future research directions, ranging from applications and empirical investigations over extensions of the theory to the transfer of insights and developed techniques to related work.
+
+
+While we developed the theory of coordinate independent CNNs in quite some depth, a \emph{systematic empirical study of their practical aspects and design choices} is still pending.
+Our literature review in Part~\ref{part:literature_review} covers many choices of manifolds, $G$-structures and field types, however, the models are trained on different learning tasks or in different setups which prevents a direct comparison of their performances.
+The work of \citet{Weiler2019_E2CNN} made a first step towards a systematic empirical evaluation of field types and equivariant nonlinearities.
+However, their benchmark covers only $\Aff(G)$-invariant $G$-structures for $G\leq\O2$ on two-dimensional flat spaces~$M=\Euc_2$.
+Future work should extend this study to further manifolds of different dimensionalities and to further $G$-structures.
+
+
+An interesting extension of our theoretical framework would be to replace spatially extended kernels with \emph{learned partial differential operators}.
+In contrast to kernels, which are applied in geodesic normal coordinates, partial differential operators act locally and allow therefore to dispense with the manifold's Riemannian structure altogether.
+As a consequence, coordinate independent neural PDEs would not only be isometry equivariant but more generally \emph{diffeomorphism equivariant}.%
+\footnote{
+    The relevant diffeomorphism group $\DiffGM\leq\DiffM$, defined in Eq.~\eqref{eq:DiffGM_def_part1}, would consist of those diffeomorphisms that are symmetries of the $G$-structure.
+}
+Specifically for $G=\GL{d}$, this would result in generally covariant neural PDEs, which might be relevant for the application of convolutional networks in numerical general relativity.
+A differential formulation of neural networks is expected to show profound similarities to theories in physics and other natural sciences -- this might provide new pathways to connect both fields and transfer knowledge between them.
+Specifically, the results by \citet{lang2020WignerEckart} suggest that $G$-steerable partial differential operators might just be representation operators as described by the Wigner-Eckart theorem from quantum mechanics.
+First steps towards steerable neural PDEs have been presented in prior work, however, a general formulation is still missing:
+the formulation in \cite{jiang2019spherical} is non-equivariant, while \cite{shen2020PDOeConvs,shen2021PDOeSpherical} consider only regular representations as field types and \cite{smets2020pde,sharp2020diffusion} restrict their attention to a specific subset of equivariant differential operators.
+Note that the majority of the related work in our literature review in Part~\ref{part:literature_review} would \emph{not} be explained by neural PDEs since their models are explicitly assuming spatially extended kernels.%
+\footnote{
+    If partial differential operators are discretized in terms of a stencil of finite size, this approximation may result in a $G$-steerable kernel.
+}
+
+
+Further extensions of the theory could investigate structure groups that are not subgroups of~$\GL{d}$.
+An interesting application from quantum field theory would be networks that rely on \emph{spin structures} ($G={\operatorname{Spin}(d)}$) and operate on spinor bundles.
+One could furthermore try to \emph{learn a $G$-structure} on a manifold instead of fixing it.
+\citet{sommer2019horizontal} investigated an alternative approach to accumulate feature vectors, replacing their parallel transport along geodesics with a diffusion process.
+
+
+Coordinate independent neural networks could furthermore be combined with orthogonal advances in equivariant deep learning.
+Examples include equivariant \emph{attention mechanisms} \cite{hutchinson2020lietransformer,romero2020attentive,romero2020selfAttention,Romero2020CoAttentive,fuchs2020se3transformers,fuchs2021iterative},
+equivariant \emph{capsule networks} \cite{lenssen2018groupCapsule,zhao2019quaternion,venkataraman2020equivCapsule}
+or \emph{probabilistic} equivariant models~\cite{bloem2019probabilistic},
+including in particular equivariant \emph{flows}~\cite{kohler2020equivariant,rezende2019equivariant,li2020exchangeable} or equivariant \emph{neural processes}~\cite{finzi2020probabilistic,holderrieth2020steerableCNP,kawano2021GCNN_CNP}.
+Another topic of interest is the \emph{universality} of equivariant networks~\cite{yarotsky2018universal,maron2019universality,sannai2019universalPermutation,keriven2019universal,segol2020universalSet,ravanbakhsh2020universal,kumagai2020universal,dym2020universality}.
+
+
+While coordinate independent CNNs operate on Riemannian manifolds as base spaces, their features (at any point $p\in M$) are vector-valued, i.e. live in a Euclidean vector space.
+An independent line of research investigates neural networks with \emph{manifold-valued features}
+like SPD matrices~\cite{huang2017riemannian},
+Grassmannians~\cite{huang2018building},
+hyperbolic spaces~\cite{ganea2018hyperbolic,peng2021hyperbolic,chami2019hyperbolic,liu2019hyperbolic,gulcehre2018hyperbolic,shimizu2020hyperbolic}
+or more general manifolds~\cite{chakraborty2018manifoldnet,banerjee2020volterranet,pfau2020disentangling}.
+Related are autoencoder networks whose latent space is manifold-valued~\cite{davidson2018hyperspherical,falorsi2018explorations,de2018topological,schonsheck2019chart}.
+We believe that the design of such models should be coordinate independent as well whenever the choice of coordinates is non-canonical.
+
+
+In a broader sense, we believe that neural networks should generally be constrained such that they \emph{preserve the mathematical structure of the learning task};
+see also the review paper by \cite{celledoni2020structure}.
+While our coordinate independent CNNs respect the manifold's $G$-structure,
+\citet{hoffmann2020algebranets} and \citet{alej2020algebraic} propose networks that respect algebraic structures of features,
+\citet{greydanus2019hamiltonian} construct energy conserving Hamiltonian networks that preserve a symplectic structure
+and \citet{hernandez2021structure} design models that enforce the metriplectic structure of dissipative Hamiltonian systems, ensuring that they comply with the first and second principle of thermodynamics.
+In general, any mathematical structure exhibits certain symmetries, formalized by their automorphism group.
+\citet{bronstein2021geometric5Gs} recently proposed an ``Erlangen Programme of Deep Learning''
+targeted at a systematic classification of network architectures with a focus on the underlying mathematical structures and their symmetries.
+Developing such a classification for $\GM$-coordinate independent CNNs on Riemannian manifolds,
+our work reached a first milestone in this programme.
+
+
+
+
+
+
+\subsection*{Acknowledgement}
+We would like to thank Leon Lang and Gabriele Cesa for plenty of valuable discussions and for their feedback on the manuscript.
+We also thank Erik Bekkers for discussions on scale equivariant convolutions and convolutions on homogeneous spaces.
+
+
+\subsection*{List of theorems and definitions}
+\theoremlisttype{allname}
+\listtheorems{thm,cor,lem,dfn}

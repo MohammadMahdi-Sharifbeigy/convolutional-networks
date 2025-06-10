@@ -1,0 +1,318 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{Fully rotation equivariant spherical CNNs}
+\label{sec:spherical_CNNs_fully_equivariant}
+
+
+This section discusses the fully $\SO3$ or $\O3$-equivariant spherical convolutions that are listed in rows (31-33) of Table~\ref{tab:network_instantiations}.
+They can all be understood as specific instances of $\GM$-convolutions on either the $\SO2$-structure in Fig.~\ref{fig:G_structure_S2_1} or the corresponding $\O2$-structure, which is additionally closed under frame reflections.
+
+Instead of organizing this discussion in terms of the considered structure groups and group representations, we assort the models by the theoretical frameworks in which they are developed:
+\citet{kicanaoglu2019gaugeSphere} define a pixel grid on the sphere and formulate the convolution directly as $\GM$-convolution, that is, in terms of gauges, steerable kernels and feature vector transporters.
+An alternative framework is that of graph convolutions on spherical pixel meshes~\cite{perraudin2018DeepSphere,yang2020rotation}.
+Such graph convolutions correspond to $\GM$-convolutions with isotropic kernels.
+They map therefore between (directionally insensitive) scalar fields.
+Lastly, we come to implementations that consider (steerable) convolution kernels on $S^2$ instead of our kernels on the tangent spaces~\cite{esteves2018zonalSpherical,Cohen2018-S2CNN,kondor2018ClebschGordan,esteves2020spinweighted}.
+Theorem~\ref{thm:spherical_kernel_space_iso} proves that such spherical steerable kernels can be identified with $G$-steerable kernels on the tangent spaces, when being expressed in geodesic normal coordinates.
+Based on this result, we prove in Theorem~\ref{thm:spherical_conv_GM_conv} that convolutions with spherical kernels are equivalent to our $\GM$-convolutions.
+For completeness, we need to mention that such models are typically implemented in the spectral domain.
+We do not focus on this viewpoint but refer the interested reader to the review by~\citet{esteves2020theoretical}.
+
+
+\paragraph{Spherical \textit{GM}-convolutions:}
+
+We start with the spherical CNN by \citet{kicanaoglu2019gaugeSphere} since its formulation agrees precisely with our more general theory when being applied to the spherical geometry.
+The authors assume the $\SO2$-structure from Fig.~\ref{fig:G_structure_S2_1}, and therefore $\SO2$-steerable feature fields and convolution kernels.
+Feature fields are discretized in terms of feature vectors that are assigned to a sampling grid on the sphere.
+While the method is in principle independent from the particular sampling scheme, the authors propose to discretize the spherical geometry by an icosphere mesh.
+This mesh is constructed by taking an embedded icosahedron, repeatedly subdividing its faces as shown in Fig.~\ref{fig:ico_neighborhoods}, and finally projecting the grid vertices radially to the sphere, i.e. to unit norm.
+The sampled feature fields are numerically represented by a set of coefficient vectors $f^A(p) \in \R^c$ at the grid vertices $p$, which are expressed relative to some arbitrarily chosen right-handed orthonormal frames $\big[e_1^A, e_2^A \big]$ at the vertices.%
+\footnote{
+    This corresponds to an independent choice of gauge $\psiTMp^{A_p}$ on any open neighborhood $U^{A_p}$ of each vertex~$p$.
+}
+In practice, the frames are represented by a single tangent vector of unit norm, from which the second frame vector follows uniquely since the frames are right-handed.
+
+
+To compute the coordinate independent convolution $[K \star f](p)$ from Eq.~\eqref{eq:gauge_conv_coord_expression}, \citet{kicanaoglu2019gaugeSphere} need to contract the $\SO2$-steerable kernel $K$ with the transporter pullback $[\Expspf]^A$ of the feature field $f$, Eq.~\eqref{eq:transporter_pullback_in_coords}.
+As usual in deep learning, $K$ is hereby assumed to be compactly supported, such that it covers only a few vertices in a one-ring or two-ring neighborhood $\mathcal{N}_p$ around a center vertex $p$.
+In the continuous theory, the transporter pullback takes features from all points $\exp_p (\psiTMp^A)^{-1}(\mathscr{v})$ for $\mathscr{v} \in \R^2$ and transports them back to~$p$.
+In practice, the feature fields are only sampled at the grid vertices $q$, which correspond to the tangent vector coefficients $v^A_{pq} = \psiTMp^A \log_p(q) \in \R^2$ relative to gauge~$A$ at vertex~$p$.%
+\footnote{
+    If the exponential map is not restricted to the injectivity radius, each vertex $q$ is represented by multiple tangent vectors.
+    This is in practice no issue since the kernel is assumed to be locally supported within the injectivity radius.
+}
+The logarithmic maps $\log_p(q)$ are thereby computed as defined in Eq.~\eqref{eq:sphere_logmap_explicit}.
+The Levi-Civita transporters $\rho\big( g_{p\leftarrow q}^{A\widetilde{A}}\big)$ along the geodesics from $q$ to $p$ are in principle given by Eq.~\eqref{eq:sphere_transporter_explicit_in_coords}.
+Since the frames are all right-handed and orthonormal, and since the transport corresponds to the Levi-Civita connection on $S^2$, the group elements $g_{p\leftarrow q}^{A\widetilde{A}}$ are $\SO2$-valued.
+They are therefore fully determined by the angle between the transported first frame axis $\PTMgamma\big(e_1^{\widetilde{A}}\big)$ from $q$ and the first frame axis $e_1^A$ at~$p$.
+With these ingredients at hand, the authors propose to approximate the continuous convolution integral by the discrete sum
+\begin{align}
+    \big[K\star f\big]^A(p)
+    \ =\ \int_{\R^2} K(\mathscr{v})\, \big[\!\Expspf]^A(\mathscr{v}) \,\ d\mathscr{v}
+    \ \approx\ \sum_{q\in\mathcal{N}_p} K\mkern-1.5mu\big(v^A_{pq}\big)\, \rho\big( g^{A\widetilde{A}}_{p\leftarrow q} \big)\, f^{\widetilde{A}}(q)
+\end{align}
+over neighboring mesh nodes.
+The missing normalization factor can be thought of as being absorbed in the learnable parameters $w_i \in\R$ of the $\SO2$-steerable convolution kernel $K = \sum_i w_i K_i$.
+As an alternative to this naive approximation, the authors propose an optimized quadrature integration scheme, which is empirically shown to improve the model's $\SO3$ isometry equivariance.
+
+
+The model is in Table~\ref{tab:network_instantiations} listed as processing feature fields that transform according to the regular representation of $\SO2$.
+In their implementation, \citet{kicanaoglu2019gaugeSphere} consider irrep fields of $\SO2$ in the convolutions.
+A change of basis before and after the convolutions transforms these feature fields to regular feature fields, which are then acted on by pointwise nonlinearities like e.g. ReLU.
+The infinite-dimensional regular representation of $\SO2$ is hereby approximated by regular representations of discrete cyclic subgroups $\CN$, whose irreps are just the irreps of $\SO2$ up to a bandlimiting frequency of $\lfloor N/2 \rfloor$; see e.g. Appendix~F.2 of~\cite{Weiler2019_E2CNN}.
+The change of basis between the representations is in this specific case just the usual discrete Fourier transform.
+
+
+
+
+\paragraph{Spherical graph convolutions:}
+
+The spherical CNNs by \citet{perraudin2018DeepSphere} and \citet{yang2020rotation}, which are listed in row (33) of Table~\ref{tab:network_instantiations}, are based on conventional graph convolutions~\cite{kipf2016semi}.
+Pixel meshes on the sphere are hereby interpreted as graphs.
+The graph convolutional networks process signals on the sphere by multiplying them with degree $\kappa$ polynomials $\sum_{k=0}^\kappa w_k L^k$ of the graph's Laplacian matrix $L$, where $w_k \in \R$ are trainable parameters.
+Since the Laplacian matrix has non-zero entries only for adjacent nodes, the $k$-th order term affects only the $k$-hop neighborhood around each node.
+On a regular mesh with unweighted graph edges, the contribution of a neighboring node $q$ to the accumulated feature at $p$ depends only on their graph distance (``radius''), but not on the particular neighbor (``direction'').
+The graph convolution applies therefore in such cases \emph{isotropic} kernels on the graph.
+The considered pixel graph on the sphere satisfy these properties approximately.
+As their \emph{embedding} on the sphere is furthermore such, that the nodes are geodesically approximately equidistant, the topological isotropy of the graph convolution kernels corresponds to their metric isotropy on the sphere.
+
+
+The isometry group $\O3$ of the sphere induces $\O2$-valued gauge transformation, that is, it acts by moving patterns to a new location and in a new orientation.
+Due to the convolutional weight sharing and the isotropy of the kernels, the graph convolutions are trivially isometry equivariant.
+As already argued in Eq.~\eqref{eq:Euc3_punctured_O2_constraint}, isotropic kernels are in our framework recovered as $\O2$-steerable kernels that map between \emph{scalar fields}.
+The $\O3$-equivariance of the convolution is in our theory explained by the $\O3$-invariance of the sphere's $\O2$-structure.
+
+
+
+
+\paragraph{Spherical convolutions with kernels on $\bm{S^2}$:}
+
+As a homogeneous space, the sphere admits group (or quotient space) convolutions~\cite{Kondor2018-GENERAL} and more general steerable convolutions on homogeneous spaces~\cite{Cohen2019-generaltheory}.%
+\footnote{
+    A more general review of convolutions on homogeneous spaces is found in Appendix~\ref{apx:homogeneous_conv}.
+}
+Instead of defining the convolution kernels on the tangent spaces or on graph neighborhoods, these approaches define kernels immediately as matrix-valued function on the sphere, that is, as
+\begin{align}\label{eq:spherical_kernel}
+    \kappa:\, S^2 \to \R^{\cout\times\cin} \,.
+\end{align}
+\citet{Cohen2019-generaltheory} showed that these kernels are required to satisfy a symmetry constraint in order to guarantee the equivariance of the convolution.
+We argue in the following that such kernels on $S^2$ are equivalent to $G$-steerable kernels on the tangent spaces (Theorem~\ref{thm:spherical_kernel_space_iso}), which implies that the spherical CNNs covered in~\cite{Cohen2019-generaltheory} and~\cite{Kondor2018-GENERAL} can be viewed as $\GM$-convolutions (Theorem~\ref{thm:spherical_conv_GM_conv}).
+The identification between the two kinds of kernels is hereby made by pulling the spherical kernels via the exponential map back to the tangent spaces.
+Before explaining this operation, we briefly discuss the models proposed in \cite{Cohen2018-S2CNN,esteves2018zonalSpherical,esteves2020spinweighted,kondor2018ClebschGordan} as specific instances of spherical convolutions with spherical kernels.
+For a more details on these models, specifically on their formulation in Fourier space, we refer the reader to the comprehensive review by~\citet{esteves2020theoretical}.
+
+
+
+We start our discussion with the group convolutional spherical CNN by \citet{Cohen2018-S2CNN}, listed in row (32) of Table~\ref{tab:network_instantiations}.
+This model processes stacks of $\cin$ \emph{scalar} fields
+\begin{align}
+    f:\, S^2 \to \R^{\cin}
+\end{align}
+on the sphere by matching them with spherical kernels, Eq.~\eqref{eq:spherical_kernel}, in any $\SO3$ transformed pose.
+In equations, this operation is defined as
+\begin{alignat}{3}
+\label{eq:spherical_lifting_conv}
+    \big[\kappa \star_{\mkern-2mu S^2}\! f\big](\phi)\ &:=\, \int_{S^2} \kappa(\phi^{-1}(p))\, f(p)\ dp \qquad\quad &&\phi\in\SO3 \,.
+\intertext{
+Note that the resulting feature map is viewed as a stack of $\cout$ scalar functions on the symmetry group $\SO3$.
+Such feature maps of the form $f:\SO3 \to \R^{\cin}$ (with the new number of input channels corresponding to the previous layer's output channels) are processed further by group convolutions of the form
+}
+\label{eq:spherical_group_conv}
+    \big[\kappa \star_{\SO3}\! f\big](\phi)\ &:=\, \int_{\SO3}\! \kappa(\phi^{-1}\omega)\, f(\omega)\ d\omega \qquad\quad &&\phi\in\SO3 \,,
+\end{alignat}
+where $\kappa: \SO3 \to \R^{\cout\times\cin}$ is now a matrix-valued function on $\SO3$ and $d\omega$ is the Haar measure on~$\SO3$.
+From the viewpoint of steerable CNNs on homogeneous spaces~\cite{Cohen2019-generaltheory} and $\GM$-convolutions, scalar functions on $\SO3$ are viewed as feature fields on $S^2 \cong \SO3/\SO2$, that transform according to the \emph{regular representation} of the fibers (stabilizer subgroups)~$\SO2$.
+The initial convolution in Eq.~\eqref{eq:spherical_lifting_conv} applies in this interpretation $\SO2$-steerable kernels between scalar and regular fields, while the group convolution in Eq.~\eqref{eq:spherical_group_conv} applies $\SO2$-steerable kernels between regular fields on~$S^2$.
+
+
+\citet{esteves2018zonalSpherical} apply spherical convolutions as in Eq.~\eqref{eq:spherical_lifting_conv} with the additional assumption that the kernels are \emph{zonal}, that is, invariant under $\SO2$ rotations around the polar axis; cf. Fig.~\ref{fig:zonal_kernel}.
+While the integral technically still gives responses in $\SO3$, the kernel symmetry implies that these responses are constant on the fibers $\SO2$ of $\SO3$, when being interpreted as bundle over $S^2$.
+The resulting feature fields are therefore identified as scalar fields on $S^2$, which allows for a repeated application of this type of convolution.
+Note that the zonal symmetry of the kernel is consistent with the steerability kernel constraint between scalar fields (trivial representations) that we encountered before in Eq.~\eqref{eq:Euc3_punctured_SO2_constraint}.
+As already discussed in the previous Section~\ref{sec:punctured_euclidean_3dim}, this constraint is equivalent to the $\O2$-steerability constraint between scalar fields in Eq.~\eqref{eq:Euc3_punctured_O2_constraint}, which implies that the model of \citet{esteves2018zonalSpherical} is actually $\O3$-equivariant.
+It is in spirit similar to the spherical graph convolutions discussed above, but is derived from a different viewpoint and is discretized differently in the implementation.
+
+
+\citet{esteves2020spinweighted} generalize this model from scalar fields to general \emph{spin weighted spherical functions}.
+These functions depend not only on the position $p\in S^2$ on the sphere, but in addition on the particular choice of right-handed, orthonormal reference frame at that point.
+They are associated to the \emph{irreps} $\rho_s$ of $\SO2$, where the integer $s\in\Z$ is denoted as the functions' spin weight.%
+\footnote{
+    One can generalize this concept to spin representations, labeled by half-integer spin weights.
+}
+Their values for the different frames $\SOpM$ of the $\SO2$-structure $\SOM$ are constrained such that gauge transformations of the frame by $g\in\SO2$ lead to a transformation of the function value by $\rho_s(g)$.
+In equations, they are therefore defined by%
+\footnote{
+    A real-valued implementation would instead consider spin weighted functions of the form $\prescript{}{s}f: \SOM \to \R^{\dim(\rho_s)}$, where~$\rho_s$ are the irreps of $\SO2$ over the real numbers.
+}
+\begin{align}
+    \prescript{}{s}f: \SOM \to \Cm
+    \ \ \ \textup{such that} \ \ \
+    \prescript{}{s}f\big( [e_1,e_2] \lhd g \big) = \rho_s(g) \prescript{}{s}f \big( [e_1,e_2] \big)
+    \ \ \ \forall\ [e_1,e_2] \in \SOpM,\ g\in\SO2 \,;\!
+\end{align}
+see~\cite{boyle2016should} for more details and alternative definitions.
+Note the similarity of this symmetry constraint to the equivalence relation
+\begin{align}
+    \big[ [e_i]_{i=1}^2 \lhd g,\, \mathscr{f} \big]\ \sim_{\rho_s}\ \big[ [e_i]_{i=1}^2,\, \rho_s(g) \mathscr{f} \big]
+\end{align}
+from Eq.~\eqref{eq:equiv_relation_A}, which is underlying the definition of associated bundles.
+Spin weighted spherical functions are indeed equivalent to sections of the associated bundles
+$(\SOM \times \Cm)/\!\sim_{\rho_s}$;
+see for instance Proposition~1.6.3 in~\cite{wendlLectureNotesBundles2008}.
+They appear in our theory simply as $\SO2$-irrep fields, including scalar fields for $s=0$ and vector fields for~$s=1$.
+The neural networks proposed by~\citet{esteves2020spinweighted} convolve spin weighted features with spin weighted kernels on the sphere.
+This operation corresponds to a convolution with $\SO2$-steerable kernels where $\rhoin$ and $\rhoout$ are irreps.
+
+
+The models in \cite{Cohen2018-S2CNN,esteves2018zonalSpherical,esteves2020spinweighted} are initially formulated in the spatial domain, i.e. as processing functions on $S^2$ as discussed above.
+They are, however, implemented in the spectral domain, which is possible thanks to generalized convolution theorems on $S^2$ and on $\SO3$~\cite{makadia2006rotation,Kondor2018-GENERAL,vilenkin2013representation}.
+\citet{kondor2018ClebschGordan} generalize these approaches, proposing a model that is based on learned linear combinations of all feature fields' Fourier modes of the same frequency.
+The authors argue that this approach covers the full space of $\SO3$-equivariant linear maps between feature fields on the sphere.
+On the other hand, \citet{Cohen2019-generaltheory} show that any such map can in the spatial domain be written as a convolution with $\SO2$-steerable spherical kernels.
+A notable property of the model proposed by \citet{kondor2018ClebschGordan} is that it operates fully in Fourier space:
+instead of transforming back to the spatial domain and applying pointwise nonlinearities like ReLUs there, as done in the previous approaches, the authors compute the tensor product between all feature fields and decompose them subsequently via the Clebsch-Gordan decomposition back into irreducible features (Fourier modes).
+This is computationally beneficial, however, comes at the expense of losing the locality of the nonlinearities.
+Certain learning tasks, especially in the natural sciences, might benefit from such nonlinearities since physical interactions are often described by tensor products.
+
+
+As argued in~\cite{Cohen2019-generaltheory,Cohen2018-intertwiners}, all of these models can be viewed as applying steerable kernels on $S^2$ that map between scalar fields~\cite{esteves2018zonalSpherical}, regular feature fields~\cite{Cohen2018-S2CNN} or irrep fields~\cite{esteves2020spinweighted,kondor2018ClebschGordan}.
+In the remainder of this section and Appendix~\ref{apx:spherical_conv_main} we show that they can as well be viewed as $\GM$-convolutions.
+The claim that spherical convolutions with steerable kernels on $S^2$ are equivalent to $\GM$-convolutions is thereby made precise in Theorem~\ref{thm:spherical_conv_GM_conv}.
+This theorem relies crucially on Theorem~\ref{thm:spherical_kernel_space_iso}, which establishes an isomorphism between the spherical steerable kernels and $G$-steerable kernels on the tangent spaces.
+
+Let $\I$ be any transitive isometry group of the sphere, i.e. $\I=\O3$ or $\I=\SO3$.
+\citet{Cohen2019-generaltheory} describe $\I$-equivariant spherical convolutions in terms of $\Stab{n}$-steerable spherical kernels ${\kappa: S^2 \to \R^{\cout\times\cin}}$, where $\Stab{n} < \I$ is the stabilizer subgroup of any point $n\in S^2$, e.g. the north pole.
+As these kernels are defined on the sphere, which is topologically distinct from $\R^2$, it is not directly possible to define an isomorphism between them and $G$-steerable kernels.
+However, as the south pole $-n$ is a set of measure zero, we can replace the integration domain $S^2$ of the spherical convolutions with $S^2\backslash \mkern-1mu\minus\mkern1mu n$ without changing the result.
+With this adaptation, the spherical steerable kernels of \citet{Cohen2019-generaltheory} are defined as
+\begin{align}\label{eq:spherical_steerable_kernel_space}
+    \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}
+    := \pig\{ \kappa: S^2\backslash \mkern-1mu\minus\mkern1mu n \to \R^{\cout\times\cin}
+    \,\pig|\ \kappa\big(\xi (p)\big) = \rhoout\big( g_\xi^{NN}(n) \big) \mkern-1.5mu\cdot\mkern-1.5mu \kappa(p) \mkern-1.5mu\cdot\mkern-1.5mu \rhoin\big( g_\xi^{XP}(p) \big)^{-1}
+    \qquad \\ \notag
+    \forall\,\ p\in S^2\backslash \mkern-1mu\minus\mkern1mu n,\ \ \xi\in\Stab{n} \pig\} \,,
+\end{align}
+when being translated to our notation.
+Since the kernels are globally defined on the sphere, their values in $\R^{\cout\times\cin}$ are expressed relative to potentially different gauges $N$ at $n$, where the kernel is centered, $P$ at $p\in S^2$, where the kernel contracts a feature $f^P(p) \in \R^\cin$ and $X$ at $\xi(p)$, where this feature moves under the action of $\xi \in \Stab{n}$.
+This kernel constraint relates all kernel values that lie on the orbits ${\Stab{n}\mkern-4mu.\mkern1mup} = \{ \xi(p) \,|\, \xi\in\Stab{n} \}$ via their isometry induced gauge transformations $g_\xi^{XP}(p)$ and $g_\xi^{NN}(n)$; see Eqs.~\eqref{cd:pushforward_GM_coord_extended} and~\eqref{cd:pushforward_A_coord}.%
+\footnote{
+    \citet{Cohen2019-generaltheory} denote the isometry induced gauge transformations by $\operatorname{h}(p,\xi)$ instead of $g_\xi^{XP}(p)$, assuming that the gauges $X$ at $\xi(p)$ and $P$ at $p$ are the same.
+    Their definition of $\operatorname{h}(p,\xi)$ is similar to our Eq.~\eqref{eq:pushfwd_section_right_action}.
+}
+Our equivalent $G$-steerable kernels, where $G \cong \Stab{n}$, is given by
+\begin{align}\label{eq:G_steer_kernel_space_open_ball_pi}
+    \mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}
+    := \Big\{ K\!: B_{\R^2}(0,\pi) \to \R^{\cout\times\cin} \mkern1.5mu\Big|\,
+    K(g\mkern1mu \mathscr{v}) =
+    \rhoout(g) \mkern-2mu\cdot\mkern-2mu K(\mathscr{v}) \mkern-2mu\cdot\mkern-2mu \rhoin(g)^{-1} \ \ \ \forall\ \mathscr{v}\in B_{\R^2}(0,\pi),\,\ g\in G \Big\} .
+\end{align}
+The kernel domain is hereby restricted from $\R^2$ to the open ball $B_{\R^2}(0,\pi) := \{ \mathscr{v}\in\R^2 \,|\, \lVert \mathscr{v}\rVert < \pi \}$ of radius $\pi$ around the origin of $\R^2$ -- which can via the exponential map be identified with $S^2\backslash \mkern-1mu\minus\mkern1mu n$.
+Note that $\mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ is well defined since $\Stab{n} \cong G$ contains isometries, implying $G=\O2$ or $G=\SO2$, under whose action $B_{\R^2}(0,\pi)$ is closed.
+We furthermore dropped the determinant factor from the more general $G$-steerability constraint in Eq.~\eqref{eq:G-steerable_kernel_space} since ${|\!\det g| = 1}$ for $G\leq\O2$.
+Our kernel constraint is considerably simpler than that of \citet{Cohen2019-generaltheory} since it describes the kernel locally relative to a single gauge, instead of globally relative to an atlas of gauges.
+Note further that we dropped the smoothness assumption on the kernels, since the smoothness or continuity of feature fields is not discussed by~\citet{Cohen2019-generaltheory}.
+This property could easily be added by demanding that the $G$-steerable kernels converge to the same value for $\lVert\mathscr{v}\rVert$ going to $\pi$, corresponding via the exponential map to the south pole.
+
+The spaces of $\Stab{n}$-steerable kernels on $S^2\backslash \mkern-1mu\minus\mkern1mu n$ and $G$-steerable kernels on $B_{\R^2}(0,\pi)$ are isomorphic, that is, their kernels are identified by an invertible map $\Omega$ that respects the kernel constraints:
+\begin{equation}
+    \begin{tikzcd}[row sep=3.5em, column sep=12.em]
+        \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}
+            \arrow[r, bend left=8, shift left=2pt, "\Omega"]
+        &
+        \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}
+            \arrow[l, bend left=8, shift left=2pt, "\Omega^{-1}"]
+    \end{tikzcd}
+\end{equation}
+This isomorphism (or rather its inverse $\Omega^{-1}$) can be viewed as the analog of the \emph{transporter pullback} of feature fields:
+it pulls the kernel values from points $\exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v}$ in $S^2\backslash \mkern-1mu\minus\mkern1mu n$ back to \emph{geodesic normal coordinates} $\mathscr{v}\in B_{\R^2}(0,\pi)$.
+To express the kernel values from all points $p\in S^2\backslash \mkern-1mu\minus\mkern1mu n$ relative to the same gauge, it applies Levi-Civita transporters $\rho\big( g_{n\leftarrow p}^{NP} \big)$ from $p$ along the geodesics to the north pole~$n$.
+In addition, it rescales the kernel values by the Riemannian volume element
+$\sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}
+:= {\sqrt{\big| \!\det\!\big( \eta_p\big( \frac{\partial}{\partial \mathscr{v}_i} \mkern-2mu\big|_p, \frac{\partial}{\partial \mathscr{v}_j} \mkern-2mu\big|_p \big)_{ij} \big)\big|} }$
+relative to the geodesic normal coordinate system (coordinate chart)
+$\mathscr{v}: S^2\backslash \mkern-1mu\minus\mkern1mu n \to B_{\R^2}(0,\pi),\ \ p \mapsto \mathscr{v}(p) := \psiTMn^N \log_n p$.%
+\footnote{
+    Note that the coordinate bases
+    $\big[ \frac{\partial}{\partial\mathscr{v}_1} \mkern-2mu|_p,\, \frac{\partial}{\partial\mathscr{v}_2} \mkern-2mu|_p \big]$
+    that are induced by the geodesic normal coordinates
+    $\mathscr{v}: S^2\backslash \mkern-1mu\minus\mkern1mu n \to B_{\R^2}(0,\pi)$
+    are for $G\leq\O2$ \emph{not} contained in~$\GM$.
+    These bases play no role for the $\GM$-convolution but appear only to correct for the Riemannian volume when integrating in geodesic normal coordinates over the sphere.
+}
+The following theorem defines and proves the kernel space isomorphism formally.
+\begin{thm}[Spherical steerable kernels in geodesic coordinates]
+\label{thm:spherical_kernel_space_iso}
+    Let $\I$ be any transitive isometry group of $S^2$ and let $\Stab{n}$ be its stabilizer subgroup at the north pole $n\in S^2$.
+    Given any choice of gauge $\psiTMn^N$ at this pole, let $G\leq \GL{2}$ be the isomorphic structure group that represents $\Stab{n}$ in coordinates according to
+    $\Stab{n} \xrightarrow{\sim} G,\ \xi \mapsto \psiTMn^N \circ \dxiTM \circ \big(\psiTMn^N \big)^{-1}$.
+    The space $\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ of $\Stab{n}$-steerable kernels on $S^2\backslash \mkern-1mu\minus\mkern1mu n$ by \citet{Cohen2019-generaltheory} (Eq.~\eqref{eq:spherical_steerable_kernel_space}) is then isomorphic to the space $\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ of $G$-steerable kernels on the open ball $B_{\R^2}(0,\pi)$ (Eq.~\eqref{eq:G_steer_kernel_space_open_ball_pi}).
+    The kernel space isomorphism 
+    \begin{align}
+        \Omega:\ 
+        \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}
+        \xrightarrow{\,\sim\,}\,
+        \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}
+    \end{align}
+    is given by
+    \begin{alignat}{4}
+    \label{eq:spherical_kernel_space_iso_Omega}
+        \Omega(K)\! &:&\,\ S^2 \backslash \mkern-1mu\minus\mkern1mu n \,&\to&\, \R^{\cout\times\cin},
+        \quad p \,&\mapsto\,
+        \big[\Omega(K)\big](p)\ &:=&\ K\big( \psiTMn^N \log_n p \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)\, \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1}
+    \intertext{
+        if the kernel is expressed relative to (potentially independent) gauges $N$ at $n$ and $P$ at~$p$.
+        Its inverse is given by
+    }
+        \Omega^{-1}(\kappa)\! &:&\,\ B_{\R^2}\mkern-1mu(0,\pi) &\to& \R^{\cout\times\cin},
+        \quad \mathscr{v} \,&\mapsto\,
+        \big[\Omega^{-1}(\kappa)\big](\mathscr{v})\ &:=&\ \kappa\big(\! \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v} \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{\!-1} \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} ,
+    \end{alignat}
+    where we abbreviated $p := \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v}$.
+\end{thm}
+\begin{proof}
+    By inserting the two expressions, one can easily see that $\Omega^{-1}$ is a well defined inverse of $\Omega$ since
+    $\Omega \circ \Omega^{-1} = \id_{\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}}$
+    and
+    $\Omega^{-1} \circ \Omega = \id_{\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}}$.
+    The technical part of the proof is to show that the two kernel constraints imply each other, which is done in Appendix~\ref{apx:spherical_conv_kernel_space_iso}.
+\end{proof}
+Note that the volume scaling factor is not necessary to establish the isomorphism between the kernel spaces but is required to make the spherical convolution integral over $S^2\backslash \mkern-1mu\minus\mkern1mu n$ equivalent to the $\GM$-convolution integral over $B_{\R^2}(0,\pi)$.
+
+
+\citet{Cohen2018-intertwiners} define the convolution ${[\kappa \star_{\mkern-2mu S^2}\! f]}$ of a feature field $f\in\Gamma(\Ain)$ with spherical steerable kernels $\kappa \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ in coordinates.
+Given gauges $P$ at $p$ and $q$ at $Q$, let $\phi_p \in \I$ be the unique isometry that moves the north pole to $p$, i.e. $\phi_p(n) = p$, and that maps the frame at $n$ to the frame at $p$, that is, $\dphipGM \sigma^N(n) = \sigma^P(p)$ or, equivalently, $g_{\phi_p}^{PN}(n) = e$.
+Let furthermore $X$ be the gauge at $\phi_p^{-1}(q)$.
+The spherical convolution is then in~\cite{Cohen2018-intertwiners} relative to these gauges pointwise defined by
+\begin{align}\label{eq:spherical_steerable_conv}
+    \big[\kappa \star_{\mkern-2mu S^2}\! f\big]^P(p)
+    \ :=\ \int\limits_{S^2} \kappa\big(\phi_p^{-1}q)\, \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\, f^Q(q)\ dq
+    \ = \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu \kappa\big(\phi_p^{-1}q)\, \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\, f^Q(q)\ dq \,,
+\end{align}
+where we removed the antipodal point $-p$ in the second step without changing the result.%
+\footnote{
+    This formulation is more general than that in Eq.~\eqref{eq:spherical_lifting_conv}.
+    The latter is recovered for kernels that map scalar fields to regular feature fields.
+}
+Intuitively, this operation computes an output feature at $p$ by
+1)~taking both the kernel and the input field,
+2)~rotating them via $\phi_p^{-1}$ such that $p$ moves to the north pole (via the induced gauge transformation for the feature vector) and
+3)~integrating their product over the sphere.
+Instead of sharing weights directly over the tangent spaces, as we do, this operation is therefore sharing weights via the isometry action.
+By the definition of $\phi_p$, both definitions of weight sharing orient the kernel at the target location $p$ such that it is aligned with the chosen frame $\sigma^P(p)$ at this location.
+The following theorem proves that the $\GM$-convolution with a kernel $K \in \mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ is equivalent to the spherical convolution with the corresponding spherical kernel $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$.
+\begin{thm}[Spherical steerable convolutions as \textit{GM}-convolutions]
+\label{thm:spherical_conv_GM_conv}
+    Let $\Stab{n}$ be the stabilizer subgroup of any transitive isometry group $\I$ of $S^2$ and let $G \leq \GL{2}$ be any isomorphic structure group.
+    Let furthermore $K \in \mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ be any $G$-steerable kernel on the open ball $B_{\R^2}(0,\pi)$ of radius $\pi$ (Eq.~\eqref{eq:G_steer_kernel_space_open_ball_pi})
+    and let $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ be its corresponding $\Stab{n}$-steerable kernel on $S^2\backslash \mkern-1mu\minus\mkern1mu n$ (Eqs.~\eqref{eq:spherical_steerable_kernel_space} and~\eqref{eq:spherical_kernel_space_iso_Omega}).
+    The $\GM$-convolution (here for clarity denoted by $\star_{\mkern-1mu\scalebox{.64}{$\GM$}}$) with $K$ is then equivalent to the spherical convolution ($\star_{\mkern-2mu S^2}$, Eq.~\eqref{eq:spherical_steerable_conv}) by \citet{Cohen2018-intertwiners} with the spherical kernel $\Omega(K)$, that is,
+    \begin{align}
+        \Omega(K) \star_{\mkern-2mu S^2}\! f\ =\ K \star_{\mkern-1mu\scalebox{.64}{$\GM$}} f
+    \end{align}
+    holds for any spherical feature field $f \in \Gamma(\Ain)$.
+\end{thm}
+\begin{proof}
+    The proof is given in Appendix~\ref{apx:spherical_conv_equivalence}.
+\end{proof}
+This proof justifies our claim that the models from \cite{Cohen2018-S2CNN,esteves2018zonalSpherical,esteves2020spinweighted,kondor2018ClebschGordan}, discussed in this section, are all special cases of $\GM$-convolutions.

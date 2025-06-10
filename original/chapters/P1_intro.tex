@@ -1,0 +1,33 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\mypart{An introduction to coordinate independent CNNs}
+\label{part:local_theory}
+
+
+Convolutional networks extract a hierarchy of feature fields from an input signal on a manifold.
+Features are thereby computed via kernels, optimized to detect characteristic spatial patterns in lower level features.
+We demand that this inference process should be solely based on the relative arrangement of features but independent from the particular choice of coordinatization.
+Features are therefore required to be coordinate independent geometric quantities, similar to scalars, vectors or tensors.
+While such geometric quantities exist independently of coordinates, a (non-symbolic) computer implementation requires them to be expressed in terms of numerical coefficients in \emph{some} gauge, i.e. relative to some choice of reference frame.
+The specific choice of coordinates is irrelevant -- it represents just one of multiple equivalent descriptions.
+The appropriate mathematical framework to regulate such redundant degrees of freedom are \emph{gauge theories}.
+A~gauge theory accounts for the equivalence of different gauges by consistently relating them to each other via \emph{gauge transformations}.
+Fields of coordinate independent features are therefore associated with a certain transformation law, i.e. a group action of the structure group which describes how features transform under gauge transformations.
+Any neural network layer processing such feature fields is required to respect their transformation laws in order to preserve their coordinate independence.
+
+
+The aim of this first part of our work is to introduces coordinate independent CNNs in an easily accessible language.
+Geometric intuition and visualizations are therefore favored over mathematical formalism.
+A more formal exposition of the presented definitions and results is provided in Part~\ref{part:bundle_theory}.
+
+
+\etocsettocdepth{2}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+\vspace*{2.ex}
+
+Section~\ref{sec:gauge_cnns_intro_local} introduces gauges and gauge transformations, based on which fields of coordinate independent feature vectors are defined.
+Neural networks that map between such feature fields are developed in Section~\ref{sec:gauge_CNNs_local}.
+Section~\ref{sec:mobius_conv} presents an exemplary instantiation of feature fields and network layers on the M\"obius strip.

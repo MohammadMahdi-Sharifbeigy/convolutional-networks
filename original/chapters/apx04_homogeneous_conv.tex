@@ -1,0 +1,916 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{Equivariant convolutions on homogeneous spaces}
+\label{apx:homogeneous_conv}
+
+The works by \citet{Kondor2018-GENERAL}, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} and \citet{bekkers2020bspline} are in spirit quite similar to ours in that they are defining group equivariant convolutions in a fairly general setting.
+These papers have in common that they operate on \emph{feature maps on homogeneous spaces}~$\I/H$ of a \emph{global symmetry group}~$\I$, where $H\leq\I$.%
+\footnote{
+    We use $\I$ here to denote arbitrary global symmetries, not necessarily isometries.
+}%
+\footnote{
+    \cite{Kondor2018-GENERAL,Cohen2019-generaltheory,bekkers2020bspline} use $G$ instead of $\I$ to refer to global symmetries.
+    We use $\I$ since we reserve $G$ for the structure group.
+}
+They differ in the types of groups $\I$ which they cover and in the definition of their feature spaces, specifically the linear group actions on them.
+The main theorems of the papers assert that \emph{the most general equivariant linear maps between such feature spaces are convolutions} (or correlations) with \emph{symmetry constrained kernels}.
+The specific details on these generalized convolutions depend on the particular feature spaces and group actions which the models consider.
+
+This appendix examines these theories and their relation to our coordinate independent convolutions.
+The most important similarities and differences are summarized in the following list:
+\begin{itemize}
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        Not any \emph{homogeneous space} is a \emph{Riemannian manifold} and not any Riemannian manifold is a homogeneous space of its isometry group.%
+        \footnote{
+            For instance, $\I/H = \O2/\SO2 \cong \{\pm1\}$ is a set but not a Riemannian manifold.
+            Another example are $(\Z^d,+)$ group convolutions on the discrete pixel grid~$\Z^d$.
+        }
+        There is, however, a significant overlap, for instance for Euclidean CNNs on $\Euc_d \cong \E{d}/\O{d}$ or spherical CNNs on $S^d \cong \O{d+1}/\O{d}$.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        The authors consider \emph{compact}~\cite{Kondor2018-GENERAL}, \emph{locally compact, unimodular}~\cite{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}, and \emph{Lie} groups~\cite{bekkers2020bspline}, respectively.
+        The global symmetry groups in our theory are \emph{isometries} of~$M$ or, specifically for Euclidean spaces, \emph{affine} groups~$\Aff(G)$.
+        Note that affine groups are not compact and only for $G\leq\O{d}$ unimodular -- general affine groups are therefore not covered in the respective theories.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        Coordinate independent CNNs shift the focus from \emph{global} to \emph{local symmetries}.
+        On homogeneous spaces $\I/H$ these local symmetries correspond to the stabilizer subgroups $\Stab{p} \cong H$ of~$\I$.
+        Our Section~\ref{sec:isometry_intro} works out the relations between global and local symmetries in detail --
+        the models' local equivariance induces their global equivariance.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        The models assume different \emph{types} of feature fields and \emph{group actions} on them:
+        \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline} assume scalar fields on homogeneous spaces, i.e. real-valued functions ${f: \I/H \to \R}$ which transform according to
+        $\phi.f (\zeta.H) = f\big( \phi^{-1} \zeta.H \big)$.%
+        \footnote{
+            Multi-channel feature maps are constructed by stacking multiple such functions.
+            In contrast to the case of feature fields, the individual channels of such feature maps transform independently from each other.
+        }
+        \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} consider feature fields of more general types $\rho$
+        which are defined as sections of $H$-associated feature vector bundles.
+        Their transformation laws are given by induced representations $\Ind_H^\I \rho$.
+        This setting covers the real-valued functions from \cite{Kondor2018-GENERAL,bekkers2020bspline} as a special case when choosing trivial field representations
+        (or, as made precise below, more general quotient representations $\rho_\textup{quot}^{G/H}$ where $H\leq G\leq\I$).
+        Our theory models feature fields as sections of associated bundles as well.
+        Their transformation is given by pushforwards $\phi \rhd f := \dphiA \circ f \circ \phi^{-1}$, which generalize induced representations.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        The works by \citet{Kondor2018-GENERAL}, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} and \citet{bekkers2020bspline} derive \emph{convolutional weight sharing} from the requirement on the models to be globally equivariant.
+        Our $\GM$-convolutions, on the other hand, share weights by definition over the $G$-structure.
+        We adopted the idea of deriving weight sharing from global symmetries (isometries) in Section~\ref{sec:quotient_kernel_fields}.
+        The requirement for isometry equivariance implies weight sharing over the isometry orbits and a stabilizer constraint on the kernels; see e.g. Fig.~\ref{fig:isom_invariant_kernel_field_quotient}.
+        Theorem~\ref{thm:GM_conv_homogeneous_equivalence} asserts that \emph{isometry equivariant kernel field transforms on homogeneous spaces are $\GM$-convolutions} -- this result mirrors those of \citet{Kondor2018-GENERAL}, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} and \citet{bekkers2020bspline}
+        closely.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        All of the theories derive some \emph{linear symmetry constraint on the kernel spaces}.
+        In the case of \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline}, the kernels are essentially scalar functions on double quotient spaces $\Hout\backslash \I/\Hin$ (assuming correlations, for convolutions $\Hin$ and $\Hout$ are swapped; see below).
+        The kernels of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} and in our theory are satisfying a steerability constraint which depends on the particular choice of field types $\rhoin$ and~$\rhoout$.
+        Note that the determinant factor is missing in the $G$-steerability constraint of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} since the authors restrict to unimodular groups.
+        The factor does appear in the kernel constraint by \citet{bekkers2020bspline}.
+    \item[{\rule[2.2pt]{2pt}{2pt}}]
+        While \citet{Kondor2018-GENERAL} and \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} describe kernels immediately on the group or homogeneous space,
+        \citet{bekkers2020bspline} and our $\GM$-convolutions define kernels on the tangent spaces and project them subsequently via the exponential map.
+        These approaches are in general inequivalent, for instance since the exponential map is on a non-connected manifold non-injective.
+        On Euclidean spaces both approaches are obviously equivalent since the exponential map becomes trivial; see Section~\ref{sec:euclidean_affine_equiv}.
+        Our Theorem~\ref{thm:spherical_kernel_space_iso} in Section~\ref{sec:spherical_CNNs_fully_equivariant} bridges this gap furthermore for spherical kernels by providing an isomorphism between kernels of the two approaches.
+        In practice, the general incompatibility is irrelevant since kernels of convolutional networks are usually compactly supported within the injectivity radius of the exponential map.
+\end{itemize}
+
+We will in the following elaborate on the theories of
+\citet{Kondor2018-GENERAL}, \citet{bekkers2020bspline} and \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}
+in more detail.
+As a preparation, we will first discuss homogeneous spaces, group convolutions and group correlations.
+For an alternative review of the topic we refer the reader to~\citet{esteves2020theoretical}.
+We furthermore want to point to the work by \citet{chakraborty2018H-CNNs}, which also defines convolutions on homogeneous spaces.
+It is not covered in more detail in this section since their models assume $\Hout=\{e\}$, that is, their convolution kernels are unconstrained and always lift the input signal to a scalar field on~$\I$.
+
+
+
+
+
+
+\toclesslab\subsection{General remarks on homogeneous spaces, group convolutions and group correlations}{apx:homogeneous_preliminaries}
+
+\paragraph{Homogeneous spaces:}
+Let $\I$ be some group which acts on some space~$X$.
+The space is said to be \emph{homogeneous} if the group action is \emph{transitive}, i.e. if any two points $p,q\in X$ are related by the $\I$-action.
+In equations, $X$ is homogeneous if and only if for any $p,q\in X$ there exists an element $\phi\in\I$ such that~$q=\phi(p)$.
+Note that the action on~$X$ is not required to be fixed point free, that is, each point $p\in X$ has a potentially non-trivial stabilizer subgroup $\Stab{p} = {\{\xi\in\I \,|\, \xi(p)=p \}} \leq\I$.
+It can be shown that the homogeneous space can be identified with the quotient space $\I/H$ where $H = \Stab{p}$ for some $p\in X$.%
+\footnote{
+    Other choices of points yield other realizations of the non-canonical isomorphism $\I/H \cong X$.
+    Any choice is equally valid since $\Stab{p} \cong \Stab{q}$ for homogeneous spaces.
+}
+
+Since any homogeneous space arises as a quotient, we consider in the following always some subgroup $H$ of~$\I$.
+This subgroup has \emph{left cosets}, i.e. subsets of the form
+\begin{align}
+    \phi.H\ =\ \big\{ \phi h \,\big|\, h\in H \big\}
+\end{align}
+which are elements of the (homogeneous) quotient space
+\begin{align}
+    \I/H\ =\ \big\{ \phi.H \,\big|\, \phi\in \I \big\} \,.
+\end{align}
+A natural left action of $\I$ on $\I/H$ is given by
+\begin{align}
+    \I \times \I/H \to \I/H,\ \ \ \big(\widetilde{\phi},\, \phi.H\big) \mapsto \widetilde{\phi}\phi.H \,.
+\end{align}
+This action is easily seen to be transitive, making $\I/H$ a homogeneous space of~$\I$.
+The canonical quotient map
+\begin{align}
+    \mathscr{q}^{\I}_{\I/H}:\ \I\to \I/H,\ \ \phi \mapsto \phi.H
+\end{align}
+turns $\I$ into a principal $H$-bundle over~$\I/H$.
+Analogous definitions can be made for \emph{right cosets}
+\begin{align}
+    H.\phi\ \ &\in\ \ H\backslash\I \,.
+\intertext{and \emph{double cosets}}
+    \widetilde{H}.\phi.H\ \ &\in\ \ \widetilde{H} \backslash\I/H
+\end{align}
+and their respective quotient spaces.
+
+
+An universal property of the quotient maps $\mathscr{q}^{\I}_{\I/H}$, which will become important in our discussion below, is the following.
+Let $f^\uparrow: \I \to \R$ be a continuous, right $H$-invariant function, i.e. a function which satisfies $f^\uparrow(\phi h) = f^\uparrow(\phi)$ for any $\phi\in\I$ and~$h\in H$.
+Then there exists a unique continuous function $f: \I/H \to \R$ such that $f^\uparrow = f \circ \mathscr{q}^{\I}_{\I/H}$.
+Conversely, one may lift any continuous map $f: \I/H \to \R$ uniquely to a right $H$-invariant map $f^\uparrow: \I \to \R$, which is used by \citet{Kondor2018-GENERAL} to generalize group convolutions to homogeneous spaces.
+The relation between both functions is visualized in the following commutative diagram:
+\begin{equation}
+\label{cd:left_cosets_lift}
+\begin{tikzcd}[column sep=55pt, row sep=35pt, font=\normalsize]
+    \I
+        \arrow[rd, "\!f^\uparrow := f\circ \mathscr{q}^{\I}_{\overset{}{\I/H}}"]
+        \arrow[d, "\mathscr{q}^{\I}_{\overset{}{\I/H}}\,"']
+    \\
+    \I/H
+        \arrow[r, "f"']
+    & \R
+\end{tikzcd}
+\end{equation}
+An analogous construction can obviously be made for right quotient spaces $H\backslash\I$ and left $H$-invariant maps.
+The following commutative diagram visualizes the case of double quotient spaces $\widetilde{H} \backslash \I/H$ and maps $f^\uparrow$ which are simultaneously left $\widetilde{H}$-invariant and right $H$-invariant, i.e. which satisfy ${f^\uparrow\big(\widetilde{h}\phi h\big) = f^\uparrow(\phi)}$ for any ${\phi\in\I}$, \ ${\widetilde{h}\in\widetilde{H}}$, and ${h\in H}$:
+\begin{equation}
+\label{cd:double_cosets_lift}
+\begin{tikzcd}[column sep=55pt, row sep=35pt, font=\normalsize]
+    \I
+        \arrow[rd, "\!f^\uparrow := f\circ \mathscr{q}^{\I}_{\overset{}{\widetilde{H} \backslash \I/H}}"]
+        \arrow[d, "\mathscr{q}^{\I}_{\overset{}{\widetilde{H} \backslash \I/H}}\,"']
+    \\
+    \widetilde{H} \backslash \I/H
+        \arrow[r, "f"']
+    & \R
+\end{tikzcd}
+\end{equation}
+
+
+
+
+\paragraph{Group convolutions and group correlations:}
+Convolutions are naturally generalized from Euclidean spaces (or translation groups) to arbitrary locally compact groups.
+Let $\I$ be a locally compact group and let $d\zeta$ be a left Haar measure on~$\I$.
+The \emph{group convolution} $(f \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa): \I \to \R$ of two integrable functions $f:\I\to\R$ and $\kappa:\I\to\R$ is then defined by the following equivalent expressions, taken from \cite{gallier2019harmonicRepr}:
+\begin{align}\label{eq:group_conv_def}
+    \big(f \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big)(\phi)
+    \ :&=\ \int_{\I} f(\zeta)\, \kappa\big( \zeta^{-1} \phi \big) \; d\zeta \notag \\
+    \ &=\ \int_{\I} f(\phi\, \zeta)\, \kappa\big( \zeta^{-1}\big) \; d\zeta \notag \\
+    \ &=\ \int_{\I} f\big(\zeta^{-1} \big)\, \kappa( \zeta\phi)\: \Delta(\zeta^{-1}) \; d\zeta \notag \\
+    \ &=\ \int_{\I} f\big(\phi\, \zeta^{-1} \big)\, \kappa( \zeta)\: \Delta(\zeta^{-1}) \; d\zeta \,,
+\end{align}
+The group homomorphism $\Delta: \I \to (\R^+_{>0},*)$, appearing in the last two expressions, is the modular function of~$\I$.
+\citet{Kondor2018-GENERAL} define group convolutions as in the last line, however, without the modular function.
+This is valid since the authors assume compact groups, which are unimodular, i.e. satisfy $\Delta(\phi) = 1$ for any $\phi \in\I$.
+
+
+Closely related to group convolutions are \emph{group correlations}
+\begin{align}\label{eq:group_corr_def}
+    \big(f \star_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big)(\phi)
+    \ :=\ \big\langle f,\, \phi.\kappa \big\rangle_{L^1(\I)}
+    \ =\ \int_{\I} f(\zeta)\, \kappa\big( \phi^{-1} \zeta \big) \; d\zeta\ ,
+\end{align}
+which are defined as the inner product of a function~$f$ with a shifted kernel~$\phi.\kappa$.
+A comparison with Eq.~\eqref{eq:group_conv_def} reveals that group convolutions and group correlations are equivalent up to an inversion of the kernel argument, that is,
+\begin{align}\label{eq:group_conv_corr_kernel_inversion}
+    \big(f \star_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big)
+    \ =\ \big(f \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \big[\kappa \circ (\,\cdot\,)^{-1} \big] \big) \,.
+\end{align}
+While \citet{Kondor2018-GENERAL} consider (generalized) group convolutions, \citet{bekkers2020bspline} and \citet{Cohen2019-generaltheory} assume correlations -- to reconcile the theories one has to invert the kernel arguments.
+
+
+Group convolutions and group correlations are by definition \emph{equivariant} w.r.t. left actions $\alpha.f(\phi) = f\big( \alpha^{-1}\phi \big)$ of group elements $\alpha\in\I$ on the first factor.
+For the case of convolutions, this is shown by
+\begin{align}\label{eq:group_conv_equivariance}
+    \big( [\alpha.f] \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big)(\phi)
+    \ &=\ \int_{\I} \big[\alpha.f \big](\zeta)\, \kappa\big( \zeta^{-1} \phi \big) \; d\zeta \notag \\
+    \ &=\ \int_{\I} f\big( \alpha^{-1} \zeta\big)\, \kappa\big( \zeta^{-1} \phi \big) \; d\zeta \notag \\
+    \ &=\ \int_{\I} f\big(\widetilde{\zeta} \big)\, \kappa\big( \widetilde{\zeta}^{-1} \alpha^{-1} \phi \big) \; d\big( \alpha \widetilde{\zeta} \big) \notag \\
+    \ &=\ \big( f \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big) (\alpha^{-1} \phi) \notag \\
+    \ &=\ \big[\alpha.( f \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa )\big] (\phi) \,,
+\end{align}
+where we substituted $\widetilde{\zeta} = \alpha^{-1}\zeta$ in the third step and made use of the fact that $d\widetilde{\zeta}$ is a left Haar measure, i.e. satisfies $d\big(\alpha \widetilde{\zeta}\big) = d\widetilde{\zeta}$.
+The case of correlations follows trivially by Eq.~\eqref{eq:group_conv_corr_kernel_inversion}.
+
+
+The majority of equivariant CNNs rely on group convolutions or group correlations.
+In particular, the models in rows~(1-3), (5), (11), (15), (19), (21), (24), (25) and (32) of Table~\ref{tab:network_instantiations}, all of which are (or could equivalently be) labeled by regular representations, are group convolutional CNNs.
+Prior to their use in equivariant CNNs, group convolutions have been widely applied in robotics~\cite{chirikjian1998numerical} or for image analysis~\cite{mallat2012group,sifre2012combined,Sifre2013-GSCAT,bruna2013invariant,sifre2014rigid,oyallon2015scattering}.
+\citet{Cohen2016-GCNN} showed that group convolutions (or rather correlations) naturally generalize conventional CNNs.
+Since the feature maps of convolutional networks comprise multiple channels, they are not given by real-valued functions on $\I$ but by vector-valued functions $f: \I \to \R^c$.
+Kernels are accordingly defined to be (unconstrained) matrix-valued functions on the group, i.e. $\kappa: \I \to \R^{\cout\times\cin}$.
+The works of \citet{Kondor2018-GENERAL}, \citet{bekkers2020bspline} and \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}, which we review in the following, generalize such group convolutional networks to arbitrary homogeneous spaces.
+
+
+
+
+
+
+
+\toclesslab\subsection{Scalar field convolutions on homogeneous spaces}{apx:homogeneous_scalar_field_convs}
+
+We start with the $\I$-equivariant convolutional (or correlational) networks on homogeneous spaces by \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline}.
+Both theories define feature maps as \emph{scalar fields on homogeneous spaces}, that is, each channel is given by a real-valued function
+\begin{align}\label{eq:scalar_field_homogeneous_space}
+    f: \I/H \to \R \,.
+\end{align}
+Individual channels transform independently under the action of the global symmetry group $\I$ as specified by
+\begin{align}\label{eq:group_action_homogeneous_space_scalar_field}
+    \big[\mkern1mu \widetilde{\phi}.f\big] (\phi.H)\ :=\ f\big( \widetilde{\phi}^{-1} \phi.H \big)
+    \qquad\ \widetilde{\phi}\in H,\ \ \ \phi.H\in \I/H \,.
+\end{align}
+
+Each layer $l = 1,\dots, L$ may be assigned a different subgroup $H_l \leq\I$ and thus homogeneous space $\I/H_l$ on which its feature maps live.
+This allows for instance to model lifting convolutions from the sphere $S^2 \cong \SO3/\SO2$ to the group $\SO3 \cong \SO{3}/\{e\}$ when choosing subgroups $\SO2$ and $\{e\}$, respectively.
+The choices of subgroups correspond in some sense to the choices of group representations in our theory, which we will explain further below.
+
+The results of the two papers are to large parts equivalent, however,
+\citet{Kondor2018-GENERAL} consider compact groups $\I$ and convolutions
+while \citet{bekkers2020bspline} assume $\I$ to be a Lie group and use correlations.
+
+
+
+\paragraph{\citet{Kondor2018-GENERAL} :}
+
+In a nutshell, \citet{Kondor2018-GENERAL} investigate the most general $\I$-equivariant linear maps between scalar field features on homogeneous spaces $\I/\Hin$ and $\I/\Hout$, assuming the transformation law in Eq.~\eqref{eq:group_action_homogeneous_space_scalar_field}.
+They prove that this operation is given by a generalized group convolution with a kernel
+\begin{align}
+    \kappa: \Hin\backslash \I/\Hout \to \R
+\end{align}
+on the double quotient space specified by $\Hin$ and $\Hout$.
+Formulated for finite groups, as done by the authors, this generalized convolution operation is shown to be given by
+\begin{align}\label{eq:quotient_space_conv_Kondor}
+    \big(f \ast_{\overset{}{\scalebox{.64}{$\I/\Hin$}}} \kappa \big) (\phi.\Hout)
+    \ \ :=\ \ |\Hin| \sum_{\Hin.\zeta \,\in\, \Hin\mkern-2.5mu\backslash\mkern-.5mu\I}
+        f\big( \phi\mkern2mu \zeta^{-1}\!. \Hin\big)\ \kappa\big( \Hin.\zeta.\Hout \big) \,.
+\end{align}
+A comparison with the last line of Eq.~\eqref{eq:group_conv_def} suggests that this operation is indeed closely related to group convolutions -- the modular function $\Delta$ drops out since $\I$ is compact and therefore unimodular.
+The generalized convolution is in fact equivalent to a group convolution
+\begin{align}
+    \big(f \ast_{\overset{}{\scalebox{.64}{$\I/\Hin$}}} \kappa \big) (\phi.\Hout)
+    \ =\ \big(f^\uparrow \ast_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa^\uparrow \big)(\phi)
+\end{align}
+with features and kernels that are lifted according to the diagrams in Eqs.~\eqref{cd:left_cosets_lift} and~\eqref{cd:double_cosets_lift}.
+Note that the convolution kernel on $\Hin\backslash \I/\Hout$ corresponds to a correlation kernel on $\Hout\backslash \I/\Hin$ since convolutions and correlations are according to Eq.~\eqref{eq:group_conv_corr_kernel_inversion} related by an inversion of the kernel argument.
+One could therefore view the kernels by \citet{Kondor2018-GENERAL} as left $\Hout$-invariant correlation kernels on the input space~$\I/\Hin$.
+
+
+To give an intuition on these results, we come back to our spherical CNN example from above.
+Let therefore $\I=\SO3$, $\Hin=\SO2$ and, for now, $\Hout=\{e\}$.
+This setting describes lifting convolutions from the 2-sphere $\I/\Hin = \SO3/\SO2 \cong S^2$ to the rotation group manifold $\I/\Hout = \SO3/\{e\} \cong \SO3$.
+Considering correlations instead of convolutions, the kernels are real-valued functions on $\Hout\backslash \I/\Hin = \{e\}\backslash \SO3/\SO2 \cong S^2$.
+If we let instead $\Hout=\SO2$, the convolution maps from scalar fields on the 2-sphere to scalar fields on the 2-sphere $\I/\Hout = \SO3/\SO2$.
+In this case the correlation kernels are given by real-valued functions on $\SO2\backslash \SO3/\SO2$.
+Equivalently, the correlation kernels are given by left $\SO2$-invariant functions on~$S^2$, i.e. zonal kernels as visualized in Fig.~\ref{fig:zonal_kernel}.
+When assuming $\Hin=\Hout=\{e\}$, one has $\I/\Hin = \I/\Hout \cong \SO3$ and unconstrained kernels on $\Hout\backslash \I/\Hin \cong \SO3$, corresponding to conventional group convolutions (or correlations).
+These results are in line with our discussion in Section~\ref{sec:spherical_CNNs_fully_equivariant}.
+
+
+For completeness, we mention that \citet{Kondor2018-GENERAL} explain their results additionally from a representation theoretic perspective, i.e. with features and kernels in Fourier space.
+The fact that features and kernels live on quotient spaces is in this formulation reflected in sparsity patterns of the Fourier coefficients.
+
+
+
+
+
+
+
+
+\paragraph{\citet{bekkers2020bspline} :}
+
+Instead of considering compact groups, \citet{bekkers2020bspline} assumes $\I$ to be a general Lie group.
+The feature maps of layer~$l$ are defined as real-valued square integrable functions in $L^2(\I/H_l)$
+which transform according to Eq.~\eqref{eq:group_action_homogeneous_space_scalar_field} when being acted on by~$\I$.
+
+\citet{bekkers2020bspline} models the layers of his convolutional (or rather correlational) networks as linear bounded operators
+\begin{align}
+    \mathfrak{K}:\ L^2(\I/\Hin) \to L^2(\I/\Hout)
+\end{align}
+between feature maps on homogeneous spaces $\I/\Hin$ and~$\I/\Hout$.
+Such operators are in general given by integral operators of the form
+\begin{align}
+    \big[\mathfrak{K}f\big] (\phi.\Hout)\ =\ 
+    \int_{\I/\Hin} \widehat{\kappa} \big(\phi.\Hout,\, \zeta.\Hin \big)\ f(\zeta.\Hin)\,\ \dmuIHin \,,
+\end{align}
+where $\dmuIHin$ is some Radon measure on $\I/\Hin$ and
+\begin{align}
+    \widehat{\kappa}:\ \I/\Hout \times \I/\Hin \to \R
+\end{align}
+is an integrable 2-argument kernel.
+
+The requirement on the operator to be equivariant, that is,
+\begin{align}
+    \mathfrak{K}\big( \phi.f \big)\ =\ \phi \mkern1mu.\mkern1.5mu \mathfrak{K}(f)
+    \qquad \forall\,\ \phi\in\I,\ \ f\in L^2(\I/\Hin) \ ,
+\end{align}
+is shown to imply that the 2-argument kernel reduces to a single argument kernel
+\begin{align}
+    \widehat{\kappa} \big(\phi.\Hout,\, \zeta.\Hin \big)
+    \ =\ \frac{\dmuIHin(\phi^{-1} \zeta.\Hin)}{\dmuIHin(\zeta.\Hin)}\ \kappa\big(\phi^{-1} \zeta.\Hin \big) \,.
+\end{align}
+The group element $\phi\in \phi.\Hout \subset \I$ is hereby an arbitrary representative of the coset in which it is contained.
+This 1-argument kernel is -- up to a measure dependent scale factor -- constrained to be left $\Hout$-invariant:
+\begin{align}
+    \kappa(\zeta.\Hin)\ =\ \frac{\dmuIHin(\xi^{-1} \zeta.\Hin)}{\dmuIHin(\zeta.\Hin)}\ \kappa\big(\xi^{-1} \zeta.\Hin \big)
+    \qquad \forall\ \ \zeta.\Hin \in \I/\Hin,\ \ \xi\in\Hout
+\end{align}
+Note that this result is very similar to that of \citet{Kondor2018-GENERAL} since a left $\Hout$-invariant kernel on $\I/\Hin$ is equivalent to an element of $\Hout\backslash \I/\Hin$ (again assuming correlation kernels instead of convolution kernels).
+The main difference is the additional scale factor, which appears since the Radon measure $\dmuIHin$ is not necessarily left $\I$-invariant.
+
+
+One of the practically relevant cases is that of group correlations, for which $\Hin = \{e\}$ and $\I/\{e\} = \I$.
+In this case $d\mu_{\overset{}{\I}}$ is a left (invariant) Haar measure on $\I$, such that the scale factor drops out.
+A second relevant case is that of affine equivariant convolutions on Euclidean spaces, i.e. the choices $\I = \Aff(G)$ and $\Hin=G$, for which $\I/\Hin \cong \R^d$.
+Assuming $\dmuIHin$ to be the Lebesgue measure on $\R^d$ and denoting $\phi=tg \in \I$, \citet{bekkers2020bspline} prove that the scale factor is in this case given by:
+\begin{align}
+    \frac{\dmuIHin\!( (tg)^{-1}x )}{\dmuIHin\!(x)}\ =\ \frac{1}{\detg} \qquad \forall\ x\in\R^d
+\end{align}
+This is exactly the determinant factor which appears in our $G$-steerability kernel constraint, Eq.~\eqref{eq:kernel_constraint}, as well.
+
+
+Since $\SO3$ is a Lie group, the spherical CNN examples that we gave after discussing the theory by \citet{Kondor2018-GENERAL} apply without changes (assuming the standard left-invariant measure on $S^2$).
+
+
+\citet{bekkers2020bspline} defines kernels in close analogy to our $\GM$-convolutions on the tangent spaces and projects them via exponential maps to the homogeneous spaces.
+The kernels on the tangent spaces are hereby modeled via B-splines.
+A difference is that \citet{bekkers2020bspline} does not need to consider parallel transporters since he is assuming scalar feature maps on the homogeneous spaces.
+
+
+
+
+
+\paragraph{Relation to \emph{GM}-convolutions:}
+
+Due to the quite different formulation it is not immediately obvious how the results of \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline} relate to our theory.
+Instead of considering different quotient spaces $\I/H_l$ in each layer~$l$, we consider a fixed manifold~$M$.
+To see how both approaches connect, assume another subgroup~$G$ to be given such that $H_l \leq G \leq \I$ for all layers~$l=1,\dots,L$ and satisfying that $M := \I/G$ is a manifold.
+The scalar features on $\I/H_l$ can in this case be viewed as $G$-associated feature fields on $M$ which transform according to \emph{quotient representations}~$\rho_\textup{quot}^{G/H_l}$.
+To see this, note that the group action in Eq.~\eqref{eq:group_action_homogeneous_space_scalar_field} is nothing but the induced representation $\Ind_{H_l}^{\I} \rho_\textup{triv}^{H_l} = \rho_\textup{quot}^{\I/H_l}$ from the trivial representation of $H_l$, which describes the transformation law of scalar fields on~$\I/H_l$.
+This representation can via induction in stages (see~\cite{ceccherini2009induced}) be decomposed into
+\begin{align}
+    \Ind_{H_l}^{\I} \rho_\textup{triv}^{H_l}
+    \ =\ \Ind_G^{\I} \Ind_{H_l}^G \rho_\textup{triv}^{H_l}
+    \ =\ \Ind_G^{\I} \rho_\textup{quot}^{G/H_l} \,,
+\end{align}
+that is, into the induction of the quotient representation $\rho_\textup{quot}^{G/H_l}$ from~$G$ to~$\I$.
+The real-valued functions on $\I/H_l$ are therefore equivalent to $\rho_\textup{quot}^{G/H_l}$-fields on~$M=\I/G$.
+
+
+Interesting special cases are $G=H_l$ and $G=\{e\}$.
+For the former one has $\rho_\textup{quot}^{G/H_l} = \rho_\textup{triv}^G$, describing scalar fields on~$M = \I/G = \I/H_l$.
+For the latter, $\rho_\textup{quot}^{G/H_l} = \rho_\textup{reg}^G$ is the regular representation, corresponding to conventional group convolutions.
+
+
+These insights imply that the theory of \citet{Kondor2018-GENERAL} explains all models in Table~\ref{tab:network_instantiations} which operate on homogeneous spaces of compact groups $\I$ and are labeled by either trivial, regular or more general quotient representations -- these are essentially the spherical CNNs in rows~(32) and~(33).
+A minor generalization of the theory to locally compact, unimodular groups would additionally describe some of the isometry equivariant Euclidean CNNs.
+As \citet{bekkers2020bspline} is assuming arbitrary Lie groups, his models additionally describe the $\Aff(G)$-equivariant CNNs in Table~\ref{tab:network_instantiations} which are labeled by trivial, regular or more general quotient representations.
+They cover in particular scale equivariant Euclidean CNNs ($G=\Scale$) for which the determinant factor $\detg$ is non-trivial.
+
+
+Other types of feature fields and non-homogeneous spaces like punctured Euclidean spaces $\Euc_d\backslash\{0\}$ and spheres $S^2\backslash\{n,s\}$, the icosahedron, general surfaces and the M\"obius strip are not covered.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\toclesslab\subsection{Steerable CNNs on homogeneous spaces}{apx:homogeneous_steerable_convs}
+
+Motivated by Kondor and Trivedi's \cite{Kondor2018-GENERAL} generalization of group convolutions to homogeneous spaces, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} generalized steerable CNNs to homogeneous spaces of locally compact unimodular groups.%
+\footnote{
+    Note that there are a preprint version~\cite{Cohen2018-intertwiners} and a conference version~\cite{Cohen2019-generaltheory} of this paper.
+}
+Instead of restricting to scalar fields, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} assume more general \emph{$H_l$-associated feature fields} on $I/H_l$ which transform according to \emph{induced representations}~$\Ind_{H_l}^\I \rho_l$ of~$\I$.
+The network layers implement linear equivariant maps between such fields, i.e. they are \emph{intertwiners between induced representations}.
+As~expected, these layers are parameterized by -- and are thus isomorphic to -- spaces of steerable kernels.
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} show that these kernels can be described on $\I$, on $\I/\Hin$ or on $\Hout\backslash \I/\Hin$, in each case still satisfying a linear steerability constraint.%
+\footnote{
+    As we will argue below, the constructions on $\I/\Hin$ and $\Hout\backslash \I/\Hin$ depend on \emph{local} sections and are therefore only possible for trivial bundles.
+    We adapt the former to nontrivial bundles by defining kernels on an open cover of~$\I/\Hin$.
+}
+The following three paragraphs will
+1) introduce feature fields and their transformation laws on a global and local level,
+2) review the spaces of intertwiners and steerable kernels which map between such fields, and
+3) discuss how these results relate to ours.
+
+Our formulation and notation in this section is adapted to be more similar to that which was chosen to develop our theory.
+It differs therefore slightly from that of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}.
+Most notably, we do not assume a single local trivialization (section) which is defined almost everywhere on $\I/H_l$ but consider an atlas of local trivializations which cover the homogeneous space.%
+\footnote{
+    This is only necessary if the homogeneous space is a (non-trivial) manifold.
+    If it is discrete, one may always choose a global section $\I/H \to \I$ which selects coset representatives.
+    One would in this case usually not talk about ``atlases'' and ``local trivializations'', however, we will do so for simplicity.
+}
+The notation of local, coordinatized quantities is therefore augmented with gauge labels $A,B,\dots$ \,.
+
+
+
+
+
+\paragraph{Feature fields and induced representations:}
+
+Let $\I$ be a locally compact unimodular group and let $H_l\leq\I$ be any subgroup of it.
+As stated above, the quotient map
+\begin{align}
+    \mathscr{q}^{\I}_{\overset{}{\I/H_l}}: \I \to \I/H_l, \quad \phi \mapsto \phi.H_l
+\end{align}
+implies a \emph{principal $H_l$-bundle}; see Section~\ref{sec:fiber_bundles_general}.
+The right $H_l$-action on the total space $\I$ is given by the usual right multiplication
+\begin{align}
+    \I \times \I/H_l \to \I/H_l, \quad (\phi,h) \mapsto \phi h
+\end{align}
+of group elements.
+It preserves the fibers $\I_{\phi.H_l} = \big( \mathscr{q}^{\I}_{\overset{}{\I/H_l}} \big)^{-1} (\phi.H_l) \,\subset\, \I$ since it satisfies
+\begin{align}
+    \mathscr{q}^{\I}_{\overset{}{\I/H_l}} (\phi h)
+    \ =\ \phi h.H_l\ =\ \phi.H_l
+    \ =\ \mathscr{q}^{\I}_{\overset{}{\I/H_l}} (\phi)
+\end{align}
+for any $\phi\in\I$ and $h\in H_l$ and is easily seen to be both transitive and free.
+Abbreviating $U := U^A \cap U^B$, local trivializations $\PsiI^A,\ \PsiI^B$ of this bundle and the transition maps $h^{BA}$ between them are defined via the following commutative diagram:
+\begin{equation}
+\begin{tikzcd}[row sep=4.em, column sep=5.5em]
+    % ROW 1
+    &[-6.5em]
+    & U\times H_l
+    \\
+    % ROW 2
+      \I\ \: \supseteq
+    & \big(\mathscr{q}^{\I}_{\overset{}{\I/H_l}} \big)^{\mkern-2mu-1}(U)
+                    \arrow[d, swap, "\mathscr{q}^{\I}_{\overset{}{\I/H_l}}"]
+                    \arrow[r, "\PsiI^A"]
+                    \arrow[ru, "\PsiI^B"]
+    & U\times H_l   \arrow[u, swap, "(\id\times h^{BA}\cdot)"]
+                    \arrow[ld, "\proj_1"]
+    \\
+    % ROW 3
+      \I/H_l\ \ \supseteq \mkern30mu
+    & U
+\end{tikzcd}
+\qquad
+\end{equation}
+As usual, the principal bundle trivializations imply local identity sections
+\begin{align}
+    \sigma^A: U^A \to \big(\mathscr{q}^{\I}_{\overset{}{\I/H_l}} \big)^{\mkern-2mu-1}(U^A) \,, \quad 
+    \phi.H_l \,\mapsto\, \sigma^A (\phi.H_l) \,:=\, \big(\PsiI^A \big)^{-1} (\phi.H_l,\, e) \,,
+\end{align}
+which were introduced in Section~\ref{sec:bundle_trivializations}.
+The identity sections labeled by $\widetilde{A}$ at $\zeta.H_l$ and $A$ at $\phi\,\zeta.H_l$ are related by
+\begin{align}\label{eq:homogeneous_induce_gauge_trafo}
+    \phi\; \sigma^{\widetilde{A}} (\zeta.H_l) \ =\ \sigma^A (\phi\,\zeta.H_l)\,\ h_\phi^{A\widetilde{A}} (\zeta.H_l) \,,
+\end{align}
+which defines the $\I$-induced gauge transformations $h_\phi^{A\widetilde{A}} (\zeta.H_l) \in H_l$; see Eq.~\eqref{eq:pushfwd_section_right_action}.%
+\footnote{
+    To avoid confusion, note that \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} denote $h_\phi^{A\widetilde{A}} (\zeta.H_l)$ by $\operatorname{h} (\zeta.H_l,\, \phi)$, omitting the gauge labels.
+}
+
+
+
+
+The feature fields of steerable CNNs on homogeneous spaces are defined as sections $f\in \Gamma(\A_l)$ of associated $H_l$-bundles
+\begin{align}\label{eq:equiv_rel_rhol}
+    \A_l\ :=\ (\I\times\R^{c_l})/\!\sim_{\!\rho_l} \,,
+\end{align}
+which were introduced in Section~\ref{sec:G_associated_bundles}.
+The equivalence relation
+\begin{align}
+    (\phi,\, \mathscr{f})\ \sim_{\!\rho_l}\, (\phi h^{-1},\, \rho_l(h) \mathscr{f})
+\end{align}
+is determined by a choice of field representation
+\begin{align}
+    \rho_l: H_l \to \R^{c_l}
+\end{align}
+of the layer's subgroup; compare this to our analogous definition in Eq.~\eqref{eq:equiv_relation_A}.
+Being an associated $H_l$-bundle, the local feature vector bundle trivializations transform covariantly with those of the corresponding principal bundle:
+\begin{equation}
+\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+    % ROW 1
+    & U\times \R^{c_l}
+    \\
+    % ROW 2
+      \piAl^{-1}(U)  \arrow[d, swap, "\piAl"]
+                    \arrow[r, "\PsiAl^A"]
+                    \arrow[ru, "\PsiAl^B"]
+    & U\times \R^ {c_l} \arrow[u, swap, "\big(\id\times \rho_l\big(h^{BA}\big)\cdot\big)"]
+                    \arrow[ld, "\proj_1"]
+    \\
+    % ROW 3
+    U
+\end{tikzcd}
+\end{equation}
+The precise construction of associated bundle trivializations from principal bundle trivializations was given in Eq.~\eqref{eq:trivialization_A}.
+
+
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} use two different approaches to describe feature fields.
+Globally, feature fields are represented as functions
+\begin{align}\label{eq:mackey_functions}
+    F: \I \to \R^{c_l}
+    \quad \textup{such that} \quad
+    F(\phi h^{-1}) = \rho_l(h) F(\phi)
+    \quad \forall\ \phi\in\I,\ h\in H_l \,,
+\end{align}
+whose definition is consistent with the equivalence relation from Eq.~\eqref{eq:equiv_rel_rhol}.
+On trivializing neighborhoods $U^A \subseteq \I/H_l$, the fields are furthermore given by feature vector coefficient fields
+\begin{align}
+    f^A: U^A \to \R^c
+\end{align}
+relative to some gauge $\PsiAl^A$.
+While the former is more convenient for algebraic manipulations, the latter is non-redundant, and therefore more suitable for numerical implementations.
+The local field representation may at any time be computed from the global one by setting
+\begin{align}
+    f^A( \phi.H_l)\ =\ F\big( \sigma^A (\phi.H_l) \big)
+    \qquad \textup{for}\ \ \phi.H_l \in U^A \,.
+\end{align}
+Here $\sigma^A: U^A \to \I$ is that local section of the principal $H_l$ bundle which corresponds to the chosen trivialization $\PsiI^A$ (``identity section'') and is analogously defined to Eq.~\eqref{eq:GM_section_psi_inverse_def}.
+Note that the global field representation can in general not be recovered from a (single) local one.
+It is, however, locally over $U^A$ given by
+\begin{align}
+    \quad
+    F(\phi)\ =\ \rho_l\big( \psiI{\phi.H_l}^A(\phi) \big)^{-1}\, f^A(\phi.H_l)
+    \qquad \textup{for}\ \ \phi \in \big(\mathscr{q}^{\I}_{\overset{}{\I/H_l}} \big)^{\mkern-2mu-1} (U^A)\ \subseteq\,\I \,,
+\end{align}
+which is closely related to Eq.~\eqref{eq:trivialization_A_p}.
+
+
+The global, active transformations of feature fields are formalized by \emph{induced representations} $\Ind_{H_l}^{\I}\mkern-2mu \rho_l$ of~$\I$, which are conceptually similar to our isometry pushforwards from Def.~\ref{dfn:isometry_pushforward}.
+For the global field representations, this action is simply defined as a shift on~$\I$:
+\begin{align}
+    \pig[ \big[ \Ind_{H_l}^{\I}\mkern-2mu \rho_l\big] (\zeta)\, F \pig] (\phi)\ =\ F\big( \zeta^{-1} \phi\big)
+\end{align}
+Since the $\I$-action is global, it is more difficult to describe for local field representations.
+Let $U^A$ be a trivializing neighborhood around $\phi.H_l$ and $U^{\widetilde{A}}$ around $\zeta^{-1}\phi.H_l$.
+The action of the induced representation is relative to gauges on these neighborhoods given by
+\begin{align}
+    \pig[ \big[\Ind_{H_l}^{\I}\mkern-2mu \rho_l\big] (\zeta)\, f\pig]^{\raisebox{2.5pt}{$\scriptstyle A$}} (\phi.H_l)
+    \ =\ \rho_l\big( h^{A\widetilde{A}}_{\zeta} \big) f^{\widetilde{A}} \big( \zeta^{-1} \phi.H_l \big) \,,
+\end{align}
+where $h^{A\widetilde{A}}_{\zeta}$ is the $\zeta$-induced gauge transformation, which is analogously defined to that in Eq.~\eqref{cd:pushforward_GM_coord_extended}.
+Note the similarity of this definition to our isometry pushforward of feature fields in coordinates from Eq.~\eqref{eq:feature_field_trafo_in_coords}.
+We furthermore identify the transformation law of scalar fields on homogeneous spaces from Eq.~\eqref{eq:group_action_homogeneous_space_scalar_field} as a special case for trivial representations~$\rho_l$.
+Steerable CNNs on homogeneous spaces cover therefore the homogeneous scalar field convolutions of \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline} as a special case (ignoring the different assumptions made on the type of group $\I$).
+
+
+
+
+
+
+\paragraph{Intertwiners between induced representations and steerable kernels:}
+The main endeavor of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} is to characterize the space
+\begin{align}
+    \Hom_{\I}\! \big( \Gamma(\Ain), \Gamma(\Aout) \big)
+    \ :=\ \big\{ \mathfrak{K}: \Gamma(\Ain) \to \Gamma(\Aout)\,\ \textup{linear} \ \big|\ 
+        \mathfrak{K}\circ \Ind_{\Hin}^{\I}(\phi) = \Ind_{\Hout}^{\I}(\phi) \circ\mathfrak{K}\ \ \ \forall\ \phi\in\I \big\}
+\end{align}
+of intertwiners between induced representations, i.e. the space of linear equivariant maps between feature fields.
+Diagrammatically, this space consists of those linear maps $\mathfrak{K}$ which let the following diagram commute for any $\phi\in\I$:
+\begin{equation}
+\begin{tikzcd}[column sep=60pt, row sep=35, font=\normalsize]
+    \Gamma(\Ain)
+        \arrow[r, "\mathfrak{K}"]
+        \arrow[d, "\Ind_{\Hin}^{\I} \rhoin(\phi)"']
+    &
+    \Gamma(\Aout)
+        \arrow[d, "\Ind_{\Hout}^{\I} \rhoout(\phi)"]
+    \\
+    \Gamma(\Ain)
+        \arrow[r, "\mathfrak{K}"']
+    &
+    \Gamma(\Aout)
+\end{tikzcd}
+\end{equation}
+These maps are the analog to our isometry equivariant kernel field transforms, which were defined in Def.~\ref{dfn:isometry_equivariance}.
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} prove that these maps are given by correlations with steerable kernels.
+We will in the following briefly review these results for both global and local field representations.
+
+
+When working with the global field representation from Eq.~\eqref{eq:mackey_functions}, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} start with a general bounded linear operator $\mathfrak{K}$ of the form
+\begin{align}\label{eq:general_linear_map_mackey}
+    \big[\mathfrak{K} F \big](\phi) \ =\ 
+    \int_{\I} \widehat{\kappa} (\phi,\zeta)\, F(\zeta)\ d\zeta
+\end{align}
+where $d\zeta$ is a left Haar measure on $\I$ and
+\begin{align}
+    \widehat{\kappa}: \I\times\I \to \R^{\cout\times\cin}
+\end{align}
+is a matrix-valued 2-argument kernel.
+The equivariance constraint is shown to require the kernels to satisfy the relation
+$\widehat{\kappa} (\widetilde{\phi}\phi, \widetilde{\phi}\zeta) = \widehat{\kappa} (\phi, \zeta)$
+for any choice of group elements $\widetilde{\phi},\, \phi,\, \zeta \in \I$.
+This result is resembling our Theorem~\ref{thm:isometry_equivariant_kernel_field_trafos}, which states that isometry equivariant kernel field transforms imply kernel fields which are invariant under the action of isometries, Def.~\ref{dfn:isometry_invariant_kernel_fields}.
+Given this constraint, the 2-argument kernel can be replaced by a 1-argument kernel which is defined as
+\begin{align}\label{eq:one_arg_kernel_global}
+    \kappa: \I \to \R^{\cout\times\cin},\ \ \ \phi \mapsto \kappa(\phi) := \widehat{\kappa}(e,\phi) \,.
+\end{align}
+We therefore have
+$\widehat{\kappa}(\phi,\zeta) = \widehat{\kappa}(\phi^{-1} \phi,\, \phi^{-1}\zeta) = \kappa\big( \phi^{-1} \zeta\big)$,
+implying that the linear operator is given by a \emph{group correlation} (Eq.~\eqref{eq:group_corr_def}), that is:
+\begin{align}
+    \big[\mathfrak{K} F \big](\phi)
+    \ =\ \int_{\I} \kappa\big( \phi^{-1}\zeta \big)\, F(\zeta)\ d\zeta
+    \ =\ \big(F \star_{\overset{}{\protect\scalebox{.64}{$\mkern-.5mu \I$}}} \kappa \big)(\phi)
+\end{align}
+The correlation kernel is furthermore required to satisfy the linear $\Hout$-$\Hin$-steerability constraint
+\begin{align}\label{eq:double_steerability}
+    \kappa(h_\textup{out}\, \phi\, h_\textup{in})
+    \ =\ \rhoout(h_\textup{out})\, \kappa(\phi)\, \rhoin(h_\textup{in})
+    \qquad \forall\,\ \phi\in\I,\ h_\textup{in}\in\Hin,\ h_\textup{out}\in\Hout \,.
+\end{align}
+This constraint is reminiscent of that found by \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline}.
+Instead of enforcing kernels to be left $\Hout$- and right $\Hin$-\emph{invariant},
+which would correspond to trivial representations $\rhoout=\rho_\textup{triv}^{\Hout}$ and $\rhoin=\rho_\textup{triv}^{\Hin}$,
+the constraint of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} allows for more general steerable kernels.
+The vector space $\mathscr{K}^{\I}_{\rhoin\mkern-1mu,\rhoout}$ of such steerable correlation kernels is argued to be isomorphic to the intertwiner space $\Hom_{\I}\! \big( \Gamma(\Ain), \Gamma(\Aout) \big)$.
+
+
+
+
+
+Since the global field representations $F$ on $\I$ are redundant they are not the best choice for numerical implementations.
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} are therefore additionally investigating intertwiners which operate on local field representations.
+The authors approach this problem by assuming one \emph{single local trivialization} to be given, which is \emph{defined almost everywhere} on the homogeneous space~$\I/\Hin$.
+They are therefore effectively operating on a trivial bundle.
+Our following review adapts their results slightly to the more general case of a set of field representations relative to an \emph{atlas of local trivializations}.
+The formulation of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} is retrieved by restricting the integration to one single trivialization.
+We explicitly write out all gauge labels to make the coordinate dependencies transparent.
+To give an overview on the local trivializations that will play a role in the following, we mention that we will need to consider
+trivializing neighborhoods $U^A, U^{\widetilde{A}}, U^H \subseteq \I/\Hin$ such that
+\begin{align}
+    \zeta.\Hin                   \in U^A \,, \qquad
+    \widetilde{\phi}\zeta.\Hin   \in U^{\widetilde{A}} \quad \textup{and}\ \ \
+    h\zeta.\Hin                  \in U^H
+\end{align}
+and trivializing neighborhoods $U^P, U^{\widetilde{P}}, U^E \subseteq \I/\Hout$ such that
+\begin{align}
+    \phi.\Hout                   \in U^P \,, \qquad
+    \widetilde{\phi}\phi.\Hout   \in U^{\widetilde{P}} \quad \textup{and}\ \ \
+    e.\Hout                  \in U^E \,.
+\end{align}
+We will furthermore assume any partition of unity
+$\{ \mathscr{P}_{U^X} \}_{X\in\mathfrak{X}}$
+subordinate to the open cover
+underlying the atlas
+$\mathscr{A}_\textup{in} = \{( U^X, \Psi^X )\}_{X\in\mathfrak{X}}$
+of local trivializations on $\I/\Hin$.
+This means that we are given maps $\mathscr{P}_{U^X}: \I/\Hin \to [0,1]$ with the properties
+\begin{align}
+    \supp\big( \mathscr{P}_{\!\overset{}{U^X}} \big) \subseteq U^X
+    \qquad \textup{and} \qquad
+    \sum_{U^X\in \mathscr{A}_\textup{in}} \mathscr{P}_{\!\overset{}{U^X}} (\phi.\Hin) = 1
+    \quad \forall\ \phi.\Hin \in \I/\Hin \,.
+\end{align}
+
+
+Eq.~\eqref{eq:general_linear_map_mackey} stated the general form of a bounded linear operator between global field representations~$F$.
+Its local analog, which makes use of the partition of unity, is given by
+\begin{align}
+    \big[ \mathfrak{K} f \big]^P (\phi.\Hout)\ =\ 
+    \sum_{U^{\!A} \in \mathscr{A}_\textup{in}} \int_{U^{\!A}} \mathscr{P}_{\!\overset{}{U^{\!A}}} (\zeta.\Hin)\ \ 
+        \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu PA}(\phi.\Hout,\, \zeta.\Hin)\,\ 
+        f^A (\zeta.\Hin)\ \ d(\zeta.\Hin) \,,
+\end{align}
+where $P$ and $A$ label local trivializations as stated above and $d(\zeta.\Hin)$ is a measure on~$\I/\Hin$.
+We furthermore have 2-argument kernels
+\begin{align}
+    \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu PA}:\, U^P \!\times U^A \to \R^{\cout\times\cin}
+    ,\qquad (\phi.\Hout,\, \zeta.\Hin) \,\mapsto\,
+    \widehat{\kappa} \big( \sigma^P(\phi.\Hout),\, \sigma^A(\zeta.\Hin) \big)
+\end{align}
+which are inherently \emph{locally defined} on ${U^P \!\times U^A} \,\subseteq\, \I/\Hout \times \I/\Hin$.
+The global 2-argument kernel can be recovered from a set of local kernels on the open covers.
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} prove that these local kernels are required to satisfy
+\begin{align}\label{eq:intertwiner_constraint_local}
+    \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu PA}(\phi.\Hout,\, \zeta.\Hin)
+    \ =\ 
+    \rhoout\big( h_{\widetilde{\phi}}^{\widetilde{P}P} (\phi.\Hout) \big)^{\!-1}\,\ 
+    \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu \widetilde{P}\widetilde{A}}( \widetilde{\phi}\phi.\Hout,\, \widetilde{\phi}\zeta.\Hin)
+    \,\ \rhoin\big( h_{\widetilde{\phi}}^{\widetilde{A}A} (\zeta.\Hin) \big)
+\end{align}
+for any $\widetilde{\phi} \in\I$.
+Note that $h_{\widetilde{\phi}}^{\widetilde{P}P} (\phi.\Hout)$ is hereby an induced gauge transformation on $\I/\Hout$ while $h_{\widetilde{\phi}}^{\widetilde{A}A} (\zeta.\Hin)$ is an induced gauge transformation on $\I/\Hin$.
+In order to reduce these local 2-argument kernels to local 1-argument kernels, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} consider the unique group element $\widetilde{\phi} \in\I$ which satisfies
+1) $\widetilde{\phi} \phi.\Hout = e.\Hout$ and
+2) $\widetilde{\phi} \sigma^P(\phi.\Hout) = \sigma^E(e.\Hout) = e$,
+where the last equality fixes a specific gauge at the ``origin'' $e.\Hout$, which is always possible.
+The first point allows us to identify the gauges $\widetilde{P}$ and~$E$ without loss of generality.
+The relations imply furthermore $\widetilde{\phi} = \sigma^P (e.\Hout)^{-1}$ and, by Eq.~\eqref{eq:homogeneous_induce_gauge_trafo}, $h_{\widetilde{\phi}}^{EP} (\phi.\Hout) = e$.
+Plugging these choices into Eq.~\eqref{eq:intertwiner_constraint_local} yields
+\begin{align}
+    \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu PA}(\phi.\Hout,\, \zeta.\Hin)
+    \ =\ 
+    \id_{\R^\cout}^{PE}\ 
+    \underbrace{ \vphantom{\Big(}
+    \widehat{\overleftarrow{\kappa}} \rule{0pt}{0pt}^{\mkern-1mu E\widetilde{A}}\big( e.\Hout,\, \sigma^P \mkern-2mu (\phi.\Hout)^{-1} \zeta.\Hin\big)}_{ \rule{0pt}{14pt} \displaystyle
+    =: \overleftarrow{\kappa}^{E\widetilde{A}} \big( \sigma^P \mkern-2mu (\phi.\Hout)^{-1} \zeta.\Hin \big) }
+    \,\ \rhoin\big( h_{\sigma^P \mkern-2mu (\phi.\Hout)^{-1}}^{\widetilde{A}A} (\zeta.\Hin) \big) \,,
+\end{align}
+where the identity map is kept explicit to explain the gauge labels.
+We furthermore introduced the local 1-argument kernels
+\begin{align}\label{eq:local_one_arg_kernel}
+    \overleftarrow{\kappa}^{E\widetilde{A}} :\, U^{\widetilde{A}} \to \R^{\cout\times\cin} \,,
+\end{align}
+whose responses are always given in the specific gauge $E$ at $e.\Hout$.
+These kernels are still required to satisfy the $\Hout$-steerability constraints
+\begin{align}\label{eq:single_steerability}
+    \overleftarrow{\kappa}^{EH} (h_\textup{out} \zeta.\Hin)
+    \ =\ \rhoout(h_\textup{out})\, \overleftarrow{\kappa} (\zeta.\Hin)^{EA} \,
+    \rhoin\big( h_{h_\textup{out}}^{HA} (\zeta.\Hin) \big)^{-1}
+    \qquad \forall\,\ \zeta.\Hin\in \I/\Hin,\ h_\textup{out}\in\Hout \,.
+\end{align}
+Putting everything together, the equivariant correlation becomes
+\begin{align}
+    & \big[ \mathfrak{K} f \big]^P (\phi.\Hout) \ = \\
+    & \id_{\R^\cout}^{PE} \mkern-6mu
+    \sum_{U^{\!A} \in \mathscr{A}_\textup{in}} \int_{U^{\!A}} \mathscr{P}_{\!\overset{}{U^{\!A}}} (\zeta.\Hin)\ \ 
+        \overleftarrow{\kappa} \rule{0pt}{0pt}^{\mkern-1mu E\widetilde{A}} \pig( \sigma^P \mkern-2mu (\phi.\Hout)^{-1} \zeta.\Hin \pig)\,\ 
+        \rhoin\pig( h_{\sigma^P \mkern-2mu (\phi.\Hout)^{-1}}^{\widetilde{A}A} (\zeta.\Hin) \pig)\,\ 
+        f^A (\zeta.\Hin)\ \ d(\zeta.\Hin) \,. \notag
+\end{align}
+Adding the assumption that a single gauge $A = \widetilde{A}$ covers $\I/\Hin$ almost everywhere, we can drop the partition of unity and retrieve the formulation of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}:
+\begin{align}
+    \big[ \mathfrak{K} f \big]^P (\phi.\Hout)
+    \ =\ \id_{\R^\cout}^{PE} \int_{U^{\!A}}
+        \overleftarrow{\kappa} \rule{0pt}{0pt}^{\mkern-1mu EA} \pig( \sigma^P \mkern-2mu (\phi.\Hout)^{-1} \zeta.\Hin \pig)\,\ 
+        \rhoin\pig( h_{\sigma^P \mkern-2mu (\phi.\Hout)^{-1}}^{AA} (\zeta.\Hin) \pig)\,\ 
+        f^A (\zeta.\Hin)\ \ d(\zeta.\Hin)
+\end{align}
+We comment on the relation of this operation to our $\GM$-convolutions further below.
+
+
+Instead of defining the \emph{local} 1-argument kernels in coordinates from Eq.~\eqref{eq:local_one_arg_kernel} on local subsets $U^{\widetilde{A}}$, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} define them \emph{globally} on~$\I/\Hin$.
+Since their construction relies on a continuous section, this is only possible if the bundles are trivial.
+Our adaptation to local kernel representations on an open covering is bridging this gap.
+
+
+\citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} claim an isomorphism between the global kernels on $\I$,
+satisfying the steerability constraint in Eq.~\eqref{eq:double_steerability},
+and their kernels on $\I/\Hin$,
+satisfying the steerability constraint in Eq.~\eqref{eq:single_steerability}.
+Note that this isomorphism can only hold if
+either the bundle is trivial
+or the continuity assumption on the sections (and therefore network inference) is dropped.
+It should, however, be possible to prove an isomorphism between the global kernel and a collection of local kernels on a covering of $\I/\Hin$, satisfying the relations in Eq.~\eqref{eq:single_steerability}.
+
+The authors furthermore claim that the steerable kernels can be described on the double quotient space $\Hout\backslash \I/\Hin$, still satisfying a steerability constraint.
+
+
+
+
+
+
+\paragraph{Relation to \textit{GM}-convolutions:}
+
+The steerable CNNs on homogeneous spaces by \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} are conceptually quite similar to our $\GM$-convolutions on Riemannian manifolds, however, there are some important differences which we discuss in the following.
+Most importantly, the theories differ in
+1) being based on different spaces $\I/H_l$ in each layer $l$ vs. assuming a fixed manifold $M$,
+2) modeling kernels on the space $\I/\Hin$ itself or on tangent spaces $\TpM$ of it,
+3) the way of how weights are shared, and
+4) the types of global symmetry group $\I$ and spaces $\I/H_l$ or $M$, which they cover.
+Despite these differences, many of the results of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} have analogs in our theory.
+
+Both theories share the idea to define feature fields as sections of associated vector bundles.
+While \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} consider a global symmetry group $\I$ as a set of multiple principal $H_l$-bundles over homogeneous spaces $\I/H_l$, we work with some $G$-structure $\GM$ over a fixed Riemannian manifold~$M$.
+All of our feature vector bundles are defined as $G$-bundles and are associated to each other, while the feature bundles of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} may not be associated to each other if their structure groups $H_l$ do not agree.
+As already claimed at the end of the last Section~\ref{apx:homogeneous_scalar_field_convs}, these differences can be mitigated if a structure group $G$ can be chosen such that $H_l \leq G \leq \I$ for every layer $l$ and $M := \I/G$ is a Riemannian manifold.
+One can then replace all homogeneous spaces $\I/H_l$ with $M$ and all $H_l$-representations $\rho_l$ with induced $G$-representations
+\begin{align}
+    \rho_l^G\ :=\ \Ind_{H_l}^G \rho_l \,.
+\end{align}
+The global field transformation laws are preserved by this reinterpretation since
+\begin{align}
+    \Ind_{H_l}^{\I} \rho_l
+    \ =\ \Ind_G^{\I} \Ind_{H_l}^G \rho_l
+    \ =\ \Ind_G^{\I} \rho_l^G
+\end{align}
+holds by induction in stages~\cite{ceccherini2009induced}.
+
+
+Another main difference lies in the definition of convolution kernels and weight sharing.
+On the global, coordinate free level and prior to the isometry assumption, \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} start in Eq.~\eqref{eq:general_linear_map_mackey} with a bounded linear operator which is parameterized by an unconstrained kernel
+\begin{align}
+    \widehat{\kappa}: \I\times\I \to \R^{\cout\times\cin} \,.
+\end{align}
+This operator corresponds in our theory to a general kernel field transform, Def.~\ref{dfn:kernel_field_trafo}, which is parameterized by an unconstrained kernel field
+\begin{align}
+    \K: \TM \to \Hom(\Ain,\Aout) \,,
+\end{align}
+see Def.~\eqref{dfn:kernel_field_general}.
+The 2-argument kernels $\widehat{\kappa}$ can be thought of as representing a kernel field as well.
+Their two arguments are thereby thought of as addressing
+1)~a specific (1-argument) kernel, yielding a response at the corresponding point in the output bundle $\I \to \I/\Hout$ and
+2)~the spatial dependency of this 1-argument kernel on the input bundle $\I \to \I/\Hin$.
+The analog in our kernel fields $\K$ is that elements $v \in \TM$ encode
+1)~the location $p = \piTM(v)$ of the kernel and
+2)~its spatial dependency via $v\in\TpM$.
+
+
+When requiring the bounded linear operator to be $\I$-equivariant, the 2-argument kernel $\widehat{\kappa}$ becomes constrained to satisfy
+\begin{align}
+    \widehat{\kappa} \big( \widetilde{\phi}\phi, \widetilde{\phi}\zeta \big) = \widehat{\kappa} (\phi, \zeta)
+    \qquad \forall\ \widetilde{\phi} \in\I \,.
+\end{align}
+Isometry equivariant kernel field transforms were in Theorem~\ref{thm:isometry_equivariant_kernel_field_trafos} shown to require the isometry invariance of the kernel field, i.e.
+\begin{align}
+    \widetilde{\phi}_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\mathscr{K}\mkern2mu$}}} \K = \K
+    \qquad \forall\ \widetilde{\phi} \in\I \,;
+\end{align}
+see Def.~\ref{dfn:isometry_invariant_kernel_fields} and Fig.~\ref{fig:isom_invariant_kernel_field_multiple_orbits}.
+
+
+The invariance constraint on 2-argument kernels $\widehat{\kappa}$ allows to replace them with 1-argument kernels
+\begin{align}
+    \kappa: \I \to \R^{\cout\times\cin},
+\end{align}
+defined in Eq.~\eqref{eq:one_arg_kernel_global}.
+They are still required to satisfy the steerability constraint in Eq.~\eqref{eq:double_steerability}.
+Our isometry invariant kernel fields were in Theorem~\ref{thm:manifold_quotient_repr_kernel_fields} shown to be equivalent to a field of kernels
+\begin{align}
+    \Qhat \mkern-2mu: \piTM^{-1}\big( \rM(\IM) \big) \to \piHom^{-1}\big( \rM(\IM) \big)
+\end{align}
+whose support is restricted to the tangent spaces over representatives $\rM(\IM) \subseteq M$ of the quotient~$\IM$.%
+\footnote{
+    Theorem~\ref{thm:tangent_quotient_repr_kernel_fields} proves another isomorphism to a space of kernels $\Q \mkern-2mu: \rTM(\ITM) \to \rHom(\IHom)$ whose support is even further restricted to representatives of the tangent bundle quotient~$\ITM$.
+}
+These kernels are required to satisfy a stabilizer subgroup steerability constraint as well.
+For the specific case that $M$ is a homogeneous space of its isometry group, the quotient $\IM$ reduces to a single element.
+Theorem~\ref{thm:manifold_quotient_repr_kernel_fields} implies in this case a single (1-argument) kernel
+\begin{align}\label{eq:Qhat_homogeneous_rel_work_section}
+    \Qhat \mkern-2mu: \TpM \to \Hom(\Ainp, \Aoutp)
+\end{align}
+at $p = \rM(\IM)$, which is the direct analog to the 1-argument kernel of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}.
+
+
+Note that the full kernel fields can via the action of $\I$ be reconstructed from the single 1-argument kernels.
+The theories derive therefore both a form of convolutional weight sharing from the requirement of global symmetry equivariance.
+While kernels can for transitive symmetries be shared over the whole homogeneous space, they can in general only be shared over the orbits of the symmetry group.
+If the manifold is asymmetric in such a way that the orbits are single points no weights can be shared with this definition.
+As this is the default case for Riemannian manifolds, $\GM$-convolutions resort to the sharing of $G$-steerable kernels by placing them relative to frames of the $G$-structure.
+This definition does not have a counterpart in steerable CNNs on homogeneous spaces.
+Our Theorem~\ref{thm:GM_conv_homogeneous_equivalence} shows, however, that the global symmetry induced weight sharing is for the specific case of homogeneous spaces equivalent to our process of sharing $G$-steerable kernels.
+In other words, isometry equivariant kernel field transforms on homogeneous spaces are necessarily convolutions
+-- this mirrors the central results of \citet{Kondor2018-GENERAL}, \citet{bekkers2020bspline} and \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory}.
+
+
+After investigating the analogies for the global, coordinate free kernels of both theories, we compare the definition of their coordinate representations relative to local trivializations.
+Given some choice of trivializing neighborhoods $U^P \subseteq \I/\Hout$ and $U^A \subseteq \I/\Hin$, the unconstrained global 2-argument kernels of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} are locally represented by unconstrained functions
+\begin{align}
+    \widehat{\overleftarrow{\kappa}}:\, U^P \times U^A \to \R^{\cout\times\cin} \,.
+\end{align}
+In our theory, we instead have a single trivializing neighborhood $U^P = U^A \subseteq M$ relative to which a kernel field is given by an unconstrained map
+\begin{align}
+    \K^A:\, U^A \times \R^d \to \R^{\cout\times\cin} \,.
+\end{align}
+Investigating the \emph{global} $\I$-equivariance of the operator $\mathfrak{K}$ based on \emph{local} kernels is on non-trivial bundles necessarily difficult as it involves multiple trivializations.
+The equivariance requirement implies for steerable CNNs on homogeneous spaces the constraints between different local kernels in Eq.~\eqref{eq:intertwiner_constraint_local}.
+They leads to the 1-argument kernels
+\begin{align}
+    \overleftarrow{\kappa}^{EA} :\, U^A \to \R^{\cout\times\cin} \,,
+\end{align}
+from Eq.~\eqref{eq:local_one_arg_kernel}, which are still subject to the steerability constraint in Eq.~\eqref{eq:single_steerability}.
+Single kernels $\Kp: \TpM \to \Hom(\Ainp,\Aoutp)$ (like e.g. $\Qhat$ from Eq.~\eqref{eq:Qhat_homogeneous_rel_work_section}) are according to Eq.~\eqref{eq:kernel_field_general_coord_expression} in coordinates given by functions
+\begin{align}
+    \Kp^A:\, \R^d \to \R^{\cout\times\cin} \,,
+\end{align}
+whose domains are tangent space coordinates $\R^d$ instead of of a open subset $U^A$ of the manifold.
+A particular important example are $G$-steerable kernels, which correspond to the $\GM$-convolutional kernel fields from Def.~\ref{dfn:conv_kernel_field}.
+
+
+While our kernels are globally defined in a single gauge $\psiTMp^A$ of $\TpM$, the local 1-argument kernels of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} need to be defined on an open cover of $\I/\Hin$.
+As this is significantly more complicated, they propose therefore to represent the kernels on a single gauge which is defined almost everywhere.%
+\footnote{
+    In practice, one might anyways work with compactly supported kernels on a single trivializing neighborhood, which would render this choice unproblematic.
+}
+Note that this still requires that this single trivializing neighborhood is closed under the left action of $\Hout$ in order for the constraint in Eq.~\eqref{eq:single_steerability} to make sense.
+We investigated this approach in Section~\ref{sec:spherical_CNNs_fully_equivariant} for the specific example of spherical CNNs, defining kernels on the trivializing neighborhood $U^A = S^2\backslash -n$.
+Theorem~\ref{thm:spherical_kernel_space_iso} proved that Cohen \mbox{et al.'s}~\cite{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} steerable kernels on $S^2\backslash -n \subset S^2$ are in this case isomorphic to our $G$-steerable kernels on $B_{\R^2}(0,\pi) \subset \R^2$.
+The equivalence of the corresponding convolutions was established in Theorem~\ref{thm:spherical_conv_GM_conv}.
+
+
+
+Finally, we discuss which class of models steerable CNNs on homogeneous spaces cover.
+Obviously, the theory does not describe convolutions on non-homogeneous spaces like punctured Euclidean spaces $\Euc_d\backslash\{0\}$, the sphere without poles $S^2 \backslash \{n,s\}$, whose isometries $\O2$ are non-transitive, the icosahedron, general surfaces or the M\"obius strip.
+However, in contrast to $\GM$-convolutions, the base spaces $\I/H_l$ are not required to be Riemannian manifolds.
+While \citet{Kondor2018-GENERAL} and \citet{bekkers2020bspline} cover only those convolutions whose feature fields transform according to scalar fields on $\I/H_l$, the associated bundle formulation of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} allows for general field representations~$\rho_l$.
+Restricting to unimodular groups, steerable CNNs on homogeneous spaces do, however, only include those $\Aff(G)$-equivariant Euclidean convolutions for which the structure groups are subgroups of~$\O{d}$.
+This reflects in the fact that the steerability constraints of \citet{Cohen2018-intertwiners}\cite{Cohen2019-generaltheory} do not include the determinant factor in the constraint of \citet{bekkers2020bspline} and of our $G$-steerable kernels.

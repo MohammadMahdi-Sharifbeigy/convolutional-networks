@@ -1,0 +1,267 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\setcounter{magicrownumbers}{0}
+\small
+\renewcommand\arraystretch{1.25}%% row spacing, default is 1
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\rowcolors{2}{gray!12.5}{white}
+\begin{tabular}{>{\tiny\color{gray}}rccclc}
+    \toprule
+    & manifold      & structure group           & global symmetry           & representation    & citation \\
+    & $M$           & $G$                       & $\AffGM$ or $\IsomGM$     & $\rho$            &          \\
+    \bottomrule
+\rownumber&
+    $\Euc_d$        & $\{e\}$                   & $\Trans_d$                & trivial               & \cite{LeCun1990CNNs,
+                                                                                                          zhang2019CNNsShiftInvariant}
+                                                                                                    + any conventional CNN \\
+% 1-dim
+    \cmidrule(lr){2-6}
+    \cmidrule(lr){2-6}
+\rownumber&
+    $\Euc_1$        & $\Scale$                  & $\Trans_1 \rtimes \Scale$ & regular         & \cite{romero2020wavelet} \\
+% 2-dim
+    \cmidrule(lr){2-6}
+    \cmidrule(lr){2-6}
+\rownumber&
+                    & $\Flip$                   & $\Trans_2 \rtimes \Flip$  & regular           & \cite{Weiler2019_E2CNN} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+                    &                           &                           & irreps            & \cite{Worrall2017-HNET,
+                                                                                                    Weiler2019_E2CNN,
+                                                                                                    walters2020trajectory} \\
+\rownumber&
+                    &                           &                           & regular           & 
+                                                                                            \makecell{
+                                                                                              \cite{Dieleman2016-CYC,
+                                                                                                    Cohen2016-GCNN,
+                                                                                                    zhou2017oriented,
+                                                                                                    Cohen2017-STEER,
+                                                                                                    Weiler2018SFCNN,
+                                                                                                    bekkers2018roto,
+                                                                                                    Hoogeboom2018-HEX,
+                                                                                                    scaife2021RadioGalaxy}
+                                                                                              \\
+                                                                                              \cite{Weiler2019_E2CNN,
+                                                                                                    graham2020dense,
+                                                                                                    lafarge2020rototranslation,
+                                                                                                    smets2020pde,
+                                                                                                    wang2020incorporating,
+                                                                                                    romero2020attentive,
+                                                                                                    mohamed2020data}
+                                                                                              \\
+                                                                                              \cite{shen2020PDOeConvs,
+                                                                                                    bekkers2020bspline,
+                                                                                                    finzi2020generalizing,
+                                                                                                    vanderPol2020MDP2,
+                                                                                                    gupta2020rotation,
+                                                                                                    mondal2020group,
+                                                                                                    walters2020trajectory,
+                                                                                                    holderrieth2020steerableCNP}
+                                                                                              \\
+                                                                                              \cite{dey2020groupGANs,
+                                                                                                    sifre2012combined,
+                                                                                                    bruna2013invariant,
+                                                                                                    Sifre2013-GSCAT,
+                                                                                                    sifre2014rigid,
+                                                                                                    oyallon2015scattering,
+                                                                                                    chavan2021rescaling,
+                                                                                                    han2021ReDet}
+                                                                                              } \\
+\rownumber&
+                &                           &                           & quotients         & \cite{Cohen2017-STEER,
+                                                                                                    Weiler2019_E2CNN} \\
+\rownumber&
+                &                           &                           & regular$\xrightarrow{\textup{pool}}$trivial
+                                                                                            & \cite{Cohen2016-GCNN,
+                                                                                                    marcos2016learning,
+                                                                                                    Weiler2019_E2CNN} \\
+\rownumber&
+                & \multirow{-7.5}{*}{$\SO2$}   & \multirow{-7.5}{*}{$\SE2$} & regular$\xrightarrow{\textup{pool}}$vector
+                                                                                            & \cite{Marcos2017-VFN,
+                                                                                                    Weiler2019_E2CNN} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+                &                           &                           & trivial           & \cite{khasanova2018isometric,
+                                                                                                    Weiler2019_E2CNN} \\
+\rownumber&
+                &                           &                           & irreps            & \cite{Weiler2019_E2CNN} \\
+\rownumber&
+                &                           &                           & regular           & 
+                                                                                            \makecell{
+                                                                                              \cite{Dieleman2016-CYC,
+                                                                                                    Cohen2016-GCNN,
+                                                                                                    Hoogeboom2018-HEX,
+                                                                                                    Cohen2017-STEER,
+                                                                                                    Weiler2019_E2CNN}
+                                                                                              \\
+                                                                                              \cite{mondal2020group,
+                                                                                                    graham2020dense,
+                                                                                                    shen2020PDOeConvs}
+                                                                                              } \\
+\rownumber&
+                &                           &                           & quotients         & \cite{Cohen2017-STEER} \\
+\rownumber&
+                &                           &                           & regular$\xrightarrow{\textup{pool}}$trivial    & \cite{Weiler2019_E2CNN} \\
+\rownumber&
+                & \multirow{-6.2}{*}{$\O2$}   & \multirow{-6.2}{*}{$\E2$} & induced $\SO2$-irreps \hspace*{-2.ex}          & \cite{Weiler2019_E2CNN} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+\multirow{-15.35}{*}{$\Euc_2$}
+                &                           &                           & regular           & \cite{Worrall2019DeepScaleSpaces,
+                                                                                                    Sosnovik2020scale,
+                                                                                                    bekkers2020bspline,
+                                                                                                    zhu2019scale} \\
+\rownumber&
+                & \multirow{-2}{*}{$\Scale$}& \multirow{-2}{*}{$\Trans_2\rtimes\Scale$}      & regular$\xrightarrow{\textup{pool}}$trivial    & \cite{ghosh2019scale} \\
+% 3-dim
+    \cmidrule(lr){2-6}
+    \cmidrule(lr){2-6}
+\rownumber&
+                &                           &                           & irreps            & \cite{3d_steerableCNNs,
+                                                                                                    Thomas2018-TFN,
+                                                                                                    miller2020relevance,
+                                                                                                    Kondor2018-NBN,
+                                                                                                    anderson2019cormorant,
+                                                                                                    batzner2021se3equivariant} \\
+\rownumber&
+                &                           &                           & quaternion        & \cite{zhang2019quaternion} \\
+\rownumber&
+                &                           &                           & regular           & \cite{finzi2020generalizing,
+                                                                                                    winkels3DGCNNsPulmonary2018,
+                                                                                                    Worrall2018-CUBENET} \\
+\rownumber&
+                & \multirow{-4}{*}{$\SO3$}  & \multirow{-4}{*}{$\SE3$}  & regular$\xrightarrow{\textup{pool}}$trivial
+                                                                                            & \cite{andrearczyk2019exploring} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+                &                           &                           & regular           & \cite{winkels3DGCNNsPulmonary2018} \\
+\rownumber&
+                &                           &                           & quotient $\O3/\O2$ \hspace*{-2ex}
+                                                                                            & \cite{janssen2018design} \\
+\rownumber&
+                & \multirow{-3}{*}{$\O3$}   & \multirow{-3}{*}{$\E3$}   & irrep$\xrightarrow{\textup{norm}}$trivial \hspace*{-2ex}
+                                                                                            & \cite{poulenard2019effective} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+                & $\C4$                     & $\Trans_3 \rtimes \C4$    & regular           & \cite{su2020dv} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+\multirow{-7}{*}{$\Euc_3$}
+                & $\D4$                     & $\Trans_3 \rtimes \D4$    & regular           & \cite{su2020dv} \\
+% Minkowski
+    \cmidrule(lr){2-6}
+    \cmidrule(lr){2-6}
+\rownumber&
+    $\Euc_{d-1,1}$& $\SO{d\minus1,1}$       & $\Trans_d\rtimes\SO{d\minus1,1}$& irreps    & \cite{shutty2020learning} \\
+
+    \bottomrule
+
+\rownumber&
+                &                           & $\SO2$                    &                &    \cite{chidester2019rotation,
+                                                                                                  finzi2020generalizing} \\
+\rownumber&
+\multirow{-2}{*}{$\Euc_2\backslash\{0\}$} & \multirow{-2}{*}{$\{e\}$}
+                                          & $\SO2 \times \Scale$      & \multirow{-2}{*}{trivial}
+                                                                                       &    \cite{esteves2017polar,
+                                                                                                  finzi2020generalizing} \\
+% B3
+    \cmidrule(lr){2-6}
+    \cmidrule(lr){2-6}
+\rownumber&
+                    & $\O2$                 & $\O3$                      & trivial           & \cite{ramasinghe2019representation} \\
+\rownumber&
+\multirow{-2}{*}{$\Euc_3\backslash\{0\}$}
+                & $\{e\}$                   & $\{e\}$                    & trivial           & \cite{boomsma2017spherical} \\
+    \bottomrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rownumber&
+                &                           &                           & irreps            & 
+                                                                                              \cite{kondor2018ClebschGordan,
+                                                                                                    esteves2020spinweighted} \\
+\rownumber&
+                & \multirow{-2}{*}{$\SO2$}  & \multirow{-2}{*}{$\SO3$}  & regular           & \cite{Cohen2018-S2CNN,
+                                                                                                    kicanaoglu2019gaugeSphere} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+    \multirow{-3}{*}{$S^2$}
+                & $\O2$                     & $\O3$                     & trivial           & \cite{esteves2018zonalSpherical,
+                                                                                                    perraudin2018DeepSphere,
+                                                                                                    yang2020rotation} \\
+\cmidrule(lr){2-6}
+\cmidrule(lr){2-6}
+\rownumber&
+    $S^2 \,\backslash\,$poles & $\{e\}$     & $\SO2$                    & trivial           & 
+                                                                                            \makecell{
+                                                                                              \cite{coors2018spherenet,
+                                                                                                    tateno2018distortion,
+                                                                                                    zhao2018distortion,
+                                                                                                    martin2020panoramic,
+                                                                                                    jiang2019spherical}
+                                                                                              \\
+                                                                                              \cite{
+                                                                                                    su2017spherical,
+                                                                                                    su2019kernel,
+                                                                                                    eder2019convolutions,
+                                                                                                    lee2019spherephd}
+                                                                                              } \\
+\cmidrule(lr){2-6}
+\cmidrule(lr){2-6}
+\rownumber&
+    icosahedron & $\C6$                     & $\operatorname{I}$ {\color{gray}$(\approx\SO3)$} & regular        & \cite{gaugeIco2019} \\
+\cmidrule(lr){2-6}
+\cmidrule(lr){2-6}
+\rownumber&
+    ico$\,\backslash\,$poles & $\{e\}$     & $\C5$ {\color{gray}$(\approx\SO2)$}           & trivial           & \cite{zhang2019orientation,
+                                                                                                    liu2018icoAltAz} \\
+    \bottomrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rownumber&
+                &                           &                           & irreps            & \cite{Wiersma2020} \\
+\rownumber&
+                &                           &                           & regular           & \cite{poulenard2018multi,
+                                                                                                    sun2018zernet,
+                                                                                                    Yang2020parallelFrameCNN,
+                                                                                                    deHaan2020meshCNNs} \\
+\rownumber&
+                & \multirow{-3}{*}{$\SO2$}  & \multirow{-3}{*}{$\IsomplusM$} & regular$\xrightarrow{\textup{pool}}$trivial & 
+                                                                                              \cite{masci2015geodesic,
+                                                                                                    masci2015shapenet,
+                                                                                                    monti2017geometric,
+                                                                                                    sun2018zernet} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+\multirow{-4}{*}{surface ($d\!=\!2$)}
+                & $\D4$                     & $\Isom_{\D4\mkern-5muM}$            & trivial           & \cite{huang2019texturenet} \\
+    \cmidrule(lr){3-6}
+    \cmidrule(lr){3-6}
+\rownumber&
+\multirow{-4}{*}{(e.g. meshes)}
+                & $\{e\}$                   & $\IsomeM$                & trivial           & \cite{
+                                                                                                    monti2017geometric,
+                                                                                                    schonsheck2018parallel,
+                                                                                                    jin2018learning,
+                                                                                                    tatarchenko2018tangent,
+                                                                                                    li2019crossAtlas} \\
+    \bottomrule
+
+\rownumber&
+                   &                       &                            & irreps           &                            \\
+\rownumber&
+    \multirow{-2}{*}{M\"obius strip} & \multirow{-2}{*}{$\Flip$}               & \multirow{-2}{*}{$\SO2$}   & regular          & \multirow{-2}{*}{Section~\ref{sec:mobius_conv}} \\
+    \bottomrule
+
+\end{tabular}

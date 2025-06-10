@@ -1,0 +1,259 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection%
+    [Geometry of the 2-sphere \texorpdfstring{$S^2$}{S2}]%
+    {Geometry of the 2-sphere $\boldsymbol{S^2}$}
+\label{sec:sphere_geometry}
+
+As a basis for our discussion of spherical CNNs, this section discusses the differential geometry of the (unit) sphere~$M = S^2$.
+It is usually defined as the subset
+\begin{align}
+    S^2 \,:=\, \big\{ p\in\Euc_3 \,\big|\, \lVert p\rVert = 1 \big\}
+\end{align}
+of those points in Euclidean 3-space $\Euc_3$ that have unit distance from the origin.
+As an embedded surface, it inherits a Riemannian metric (first fundamental form) from the embedding space $\Euc_3$.
+In the following, we will for simplicity model $\Euc_3$ by the vector space $\R^3$.
+When interpreting the tangent spaces $\TpM$ literally as those two-dimensional subspaces of $\R^3$
+that contain all tangent vectors at $p \in S^2$, then the metric, exponential maps, parallel transporters, frames and gauges can all be expressed in terms of usual vector space operations in $\R^3$.
+Before coming to these concrete expressions, which come handy when implementing spherical CNNs,
+we discuss some properties of the sphere from a more abstract angle.
+
+
+The isometry group of the sphere is given by
+\begin{align}
+    \Isom(S^2) = \O3 \,,
+\end{align}
+i.e. three-dimensional rotations and reflections, which are visualized in Fig.~\ref{fig:isometries_sphere}.
+The action of any isometry $\phi\in\O3$ coincides with its usual action on $\R^3$ via matrix multiplication, restricted to the embedded sphere $S^2 \subset \R^3$.
+Note that this yields indeed a well defined action on $S^2$ since $\O3$ consists by definition of all distance and angle preserving linear maps, and thus preserves the sphere.
+As the sphere is orientable, it comes with a subgroup of orientation preserving isometries
+\begin{align}
+    \Isom_+(S^2) = \SO3 \,,
+\end{align}
+consisting of all three-dimensional rotations.
+Further subgroups that are relevant in the deep learning context are the following:
+any choice of rotation axis determines a subgroup of two-dimensional rotations, isomorphic to $\SO2$, and all of these subgroups are conjugated to each other.
+Similarly, any choice of two-dimensional subspace of $\R^3$ corresponds to a subgroup of reflections over this plane, which is isomorphic to $\Flip$.
+The subgroups of two-dimensional rotations around two non-parallel rotation axes generate $\SO3$, which relates to the Euler angle parametrization of $\SO3$.
+A choice of reflection plane and any rotation axis within this plane generates the semidirect product subgroup $\O2 = \SO2 \rtimes \Flip$.
+If the rotation axis is instead chosen to be orthogonal to the reflection plane, the two-dimensional rotations and reflections commute, and generate therefore subgroups isomorphic to the direct product $\SO2 \times \Flip$.
+$\O3$ has furthermore discrete subgroups, the most practically relevant of which are the symmetry groups of the platonic solids, for instance of the icosahedron, shown in Fig.~\ref{fig:ico_neighborhoods}.%
+\footnote{
+    An exhaustive list of all finite subgroups of $\SO3$ can be found at \href{https://ncatlab.org/nlab/show/SO\%283\%29\#finite_subgroups}{nLab}.
+}
+
+
+$\O3$ acts transitively on the sphere, that is, for any two points $p$ and $q$ of $S^2$, there exists at least one isometry $\phi\in\O3$ such that $q = \phi(p)$.
+The actions of $\O3$ on $S^2$ are not fixed point free:
+any point $p\in S^2$ is stabilized by the subgroup $\Stab{p} \cong \O2 < \O3$, consisting of rotations and reflections around the axis spanned by $p$ in $\R^3$.
+Together, these two properties imply that the sphere is a homogeneous space of $\O3$ and is algebraically realized as the quotient space
+\begin{align}
+    \O3/\O2 \,\cong\, S^2 \,,
+\end{align}
+which consists of cosets of the form ${\phi\mkern1mu.\mkern-4mu\O2}$.
+A similar statement holds for $\SO3$, which has stabilizer subgroups $\Stab{p} \cong \SO2 < \SO3$ and thus
+\begin{align}
+    \SO3/\SO2 \,\cong\, S^2 \,.
+\end{align}
+With these relations, Theorem~\ref{thm:GM_conv_homogeneous_equivalence} proves that any $\O3$ or $\SO3$-equivariant kernel field transform on $S^2$ is equivalent to a $\GM$-convolution with $G$ being $\O2$ or $\SO2$, respectively.
+This result is in line with the classical viewpoint of group equivariant CNNs on homogeneous spaces~\cite{Cohen2019-generaltheory} -- the precise relation between the two is clarified in Theorem~\ref{thm:spherical_conv_GM_conv} below.
+Recall that isometries preserve the Riemannian metric by definition.
+That $\O3$ acts transitively on $S^2$ with stabilizer $\O2$ implies therefore that the Riemannian geometry of $S^2$ ``looks similar'' at each point and in each direction and orientation -- $S^2$ is a maximally symmetric space.
+
+
+As a Riemannian manifold, $S^2$ comes by design with an $\O2$-structure.
+A restriction to right-handed frames, which is possible since the sphere is orientable, yields the $\SO2$-structure in Fig.~\ref{fig:G_structure_S2_1}, which is preserved by rotations in $\SO3$.
+One can show that these two $G$-structures $\OM$ and $\SOM$ are as principal bundles isomorphic to $\O3$ and $\SO3$, respectively.
+The specific isomorphism is hereby given by a choice of frame from the $G$-structure, that is to be identified with the identity group element.
+
+The hairy ball theorem states that no continuous vector field exists on $S^2$, which implies in particular that no (continuous) $\{e\}$-structure can exist.
+A reduction of the structure group beyond $\SO2$ requires therefore a change in the topology of the manifold.
+For example, puncturing the sphere at an arbitrary point $p\in S$ yields a surface that is homeomorphic to the Euclidean plane, and is therefore parallelizable.%
+\footnote{
+    This process corresponds for instance to the stereographic projection of the sphere.
+}
+Puncturing the sphere at two arbitrarily chosen antipodal points, as shown in Fig.~\ref{fig:G_structure_S2_2}, turns the topology of the sphere into that of a cylinder and thus allows for $\{e\}$-structures.
+The most common choice of $\{e\}$-structure on the punctured sphere $S^2 \backslash \{n,s\}$ is the $\SO2$-invariant $\{e\}$-structure in Figs.~\ref{fig:G_structure_S2_2} and~\ref{fig:spherical_equirectangular_1}.
+Its frames
+\begin{align}\label{eq:spherical_e_structure_frames}
+    \left[ \frac{\partial}{\partial\theta} ,\; \frac{1}{\cos(\theta)} \frac{\partial}{\partial\varphi} \right]
+\end{align}
+are aligned with the usual spherical coordinates, which are in physics conventions
+(i.e. with $\varphi$ and $\theta$ denoting the azimuthal angle and inclination against the $xy$-plane, respectively)
+given by the following surjective, $2\pi$-periodic map:
+\begin{align}\label{eq:spherical_coords}
+    \chi:\, \big( {\textstyle \minus\frac{\pi}{2}, \frac{\pi}{2} }\big) \times \R \:\to\: S^2 \backslash \{n,s\}
+    \,, \quad
+    (\theta, \varphi) \,\mapsto
+    \begin{pmatrix}
+        \cos(\theta) \cos{\varphi} \\
+        \cos(\theta) \sin{\varphi} \\
+        \sin(\theta)
+    \end{pmatrix}
+\end{align}
+Some $\{e\}$-steerable CNNs are implemented by representing feature fields on $S^2 \backslash \{n,s\}$ in spherical coordinates; see Section~\ref{sec:spherical_CNNs_azimuthal_equivariant} below.
+As the coordinate map $\chi$ is $\emph{not}$ isometric, these methods require an alternative metric (or $\{e\}$-structure) on the coordinates ${(\minus \pi/2 ,\; \pi/2) \times \R \subset \R^2}$; see the stretched frames in Fig.~\ref{fig:spherical_equirectangular_1} (right).
+
+
+Since $S^2$ is compact, it is geodesically complete.
+The geodesics are given by the great circles of the sphere, i.e. those circles that correspond to the intersection of the sphere with a plane through the origin of $\R^3$.
+The exponential maps $\exp_p(v)$ follow these great circles through $p$ in direction of $v$ for a distance of $\lVert v\rVert$.
+Logarithmic maps $\log_p(q)$ are therefore for all points $q \in S^2 \backslash \mkern-1mu\minus\mkern1mu p$, which are not antipodal to $p$, given by the unique vector in the shorter direction along the great circle through $p$ and $q$, with $\lVert\log_p(q)\rVert$ given by the arc-length along this path.
+Geodesics between antipodal points $p$ and $-p$ are not unique, such that the logarithmic map does not exist.
+
+
+\subsubsection*{Explicit geometry of $\boldsymbol{S^2}$ as embedded surface in $\boldsymbol{\mathds{R}^3}$}
+As stated above, the tangent spaces of $S^2 \subset \R^3$ are in the classical differential geometry of surfaces defined as two-dimensional subspaces of the embedding space~$\R^3$.
+A specific tangent space $\TpM$ at $p\in S^2$ is in this interpretation given by
+\begin{align}
+    \TpM \,=\, \big\{ v\in\R^3 \,\big|\, \langle p,v \rangle = 0 \big\} \ \subset\ \R^3 \,,
+\end{align}
+i.e. the space of all vectors that are orthogonal to the surface normal at $p$, which coincides for the sphere with $p$ itself.
+Note that, despite being expressed relative to the standard frame of $\R^3$, these tangent vectors are coordinate free object in the sense that they are not described by 2-tuples of coefficients $v^A \in \R^2$ relative to some gauge $\psiTMp^A$ of~$\TpM$.
+The identification of tangent spaces with subspaces of the embedding space allows to express many of the abstract algebraic relations in terms of vector space operations on~$\R^3$.
+In the remainder of this section we will state such expressions for the metric, exponential and logarithmic maps, frames, gauges, Levi-Civita transporters along geodesics and induced gauge transformations.
+
+
+By definition, $S^2$ inherits its Riemannian metric from the embedding space.
+This induced metric is for any $v,w \in \TpM \subset \R^3$ given by
+\begin{align}\label{eq:spherical_embedding_metric_explicit}
+    \eta_p(v,w) \,:=\, \langle v,w \rangle_{\R^3} \,,
+\end{align}
+i.e. the standard inner product of $\R^3$, restricted to $\TpM$.
+To reduce clutter, we drop the subscript $\R^3$ in the notation $\langle \cdot,\cdot \rangle_{\R^3}$ in the remainder of this section.
+
+
+The exponential map $\exp_p$ maps vectors $v\in \TpM$ to points $q = \exp_p(v) \in S^2$ at a distance of $\lVert v\rVert$ along the great circle in direction of~$v$.
+Lying on the same great circle, $p$ and $q$ relate via a rotation by an angle of $\alpha = \lVert v\rVert / r = \lVert v\rVert$ around the rotation axis $a = \frac{p\times v}{\lVert p \times v\rVert} = \frac{p\times v}{\lVert v\rVert}$,
+where the equations simplify since the sphere has unit radius $r = \lVert p\rVert = 1$ and the vectors $p$ and $v$ are orthogonal in $\R^3$.
+Using Rodrigues' rotation formula, $q = p \cos(\alpha) + (a\times p) \sin(\alpha) + a\langle a,p\rangle \big(1- \cos(\alpha) \big)$,
+together with the orthogonality $\langle a,p\rangle = 0$ and
+$a\times p
+ = \frac{1}{\lVert v\rVert} (p\times v) \times p
+ = \frac{1}{\lVert v\rVert} \big( \langle p,p\rangle v + \langle p,v\rangle p \big)
+ = \frac{v}{\lVert v\rVert}$,
+this leads to the explicit expression
+\begin{align}\label{eq:sphere_expmap_explicit}
+    \exp_p:\, \R^3 \supset \TpM \to S^2 \subset \R^3, \quad v \mapsto \exp_p(v) = p\mkern1mu \cos \big(\lVert v\rVert\big) + \frac{v}{\lVert v\rVert} \sin \big(\lVert v\rVert\big)
+\end{align}
+for the exponential map.
+
+An explicit expression of the logarithmic map is found along the same line of reasoning:
+the norm of $\log_p(q)$, where $q\in {S^2 \backslash \mkern-1mu\minus\mkern1mu p}$, coincides with the rotation angle $\alpha = \arccos\!\big( \langle p,q\rangle \big)$.
+Its direction is given by the direction tangent to the great circle, which may be expressed in terms of the normalized projection
+$\frac{v}{\lVert v\rVert} = \frac{q - \langle p,q\rangle p}{\lVert q - \langle p,q\rangle p\rVert}$
+of~$q$ on~$\TpM$.
+Overall, the logarithmic map is therefore instantiated as
+\begin{align}\label{eq:sphere_logmap_explicit}
+    \log_p:\, S^2\backslash \mkern-1mu\minus\mkern1mu p \to B_{\TpM}(0,\pi), \quad
+    q \mapsto \log_p(q) = \arccos\!\big( \mkern-1mu\langle p,q\rangle \mkern-1mu\big) \, \frac{q - \langle p,q\rangle p}{\lVert q - \langle p,q\rangle p\rVert} \,,
+\end{align}
+where $B_{\TpM}(0,\pi) \subset \TpM \subset \R^3$ denotes the open ball of injectivity-radius $\pi$ around the origin of $\TpM$.
+
+
+Reference frames on $S^2$ are by definition just $2$-tuples of linearly independent tangent vectors.
+When expressing the axes of a reference frame explicitly as vectors in the embedding space $\R^3$, this frame can be identified with the $3\times 2$ rank $2$ matrix
+\begin{align}\label{eq:embedding_space_R3_frame}
+    \big[ e_1^A,\, e_2^A \big]\ =\ 
+    \left[\! \begin{array}{cc}
+        e^A_{1,1} & e^A_{2,1} \\
+        e^A_{1,2} & e^A_{2,2} \\
+        e^A_{1,3} & e^A_{2,3}
+    \end{array} \!\right]
+    \; =: E^A_p
+    \ \ \in\, \R^{3\times2} .
+\end{align}
+It defines the vector space isomorphism
+\begin{align}
+    E^A_p = \big[ e_1^A, e_2^A \big]:\, \R^2 \to \TpM,\ \ \ v^A \mapsto E^A_p v^A = v^A_1 e^A_1 + v^A_2 e^A_2
+\end{align}
+from vector coefficients to coordinate free tangent vectors.
+The tangent spaces $\TpM$ are therefore exactly the image of $E^A_p$.
+
+
+The corresponding gauges $\psiTMp^A: \TpM \to \R^2$ are technically just the inverses of the frames, when being interpreted as maps $E^A_p: \R^2 \to \TpM$.
+In contrast, when being interpreted as $3\times 2$ matrices that map $\R^2$ non-surjectively to $\R^3$, $E^A_p$ is non-invertible but only admits a pseudo-inverse
+\begin{align}
+    \big(E^A_p \big)^+ \,:=\, \big( (E^A_p)^\top E^A_p \big)^{-1} (E^A_p)^\top \ \in\, \R^{2\times 3} .
+\end{align}
+Geometrically, this matrix acts by
+1) projecting vectors in $\R^3$ to the image of $E_p^A$, which is just $E_p^A(\R^2) = \TpM \subset \R^3$, and
+2) applying the inverse of the isomorphism $E_p^A: \R^2 \to \TpM$ on this subspace.
+This means that the pseudo-inverse is indeed the inverse of $E_p^A$ on the tangent space, implying that the gauge map is given by
+\begin{align}
+    \psiTMp^A: \TpM \to \R^2, \ \ v \mapsto \big(E_p^A \big)^+ v \,.
+\end{align}
+Written out, the gauge map acts according to
+\begin{align}
+    \psiTMp^A(v)\ =&\ 
+    \Bigg( \mkern-9mu
+    \begin{array}{cc}
+        \langle e_1^A, e_1^A \rangle    & \langle e_1^A, e_2^A \rangle \\[4pt]
+        \langle e_2^A, e_1^A \rangle    & \langle e_2^A, e_2^A \rangle
+    \end{array}
+    \mkern-9mu \Bigg)^{\!-1}
+    \Bigg( \mkern-9mu
+    \begin{array}{cc}
+        \langle e_1^A, v \rangle \\[4pt]
+        \langle e_2^A, v \rangle
+    \end{array}
+    \mkern-9mu \Bigg)
+    \notag \\
+    \ =&\ 
+    \frac{1}{
+          \langle e_1^A, e_1^A \rangle \langle e_2^A, e_2^A \rangle
+        - \langle e_1^A, e_2^A \rangle \langle e_2^A, e_1^A \rangle
+    }
+    \Bigg( \mkern-9mu
+    \begin{array}{cc}
+        \phantom{\minus}\langle e_2^A, e_2^A \rangle   &          \minus \langle e_1^A, e_2^A \rangle \\[4pt]
+                 \minus \langle e_2^A, e_1^A \rangle   & \phantom{\minus}\langle e_1^A, e_1^A \rangle
+    \end{array}
+    \mkern-9mu \Bigg)
+    \Bigg( \mkern-9mu
+    \begin{array}{cc}
+        \langle e_1^A, v \rangle \\[4pt]
+        \langle e_2^A, v \rangle
+    \end{array}
+    \mkern-9mu \Bigg) \,.
+\end{align}
+Note that, in general, $\langle e_i^A, v \rangle \neq v^A_i$.
+However, if (and only if) $E^A_p$ is an orthonormal frame, i.e. for $G\leq\O2$, the gauge map is simply given by the projection of the tangent vector on the frame axes:
+\begin{align}\label{eq:embedding_gauge_map_orthonormal_frame}
+    \psiTMp^A(v)
+    \ =\ 
+    \big(E^A_p \big)^{\!\top} v
+    \ =\ 
+    \Bigg( \mkern-9mu
+    \begin{array}{cc}
+        \langle e_1^A, v \rangle \\[4pt]
+        \langle e_2^A, v \rangle
+    \end{array}
+    \mkern-9mu \Bigg)
+    \qquad \textup{for \emph{orthonormal} frames, i.e.}\ \langle e_i^A, e_j^A \rangle = \delta_{ij}
+\end{align}
+
+
+The explicit expression for the coordinate free Levi-Civita transporters \emph{along geodesics} is similar to that of the exponential map, with the difference that Rodrigues' rotation formula is not applied to rotate the source to the target point but tangent vectors between source and target.
+Let $\gamma$ be the shortest geodesic between $p\in S^2$ and $q\in {S^2 \backslash \mkern-1mu\minus\mkern1mu p}$.
+The rotation from $p$ to $q$ along this geodesic is then given by the axis $a = p\times q$ and angle $\alpha = \arccos\!\big( \langle p,q\rangle \big)$.
+In terms of these quantities, the Levi-Civita transport of an embedded tangent vector $v\in \TpM \subset \R^3$ along the geodesic $\gamma$ is given by the rotated vector
+\begin{align}\label{eq:sphere_transport_embedded}
+    \PTMgamma(v)\ =\ v \cos(\alpha) + (a\times v) \sin(\alpha) + \big(a\langle a,v\rangle\big) \big(1- \cos(\alpha) \big)
+\end{align}
+in $\TqM \subset \R^3$.
+Relative to gauges $\psiTMp^A$ and $\psiTMq^{\widetilde{A}}$ at the start point $q$ and end point $q$ of the geodesic, this transporter is expressed by the group element
+\begin{align}\label{eq:sphere_transporter_explicit_in_coords}
+    g_\gamma^{A\widetilde{A}}
+    \ =\ \psiTMp^A \circ \PTMgamma \circ \big(\psiTMq^{\widetilde{A}}\big)^{-1}
+    \ =\ \big(E_p^A\big)^+ \circ \PTMgamma \circ E_q^{\widetilde{A}} \,.
+\end{align}
+
+
+Isometry induced gauge transformations are relative to the explicit reference frames similarly given by the following matrix multiplication:
+\begin{align}\label{eq:embedded_sphere_isom_induced_gauge_trafo}
+    g_\phi^{A\widetilde{A}}(p)
+    \ =\ \psiTMphip^A \circ \phi \circ \big(\psiTMp^{\widetilde{A}}\big)^{-1}
+    \ =\ \big(E_{\phi(p)}^A \big)^{\!+} \phi\: E_p^{\widetilde{A}}
+\end{align}
