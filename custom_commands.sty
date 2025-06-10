@@ -1,0 +1,484 @@
+\ProvidesPackage{custom_commands.sty}
+
+\newcommand{\mypart}[1]{%
+    \cleardoublepage
+    \pagestyle{plain}
+    % toprule
+    \hrule height 1.\p@
+    \vskip 0.2in
+    \vskip -\parskip%
+    % title
+    \part{#1}
+    \vskip -0.03in
+    % bottomrule
+    \hrule height 1.\p@
+    \vskip 0.5in
+    \vskip -\parskip%
+}
+
+\newlength\bshft
+\bshft=.14pt\relax
+\def\fakebold#1{\ThisStyle{\ooalign{$\SavedStyle#1$\cr%
+  \kern-\bshft$\SavedStyle#1$\cr%
+  \kern\bshft$\SavedStyle#1$\cr%
+  \noalign{\vskip+.08pt}
+  \kern-\bshft$\SavedStyle#1$\cr%
+  \kern\bshft$\SavedStyle#1$}}}
+
+% graphics to tabular
+\newlength{\myx} % Variable zum Speichern der Bildbreite
+\newlength{\myy} % Variable zum Speichern der Bildhˆhe
+\newcommand\includegraphicstotab[2][\relax]{% 
+  % Abspeichern der Bildabmessungen 
+  \settowidth{\myx}{\includegraphics[{#1}]{#2}}% 
+  \settoheight{\myy}{\includegraphics[{#1}]{#2}}% 
+  % das eigentliche Einf¸gen 
+  \parbox[c][1.1\myy][c]{\myx}{% 
+  \includegraphics[{#1}]{#2}}% 
+}
+
+\usepackage[normalem]{ulem}
+\newcommand{\commutative}{\rotatebox{45}{\ensuremath{\:\!\circlearrowleft\:\!}}}
+\newcommand{\noncommutative}{\rotatebox{45}{\text{\sout{\ensuremath{\:\!\circlearrowleft\:\!}}}}}
+
+\DeclareMathSymbol{\shortminus}{\mathbin}{AMSa}{"39}
+\newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
+
+\newcommand{\ditto}{%
+    \tikz{
+        \draw [line width=0.12ex]
+            (-0.2ex,0) -- +(0,0.8ex)
+            ( 0.2ex,0) -- +(0,0.8ex);
+        \draw [line width=0.08ex]
+            (-0.6ex,0.4ex) -- +(-1.0em,0)
+            ( 0.6ex,0.4ex) -- +( 1.0em,0);
+    }%
+}
+
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cm}{\mathbb{C}}
+\newcommand*{\N}{\mathbb{N}}
+
+% group stuff
+\newcommand{\GL}[1]{\ensuremath{\operatorname{GL}(#1)}}
+\newcommand{\E}[1]{\ensuremath{\operatorname{E}(#1)}}
+\newcommand{\SE}[1]{\ensuremath{\operatorname{SE}(#1)}}
+\renewcommand{\O}[1]{\ensuremath{\operatorname{O}(#1)}}
+\newcommand{\SO}[1]{\ensuremath{\operatorname{SO}(#1)}}
+\newcommand{\U}[1]{\ensuremath{\operatorname{U}(#1)}}
+% finite
+\newcommand{\D}[1]{\ensuremath{\operatorname{D}_{#1}}}
+\newcommand{\C}[1]{\ensuremath{\operatorname{C}_{#1}}}
+\newcommand{\DN}{\ensuremath{\operatorname{D}_{\!N}}}
+\newcommand{\CN}{\ensuremath{\operatorname{C}_{\!N}}}
+\newcommand{\bC}[1]{\ensuremath{\mathbf{\operatorname{\bf C}_{#1}}}}
+\newcommand{\bD}[1]{\ensuremath{\mathbf{\operatorname{\bf D}_{#1}}}}
+\newcommand{\bCN}{\ensuremath{\mathbf{\operatorname{\bf C}_{\!N}}}}
+\newcommand{\bDN}{\ensuremath{\mathbf{\operatorname{\bf D}_{\!N}}}}
+
+
+\newcommand{\Trans}{\mathcal{T}}
+
+\newcommand{\Flip}{\mathscr{R}}
+\newcommand{\RM}{\mathscr{R}\mkern-1.8muM}
+\newcommand{\IsomRM}{\Isom_{\RM}}
+
+\newcommand{\Scale}{\mathscr{S}}
+\newcommand{\SM}{\mathscr{S}\mkern-1.8muM}
+\newcommand{\IsomSM}{\Isom_{\SM}}
+
+
+\newcommand{\rhotriv}{\rho_{\overset{}{\textup{triv}}}}
+\newcommand{\rhosign}{\rho_{\overset{}{\textup{sign}}}}
+\newcommand{\rhoreg}{\rho_{\overset{}{\textup{reg}}}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Euc}{\mathbb{E}}
+% TM
+\newcommand{\TM}{T\mkern-1.5muM}
+\newcommand{\TpM}{T_{\mkern-1.5mu p}\mkern-.5muM}
+\newcommand{\TqM}{T_{\mkern-1.5mu q}\mkern-.5muM}
+\newcommand{\TrM}{T_{\mkern-2.0mu r}\mkern-1.muM}
+\newcommand{\TnM}{T_{\mkern-1.5mu n}\mkern-1.muM}
+\newcommand{\TphipM}{T_{\mkern-1.5mu \phi(p)}\mkern-1muM}
+\newcommand{\TphipN}{T_{\mkern-1.5mu \phi(p)}\mkern-1muN}
+\newcommand{\TTM}{T\mkern1muT\mkern-1muM}
+\newcommand{\TTpM}{T\mkern1muT_p\mkern-1muM}
+\newcommand{\TvTpM}{T_vT_p\mkern-1muM}
+\newcommand{\TspM}{T_{\mkern-1.5mu p}^{\mkern-0mu *}\mkern-1muM}
+\newcommand{\TsM}{T^{\mkern0.5mu *}\mkern-3.5muM}
+\newcommand{\TrsM}{T^{\mkern1.mu r}_{\mkern1.mu s}\mkern-2.5muM}
+\newcommand{\SpM}{S^1_{\mkern-.5mu p}\mkern-.5muM}
+% FM
+\newcommand{\FM}{F\mkern-1.5muM}
+\newcommand{\FpM}{F_{\mkern-1.5mu p}\mkern-1.0muM}
+\newcommand{\FqM}{F_{\mkern-1.5mu q}\mkern-1.1muM}
+\newcommand{\FphipM}{F_{\mkern-1.6mu \phi(p)}\mkern-1.3muM}
+% GM
+\newcommand{\GM}{G\mkern-1.4muM}
+\newcommand{\GpM}{G_{\mkern-1.3mu p}\mkern-1.2muM}
+\newcommand{\GqM}{G_{\mkern-1.3mu q}\mkern-1.3muM}
+\newcommand{\GrM}{G_{\mkern-1.3mu r}\mkern-1.3muM}
+\newcommand{\GphipM}{G_{\mkern-1.5mu \phi(p)}\mkern-1.5muM}
+% HM
+\newcommand{\HM}{H\mkern-2.5muM}
+\newcommand{\HpM}{H_{\mkern-1.3mu p}\mkern-1.3muM}
+\newcommand{\HrM}{H_{\mkern-1.3mu r}\mkern-1.3muM}
+\newcommand{\HphipM}{H_{\mkern-1.6mu \phi(p)}\mkern-1.3muM}
+\newcommand{\HphirM}{H_{\mkern-1.6mu \phi(r)}\mkern-1.3muM}
+% A
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Ain}{\mathcal{A}_\textup{in}}
+\newcommand{\Aout}{\mathcal{A}_\textup{out}}
+\newcommand{\Ainp}{\mathcal{A}_{\textup{in},p}}
+\newcommand{\Aoutp}{\mathcal{A}_{\textup{out},p}}
+\newcommand{\Ainq}{\mathcal{A}_{\textup{in},q}}
+\newcommand{\Aoutq}{\mathcal{A}_{\textup{out},q}}
+\newcommand{\Ainr}{\mathcal{A}_{\textup{in},r}}
+\newcommand{\Aoutr}{\mathcal{A}_{\textup{out},r}}
+\newcommand{\expA}{\exp^*\mkern-7mu\mathcal{A}}
+
+% OM
+\newcommand{\OM}{\operatorname{O}\mkern-3.6muM}
+\newcommand{\OpM}{\operatorname{O}_{\mkern-1.1mu p}\mkern-3.4muM}
+\newcommand{\OphipM}{\operatorname{O}_{\mkern-1.1mu \phi(p)}\mkern-3.4muM}
+% SOM
+\newcommand{\SOM}{\operatorname{SO}\mkern-3.6muM}
+\newcommand{\SOpM}{\operatorname{SO}_{\mkern-1.1mu p}\mkern-3.2muM}
+% eM
+\newcommand{\eM}{\raisebox{.2pt}{$\raisebox{.4pt}{\protect\scalebox{.8}{$\{$}}\mkern-1.5mu e \mkern-.9mu\raisebox{.4pt}{\protect\scalebox{.8}{$\}$}}$} \mkern-2.muM}
+\newcommand{\epM}{\raisebox{.2pt}{$\raisebox{.4pt}{\protect\scalebox{.8}{$\{$}}\mkern-1.5mu e \mkern-.9mu\raisebox{.4pt}{\protect\scalebox{.8}{$\}$}}$}_{\mkern-1.2mup} \mkern-1.muM}
+\newcommand{\ephipM}{\raisebox{.2pt}{$\raisebox{.4pt}{\protect\scalebox{.8}{$\{$}}\mkern-1.5mu e \mkern-.9mu\raisebox{.4pt}{\protect\scalebox{.8}{$\}$}}$}_{\mkern-1.2mu\phi(p)} \mkern-1.2muM}
+
+\newcommand{\PsiTM}{ \Psi_{\protect\scalebox{.6}{$\!T\!M$}}}
+\newcommand{\PsiFM}{ \Psi_{\protect\scalebox{.6}{$\!F\!M$}}}
+\newcommand{\PsiGM}{ \Psi_{\protect\scalebox{.6}{$\!G\!M$}}}
+\newcommand{\PsiA}{  \Psi_{\protect\scalebox{.6}{$\!\A$}}}
+\newcommand{\PsiI}{  \Psi_{\protect\scalebox{.64}{$\!\I$}}}
+\newcommand{\PsiHom}{\Psi_{\protect\scalebox{.6}{\!Hom}}}
+\newcommand{\psiTMp}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$p$}}}
+\newcommand{\psiFMp}{ \psi_{\protect\scalebox{.6}{$F\!M,$}\protect\scalebox{.7}{$p$}}}
+\newcommand{\psiGMp}{ \psi_{\protect\scalebox{.6}{$G\!M,$}\protect\scalebox{.7}{$p$}}}
+\newcommand{\psiAp}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$p$}}}
+\newcommand{\psiI}[1]{\psi_{\overset{}{\protect\scalebox{.66}{$\mkern-2mu\I$},\protect\scalebox{.66}{$\mkern2mu#1$}}}}
+\newcommand{\psiHomp}{\psi_{\protect\scalebox{.6}{Hom,}\protect\scalebox{.7}{$p$}   }}
+\newcommand{\psidotp}{\psi_{\protect\scalebox{.6}{$(\cdot)$,}\protect\scalebox{.7}{$p$}}}
+\newcommand{\psiTMq}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$q$}}}
+\newcommand{\psiFMq}{ \psi_{\protect\scalebox{.6}{$F\!M,$}\protect\scalebox{.7}{$q$}}}
+\newcommand{\psiGMq}{ \psi_{\protect\scalebox{.6}{$G\!M,$}\protect\scalebox{.7}{$q$}}}
+\newcommand{\psiAq}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$q$}}}
+\newcommand{\psiTMr}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$r$}}}
+\newcommand{\psiFMr}{ \psi_{\protect\scalebox{.6}{$F\!M,$}\protect\scalebox{.7}{$r$}}}
+\newcommand{\psiGMr}{ \psi_{\protect\scalebox{.6}{$G\!M,$}\protect\scalebox{.7}{$r$}}}
+\newcommand{\psiAr}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$r$}}}
+\newcommand{\psiHomr}{\psi_{\protect\scalebox{.6}{Hom,}\protect\scalebox{.7}{$r$}   }}
+\newcommand{\psiTMphip}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psiFMphip}{ \psi_{\protect\scalebox{.6}{$F\!M,$}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psiGMphip}{ \psi_{\protect\scalebox{.6}{$G\!M,$}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psiAphip}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psiAphiinvp}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$\phiinv(p)$}}}
+\newcommand{\psiHomphip}{\psi_{\protect\scalebox{.6}{Hom,}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psidotphip}{\psi_{\protect\scalebox{.6}{$(\cdot)$,}\protect\scalebox{.7}{$\phi(p)$}}}
+\newcommand{\psiTMpiv}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$\mkern2mu\piTM\mkern-1mu(v)$}}}
+\newcommand{\psiGMxAinvt}{ \psi_{\protect\scalebox{.6}{$G\!M,$}\protect\scalebox{.7}{$(x^A)^{-1}(t)$}}}
+\newcommand{\psiAphipinvq}{  \psi_{\protect\scalebox{.6}{$\!\A,$}\protect\scalebox{.7}{$\phi_p^{-1}(q)$}}}
+\newcommand{\psiTMn}{ \psi_{\protect\scalebox{.6}{$T\!M,$}\protect\scalebox{.7}{$n$}}}
+
+\newcommand{\psiG}{\psi_{\!\overset{}{\protect\scalebox{.7}{$\mathcal{G}$}}}}
+\newcommand{\psiGneigh}{\psi_{\!\overset{}{\protect\scalebox{.7}{$\mathcal{G}$}_\textup{neigh} }}}
+
+\newcommand{\piTM}{ \pi_{\overset{}{\protect\scalebox{.6}{ $\!T\!M$}}}}
+\newcommand{\piTV}{ \pi_{\overset{}{\protect\scalebox{.6}{ $\!TV$}}}}
+\newcommand{\pioTM}{\pi_{\overset{}{\protect\scalebox{.6}{ $\!\overline{T\!M}$}}}}
+\newcommand{\piFM}{ \pi_{\overset{}{\protect\scalebox{.6}{ $\!F\!M$}}}}
+\newcommand{\piGM}{ \pi_{\overset{}{\protect\scalebox{.6}{ $\!G\!M$}}}}
+\newcommand{\piA}{  \pi_{\overset{}{\protect\scalebox{.6}{ $\!\!\A$}}}}
+\newcommand{\piHom}{\pi_{\overset{}{\protect\scalebox{.6}{ \!Hom}}}}
+\newcommand{\piE}{  \pi_{\overset{}{\protect\scalebox{.6}{ $\mkern-8mu E\!\!$ }}}}
+\newcommand{\piTTM}{\pi_{\overset{}{\protect\scalebox{.6}{ $\!TT\!M$}}}}
+\newcommand{\piTTpM}{\pi_{\overset{}{\protect\scalebox{.6}{$\!TT_p\mkern-1muM$}}}}
+\newcommand{\piTMarrow}{\xrightarrow{\protect\scalebox{.85}{$\pi_{\protect\scalebox{.6}{$TM$}}$}}}
+\newcommand{\piFMarrow}{\xrightarrow{\protect\scalebox{.85}{$\pi_{\protect\scalebox{.6}{$FM$}}$}}}
+\newcommand{\piGMarrow}{\xrightarrow{\protect\scalebox{.85}{$\pi_{\protect\scalebox{.6}{$GM$}}$}}}
+\newcommand{\piAarrow}{ \xrightarrow{\protect\scalebox{.85}{$\pi_{\protect\scalebox{.6}{$\!\A$}}$}}}
+\newcommand{\PTMgamma}{ \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!T\!M$}\mkern-2mu,\gamma}}}
+\newcommand{\PFMgamma}{ \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!F\!M$}\mkern-2mu,\gamma}}}
+\newcommand{\PGMgamma}{ \mathcal{P}_{\mkern-2mu\overset{}{\protect\scalebox{.6}{$\!G\!M$}\mkern-2mu,\gamma}}}
+\newcommand{\PAgamma}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\A$}  \mkern-0mu,\gamma}}}
+\newcommand{\PAingamma}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,\gamma}}}
+\newcommand{\PAinnp}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,n\leftarrow p}}}
+\newcommand{\PAinnxip}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,n\leftarrow \xi(p)}}}
+\newcommand{\PAexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
+\newcommand{\PAexpv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.7}{$\mkern1mu \piTM(v)\!\leftarrow\!\exp(v)$}}}}
+\newcommand{\PAinexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\Ain$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
+
+\newcommand{\piAin}{    \pi_{\overset{}{\protect\scalebox{.6 }{$  \!\!\A$}_\textup{in}   }}}
+\newcommand{\piAout}{   \pi_{\overset{}{\protect\scalebox{.6 }{$  \!\!\A$}_\textup{out}  }}}
+\newcommand{\piAl}{   \pi_{\overset{}{\protect\scalebox{.6 }{$  \!\!\A$}_l  }}}
+\newcommand{\PsiAl}{  \Psi_{\overset{}{\protect\scalebox{.65}{$\!\!\!\A$}_l   }}}
+\newcommand{\PsiAin}{  \Psi_{\overset{}{\protect\scalebox{.65}{$\!\!\!\A$}_\textup{in}   }}}
+\newcommand{\PsiAout}{ \Psi_{\overset{}{\protect\scalebox{.65}{$\!\!\!\A$}_\textup{out}  }}}
+\newcommand{\psiAinp}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{in} ,p}}}
+\newcommand{\psiAexp}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$} ,\exp_p\!v}}}
+\newcommand{\psiAinn}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{in} ,n}}}
+\newcommand{\psiAn}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$} ,n}}}
+\newcommand{\psiAinxip}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{in} ,\xi(p)}}}
+\newcommand{\psiAexpnop}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$} ,\exp(v)}}}
+\newcommand{\psiAinexp}{ \psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{in} ,\exp_p\!v}}}
+\newcommand{\psiAoutp}{\psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{out},p}}}
+\newcommand{\psiAoutphiinvp}{\psi_{\overset{}{\protect\scalebox{.65}{$  \!\!\A$}_\textup{out},\phi^{-1}(p)}}}
+
+\newcommand{\KG}{\mathscr{K}^G_{\rhoin\mkern-1mu,\rhoout}}
+\newcommand{\KR}{\mathscr{K}^{\Flip}_{\rhoin\mkern-1mu,\rhoout}}
+
+\newcommand{\Koo}{K_{\mkern-1mu 1 \mkern-1mu 1}}
+\newcommand{\Kot}{K_{\mkern-1mu 1 \mkern-1mu 2}}
+\newcommand{\Kto}{K_{\mkern-1mu 2 \mkern-1mu 1}}
+\newcommand{\Ktt}{K_{\mkern-1mu 2 \mkern-1mu 2}}
+
+\newcommand{\fin}{ f_\textup{\;\!\!in}}
+\newcommand{\fout}{f_\textup{\:\!\!out}}
+\newcommand{\Fin}{ F_\textup{\;\!\!in}}
+\newcommand{\Fout}{F_\textup{\:\!\!out}}
+\newcommand{\expf}{\exp^*\mkern-5muf}
+
+\newcommand{\Exps}{\operatorname{Exp}^*}
+\newcommand{\Expsp}{\operatorname{Exp}^*_p}
+\newcommand{\Expsn}{\operatorname{Exp}^*_n}
+\newcommand{\Expsphip}{\operatorname{Exp}^*_{\phi(p)}}
+\newcommand{\Expsphiinvp}{\operatorname{Exp}^*_{\phi^{-1}(p)}}
+\newcommand{\Expsf}{\Exps\mkern-5mu f}
+\newcommand{\Expspf}{\Expsp\mkern-2mu f}
+\newcommand{\Expsnf}{\Expsn\mkern-2mu f}
+\newcommand{\Expsfin}{\Exps\mkern-5mu \fin}
+\newcommand{\Expspfin}{\Expsp\mkern-2mu \fin}
+\newcommand{\Expsphipf}{\Expsphip\mkern-2mu f}
+\newcommand{\Expsphipfin}{\Expsphip\mkern-2mu \fin}
+\newcommand{\Expsphiinvpf}{\Expsphiinvp\mkern-2mu f}
+\newcommand{\Expsphiinvpfin}{\Expsphiinvp\mkern-2mu \fin}
+
+\newcommand{\cin}{ {c_\textup{in}}}
+\newcommand{\cout}{{c_\textup{out}}}
+\newcommand{\rhoin}{ \rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{in}}}}}
+\newcommand{\rhoout}{\rho_{\overset{}{\protect\scalebox{.6}{\;\!\!\textup{out}}}}}
+\newcommand{\rhoHom}{\rho_{\overset{}{\protect\scalebox{.6}{\textup{Hom}}}}}
+
+\newcommand{\onexone}{\mbox{${1\kern-2.65pt\times\kern-3pt1}$-convolution}}
+\newcommand{\onexones}{\mbox{${1\kern-2.65pt\times\kern-3pt1}$-convolutions}}
+\newcommand{\onexoneit}{\mbox{$\mathit{{1\kern-2.75pt\times\kern-3.1pt1}}$\emph{-convolution}}}
+\newcommand{\onexonesit}{\mbox{$\mathit{{1\kern-2.75pt\times\kern-3.1pt1}}$\emph{-convolutions}}}
+\newcommand{\onexoneGM}{\mbox{${1\kern-2.65pt\times\kern-3pt1}$ $\GM$-convolution}}
+\newcommand{\onexoneGMs}{\mbox{${1\kern-2.65pt\times\kern-3pt1}$ $\GM$-convolutions}}
+\newcommand{\onexoneGMit}{\mbox{$\mathit{{1\kern-2.75pt\times\kern-3.1pt1}}$ $\GM$\emph{-convolution}}}
+\newcommand{\onexoneGMsit}{\mbox{$\mathit{{1\kern-2.75pt\times\kern-3.1pt1}}$ $\GM$\emph{-convolutions}}}
+
+\newcommand{\phiinv}{\phi^{-1}\mkern-1mu}
+% pushforward
+\newcommand{\dphiTM}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muT\mkern-3muM$}}}}
+\newcommand{\dphiFM}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muF\mkern-2muM$}}}}
+\newcommand{\dphiGM}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}}
+\newcommand{\dphiOM}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\operatorname{O}\mkern-3muM$}}}}
+\newcommand{\dphiA}{   \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\A$          }}}}
+\newcommand{\dphiAin}{ \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Ain$        }}}}
+\newcommand{\dphiAout}{\phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Aout$       }}}}
+\newcommand{\dphiHom}{ \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,$\textup{Hom}          }}}}
+\newcommand{\dphiE}{   \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muE\mkern-4mu$ }}}}
+\newcommand{\dphiK}{   \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\mathscr{K}\mkern2mu$}}}}
+\newcommand{\dphidot}{ \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu(\cdot)$}}}}
+% pullback
+\newcommand{\dphiTMinv}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muT\mkern-3muM$}}}^{-1}}
+\newcommand{\dphiFMinv}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muF\mkern-2muM$}}}^{-1}}
+\newcommand{\dphiGMinv}{  \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}^{-1}}
+\newcommand{\dphiAinv}{   \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\A$          }}}^{-1}}
+\newcommand{\dphiAininv}{ \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Ain$        }}}^{-1}}
+\newcommand{\dphiAoutinv}{\phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Aout$       }}}^{-1}}
+\newcommand{\dphiHominv}{ \phi_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,$\textup{Hom}          }}}^{-1}}
+\newcommand{\dphipGM}{  (\phi_p)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}}
+\newcommand{\dphipTM}{  (\phi_p)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muT\mkern-3muM$}}}}
+\newcommand{\dphipA}{  (\phi_p)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\A$}}}}
+% stabilizer
+\newcommand{\Stab}[1]{\operatorname{Stab}_{#1}}
+\newcommand{\xiinv}{\xi^{\shortminus1}\mkern-1mu}
+% pushforward
+\newcommand{\dxiTM}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muT\mkern-3muM$}}}}
+\newcommand{\dxiFM}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muF\mkern-2muM$}}}}
+\newcommand{\dxiGM}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}}
+\newcommand{\dxiA}{   \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\A$          }}}}
+\newcommand{\dxiAin}{ \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Ain$        }}}}
+\newcommand{\dxiAout}{\xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Aout$       }}}}
+\newcommand{\dxiHom}{ \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,$Hom                   }}}}
+\newcommand{\dxiE}{   \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\!E$                   }}}}
+% pullback
+\newcommand{\dxiTMinv}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muT\mkern-3muM$}}}^{-1}}
+\newcommand{\dxiFMinv}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muF\mkern-2muM$}}}^{-1}}
+\newcommand{\dxiGMinv}{  \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}^{-1}}
+\newcommand{\dxiAinv}{   \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\A$          }}}^{-1}}
+\newcommand{\dxiAininv}{ \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Ain$        }}}^{-1}}
+\newcommand{\dxiAoutinv}{\xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu\Aout$       }}}^{-1}}
+\newcommand{\dxiHominv}{ \xi_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,$Hom                   }}}^{-1}}
+\newcommand{\dthetaGM}{  \theta_{\overset{}{\mkern-1mu*\mkern-1mu\scalebox{.55}{$,\mkern-2muG\mkern-2muM$}}}}
+
+\newcommand{\detg}{|\mkern-2mu \det g \mkern1mu|}
+
+\newcommand{\Hin}{H_{\textup{in}}}
+\newcommand{\Hout}{H_{\textup{out}}}
+\newcommand{\dmuIHin}{d\mu_{\overset{}{\scalebox{.64}{$\I/\mkern-1.5mu\Hin$}}}}
+
+\newcommand{\btr}{\scalebox{.8}{$\blacktriangleright$}}
+
+\newcommand{\tr}{\ensuremath{\operatorname{tr}\mkern-2mu}}
+\newcommand{\Ind}{\ensuremath{\operatorname{Ind}}}
+\newcommand{\Res}{\ensuremath{\operatorname{Res}}}
+
+\newcommand{\corr}{\ensuremath{\star}}
+\newcommand{\conv}{\ensuremath{*}}
+
+\DeclareMathOperator{\supp}{supp}
+
+\newcommand{\h}[1]{\mathrm{h}_{#1}}
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+\renewcommand{\vec}{\operatorname{vec}}
+
+\newcommand{\inj}{\operatorname{inj}}
+\newcommand{\proj}{\operatorname{proj}}
+
+\newcommand{\preim}[1]{\operatorname{preim}_{#1}}
+
+\newcommand{\MAA}{\mathcal{M}^{\mkern-1mu A}}
+\newcommand{\MBB}{\mathcal{M}^{\mkern-1mu B}}
+
+\usepackage{stackengine} 
+\newcommand{\ostar}{\raisebox{1pt}{\scalebox{1.1}{$\stackMath\mathbin{
+                                            \stackinset{c}{0ex}{c}{0ex}{\star}
+                                            {\scalebox{.6}{$\bigcirc$}}
+                                            }$}}}
+
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\Kp}{\mathcal{K}_p}
+\newcommand{\Kq}{\mathcal{K}_q}
+\newcommand{\Kr}{\mathcal{K}_r}
+\newcommand{\Kphip}{\mathcal{K}_{\phi(p)}}
+\newcommand{\KK}{ \mathcal{K}_{\mkern-2mu K}}
+\newcommand{\KKp}{ \mathcal{K}_{\mkern-2mu K \mkern-2mu, p}}
+\newcommand{\KKphip}{ \mathcal{K}_{\mkern-2mu K \mkern-2mu, \phi(p)}}
+
+\newcommand{\Q}{  \mathcal{Q}}
+\newcommand{\Qhat}{\widehat{\mathcal{Q}}}
+\newcommand{\TK}{ \mathscr{T}_{\overset{}{\mkern-0mu \mathcal{K}}}}
+\newcommand{\TKK}{\mathscr{T}_{\overset{}{\mkern-0mu \KK}}}
+\newcommand{\Krestr}{\mathcal{K}|_{
+                        r_{\overset{}{\protect\scalebox{.5}{$\mkern-1.5mu T\!M $}}} \mkern-1.5mu
+                        (\mathcal{I}\backslash\mkern-1.5mu T\mkern-1.5mu M)
+                    }}
+
+\newcommand{\KIfull}{\mathscr{K}_\textup{invar}^{\I}}
+\newcommand{\KIquot}{\mathscr{K}_\textup{quot}^{\I}}
+\newcommand{\KIquothat}{\raisebox{1pt}{$
+                            \stackMath\mathbin{
+                                              \stackinset{c}{-5.5pt}{c}{4.2pt}{ \widehat{\rule{10pt}{0pt} }}
+                                              {\KIquot}
+                                          }
+                                      $}
+                        }
+
+\newcommand{\mcFin}{ \mathcal{F}_{\!\overset{}{\textup{in}}}}
+\newcommand{\mcFout}{\mathcal{F}_{\!\overset{}{\textup{out}}}}
+\newcommand{\mcF}[1]{\mathcal{F}_{\!\overset{}{#1}}}
+\newcommand{\mcFinv}{\mathcal{F}_{\!\overset{}{\textup{inv}}}}
+\newcommand{\mctFin}{ \widetilde{\mathcal{F}}_{\!\overset{}{\textup{in}}}}
+\newcommand{\mctFout}{\widetilde{\mathcal{F}}_{\!\overset{}{\textup{out}}}}
+\newcommand{\mctF}[1]{\widetilde{\mathcal{F}}_{\!\overset{}{#1}}}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+
+\DeclareMathOperator{\Homeo}{Homeo}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Isom}{Isom}
+
+\DeclareMathOperator{\Gau}{Gau}
+
+\newcommand{\IsomM}{\Isom(\mkern-1.5mu M \mkern-.5mu)}
+\newcommand{\IsomplusM}{\Isom_+\mkern-2mu(M)}
+\newcommand{\IsomGM}{\Isom_{\GM}}
+\newcommand{\IsomHM}{\Isom_{\HM}}
+
+\newcommand{\DiffGM}{\Diff_{\GM}}
+\newcommand{\DiffM}{\Diff(\mkern-1.5mu M \mkern-.5mu)}
+
+\newcommand{\Aff}{\operatorname{Aff}}
+\newcommand{\AffE}{\Aff(\Euc_d)}
+\newcommand{\AffGM}{\Aff_{\mkern-2mu\GM}}
+
+\newcommand{\IsomOM}{\Isom_{\OM}}
+\newcommand{\IsomSOM}{\Isom_{\mkern1mu\SOM}}
+
+\newcommand{\IsomeM}{\Isom_{\scalebox{.85}{$\raisebox{.2pt}{$\raisebox{.5pt}{\scalebox{.75}{$\{$}}\mkern-1.3mu e \mkern-1.1mu\raisebox{.5pt}{\scalebox{.75}{$\}$}}$} \mkern-2.muM$}}}
+
+\newcommand{\IGM}{\I_{\GM}}
+
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\Edge}{\mathcal{E}}
+\newcommand{\AutG}{\Aut(\G)}
+
+\newcommand{\Ghat}{\widehat{\mathcal{G}}}
+\newcommand{\Vhat}{\widehat{\V}}
+\newcommand{\Ehat}{\widehat{\Edge}}
+\newcommand{\AutGhat}{\Aut(\Ghat)}
+
+\newcommand{\Gneigh}{\G_{\textup{neigh}}}
+\newcommand{\Ghatneigh}{\Ghat_{\textup{neigh}}}
+
+% Isometries and quotient spaces
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\IM}{   \mathcal{I}\backslash\mkern-1.5mu M               }
+\newcommand{\IsomGMM}{\IsomGM\mkern-6mu\backslash\mkern-1.mu M}
+\newcommand{\ITM}{  \mathcal{I}\backslash\mkern-1.5mu T\mkern-1.5mu M }
+\newcommand{\IHom}{ \mathcal{I}\backslash\mkern-4mu   \Hom            }
+\newcommand{\IHomA}{\mathcal{I}\backslash\mkern-4mu   \Hom(\Ain,\Aout)}
+\newcommand{\IE}{   \mathcal{I}\backslash\mkern-1.5mu E               }
+\newcommand{\piITM}{ \pi_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu\mathcal{I}\backslash\mkern-1.5mu T\mkern-1.5mu M $}}}}
+\newcommand{\piIHom}{\pi_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu\mathcal{I}\backslash\mkern-4mu   \Hom            $}}}}
+\newcommand{\piIE}{  \pi_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu\mathcal{I}\backslash\mkern-1.5mu E               $}}}}
+\newcommand{\rM}{  r_{\overset{}{\protect\scalebox{.6}{$\mkern-3mu   M    $}}}}
+\newcommand{\rTM}{ r_{\overset{}{\protect\scalebox{.6}{$\mkern-1.5mu T\!M $}}}}
+\newcommand{\sTM}{ s_{\overset{}{\protect\scalebox{.6}{$\mkern-1.5mu T\!M $}}}}
+\newcommand{\rHom}{r_{\overset{}{\protect\scalebox{.6}{$\mkern-2.5mu   \Hom $}}}}
+\newcommand{\rE}{  r_{\overset{}{\protect\scalebox{.6}{$\mkern-2.5mu   E    $}}}}
+\newcommand{\QM}{  Q_{\overset{}{\protect\scalebox{.6}{$\mkern-3.5mu M    $}}}}
+\newcommand{\QTM}{ Q_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu   T\!M $}}}}
+\newcommand{\QHom}{Q_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu   \Hom $}}}}
+\newcommand{\QE}{  Q_{\overset{}{\protect\scalebox{.6}{$\mkern-2mu   E    $}}}}
+\newcommand{\rIM}{  \rM  \mkern-1.5mu (\mathcal{I}\backslash\mkern-1.5mu M               \mkern-1.mu )}
+\newcommand{\rITM}{ \rTM \mkern-1.5mu (\mathcal{I}\backslash\mkern-1.5mu T\mkern-1.5mu M \mkern-1.mu )}
+\newcommand{\rIHom}{\rHom\mkern-1.5mu (\mathcal{I}\backslash\mkern-4mu   \Hom            \mkern-1.5mu)}
+\newcommand{\rIE}{  \rE  \mkern-1.5mu (\mathcal{I}\backslash\mkern-1.5mu E               \mkern-1.mu )}
+\newcommand{\ev}{\operatorname{ev}}
+
+\newcommand{\PhirNoArg}{  \Phi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3mu}
+\newcommand{\Phir}[1]{    \Phi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1) }
+\newcommand{\dPhirTM}[1]{ \Phi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu T\mkern-3muM$} }}}
+\newcommand{\dPhirHom}[1]{\Phi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu \Hom$} }}}
+
+\newcommand{\PhisNoArg}{  \Phi_{\mkern-1mu s_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3mu}
+\newcommand{\Phis}[1]{    \Phi_{\mkern-1mu s_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1) }
+\newcommand{\dPhisTM}[1]{ \Phi_{\mkern-1mu s_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu T\mkern-3muM$} }}}
+
+\newcommand{\xirNoArg}{    \xi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3mu}
+\newcommand{\xir}[1]{      \xi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1) }
+\newcommand{\dxirTM}[1]{   \xi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu T\mkern-3muM$} }}}
+\newcommand{\dxirHom}[1]{  \xi_{\mkern-1mu r_{\overset{}{\protect\scalebox{.45}{$\mkern-2mu T\!M $}}}} \mkern-3.5mu (#1)_{\overset{}{\mkern-2mu*\mkern-1mu\scalebox{.55}{$,\mkern-2mu \Hom$} }}}
+
+% bracket size between \big and \Big
+\usepackage{scalerel}
+\newcommand\pig[1]{\scalerel*[5.5pt]{\Big#1}{%
+  \ensurestackMath{\addstackgap[1.5pt]{\big#1}}}}
+
+\endinput

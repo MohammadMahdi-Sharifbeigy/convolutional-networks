@@ -1,0 +1,228 @@
+\documentclass{article}
+\usepackage{arxiv} 
+
+% Fix for displaying Latin acronyms properly in Persian text
+\newcommand{\CNN}{\lr{CNN}}
+\newcommand{\cnn}{\lr{CNN}}
+
+\usepackage[quiet]{fontspec} % Suppress font warnings
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{dsfont} % For doublestroke 1
+\usepackage[scr=dutchcal, scrscaled=1.05]{mathalfa} % Adds \mathscr
+\usepackage{bm}
+\usepackage{phoenician}
+\usepackage{anyfontsize}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\color{darkgray}\small}
+\usepackage{wrapfig}
+\usepackage{sidecap}
+\usepackage[font=small]{caption}
+\usepackage[font=small]{subcaption}
+\usepackage{booktabs}
+\usepackage{makecell} % Multi-line cells in tabular
+\usepackage{diagbox}
+\usepackage{multirow}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+\usepackage{pdflscape}
+\usepackage{enumitem}
+\setlist[description]{
+	labelwidth=0pt,
+	leftmargin=35pt,
+	itemindent=-20pt,
+	font=\normalfont\bfseries\rule[2.2pt]{2pt}{2pt}\space
+}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows, calc, positioning}
+\usepackage{tikz-cd}
+\tikzcdset{every label/.append style = {font = \small}}
+\usepackage{nicefrac}
+\usepackage{accents}
+\usepackage{afterpage}
+\usepackage{etoc}
+\usepackage[numbers]{natbib}
+\usepackage[amsmath,thmmarks,thref]{ntheorem} % Removed hyperref from here
+
+% Patch for \listtheorems alignment
+\makeatletter
+\def\thm@@thmline@name#1#2#3#4{%
+	\@dottedtocline{-2}{0em}{2.3em}%
+	{\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+	{#4}}
+\@ifpackageloaded{hyperref}{%
+	\def\thm@@thmline@name#1#2#3#4#5{%
+		\ifx\\#5\\%
+		\@dottedtocline{-2}{0em}{2.3em}%
+		{\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+		{#4}
+		\else
+		\ifHy@linktocpage\relax\relax
+		\@dottedtocline{-2}{0em}{2.3em}%
+		{\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}%
+		{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+		\else
+		\@dottedtocline{-2}{0em}{2.3em}%
+		{\hyper@linkstart{link}{#5}%
+			{\makebox[\widesttheorem][l]{#1 \protect\numberline{#2}}#3}\hyper@linkend}%
+		{#4}%
+		\fi
+		\fi}
+}
+\makeatother
+
+\newlength\widesttheorem
+\AtBeginDocument{
+	\settowidth{\widesttheorem}{گزاره ۱۰\quad}
+}
+
+% Theorem definitions
+\theoremstyle{plain}
+\theoremindent20pt
+\theoremheaderfont{\normalfont\bfseries\hspace{-\theoremindent}}
+\theoremseparator{.}
+\theorembodyfont{\itshape}
+\newtheorem{pro}{گزاره}[section]
+\newtheorem{lem}[pro]{لم}
+\newtheorem{cor}[pro]{نتیجه}
+\newtheorem{thm}[pro]{قضیه}
+\newtheorem{dfn}[pro]{تعریف}
+\newtheorem{exa}[pro]{مثال}
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\upshape\hspace{-\theoremindent}} % Changed from \it to \upshape
+\theoremseparator{:}
+\theoremsymbol{$\Box$}
+\newtheorem{proof}{اثبات}
+
+% Table of contents utilities
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\newcommand{\toclesslab}[3]{\bgroup\let\addcontentsline=\nocontentsline#1{#2\label{#3}}\egroup}
+
+\usepackage{sectsty}
+\partfont{\fontsize{16.2}{19.2}\bfseries\textsl}
+\renewcommand\part{%
+	\markboth{}{}\secdef\@part\@spart
+}
+
+% Load hyperref last (after xepersian)
+\usepackage[unicode]{hyperref}
+
+% Load xepersian early to avoid conflicts
+\usepackage{xepersian}
+\settextfont{B Zar} % Changed from BYas to avoid italic issues
+\setdigitfont{B Zar}
+
+% Fallback for small caps
+\newcommand{\fakesc}[1]{{\footnotesize #1}}
+
+% Address Underfull \vbox
+\raggedbottom
+
+% Title and author - Fixed structure
+\title{شبکه‌های کانولوشنی مستقل از مختصات}
+\author{%
+	شبکه‌های کانولوشنی مستقل از مختصات \\[0.5ex]
+	کانولوشن‌های یکسان نسبت به ایزومتری و پیمانه روی منیفلدهای ریمانی \\[2ex]
+	موریس وایلر، پاتریک فوره، اریک ورلینده، مکس ولینگ \\
+	دانشگاه آمستردام
+}
+
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\vspace*{-3ex}
+	
+	% Author details in a separate section
+	\begin{center}
+		\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+			موریس وایلر & پاتریک فوره \\
+			دانشگاه آمستردام & دانشگاه آمستردام \\
+			\texttt{m.weiler.ml@gmail.com} & \texttt{p.d.forre@uva.nl} \\[2ex]
+			اریک ورلینده & مکس ولینگ \\
+			دانشگاه آمستردام & دانشگاه آمستردام، \\
+			& پژوهشگاه هوش مصنوعی کوالکام \\
+			\texttt{e.p.verlinde@uva.nl} & \texttt{m.welling@uva.nl} \\
+		\end{tabular}
+	\end{center}
+	
+	\vspace*{-2ex}
+	\input{chapters/00_abstract}
+	\newpage
+	
+	\input{chapters/10_intro}
+	\input{chapters/11_outline}
+	\input{chapters/20_visual_intro}
+	\input{chapters/P1_intro}
+	\input{chapters/30_local_intro}
+	\input{chapters/31_gauges}
+	\input{chapters/32_feature_fields}
+	\input{chapters/33_local_transport}
+	\input{chapters/34_isometries}
+	\input{chapters/40_local_gauge_cnns_intro}
+	\input{chapters/41_pointwise_operations}
+	\input{chapters/42_gauge_conv}
+	\input{chapters/43_isometry_equivariance}
+	\input{chapters/50_mobius_conv}
+	\input{chapters/P2_intro}
+	\input{chapters/60_bundles_intro}
+	\input{chapters/61_general_bundles}
+	\input{chapters/62_TM_FM_associated_GL}
+	\input{chapters/63_associated_G_bundles}
+	\input{chapters/64_trivializations}
+	\input{chapters/65_bundle_transport}
+	\input{chapters/70_global_conv_intro}
+	\input{chapters/71_global_onexone}
+	\input{chapters/72_GMconv}
+	\input{chapters/80_isom_intro}
+	\input{chapters/81_isom_action}
+	\input{chapters/82_isom_equivariance}
+	\input{chapters/83_quotient_kernel_fields}
+	\input{chapters/P3_intro}
+	\input{chapters/90_Euclidean_intro}
+	\input{chapters/91_Euclidean_steerable_Rd}
+	\input{chapters/92_Euclidean_affine_geom}
+	\input{chapters/93_Euclidean_GM_conv}
+	\input{chapters/94_Euclidean_literature}
+	\input{chapters/100_polar_intro}
+	\input{chapters/101_polar_Euc2_rot}
+	\input{chapters/102_polar_Euc2_logpolar}
+	\input{chapters/103_polar_Euc3}
+	\input{chapters/110_spherical_intro}
+	\input{chapters/111_spherical_geometry}
+	\input{chapters/112_spherical_SO3}
+	\input{chapters/113_spherical_ico}
+	\input{chapters/120_mesh_intro}
+	\input{chapters/121_mesh_geometry}
+	\input{chapters/122_mesh_SO2}
+	\input{chapters/123_mesh_e-steer}
+	\newpage
+	\input{chapters/130_conclusions}
+	\newpage
+	
+	\appendix
+	\part{پیوست}
+	
+	\input{chapters/apx01_coordinate_bases}
+	\input{chapters/apx02_kernel_figures}
+	\input{chapters/apx03_tangent_integral}
+	\input{chapters/apx04_homogeneous_conv}
+	\input{chapters/apx05_lifting_iso_proof}
+	\input{chapters/apx06_spherical_kernels}
+	\input{chapters/apx07_smoothness_kernel_field_trafo}
+	\input{chapters/apx08_regular_fields_as_GM_functions}
+	
+	\newpage
+	\renewcommand{\bibname}{مراجع}
+	\bibliographystyle{plainnat}
+	\bibliography{refs}
+	
+\end{document}
