@@ -12,7 +12,9 @@
 \usepackage{dsfont} % For doublestroke 1
 \usepackage[scr=dutchcal, scrscaled=1.05]{mathalfa} % Adds \mathscr
 \usepackage{bm}
-\usepackage{phoenician}
+% Remove phoenician package as it conflicts with Persian text
+% \usepackage{phoenician}
+\usepackage{wrapfig}
 \usepackage{anyfontsize}
 \usepackage{mathtools}
 \usepackage{graphicx}
@@ -104,18 +106,31 @@
 \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 \newcommand{\toclesslab}[3]{\bgroup\let\addcontentsline=\nocontentsline#1{#2\label{#3}}\egroup}
 
+
+% Define custom commands for mathematical symbols and groups
+\newcommand{\TpM}{T_p M} % Tangent space
+\newcommand{\GL}[1]{\operatorname{GL}(#1)} % General Linear Group
+\newcommand{\Flip}{\text{Flip}} % Flip group
+\newcommand{\SO}[1]{\operatorname{SO}(#1)} % Special Orthogonal Group
+\newcommand{\Scale}{\text{Scale}} % Scale group (assuming this is a custom group name)
+\newcommand{\Ogroup}[1]{\operatorname{O}(#1)} % Orthogonal group (using a different name to avoid clash with \O)
+\newcommand{\GM}{\mathscr{M}} % G-structure, using mathrsfs for consistent look
+\newcommand{\IsomM}{\operatorname{Isom}(M)} % Isometries of manifold M
+\newcommand{\E}[1]{\operatorname{E}(#1)} % Euclidean group
+\newcommand{\FM}{\mathscr{F}M} % Frame bundle
+
 \usepackage{sectsty}
 \partfont{\fontsize{16.2}{19.2}\bfseries\textsl}
 \renewcommand\part{%
 	\markboth{}{}\secdef\@part\@spart
 }
 
-% Load hyperref last (after xepersian)
+% Load hyperref AFTER xepersian
 \usepackage[unicode]{hyperref}
 
-% Load xepersian early to avoid conflicts
+% Load xepersian BEFORE other packages that might conflict
 \usepackage{xepersian}
-\settextfont{B Zar} % Changed from BYas to avoid italic issues
+\settextfont{B Zar} % Using XB Zar instead of B Zar for better compatibility
 \setdigitfont{B Zar}
 
 % Fallback for small caps
@@ -124,38 +139,33 @@
 % Address Underfull \vbox
 \raggedbottom
 
-% Title and author - Fixed structure
-\title{شبکه‌های کانولوشنی مستقل از مختصات}
+% Title and author - Fixed structure with proper Persian layout
+\title{شبکه‌های کانولوشنی مستقل از مختصات \\ 
+\large کانولوشن‌های یکسان نسبت به ایزومتری و پیمانه روی منیفلدهای ریمانی}
+
+
 \author{%
-	شبکه‌های کانولوشنی مستقل از مختصات \\[0.5ex]
-	کانولوشن‌های یکسان نسبت به ایزومتری و پیمانه روی منیفلدهای ریمانی \\[2ex]
-	موریس وایلر، پاتریک فوره، اریک ورلینده، مکس ولینگ \\
-	دانشگاه آمستردام
+	موریس وایلر$^1$ \and
+	پاتریک فوره$^1$ \and
+	اریک ورلینده$^1$ \and
+	مکس ولینگ$^{1,2}$
 }
 
-\date{}
+\date{
+	\small
+	$^1$دانشگاه آمستردام \\
+	$^2$پژوهشگاه هوش مصنوعی کوالکام \\[1ex]
+	\begin{tabular}{cc}
+		\texttt{m.weiler.ml@gmail.com} & \texttt{p.d.forre@uva.nl} \\
+		\texttt{e.p.verlinde@uva.nl} & \texttt{m.welling@uva.nl}
+	\end{tabular}
+}
 
 \begin{document}
 	
-	\maketitle
-	
-	\vspace*{-3ex}
-	
-	% Author details in a separate section
-	\begin{center}
-		\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
-			موریس وایلر & پاتریک فوره \\
-			دانشگاه آمستردام & دانشگاه آمستردام \\
-			\texttt{m.weiler.ml@gmail.com} & \texttt{p.d.forre@uva.nl} \\[2ex]
-			اریک ورلینده & مکس ولینگ \\
-			دانشگاه آمستردام & دانشگاه آمستردام، \\
-			& پژوهشگاه هوش مصنوعی کوالکام \\
-			\texttt{e.p.verlinde@uva.nl} & \texttt{m.welling@uva.nl} \\
-		\end{tabular}
-	\end{center}
-	
-	\vspace*{-2ex}
+	% Remove the complex author details section and use proper abstract
 	\input{chapters/00_abstract}
+	\maketitle
 	\newpage
 	
 	\input{chapters/10_intro}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2024.12.27)  10 JUN 2025 15:12
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2024.12.27)  10 JUN 2025 20:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,8 +535,13 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(c:/texlive/2018/texmf-dist/tex/latex/archaic/phoenician.sty
-Package: phoenician 2006/02/05 v1.2 package for Phoenician fonts
+(c:/texlive/2018/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen154
+\WF@size=\dimen155
+\c@WF@wrappedlines=\count196
+\WF@box=\box43
+\WF@everypar=\toks23
+Package: wrapfig 2003/01/31  v 3.6
 )
 (c:/texlive/2018/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty
 Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
@@ -548,15 +553,15 @@ Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 (c:/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count196
-\calc@Bcount=\count197
-\calc@Adimen=\dimen154
-\calc@Bdimen=\dimen155
+\calc@Acount=\count197
+\calc@Bcount=\count198
+\calc@Adimen=\dimen156
+\calc@Bdimen=\dimen157
 \calc@Askip=\skip63
 \calc@Bskip=\skip64
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count198
+\calc@Ccount=\count199
 \calc@Cskip=\skip65
 )
 (c:/texlive/2018/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -566,15 +571,15 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count199
-\l_MT_multwidth_dim=\dimen156
+\g_MT_multlinerow_int=\count266
+\l_MT_multwidth_dim=\dimen158
 \origjot=\skip66
-\l_MT_shortvdotswithinadjustabove_dim=\dimen157
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen158
-\l_MT_above_intertext_sep=\dimen159
-\l_MT_below_intertext_sep=\dimen160
-\l_MT_above_shortintertext_sep=\dimen161
-\l_MT_below_shortintertext_sep=\dimen162
+\l_MT_shortvdotswithinadjustabove_dim=\dimen159
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen160
+\l_MT_above_intertext_sep=\dimen161
+\l_MT_below_intertext_sep=\dimen162
+\l_MT_above_shortintertext_sep=\dimen163
+\l_MT_below_shortintertext_sep=\dimen164
 )
 (c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -593,28 +598,20 @@ Package graphics Info: Driver file: xetex.def on input line 99.
 (c:/texlive/2018/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen163
-\Gin@req@width=\dimen164
+\Gin@req@height=\dimen165
+\Gin@req@width=\dimen166
 )
 (c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count266
-\float@exts=\toks23
-\float@box=\box43
-\@float@everytoks=\toks24
-\@floatcapt=\box44
+\c@float@type=\count267
+\float@exts=\toks24
+\float@box=\box44
+\@float@everytoks=\toks25
+\@floatcapt=\box45
 )
 (c:/texlive/2018/texmf-dist/tex/latex/marginnote/marginnote.sty
 Package: marginnote 2017/04/22 v1.2b non floating margin notes for LaTeX
-\c@mn@abspage=\count267
-)
-(c:/texlive/2018/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen165
-\WF@size=\dimen166
-\c@WF@wrappedlines=\count268
-\WF@box=\box45
-\WF@everypar=\toks25
-Package: wrapfig 2003/01/31  v 3.6
+\c@mn@abspage=\count268
 )
 (c:/texlive/2018/texmf-dist/tex/latex/sidecap/sidecap.sty
 Package: sidecap 2003/06/06 v1.6f SideCap Package (RN/HjG)
@@ -1786,7 +1783,7 @@ ass
 )
 \g__fontspec_family_BZar_int=\count405
 Package xepersian-mathsdigitspec Info: DefiningthedefaultPersianmathsdigitsfont
-as'B Zar' on input line 119.
+as'B Zar' on input line 134.
 \symOPERATORS=\mathgroup9
 \symnew@mathbf@font@digits=\mathgroup10
 \symnew@mathit@font@digits=\mathgroup11
@@ -1795,24 +1792,24 @@ as'B Zar' on input line 119.
 (./GaugeCNNTheory.aux)
 \openout1 = `GaugeCNNTheory.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1888,8 +1885,9 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box95
 ABD: EveryShipout initializing macros
-No file GaugeCNNTheory.toc.
-Package hyperref Info: Link coloring OFF on input line 138.
+\Etoc@tf=\read3
+Package hyperref Info: Link coloring OFF on input line 164.
+
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1898,9 +1896,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count406
 )
-LaTeX Info: Redefining \ref on input line 138.
-LaTeX Info: Redefining \pageref on input line 138.
-LaTeX Info: Redefining \nameref on input line 138.
+LaTeX Info: Redefining \ref on input line 164.
+LaTeX Info: Redefining \pageref on input line 164.
+LaTeX Info: Redefining \nameref on input line 164.
 
 (./GaugeCNNTheory.out) (./GaugeCNNTheory.out)
 \@outlinefile=\write4
@@ -1908,22 +1906,22 @@ LaTeX Info: Redefining \nameref on input line 138.
 
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 138.
-LaTeX Font Info:    Try loading font information for U+msa on input line 141.
+LaTeX Info: Redefining \selectfont on input line 164.
+ (./chapters/00_abstract.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 141.
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Font Warning: Font shape `TU/BZar(1)/m/it' undefined
-(Font)              using `TU/BZar(1)/m/n' instead on input line 141.
+(Font)              using `TU/BZar(1)/m/n' instead on input line 2.
 
-(./chapters/00_abstract.tex
 
 LaTeX Font Warning: Font shape `TU/BZar(0)/bx/sc' undefined
 (Font)              using `TU/BZar(0)/bx/n' instead on input line 7.
@@ -1953,16 +1951,680 @@ ping=parsidigits;!
 File: figures/mobius_conv_gauges.pdf Graphic file (type pdf)
 <use figures/mobius_conv_gauges.pdf>
 )
-Underfull \hbox (badness 10000) in paragraph at lines 4--159
+Underfull \hbox (badness 10000) in paragraph at lines 4--169
 [][]
  []
 
 [1
 
 
-]
+] (./chapters/10_intro.tex
+File: figures/satellite_kernels.pdf Graphic file (type pdf)
+<use figures/satellite_kernels.pdf>
 
-! LaTeX Error: File `chapters/10_intro.tex' not found.
+! Undefined control sequence.
+l.32 یک مثال برجسته شبکه‌های کانولوشنی (\CNNs
+                                             ) هستند که از طریق اتصال محلی و...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.34 با توجه به موفقیت تجربی قابل توجه \CNNهای
+                                               اقلیدسی، علاقه زیادی به تعمیم...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \R 
+                   
+l.38 ...م شبکه‌های کانولوشنی از فضاهای اقلیدسی $\R
+                                                  ^d$ به منیفلدهای ریمانی عم...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no – in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no – in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+
+LaTeX Warning: Reference `fig:intro_kernel_alignment_trivial' on page 2 undefin
+ed on input line 47.
+
+! Undefined control sequence.
+<recently read> \R 
+                   
+l.48 ...انونی (منحصر به فرد ارجح) صفحه اقلیدسی $\R
+                                                  ^2$، همانطور که در بالا نش...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.48 ...ت، منجر به \emph{میدان کرنل} معمول \CNNهای
+                                                   اقلیدسی می‌شود.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+File: figures/GpM_trivial.pdf Graphic file (type pdf)
+<use figures/GpM_trivial.pdf>
+Missing character: There is no آ in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no آ in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no آ in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no آ in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+
+\endL or \endR problem (0 missing, 1 extra) in paragraph at lines 60--62
+ [][] [][][] 
+ []
+
+File: figures/GpM_reflect.pdf Graphic file (type pdf)
+<use figures/GpM_reflect.pdf>
+Missing character: There is no ب in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no ب in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no ب in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no ب in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+
+\endL or \endR problem (0 missing, 1 extra) in paragraph at lines 67--69
+ [][] [][][] 
+ []
+
+File: figures/GpM_SO2.pdf Graphic file (type pdf)
+<use figures/GpM_SO2.pdf>
+File: figures/GpM_scale.pdf Graphic file (type pdf)
+<use figures/GpM_scale.pdf>
+Missing character: There is no د in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no د in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no د in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+Missing character: There is no د in font [lmroman10-regular]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;!
+
+\endL or \endR problem (0 missing, 1 extra) in paragraph at lines 81--83
+ [][] [][][] 
+ []
+
+
+Package caption Warning: \label without proper reference on input line 61.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_a' on page 2 undefined on input line 93.
+
+
+Package caption Warning: \label without proper reference on input line 68.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_b' on page 2 undefined on input line 93.
+
+
+Package caption Warning: \label without proper reference on input line 82.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_d' on page 2 undefined on input line 93.
+
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+
+Package caption Warning: \label without proper reference on input line 61.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_a' on page 2 undefined on input line 93.
+
+
+Package caption Warning: \label without proper reference on input line 68.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_b' on page 2 undefined on input line 93.
+
+
+Package caption Warning: \label without proper reference on input line 82.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:GpM_d' on page 2 undefined on input line 93.
+
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no S in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no c in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no a in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no e in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+
+LaTeX Font Warning: Font shape `TU/BZar(0)/m/sc' undefined
+(Font)              using `TU/BZar(0)/m/n' instead on input line 105.
+
+[2]
+LaTeX Font Info:    Font shape `U/dutchscr/m/n' will be
+(Font)              scaled to size 10.50003pt on input line 122.
+LaTeX Font Info:    Font shape `U/dutchscr/m/n' will be
+(Font)              scaled to size 7.35002pt on input line 122.
+LaTeX Font Info:    Font shape `U/dutchscr/m/n' will be
+(Font)              scaled to size 5.25002pt on input line 122.
+
+
+LaTeX Warning: Reference `fig:G_structures_intro' on page 3 undefined on input 
+line 123.
+
+
+LaTeX Warning: Reference `fig:gauge_trafos' on page 3 undefined on input line 1
+30.
+
+
+LaTeX Warning: Reference `eq:G-steerable_kernel_space' on page 3 undefined on i
+nput line 135.
+
+
+LaTeX Warning: Reference `footdir@1' on page 3 undefined on input line 139.
+
+
+LaTeX Warning: Reference `footdir@2' on page 3 undefined on input line 139.
+
+LaTeX Font Info:    Font shape `U/dutchscr/m/n' will be
+(Font)              scaled to size 9.45003pt on input line 139.
+LaTeX Font Info:    Font shape `U/dutchscr/m/n' will be
+(Font)              scaled to size 6.30002pt on input line 139.
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+
+LaTeX Warning: Reference `fig:intro_steerable_kernel' on page 3 undefined on in
+put line 140.
+
+
+LaTeX Warning: Reference `fig:intro_kernel_alignment_reflect' on page 3 undefin
+ed on input line 141.
+
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+[3]
+
+LaTeX Warning: Reference `fig:lizard_conv_egg_intro' on page 4 undefined on inp
+ut line 146.
+
+
+LaTeX Warning: Reference `fig:isom_invariant_kernel_field_intro' on page 4 unde
+fined on input line 149.
+
+! Undefined control sequence.
+<recently read> \IsomGM 
+                        
+l.151 ...$\GM$ (حفظ‌کننده فاصله) به عنوان $\IsomGM
+                                                   \leq \IsomM$， این بدان مع...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ， in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+! Undefined control sequence.
+<recently read> \IsomGM 
+                        
+l.151 ...نی است که کانولوشن‌های ما دقیقاً $\IsomGM
+                                                  $-تناوب‌پذیر هستند.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `fig:intro_invariant_kernel_fields_plane' on page 4 un
+defined on input line 152.
+
+
+LaTeX Warning: Reference `fig:G_structures_intro' on page 4 undefined on input 
+line 153.
+
+
+LaTeX Warning: Reference `fig:intro_lizard' on page 4 undefined on input line 1
+58.
+
+Missing character: There is no – in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+! Undefined control sequence.
+<recently read> \IsomGM 
+                        
+l.161 ...یک $\Ogroup{d}$-ساختار ناوردا با $\IsomGM
+                                                   = \E{d}$ بر روی $\R^d$ ان...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \R 
+                   
+l.161 ...ار ناوردا با $\IsomGM = \E{d}$ بر روی $\R
+                                                  ^d$ انتخاب کرد، مشابه $\SO...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `fig:G_structure_intro_g' on page 4 undefined on input
+ line 161.
+
+Missing character: There is no – in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+
+LaTeX Warning: Reference `fig:G_structure_intro_d' on page 4 undefined on input
+ line 163.
+
+! Undefined control sequence.
+l.170 این کار شامل انواع مختلف \CNNها
+                                      در فضاهای اقلیدسی، \CNNهای کروی و \CNN...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.170 ...ع مختلف \CNNها در فضاهای اقلیدسی، \CNNهای
+                                                   کروی و \CNNها روی سطوح عم...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.170 ... در فضاهای اقلیدسی، \CNNهای کروی و \CNNها
+                                                   روی سطوح عمومی (مانند شبک...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `tab:network_instantiations' on page 4 undefined on in
+put line 172.
+
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no F in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no l in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no i in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+Missing character: There is no p in font B Zar/OT:script=arab;language=DFLT;map
+ping=parsidigits;!
+! Undefined control sequence.
+l.187 \CNNهای
+              مستقل از مختصات ما تعمیم‌هایی از \emph{\CNNهای استیریبل}~\cite...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \CNNهای 
+                        
+l.187 ... ما تعمیم‌هایی از \emph{\CNNهای استیریبل}
+                                                  ~\cite{Cohen2017-STEER,3d_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package natbib Warning: Citation `Cohen2017-STEER' on page 4 undefined on input
+ line 187.
+
+
+Package natbib Warning: Citation `3d_steerableCNNs' on page 4 undefined on inpu
+t line 187.
+
+
+Package natbib Warning: Citation `Weiler2019_E2CNN' on page 4 undefined on inpu
+t line 187.
+
+
+Package natbib Warning: Citation `Cohen2019-generaltheory' on page 4 undefined 
+on input line 187.
+
+
+Package natbib Warning: Citation `lang2020WignerEckart' on page 4 undefined on 
+input line 187.
+
+! Undefined control sequence.
+l.188 در حالی که \CNNهای
+                         استیریبل بر تبدیل‌های \emph{فعال، سراسری} میدان‌های...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.188 ...ی} میدان‌های ویژگی تمرکز می‌کنند، \CNNهای
+                                                   مستقل از مختصات تبدیل‌های...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `footdir@3' on page 4 undefined on input line 191.
+
+
+LaTeX Warning: Reference `footdir@4' on page 4 undefined on input line 191.
+
+! Undefined control sequence.
+l.192 ما نسخه‌های اولیه نظریه \CNNهای
+                                      مستقل از مختصات (''\CNNهای تناوب‌پذیر ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.192 ... نظریه \CNNهای مستقل از مختصات (''\CNNهای
+                                                   تناوب‌پذیر گیج'') را در ک...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package natbib Warning: Citation `gaugeIco2019' on page 4 undefined on input li
+ne 192.
+
+
+Package natbib Warning: Citation `deHaan2020meshCNNs' on page 4 undefined on in
+put line 192.
+
+)
+
+! LaTeX Error: File `chapters/11_outline.tex' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: tex)
@@ -1971,17 +2633,17 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.161 ^^I\input{chapters/10_intro}
-                                  ^^M
+l.172 ^^I\input{chapters/11_outline}
+                                    ^^M
 *** (cannot \read from terminal in nonstop modes)
 
  
 Here is how much of TeX's memory you used:
- 38043 strings out of 492970
- 743460 string characters out of 6137297
- 903784 words of memory out of 5000000
- 41331 multiletter control sequences out of 15000+600000
- 542758 words of font info for 99 fonts, out of 8000000 for 9000
+ 38059 strings out of 492970
+ 745566 string characters out of 6137297
+ 909341 words of memory out of 5000000
+ 41320 multiletter control sequences out of 15000+600000
+ 546741 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 56i,11n,92p,10417b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
-Output written on GaugeCNNTheory.pdf (1 page).
+ 56i,11n,92p,10417b,697s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on GaugeCNNTheory.pdf (3 pages).
