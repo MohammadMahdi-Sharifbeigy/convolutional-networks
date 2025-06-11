@@ -1,0 +1,362 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection[\texorpdfstring{کانولوشن‌های \lr{GM} با اندازه ${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} ]%
+         {کانولوشن‌های \lr{GM} با اندازه \texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1}}
+\label{sec:onexone}
+
+
+\onexoneGMs میدان‌های ویژگی ورودی $\fin\in\Gamma(\Ain)$ را به میدان‌های ویژگی خروجی $\fout\in\Gamma(\Aout)$ با نگاشت خطی هر بردار ویژگی ورودی منفرد $\fin(p)\in\Ainp\cong\R^{\cin}$ به یک بردار ویژگی خروجی $\fout(p)\in\Aoutp\cong\R^{\cout}$ در همان مکان $p\in M$ نگاشت می‌کنند.
+ویژگی کانولوشنی با \emph{اشتراک‌گذاری} نگاشت خطی از $\Ainp$ به $\Aoutp$ بین مکان‌های فضایی مختلف پیاده‌سازی می‌شود.
+با این حال، در حالی که فضاهای ویژگی $\Ainp$ و $\Ainq$ و همچنین $\Aoutp$ و $\Aoutq$ برای $p,q\in M$ مختلف با یکدیگر ایزومورف هستند، اگر گروه ساختار $G$ در نظر گرفته شده غیربدیهی باشد، هیچ ایزومورفیسم کانونی بین آنها وجود ندارد.
+بنابراین، مشخص نیست که چگونه نگاشت خطی می‌تواند بین مکان‌های مختلف به اشتراک گذاشته شود.
+همانطور که قبلاً در مقدمه این بخش اشاره شد، این مسئله با در نظر گرفتن کرنل‌های \lr{G}-هم‌متغیر که نسبت به انتخاب خاص ایزومورفیسم یا پیمانه بی‌تفاوت هستند، حل می‌شود.
+اختیاری بودن بدیهی‌سازی که از \lr{G}-اطلس انتخاب می‌شود، استقلال از مختصات $\GM$ را در \onexoneGMs منعکس می‌کند.
+
+
+از نظر ریاضی، \onexoneGMs را می‌توان یا به عنوان \lr{M}-مورفیسم‌های کلاف برداری خاص یا از طریق مقاطع متناظر کلاف‌های هومومورفیسم (الحاقی) $\Hom(\Ain,\Aout)$ فرمول‌بندی کرد.
+از آنجایی که بعداً به هر دو مفهوم نیاز داریم، هر دو دیدگاه را در بخش‌های بعدی~\ref{sec:onexone_M_morphism} و~\ref{sec:onexone_hom_section} معرفی خواهیم کرد.
+
+
+\subsubsection[\texorpdfstring{کانولوشن‌های \lr{GM} با اندازه ${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} به عنوان \lr{M}-مورفیسم‌های کلاف برداری]%
+          {کانولوشن‌های \lr{GM} با اندازه \texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} به عنوان \lr{M}-مورفیسم‌های کلاف برداری}
+\label{sec:onexone_M_morphism}
+
+
+\onexoneGMs را می‌توان بر حسب \emph{\lr{M}-مورفیسم‌های کلاف برداری} هموار خاصی که وزن‌ها را در موقعیت‌های مکانی به اشتراک می‌گذارند، رسمی‌سازی کرد.
+با نادیده گرفتن الزام به اشتراک‌گذاری وزن‌ها در حال حاضر، چنین \lr{M}-مورفیسم کلاف برداری $\mathcal{C}$ یک نگاشت کلاف هموار است که نمودار جابجایی زیر را برآورده می‌کند:
+\begin{equation}\label{eq:bundle_morphism_onexone}
+    \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+        % ROW 1
+        \Ain
+            \arrow[rd, "\piAin"']
+            \arrow[rr, "\mathcal{C}"]
+        & &
+        \Aout
+            \arrow[ld, "\piAout"]
+        \\
+        % ROW 2
+        & M
+    \end{tikzcd}
+\end{equation}
+جابجایی‌پذیری $\piAin = \piAout \!\circ\, \mathcal{C}$ تضمین می‌کند که هر تار $\Ainp$ به تار $\Aoutp$ روی همان نقطه $p\in M$ نگاشت می‌شود (که باعث پیدایش «\lr{M}» در عبارت \lr{M}-مورفیسم می‌شود).
+به عنوان یک مورفیسم کلاف برداری، محدودیت $\mathcal{C}\!\!\;|_p: \Ainp\to\Aoutp$ به یک تار منفرد، علاوه بر این، به صورت خطی تعریف می‌شود.
+نسبت به یک بدیهی‌سازی محلی $\PsiAin^A$ از $\Ain$ و $\PsiAout^A$ از $\Aout$، نگاشت کلاف در هر نقطه $p\in U^A$ توسط یک ماتریس نمایش داده می‌شود:
+\begin{align}\label{eq:bundle_morphism_onexone_triv_local}
+    \mathcal{C}^A\!\!\;|_p\ :=\  \psiAoutp^A \circ \mathcal{C}\!\;|_p \circ \big(\psiAinp^A\big)^{-1}\ \in\, \R^{\cout\times\cin} \,.
+\end{align}
+ارتباط آن با یک مختصاتی‌سازی دوم $\mathcal{C}^B$ در $p\in U^A\cap U^B$ به صورت زیر داده می‌شود:
+\begin{align}\label{eq:onexone_gaugetrafo}
+    \mathcal{C}^B\!\!\;|_p \ =\ \rhoout\big(g_p^{BA}\big)\; \mathcal{C}^A\!\!\;|_p\; \rhoin\big(g_p^{BA}\big)^{-1} \,,
+\end{align}
+که از نمودار جابجایی زیر مشهود است:
+\begin{equation}
+\begin{tikzcd}[column sep=65pt, row sep=30, font=\normalsize]
+    \R^{\cin}
+        \arrow[dd, "\rhoin\big(g_p^{BA}\big)\ "']
+        \arrow[rrr, "\mathcal{C}^A\!\!\;|_p"]
+    & &[-3ex] &
+    \R^{\cout}
+        \arrow[dd, "\ \rhoout\big(g_p^{BA}\big)"]
+    \\
+    &
+    \Ainp
+        \arrow[r, "\mathcal{C}\!\!\;|_p"]
+        \arrow[ul, "\psiAinp^A"]
+        \arrow[dl, "\psiAinp^B"']
+    &
+    \Aoutp
+        \arrow[ur, "\psiAoutp^A"']
+        \arrow[dr, "\psiAoutp^B"]
+    \\
+    \R^{\cin}
+        \arrow[rrr, "\mathcal{C}^B\!\!\;|_p"']
+    & & &
+    \R^{\cout}
+\end{tikzcd}
+\end{equation}
+
+
+نگاشت کلاف $\mathcal{C}$ بر روی میدان‌های ویژگی ورودی $\fin \in \Gamma(\Ain)$ عمل می‌کند تا میدان‌های ویژگی خروجی تولید کند:
+\begin{align}
+    \fout = \mathcal{C} \circ \fin
+    \quad \in\ \ \Gamma(\Aout) \,.
+\end{align}
+بر حسب یک نمودار جابجایی، این نگاشت به صورت زیر به تصویر کشیده می‌شود:
+\begin{equation}\label{eq:bundle_morphism_onexone_section}
+    \begin{tikzcd}[row sep=3.5em, column sep=2.5em]
+        % ROW 1
+        \Ain
+            \arrow[rr, "\mathcal{C}"]
+        & &
+        \Aout
+        \\
+        % ROW 2
+        & M \arrow[ul, "\fin"]
+            \arrow[ur, "\fout"']
+    \end{tikzcd} ,
+\end{equation}
+
+
+برای اینکه یک \lr{M}-مورفیسم کلاف برداری $\mathcal{C}_{K_{\!1\!\times\!1}}$ نماینده یک \onexoneGM باشد، باید بر حسب یک الگوی کرنل \onexoneGM\ یعنی $K_{\!1\!\times\!1} \in \R^{\cout\times\cin}$ پارامتری شود که با مختصاتی‌سازی‌ها در تمام موقعیت‌های مکانی به اشتراک گذاشته شده است.
+همانطور که قبلاً بحث شد، برای تضمین \emph{استقلال از مختصات $\GM$}، هیچ پیمانه خاصی نباید ترجیح داده شود.
+بنابراین لازم است که \emph{وزن‌ها با تمام بدیهی‌سازی‌های $X \in \mathfrak{X}$ از \lr{G}-اطلس $\mathscr{A}^G$ به طور همزمان به اشتراک گذاشته شوند}، یعنی لازم است:
+\begin{align}\label{eq:weight_sharing_onexone}
+    \mathcal{C}_{K_{\!1\!\times\!1}}^X\!\big|_p\ =\ K_{\!1\!\times\!1}
+    \qquad \textup{برای \emph{هر} پیمانه}\,\ X \in \mathfrak{X}\,\ \textup{با}\,\ p\in U^X \,.
+\end{align}
+از رفتار تبدیل بین مختصاتی‌سازی‌های مختلف در معادله~\eqref{eq:onexone_gaugetrafo} نتیجه می‌شود که الگوی کرنل باید قید خطی زیر را برآورده کند:
+\begin{align}\label{eq:onexone_kernel_constraint}
+    \rhoout(g)\, K_{\!1\!\times\!1}\, \rhoin(g)^{-1}  =\, K_{\!1\!\times\!1} \qquad\forall g\in G,
+\end{align}
+یعنی، باید یک درهم‌تننده (یک نگاشت خطی هم‌متغیر) باشد.
+فضای برداری
+\begin{align}
+    \Hom_G(\rhoin,\rhoout)\ :=\ 
+    \pig\{ K_{\!1\!\times\!1} \in \R^{\cout\times\cin}\ \pig|\ 
+    K_{\!1\!\times\!1} \rhoin(g) = \rhoout(g) K_{\!1\!\times\!1}\ \ \forall g\in G \pig\}
+\end{align}
+نگاشت‌های درهم‌تننده، فضای کرنل‌های \onexone\ مستقل از مختصات $\GM$ را به طور کامل مشخص می‌کند.
+همانطور که قبلاً در بخش~\ref{sec:gauge_1x1} ذکر شد، \emph{لم شور}~\cite{gallier2019harmonicRepr} ایجاب می‌کند که الزام به اینکه $K_{\!1\!\times\!1}$ یک درهم‌تننده باشد، از نگاشت بین میدان‌هایی که تحت نمایش‌های کاهش‌ناپذیر غیرایزومورف تبدیل می‌شوند، از طریق \onexoneGMs جلوگیری می‌کند.
+کانولوشن‌های عمومی‌تر $\GM$ با کرنل‌های با گستره فضایی، که در بخش~\ref{sec:global_conv} تعریف شده‌اند، این مسئله را حل خواهند کرد.
+
+
+با این مقدمات، آماده‌ایم تا تعریف دقیقی از \onexoneGMs ارائه دهیم:
+\begin{dfn}[\onexoneGM]
+\label{dfn:onexone}
+    یک \onexoneGM یک نگاشت است
+    \begin{align}
+        K_{\!1\!\times\!1} \ostar :\ \Gamma(\Ain) \to \Gamma(\Aout),\ \ \ 
+        \fin \,\mapsto\, K_{\!1\!\times\!1} \,\ostar\, \fin \,:=\, \mathcal{C}_{K_{\!1\!\times\!1}}\! \circ \fin
+    \end{align}
+    که توسط یک کرنل \emph{درهم‌تننده} \onexoneGM یعنی $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout)$ پارامتری می‌شود.
+    در اینجا $\mathcal{C}_{K_{\!1\!\times\!1}}$ \lr{M}-مورفیسم کلاف برداری هموار منحصر به فرد بین $\Ain$ و $\Aout$ است که در پیمانه‌های \emph{دلخواه} $\psiAinp$ و $\psiAoutp$ از \lr{G}-اطلس مورد نظر به صورت نقطه‌ای تعریف می‌شود:
+    \begin{align}
+        \mathcal{C}_{K_{\!1\!\times\!1}}|_p\ :=\ \psiAoutp^{-1} \circ K_{\!1\!\times\!1} \circ \psiAinp \,.
+    \end{align}
+    استقلال از پیمانه‌های انتخاب شده (استقلال از مختصات $\GM$) با درهم‌تننده بودن $K_{\!1\!\times\!1}$ تضمین می‌شود.
+\end{dfn}
+برای نشان دادن صریح استقلال از پیمانه انتخاب‌شده، هر بدیهی‌سازی مرتبط با \lr{G} یعنی $\rhoin(g)\,\psiAinp$ و $\rhoout(g)\,\psiAoutp$ را برای یک عنصر گروه ساختار دلخواه $g\in G$ در نظر بگیرید، که ساختار
+\begin{align}
+    \mathcal{C}_{K_{\!1\!\times\!1}} \mkern-2mu\big|_p\ 
+    =\ \ &\big(\rhoout(g)\, \psiAoutp \big)^{-1} \circ K_{\!1\!\times\!1} \circ \big(\rhoin(g)\, \psiAinp\big) \notag \\
+    =\ \ &\psiAoutp^{-1} \circ \big( \rhoout(g)^{-1} K_{\!1\!\times\!1}\, \rhoin(g) \big) \circ \psiAinp \notag \\
+    =\ \ &\psiAoutp^{-1} \circ K_{\!1\!\times\!1} \circ \psiAinp
+\end{align}
+را نامتغیر باقی می‌گذارد.
+اینکه \onexoneGMs تعریف‌شده به این شکل واقعاً به مقاطعی در $\Gamma(\Aout)$ نگاشت می‌شوند، از این واقعیت ناشی می‌شود که $\mathcal{C}_{K_{\!1\!\times\!1}}$ یک نگاشت کلاف است.
+یک نمای کلی از مختصاتی‌سازی‌های محلی \onexoneGMs در شکل~\ref{fig:triv_bundle_morphism_onexone} آورده شده است.
+
+\begin{figure}
+    \centering
+    \begin{tikzcd}[row sep=4.5em, column sep=4.35em, crossing over clearance=.6ex,
+                   execute at end picture={
+                        \node [] at (-1.16, -1.05) {$\noncommutative$};
+                        \node [] at ( 1.09, -1.05) {$\noncommutative$};
+                        }]
+        % ROW 1
+          U\times \R^{\cin}
+                        \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                                -- ([yshift=2.5ex]\tikztostart.north) 
+                                --node[above]{\small$
+                                    \mathcal{C}_{K_{\!1\!\times\!1}}^B
+                                    := (\id\times K_{\!1\!\times\!1})
+                                $} ([yshift=2.5ex]\tikztotarget.north) 
+                                -- (\tikztotarget.north)
+                                }]
+        &[-3.0ex] & &
+        &[-3.0ex] U\times \R^{\cout}
+        \\
+        % ROW 2
+          U\times \R^{\cin}
+                        \arrow[drr, pos=.5, "\proj_1"']
+                        \arrow[u, "\big(\id\!\times\! \rhoin\big(g^{BA}\big)\!\cdot\big)"]
+                        \arrow[rrrr, pos=.5, rounded corners, to path={ 
+                                -- ([yshift=-17.5ex]\tikztostart.south) 
+                                --node[below]{\small$
+                                    \mathcal{C}_{K_{\!1\!\times\!1}}^A
+                                    := (\id\times K_{\!1\!\times\!1})
+                                $} ([yshift=-17.5ex]\tikztotarget.south) 
+                                -- (\tikztotarget.south)
+                                }]
+        & \piAin^{-1}(U)   \arrow[dr, shorten <=-3pt, shift right=.25, pos=.2, "\piAin\mkern-12mu"']
+                        \arrow[l,  "\PsiAin^A"']
+                        \arrow[lu, "\PsiAin^B"']
+                        \arrow[rr,  "\mathcal{C}_{K_{\!1\!\times\!1}}"]
+        &
+        & \piAout^{-1}(U)  \arrow[dl, shorten <=-2pt, shift left=.25, pos=.2, "\mkern-6mu\piAout"]
+                        \arrow[r,  "\PsiAout^A"]
+                        \arrow[ru, "\PsiAout^B"]
+        & U\times \R^{\cout}
+                        \arrow[u, swap, "\big(\id\!\times\! \rhoout\big(g^{BA}\big)\!\cdot\big)"]
+                        \arrow[lld, pos=.5, "\proj_1"]
+        \\[1.5ex]
+        % ROW 3
+        &&
+          U \arrow[ul, shorten >=-5pt, bend right=22, looseness=.5, pos=.6, "\!\fin"']
+            \arrow[ur, shorten >=-5pt, bend left =22, looseness=.5, pos=.6, "K_{\!1\!\times\!1} \mkern-1mu\ostar\mkern-1mu \fin\!\!"]
+    \end{tikzcd}
+    \caption{\small
+        مختصاتی‌سازی یک \onexoneGM\ $K_{\!1\!\times\!1} \protect\ostar: \Gamma(\Ain) \to \Gamma(\Aout)$ و \lr{M}-مورفیسم کلاف برداری متناظر آن $\mathcal{C}_{K_{\!1\!\times\!1}}$.
+        ویژگی کانولوشنی با اشتراک‌گذاری یک ماتریس کرنل $K_{\!1\!\times\!1}\in\R^{\cout\times\cin}$ در موقعیت‌های مکانی مختلف $p\in M$ در مورفیسم کدگذاری می‌شود.
+        از آنجایی که هیچ پیمانه‌ای نباید ترجیح داده شود، کرنل علاوه بر این در بدیهی‌سازی‌های مختلف
+        $\mathcal{C}_{K_{\!1\!\times\!1}}^A$ و $\mathcal{C}_{K_{\!1\!\times\!1}}^B$ به اشتراک گذاشته می‌شود.
+        بنابراین، جابجایی‌پذیری نمودار برای هر انتخاب
+        $\Psi_{\!\!\A_\text{in} }^A$،
+        $\Psi_{\!\!\A_\text{out}}^A$ و
+        $\Psi_{\!\!\A_\text{in} }^B$،
+        $\Psi_{\!\!\A_\text{out}}^B$
+        قید
+        $\rho_\text{out}(g) K_{\!1\!\times\!1} \rho_\text{in}(g)^{-1} = K_{\!1\!\times\!1}\,\ \forall g\!\in G$
+        را اعمال می‌کند که ماتریس کرنل را به یک درهم‌تننده (یک نگاشت خطی هم‌متغیر) محدود می‌کند، یعنی
+        $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \subseteq \R^{\cout\times\cin}$.
+        به جز $\fin \circ \piAin \neq \id_{\Ain}$ و $\big[K_{\!1\!\times\!1} \protect\ostar \fin\big] \circ \piAout \neq \id_{\Aout}$، نمودار جابجایی‌پذیر است.
+    }
+    \label{fig:triv_bundle_morphism_onexone}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+\subsubsection[\texorpdfstring{کانولوشن‌های \lr{GM} با اندازه ${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} به عنوان مقاطع کلاف هومومورفیسم]%
+          {کانولوشن‌های \lr{GM} با اندازه \texorpdfstring{${1\kern-2.7pt\times\kern-2.9pt1}$}{1x1} به عنوان مقاطع کلاف هومومورفیسم}
+\label{sec:onexone_hom_section}
+
+
+درحالی‌که \lr{M}-مورفیسم کلاف برداری با مختصاتی‌سازی‌های مستقل از پیمانه از تعریف~\ref{dfn:onexone} و شکل~\ref{fig:triv_bundle_morphism_onexone} یک \onexoneGM را به طور کامل مشخص می‌کند، اکنون دیدگاه جایگزینی را اتخاذ می‌کنیم که \onexoneGMs را بر حسب \emph{کلاف هومومورفیسم} $\Hom(\Ain,\Aout) \xrightarrow{\,\piHom\,} M$ توصیف می‌کند.
+برای این منظور، به یاد بیاورید که مورفیسم کلاف برداری $\mathcal{C}$ در معادله~\eqref{eq:bundle_morphism_onexone} به نگاشت‌های خطی ${\mathcal{C}\!\:|_p}: \Ainp\to\Aoutp$ روی هر $p\in M$ محدود می‌شود.
+مجموعه چنین نگاشت‌های خطی (یا هومومورفیسم‌های فضای برداری) بین $\Ainp$ و $\Aoutp$ به صورت $\Hom(\Ainp,\Aoutp)$ نشان داده می‌شود.
+از آنجایی که این مجموعه تحت ترکیب‌های خطی بسته است، خود یک فضای برداری تشکیل می‌دهد.
+می‌توان نشان داد که اجتماع مجزای
+\begin{align}
+    \Hom(\Ain,\Aout)\ :=\ \coprod_{p\in M} \Hom(\Ainp,\Aoutp)
+\end{align}
+این فضاهای هومومورفیسم، هنگامی که با نگاشت تصویر $\piHom: \Hom(\Ain,\Aout) \to M$ که عناصر در $\Hom(\Ainp,\Aoutp)$ را به $p$ می‌فرستد و یک ساختار هموار القا شده از ساختار $\Ain$ و $\Aout$ مجهز شود، یک کلاف برداری، یعنی کلاف هومومورفیسم بین $\Ain$ و $\Aout$ را تشکیل می‌دهد~\cite{dundas2018differentialTopology}.
+تارهای روی $p$ در رابطه $\Hom(\Ainp,\Aoutp) \cong \Hom(\R^\cin,\R^\cout) \cong \R^{\cout\times\cin}$ صدق می‌کنند، به طوری که می‌توانیم تار نمونه‌ای را فضای برداری ماتریس‌های ${\cout\!\times\!\cin}$ با مقادیر حقیقی در نظر بگیریم.
+بدیهی‌سازی‌های
+\begin{align}
+    \PsiHom:\ \piHom^{-1}(U) \to U\!\times\R^{\cout\times\cin},\ \ H\mapsto \big(p,\ \psiHomp(H)\big) ,
+\end{align}
+که در آن $p=\piHom(H)$ را به اختصار آورده‌ایم، از بدیهی‌سازی‌های $\Ain$ و $\Aout$ با تعریف
+\begin{align}\label{eq:Hom_bdl_triv_ptwise}
+    \psiHomp\!:\ \Hom(\Ainp,\Aoutp) \to \R^{\cout\times\cin} ,\ \ \ H\mapsto \psiAoutp \circ H \circ \big(\psiAinp\big)^{-1}
+\end{align}
+به قیاس با معادلات~\eqref{eq:bundle_morphism_onexone_triv_local} و \eqref{eq:matrix_trivialization} \emph{القا} می‌شوند.
+این به معنای نگاشت‌های گذار
+\begin{alignat}{3}
+    H^B
+    \ &=&\ \psiAoutp^B \circ\,&H \circ \big(\psiAinp^B\big)^{-1} \notag \\
+    \ &=&\ \psiAoutp^B \circ \big(\psiAoutp^A\big)^{-1}\,&H^A\ \psiAinp^A \circ \big(\psiAinp^B\big)^{-1} \notag \\
+    \ &=&\ \rhoout\big(g^{BA}\big)\, &H^A\, \rhoin\big(g^{BA}\big)^{-1} \notag \\
+    \ &=:&\ \rhoHom\big(g^{BA}\big)\, &H^A
+\end{alignat}
+بین پیمانه‌های $\PsiHom^A$ و $\PsiHom^B$ روی $U^A\cap U^B$ است، که در آن برای راحتی نوشتاری، نمایش گروهی هومومورفیسم $\rhoHom:G\to\GL{\R^{\cout\times\cin}}$ را به عنوان ضرب چپ و راست با $\rhoout$ و $\rhoin$ معرفی کردیم.%
+\footnote{
+    به طور کلی، یک کلاف هومومورفیسم بین دو کلاف برداری \emph{غیرالحاقی} با گروه‌های ساختار $G_1$ و $G_2$ یک گروه ساختار $G_1\times G_2$ خواهد داشت.
+    از آنجایی که $\Ain$ و $\Aout$ الحاقی هستند، آنها به طور همزمان تحت همان گروه ساختار $G_1=G_2=G$ تبدیل می‌شوند به طوری که نگاشت‌های گذار آنها در زیرگروه قطری $G$ از $G\times G$ مقدار می‌گیرند.
+}
+کلاف هومومورفیسم $\Hom(\Ain,\Aout)$ بنا به ساختار، به $\TM$، $\GM$، $\Ain$ و $\Aout$ الحاقی است، یعنی بدیهی‌سازی‌های آن به طور همزمان با بدیهی‌سازی‌های کلاف‌های دیگر تبدیل می‌شوند.
+به عنوان یک کلاف برداری \lr{G}-الحاقی، می‌توان آن را با $(\GM\times\R^{\cout\times\cin})/\!\sim_{\!\rhoHom}$ شناسایی کرد.
+شکل~\ref{fig:trivialization_hom} یک نمای کلی از بدیهی‌سازی‌های محلی $\Hom(\Ain,\Aout)$ ارائه می‌دهد.
+به شباهت با بدیهی‌سازی‌های دیگر کلاف‌های \lr{G}-الحاقی در شکل~\ref{fig:trivializations_TM_FM_A} توجه کنید.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \begin{tikzcd}[row sep=4.em, column sep=5.5em]
+            & U\times \R^{\cout\times\cin} \\
+              \piHom^{-1}(U)
+                    \arrow[d, swap, "\piHom"]
+                    \arrow[r, "\PsiHom^A"]
+                    \arrow[ru, "\PsiHom^B"]
+            & U\times \R^{\cout\times\cin}
+                    \arrow[u, swap, "\big( \id\times \rhoHom\big(g^{BA}\big)\!\cdot \big)"]
+                    \arrow[ld, "\proj_1"] \\
+              U
+        \end{tikzcd}
+        \centering
+        \caption{\small
+            بدیهی‌سازی $\Hom(\Ain,\Aout)$.
+            از آنجایی که به $\TM$، $\GM$، $\Ain$ و $\Aout$ الحاقی است، نگاشت‌های گذار کلاف هومومورفیسم توسط همان عنصر گروهی $g^{BA}$ از گروه ساختار مشترک $G$ تعیین می‌شوند (این را با شکل~\ref{fig:trivializations_TM_FM_A} مقایسه کنید).
+            \lr{M}-مورفیسم‌های کلاف برداری بدون قید همانطور که در معادله~\eqref{eq:bundle_morphism_onexone} نشان داده شده است، متناظر با مقاطع هموار بدون قید از $\Hom(\Ain,\Aout)$ هستند.
+        }
+        \label{fig:trivialization_hom}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \begin{tikzcd}[row sep=5.5em, column sep=7.em, crossing over clearance=.6ex,
+                       execute at end picture={
+                            \node [] at (-2.98, -.11) {$\noncommutative$};
+                            }]
+            % ROW 1
+              \piHom^{-1}(U)   \arrow[d, "\piHom", shift left=.2]
+                                \arrow[r, "\PsiHom^A"', bend right=3, shift right=.5, looseness=.5, pos=.45]
+                                \arrow[r, "\PsiHom^B",  bend left=3,  shift left=.5,  looseness=.5, pos=.45]
+            & U\!\times\! \underbrace{\Hom_G(\rhoin,\rhoout)}_{\subseteq\ \R^{\cout\times\cin}}
+                                \arrow[loop, distance=3.5em, in=125, out=55, "\big(\id\times \rhoHom\big(g^{BA}\big)\!\cdot\!\big)"']
+                                \arrow[ld, "\proj_1", shorten <= -15pt]
+            \\
+            % ROW 2
+              U               \arrow[u, bend left=20, shift left=.5, "\sigma_{K_{1\!\times\!1}}"]
+        \end{tikzcd}
+        \caption{\small
+            مقاطع $\sigma_{K_{1\!\times\!1}}: M\to \Hom(\Ain,\Aout)$ از کلاف هومومورفیسم که متناظر با \onexoneGMs هستند، دقیقاً آنهایی هستند که به \emph{همان} ماتریس (درهم‌تننده)
+            $K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \subseteq \R^{\cout\times\cin}$
+            در همه پیمانه‌ها بدیهی‌سازی می‌شوند.
+            چنین مقاطعی متناظر با نگاشت‌های کلاف هستند که همانطور که در شکل~\ref{fig:triv_bundle_morphism_onexone} مشخص شده است، بدیهی‌سازی می‌شوند.
+            \\~
+        }
+        \label{fig:trivialization_hom_onexone_section}
+    \end{subfigure}
+    \caption{\small
+        بدیهی‌سازی‌های محلی کلاف هومومورفیسم $\Hom(\Ain,\Aout)$، که کلاف برداری نگاشت‌های خطی بین فضاهای $\Ainp$ و $\Aoutp$ برای هر $p\in M$ است.
+        طبق معمول $U=U^A\cap U^B$ را به اختصار می‌نویسیم.
+        به جز $\sigma_{K_{1\!\times\!1}} \circ \piHom \neq \id_{\Hom(\Ain,\Aout)}$، نمودارها جابجایی‌پذیر هستند.
+    }
+    \label{fig:trivializations_hom_bundle}
+\end{figure}
+
+
+از دیدگاه کلاف‌های هومومورفیسم، نگاشت‌های کلاف بدون قید مانند معادله~\eqref{eq:bundle_morphism_onexone} متناظر با عمل مقاطع کلاف هومومورفیسم هموار بدون قید هستند
+\begin{align}\label{eq:hom_bdl_section_unconstrained}
+    \sigma_{\Hom}:M \mapsto \Hom(\Ain,\Aout)
+    \quad \textup{به طوری که} \quad
+    \piHom \circ \sigma_{\Hom} = \id_M
+\end{align}
+که می‌توان آنها را به عنوان \emph{میدان‌های کرنل} $1\!\times\!1$ تفسیر کرد که وزن‌ها را به اشتراک نمی‌گذارند.
+وجود سراسری آنها با این واقعیت که $\Hom(\Ain,\Aout)$ یک کلاف برداری است تضمین می‌شود.
+مقاطع متناظر با \onexoneGMsit علاوه بر این نیاز دارند که تبدیلات خطی $\sigma_{\Hom}(p)\in\Hom(\Ainp,\Aoutp)$ توسط یک کرنل الگو $K_{\!1\!\times\!1} \in\R^{\cout\times\cin}$ تعیین شوند که در موقعیت‌های مختلف $p\in M$ و هر انتخاب پیمانه به اشتراک گذاشته شده است.
+بنابراین آنها را می‌توان برای هر $p \in \!M$ به صورت زیر تعریف کرد
+\begin{align}
+    \sigma_{K_{1\!\times\!1}}(p)\ :=\ \psiHomp^{-1}\big(K_{\!1\!\times\!1}\big), \qquad K_{\!1\!\times\!1} \in \Hom_G(\rhoin,\rhoout) \,,
+\end{align}
+که در آن بدیهی‌سازی انتخاب‌شده $\PsiHom$ دلخواه است اگر (و تنها اگر) $K_{\!1\!\times\!1}$ قید درهم‌تننده را برآورده کند
+\begin{align}\label{eq:onexone_intertwiner_constraint_rhoHom}
+    \rhoHom(g) K_{\!1\!\times\!1} = K_{\!1\!\times\!1} \qquad\forall g\in G \,,
+\end{align}
+که معادل با معادله~\eqref{eq:onexone_kernel_constraint} است.%
+\footnote{
+    همواری مورد نیاز مقطع از همواری بدیهی‌سازی‌های محلی ناشی می‌شود.
+}
+بی‌اهمیت بودن پیمانه در چنین مقاطعی در نمودار جابجایی در شکل~\ref{fig:trivialization_hom_onexone_section} به تصویر کشیده شده است (این را با بدیهی‌سازی نگاشت کلاف معادل در شکل~\ref{fig:triv_bundle_morphism_onexone} مقایسه کنید).
+
+
+\paragraph{ملاحظات پایانی:}
+یک لایه هموار \onexoneGM\ $K_{\!1\!\times\!1} \ostar: \Gamma(\Ain)\to \Gamma(\Aout),\ \fin\mapsto \fout$ را می‌توان به طور معادل از طریق یک نگاشت کلاف هموار به صورت $\fout(p) := \mathcal{C}_{K_{\!1\!\times\!1}} \!\circ \fin(p)$ یا از طریق یک مقطع کلاف هومومورفیسم هموار به صورت $\fout(p) := \sigma_{K_{\!1\!\times\!1}}(p) \circ \fin(p)$ تعریف کرد.
+بنا به تعریف، هر دو در یک پیمانه دلخواه $\PsiHom^A$ به $\fout^A(p) = K_{\!1\!\times\!1} \fin^A(p)$ بدیهی‌سازی می‌شوند.
+استقلال از مختصات $\GM$ این تعریف با خاصیت درهم‌تنندگی کرنل در معادله~\eqref{eq:onexone_kernel_constraint} یا، به طور معادل، معادله~\eqref{eq:onexone_intertwiner_constraint_rhoHom} تضمین می‌شود.
+این را می‌توان با در نظر گرفتن یک بدیهی‌سازی متفاوت از طریق $\PsiHom^B$ مشاهده کرد:
+\begin{align}
+    K_{\!1\!\times\!1} \fin^B(p)
+    \ &=\ K_{\!1\!\times\!1} \left( \rhoin\big(g^{BA}_p\big) \fin^A(p) \right) \notag \\
+    \ &=\ \rhoout\big(g^{BA}_p\big) K_{\!1\!\times\!1} \fin^A(p) \notag \\
+    \ &=\ \rhoout\big(g^{BA}_p\big) \fout^A(p) \notag \\
+    \ &=\ \fout^B(p)
+\end{align}
