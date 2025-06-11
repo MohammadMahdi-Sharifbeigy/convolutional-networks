@@ -1,11 +1,6 @@
 \documentclass{article}
 \usepackage{arxiv} 
 
-% Fix for displaying Latin acronyms properly in Persian text
-\newcommand{\CNN}{\lr{CNN}}
-\newcommand{\cnn}{\lr{CNN}}
-\newcommand{\mathfrakb}{\mathfrak{b}}
-
 \usepackage[quiet]{fontspec} % Suppress font warnings
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -31,7 +26,6 @@
 \usepackage{diagbox}
 \usepackage{multirow}
 \newcounter{magicrownumbers}
-\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
 \usepackage{pdflscape}
 \usepackage{enumitem}
 \setlist[description]{
@@ -54,6 +48,12 @@
 
 % Load custom commands BEFORE other packages that might use them
 \usepackage{custom_commands}
+
+% Fix for displaying Latin acronyms properly in Persian text
+\newcommand{\CNN}{\lr{CNN}}
+\newcommand{\cnn}{\lr{CNN}}
+\newcommand{\mathfrakb}{\mathfrak{b}}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
 
 % Patch for \listtheorems alignment
 \makeatletter
@@ -121,7 +121,7 @@
 
 % Load xepersian BEFORE other packages that might conflict
 \usepackage{xepersian}
-\settextfont{B Zar} % Using XB Zar instead of B Zar for better compatibility
+\settextfont{B Zar}
 \setdigitfont{B Zar}
 
 % Fallback for small caps
@@ -153,9 +153,11 @@
 
 \begin{document}
 	
+	\maketitle
+	
 	% Remove the complex author details section and use proper abstract
 	\input{chapters/00_abstract}
-	\maketitle
+	
 	\newpage
 	
 	\input{chapters/10_intro}
@@ -209,7 +211,8 @@
 	\newpage
 	
 	\appendix
-	\part{پیوست}
+		\par
+		\part{پیوست}
 	
 	\input{chapters/apx01_coordinate_bases}
 	\input{chapters/apx02_kernel_figures}

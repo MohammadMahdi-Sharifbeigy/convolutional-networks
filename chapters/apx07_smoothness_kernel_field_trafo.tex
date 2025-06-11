@@ -1,0 +1,218 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{وجود و همواری تبدیلات میدان کرنل}
+\label{apx:smoothness_kernel_field_trafo}
+
+
+در تعریف~\ref{dfn:kernel_field_trafo}، ما \emph{تبدیلات میدان کرنل} $\TK$ را به عنوان تبدیلات انتگرالی هموار
+\begin{align}
+    \TK: \Gamma(\Ain)\to \Gamma(\Aout)
+\end{align}
+پیشنهاد کردیم که توسط یک میدان کرنل $\K$ (تعریف~\ref{dfn:kernel_field_general}) پارامتری شده و به صورت نقطه‌ای با
+\begin{align}\label{eq:APX_kernel_field_trafo_def_ptwise}
+    \big[ \TK (f)\big] (p)
+    \ \ :=\ 
+    \int\limits_{\TpM}\!\!
+    \K(v) \,
+    \Expspf(v)
+    \ dv
+    \ \ =\ 
+    \int\limits_{\TpM}\!\!
+    \K(v) \ 
+    \PAinexppv \,
+    f(\exp_p\!v)
+    \ dv \,.
+\end{align}
+داده می‌شوند. تبدیلات میدان کرنل شامل کانولوشن‌های $\GM$ از تعریف~\ref{dfn:coord_free_conv} به عنوان موارد خاص برای میدان‌های کرنل کانولوشنی $\GM$ هستند.
+
+در اینجا ما به طور خلاصه خوش‌تعریف بودن تبدیلات میدان کرنل را مورد بحث قرار می‌دهیم.
+روشن است که انتگرال‌دهنده معادله~\eqref{eq:APX_kernel_field_trafo_def_ptwise} برای هر $p\in M$ و $v \in \TpM$ در $\Aoutp$ قرار دارد.
+آنچه باقی می‌ماند نشان دادن \emph{وجود} انتگرال و \emph{همواری} میدان ویژگی حاصل است.
+در ادامه ابتدا چند ملاحظه کلی در مورد چگونگی پرداختن به این پرسش‌ها ارائه می‌دهیم.
+سپس قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} را اثبات خواهیم کرد، یعنی خوش‌تعریف بودن تبدیلات میدان کرنل برای مورد خاص میدان‌هایی از کرنل‌ها که دارای تکیه‌گاه فشرده روی یک گوی با شعاع ثابت حول مبدأ هستند.
+
+
+
+
+
+
+
+\paragraph{وجود:}
+وجود و همواری تبدیلات میدان کرنل نیازمند یک انتخاب مناسب از میدان کرنل~$\K$ است.
+مشابه مورد کانولوشن‌های متعارف روی $M=\R$، الزامات بر روی $\K$ برای اینکه تبدیل میدان کرنل وجود داشته باشد، به ویژگی‌های خاص میدان ویژگی ورودی $f\in\Gamma(\Ain)$ بستگی دارد.%
+\footnote{
+    به بحث در \url{https://en.wikipedia.org/wiki/Convolution\#Domain_of_definition} مراجعه کنید.
+}
+به طور کلی، $\K$ باید به اندازه کافی سریع افت کند تا انتگرال‌دهنده در معادله~\eqref{eq:APX_kernel_field_trafo_def_ptwise} انتگرال‌پذیر شود.
+
+
+یک مورد خاص با اهمیت عملی بالا، کرنل‌های $\Kp: \TpM \to \Hom(\Ainp,\Aoutp)$ هستند که در هر $p\in M$ دارای \emph{تکیه‌گاه فشرده} هستند.
+در این حالت، وجود انتگرال همیشه تضمین شده است.
+برای دیدن این، توجه داشته باشید که میدان‌های ویژگی (ورودی) و میدان‌های کرنل به عنوان هموار تعریف شده‌اند.
+همواری متریک علاوه بر این دلالت بر این دارد که
+چگالی حجم ریمانی، نگاشت نمایی و انتقال موازی هموار هستند~\cite{gallier2019diffgeom1}.
+در ترکیب، کل انتگرال‌دهنده در معادله~\eqref{eq:APX_kernel_field_trafo_def_ptwise} به عنوان یک تابع هموار و در نتیجه پیوسته از~$TM$ به~$\Aout$ دیده می‌شود.
+اگر~$\Kp$ علاوه بر این دارای تکیه‌گاه فشرده باشد، انتگرال‌دهنده پیوسته و دارای تکیه‌گاه فشرده روی $\TpM$ می‌شود، که با تعمیمی از قضیه مقدار اکسترمم، دلالت بر این دارد که تصویر آن فشرده است (و در یک تریویالیزاسیون محلی $\R^{c}$ از $\Aoutp$ کران‌دار است)~\cite{rudin1976analysis}.
+این وجود انتگرال را تضمین می‌کند~\cite{forster2012analysis3,spivak2019calculus}.
+
+
+بسته به کاربرد، الزام بر روی تکیه‌گاه $\K$ ممکن است تسهیل شود.
+به عنوان مثال، تصاویر روی $M=\R^d$ معمولاً خود دارای تکیه‌گاه فشرده هستند، به طوری که هیچ ویژگی اضافی از $\K$ به جز همواری آن لازم نیست.
+
+
+
+
+
+
+
+\paragraph{همواری:}
+
+ما به بحث در مورد همواری تبدیلات میدان کرنل می‌پردازیم، یعنی ویژگی آنها برای نگاشت میدان‌های ورودی هموار $\fin\in\Gamma(\Ain)$ به میدان‌های خروجی هموار $\fout := \TK(\fin) \in \Gamma(\Aout)$.
+بنا به تعریف، یک نگاشت $\fout: M\to \Aout$ \emph{بین منیفلدها} $M$ و $\Aout$ هموار نامیده می‌شود اگر نمایش‌های مختصاتی آن هموار باشند.
+در معادلات، $\fout$ هموار است اگر برای هر $p\in M$ چارت‌های هموار $(U,\phi)$ حول $p$ در $M$ و $(\widetilde{U}, \widetilde{\phi})$ حول $\fout(p)$ در $\Aout$ با $\fout(U) \subseteq \widetilde{U}$ وجود داشته باشند به طوری که $\widetilde{\phi} \circ \fout \circ \phi^{-1}: \phi(U) \to \widetilde{\phi}(\widetilde{U})$ به عنوان یک نگاشت بین (زیرمجموعه‌هایی از) فضاهای اقلیدسی هموار باشد.
+با توجه به $(U,\phi)$، یک انتخاب مناسب برای $(\widetilde{U}, \widetilde{\phi})$
+$ \widetilde{\phi} := \big(\phi \times \id\big) \circ \PsiAout\!:\ 
+  \piAout^{-1}(U) \mapsto \phi(U) \times \R^c\, \subseteq\, \R^d \times \R^c \,, $
+خواهد بود، با این حال، بحث زیر مستقل از این انتخاب است.%
+\footnote{
+    توجه داشته باشید که تضمین می‌شود $\piAout^{-1}(U)$ تریویالیزه‌پذیر باشد با توجه به اینکه $(\phi,U)$ یک چارت از $M$ است.
+    این روشن است زیرا پایه‌های مختصاتی $\big[ \frac{\partial}{\partial \phi_\mu} \big]_{\mu=1}^d$ از $(\phi,U)$ یک تریویالیزاسیون از $\piTM^{-1}(U)$ را به دست می‌دهند (به پیوست~\ref{apx:coordinate_bases} مراجعه کنید) و از آنجا که تریویالیزاسیون‌های محلی $FM$ و $\A$ در بخش~\ref{sec:bundle_trivializations} از آنهای $TM$ القا شده‌اند.
+}
+یک نگاشت بین (زیرمجموعه‌هایی از) فضاهای اقلیدسی هموار است اگر در هر مؤلفه از تصویر خود، در اینجا در هر یک از $d+c$ بعد از $\phi(U)\times\R^c$ هموار باشد.
+بنابراین ما به همواری نگاشت‌های
+\begin{align}
+    F_i: \phi(U) \to \R,\ \ x \mapsto \Big[\, \widetilde{\phi} \circ \fout \circ \phi^{-1} \Big]_i
+\end{align}
+برای هر $i = 1,\dots,d+c$ علاقه‌مندیم.
+با بازنویسی $\fout$ و بیان انتگرال روی $\TpM$ با یک انتگرال روی $\R^d$ همانطور که در پیوست~\ref{apx:correspondences_bundle_trivializations} بحث شد، دیده می‌شود که $F_i$ به شکل
+\begin{align}\label{eq:integral_smoothness_component}
+    F_i(x) = \int_{\R^d} I_i(\mathscr{v},x)\,\ d\mathscr{v} \,.
+\end{align}
+هستند. عبارات مختصاتی انتگرال‌دهنده‌های $I_i$ در اینجا برای هر $i = 1,\dots,d+c$ با
+\begin{align}\label{eq:integrand_smoothness_full}
+    I_i\!: \R^d \mkern-2mu\times\mkern-2mu \phi(U) &\to \R, \\
+    (\mathscr{v},x) &\mapsto
+    \bigg[ \widetilde{\phi} \circ
+    \K\pig(\mkern-1mu \psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{$\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)$}}^{-1} \mkern-2mu(\mathscr{v}) \mkern-1mu\pig) \circ
+    \mathcal{P}_{\mkern-4mu\protect\scalebox{.8}{$\!\Ain$},\protect\scalebox{.83}{$\,\phi^{\mkern-1mu\shortminus1}(x)\!\leftarrow\!\exp \circ\mkern1mu \psi_{\protect\scalebox{.7}{$T\!M\mkern-1mu,\mkern1mu$}\protect\scalebox{.9}{$\phi^{\mkern-1mu\shortminus1}(x)$}}\!(\mathscr{v}) $}} \mkern-1mu\circ
+    \fin \circ \exp \circ \,
+    \psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,$}\protect\scalebox{.7}{$\phi^{\mkern-1mu\shortminus1}(x)$}}^{-1} \mkern-2mu(\mathscr{v})
+    \bigg]_i
+    \nonumber \,,
+\end{align}
+داده می‌شوند، که در آن ما برای راحتی و بدون از دست دادن کلیت، فرض کردیم که
+$\psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{$\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)$}}$
+یک پیمانه \emph{ایزومتریک} از $T_{\phi^{\mkern-1mu\shortminus1}\mkern-1mu(x)}M$ است، به طوری که ضریب مقیاس‌بندی حجم $\sqrt{|\! \det\eta_p|} = 1$ حذف می‌شود.
+توجه داشته باشید که انتگرال‌دهنده‌های $I_i$ از نگاشت‌های هموار تشکیل شده‌اند و بنابراین خود نیز هموار هستند.
+
+
+از بحث قبلی روشن است که همواری $\fout$ برقرار است اگر همه $F_i$ هموار باشند، یعنی بی‌نهایت بار مشتق‌پذیر جزئی باشند.
+برای اثبات همواری $F_i$ کافی است نشان دهیم که مشتق‌گیری‌های جزئی و انتگرال‌گیری در معادله~\eqref{eq:integral_smoothness_component} جابجا می‌شوند -- که این همیشه صادق نیست.
+اگر آنها جابجا شوند، مشتقات جزئی از مراتب دلخواه $(n_1,\dots,n_d) \in \N^d$ با
+\begin{align}\label{eq:APX_smoothness_partial_diff_swapping}
+    \Big[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: F_i \Big](x)
+    \ =\ \int_{\R^d} \Big[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: I_i\Big] (\mathscr{v},x)\,\ d\mathscr{v}
+\end{align}
+داده می‌شوند، که در آن
+۱) مشتقات جزئی $\pig[ \partial_{x_1}^{n_1} \dots \partial_{x_d}^{n_d}\: I_i\pig]$ از انتگرال‌دهنده وجود دارند (به دلیل همواری $I_i$ وجود آنها تضمین شده است) و
+۲) انتگرال آنها وجود دارد.
+اینکه آیا مشتق‌گیری‌ها با انتگرال جابجا می‌شوند یا نه را می‌توان با استفاده از لم زیر
+از~\cite{forster2012analysis3}،%
+\footnote{
+    نسخه‌های مشابهی از این لم به زبان انگلیسی را می‌توان در \cite{klenke2006probability} یا در
+    \url{https://en.wikipedia.org/wiki/Leibniz_integral_rule\#Measure_theory_statement} یافت.
+    برخلاف آن نسخه‌ها، نسخه~\cite{forster2012analysis3} اجازه می‌دهد که $T$ هر بازه غیرتبهگن، از جمله بازه‌های بسته، باشد، که ما را از چند مرحله اضافی در ادامه بی‌نیاز می‌کند.
+}
+که نتیجه‌ای از قضیه همگرایی تحت سلطه است، بررسی کرد.
+\begin{thm}[لم مشتق‌گیری~\cite{forster2012analysis3}]
+\label{thm:differentiation_lemma}
+    فرض کنید $\mathscr{V}$ یک فضای اندازه، $T\subset\R$ یک بازه غیرتبهگن و $I: \mathscr{V} \times T \to \R$ یک نگاشت با ویژگی‌های زیر باشد:
+    \begin{itemize}
+        \item[(i)] برای هر $t\in T$ ثابت، نگاشت $\mathscr{v} \mapsto I(\mathscr{v},t)$ روی $\mathscr{V}$ لبگ-انتگرال‌پذیر است.
+        \item[(ii)] برای هر $\mathscr{v} \in \mathscr{V}$ ثابت، نگاشت $t\mapsto I(\mathscr{v},t)$ در $T$ مشتق‌پذیر است.
+        \item[(iii)] یک تابع لبگ-انتگرال‌پذیر $\mathscr{B}: \mathscr{V} \to \R$ وجود دارد به طوری که
+                $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
+                برای هر $(\mathscr{v},t) \in \mathscr{V} \times T$ برقرار است.
+    \end{itemize}
+    آنگاه تابع $F: T \to \R,\ t \mapsto \int_\mathscr{V} I(\mathscr{v},t)\, d\mathscr{v}$ مشتق‌پذیر است
+    با مشتقی برابر با
+    \begin{align*}
+        \frac{\partial}{\partial t} F(t)\ =\ \int_\mathscr{V} \frac{\partial}{\partial t} I(\mathscr{v},t)\; d\mathscr{v} \,.
+    \end{align*}
+\end{thm}
+کاربردی بودن این لم (به طور مکرر برای هر مشتق‌گیری جزئی منفرد) به ویژگی‌های انتگرال‌دهنده بستگی دارد، که به نوبه خود به ویژگی‌های خاص میدان کرنل $\K$ و میدان ویژگی ورودی $\fin$ بستگی دارد.
+برای مورد یک میدان کرنل که دارای تکیه‌گاه فشرده روی گوی‌هایی با شعاع ثابت حول مبدأ هر فضای مماس است، این لم اعمال می‌شود.
+بر این اساس، ما در باقیمانده این پیوست اثباتی برای قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} ارائه می‌دهیم.
+
+
+
+
+
+
+
+
+
+
+\toclesslab\subsection{اثبات قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} (کفایت تکیه‌گاه فشرده کرنل روی گوی‌های مماس)}{apx:proof_sufficiency_ball_kernel_support}
+
+فرض کنید
+$B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\TpM \,\big|\, \lVert v\rVert \leq R \big\}$
+گوی بسته با شعاع $R>0$ حول مبدأ $\TpM$ و
+$B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\R^d \,\big|\, \lVert v\rVert \leq R \big\}$
+گوی متناظر حول مبدأ $\R^d$ باشد.
+توجه داشته باشید که هر پیمانه ایزومتریک $\psiTMp\big(B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R)\big) = B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R)$ را برآورده می‌کند.
+فرض کنید $\widetilde{\K}$ یک میدان کرنل باشد که تکیه‌گاه آن در داخل گوی‌هایی با شعاع یکسان $R$ در هر فضای مماس قرار دارد، یعنی
+\begin{align}
+    \supp\!\big(\widetilde{\K}_p\big) \subseteq B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+\end{align}
+و در نتیجه، برای هر پیمانه ایزومتریک $\psiTMp$:
+\begin{align}
+    \supp\! \pig(\widetilde{\K}_p \circ \big(\psiTMp\big)^{-1} \pig) \subseteq B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+\end{align}
+را برآورده می‌کند. طبق قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} این ویژگی برای تضمین اینکه تبدیل میدان کرنل متناظر $\mathscr{T}_{\mathcal{K}_{\mkern-1muR}}$ خوش‌تعریف است، کافی است.
+اثبات این گزاره در ادامه ارائه می‌شود.
+
+\begin{proof}
+    همانطور که قبلاً در ابتدای این پیوست بیان شد، وجود انتگرال با توجه به اینکه تکیه‌گاه‌های کرنل فشرده هستند، تضمین شده است:
+    فشردگی کرنل‌ها به انتگرال‌دهنده‌های تبدیل میدان کرنل منتقل می‌شود.
+    همواری آنها علاوه بر این، پیوستگی آنها را نتیجه می‌دهد و انتگرال‌های توابع پیوسته با تکیه‌گاه فشرده همیشه وجود دارند.
+
+    برای اثبات همواری میدان ویژگی خروجی حاصل $\fout$ ما با بحث قبلی در این بخش ادامه می‌دهیم.
+    هدف ما اعمال لم مشتق‌گیری~\ref{thm:differentiation_lemma} برای جابجایی مشتقات جزئی $\frac{\partial}{\partial x_\mu}$ برای هر $\mu=1,\dots,d$ در معادله~\eqref{eq:APX_smoothness_partial_diff_swapping} در هر $x_0 \in \phi(U)$ با انتگرال‌گیری روی $\R^d$ است.
+    برای این منظور، ما توابع کمکی
+    \begin{align}
+        I_{i,x_0,\mu}: \R^d \times [-\varepsilon,\varepsilon] \to \R,\ \ (\mathscr{v},t) \mapsto I(\mathscr{v}, x_0 + t\epsilon_\mu)
+    \end{align}
+    و
+    \begin{align}
+        F_{i,x_0,\mu}: [-\varepsilon,\varepsilon] \to \R,\ \ t \mapsto F(x_0 + t\epsilon_\mu) = \int_{\R^d} I_{i,x_0,\mu}(\mathscr{v},t)\ d\mathscr{v} \,,
+    \end{align}
+    را معرفی می‌کنیم، که در آن $\epsilon_\mu \in \R^d$ بردار واحد در جهت $\mu$ است و
+    $\varepsilon > 0$ به گونه‌ای انتخاب شده است که $\big\{ x_0 + t\epsilon_\mu \,\big|\, t\in [-\varepsilon,\varepsilon] \big\} \subset \phi(U)$ باشد، که این کار همیشه ممکن است زیرا $\phi(U)$ باز است.
+    سپس $I_{i,x_0,\mu}$ با شناسایی‌های $\mathscr{V}=\R^d$ و $T=[-\varepsilon,\varepsilon]$ به شکلی است که توسط لم~\ref{thm:differentiation_lemma} لازم است.
+    این لم ویژگی $(i)$ را با فرض وجود تبدیل میدان کرنل همانطور که قبلاً بحث شد، برآورده می‌کند.
+    ویژگی $(ii)$ به دلیل همواری کل انتگرال‌دهنده در معادله~\eqref{eq:integrand_smoothness_full} برقرار است.
+    برای ویژگی $(iii)$ مشاهده کنید که هم $I_{i,x_0,\mu}$ و هم مشتق آن هموار هستند به طوری که قدر مطلق $\big| \frac{\partial}{\partial t} I_{i,x_0,\mu} \big|$ پیوسته است.
+    از آنجا که علاوه بر این دارای تکیه‌گاه فشرده روی $B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]$ است، با (تعمیمی از) قضیه مقدار اکسترمم با یک عدد $b\geq0$ کران‌دار است.
+    بنابراین ما $\mathscr{B}(\mathscr{v}) = b\cdot \mathbb{I}_{B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]}$ را قرار می‌دهیم که در آن $\mathbb{I}$ تابع مشخصه است.
+    این انتخاب
+    $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
+    را برای هر $(\mathscr{v},t) \in \mathscr{V} \times T$
+    برآورده می‌کند و انتگرال‌پذیر است به طوری که ویژگی $(iii)$ نیز برآورده می‌شود.
+    بنابراین ما می‌توانیم ترتیب مشتق‌گیری و انتگرال‌گیری را برای انتخاب‌های دلخواه از $x_0$ و $\mu$ جابجا کنیم، که از آن برای کشیدن مشتقات جزئی دلخواه به داخل انتگرال استفاده می‌کنیم:
+    \begin{align}
+        \bigg[ \frac{\partial}{\partial x_\mu} F_i \bigg](x_0)
+        \,=\, \bigg[ \frac{\partial}{\partial t} F_{i,x_0,\mu} \bigg](0)
+        \,=\, \int_{\R^d} \frac{\partial}{\partial t} I_{i,x_0,\mu}(\mathscr{v},t) \Big|_{t=0}\ d\mathscr{v}
+        \,=\, \int_{\R^d} \frac{\partial}{\partial x_\mu} I_i(\mathscr{v},x) \Big|_{x=x_0}\ d\mathscr{v}
+    \end{align}
+
+    به دلیل همواری و تکیه‌گاه فشرده انتگرال‌دهنده $I_i$ مشتقات جزئی آن $\frac{\partial}{\partial x_\mu} I$ نیز هموار و دارای تکیه‌گاه فشرده هستند.
+    بنابراین آنها نیز ویژگی‌های $(i)$، $(ii)$ و $(iii)$ را (با یک کران $b$ بالقوه تطبیق یافته) برآورده می‌کنند.
+    بنابراین امکان تکرار مشتق‌گیری جزئی از $F_i$ به طور نامحدود وجود دارد، که همواری آن را اثبات می‌کند.
+    از آنجا که استخراج‌ها مستقل از انتخاب‌های خاص برای نقطه $p\in M$ چارت‌های $(U,\phi)$ و $(\widetilde{U},\widetilde{\phi})$ نقاط $x_0\in\phi(U)$ و اندیس‌های $i$ و $\mu$ بودند، این نتیجه همواری کل میدان ویژگی خروجی $\fout = \TK(\fin)$ را اثبات می‌کند.
+
+\NoEndMark
+$~\hfill\Box$
+\end{proof}

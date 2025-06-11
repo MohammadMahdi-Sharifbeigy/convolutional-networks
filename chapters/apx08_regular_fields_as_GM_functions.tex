@@ -1,0 +1,148 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}
+\label{apx:regular_field_scalar_GM}
+
+
+توابع با مقادیر حقیقی $\digamma: \GM \to \R$ روی $G$-ساختار با میدان‌های ویژگی منظم $f: M \to \A_{\textup{reg}}$ روی منیفلد معادل هستند، یعنی یک ایزومورفیسم وجود دارد
+\begin{align}
+    C^\infty(\GM)\ \cong\ \Gamma(\A_{\textup{reg}}) \,.
+\end{align}
+این پیوست اثباتی برای این ادعا برای مورد گروه‌های ساختاری متناهی~$G$ ارائه می‌دهد.
+ما با تعریف معمول نمایش‌های منظم (حقیقی) از گروه‌های ساختاری متناهی شروع می‌کنیم، که بر روی فضاهای برداری (آزاد) $\R^{|G|}$ عمل می‌کنند.
+یک پایه $\big\{ \epsilon_g \in \R^{|G|} \,\big|\, g\in G \big\}$ از $\R^{|G|}$ را تعریف می‌کنیم، که با اعضای گروه~$g\in G$ برچسب‌گذاری شده است.
+سپس عمل نمایش منظم (چپ) روی $\R^{|G|}$ بر حسب عمل آن بر روی این بردارهای پایه تعریف می‌شود، که با انتقال چپ داده می‌شود.
+به طور خاص، برای هر $h,g\in G$ نمایش منظم به صورت زیر عمل می‌کند:
+\begin{align}\label{eq:finite_regular_rep_action}
+    \rho_{\textup{reg}}(h)\, \epsilon_g\ :=\ \epsilon_{hg} \,.
+\end{align}
+توجه داشته باشید که عمل بر روی \emph{ضرایب} یک بردار، وارون است
+\begin{align}\label{eq:finite_regular_rep_action_coeffs}
+    \rho_{\textup{reg}}(h)\, \sum_{g\in G} \mathscr{f}_g\, \epsilon_g
+    \ =\ \sum_{g\in G} \mathscr{f}_g\, \epsilon_{hg}
+    \ =\ \sum_{{\widetilde{g}}\in G} \mathscr{f}_{h^{-1}\widetilde{g}}\ \epsilon_{\widetilde{g}} \,,
+\end{align}
+که دانستن آن مفید است، با این حال، ما در ادامه به این ویژگی نیازی نخواهیم داشت.
+از آنجا که نمایش منظم بردارهای پایه $\R^{|G|}$ را جایگشت می‌کند، یک \emph{نمایش جایگشتی} است.
+برخی از تصاویر برای گروه دوری $G=\operatorname{C}_4$ در پیوست~B از~\cite{Weiler2019_E2CNN} یافت می‌شود.
+میدان‌های ویژگی منظم به عنوان مقاطع هموار از کلاف $G$-همبسته
+\begin{align}
+    \A_{\textup{reg}}\ =\ \big(\GM \times \R^{|G|}) /\! \sim_{\rho_\textup{reg}} \,.
+\end{align}
+تعریف می‌شوند.
+
+
+ایزومورفیسم $C^\infty(\GM) \cong \Gamma(\A_{\textup{reg}})$ ادعای ما را در بخش~\ref{sec:instantiations_mesh} مبنی بر اینکه \emph{\lr{CNN}های چارچوب موازی} توسط~\citet{Yang2020parallelFrameCNN} کانولوشن‌های $\GM$ خاصی بین میدان‌های ویژگی منظم هستند، اثبات می‌کند.
+این علاوه بر این، ارتباط بین \emph{کانولوشن‌های گروهی} (به بخش~\ref{apx:homogeneous_preliminaries} مراجعه کنید) و \emph{کانولوشن‌های $\GM$ منظم} را که در بخش~\ref{sec:euclidean_literature} و~\cite{Weiler2019_E2CNN} ادعا شده بود، برقرار می‌کند.
+
+
+با این مقدمات و ملاحظات، ما آماده فرمول‌بندی قضیه هستیم:
+\begin{thm}[میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار]
+\label{thm:regular_field_scalar_GM}
+    فرض کنید $G \leq \GL{d}$ یک گروه ساختاری متناهی، $\GM$ یک $G$-ساختار روی $M$ و $\A_{\textup{reg}}$ کلافی باشد که با عمل نمایش منظم $\rho_\textup{reg}$ از $G$ همبسته است.
+    آنگاه میدان‌های ویژگی منظم با توابع هموار و با مقادیر حقیقی روی $G$-ساختار یکسان هستند، یعنی یک ایزومورفیسم
+    \begin{align}\label{eq:regular_field_associated_bundle_def}
+        \Lambda: C^\infty(\GM) \xrightarrow{\sim} \Gamma(\A_{\textup{reg}}) \,.
+    \end{align}
+    وجود دارد. این ایزومورفیسم با
+    \begin{align}
+    \label{eq:regular_field_scalar_GM_iso_lambda}
+        \big[\Lambda\digamma\big](p)
+        \ &=\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d\lhd g\big)\, \epsilon_g \Big] \,,
+    \intertext{
+    تعریف می‌شود، که در آن $[e_i]_{i=1}^d \in\GpM$ یک چارچوب نماینده دلخواه در~$p$ است.
+    وارون آن با
+    }
+    \label{eq:regular_field_scalar_GM_iso_lambda_inv}
+        \big[\Lambda^{-1}f\big] \big([e_i]_{i=1}^d\big)
+        \ &=\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle \,,
+    \end{align}
+    داده می‌شود، که در آن ما $p = \piGM([e_i]_{i=1}^d)$ را به صورت مخفف نوشته‌ایم و با $\psiAp^{[e_i]_{i=1}^d}$ آن پیمانه (یکتا) را نشان می‌دهیم که متناظر با چارچوب ${[e_i]_{i=1}^d}$ است، یعنی در $\psiAp^{[e_i]_{i=1}^d}\big( [e_i]_{i=1}^d\big) = e$ صدق می‌کند.
+\end{thm}
+\begin{proof}
+    برای اثبات این گزاره، باید نشان دهیم که
+    \textit{۱)} این ایزومورفیسم همواری نگاشت‌ها را حفظ می‌کند،
+    \textit{۲)} که انتخاب چارچوب نماینده $[e_i]_{i=1}^d \in\GpM$ در تعریف $\Lambda$ واقعاً دلخواه است و
+    \textit{۳)} که $\Lambda^{-1}$ واقعاً یک وارون چپ و راست برای $\Lambda$ است.
+
+    \item[] {\textit{۱)} همواری : }
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[]
+        اینکه ایزومورفیسم همواری نمایش‌های میدان معادل را حفظ می‌کند، روشن است زیرا تمام مورفیسم‌های درگیر (عمل راست، نگاشت پیمانه، حاصلضرب داخلی) هموار هستند.
+    \end{itemize}
+
+    \item[] {\textit{۲)} استقلال تعریف $\Lambda$ (معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda}) از انتخاب چارچوب نماینده ${[e_i]_{i=1}^d \in \GpM}$: }
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+        \item[]
+        فرض کنید که ما از \emph{هر} چارچوب دیگر $[e_i]_{i=1}^d \lhd h$ برای یک $h\in G$ دلخواه استفاده کرده باشیم.
+        سپس این تبدیل پیمانه دلخواه با استفاده از رابطه هم‌ارزی $\sim_{\rho_\textup{reg}}$ که زیربنای ساختار کلاف همبسته است، حذف می‌شود (معادله~\eqref{eq:regular_field_associated_bundle_def}):
+        \begin{alignat}{3}
+            \big[\Lambda\digamma\big](p)
+            \ =&\ \Big[ [e_i]_{i=1}^d \lhd h \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_g \Big]
+                \qquad && \big( \text{\small تعریف $\Lambda$, معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \rho_\textup{reg}(h) \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_g \Big]
+                \qquad && \big( \text{\small رابطه هم‌ارزی $\sim_{\rho_\textup{reg}}$, معادله~\eqref{eq:equiv_relation_A} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd hg)\, \epsilon_{hg} \Big]
+                \qquad && \big( \text{\small عمل $\rho_{\textup{reg}}$ روی پایه $\epsilon_g$, معادله~\eqref{eq:finite_regular_rep_action} } \big) \notag\\
+            \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_{\widetilde{g}} \digamma\big( [e_i]_{i=1}^d \lhd \widetilde{g})\, \epsilon_{\widetilde{g}} \Big]
+                \qquad && \big( \text{\small جایگزینی $\widetilde{g} = hg$ } \big)
+        \end{alignat}
+    \end{itemize}
+
+    \item[] {\textit{۳)} $\Lambda^{\!-1}$ در معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} یک وارون خوش‌تعریف برای $\Lambda$ در معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda} است : }
+
+    \begin{itemize}[leftmargin=1.1cm]
+    \setlength\itemsep{2ex}
+
+        \item[\textit{3a)}]
+            $\Lambda^{-1} \!\circ\! \Lambda = \id_{C^\infty(\GM)}$،
+            یعنی $\Lambda^{-1}$ یک وارون چپ برای $\Lambda$ است:
+
+            برای هر $\digamma\in C^{\infty}(\GM)$ و هر $[e_i]_{i=1}^d$ این به صورت زیر نشان داده می‌شود:
+            \begin{align}
+                &\ \big[\Lambda^{-1} \!\circ\! \Lambda\, \digamma \big] \big( [e_i]_{i=1}^d \big) \notag \\
+                \ =&\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} [\Lambda\digamma](p) \Big\rangle
+                    && \big( \text{\small تعریف $\Lambda^{-1}$, معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} } \big) \notag\\
+                \ =&\ \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} \big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\, \epsilon_g \big] \Big\rangle
+                    && \big( \text{\small تعریف $\Lambda$, معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+                \ =&\ \Big\langle \epsilon_e \,,\, \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\, \epsilon_g \Big\rangle
+                    && \big( \text{\small تعریف $\psiAp$, معادله~\eqref{eq:trivialization_A_p} } \big) \notag\\
+                \ =&\ \sum\nolimits_g \digamma\big( [e_i]_{i=1}^d \lhd g \big)\,
+                    \langle \epsilon_e, \epsilon_g \rangle
+                    && \big( \text{\small بردن حاصلضرب داخلی به داخل جمع} \big) \notag\\
+                \ =&\ \digamma\big( [e_i]_{i=1}^d \big)
+                    && \big( \text{\small دلتای کرونکر $\delta_{e,g} = \langle \epsilon_e, \epsilon_g \rangle$} \big) \notag\\
+            \end{align}
+
+
+
+        \item[\textit{3b)}]
+            $\Lambda \!\circ\! \Lambda^{-1} = \id_{\Gamma(\A_{\textup{reg}})}$،
+            یعنی $\Lambda^{-1}$ یک وارون راست برای $\Lambda$ است:
+
+            فرض کنید $f\in\Gamma(\A_{\textup{reg}})$ و $p\in M$ باشد، آنگاه:
+            \begin{align}
+                &\ \big[\Lambda \!\circ\! \Lambda^{-1} f \big] (p) \notag \\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \big[\Lambda^{-1}f]\big( [e_i]_{i=1}^d\lhd g\big)\, \epsilon_g \Big]
+                    && \big( \text{\small تعریف $\Lambda$, معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda} } \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d\lhd g} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small تعریف $\Lambda^{-1}$, معادله~\eqref{eq:regular_field_scalar_GM_iso_lambda_inv} } \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_e \,,\, \rho_{\textup{reg}}(g)^{-1} \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small تبدیل پیمانه, معادله~\eqref{eq:transition_fct_A}} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \rho_{\textup{reg}}(g) \epsilon_e \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small یکانی بودن $\rho_{\textup{reg}}$} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \sum\nolimits_g \Big\langle \epsilon_g \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big\rangle\, \epsilon_g \Big]
+                    && \big( \text{\small عمل $\rho_{\textup{reg}}$ روی پایه $\epsilon_e$, معادله~\eqref{eq:finite_regular_rep_action}} \big) \notag\\
+                \ =&\ \Big[ [e_i]_{i=1}^d \,,\, \psiAp^{[e_i]_{i=1}^d} f(p) \Big]
+                    && \big( \text{\small حذف بسط در پایه $\epsilon_g$} \big) \notag\\
+                \ =&\ f(p)
+                    && \big( \text{\small تعریف $\psiAp$, معادله~\eqref{eq:trivialization_A_p}} \big)
+            \end{align}
+
+    \end{itemize}
+
+    این اثبات ما را از هم‌ارزی $C^\infty(\GM)$ و $\Gamma(\A_\textup{reg})$ به پایان می‌رساند.
+\end{proof}

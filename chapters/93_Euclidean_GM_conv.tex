@@ -1,0 +1,252 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+\subsection
+[\CNN های هموردای گروه افاین در فضاهای اقلیدسی \texorpdfstring{$\Euc_d$}{}]%
+{\CNN های هموردای گروه افاین در فضاهای اقلیدسی $\Euc_d$}
+\label{sec:euclidean_affine_equiv}
+
+اکنون به بررسی کانولوشن‌های $\GM$ اقلیدسی روی $G$-ساختارهای القا شده توسط اطلس $\Aff(G)$ می‌پردازیم.
+همانطور که در ادامه نشان خواهیم داد، این کانولوشن‌ها هنگامی که در یک چارت بیان شوند، به کانولوشن‌های کلاسیک $G$-راهبری‌پذیر روی $\R^d$ خلاصه می‌شوند.
+هموردایی افاین آنها در قضیه~\ref{thm:affine_equivariance_Euclidean_GM_conv} در یک چارچوب مستقل از مختصات اثبات شده است.
+
+\paragraph{بازیابی کانولوشن‌های متعارف روی $\R^d$:}
+
+کانولوشن‌های $\GM$ به طور حیاتی به پول‌بک انتقال‌دهنده $\Expspf$ از میدان‌های ویژگی بستگی دارند، که به نوبه خود به انتقال‌دهنده‌های موازی و نگاشت نمایی وابسته است.
+در فضاهای اقلیدسی، این عملیات شکل بسیار ساده‌ای به خود می‌گیرند، که ابتدا به آن می‌پردازیم.
+
+همانطور که قبلاً گفته شد، انتقال‌دهنده‌های لوی-چیویتا بردارهای مماس را در فضاهای اقلیدسی به گونه‌ای جابجا می‌کنند که در معنای معمول در فضاهای اقلیدسی موازی باقی بمانند؛ به شکل~\ref{fig:transport_flat} مراجعه کنید.
+فرض کنید $x^A: \Euc_d \to \R^d$ هر چارت سراسری از یک اطلس $\Aff(G)$ باشد.
+از آنجا که میدان چارچوب القا شده "موازی" است، انتقال‌دهنده‌ها در امتداد \emph{هر} مسیر $\gamma$ هنگامی که نسبت به پیمانه‌های القا شده $\hat{d}x_p^A$ بیان شوند، بدیهی می‌شوند:
+\begin{alignat}{3}
+	g_\gamma^{AA} \,&=\, e&
+	\qquad &\textup{برای \emph{هر} مسیر}\ \gamma
+	\intertext{
+		این به طور خاص دلالت بر این دارد که انتقال‌دهنده‌های بردار ویژگی در این پیمانه با نگاشت‌های همانی داده می‌شوند، یعنی
+	}
+	\rho\big( g_\gamma^{AA} \big) \,&=\, \id_{\R^c}&
+	\qquad &\textup{برای \emph{هر} مسیر}\ \gamma \,.
+\end{alignat}
+هنگامی که نگاشت نمایی در یک چارت بیان شود، به جمع عبارات مختصاتی نقطه و بردار خلاصه می‌شود:
+\begin{align}\label{eq:exp_map_euclidean}
+	x^A \big( \exp_p v \big)\ =\ x^A(p) + \hat{d}x_p^A(v)
+\end{align}
+
+علاوه بر این، ما باید میدان‌های ویژگی را در مختصات بیان کنیم، یعنی آنها را از طریق چارت (سراسری، وارون) از $\Euc_d$ به $\R^d$ پول‌بک می‌کنیم،
+\begin{align}
+	F^A\ :=\ f^A \circ \big(x^A \big)^{-1}\, :\,\ \R^d \to \R^c \,,
+\end{align}
+که توسط نمودار جابجایی زیر به تصویر کشیده شده است:
+
+\begin{equation}\label{cd:feature_field_chart_pullback_Rd}
+	\begin{tikzcd}[row sep=2.5em, column sep=5em]
+		\R^d \arrow[rr, bend left=45, "{F^A}"', pos=0.4] &
+		\Euc_d \arrow[l, "{x^A}"] \arrow[r, "{f^A}"'] &
+		\R^c
+	\end{tikzcd}
+\end{equation}
+
+با این اجزا در دست، پول‌بک انتقال‌دهنده، معادله~\eqref{eq:transporter_pullback_in_coords}، از میدان‌های ویژگی در فضاهای اقلیدسی را می‌توان در مختصات به صورت زیر بیان کرد
+\begin{align}\label{eq:transporter_pullback_Euclidean}
+	\big[\mkern-2mu \Expspf \big]^A (\mathscr{v})
+	\ =&\,\ \rho\pig( g^{AA}_{p \,\leftarrow\, \exp_p (\hat{d}x_p^A)^{\shortminus1}(v^A)} \pig) \,
+	f^A\, \exp_p \!\pig(\! \big(\hat{d}x_p^A\big)^{\mkern-2mu-1}(\mathscr{v}) \pig) \notag \\
+	\ =&\,\ f^A\, \big(x^A\big)^{-1}\, x^A \exp_p \!\pig(\! \big(\hat{d}x_p^A\big)^{\mkern-2mu-1}(\mathscr{v}) \pig) \notag \\
+	\ =&\,\ F^A \big( x^A(p) + \mathscr{v} \big) \,.
+\end{align}
+بنابراین عبارت مختصاتی کانولوشن $\GM$، معادله~\eqref{eq:gauge_conv_coord_expression}، به صورت زیر در می‌آید
+\begin{align}\label{eq:Euclidean_GM_conv_in_coords}
+	\fout^A(p)
+	\ =\ \big[K \star \fin \big]^A (p)
+	\ =\ \int_{\R^d} K(\mathscr{v})\, \big[\mkern-2mu \Expspfin\big]^A (\mathscr{v})\ d\mathscr{v}
+	\ =\ \int_{\R^d} K(\mathscr{v})\, \Fin^A\big( x^A(p) + \mathscr{v} \big)\ d\mathscr{v} \,.
+\end{align}
+این نشان می‌دهد که کانولوشن‌های $\GM$ در فضاهای اقلیدسی، کانولوشن‌های (همبستگی‌های) متعارف هستند.
+\begin{thm}[کانولوشن‌های $\GM$ در فضاهای اقلیدسی، کانولوشن‌های روی $\R^d$ را بازیابی می‌کنند]
+	\label{thm:Euclidean_GM_conv_is_conventional_conv}
+	فرض کنید $\GM$ یک $G$-ساختار القا شده توسط یک اطلس $\Aff(G)$ از چارت‌ها باشد، همانطور که در بخش~\ref{sec:euclidean_geometry} تعریف شد.
+	هنگامی که نسبت به هر چارت سراسری $x^A: \Euc_d \to \R^d$ از این اطلس $\Aff(G)$ بیان شود، کانولوشن $\GM$ شکل یک کانولوشن (همبستگی) متعارف $*$\, را به خود می‌گیرد:
+	\begin{align}
+		\Fout^A(\mathscr{x})
+		\ =\ \int_{\R^d} K(\mathscr{v})\, \Fin^A\big( \mathscr{x} + \mathscr{v} \big)\ d\mathscr{v}
+		\ =\ \big[ K * \Fin^A \big] (\mathscr{x})
+	\end{align}
+\end{thm}
+\begin{proof}
+	این گزاره با ارزیابی معادله~\eqref{eq:Euclidean_GM_conv_in_coords} در $p = \big(x^A\big)^{-1}(\mathscr{x})$ و شناسایی $\Fout^A = \fout^A \circ \big(x^A\big)^{-1}$ در سمت چپ به دست می‌آید.
+\end{proof}
+
+قبل از پرداختن به اثبات هموردایی کانولوشن‌های $\GM$ اقلیدسی در یک چارچوب \emph{مستقل از مختصات}، ما \emph{استقلال از مختصات} آن را در نظر می‌گیریم -- همانطور که خواهیم دید، هر دو مفهوم به شدت به هم مرتبط هستند.
+تمام آنچه برای نشان دادن استقلال از مختصات لازم است، قانون تبدیل پول‌بک‌های میدان ویژگی به $\R^d$ از طریق چارت‌ها است.
+قانون تبدیل مستقیماً از توابع گذار نتیجه می‌شود و می‌توان آن را از جابجایی نمودار زیر
+\begin{equation}\label{cd:feature_field_chart_pullback_Rd_transitions}
+	\begin{tikzcd}[row sep=2.5em, column sep=6em]
+		\R^d
+		\arrow[rr, "{F^A}"]
+		\arrow[dd, "{t^{BA} g^{BA}}\ "']
+		& &
+		\R^c
+		\arrow[dd, "{\ \rho\big( g^{BA} \big)}"]
+		\\
+		&
+		\Euc_d
+		\arrow[ul, pos=.4, "{x^A}"']
+		\arrow[dl, pos=.4, "{x^B}"]
+		\arrow[ur, pos=.4, "{f^A}"]
+		\arrow[dr, pos=.4, "{f^B}"']
+		\\
+		\R^d
+		\arrow[rr, "{F^B}"']
+		& &
+		\R^c
+	\end{tikzcd}
+\end{equation}
+خواند که به صورت زیر داده می‌شود:
+\begin{align}
+	F^B\ =\ \rho\big( g^{BA} \big) \,F^A\, \big( t^{BA} g^{BA} \big)^{-1} \,.
+\end{align}
+توجه داشته باشید که این قانون تبدیل دقیقاً نمایش القایی $F^B = t^{BA}g^{BA} \rhd_\rho F^A$ است که در معادله~\eqref{eq:induced_rep_affine} معرفی شد.
+با استفاده از هموردایی کانولوشن متعارف با کرنل‌های $G$-راهبری‌پذیر از معادله~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd}، این نتیجه می‌دهد
+\begin{align}\label{eq:Euclidean_conv_coordinate_independence}
+	K*\Fin^B
+	\ =\ K* \big( t^{BA} g^{BA} \rhd_{\rhoin} \Fin^A \big)
+	\ =\ t^{BA} g^{BA} \rhd_{\rhoout} \big( K * \Fin^A \big)
+	\ =\ t^{BA} g^{BA} \rhd_{\rhoout} \Fout^A
+	\ =\ \Fout^B
+\end{align}
+بنابراین دیده می‌شود که \emph{هموردایی فعال $\Aff(G)$} کانولوشن‌های کلاسیک $G$-راهبری‌پذیر روی $\R^d$ از بخش~\ref{sec:steerable_cnns_in_coords}، \emph{استقلال از مختصات غیرفعال $\Aff(G)$} کانولوشن‌های $\GM$ اقلیدسی را نتیجه می‌دهد و برعکس.
+این دو، دو روی یک سکه هستند.
+علاوه بر این، می‌توان هموردایی $\Aff(G)$ کانولوشن $\GM$ را در چارچوب مستقل از مختصات اثبات کرد، که در ادامه این کار را انجام خواهیم داد.
+
+\paragraph{هموردایی گروه افاین}
+
+برای اثبات هموردایی گروه افاین کانولوشن‌های $\GM$ اقلیدسی، ابتدا قانون تبدیل میدان‌های ویژگی مستقل از مختصات $f\in \Gamma(\A)$ را تحت تبدیلات افاین $\phi \in \AffGM$ به صورت زیر تعریف می‌کنیم:
+\begin{align}\label{eq:affine_action_sections}
+	\phi \,\rhd f\ =\ \dphiA\, f\: \phi^{-1} \,,
+\end{align}
+یعنی همانند ایزومتری‌ها در تعریف~\ref{dfn:isometry_pushforward}.%
+\footnote{
+	از آنجا که کلاف بردار ویژگی به عنوان یک $G$-کلاف، یعنی مرتبط با $\GM$ تعریف شده است، پوش‌فورواردها فقط برای تبدیلات افاین حافظ $G$-ساختار در $\AffGM$ قابل تعریف هستند.
+}
+پول‌بک انتقال‌دهنده (لوی-چیویتا) از یک میدان ویژگی تبدیل‌شده افاین $\phi \rhd\! f$ نسبت به یک چارت افاین $x^A$ با عبارت زیر داده می‌شود:
+\begin{align}\label{eq:affine_transformed_transporter_pullback}
+	& \big[\mkern-2mu \Expsp (\phi \rhd\! f) \big]^A (\mathscr{v})
+	\notag \\[.8ex]
+	\overset{(1)}{=}& 
+	\big[\mkern-2mu \Expsp (\dphiA f\, \phi^{-1}) \big]^A (\mathscr{v})
+	\notag \\[.8ex]
+	\overset{(2)}{=}& 
+	\underbrace{\rho\big( g^{AA}_{p \,\leftarrow\, \exp_p (\hat{d}x_p^A)^{-1}(\mathscr{v})} \big)}_{=\, \id_{\R^c}} \,
+	\psiAp^A\, (\dphiA f\, \phi^{-1})\,
+	\exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig)
+	\notag \\[.8ex]
+	\overset{(3)}{=}& 
+	\psiAp^A\, \dphiA\,
+	\pig[ \big( \psiAphiinvp^A \big)^{-1} \psiAphiinvp^A\pig]\, 
+	f\: 
+	\pig[ \big(x^A \big)^{-1}\, x^A\pig]\, 
+	\phi^{-1} 
+	\pig[ \big(x^A \big)^{-1}\, x^A\pig]\, 
+	\exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig)
+	\notag \\[.8ex]
+	\overset{(4)}{=}& 
+	\pig[\psiAp^A\, \dphiA\, \big(\psiAphiinvp^A \big)^{-1}\pig]
+	\pig[\psiAphiinvp^A\, f\, \big(x^A \big)^{-1}\pig]
+	\pig[x^A\, \phi^{-1} \big(x^A \big)^{-1}\pig]
+	\pig[x^A \exp_p \!\pig(\! \big(\hat{d}x_p^A \big)^{-1}(\mathscr{v}) \pig) \pig]
+	\notag \\[.8ex]
+	\overset{(5)}{=}& 
+	\rho\big( g_\phi^{AA} \big)\, F^A\, \big( t_\phi^{AA} g_\phi^{AA} \big)^{-1} \big(x^A(p) + \mathscr{v} \big)
+	\notag \\[.8ex]
+	\overset{(6)}{=}& 
+	\pig[\big( t_\phi^{AA} g_\phi^{AA} \big) \rhd_\rho F^A \pig]\, \big(x^A(p) + \mathscr{v} \big)
+\end{align}
+این عبارت به پول‌بک انتقال‌دهنده از میدان تبدیل‌نشده از طریق نمایش القایی (معادله~\eqref{eq:induced_rep_affine}) مرتبط می‌شود، که با عبارت مختصاتی $t_\phi^{AA} g_\phi^{AA}$ از $\phi$ عمل می‌کند (معادله~\eqref{eq:AffGM_in_charts_eq}).
+دو مرحله اول از معادله~\eqref{eq:affine_action_sections} و تعریف پول‌بک انتقال‌دهنده در مختصات استفاده می‌کنند، که در آن $(\dphiA f\, \phi^{-1})^A := \psiAp^A(\dphiA f\, \phi^{-1})$.
+برای ترجمه تمام مورفیسم‌ها به عبارات مختصاتی مربوطه، مرحله سوم همانی‌های $\id_{\R^c} = \big( \psiAphiinvp^A \big)^{-1} \psiAphiinvp^A$ و $\id_{\R^d} = \big( x^A \big)^{-1} x^A$ را وارد می‌کند، که در مرحله چهارم دوباره دسته‌بندی می‌شوند تا روشن شود کدام ترکیب‌ها پس از مرحله پنجم به عبارات مختصاتی منجر می‌شوند.
+برای مرحله ۵ به یاد بیاورید که، طبق قضیه~\ref{thm:Aff_GM_in_charts}، $g_\phi^{AA}(p) = g_\phi^{AA}$ برای هر $p$ در $\Euc_d$.
+همانطور که در بالا گفته شد، مرحله آخر قانون تبدیل حاصل در مختصات را به عنوان عمل نمایش القایی شناسایی می‌کند.
+
+با این نتیجه می‌توانیم هموردایی $\AffGM$ کانولوشن‌های اقلیدسی را در چارچوب مستقل از مختصات اثبات کنیم.
+این قضیه~\ref{thm:isom_equiv_GM_conv} را که هموردایی ایزومتری کانولوشن‌های $\GM$ را اثبات می‌کند، برای مورد خاص فضاهای اقلیدسی تعمیم می‌دهد.
+\begin{thm}[هموردایی افاین کانولوشن‌های $\GM$ اقلیدسی]
+	\label{thm:affine_equivariance_Euclidean_GM_conv}
+	فرض کنید $\GM$ یک $G$-ساختار باشد که توسط یک اطلس $\Aff(G)$ از فضای اقلیدسی~${M = \Euc_d}$ القا شده و فرض کنید بردارهای ویژگی مطابق با اتصال لوی-چیویتا روی~$\Euc_d$ منتقل می‌شوند.
+	کانولوشن $\GM$ متناظر، تضمین می‌شود که تحت عمل تبدیلات افاین حافظ $G$-ساختار $\AffGM \cong \Aff(G)$ هموردا باشد.
+	در معادلات، برای میدان‌های ویژگی دلخواه $\fin \in \Gamma(\Ain)$ و کرنل‌های $G$-راهبری‌پذیر $K\in\KG$ داریم که
+	\begin{align}
+		\big[K \star (\phi\rhd \fin) \big]\ =\ \phi\rhd \big[K \star \fin \big] \qquad \forall\, \phi\in\AffGM \,,
+	\end{align}
+	یعنی نمودار زیر برای هر $\phi$ در $\AffGM$ جابجایی است:
+	\begin{equation}\label{cd:affine_equivariance_euclidean_gm_conv}
+		\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+			\Gamma(\Ain)
+			\arrow[r, pos=.5, "{\phi \,\rhd}"]
+			\arrow[d, "{K\star\,}"']
+			& \Gamma(\Ain)
+			\arrow[d, "{\,K\star}"]
+			\\
+			\Gamma(\Aout)
+			\arrow[r, pos=.5, "{\phi \,\rhd}"']
+			& \Gamma(\Aout)
+		\end{tikzcd}
+	\end{equation}
+\end{thm}
+
+\begin{proof}
+	فرض کنید $x^A: \Euc_d \to \R^d$ هر چارت سراسری از اطلس $\Aff(G)$ مورد نظر باشد و $p\in\Euc_d$.
+	اثبات ما از هموردایی $\AffGM$ با بیان کانولوشن نسبت به این مختصات و استفاده از هموردایی $\Aff(G)$ کانولوشن‌های کلاسیک $G$-راهبری‌پذیر روی $\R^d$ از معادله~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd} انجام می‌شود:
+	\begingroup
+	\allowdisplaybreaks
+	\begin{align}
+		& \psiAoutp^A\, \big[K \star (\phi\rhd \fin) \big] (p)
+		\\[.8ex]
+		=& \int_{\R^d} K(\mathscr{v}) 
+		\big[\mkern-2mu \Expsp (\phi \rhd \fin) \big]^A (\mathscr{v})
+		\,\ d\mathscr{v}
+		\quad && \big( \text{\small کانولوشن $\GM$ در مختصات، معادله~\eqref{eq:gauge_conv_coord_expression} } \big) \notag \\[.8ex]
+		=& \int_{\R^d} K(\mathscr{v}) 
+		\pig[\big( t_\phi^{AA} g_\phi^{AA} \big) \rhd_{\rhoin}\! \Fin^A \pig]\, \big(x^A(p) + \mathscr{v} \big)
+		\,\ d\mathscr{v}
+		\quad && \big( \text{\small پول‌بک انتقال‌دهنده تبدیل‌شده، معادله~\eqref{eq:affine_transformed_transporter_pullback} } \big) \notag \\[.8ex]
+		=& \pig[ K * \big( t_\phi^{AA} g_\phi^{AA} \rhd_{\rhoin}\! \Fin^A \big) \pig] \big( x^A(p) \big)
+		\quad && \big( \text{\small کانولوشن $*$ شناسایی‌شده روی $\R^d$ } \big) \notag \\[.8ex]
+		=& \pig[ t_\phi^{AA} g_\phi^{AA} \rhd_{\rhoout} \big( K * \Fin^A \big) \pig] \big( x^A(p) \big)
+		\quad && \big( \text{\small هموردایی $\Aff(G)$ روی $\R^d$، معادله~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd} } \big) \notag \\[.8ex]
+		=& \rhoout \big( g_\phi^{AA} \big) \big( K * \Fin^A \big) \pig(\big( t_\phi^{AA} g_\phi^{AA} \big)^{-1} x^A(p) \pig)
+		\quad && \big( \text{\small نمایش القایی $\rhd_{\rhoout}$، معادله~\eqref{eq:induced_rep_affine} } \big) \notag \\[.8ex]
+		=& \rhoout \big( g_\phi^{AA} \big) \big( K * \Fin^A \big) \big( x^A (\phi^{-1}(p)) \big)
+		\quad && \big( \text{\small عبارت مختصاتی $\phi$، معادله~\eqref{eq:AffGM_in_charts_eq} } \big) \notag \\[.8ex]
+		=& \rhoout\big( g_\phi^{AA} \big)
+		\int_{\R^d} K( \mathscr{v} ) 
+		\Fin^A \big( x^A\big( \phi^{-1}(p) \big) + \mathscr{v} \big)
+		\,\ d\mathscr{v}
+		\quad && \big( \text{\small کانولوشن بسط‌داده‌شده $*$ روی $\R^d$ } \big) \notag \\[.8ex]
+		=& \rhoout\big( g_\phi^{AA} \big)
+		\int_{\R^d} K( \mathscr{v} ) 
+		\big[ \Expsphiinvpfin \big]^A (\mathscr{v})
+		\,\ d\mathscr{v}
+		\quad && \big( \text{\small پول‌بک انتقال‌دهنده اقلیدسی، معادله~\eqref{eq:transporter_pullback_Euclidean} } \big) \notag \\[.8ex]
+		=& \rhoout\big( g_\phi^{AA} \big)
+		\psiAoutphiinvp^A \big[K \star \fin \big]\, \phi^{-1} (p)
+		\quad && \big( \text{\small کانولوشن $\GM$ در مختصات، معادله~\eqref{eq:gauge_conv_coord_expression} } \big) \notag \\[.8ex]
+		=& \psiAoutp^A\, \dphiAout
+		\big[K \star \fin \big] \phi^{-1} (p)
+		\quad && \big( \text{\small پوش‌فوروارد در مختصات، معادله~\eqref{cd:pushforward_A_coord} } \big) \notag \\[.8ex]
+		=& \psiAoutp^A\, \pig[ \phi\rhd
+		\big[K \star \fin \big] \pig] (p)
+		\quad && \big( \text{\small عمل $\AffGM$ روی میدان‌های ویژگی، معادله~\eqref{eq:affine_action_sections} } \big) \notag
+	\end{align}
+	\endgroup
+	این گزاره نتیجه می‌شود زیرا $\psiAoutp^A$ یک ایزومورفیسم است.
+\end{proof}
+
+به طور خلاصه، کانولوشن‌های $\GM$ اقلیدسی با $G$-ساختارهای القا شده توسط اطلس $\Aff(G)$ دو ویژگی زیر را دارند:
+\begin{itemize}[leftmargin=15em]
+	\item[\textit{استقلال از مختصات $\Aff(G):$}]
+	تضمین می‌شود که آنها در هر چارت از اطلس $\Aff(G)$، یعنی $\mathscr{A}^{\Aff(G)}_{\Euc_d}$، نتایج معادل تولید کنند.
+	این ویژگی در معادله~\eqref{eq:Euclidean_conv_coordinate_independence} نشان داده شد و در شکل~\ref{fig:affine_charts} به عنوان تبدیل \emph{بین چارت‌ها} به تصویر کشیده شده است.
+	\item[\textit{هموردایی فعال $\Aff(G):$}]
+	همانطور که در قضیه~\ref{thm:affine_equivariance_Euclidean_GM_conv} اثبات شد، آنها تحت تبدیلات فعال میدان‌های ویژگی توسط $\AffGM \cong \Aff(G)$ هموردا هستند.
+	در شکل~\ref{fig:affine_charts}، این متناظر با یک تبدیل سیگنال روی $\Euc_d$ خواهد بود، که در یک تبدیل فعال روی نمایش آن نسبت به \emph{همان چارت} منعکس می‌شود.
+\end{itemize}
+اثبات هر دو ویژگی در نهایت به هموردایی فعال $\Aff(G)$ کانولوشن‌های کلاسیک $G$-راهبری‌پذیر روی~$\R^d$ در معادله~\eqref{eq:Euclidean_conv_equiv_in_coords_Rd} متکی است.

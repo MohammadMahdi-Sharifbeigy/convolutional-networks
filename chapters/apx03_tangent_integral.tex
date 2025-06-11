@@ -1,0 +1,98 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{انتگرال‌گیری روی فضاهای مماس}
+\label{apx:tangent_integral}
+
+
+روی یک منیفلد ریمانی $(M,\eta)$، چگالی حجم%
+\footnote{
+    برخلاف یک \emph{فرم} حجم $\omega$, \emph{چگالی‌های} حجم $|\omega|$ یک حجم مثبت را به هر چارچوب اختصاص می‌دهند.
+    آنها هم روی منیفلدهای جهت‌پذیر و هم غیرجهت‌پذیر وجود دارند.
+}
+$dp$ روی $M$ به طور یکتا با این الزام مشخص می‌شود که به \emph{چارچوب‌های راست‌هنجار} $\big[ e_1^O, \,\dots,\, e_d^O \big]$ نسبت به متریک $\eta$ \emph{حجم واحد} اختصاص داده شود:
+\begin{align}
+    dp\big(e_1^O, \,\dots,\, e_d^O \big) \ =\ 1
+    \mkern36mu &\textup{برای هر چارچوب \emph{راست‌هنجار}
+    $\ \big[ e_1^O, \,\dots,\, e_d^O \big]\ $ از $\ \TpM$}
+\intertext{
+به طور مشابه، یک چگالی حجم $dv$ روی \emph{فضاهای مماس} $\TpM$ از یک منیفلد ریمانی به طور یکتا با اختصاص حجم واحد به چارچوب‌های راست‌هنجار آن نسبت به $\eta_p$ تعریف می‌شود:
+}
+    dv\big(\mathfrak{e}_1^O, \,\dots,\, \mathfrak{e}_d^O \big) \ =\ 1
+    \mkern36mu &\textup{برای هر چارچوب \emph{راست‌هنجار}
+    $\ \big[ \mathfrak{e}_1^O, \,\dots,\, \mathfrak{e}_d^O \big]\ $ از $\ \TvTpM$}
+\end{align}
+
+
+برای جلوگیری از یک بحث بی‌جهت پیچیده در مورد کلاف مماس مضاعف $\TTM$， ما انتگرال‌گیری روی $\TpM$ را به طور معادل با پول‌بک کردن آن از طریق یک پیمانه \emph{ایزومتریک} (و در نتیجه حجم-نگهدار) به~$\R^d$ تعریف می‌کنیم.
+فرض کنید $\psiTMp^O$ چنین پیمانه ایزومتریکی از یک اطلس $\O{d}$ باشد، که چارچوب‌های راست‌هنجار را در $\TpM$ با چارچوب‌های راست‌هنجار در $\R^d$ یکی می‌گیرد.
+سپس انتگرال یک تابع $f: \TpM \to \R$ از طریق پول‌بک آن تعریف می‌شود
+\begin{align}
+    \int_{\TpM} f(v)\, dv
+    \ :=&\ \int_{\R^d} f \mkern-2mu\circ\mkern-2mu \big(\psiTMp^O \big)^{\!-1} (v^O)\,\ dv^O \notag \\
+    \ =&\ \int_{\R^d} f^O(v^O)\, dv^O \,,
+\end{align}
+که در آن عبارت مختصاتی $f^O := f \circ \big(\psiTMp^O \big)^{-1} : \R^d \to \R$ از $f$ را طبق معمول تعریف کردیم.
+این واقعیت که $\psiTMp^O$ ایزومتریک است در اینجا تضمین می‌کند که $dv$ واقعاً حجم واحد را به چارچوب‌های راست‌هنجار اختصاص می‌دهد اگر $dv^O$ این کار را بکند.
+از آنجا که دومی فقط اندازه لبگ استاندارد روی $\R^d$ است، این مورد برقرار است.
+
+
+
+حال فرض کنید $\psiTMp^A$ \emph{هر} پیمانه‌ای در $p$ باشد، که ممکن است بخواهیم انتگرال را نسبت به آن بیان کنیم.
+نگاشت گذار بین هر دو مختصاتی‌سازی به سادگی با تبدیل پیمانه
+$v^O = \psi^O \circ (\psi^A )^{-1} (v^A) = g^{OA}_p (v^A)$ داده می‌شود.
+طبق قوانین استاندارد برای تغییر متغیرها در انتگرال‌های چندبعدی، دیفرانسیل‌ها باید مطابق با دترمینان ژاکوبین این تبدیل تغییر کنند تا حجم حفظ شود.
+از آنجا که تبدیل خطی است، ژاکوبین با خود $g_p^{OA}$ داده می‌شود، به طوری که به دست می‌آوریم
+\begin{align}\label{eq:integral_gOA}
+    \int_{\TpM} f(v)\, dv
+    \ &=\ \int_{\R^d} f^A(v^A)\; \pig|\mkern-2mu \det \!\big(g_p^{OA} \big)\mkern-1mu\pig|\; dv^A \,.
+\end{align}
+
+
+از طریق تبدیل پیمانه، این عبارت هنوز به انتخاب دلخواه از پیمانه ایزومتریک~$\psiTMp^O$ بستگی دارد.
+این وابستگی را می‌توان با بیان مستقیم اندازه انتگرال بر حسب متریک~به صورت
+\begin{align}\label{eq:integral_etaA}
+    \int_{\TpM} f(v)\, dv
+    \ &=\ \int_{\R^d} f^A(v^A)\; \sqrt{|\eta_p^A|}\ dv^A \,,
+\end{align}
+از بین برد، که در آن ضریب
+\begin{align}\label{eq:volume_element_def}
+    \sqrt{|\eta_p^A|}\ :=\ \sqrt{\mkern2mu \pig|\det\!\pig( \big[ \eta_p(e_i^A, e_j^A) \big]_{ij} \pig)\pig| \,}
+\end{align}
+حجم (مطلق) چارچوب مرجع $[e_i^A]_{i=1}^d$ را نسبت به متریک $\eta$ اندازه‌گیری می‌کند.
+برای تأیید برابری سمت راست معادلات~\eqref{eq:integral_gOA} و~\eqref{eq:integral_etaA}، ما متریک $\eta_p$ از $\TpM$ را بر حسب حاصلضرب داخلی استاندارد $\langle\cdot,\, \cdot\rangle$ از~$\R^d$ بیان می‌کنیم، که دوباره با استفاده از پیمانه ایزومتریک $\psiTMp^O$ از اطلس $\O{d}$ انجام می‌شود:
+\begin{align}
+    \eta_p\big( e_i^A,\, e_j^A \big)
+    \ &=\ \pig\langle \psiTMp^O\big( e_i^A\big),\; \psiTMp^O\big( e_j^A\big) \pig\rangle \notag \\
+    \ &=\ \pig\langle \psiTMp^O \circ \big(\psiTMp^A \big)^{-1} (\epsilon_i),\; \psiTMp^O \circ \big(\psiTMp^A \big)^{-1} (\epsilon_j) \pig\rangle \notag \\
+    \ &=\ \pig\langle g_p^{OA} \epsilon_i,\; g_p^{OA} \epsilon_j \pig\rangle \notag \\
+    \ &=\ \epsilon_i^\top \big(g_p^{OA} \big)^\top \, g_p^{OA} \epsilon_j \notag \\
+    \ &=\ \Big( \big(g_p^{OA} \big)^\top \, g_p^{OA} \Big)_{ij}
+\end{align}
+بنابراین قدر مطلق دترمینان در معادله~\eqref{eq:volume_element_def} با
+\begin{align}
+    \pig|\det\!\pig( \big[ \eta_p(e_i^A, e_j^A) \big]_{ij} \pig)\pig|
+    \ &=\ \pig| \det\pig( \big(g_p^{OA} \big)^\top \, g_p^{OA} \pig) \pig| \notag \\
+    \ &=\ \pig| \det\pig( \big(g_p^{OA} \big)^\top \pig) \, \det\pig( g_p^{OA} \pig) \pig| \notag \\
+    \ &=\ \pig| \det\big( g_p^{OA} \big) \big|^2 \,,
+\end{align}
+داده می‌شود، که از آن برابری سمت راست معادلات~\eqref{eq:integral_gOA} و~\eqref{eq:integral_etaA} با گرفتن ریشه دوم نتیجه می‌شود.
+
+
+از آنجا که ضرایب $\sqrt{|\eta_p^A|}$ و $\sqrt{|\eta_p^B|}$ حجم‌های چارچوب‌های مربوطه خود را اندازه‌گیری می‌کنند، به راحتی می‌توان نشان داد که آنها با تغییر حجم \emph{وارون} $\big|\mkern-2mu \det g_p^{BA} \big|$ به هم مرتبط هستند:
+\begin{alignat}{3}
+    \sqrt{|\eta_p^B|}\ &=\ \frac{1}{\big|\mkern-2mu \det g_p^{BA} \big|}\, \sqrt{|\eta_p^A|}
+    && \qquad\quad \big(\Rightarrow \quad & -1 & \textup{-چگالی} \,\big)
+\intertext{
+این به همراه فرمول معمول تغییر متغیرها
+}
+    dv^B\ &=\ \big|\mkern-2mu \det g_p^{BA} \big|\ dv^A
+    && \qquad\quad \big(\Rightarrow \quad  & +1 & \textup{-چگالی} \,\big) \,,
+\intertext{
+دلالت بر این دارد که مختصاتی‌سازی‌های عنصر حجم ریمانی $dv$ بنا به طراحی تحت تبدیلات پیمانه ناوردا هستند، یعنی،
+}
+    \qquad\qquad
+    \sqrt{|\eta_p^B|}\ dv^B\ &=\ \sqrt{|\eta_p^A|}\ dv^A
+    && \qquad\quad \big(\Rightarrow \quad  & 0 & \textup{-چگالی} \,\big) \,.
+\end{alignat}
+این رابطه تضمین می‌کند که انتگرال‌گیری در معادله~\eqref{eq:integral_etaA} خوش‌تعریف است، یعنی مستقل از مختصات است.

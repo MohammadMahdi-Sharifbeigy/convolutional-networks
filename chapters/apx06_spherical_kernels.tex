@@ -1,0 +1,217 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit{GM} -- اثبات‌ها}
+\label{apx:spherical_conv_main}
+
+
+این بخش اثبات‌های قضایای~\ref{thm:spherical_kernel_space_iso} و~\ref{thm:spherical_conv_GM_conv} را از بخش~\ref{sec:spherical_CNNs_fully_equivariant} در دو زیربخش زیر ارائه می‌دهد.
+در مجموع، این قضایا تأیید می‌کنند که کرنل‌های کانولوشن کروی $\Stab{n}$-راهبری‌پذیر توسط \citet{Cohen2019-generaltheory} معادل با کرنل‌های خاص $\Stab{n} \cong G$-راهبری‌پذیر هستند، و کانولوشن‌های کروی $\I$-هموردا با این کرنل‌ها معادل با کانولوشن‌های $\GM$ متناظر ما هستند.
+
+
+
+\toclesslab\subsection{اثبات قضیه~\ref{thm:spherical_kernel_space_iso} -- ایزومورفیسم فضای کرنل}{apx:spherical_conv_kernel_space_iso}
+
+قضیه~\ref{thm:spherical_kernel_space_iso} یک ایزومورفیسم
+\begin{align}
+  \Omega:\ 
+  \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}
+  \xrightarrow{\,\sim\,}\,
+  \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}
+\end{align}
+بین فضای $\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ از کرنل‌های $G$-راهبری‌پذیر روی گوی باز $B_{\R^2}\mkern-1mu(0,\pi) \subset \R^2$ و فضای $\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ از کرنل‌های $G\cong \Stab{n}$-راهبری‌پذیر روی $S^2 \backslash \mkern-1mu\minus\mkern1mu n$ برقرار می‌کند، که در معادلات~\eqref{eq:G_steer_kernel_space_open_ball_pi} و~\eqref{eq:spherical_steerable_kernel_space} تعریف شده‌اند.
+با توجه به پیمانه‌های دلخواه $N$ در قطب شمال $n$ که کرنل حول آن متمرکز است، و پیمانه‌های $P$ در هر نقطه دیگر $p$ این ایزومورفیسم با
+\begin{alignat}{4}
+    \Omega(K)\! &:&\,\ S^2 \backslash \mkern-1mu\minus\mkern1mu n \,&\to&\, \R^{\cout\times\cin},
+    \quad p \,&\mapsto\,
+    \big[\Omega(K)\big](p)\ &:=&\ K\big( \psiTMn^N \log_n p \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)\, \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \,.
+\intertext{
+با مخفف‌نویسی $p := \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v}$، وارون آن با
+}
+    \Omega^{-1}(\kappa)\! &:&\,\ B_{\R^2}\mkern-1mu(0,\pi) &\to& \R^{\cout\times\cin},
+    \quad \mathscr{v} \,&\mapsto\,
+    \big[\Omega^{-1}(\kappa)\big](\mathscr{v})\ &:=&\ \kappa\big(\! \exp_n\! \big(\psiTMn^N\big)^{\!-1} \mathscr{v} \big)\, \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{\!-1} \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \!,
+\end{alignat}
+داده می‌شود.
+
+\begin{proof}
+    اینکه $\Omega^{-1}$ یک وارون خوش‌تعریف برای $\Omega$ است، به راحتی با جایگذاری عبارات آنها و تأیید اینکه
+    \begin{align}
+        \Omega \circ \Omega^{-1} = \id_{\mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}}
+        \qquad \textup{and} \qquad
+        \Omega^{-1} \circ \Omega = \id_{\mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}}
+    \end{align}
+    برقرار هستند، نشان داده می‌شود.
+    برای دیدن این، توجه داشته باشید که پیمانه‌های $\psiTMn^N$ انتقال‌دهنده‌های $\rhoin\big( g_{n\leftarrow p}^{NP} \big)$ و ضریب حجم (غیرصفر) $\sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$ همیشه وارون‌پذیر هستند و دو مورد اخیر جابجا می‌شوند زیرا ضریب مقیاس‌بندی حجم، یک اسکالر است.
+    نگاشت نمایی $\exp_n: B_{\R^2}\mkern-1mu(0,\pi) \to S^2 \backslash \mkern-1mu\minus\mkern1mu n$ روی $B_{\R^2}\mkern-1mu(0,\pi)$ با $\log_n: S^2 \backslash \mkern-1mu\minus\mkern1mu n \to B_{\R^2}\mkern-1mu(0,\pi)$ وارون می‌شود.
+
+
+    محدودیت‌های کرنل دو فضای کرنل علاوه بر این یکدیگر را نتیجه می‌دهند.
+    با توجه به هر کرنل $G$-راهبری‌پذیر $K \in \mathscr{K}^{G,B_{\R^2}\mkern-1mu(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ کرنل $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ محدودیت $\Stab{n}$-راهبری‌پذیری را از معادله~\eqref{eq:spherical_steerable_kernel_space} برآورده می‌کند.
+    این برای هر $p\in S^2 \backslash \mkern-1mu\minus\mkern1mu n$ هر $\xi \in \Stab{n}$ و هر پیمانه $X$ در $\xi(p)$ به صورت زیر نشان داده می‌شود:
+    \begin{align}
+        \big[\Omega(K)\big]\big( \xi(p) \big)
+        \,&\overset{(1)}{=}\, K\big( \psiTMn^N \log_n \xi(p) \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(2)}{=}\, K\big( \psiTMn^N \dxiTM \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(3)}{=}\, K\big( g_\xi^{NN}(n) \psiTMn^N \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(4)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big) 
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(5)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)
+            \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(6)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot K\big(\psiTMn^N \log_n p \big) \cdot \rhoin\big( g_{n\leftarrow p}^{NP} \big) \rhoin\big( g_\xi^{XP}(p) \big)^{-1} 
+            \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} \notag \\
+        \,&\overset{(7)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \big[\Omega(K)\big](p) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}
+    \end{align}
+    مرحله اول فقط $\Omega(K)$ را بسط داد، در حالی که مرحله دوم از $\log_n\xi(p) = \dxiTM \log_{\xi^{-1}(n)} p$ که از معادله~\eqref{eq:exp_isom_commutation} نتیجه می‌شود، به همراه $\xi^{-1}(n) = n$ استفاده کرد زیرا $\xi\in\Stab{n}$.
+    در مرحله سوم، ما از تعریف تبدیلات پیمانه القا شده توسط ایزومتری در معادله~\eqref{eq:pushforward_TM_coord} استفاده کردیم.
+    مرحله چهارم از محدودیت $G$-راهبری‌پذیری از معادله~\eqref{eq:G_steer_kernel_space_open_ball_pi} استفاده کرد.
+    مرحله پنجم عنصر حجم
+    $\sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$
+    را با عنصر حجم در
+    $\sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$
+    جایگزین کرد، که این کار ممکن است زیرا کل هندسه ریمانی کره، از جمله متریک و نگاشت نمایی و بنابراین ضرایب حجم مختصات نرمال ژئودزیک، تحت عمل~$\Stab{n}$ ناوردا است.
+    قبل از شناسایی $\Omega(K)$ در مرحله آخر، مرحله ششم از همانی
+    \begin{align}
+        \rhoin\big( g_\xi^{NN}(n) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)
+        \ =&\ \pig[ \psiAinn^N\, \dxiAin^{-1}\, \big(\psiAinn^N \big)^{-1} \pig] \pig[ \psiAinn^N\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \pig] \notag \\
+        \ =&\ \psiAinn^N\; \dxiAin^{-1}\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \notag \\
+        \ =&\ \psiAinn^N\; \PAinnp\, \dxiAin^{-1}\ \big(\psiAinxip^X \big)^{-1} \notag \\
+        \ =&\ \pig[ \psiAinn^N\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \pig] \pig[ \psiAinp^P\, \dxiAin^{-1}\, \big(\psiAinxip^X \big)^{-1} \pig] \notag \\
+        \ =&\ \rhoin\big( g_{n\leftarrow p}^{NP} \big)\ \rhoin\big( g_\xi^{XP}(p) \big)^{-1} \,,
+    \end{align}
+    استفاده کرد، که به طور حیاتی بر جابجایی انتقال‌دهنده‌ها و پوش‌فورواردهای ایزومتری از معادله~\eqref{eq:transport_isom_commutation} متکی است.
+
+
+    برای جهت مخالف، فرض کنید یک کرنل $\Stab{n}$-راهبری‌پذیر $\kappa\in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ داده شده باشد.
+    سپس کرنل متناظر $\Omega^{-1}(\kappa)$ محدودیت $G$-راهبری‌پذیری را از معادله~\eqref{eq:G_steer_kernel_space_open_ball_pi} برآورده می‌کند.
+    برای نشان دادن این، فرض کنید $\mathscr{v} \in B_{\R^2}\mkern-1mu(0,\pi)$، $g\in G$ و $\xi\in\Stab{n}$ عضو یکتای پایدارساز باشد به طوری که $g_\xi^{NN}(n) = \psiTMn^N\, \dxiTM \big(\psiTMn^N\big)^{-1} = g$.
+    برای اختصار، ما $p := \exp_n \big(\psiTMn^N\big)^{-1} \mathscr{v}$ و در نتیجه $\xi(p) = \exp_n \big(\psiTMn^N\big)^{-1} g\mathscr{v}$ را مخفف می‌کنیم، که با مراحل ۱-۳ در ادامه توجیه می‌شود.
+    سپس می‌یابیم:
+    \begin{align}
+        \big[\Omega^{-1}(\kappa)\big](g\mathscr{v})
+        \,&\overset{(1)}{=}\, \kappa\big(\! \exp_n\! \big(\psiTMn^N\big)^{-1} (g\mathscr{v}) \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(2)}{=}\, \kappa\big(\! \exp_n\! \dxiTM \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(3)}{=}\, \kappa\big(\xi \exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(4)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+            \ \sqrt{\big|\eta_{\xi(p)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(5)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+            \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(6)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \kappa\big(\exp_n\! \big(\psiTMn^N\big)^{-1} \mathscr{v} \big) \cdot \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{-1}\, \rhoin\big( g_\xi^{NN}(n) \big)^{-1}
+            \ \sqrt{\big|\eta_p^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|} \notag \\
+        \,&\overset{(7)}{=}\, \rhoout\big( g_\xi^{NN}(n) \big) \cdot \big[\Omega^{-1}(\kappa)\big](\mathscr{v}) \cdot \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \notag \\
+        \,&\overset{(8)}{=}\, \rhoout(g) \cdot \big[\Omega^{-1}(\kappa)\big](\mathscr{v}) \cdot \rhoin(g)^{-1}
+    \end{align}
+    مراحل اول تا سوم $\Omega^{-1}(\kappa)$ را بسط دادند، از تعریف $\xi$ بر حسب $g$ و جابجایی نگاشت‌های نمایی با پوش‌فورواردهای ایزومتری، معادله~\eqref{eq:exp_isom_commutation}، استفاده کردند.
+    در مرحله چهارم، از محدودیت $\Stab{n}$-راهبری‌پذیری $\kappa$ از معادله~\eqref{eq:spherical_steerable_kernel_space} استفاده شده است.
+    مرحله پنجم دوباره عنصر حجم ریمانی را در $\xi(p)$ با عنصر حجم در $p$ جایگزین کرد زیرا آنها برابر هستند.
+    مرحله ششم از رابطه
+    \begin{align}
+        \rhoin\big( g_\xi^{XP}(p) \big)^{-1}\, \rhoin\big( g_{n\leftarrow\xi(p)}^{NX} \big)^{-1}
+        \ =&\ \rhoin\big( g_{n\leftarrow\xi(p)}^{NX}\, g_\xi^{XP}(p) \big)^{-1} \notag \\
+        \ =&\ \Big( \pig[ \psiAinn^N\, \PAinnxip\, \big(\psiAinxip^X \big)^{-1} \pig] \pig[ \psiAinxip^X\, \dxiAin\, \big(\psiAinp^P \big)^{-1} \pig] \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \PAinnxip\, \dxiAin\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \dxiAin\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \Big( \psiAinn^N\, \dxiAin\, \big(\psiTMn^N\big)^{-1}\, \psiTMn^N\, \PAinnp\, \big(\psiAinp^P \big)^{-1} \Big)^{-1} \notag \\
+        \ =&\ \rhoin\big( g_{n\leftarrow p}^{NP} \big)^{-1}\, \rhoin\big( g_\xi^{NN}(n) \big)^{-1} \,,
+    \end{align}
+    استفاده کرد، که دوباره بر جابجایی انتقال‌دهنده‌ها و پوش‌فورواردهای ایزومتری از معادله~\eqref{eq:transport_isom_commutation} متکی است.
+    دو مرحله آخر $\Omega^{-1}(\kappa)$ را شناسایی می‌کنند و بنا به تعریف $\xi$ داریم که $g_\xi^{NN}(n) = g$.
+
+    در مجموع، این استدلال‌ها نشان می‌دهند که $\Omega$ واقعاً یک ایزومورفیسم بین فضاهای کرنل است.
+\end{proof}
+
+
+
+
+
+
+
+
+\toclesslab\subsection{اثبات قضیه~\ref{thm:spherical_conv_GM_conv} -- هم‌ارزی کانولوشن‌های راهبری‌پذیر کروی و \textit{GM}}{apx:spherical_conv_equivalence}
+
+
+قضیه~\ref{thm:spherical_conv_GM_conv} ادعا می‌کند که کانولوشن‌های $\GM$ با یک کرنل $G$-راهبری‌پذیر $K \in \mathscr{K}^{G,B_{\R^2}(0,\pi)}_{\rhoin\mkern-1mu,\rhoout}$ معادل کانولوشن کروی با کرنل $\Stab{n}$-راهبری‌پذیر $\Omega(K) \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ هستند.
+کانولوشن کروی با یک کرنل $\Stab{n}$-راهبری‌پذیر $\kappa \in \mathscr{K}^{\Stab{n}}_{\rhoin\mkern-1mu,\rhoout}$ از \citet{Cohen2018-intertwiners,Cohen2019-generaltheory} در اینجا در معادله~\eqref{eq:spherical_steerable_conv} به صورت نقطه‌ای به شکل
+\begin{align}
+    \big[\kappa \star_{\mkern-2mu S^2}\! f\big]^P(p)
+    \ = \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu \kappa\big(\phi_p^{-1}q)\, \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\, f^Q(q)\ dq \,,
+\end{align}
+تعریف شده بود، که در آن $P$، $Q$ و $X$ به ترتیب پیمانه‌های دلخواه در $p$، $q$ و $\phi_p^{-1}(q)$ را نشان می‌دهند.
+ایزومتری $\phi_p \in \I$ به طور یکتا با الزام $\dphipGM \sigma^N(n) = \sigma^P(p)$ مشخص می‌شود.
+توجه داشته باشید که این به طور خاص دلالت بر
+\begin{align}\label{eq:phipn_sphere_action}
+    \phi_p(n) \ =\ p
+\end{align}
+و با استفاده از تعریف مقاطع $\GM$ (میدان‌های چارچوب) بر حسب پیمانه‌های وارون از معادله~\eqref{eq:GM_section_psi_inverse_def} بر
+\begin{align}\label{eq:phipn_gauges}
+    \psiTMn^N \circ \dphipGM^{-1} \ =\ \psiTMp^P \,,
+\end{align}
+دارد، که هر دو را در ادامه استفاده خواهیم کرد.
+با این مقدمات، به اثبات قضیه~\ref{thm:spherical_conv_GM_conv} یعنی هم‌ارزی
+\begin{align}
+    \Omega(K) \star_{\mkern-2mu S^2}\! f\ =\ K \star_{\mkern-1mu\scalebox{.64}{$\GM$}} f
+\end{align}
+کانولوشن‌ها می‌پردازیم.
+
+\begin{proof}
+    از آنجا که $\Omega(\kappa)$ روی $S^2 \backslash \mkern-1mu\minus\mkern1mu n$ تعریف شده است، کرنل تبدیل‌شده $\Omega(\kappa) \circ \phi_p^{-1}$ روی $S^2 \backslash \mkern-2mu -p$ تعریف شده است.
+    بنابراین، با جایگذاری $\Omega(\kappa)$ در تعریف نقطه‌ای کانولوشن کروی در معادله~\eqref{eq:spherical_steerable_conv} به
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu \big[\Omega(\kappa)\big] \big(\phi_p^{-1}q)\; \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\; f^Q(q)\ dq \\
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu K\big( \psiTMn^N \log_n \phi_p^{-1}q)\; \rhoin\big( g_{n\leftarrow \phi_p^{-1}(q)}^{NX} \big) \; \rhoin\big( g_{\phi_p^{-1}}^{XQ}(q) \big)\; f^Q(q)\; \sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} dq \,, \notag
+    \end{align}
+    می‌رسیم، که در آن مرحله دوم با بسط دادن $\Omega(K)$ همانطور که در معادله~\eqref{eq:spherical_kernel_space_iso_Omega} تعریف شده است، به دست می‌آید.
+    برای ساده‌سازی این عبارت، توجه داشته باشید که 
+    \begin{align}
+        \psiTMn^N\, \log_n\, \phi_p^{-1} (q)
+        \ =\ \psiTMn^N\, \dphipTM^{-1}\, \log_{\phi_p(n)} (q)
+        \ =\ \psiTMp^P\, \log_p (q) \,,
+    \end{align}
+    که از معادله~\eqref{eq:exp_isom_commutation} در مرحله اول و معادلات~\eqref{eq:phipn_sphere_action} و~\eqref{eq:phipn_gauges} در مرحله دوم نتیجه می‌شود.
+    علاوه بر این توجه داشته باشید که،
+    \begin{alignat}{3}
+        \qquad
+            &\ \rho\big( g_{n\leftarrow \phi_p^{-1}(q)}^{NX} \big) \; \rho\big( g_{\phi_p^{-1}}^{XQ}(q) \big) \notag \\
+        \ =&\ \pig[ \psiAn^N\, \mathcal{P}_{\A, n\leftarrow \phi_p^{-1}(q)}\, \big(\psiAphipinvq^X \big)^{-1} \pig]
+            \pig[ \psiAphipinvq^X\, \dphipA^{-1}\, \big(\psiAq^Q\big)^{-1} \pig]
+            \qquad && \big( \text{\small معادلات~\eqref{eq:transporter_gauge_A} و~\eqref{cd:pushforward_A_coord} } \big) \notag\\
+        \ =&\ \psiAn^N\, \mathcal{P}_{\A, n\leftarrow \phi_p^{-1}(q)}\, \dphipA^{-1}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small پیمانه‌های وارون حذف‌شده } \big) \notag\\
+        \ =&\ \psiAn^N\, \dphipA^{-1}\, \mathcal{P}_{\A, \phi_p(n)\leftarrow q}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small معادله~\eqref{eq:transport_isom_commutation} } \big) \notag\\
+        \ =&\ \psiAp^P\, \mathcal{P}_{\A, p\leftarrow q}\, \big(\psiAq^Q\big)^{-1}
+            \qquad && \big( \text{\small معادله~\eqref{eq:phipn_gauges} } \big) \notag\\
+        \ =&\ \rho\big( g_{p\leftarrow q}^{PQ} \big) \,.
+            \qquad && \big( \text{\small معادله~\eqref{eq:transporter_gauge_A} } \big) \notag
+    \end{alignat}
+    با جایگذاری این دو همانی، به دست می‌آوریم
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ &= \int\limits_{S^2 \backslash \mkern-2mu -p} \mkern-8mu K\big( \psiTMp^P \log_p q)\; \rhoin\big( g_{p\leftarrow q}^{PQ} \big)\; f^Q(q)\; \sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}^{\,-1} dq \,, \notag
+    \end{align}
+    برای ادامه، انتگرال را در مختصات نرمال ژئودزیک 
+    $\mathscr{v}: S^2\backslash \mkern-1mu\minus\mkern1mu p \to B_{\R^2}(0,\pi),\ \ q \mapsto \mathscr{v}(q) := \psiTMp^P \log_p q$
+    از $S^2 \backslash \mkern-2mu -p$ که در نقطه $p$ متمرکز است، بیان می‌کنیم.
+    این کار ضریب حجم ریمانی
+    $\sqrt{\big|\eta_{\phi_p^{-1}(q)}^{\partial\mkern-2mu/\mkern-2mu\partial\mathscr{v}}\big|}$
+    را حذف می‌کند (و در نتیجه ظاهر آن را در تعریف $\Omega$ توجیه می‌کند)،
+    به طوری که کانولوشن کروی به
+    \begin{align}
+        \big[\Omega(K) \star_{\mkern-2mu S^2}\! f\big]^P(p)
+        \ =& \int\limits_{B_{\R^2}\mkern-1mu(0,\pi)} \mkern-8mu K(\mathscr{v})\; \rhoin\pig( g_{p\leftarrow \exp_p (\psiTMp^P)^{-1} \mathscr{v}}^{PQ} \pig)\; f^Q\big( \exp_p (\psiTMp^P)^{-1} \mathscr{v} \big)\ d\mathscr{v} \,, \notag \\
+        \ =& \int\limits_{B_{\R^2}\mkern-1mu(0,\pi)} \mkern-8mu K(\mathscr{v})\; \big[\Expspf\big]^P(\mathscr{v})\ d\mathscr{v} \,, \notag \\
+       =&\ \big[K \star_{\mkern-1mu\scalebox{.64}{$\GM$}}\! f\big]^P(p) \,.
+    \end{align}
+    می‌شود. از آنجا که تمام آرگومان‌ها مستقل از نقطه انتخاب شده $p$ و پیمانه‌های انتخاب شده هستند، این دلالت بر
+    \begin{align}
+        \Omega(K) \star_{\mkern-2mu S^2}\! f\ =\ K \star_{\mkern-1mu\scalebox{.64}{$\GM$}} f \,,
+    \end{align}
+    در یک چارچوب مستقل از مختصات دارد، که قضیه را اثبات می‌کند.
+\end{proof}

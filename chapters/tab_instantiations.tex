@@ -1,0 +1,161 @@
+\def\arraystretch{1.25} % 1 is the default
+\setlength\tabcolsep{2.8ex}
+\small
+\rowcolors{2}{gray!12.5}{white}
+\begin{tabular}{>{\tiny\color{gray}}rccclc}
+	\toprule
+	\\[-8.0ex]
+	& منیفلد & گروه ساختار & تقارن سراسری & نمایش & مرجع \\
+	& $M$ & $G$ & $\AffGM$ or $\IsomGM$ & $\rho$ &  \\
+	\bottomrule
+	\rownumber&
+	$\Euc_d$ & $\{e\}$ & $\Trans_d$ & بدیهی & \cite{LeCun1990CNNs,
+		zhang2019CNNsShiftInvariant}
+	\\
+	% 1-dim
+	\cmidrule(lr){2-6}
+	\cmidrule(lr){2-6}
+	\rownumber&
+	$\Euc_1$ & $\Scale$ & $\Trans_1 \rtimes \Scale$ & منظم & \cite{romero2020wavelet} \\
+	% 2-dim
+	\cmidrule(lr){2-6}
+	\cmidrule(lr){2-6}
+	\rownumber&
+	& $\Flip$ & $\Trans_2 \rtimes \Flip$ & منظم & \cite{Weiler2019_E2CNN} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	& & & \lr{irreps} & \cite{Worrall2017-HNET,
+		Weiler2019_E2CNN,
+		walters2020trajectory} \\
+	\rownumber&
+	& & & منظم & 
+	\makecell{
+		\cite{Dieleman2016-CYC,
+			Cohen2016-GCNN,
+			zhou2017oriented,
+			Cohen2017-STEER,
+			Weiler2018SFCNN,
+			bekkers2018roto,
+			Hoogeboom2018-HEX,
+			scaife2021RadioGalaxy}
+		\\
+		\cite{Weiler2019_E2CNN,
+			graham2020dense,
+			lafarge2020rototranslation,
+			smets2020pde,
+			wang2020incorporating,
+			romero2020attentive,
+			mohamed2020data}
+		\\
+		\cite{shen2020PDOeConvs,
+			bekkers2020bspline,
+			finzi2020generalizing,
+			vanderPol2020MDP2,
+			gupta2020rotation,
+			mondal2020group,
+			walters2020trajectory,
+			holderrieth2020steerableCNP}
+		\\
+		\cite{dey2020groupGANs,
+			sifre2012combined,
+			bruna2013invariant,
+			Sifre2013-GSCAT,
+			sifre2014rigid,
+			oyallon2015scattering,
+			chavan2021rescaling,
+			han2021ReDet}
+	} \\
+	\rownumber&
+	& & & \lr{quotients} & \cite{Cohen2017-STEER,
+		Weiler2019_E2CNN} \\
+	\rownumber&
+	& & & \lr{regular}$\xrightarrow{\textup{pool}}$\lr{trivial}
+	& \cite{Cohen2016-GCNN,
+		marcos2016learning,
+		Weiler2019_E2CNN} \\
+	\rownumber&
+	& \multirow{-7.5}{*}{$\SO2$} & \multirow{-7.5}{*}{$\SE2$} & \lr{regular}$\xrightarrow{\textup{pool}}$\lr{vector}
+	& \cite{Marcos2017-VFN,
+		Weiler2019_E2CNN} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	& & & بدیهی & \cite{khasanova2018isometric,
+		Weiler2019_E2CNN} \\
+	\rownumber&
+	& & & \lr{irreps} & \cite{Weiler2019_E2CNN} \\
+	\rownumber&
+	& & & منظم & 
+	\makecell{
+		\cite{Dieleman2016-CYC,
+			Cohen2016-GCNN,
+			Hoogeboom2018-HEX,
+			Cohen2017-STEER,
+			Weiler2019_E2CNN}
+		\\
+		\cite{mondal2020group,
+			graham2020dense,
+			shen2020PDOeConvs}
+	} \\
+	\rownumber&
+	& & & \lr{quotients} & \cite{Cohen2017-STEER} \\
+	\rownumber&
+	& & & \lr{regular}$\xrightarrow{\textup{pool}}$\lr{trivial}   & \cite{Weiler2019_E2CNN} \\
+	\rownumber&
+	& \multirow{-6.2}{*}{$\O2$} & \multirow{-6.2}{*}{$\E2$} & \lr{induced} $\SO2$-\lr{irreps} \hspace*{-2.ex} & \cite{Weiler2019_E2CNN} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	\multirow{-15.35}{*}{$\Euc_2$}
+	& & & منظم & \cite{Worrall2019DeepScaleSpaces,
+		Sosnovik2020scale,
+		bekkers2020bspline,
+		zhu2019scale} \\
+	\rownumber&
+	& \multirow{-2}{*}{$\Scale$}& \multirow{-2}{*}{$\Trans_2\rtimes\Scale$} & \lr{regular}$\xrightarrow{\textup{pool}}$\lr{trivial} & \cite{ghosh2019scale} \\
+	% 3-dim
+	\cmidrule(lr){2-6}
+	\cmidrule(lr){2-6}
+	\rownumber&
+	& & & \lr{irreps} & \cite{3d_steerableCNNs,
+		Thomas2018-TFN,
+		miller2020relevance,
+		Kondor2018-NBN,
+		anderson2019cormorant,
+		batzner2021se3equivariant} \\
+	\rownumber&
+	& & & \lr{quaternion} & \cite{zhang2019quaternion} \\
+	\rownumber&
+	& & & منظم & \cite{finzi2020generalizing,
+		winkels3DGCNNsPulmonary2018,
+		Worrall2018-CUBENET} \\
+	\rownumber&
+	& \multirow{-4}{*}{$\SO3$} & \multirow{-4}{*}{$\SE3$} & \lr{regular}$\xrightarrow{\textup{pool}}$\lr{trivial}
+	& \cite{andrearczyk2019exploring} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	& & & منظم & \cite{winkels3DGCNNsPulmonary2018} \\
+	\rownumber&
+	& & & \lr{quotient} $\O3/\O2$ \hspace*{-2ex}
+	& \cite{janssen2018design} \\
+	\rownumber&
+	& \multirow{-3}{*}{$\O3$} & \multirow{-3}{*}{$\E3$} & \lr{irrep}$\xrightarrow{\textup{norm}}$\lr{trivial} \hspace*{-2ex}
+	& \cite{poulenard2019effective} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	& $\operatorname{C}_4$ & $\Trans_3 \rtimes \operatorname{C}_4$ & منظم & \cite{su2020dv} \\
+	\cmidrule(lr){3-6}
+	\cmidrule(lr){3-6}
+	\rownumber&
+	\multirow{-7}{*}{$\Euc_3$}
+	& $\operatorname{D}_4$ & $\Trans_3 \rtimes \operatorname{D}_4$ & منظم & \cite{su2020dv} \\
+	% Minkowski
+	\cmidrule(lr){2-6}
+	\cmidrule(lr){2-6}
+	\rownumber&
+	$\Euc_{d-1,1}$& $\SO{d\minus1,1}$ & $\Trans_d\rtimes\SO{d\minus1,1}$& \lr{irreps} & \cite{shutty2020learning} \\
+	\bottomrule
+\end{tabular}

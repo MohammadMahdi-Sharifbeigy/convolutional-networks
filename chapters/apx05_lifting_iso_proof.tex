@@ -1,0 +1,396 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{میدان‌های کرنل نماینده خارج‌قسمتی -- اثبات‌ها}
+\label{apx:lifting_iso_proof}
+
+
+در این پیوست، ما اثبات‌هایی برای قضایای~\ref{thm:tangent_quotient_repr_kernel_fields} و~\ref{thm:GM_conv_homogeneous_equivalence} ارائه می‌دهیم.
+
+
+\toclesslab\subsection{اثبات قضیه~\ref{thm:tangent_quotient_repr_kernel_fields} -- ایزومورفیسم بین میدان‌های کرنل ناوردای ایزومتری و میدان‌های کرنل نماینده خارج‌قسمتی}{apx:lifting_iso_proof}
+
+
+قضیه~\ref{thm:tangent_quotient_repr_kernel_fields} ادعا می‌کند که فضاهای $\KIfull$ از میدان‌های کرنل ناوردای ایزومتری در معادله~\eqref{eq:KIfull_def} و $\KIquot$ از میدان‌های کرنل نماینده خارج‌قسمتی در معادله~\eqref{eq:KIquot_def} با یکدیگر ایزومورف هستند و این ایزومورفیسم با ارتقای $\Lambda$ داده می‌شود که وارون آن $\Lambda^{-1}$ تحدید به $\rTM(\ITM)$ است.
+در اینجا ما اثباتی برای این گزاره ارائه می‌دهیم که شامل نشان دادن این است که
+\textit{۱)} $\Lambda^{-1}$ واقعاً یک وارون برای $\Lambda$ است،
+\textit{۲)} ویژگی‌های تعریف‌کننده $\KIfull$ و $\KIquot$ پس از ارتقا و تحدید برآورده می‌شوند و
+\textit{۳)} ساختارها به انتخاب‌های دلخواه بستگی ندارند.
+
+
+\begin{itemize}[leftmargin=0cm]
+	
+	\item[] {\textit{۱)} $\Lambda^{\!-1}$ در معادله~\eqref{eq:lifting_isomorphism_lambda_inv} یک وارون خوش‌تعریف برای $\Lambda$ در معادله~\eqref{eq:lifting_isomorphism_lambda} است: }
+	
+	\begin{itemize}[leftmargin=1.1cm]
+		\setlength\itemsep{2ex}
+		
+		\item[\textit{1a)}]
+		$\Lambda \circ \Lambda^{-1} = \id_{\KIfull}$،
+		یعنی $\Lambda^{-1}$ یک وارون راست برای $\Lambda$ است:
+		
+		این ادعا برای هر $\K\in \KIfull$ و هر $v \in TM$ از
+		\begin{align}
+			\big[\Lambda \circ \Lambda^{-1} (\K) \big](v)
+			\ =&\ \big[ \Lambda(\Krestr) \big](v) \notag \\
+			\ =&\ \dPhirHom{v} \, \Krestr    \, \rTM \QTM (v) \notag \\
+			\ =&\ \dPhirHom{v} \, \K         \, \rTM \QTM (v) \notag \\
+			\ =&\ \K         \, \dPhirTM{v} \, \rTM \QTM (v) \notag \\
+			\ =&\ \K(v) \,,
+		\end{align}
+		نتیجه می‌شود، که در آن ناوردایی (هموردایی) میدان کرنل در معادله~\eqref{eq:kernel_constraint_isom_full_1} اجازه داد تا ترتیب عمل ایزومتری و ارزیابی میدان کرنل را در مرحله ماقبل آخر جابجا کنیم.
+		
+		\item[\textit{1b)}]
+		$\Lambda^{-1} \circ \Lambda = \id_{\KIquot}$،
+		یعنی $\Lambda^{-1}$ یک وارون چپ برای $\Lambda$ است:
+		
+		فرض کنید $\Q\in \KIquot$ و $w \in \rTM(\ITM)$ باشد.
+		توجه داشته باشید که $\rTM\QTM(w) = w$ زیرا $w$ یک نماینده مدار است.
+		علاوه بر این، از آنجا که $w = \dPhirTM{w}\, \rTM\QTM(w) = \dPhirTM{w} (w)$ نتیجه می‌شود که $\Phir{w} \in \Stab{w}$ به طوری که، با محدودیت در معادله~\eqref{eq:KIquot_def} داریم $\dPhirHom{w} \Q(w) = \Q(w)$.
+		در مجموع، این ادعا را اثبات می‌کند:
+		\begin{align}
+			\big[\Lambda^{-1} \circ \Lambda (\Q) \big](w)
+			\ =&\ \Lambda(\Q) \big|_{\rTM(\ITM)}(w) \notag \\
+			\ =&\ \Lambda(\Q)(w) \notag \\
+			\ =&\ \dPhirHom{w} \Q\, \rTM \QTM(w) \notag \\
+			\ =&\ \dPhirHom{w} \Q(w) \notag \\
+			\ =&\ \Q(w)
+		\end{align}
+		
+	\end{itemize}
+	
+	
+	
+	
+	
+	
+	
+	\item[] {\emph{۲)} ویژگی‌های تعریف‌کننده $\KIfull$ و $\KIquot$ پس از ارتقا و تحدید برآورده می‌شوند: }
+	
+	\begin{itemize}[leftmargin=1.1cm]
+		\setlength\itemsep{2ex}
+		\item[\textit{2a)}]
+		$\piHom \mkern-5mu\circ\mkern-2mu \Lambda(\Q) = \piTM$ برای هر $\Q \in \KIquot$،
+		یعنی ارتقای $\Lambda(\Q)$ یک $M$-مورفیسم کلاف است:
+		
+		برای هر $\Q\in \KIquot$ و برای هر $v\in TM$ این ادعا از
+		\begin{align}
+			\big[ \piHom \Lambda(\Q) \big](v)
+			\ =&\ \piHom \dPhirHom{v} \Q\, \rTM \QTM(v) \notag \\
+			\ =&\ \Phir{v} \piHom \Q\, \rTM \QTM(v) \notag \\
+			\ =&\ \Phir{v} \piTM\, \rTM \QTM(v) \notag \\
+			\ =&\ \Phir{v} \rM \piITM\, \QTM(v) \notag \\
+			\ =&\ \Phir{v} \rM \QM \piTM(v) \notag \\
+			\ =&\ \piTM(v) \,,
+		\end{align}
+		نتیجه می‌شود، که در آن مرحله آخر از معادله~\eqref{eq:reconstruction_isometry_basespace} استفاده شده است.
+		
+		\item[\textit{2b)}]
+		${\piHom \mkern-5mu\circ\mkern-2mu \Lambda^{-1}(\K) = \piTM}$ برای هر $\K \in \KIfull$،
+		یعنی $\Lambda^{-1}(\K)$ یک $\rM(\IM)$-مورفیسم کلاف است:
+		
+		این ویژگی بلافاصله از ویژگی متناظر $\K$ پس از تحدید به $\rTM(\ITM) \subseteq \piTM^{-1}\big(\rM(\IM)\big)$ نتیجه می‌شود.
+		برای هر $w \in \rTM(\ITM)$:
+		\begin{align}
+			\piHom \big[ \Lambda^{-1}(\K) \big](w)
+			\ =&\ \piHom \Krestr(w) \notag \\
+			\ =&\ \piHom \K(w) \notag \\
+			\ =&\ \piTM(w) \notag \\
+		\end{align}
+		
+		\item[\textit{2c)}]
+		$\dphiHom \Lambda(\Q)\, \dphiTMinv = \Lambda(\Q)\ \ \forall \phi \in \I$،
+		یعنی $\Lambda(\Q)$ محدودیت کامل ناوردایی ایزومتری را برآورده می‌کند:
+		
+		فرض کنید $v\in TM$ و $\phi \in \I$ باشند.
+		به دلیل ناوردایی نگاشت خارج‌قسمتی $\QTM$ تحت ایزومتری‌ها، ما $\QTM(\dphiTMinv v) = \QTM(v)$ را داریم.
+		علاوه بر این توجه داشته باشید که
+		\begin{align}
+			& \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$TM$}} \rTM \QTM(v) \notag \\
+			\ =\ & \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$TM$}} \rTM \QTM\big( \dphiTMinv v\big) \notag \\
+			\ =\ & \big[\Phir{v}^{-1}\, \phi \big]_{*,\scalebox{.58}{$TM$}}\, \dphiTMinv\, v \notag \\
+			\ =\ & \dPhirTM{v}^{-1}\, v \notag \\
+			\ =\ & \rTM \QTM(v)
+		\end{align}
+		نتیجه می‌دهد
+		\begin{align}
+			\big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]\ \in\ \Stab{\rTM\QTM(v)} \,,
+		\end{align}
+		که از طریق محدودیت پایدارساز در معادله~\eqref{eq:KIquot_def} منجر به
+		\begin{align}
+			\big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$\Hom$}} \Q\; \rTM \QTM(v)
+			\ =\ \Q\; \rTM \QTM(v) \,.
+		\end{align}
+		می‌شود. با کنار هم گذاشتن این مشاهدات، ادعا اثبات می‌شود:
+		\begin{align}
+			\dphiHom \Lambda(\Q)\, \dphiTMinv(v)
+			\ =&\ \dphiHom \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM \big(\dphiTMinv v\big) \notag \\
+			\ =&\ \dphiHom \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM(v) \notag \\
+			\ =&\ \big[\Phir{v}\, \Phir{v}^{-1}\big]_{*,\scalebox{.58}{$\Hom$}} \dphiHom\, \dPhirHom{\dphiTMinv v} \Q\; \rTM \QTM(v) \notag \\
+			\ =&\ \dPhirHom{v}\, \big[\Phir{v}^{-1}\, \phi\; \Phir{\dphiTMinv v}\big]_{*,\scalebox{.58}{$\Hom$}} \Q\; \rTM \QTM(v) \notag \\
+			\ =&\ \dPhirHom{v}\, \Q\; \rTM \QTM(v) \notag \\
+			\ =&\ \Lambda(\Q)
+		\end{align}
+		
+		
+		\item[\textit{2d)}]
+		$\dxiHom \big[\Lambda^{-1}(\K)\big](w) = \big[\Lambda^{-1}(\K)\big](w) \ \ \
+		\forall\; w \mkern-2mu\in\mkern-1mu \rTM(\ITM),\ \xi \mkern-1mu\in\mkern-1mu \Stab{w}$،
+		یعنی $\Lambda^{-1}(\K)$ محدودیت پایدارساز را برآورده می‌کند:
+		
+		این گزاره به راحتی اثبات می‌شود زیرا ویژگی‌های ناوردایی (هموردایی) $\K$ به تحدید آن $\Lambda^{-1}(\K)$ منتقل می‌شوند.
+		ما برای $w\in \rTM(\ITM)$ و $\xi\in \Stab{w}$ دلخواه به دست می‌آوریم که:
+		\begin{align}
+			\dxiHom \big[\Lambda^{-1}(\K)\big](w)
+			\ =&\ \dxiHom \Krestr (w) \notag \\
+			\ =&\ \dxiHom \K(w) \notag \\
+			\ =&\ \K \big(\dxiTM w\big) \notag \\
+			\ =&\ \K(w) \notag \\
+			\ =&\ \Krestr(w) \notag \\
+			\ =&\ \big[\Lambda^{-1}(\K)\big](w)
+		\end{align}
+		
+	\end{itemize}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\item[] {\emph{۳)} تمام ساختارها و اثبات‌ها مستقل از انتخاب خاص $\PhirNoArg$ هستند: }
+	\begin{itemize}[leftmargin=1.1cm]
+		\setlength\itemsep{2ex}
+		\item[]%
+		تعریف
+		\begin{align}
+			\PhirNoArg: TM \to \I \quad \textup{such that}\quad \dPhirTM{v} \rTM \QTM(v) = v
+		\end{align}
+		از معادله~\eqref{eq:reconstruction_isometry} تا ضرب راست $\PhirNoArg$ در \emph{هر}
+		\begin{align}
+			\xirNoArg: TM \to \I \quad \textup{such that}\quad \xir{v} \in \Stab{\rTM\QTM(v)}
+		\end{align}
+		یکتا است، زیرا به وضوح $\dPhirTM{v}\, \dxirTM{v}\, \rTM\QTM(v)\ =\ \dPhirTM{v}\, \rTM\QTM(v)\ =\, v\,$ برای هر $v\in TM$.
+		همانطور که در پاورقی~\ref{footnote:ambiguity_reconstruction_isometry} استدلال شد، این تمام درجات آزادی را در تعریف ایزومتری‌های بازسازی پوشش می‌دهد.
+		از محدودیت پایدارساز در معادله~\eqref{eq:KIquot_def} نتیجه می‌شود که $\dxirHom{v} \Q\, \rTM\QTM(v) = \Q\, \rTM\QTM(v)$ به طوری که ارتقای $\Lambda$ نسبت به ابهام $\PhirNoArg$ ناوردا دیده می‌شود:
+		\begin{align}
+			\Lambda(\Q)
+			\ =&\ \dPhirHom{v} \Q\, \rTM\QTM(v) \notag \\
+			\ =&\ \dPhirHom{v}\, \dxirHom{v} \Q\, \rTM\QTM(v) \notag \\
+		\end{align}
+		به جز تعریف ایزومورفیسم ارتقا، $\PhirNoArg$ فقط (در یک زمینه کمی متفاوت) در مرحله \textit{۲c)} استفاده می‌شود، که در آن ابهام با استدلال‌های مشابه حذف می‌شود.
+		
+	\end{itemize}
+	
+\end{itemize}
+
+\noindent در مجموع، این مراحل اثبات می‌کنند که $\Lambda: \KIquot \to \KIfull$ یک ایزومورفیسم است.
+\hfill$\Box$
+
+
+
+
+
+
+
+\toclesslab\subsection{اثبات قضیه~\ref{thm:GM_conv_homogeneous_equivalence} -- هم‌ارزی تبدیلات میدان کرنل هموردا و کانولوشن‌ها روی فضاهای همگن}{apx:homogeneous_equivalence_proof}
+
+برای حفظ یک نمای کلی بهتر، ما اثبات را به دو بخش تقسیم می‌کنیم و ادعاهای مطرح شده در گزاره اول و دوم قضیه~\ref{thm:GM_conv_homogeneous_equivalence} را به ترتیب اثبات می‌کنیم.
+
+\paragraph{بخش ۱) -- ساخت \textit{H}, \textit{HM} و Isom\textsubscript{\textit{HM}}:}
+فرض کنید $r\in M$ یک نقطه نماینده دلخواه باشد و بدون از دست دادن کلیت، فرض کنید $\psiGMr^{\widetilde{A}}$ هر پیمانه ایزومتریک در $r$ باشد.
+ما قرار می‌دهیم
+\begin{align}
+	H\ :=\ \psiGMr^{\widetilde{A}} \,\Stab{r} \big(\psiGMr^{\widetilde{A}} \big)^{-1} \,,
+\end{align}
+که فقط یک نمایش خاص از $\Stab{r}$ نسبت به مختصاتی‌سازی انتخاب شده است.
+از آنجا که نگاشت‌های پیمانه ایزومورفیسم هستند، ما یک ایزومورفیسم بین این دو گروه به دست می‌آوریم:
+\begin{align}\label{eq:stabr_H_iso}
+	\alpha: \Stab{r} \to H,\ \ \ \xi \to \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} =: h_\xi^{\widetilde{A}\widetilde{A}}(r)
+\end{align}
+از آنجا که $\Stab{r} \leq \I \leq \IsomGM$ قضیه~\ref{thm:isom_GM_in_coords} تضمین می‌کند که $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ برای هر $\xi \in \Stab{p}$ عضوی از $G$ است و بنابراین $H \leq G$.
+ما علاوه بر این داریم که $H\leq\O{d}$، که با محاسبه زیر دیده می‌شود، که برای هر $\mathscr{v},\mathscr{w} \in \R^d$ برقرار است:
+\begin{align}
+	\pig\langle h_\xi^{\widetilde{A}\widetilde{A}}(r) \cdot\mathscr{v} \,,\,\ h_\xi^{\widetilde{A}\widetilde{A}}(r) \cdot\mathscr{w} \pig\rangle
+	\ \overset{(1)}{=}&\ \ \pig\langle \pig( \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} \pig) \cdot \mathscr{v} \,,\,\ \pig( \psiGMr^{\widetilde{A}} \;\dxiGM\, \big(\psiGMr^{\widetilde{A}} \big)^{-1} \pig) \cdot \mathscr{w} \pig\rangle \notag \\
+	\ \overset{(2)}{=}&\ \ \pig\langle \psiTMr^{\widetilde{A}} \;\dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \psiTMr^{\widetilde{A}} \;\dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig\rangle \notag \\
+	\ \overset{(3)}{=}&\ \ \eta_r\pig( \dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \dxiTM\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig) \notag \\
+	\ \overset{(4)}{=}&\ \ \eta_r\pig( \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{v} \,,\,\ \big(\psiTMr^{\widetilde{A}} \big)^{-1} \,\mathscr{w} \pig) \notag \\
+	\ \overset{(5)}{=}&\ \ \langle \mathscr{v} \,, \mathscr{w} \rangle
+\end{align}
+مرحله~$(۱)$ از معادله~\eqref{eq:stabr_H_iso} استفاده کرد.
+در مرحله~$(۲)$ ما عبارت $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ را از طریق $\psiGMr^{\widetilde{A}}$ با عبارت آن از طریق $\psiTMr^{\widetilde{A}}$ یکی گرفتیم، که با جابجایی نمودارهای معادلات~\eqref{cd:pushforward_GM_coord_extended} و~\eqref{cd:pushforward_TM_coord} توجیه می‌شود.
+از آنجا که ما~$\psiTMr^{\widetilde{A}}$ را بدون از دست دادن کلیت، ایزومتریک فرض کردیم، می‌توانیم حاصلضرب داخلی $\langle\,\cdot,\cdot\,\rangle$ روی~$\R^d$ را در مرحله~$(۳)$ با متریک ریمانی~$\eta_r$ یکی بگیریم.
+مرحله~$(۴)$ از این استفاده می‌کند که $\xi \in \Stab{r} \leq \I$ یک ایزومتری است، که بنا به تعریف متریک را حفظ می‌کند؛ به معادله~\eqref{eq:isometry_def} مراجعه کنید.
+در آخر، ما در مرحله~$(۵)$ متریک را از طریق پیمانه ایزومتریک به حاصلضرب داخلی روی~$\R^d$ پول‌بک می‌کنیم.
+برابری عبارت اولیه و نهایی نشان می‌دهد که $h_\xi^{\widetilde{A}\widetilde{A}}(r)$ حاصلضرب داخلی را روی $\R^d$ حفظ می‌کند -- این دقیقاً الزامی است که گروه متعامد را \emph{تعریف} می‌کند.
+بنابراین ما داریم که $H\leq \O{d}$ و به همراه $H\leq G$ که
+\begin{align}
+	H \,\leq\, G \cap \O{d} \,.
+\end{align}
+این گزاره اول از بخش ۱) قضیه~\ref{thm:GM_conv_homogeneous_equivalence} را اثبات می‌کند.
+ما به گزاره دوم از بخش ۱)، یعنی ساخت $\HM$ و $\IsomHM$ می‌پردازیم.
+
+با توجه به اینکه $\Stab{r}$ یک زیرگروه از $\I$ است، ما نگاشت خارج‌قسمتی کانونی
+\begin{align}
+	\mathscr{q}: \I \to \I/\Stab{r},\ \ \ \phi \to \phi.\Stab{r}
+\end{align}
+را داریم که اعضای گروه $\phi \in \I$ را به هم‌دسته چپ $\phi.\Stab{r} := \{\phi\,\xi \,|\, \xi\in\Stab{r} \}$ از $\Stab{r}$ می‌فرستد.
+به خوبی شناخته شده است که این نگاشت خارج‌قسمتی، $\I$ را به یک کلاف اصلی $\Stab{r}$ روی فضای پایه $\I/\Stab{r}$ تبدیل می‌کند، با عمل راست که با ضرب راست $\blacktriangleleft \,: \I \times \Stab{r} \to \I,\ (\phi,\xi) \mapsto \phi\,\xi$ با اعضای پایدارساز داده می‌شود~\cite{gallier2019diffgeom2,neeb2010differential}.
+علاوه بر این، $\I/\Stab{r}$ با فضای همگن~$M$ ایزومورف است.
+ایزومورفیسم با
+\begin{align}
+	\beta: \I/\Stab{r} \to M,\ \ \ \phi.\Stab{r} \mapsto \phi(r) \,,
+\end{align}
+داده می‌شود، که به وضوح مستقل از انتخاب نماینده هم‌دسته است زیرا نمایندگان مختلف با اعضای گروهی که $r$ را پایدار می‌کنند، متفاوت هستند.
+توجه داشته باشید که ما می‌توانستیم به همان اندازه $\mathscr{q}: \I \to \I/\Stab{r}$ را به عنوان یک کلاف اصلی $H$ در نظر بگیریم زیرا تار نوعی فقط تا ایزومورفیسم تعریف شده است.
+
+
+با این مقدمات، ما $H$-ساختار $\HM$ را به عنوان یک جایگذاری از کلاف اصلی $\I$ در $\GM$ (و در نتیجه در $\FM$) تعریف می‌کنیم.
+ما نگاشت جایگذاری را به صورت
+\begin{align}
+	\mathscr{E}: \I \to \GM,\ \ \ \phi \mapsto \dphiGM\, \sigma^{\widetilde{A}}(r) \,,
+\end{align}
+تعریف می‌کنیم، که دوباره به انتخاب ما از پیمانه بستگی دارد زیرا $\sigma^{\widetilde{A}}(r) = \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e)$.
+می‌توان آن را به عنوان ردیابی یک کپی جایگذاری شده از $\I$ در $\GM$ با پوش‌فوروارد کردن چارچوب $\sigma^{\widetilde{A}}(r) \in \GrM$ در نظر گرفت.
+اینکه این واقعاً یک جایگذاری معتبر را می‌دهد، تضمین شده است زیرا عمل ایزومتری‌ها روی کلاف چارچوب بدون نقطه ثابت است.
+جایگذاری $\mathscr{E}$ یک نگاشت کلاف روی $\beta$ است، یعنی $\beta\circ\mathscr{q} = \piGM \circ \mathscr{E}$.
+برای نشان دادن این، کافی است هر دو طرف را بر روی یک عضو دلخواه $\phi\in\I$ اعمال کنیم، که نتیجه یکسانی می‌دهد:
+$\beta \circ \mathscr{q} (\phi) = \beta\big( \phi.\Stab{r} \big) = \phi(r)$ و
+$\piGM \circ \mathscr{E} (\phi) = \piGM\, \dphiGM\, \sigma^{\widetilde{A}}(r) = \phi\; \piGM\, \sigma^{\widetilde{A}}(r) = \phi(r)$.
+نگاشت جایگذاری علاوه بر این هموردای-راست است:
+برای هر $\xi \in \Stab{r}$ و هر $\phi \in \I$ داریم
+\begin{align}
+	\mathscr{E}(\phi\,\xi)
+	\ =&\ \ \dphiGM\, \dxiGM \sigma^{\widetilde{A}}(r) \notag \\
+	\ =&\ \ \dphiGM\, \dxiGM \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \notag \\
+	\ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1} \psiGMr^{\widetilde{A}}\, \dxiGM \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \notag \\
+	\ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1} \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big) \notag \\
+	\ =&\ \ \dphiGM\, \big(\psiGMr^{\widetilde{A}}\big)^{-1}(e) \lhd h_\xi^{\widetilde{A}\widetilde{A}}(r) \notag \\
+	\ =&\ \ \mathscr{E}(\phi) \lhd h_\xi^{\widetilde{A}\widetilde{A}}(r) \,,
+\end{align}
+که در آن ما از هموردایی-راست $G$ (و در نتیجه $H$) از $\psiGMr^{\widetilde{A}}$ (و در نتیجه $\big(\psiGMr^{\widetilde{A}}\big)^{-1}$) در مرحله ماقبل آخر استفاده کردیم.
+در مجموع، این ویژگی‌ها نشان می‌دهند که $\mathscr{E}$ یک نگاشت کلاف اصلی است که نمودار زیر را جابجایی می‌کند:
+\begin{equation}\label{cd:GM_def_embedding}
+	\begin{tikzcd}[row sep=3.em, column sep=6.5em]
+		\I \times \Stab{r}
+		\arrow[r, "\mathscr{E}\times\alpha", hook]
+		\arrow[d, "\blacktriangleleft\,"']
+		& \GM \times H
+		\arrow[d, "\,\lhd"]
+		\\
+		\I
+		\arrow[r, pos=.55, "\mathscr{E}", hook]
+		\arrow[d, "\mathscr{q}"']
+		& \GM
+		\arrow[d, "\piGM"]
+		\\
+		\I/\Stab{r}
+		\arrow[r, pos=.45, "\beta"']
+		& M
+	\end{tikzcd}
+\end{equation}
+$H$-ساختار ادعا شده سپس به عنوان تصویر
+\begin{align}
+	\HM\ :=\ \mathscr{E}(\I)\ =\ \big\{ \dphiGM\, \sigma^{\widetilde{A}}(r) \,\big|\, \phi \in \I \big\}
+\end{align}
+از $\mathscr{E}$ به همراه عمل راست و نگاشت تصویر محدود شده از $\GM$ تعریف می‌شود.
+از آنجا که جایگذاری‌ها لزوماً یک‌به‌یک هستند، ما به طور خاص داریم که $\I$ و $\HM$ به عنوان کلاف‌های اصلی ایزومورف هستند.
+
+
+به عنوان نکته آخر، ما استدلال می‌کنیم که $\I$ و $\IsomHM = \{ \theta \in \IsomM \,|\, \dthetaGM \HM = \HM \}$ منطبق هستند.
+برابری $\dthetaGM \HM = \HM$ برای یک $\theta \in \IsomM$ داده شده برقرار است اگر $\dthetaGM \HM$ همزمان یک زیرمجموعه و یک ابرمجموعه از~$\HM$ باشد.
+مورد اول، $\dthetaGM \HM \subseteq \HM$ نیازمند این است که برای هر عضو $\dthetaGM\, \dphiGM \sigma^{\widetilde{A}}(r) \in \dthetaGM \HM$ یک $\dphiGM' \sigma^{\widetilde{A}}(r) \in \HM$ وجود داشته باشد به طوری که $\dthetaGM\, \dphiGM \sigma^{\widetilde{A}}(r) = \dphiGM' \sigma^{\widetilde{A}}(r)$.
+از آنجا که عمل ایزومتری‌ها روی کلاف چارچوب بدون نقطه ثابت است، این نیازمند $\dthetaGM = \dphiGM' \dphiGM^{-1}$ است، که به نوبه خود $\theta = \phi' \phi^{-1}$ را نتیجه می‌دهد.
+همانطور که به راحتی می‌توان بررسی کرد، مورد دوم منجر به همان الزام می‌شود.
+هم $\phi'$ و هم $\phi$ اعضای $\I$ هستند به طوری که $\theta$ باید عضوی از $\I$ باشد.
+این ادعای
+\begin{align}\label{eq:IsomHM_I}
+	\IsomHM = \I \,.
+\end{align}
+را اثبات می‌کند.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{بخش ۲) -- هم‌ارزی تبدیلات میدان کرنل $\I$-هموردا و کانولوشن‌های \textit{HM}:}
+
+برای اثبات گزاره دوم قضیه، ما یک تبدیل میدان کرنل $\I$-هموردا را روی $M$ می‌سازیم و نشان می‌دهیم که با یک کانولوشن $\HM$ معادل است.
+قضیه~\ref{thm:isometry_equivariant_kernel_field_trafos} اثبات کرد که تبدیلات میدان کرنل $\I$-هموردا به میدان‌های کرنل $\I$-ناوردا نیاز دارند، که طبق قضیه~\ref{thm:manifold_quotient_repr_kernel_fields} می‌توانند به طور معادل بر حسب یک میدان از کرنل‌های نماینده $\Qhat: \piTM^{-1}(\rM(\IM)) \to \piHom^{-1}(\rM(\IM))$ کدگذاری شوند.
+برای مورد یک فضای همگن $M$ فضای خارج‌قسمتی $\IM$ از یک عضو منفرد تشکیل شده است، که ما آن را با $r=\rM(\IM) \in M$ نمایش می‌دهیم.
+بنابراین کل میدان کرنل ناوردا با یک کرنل منفرد $\Qhat|_r = \Qhat: \TrM \to \Hom(\Ainr,\Aoutr)$ توصیف می‌شود.
+این کرنل باید محدودیت پایدارساز
+$\dxiHom \Qhat\; \dxiTM^{-1} = \Qhat \quad \forall\ \xi \in \Stab{r}$
+را برآورده کند و از طریق ایزومورفیسم ارتقا
+$\widehat{\Lambda}(\Qhat)(v) = \dPhirHom{v} \Qhat\ \rTM \QTM (v) = \dPhirHom{v} \Qhat\ \dPhirTM{v}^{-1}(v)$ روی $M$ به اشتراک گذاشته می‌شود.
+همانطور که در ادامه نشان داده می‌شود، کرنل نماینده منفرد با محدودیت $\Stab{r}$ دقیقاً متناظر با یک کرنل الگوی $H$-راهبری‌پذیر است، در حالی که اشتراک وزن از طریق ایزومورفیسم ارتقای $\widehat{\Lambda}$ از قضیه~\ref{thm:manifold_quotient_repr_kernel_fields} دقیقاً متناظر با اشتراک وزن کانولوشنی در تعریف~\ref{dfn:conv_kernel_field} است.
+
+
+برای صریح کردن هم‌ارزی محدودیت‌های کرنل، ما کرنل $\Qhat$ را از طریق معادله~\eqref{eq:conv_kernel_field_def_ptwise} نسبت به همان پیمانه~$\widetilde{A}$ که قبلاً در نظر گرفته شد، به صورت
+$K := \psiHomr^{\widetilde{A}}\, \Qhat\, \big(\psiTMr^{\widetilde{A}} \big)^{-1}$ بیان می‌کنیم.
+ضریب حجم چارچوب $\sqrt{|\eta_r^{\widetilde{A}}|}$ در اینجا حذف می‌شود زیرا ما پیمانه را بدون از دست دادن کلیت، ایزومتریک فرض کردیم.
+سپس محدودیت پایدارساز نسبت به این پیمانه منجر به
+\begin{alignat}{3}
+	K
+	\ &=&\ \ \psiHomr^{\widetilde{A}}\, &\Qhat\ \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+	\ &=&\ \ \psiHomr^{\widetilde{A}}\, \dxiHom\, &\Qhat\,\ \dxiTM^{-1}\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+	\ &=&\ \ \psiHomr^{\widetilde{A}}\, \dxiHom\, \big(\psiHomr^{\widetilde{A}})^{-1}\, &K\ \psiTMr^{\widetilde{A}}\, \dxiTM^{-1}\, \big(\psiTMr^{\widetilde{A}} \big)^{-1} \notag \\
+	\ &=&\ \ \rhoHom\big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)\, &K\ \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)^{-1} \notag \\
+	\ &=&\ \ \frac{1}{\big|\mkern-2mu \det h_\xi^{\widetilde{A}\widetilde{A}}(r) \big|} \;
+	\rhoHom\big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)\, &K\ \big( h_\xi^{\widetilde{A}\widetilde{A}}(r) \big)^{-1}
+\end{alignat}
+برای هر $\xi$ در $\Stab{r}$ می‌شود.
+توجه داشته باشید که می‌توانیم ضریب دترمینان را در مرحله آخر اضافه کنیم زیرا $h_\xi^{\widetilde{A}\widetilde{A}}(r) \in \O{d}$ همانطور که در بالا نشان داده شد.
+بنابراین ایزومورفیسم بین $\Stab{r}$ و $H$ در معادله~\eqref{eq:stabr_H_iso} به ما اجازه می‌دهد تا محدودیت پایدارساز را به عنوان محدودیت $H$-راهبری‌پذیری
+\begin{align}
+	K\ =\ \frac{1}{|\mkern-2mu \det h \mkern1mu|}\; \rhoHom(h) \circ K \circ h^{-1} \qquad \forall\ h \in H \,.
+\end{align}
+روی کرنل‌های الگوی یک کانولوشن $\HM$ بازنویسی کنیم.%
+\footnote{
+	از آنجا که $h\in H \leq G\cap\O{d}$، ضریب دترمینان همیشه حذف می‌شود و بنابراین می‌توان آن را نادیده گرفت.
+}
+
+
+
+آنچه باقی می‌ماند نشان دادن هم‌ارزی دو روش اشتراک وزن است.
+اشتراک وزن از طریق $\widehat{\Lambda}$ که از طریق پیمانه $\widetilde{A}$ بر حسب $K$ بیان می‌شود، به صورت
+\begin{alignat}{3}\label{eq:weight_sharing_lifting_homogeneous}
+	\widehat{\Lambda}(\Qhat)(v)
+	\ &=&\ \dPhirHom{v}\; &\Qhat\,\ \rTM\, \QTM (v) \notag \\
+	\ &=&\ \dPhirHom{v}\; &\Qhat\,\ \dPhirTM{v}^{-1}(v) \notag \\
+	\ &=&\ \dPhirHom{v}\, \big(\psiHomr^{\widetilde{A}}\big)^{-1}\, \psiHomr^{\widetilde{A}}\; &\Qhat\,\ \big(\psiTMr^{\widetilde{A}}\big)^{-1}\, \psiTMr^{\widetilde{A}}\; \dPhirTM{v}^{-1}(v) \notag \\
+	\ &=&\ \Big( \psiHomr^{\widetilde{A}}\, \dPhirHom{v}^{-1} \Big)^{-1}\, &K\, \Big( \psiTMr^{\widetilde{A}}\, \dPhirTM{v}^{-1} \Big)(v) \,.
+\end{alignat}
+خوانده می‌شود. خط آخر در حال حاضر بسیار شبیه به تعریف میدان‌های کرنل کانولوشنی $\HM$ در تعریف~\ref{dfn:conv_kernel_field} است.
+برای اثبات هم‌ارزی آنها، باید نشان دهیم
+۱) که پیمانه‌های القا شده توسط ایزومتری 
+$\psiTMr^{\widetilde{A}}\, \dPhirTM{v}^{-1}$ و $\psiHomr^{\widetilde{A}}\, \dPhirHom{v}^{-1}$ در~$\piTM(v)$
+با پیمانه‌های اصلی $\psiTMr^{\widetilde{A}}$ و $\psiHomr^{\widetilde{A}}$، $H$-سازگار هستند و
+۲) که پیمانه‌های القا شده متناظر با چارچوب‌های مرجع با حجم واحد هستند (برای توضیح ضریب حجم چارچوب گمشده در معادله~\eqref{eq:weight_sharing_lifting_homogeneous}).
+برای نکته اول، توجه داشته باشید که هم‌دامنه ایزومتری بازسازی $\PhirNoArg: \TM \to \I$ با معادله~\eqref{eq:IsomHM_I} با~$\IsomHM$ منطبق است.
+بنابراین قضیه~\ref{thm:isom_GM_in_coords} تأیید می‌کند که این پیمانه‌های القا شده با هر $H$-اطلس از~$\HM$ سازگار هستند.
+نکته دوم بلافاصله نتیجه می‌شود زیرا $H \leq \O{d}$ (یا زیرا $\Phir{v}$ یک ایزومتری است و $\widetilde{A}$ ایزومتریک است).
+بنابراین دیده می‌شود که اشتراک وزن $\Qhat$ از طریق ایزومورفیسم ارتقای معادله~\ref{eq:weight_sharing_lifting_homogeneous} با اشتراک وزن کانولوشنی $\HM$ از کرنل $H$-راهبری‌پذیر~$K$ در تعریف~\ref{dfn:conv_kernel_field} منطبق است.
+این به همراه نتیجه‌ای که محدودیت کرنل پایدارساز منجر به محدودیت $H$-راهبری‌پذیری می‌شود، دلالت بر این دارد که میدان کرنل ارتقا یافته معادل یک میدان کرنل کانولوشنی $\HM$ است، که بخش ۲) قضیه را اثبات می‌کند.
+
+
+
+
+
+
+
+یک انتخاب متفاوت از پیمانه $\widetilde{A}$ ممکن است برای $G<\O{d}$ منجر به یک زیرگروه مزدوج $\overline{H}$ به $H$ و یک جایگذاری $\overline{H}\mkern-2muM$ از $\I$ شود که با $\HM$ متفاوت است.
+همانطور که به راحتی می‌توان بررسی کرد، محدودیت $\overline{H}$-راهبری‌پذیری اجازه می‌دهد تا همان کرنل را نسبت به $\overline{H}\mkern-2muM$ مانند محدودیت $H$-راهبری‌پذیری در رابطه با $\HM$ توصیف کنیم، زیرا تبدیل حذف می‌شود.

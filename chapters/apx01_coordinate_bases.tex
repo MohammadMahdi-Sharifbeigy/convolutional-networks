@@ -1,0 +1,946 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\section{ارتباط با فرمالیسم چارت مختصاتی در هندسه دیفرانسیل}
+\label{apx:coordinate_bases}
+
+
+این پیوست به منظور برقراری ارتباط بین \emph{فرمالیسم کلاف}، که زیربنای نظریه \lr{CNN}های مستقل از مختصات است، و \emph{فرمالیسم چارت مختصاتی}، که احتمالاً در اولین مطالعه هندسه دیفرانسیل با آن مواجه می‌شویم، عمل می‌کند.
+تفاوت اصلی بین این دو این است که فرمالیسم کلاف به نقاط~$p$ از فضای پایه $M$ به روشی \emph{مستقل از مختصات} اشاره می‌کند.
+در صورت نیاز، مختصات مستقیماً از طریق تریویالیزاسیون‌های محلی کلاف به تارها (به عنوان مثال فضاهای مماس) اختصاص داده می‌شوند.
+در مقابل، فرمالیسم چارت بر \emph{چارت‌های مختصاتی} (دیفئومورفیسم‌ها)
+\begin{align}
+	x: M \supseteq U \to V \subseteq \R^d \,,
+\end{align}
+تکیه دارد، که مختصات را به تکه‌های محلی $U$ از منیفلد اختصاص می‌دهند.
+تریویالیزاسیون‌های محلی کلاف و تبدیلات پیمانه بین آنها به عنوان \emph{دیفرانسیل‌های چارت‌ها و توابع گذار چارت القا می‌شوند}.
+در این بخش ما ارتباط بین هر دو فرمالیسم را بررسی می‌کنیم.
+یک نمای کلی از نتایج در جدول~\ref{tab:coord_charts_gauge_trafos} ارائه شده است.
+
+
+\etocsettocdepth{3}
+\etocsettocstyle{}{} % from now on only local tocs
+\localtableofcontents
+
+
+ما در بخش~\ref{apx:tangent_cotangent_dual_bases} با معرفی مختصر فضاهای مماس $\TpM$ به عنوان فضاهایی از عملگرهای مشتق جهتی شروع می‌کنیم، که از آنها فضاهای هم‌مماس $\TspM$ به عنوان فضاهای دوگان نتیجه می‌شوند.
+بخش~\ref{apx:differentials_gradients_jacobians} دیفرانسیل‌های عمومی و گرادیان‌ها و ژاکوبین‌های خاص‌تر را تعریف می‌کند.
+بر اساس این مقدمات، ما در بخش~\ref{apx:coord_basis_def} \emph{پایه‌های مختصاتی} (پایه‌های هولونومیک)
+${\pig[ \frac{\partial}{\partial x_1}\big|_p, \ \dots,\ \frac{\partial}{\partial x_d}\big|_p \pig]\ \in \FpM}$
+از فضاهای مماس $\TpM$ را تعریف خواهیم کرد، که توسط عملگرهای مشتق جهتی در امتداد شبکه مختصاتی که توسط چارت از $V$ به~$U$ کشیده شده است، تولید می‌شوند.
+پایه‌های دوگان
+${\pig[ \hat{d}x_\mu|_p, \ \dots,\ \hat{d}x_\mu|_p \pig]}$
+از فضاهای هم‌مماس $\TspM$ با گرادیان‌های مؤلفه‌های چارت $x_\mu$ داده می‌شوند.
+نگاشت‌های گذار بین چارت‌ها، تبدیلات پیمانه کوواریانت و کانتراواریانت را بین پایه‌های متناظر القا می‌کنند، که در بخش~\ref{apx:chart_transition_induced_gauge_trafos} استخراج می‌شوند.
+بخش~\ref{apx:correspondences_bundle_trivializations} پایه‌های مختصاتی را به عنوان تریویالیزاسیون‌های محلی کلاف تفسیر می‌کند و ارتباط بین فرمالیسم کلاف و فرمالیسم چارت را دقیق می‌کند.
+پایه‌ها و تریویالیزاسیون‌های القا شده از چارت‌های مختصاتی تمام تریویالیزاسیون‌های ممکن را پوشش نمی‌دهند، به طوری که بین پایه‌های مختصاتی و پایه‌های غیرمختصاتی تمایز قائل می‌شویم (فرمالیسم کلاف به پایه‌های غیرمختصاتی عمومی اجازه می‌دهد).
+در ادبیات فیزیک، پایه‌های غیرمختصاتی معمولاً از طریق \emph{میدان‌های ویل‌باین} معرفی می‌شوند.
+بخش~\ref{apx:vielbein_fields} استدلال می‌کند که این میدان‌های ویل‌باین فقط تبدیلات پیمانه با مقادیر $\GL{d}$ از چارچوب‌های عمومی در $\FM$ به یک $G$-ساختار داده شده~$\GM$ هستند، که در داخل آن می‌توان متعاقباً تبدیلات پیمانه با مقادیر $G$ را که $G$-ساختار را حفظ می‌کنند، اعمال کرد.
+
+مقدمه‌های جامعی بر فرمالیسم چارت در~\cite{nakahara2003geometry,schullerGeometricalAnatomy2016,carroll2004spacetime} ارائه شده است.
+یک شرح دقیق‌تر در~\cite{schullerGeometricalAnatomy2016} یافت می‌شود.
+
+ما می‌خواهیم به خواننده یادآوری کنیم که ما از اندیس‌های کوواریانت و کانتراواریانت استفاده \emph{نمی‌کنیم}.
+اندیس‌ها همیشه به صورت زیرنویس ظاهر خواهند شد، با حروف یونانی $\mu,\nu,\dots$ که اندیس‌های مرتبط با چارت مختصاتی را نشان می‌دهند و حروف لاتین $i,j,\dots$ که اندیس‌های پیمانه‌های عمومی را نشان می‌دهند.
+بالانویس‌های $A,B,\dots$ برای برچسب‌گذاری چارت‌ها یا پیمانه‌های مختلف حفظ می‌شوند.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{فضاهای مماس، فضاهای هم‌مماس و پایه‌های دوگان}
+\label{apx:tangent_cotangent_dual_bases}
+
+\subsubsection{فضاهای مماس بر حسب مشتقات جهتی}
+یک تعریف رایج از فضاهای مماس $\TpM$ یک منیفلد $M$ به عنوان فضاهای برداری از عملگرهای مشتق جهتی در $p \in M$ است، که ما در اینجا به طور خلاصه آن را تشویق می‌کنیم.
+فرض کنید $f\in C^\infty(M)$، یعنی $f:M\to\R$ یک نگاشت هموار باشد، و برای یک بازه $I\subseteq\R$ حاوی $0$ فرض کنید $\gamma: I \to M$ یک منحنی هموار باشد که در زمان $t = 0$ از~$p$ عبور می‌کند، یعنی $\gamma(0) = p$ را برآورده می‌کند.
+سپس \emph{عملگر مشتق جهتی} در~$p$ در امتداد~$\gamma$ را به عنوان عملگر خطی
+\begin{align}\label{eq:tangent_vector_directional_derivative}
+	v_\gamma: C^\infty(M) \to \R,\ \ \ f \mapsto \big(f \circ \gamma \big)'(0) \,.
+\end{align}
+تعریف می‌کنیم. از آنجا که مشتق در امتداد جهت $\gamma$ گرفته می‌شود، یعنی مماس بر آن، $v_\gamma$ \emph{بردار مماس} نامیده می‌شود.
+می‌توان آن را به عنوان سرعت یک ذره با مسیر $\gamma$ در زمان $t=0$ در نظر گرفت.
+برای ارجاع بعدی، ما نمودار جابجایی ساده زیر را ارائه می‌دهیم، که پول‌بک $f\circ\gamma$ از $f$ از $M$ به $\R$ را از طریق $\gamma$ نشان می‌دهد، که مشتق جهتی بر حسب آن تعریف می‌شود:
+\begin{equation}\label{cd:directional_derivative}
+	\begin{tikzcd}[row sep=2.5em, column sep=4em]
+		\R \supset I
+		\arrow[r, "\gamma"]
+		\arrow[rr, rounded corners, to path={ 
+			|- node[below, pos=.75]{\small$f \circ \gamma$} ([yshift=-3.5ex]\tikztotarget.south)
+			-- (\tikztotarget.south)
+		}]
+		& M   \arrow[r, "f"]
+		& \R
+	\end{tikzcd}
+\end{equation}
+
+می‌توان نشان داد که فضای تمام بردارهای مماس بر منحنی‌ها در $p$ یک فضای برداری $d$-بعدی را تشکیل می‌دهد
+\begin{align}
+	\TpM\ :=\ \big\{ v_\gamma \,\big|\, \gamma\ \text{یک منحنی هموار گذرنده از}\ p \text{ است} \big\} \,,
+\end{align}
+که به عنوان فضای مماس در~$p$ شناخته می‌شود.
+برای جزئیات بیشتر در مورد تعریف بردارهای مماس و ساختار فضای برداری فضاهای مماس، به~\cite{schullerGeometricalAnatomy2016} مراجعه کنید.
+
+با تعریف فضاهای مماس به عنوان فضاهای برداری، ممکن است انتخاب کنیم که با بردارهای مماس به عنوان بردارهای هندسی انتزاعی رفتار کنیم و در نتیجه تعریف آنها را از طریق مشتقات جهتی (یا هر تعریف جایگزین دیگری) «فراموش» کنیم.
+ما این کار را در اکثر جاها انجام می‌دهیم، اما در بخش‌های بعدی برای استخراج دیفرانسیل‌های نگاشت‌های هموار و پایه‌های مختصاتی به تعریف از طریق مشتقات جهتی باز می‌گردیم.
+
+
+
+\subsubsection{فضاهای هم‌مماس}
+\label{apx:cotangent_spaces}
+به عنوان فضاهای برداری حقیقی، فضاهای مماس $\TpM$ دارای \emph{فضاهای دوگان} متناظر $\TspM := (\TpM)^*$ هستند، یعنی \emph{فضاهای هم‌مماس}.
+بنا به تعریف فضاهای دوگان، آنها از تابعی‌های خطی
+\begin{align}
+	\omega: \TpM \to \R \,,
+\end{align}
+تشکیل شده‌اند، که در هندسه دیفرانسیل معمولاً \emph{هم‌بردارها} یا \emph{۱-فرم‌ها} نامیده می‌شوند.
+به همراه جمع (هم)برداری
+$(\omega + \widetilde{\omega})(v) = \omega(v) + \widetilde{\omega}(v)$
+و ضرب اسکالر
+$(\lambda \cdot \omega)(v) = \lambda\cdot (\omega(v))$،
+فضاهای هم‌مماس خود فضاهای برداری هستند.
+
+به عنوان دوگان‌های متناهی-بعدی از یکدیگر، $\TpM$ و $\TspM$ ایزومورف هستند و بنابراین به طور خاص دارای بعد یکسان $d = \dim(M) = \dim(\TpM) = \dim(\TspM)$ هستند.
+با این حال، ایزومورفیسم بین این دو کانونی نیست.
+یک ایزومورفیسم فضای برداری را می‌توان از طریق یک فرم دوخطی (غیرتبهگن) $\eta_p: \TpM \times \TpM \to \R$ روی $\TpM$ مثلاً یک متریک ریمانی، از طریق
+\begin{align}
+	\widehat{\eta}_p:\ \TpM \to \TspM,\ \ v \mapsto \eta_p(v, \cdot) \,,
+\end{align}
+مشخص کرد، که تابعی خطی
+$\widehat{\eta}_p(v):\ \TpM \to \R,\ \ w \mapsto \eta_p(v, w)$ را تعیین می‌کند.
+
+
+
+\subsubsection{پایه‌های دوگان}
+هر پایه $\big[e_i\big]_{i=1}^d$ از $\TpM$ به طور کانونی یک \emph{پایه دوگان} $\big[e_i^*\big]_{i=1}^d$ از $\TspM$ را القا می‌کند، که برای برآوردن روابط
+\begin{align}
+	e^*_i e_j = \delta_{ij} \quad \textup{برای هر }\ i,j \in 1,\dots,d \,.
+\end{align}
+تعریف شده است. فرض کنید $\big[e^A_i\big]_{i=1}^d$ و $\big[e^B_i\big]_{i=1}^d = \big[e^A_i\big]_{i=1}^d \lhd \big(g^{BA}\big)^{-1}$ دو پایه از $\TpM$ باشند، که با عمل راست~$\lhd$ از عضو گروه ساختاری (وارون) $\big(g^{BA}\big)^{-1} \in \GL{d}$ در معادله~\eqref{eq:frame_rightaction} به هم مرتبط هستند، یعنی برای $j=1,\dots,d$ :
+\begin{align}\label{eq:general_tangent_basis_gauge_trafo}
+	e^B_j\ =\ \sum_l e^A_l \big(g^{BA}\big)^{-1}_{lj}
+\end{align}
+پایه دوگان $\big[e^{A,*}_i\big]_{i=1}^d$ بر این اساس تحت آن عمل چپی که $e_i^{A,*}$ را به
+\begin{align}\label{eq:general_cotangent_basis_gauge_trafo}
+	e_i^{B,*}\ =\ \sum_k g^{BA}_{ik} e_k^{A,*} \,.
+\end{align}
+می‌فرستد، تبدیل می‌شود. این با جفت‌کردن تأیید می‌شود:
+\begin{align}
+	e_i^{B,*} e_j^B
+	\ &=\ \sum_{k,l} g^{BA}_{ik} e_k^{A,*} e_l^A \big(g^{BA}\big)^{-1}_{lj}  \notag \\
+	\ &=\ \sum_{k,l} g^{BA}_{ik} \delta_{kl} \big(g^{BA}\big)^{-1}_{lj} \notag \\
+	\ &=\ \sum_{k} g^{BA}_{ik} \big(g^{BA}\big)^{-1}_{kj} \notag \\
+	\ &=\ \delta_{ij} \,.
+\end{align}
+رفتار تبدیل وارون پایه‌ها و پایه‌های دوگان معمولاً به عنوان تبدیل \emph{کوواریانت} و \emph{کانتراواریانت} نامیده می‌شود.
+به شباهت تبدیل پایه دوگان با تبدیلات کانتراواریانت $\psi^B = g^{BA} \psi^A$ پیمانه‌ها در معادله~\eqref{eq:gauge_trafo_local_def_21} و $v^B = g^{BA} v^A$ مؤلفه‌های برداری در \eqref{eq:components_leftaction} توجه کنید.
+در واقع، پیمانه‌ها فقط انتخاب‌هایی از یک پایه هم‌مماس هستند که در ادامه بیشتر مورد بحث قرار می‌گیرد.
+
+
+
+
+
+
+
+
+\subsection{دیفرانسیل‌ها، گرادیان‌ها و ژاکوبین‌ها}
+\label{apx:differentials_gradients_jacobians}
+
+در حساب برداری، توابع $\phi: \R^m \to \R^n$ را در نظر می‌گیریم، که می‌توان آنها را در هر نقطه $p\in \R^m$ به صورت خطی با ماتریس ژاکوبین آنها (یا مشتق کل یا دیفرانسیل) $d\phi_p = \big(\frac{\partial\phi_i}{\partial x_j} \big|_p \big)_{ij}$ تقریب زد.
+در اینجا ما تعمیم این مفهوم را به دیفرانسیل‌های توابع هموار بین منیفلدهای هموار معرفی می‌کنیم.
+
+\paragraph{دیفرانسیل‌ها به طور کلی:}
+فرض کنید $\phi: M \to N$ یک نگاشت هموار بین منیفلدهای هموار $M$ و $N$ باشد.
+در هر نقطه $p\in M$ چنین نگاشتی یک دیفرانسیل (یا پوش‌فوروارد)
+\begin{align}
+	d\phi_p : \TpM \to \TphipN,\ \ v \mapsto d\phi_p(v)
+\end{align}
+را القا می‌کند که بردارهای مماس را در~$p$ به صورت خطی به بردارهای مماس در $\phi(p)$ نگاشت می‌دهد.
+برای تعریف فضاهای مماس بر حسب مشتقات جهتی در معادله~\eqref{eq:tangent_vector_directional_derivative}، پوش‌فوروارد $v \in \TpM$ در امتداد $\phi$ به صراحت با
+\begin{align}
+	d\phi_p(v): C^\infty(N) \to \R,\ \ \ f \mapsto \big( d\phi_p(v) \big)(f)\ :=\ v(f \circ \phi) \,,
+\end{align}
+داده می‌شود، یعنی با اعمال~$v$ بر روی پول‌بک $f \circ \phi: M \to \R$ از $f: N\to \R$ از طریق $\phi$.
+این تعاریف با دو نمودار جابجایی زیر روشن می‌شوند:
+\begin{equation}
+	\begin{tikzcd}[column sep=70pt, row sep=30, font=\normalsize]
+		M
+		\arrow[r, "\phi"]
+		\arrow[dr, "f \circ \phi"']
+		&
+		N
+		\arrow[d, "\ f"]
+		\\
+		& \R
+	\end{tikzcd}
+	\qquad\qquad
+	\begin{tikzcd}[column sep=60pt, row sep=30, font=\normalsize]
+		C^\infty(M)
+		\arrow[d, "v\ "']
+		&
+		C^\infty(N)
+		\arrow[l, "{(\,\cdot\,) \circ \phi}"']
+		\arrow[dl, "{d\phi(v)}"]
+		\\
+		\R
+	\end{tikzcd}
+\end{equation}
+
+از این تعریف بلافاصله نتیجه می‌شود که دیفرانسیل ترکیب نگاشت‌های هموار برابر با ترکیب دیفرانسیل‌های منفرد آنها است، که همان قاعده زنجیره‌ای است:
+\begin{align}
+	d(\phi \circ \psi)_p\ =\ d\phi_{\psi(p)} \circ d\psi_p
+\end{align}
+اگر $\phi$ وارون‌پذیر باشد (یک دیفئومورفیسم)، علاوه بر این نتیجه می‌شود که دیفرانسیل آن یک ایزومورفیسم فضای برداری است که وارون آن برابر با دیفرانسیل $\phi^{-1}$ است، یعنی
+\begin{align}\label{eq:differential_inverse}
+	\big( d\phi_{p} \big)^{-1}\ =\ d\big( \phi^{-1} \big)_{\phi(p)} \,.
+\end{align}
+
+در مجموع، دیفرانسیل‌های $d\phi_p$ در نقاط منفرد $p\in M$ یک مورفیسم کلاف برداری (یک نگاشت کلاف خطی-تاری، به بخش‌های~\ref{sec:fiber_bundles_general} مراجعه کنید) را بین کلاف‌های مماس $M$ و $N$ القا می‌کنند:
+\begin{equation}
+	\begin{tikzcd}[column sep=60pt, row sep=35, font=\normalsize]
+		TM
+		\arrow[r, "d\phi"]
+		\arrow[d, "\piTM"']
+		&
+		TN
+		\arrow[d, "\piTM"]
+		\\
+		M
+		\arrow[r, "\phi"']
+		&
+		N
+	\end{tikzcd}
+\end{equation}
+
+توجه داشته باشید که ما در این پیوست از یک نمادگذاری متفاوت، یعنی $d\phi$ استفاده می‌کنیم، نسبت به مقاله اصلی، که در آن به جای آن $\dphiTM$ می‌نویسیم.
+ما اولی را برای ارتباط با نمادگذاری معمول $dx_\mu$ برای پایه‌های القا شده توسط چارت از فضاهای هم‌مماس انتخاب کردیم.
+دومی در متن اصلی برای تأکید بر شباهت با نگاشت‌های کلاف $\dphiFM$، $\dphiGM$ و $\dphiA$ که روی کلاف‌های همبسته $\FM$، $\GM$ و $\A$ القا می‌شوند، استفاده می‌شود.
+
+
+
+\paragraph{گرادیان‌ها:}
+در مورد توابع هموار با مقادیر حقیقی $\phi: M \to \R$، یعنی $\phi \in C^\infty(M)$، دیفرانسیل $d\phi_p: \TpM \to T_{\phi(p)}\R$ بردارهای $v$ را در $\TpM$ به بردارهای $d\phi(v): C^\infty(\R) \to \R,\ f \mapsto v(f \circ \phi)$ در $T_{\phi(p)}\R$ پوش‌فوروارد می‌کند.
+با استفاده از ایزومورفیسم کانونی
+\begin{align}\label{eq:canon_isom_TR_R}
+	\iota_{\R}: T_{\phi(p)}\R \xrightarrow{\sim} \R,\ \ v \mapsto v(\id_{\R})
+\end{align}
+\emph{عملگر گرادیان}
+\begin{align}
+	\hat{d}_p: C^\infty(M) \to \TspM,\ \ \phi \mapsto  \hat{d}\phi_p := \iota_{\R} \circ d\phi_p = \big( d\phi_p(\,\cdot\,) \big)(\id_{\R}) \,,
+\end{align}
+را تعریف می‌کنیم، که توابع هموار $\phi$ را به هم‌بردارها%
+\footnote{
+	میدان گرادیان اغلب به عنوان یک میدان \emph{برداری} $\nabla f := (\hat{d}f)^{\sharp^\eta}$ تعریف می‌شود که از میدان \emph{هم‌برداری} $\hat{d}f$ از طریق ایزومورفیسم موسیقیایی $\sharp^\eta: \TsM \to \TM$ متناظر با متریک («بالا بردن اندیس‌ها») محاسبه می‌شود.
+}
+$\hat{d}\phi$ می‌فرستد، که به نوبه خود بر روی بردارها به صورت
+\begin{align}\label{eq:gradient_vector_action}
+	\hat{d}\phi_p: \TpM \to \R,\ \ v \mapsto \hat{d}\phi_p(v) = \big( d\phi_p(v) \big)(\id_{\R}) = v(\id_{\R} \circ \phi) = v(\phi) \,.
+\end{align}
+عمل می‌کنند. با یک \emph{سوءاستفاده از نمادگذاری} معمولاً «کلاه» روی $\hat{d}$ حذف می‌شود و بلافاصله $d\phi_p(v) := v(\phi)$ تعریف می‌شود.
+در حالی که این نمادگذاری بسیار رایج است، ما در ادامه به «کلاه» پایبند می‌مانیم تا نیاز به ایزومورفیسم کانونی $\iota_{\R}$ را صریح کنیم.
+
+در بخش~\ref{apx:coord_basis_def} در ادامه خواهیم دید که پایه‌های $\TspM$ که دوگان پایه‌های مختصاتی $\TpM$ هستند، با ۱-فرم‌های گرادیان $\hat{d}x_\mu|_p$ داده می‌شوند، که در آن $x_\mu$ مؤلفه‌های چارت مختصاتی هستند.
+
+
+
+\paragraph{ژاکوبین‌ها:}
+به طور خاص برای توابع $\phi: \R^n \to \R^m$ بین (زیرمجموعه‌هایی از) فضاهای اقلیدسی، دیفرانسیل
+$d\phi_{x_0}: {T_{x_0}\R^n \to T_{\phi(x_0)}\R^m}$
+به راحتی دیده می‌شود که با \emph{ژاکوبین} $\frac{\partial \phi}{\partial x} \big|_{x_0}: \R^n \to \R^m$
+پس از یکی گرفتن کانونی $T_p\R^k \cong \R^k$ در هر دو دامنه و هم‌دامنه، منطبق است.
+ایزومورفیسم کانونی در اینجا با
+\begin{align}\label{eq:canonical_iso_TRk_Rk}
+	\iota_{\R^k}: v \mapsto \big( v(\proj_1), \dots, v(\proj_k) \big) \,,
+\end{align}
+داده می‌شود، که $\iota_{\R}$ را از معادله~\eqref{eq:canon_isom_TR_R} به ابعاد چندگانه تعمیم می‌دهد.
+از آنجا که محاسبه عمدتاً مشابه مورد گرادیان‌ها است، ما آن را در اینجا تکرار نخواهیم کرد بلکه ایده را از طریق یک نمودار جابجایی به تصویر می‌کشیم:
+\begin{equation}\label{cd:jacobian_def}
+	\begin{tikzcd}[row sep=2.5em, column sep=4em]
+		\R^n
+		\arrow[rrr, rounded corners, to path={ 
+			|- node[below, pos=.75]{$\frac{\partial \phi}{\partial x} \Big|_{x_0}$} ([yshift=-3.5ex]\tikztotarget.south)
+			-- (\tikztotarget.south)
+		}]
+		& T_{x_0}\R^n
+		\arrow[l, "\iota_{\R^n}"']
+		\arrow[r, "{d\phi |_{x_0}}"]
+		& T_{\phi(x_0)}\R^m
+		\arrow[r, "\iota_{\R^m}"]
+		& \R^m
+	\end{tikzcd}
+\end{equation}
+
+اگر $\phi$ وارون‌پذیر باشد، همانی در معادله~\eqref{eq:differential_inverse} به
+\begin{align}\label{eq:inv_fct_thm_jacobian}
+	\frac{\partial \phi}{\partial x} \bigg|_{x_0}^{-1} \ =\ 
+	\frac{\partial \phi^{-1}}{\partial x} \bigg|_{\phi(x_0)} \,,
+\end{align}
+تبدیل می‌شود، که همان قضیه تابع وارون است.
+ما بعداً از این همانی برای وارون کردن تبدیلات پیمانه بین پایه‌های مختصاتی مختلف که به عنوان ژاکوبین‌های نگاشت‌های گذار چارت القا می‌شوند، استفاده خواهیم کرد.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{پایه‌های مختصاتی القا شده توسط چارت}
+\label{apx:chart_induced_bases_main}
+
+در این بخش ما \emph{چارت‌های مختصاتی} به شکل
+\begin{align}
+	x: U \to V \,,
+\end{align}
+را در نظر می‌گیریم، که به صورت دیفئومورفیک مختصات $x(p) \in V \subseteq \R^d$ را به هر نقطه $p \in U \subseteq M$ اختصاص می‌دهند.
+هر چنین چارتی یک انتخاب طبیعی از پایه‌ها را برای فضاهای مماس $\TpM$ روی~$U$ القا می‌کند، که به عنوان \emph{پایه‌های مختصاتی} شناخته می‌شوند.
+فضاهای دوگان $\TspM$ از فضاهای مماس روی~$U$ بر این اساس با پایه‌های مختصاتی دوگان از هم‌بردارهای مماس مجهز می‌شوند.
+نگاشت‌های گذار بین مختصات دو چارت، تبدیلات پیمانه‌ای را القا می‌کنند که بین پایه‌های مختصاتی متناظر ترجمه می‌کنند.
+این تبدیلات پیمانه با ژاکوبین‌های نگاشت‌های گذار داده می‌شوند.
+
+
+
+
+\subsubsection{چارت‌ها و پایه‌های مختصاتی القا شده}
+\label{apx:coord_basis_def}
+
+\paragraph{پایه‌های مختصاتی برای $\TpM$:}
+برای تشویق تعریف پایه‌های مختصاتی، مشاهده کنید که~$x$ یک «شبکه مختصاتی» را روی~$U$ با پول‌بک کردن شبکه مختصاتی کانونی روی $V$ به منیفلد القا می‌کند.
+سپس پایه مختصاتی در یک نقطه خاص $p \in U$ را می‌توان به عنوان متشکل از آن $d$ \emph{عملگر مشتق جهتی} که در \emph{امتداد خطوط شبکه مختصاتی~$x$ روی~$U$} می‌روند، در نظر گرفت.
+
+برای دقیق‌تر کردن این موضوع، ابتدا منحنی‌های
+\begin{align}
+	\widetilde{\gamma}_\mu: I \to V,\ \ \ t \mapsto x(p) + t \epsilon_\mu \quad\qquad \mu = 1,\dots,d
+\end{align}
+را در نظر بگیرید که در زمان $t=0$ با سرعت واحد در جهت $\mu$ از~$x(p) \in V$ عبور می‌کنند.
+نگاشت آن $\widetilde{\gamma}_\mu$ از طریق چارت به~$U$ منحنی‌های ذکر شده در بالا را تعریف می‌کند
+\begin{align}
+	\gamma_\mu: I \to U,\ \ \ t \mapsto\,
+	x^{-1}\mkern-2mu \circ \widetilde{\gamma}_\mu (t) \ =\ 
+	x^{-1} \big( x(p) + t \epsilon_\mu \big)
+\end{align}
+که در زمان $t=0$ در امتداد شبکه مختصاتی~$x$ روی~$U$ از~$p$ عبور می‌کنند.
+پایه مختصاتی $d$-بعدی~$\TpM$ القا شده توسط~$x$ سپس با عملگرهای مشتق جهتی در معادله~\eqref{eq:tangent_vector_directional_derivative} در امتداد مسیرهای~$\gamma_\mu$ داده می‌شود.
+با نشان دادن بردار پایه $\mu$-ام با سوءاستفاده معمول از نمادگذاری به صورت $\frac{\partial}{\partial x_\mu}\big|_p$ بنابراین تعریف می‌کنیم:
+\begin{align}\label{eq:coord_basis_def}
+	\frac{\partial}{\partial x_\mu} \bigg|_p \!:\ \ f\, \mapsto\,
+	\frac{\partial}{\partial x_\mu} \bigg|_p f
+	\ \ :=&\ \ \big(f \circ \gamma_\mu \big)'(0) \notag \\
+	\ \  =&\ \ \big(f \circ x^{-1} \circ \widetilde{\gamma}_\mu \big)'(0) \notag \\
+	\ \  =&\ \ \big(f \circ x^{-1}\big( x(p) + t\epsilon_\mu \big) \big)'(0) \notag \\
+	\ \  =&\ \ \pig[\mkern1.5mu \partial_\mu \big(f \circ x^{-1} \big)\pig] \big(x(p)\big)
+\end{align}
+در مرحله آخر ما مشتق جزئی $\mu$-ام معمول از پول‌بک $f\circ x^{-1}: V \to \R$ را شناسایی کردیم، که نمادگذاری $\frac{\partial}{\partial x_\mu}\big|_p$ را توجیه می‌کند.
+این تعاریف در نمودار جابجایی زیر که نمودار در معادله~\eqref{cd:directional_derivative} را گسترش می‌دهد، به تصویر کشیده شده‌اند:
+\begin{equation}
+	\begin{tikzcd}[row sep=4.em, column sep=6.em]
+		& V     \arrow[rd, "{f\circ x^{-1}}"]
+		\\
+		\R \supset I
+		\arrow[r, "\gamma_\mu"]
+		\arrow[ru, "\widetilde{\gamma}_\mu"]
+		\arrow[rr, rounded corners, to path={ 
+			|- node[below, pos=.75]{\small$f \circ \gamma_\mu$} ([yshift=-3.5ex]\tikztotarget.south)
+			-- (\tikztotarget.south)
+		}]
+		& U     \arrow[r, pos=.4, "f"]
+		\arrow[u, pos=.4, "x"]
+		&[1.4em] \R
+	\end{tikzcd}
+\end{equation}
+
+
+
+
+\paragraph{پایه‌های مختصاتی دوگان برای $\TspM$:}
+
+همانطور که در بخش~\ref{apx:tangent_cotangent_dual_bases} گفته شد، هر پایه از $\TpM$ یک \emph{پایه دوگان} از $\TspM$ را القا می‌کند.
+به طور خاص برای پایه‌های مختصاتی، که توسط بردارهای $\frac{\partial}{\partial x_\mu} \big|_p$ تولید می‌شوند، عناصر پایه دوگان با \emph{گرادیان‌های $\hat{d}x_\mu|_p = \hat{d}(x_\mu)_p \in \TspM$ از مؤلفه‌های چارت} $x_\mu = \proj_\mu \circ x: U \to \R$ داده می‌شوند.
+اینکه این گرادیان‌ها در واقع پایه دوگان را تشکیل می‌دهند، به راحتی با عمل بر روی بردارهای پایه همانطور که در معادله~\eqref{eq:gradient_vector_action} تعریف شده است، دیده می‌شود:
+\begin{align}
+	\hat{d}x_\mu \big|_p\ \frac{\partial}{\partial x_\nu} \bigg|_p
+	\ &=\ \frac{\partial}{\partial x_\nu} \bigg|_p x_\mu \notag \\
+	\ &=\ \pig[ \partial_\nu \big( x_\mu \circ x^{-1} \big) \pig] \big(x(p)\big) \notag \\
+	\ &=\ \pig[ \partial_\nu \big( \proj_\mu \big) \pig] \big(x(p)\big) \notag \\
+	\ &=\ \delta_{\mu\nu} \,.
+\end{align}
+
+
+
+
+
+\paragraph{دیفرانسیل‌های چارت به عنوان تریویالیزاسیون محلی کانونی:}
+
+با توجه به اینکه چارت از $U \subseteq M$ به $V \subseteq \R^d$ نگاشت می‌دهد، دیفرانسیل‌های آن در $p\in U$ نگاشت‌هایی به شکل
+\begin{align}
+	dx_p: \TpM \to T_{x(p)}\R^d \,.
+\end{align}
+هستند. با استفاده مجدد از ایزومورفیسم کانونی $\iota_{\R^d}$ از $T_{x(p)}\R^d$ به $\R^d$ از معادله~\eqref{eq:canonical_iso_TRk_Rk}، ما یک نگاشت
+\begin{align}\label{eq:chart_differential_via_gradients}
+	\qquad
+	\hat{d}x_p: \TpM \to \R^d,\ \ \ v\ \mapsto\ \hat{d}x_p (v)
+	:=\ &\iota_{\R^d} \circ dx_p (v) \notag \\
+	=\ & \Big( \big(dx_p(v) \big)(\proj_1) \,,\,\dots,\, \big(dx_p(v) \big)(\proj_d) \Big)^\top \notag \\
+	=\ & \Big( v\big(\proj_1 \circ x \circ x^{-1}\big)(x(p)) \,,\,\dots,\, v\big(\proj_1 \circ x \circ x^{-1}\big)(x(p)) \Big)^\top \notag \\
+	=\ & \Big( v(x_1(p)) \,,\,\dots,\, v(x_d(p)) \Big)^\top \notag \\
+	=\ & \Big( \hat{d}x_1 |_p(v) \,,\,\dots,\, \hat{d}x_d |_p(v) \Big)^\top
+\end{align}
+به دست می‌آوریم، پس از شناسایی گرادیان‌های مؤلفه چارت منفرد در مرحله آخر.
+توجه داشته باشید که عمل این دیفرانسیل چارت بر روی پایه مختصاتی $\mu$-ام نتیجه می‌دهد
+\begin{align}
+	\hat{d}x_p \: \frac{\partial}{\partial x_\mu} \bigg|_p
+	\ &=\ \bigg( \hat{d}x_1|_p \: \frac{\partial}{\partial x_\mu} \bigg|_p \,,\,\dots,\, \hat{d}x_d|_p \: \frac{\partial}{\partial x_\mu} \bigg|_p \bigg)^\top \notag \\
+	\ &=\ \big( \delta_{\mu1} \,,\,\dots,\, \delta_{\mu d} \big)^\top \notag \\
+	\ &=\ \epsilon_\mu \,,
+\end{align}
+یعنی بردار واحد $\mu$-ام $\epsilon_\mu$ از $\R^d$.
+این دلالت بر این دارد که $\hat{d}x_p: \TpM \to \R^d$ نقش یک \emph{پیمانه} $\psi_p$ را در~$p$ ایفا می‌کند.
+بنابراین می‌توان به همان اندازه با تعریف یک پایه هم‌مماس شروع کرد و
+\begin{align}\label{eq:coord_basis_vector_via_chart_differential}
+	\frac{\partial}{\partial x_\mu} \bigg|_{x(p)}\ =\ \hat{d}x_p^{-1} (\epsilon_\mu) \,,
+\end{align}
+را قرار داد، که آنالوگ معادله~\eqref{eq:framefield_gauge_equivalence} در فرمالیسم چارت است.
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{نگاشت‌های گذار چارت و تبدیلات پیمانه القا شده}
+\label{apx:chart_transition_induced_gauge_trafos}
+
+چارت‌های مختلف پایه‌های مختصاتی مختلفی را القا می‌کنند.
+بنابراین گذار چارت‌ها تبدیلات پیمانه، یعنی تبدیلات پایه‌ها و ضرایب برداری را القا می‌کنند، که ما در این بخش آنها را استخراج می‌کنیم.
+
+در ادامه ما دو چارت دلخواه و همپوشان $x^A: U^A \to V^A$ و $x^B: U^B\to V^B$ را در نظر می‌گیریم.
+مختصات مختلفی که آنها به همپوشانی $U^A \cap U^B \neq \varnothing$ اختصاص می‌دهند، سپس از طریق \emph{نگاشت‌های گذار چارت} به هم مرتبط می‌شوند
+\begin{align}\label{eq:chart_transition_fct}
+	x^B\circ\left(x^A\right)^{-1} \!:\ x^A\big(U^A\cap U^B\big)\to x^B\big(U^A\cap U^B\big) \,.
+\end{align}
+
+
+
+\paragraph{تبدیل پایه‌های مختصاتی مماس:}
+پایه‌های مختصاتی $\TpM$ که توسط دو چارت القا می‌شوند، طبق خط آخر معادله~\eqref{eq:coord_basis_def} با عمل آنها بر روی $f \in C^\infty(M)$ به صورت
+\begin{align}
+	\frac{\partial}{\partial x^A_\mu} \bigg|_p f
+	\ =\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^A\big)^{-1} \pig)\Big] \big(x^A(p)\big)
+	\qquad \text{and} \qquad
+	\frac{\partial}{\partial x^B_\mu} \bigg|_p f
+	\ =\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^B\big)^{-1} \pig)\Big] \big(x^B(p)\big) \ ,
+	\quad
+\end{align}
+تعریف می‌شوند، که با نمودار جابجایی زیر به تصویر کشیده شده است:
+\begin{equation}\label{cd:scalar_field_chart_expressions}
+	\begin{tikzcd}[row sep=4.em, column sep=6.em] %,
+		V^A \supset x^A \big( U^A \cap U^B \big)
+		\arrow[rd, "{f\circ \big(x^A\big)^{-1}}"]
+		\arrow[dd, rounded corners, to path={ 
+			|- node[left, pos=.75]{\small$x^B \circ \big(x^A\big)^{-1}$} ([xshift=-3.5ex]\tikztotarget.west)
+			-- (\tikztotarget.west)
+		}]
+		\\
+		U^A \cap U^B
+		\arrow[r, pos=.4, "f"]
+		\arrow[u, "x^A"]
+		\arrow[d, "x^B"']
+		&
+		\R
+		\\
+		V^B \supset x^B \big( U^A \cap U^B \big)
+		\arrow[ru, "{f\circ \big(x^B\big)^{-1}}"']
+	\end{tikzcd}
+\end{equation}
+
+از طریق نگاشت‌های گذار چارت، پایه‌های مختصاتی مختلف با
+\begin{align}\label{eq:coord_basis_trafo_action_f}
+	\frac{\partial}{\partial x^B_\mu} \bigg|_p f
+	\ &=\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^B\big)^{-1} \pig) \Big] \big(x^B(p)\big) \notag \\
+	\ &=\ \Big[\mkern1.5mu \partial_\mu \pig(f \circ \big(x^A\big)^{-1} \circ x^A \circ \big(x^B\big)^{-1} \pig) \Big] \big(x^B(p)\big) \,, \notag
+	\intertext{
+		به هم مرتبط می‌شوند، که با استفاده از قاعده زنجیره‌ای چندمتغیره، بیشتر منجر به این می‌شود:
+	}
+	\frac{\partial}{\partial x^B_\mu} \bigg|_p f
+	\ &=\ \sum_{\nu=1}^d
+	\Big[\mkern1.5mu \partial_\nu \pig(f \circ \big(x^A\big)^{-1} \pig)\Big] \big(x^A(p)\big) \cdot
+	\Big[\mkern1.5mu \partial_\mu \pig(x^A_\nu \circ \big(x^B\big)^{-1} \pig)\Big] \big(x^B(p)\big) \notag \\
+	\ &=\ \sum_{\nu=1}^d \,
+	\frac{\partial f}{\partial x^A_\nu} \bigg|_p \ 
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+\end{align}
+در مرحله آخر ما از سوءاستفاده معمول از نمادگذاری%
+\footnote{
+	«سوءاستفاده» این است که $x^A$ به عنوان تابعی از $x^B(p)$ تفسیر می‌شود، و بنابراین باید به طور دقیق‌تر به صورت $x^A \circ \big(x^B\big)^{-1}$ نوشته شود.
+}
+\begin{align}\label{eq:abuse_of_notation_jacobian}
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+	:=\ \partial_\mu \pig(x^A_\nu \circ \big(x^B\big)^{-1} \pig) \big( x^B(p) \big)
+\end{align}
+برای مؤلفه‌های \emph{ژاکوبین}
+\begin{align}
+	\frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)}
+	=\ \hat{d}x^A_p \circ \hat{d}(x^B_p)^{-1}
+\end{align}
+\emph{از نگاشت‌های گذار} استفاده کردیم. با حذف~$f$ از معادله~\eqref{eq:coord_basis_trafo_action_f}، ما قانون تبدیل
+\begin{align}\label{eq:coord_bases_trafo_law}
+	\frac{\partial}{\partial x^B_\mu} \bigg|_p
+	\ =\ \sum_{\nu=1}^d \,
+	\frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+\end{align}
+از پایه‌های مختصاتی مماس را شناسایی می‌کنیم.
+ما در اینجا انتخاب کردیم که ژاکوبین را در سمت راست بردار پایه بنویسیم تا تأکید کنیم که تغییر پایه باید به عنوان یک \emph{عمل راست} درک شود.
+با انجام این کار، باید به خواننده هشدار دهیم که $\frac{\partial}{\partial x_\nu}\big|_p$ فقط یک سوءاستفاده از نمادگذاری برای بردار پایه است اما به معنای عمل یک عملگر دیفرانسیل بر روی ژاکوبین در سمت راست نیست.
+
+
+
+
+\paragraph{تبدیل پایه‌های مختصاتی هم‌مماس:}
+قانون تبدیل کانتراواریانت پایه‌های مختصاتی فضای هم‌مماس از تبدیل وارون پایه‌های دوگان در معادله~\eqref{eq:general_cotangent_basis_gauge_trafo} نسبت به~\eqref{eq:general_tangent_basis_gauge_trafo} نتیجه می‌شود.
+برای اعمال این رابطه، ما ابتدا معادله~\eqref{eq:coord_bases_trafo_law} را با قرارداد خود مبنی بر اینکه پایه‌ها مطابق با یک عمل راست با یک عضو گروه \emph{وارون} تبدیل می‌شوند، تطبیق می‌دهیم.
+این کار با اعمال معادله~\eqref{eq:inv_fct_thm_jacobian} برای وارون کردن ژاکوبین (سوءاستفاده از نمادگذاری را به یاد بیاورید)
+\begin{align}
+	\frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)} \ =\ 
+	\frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}^{-1}
+\end{align}
+انجام می‌شود که نتیجه می‌دهد:
+\begin{align}\label{eq:coord_bases_trafo_law_with_inv}
+	\frac{\partial}{\partial x^B_\mu} \bigg|_p
+	\ =\ \sum_{\nu=1}^d \,
+	\frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)}
+	\ =\ \sum_{\nu=1}^d \,
+	\frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+	\bigg( \frac{\partial x^A}{\partial x^B} \bigg|_{x^B(p)} \bigg)_{\nu\mu}
+	\ =\ \sum_{\nu=1}^d \,
+	\frac{\partial}{\partial x^A_\nu} \bigg|_p \ 
+	\bigg( \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}^{-1} \bigg)_{\nu\mu}
+\end{align}
+بنابراین عناصر پایه هم‌مماس مطابق با معادلات~\eqref{eq:general_tangent_basis_gauge_trafo} و ~\eqref{eq:general_cotangent_basis_gauge_trafo} مانند
+\begin{align}\label{eq:chart_component_gradient_trafo_law}
+	\hat{d}x^B_\mu|_p \ =\ 
+	\sum_{\nu=1}^d\ 
+	\frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+	\hat{d}x^A_\nu|_p \,.
+\end{align}
+تبدیل می‌شوند.
+
+
+
+\paragraph{تبدیل دیفرانسیل‌های چارت:}
+بیان دیفرانسیل‌های چارت $\hat{d}x^A|_p$ بر حسب گرادیان‌های مؤلفه چارت $\hat{d}x^A_\mu|_p$ در معادله~\eqref{eq:chart_differential_via_gradients} اجازه می‌دهد تا قانون تبدیل آنها را از قانون در معادله~\eqref{eq:chart_component_gradient_trafo_law} استنتاج کنیم.
+به طور جایگزین، قانون تبدیل با ضرب راست در همانی به شکل $\id_{\TpM} = \hat{d}x^A|_p \circ \big( \hat{d}x^A|_p \big)^{-1}$ و شناسایی یک ضرب چپ با ژاکوبین نگاشت‌های گذار چارت به دست می‌آید:
+\begin{align}\label{eq:chart_differential_trafo_law}
+	\hat{d}x^B|_p
+	\ &=\ \hat{d}x^B|_p \circ \big( \hat{d}x^A|_p \big)^{-1} \circ \hat{d}x^A|_p \notag \\
+	\ &=\ \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} \hat{d}x^A|_p
+\end{align}
+توجه داشته باشید که این نتیجه به سادگی بیان ماتریسی معادله~\eqref{eq:chart_component_gradient_trafo_law} است.
+
+
+\paragraph{تبدیل ضرایب برداری:}
+بردارهای $v \in \TpM$ نسبت به یک پایه مختصاتی
+$\big[\frac{\partial}{\partial x^B_\mu} \big|_p \big]_{\mu=1}^d$
+با ضرایب $v^A \in \R^d$ بیان می‌شوند:
+\begin{align}
+	v\ =\
+	\sum_{\mu=1}^d \,
+	v_\mu^A \frac{\partial}{\partial x^A_\mu} \bigg|_p
+\end{align}
+ضرایب منفرد با عمل پایه هم‌مماس بازیابی می‌شوند:
+\begin{align}
+	\hat{d}x^A_\mu \big|_p(v)
+	\ =\ \hat{d}x^A_\mu \big|_p\ \sum_{\nu=1}^d \, v_\nu^A \frac{\partial}{\partial x^A_\nu} \bigg|_p
+	\ =\ \sum_{\nu=1}^d \, v_\nu^A \delta_{\mu\nu}
+	\ =\ v^A_\mu
+\end{align}
+این دلالت بر این دارد که ضرایب به صورت کانتراواریانت تبدیل می‌شوند، درست مانند پایه مختصاتی هم‌مماس:
+\begin{align}
+	v^B_\mu
+	\ =\ \hat{d}x^B_\mu \big|_p (v)
+	\ =\ \sum_{\nu=1}^d\ 
+	\frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+	\hat{d}x^A_\nu|_p (v)
+	\ =\ \sum_{\nu=1}^d\ 
+	\frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)}
+	v^A_\nu
+\end{align}
+به راحتی تأیید می‌شود که این قانون تبدیل واقعاً به یک نمایش مستقل از مختصات از بردارهای مستقل از مختصات $v\in\TpM$ منجر می‌شود:
+\begin{align}
+	\sum_\mu \frac{\partial}{\partial x^B_\mu} \bigg|_p v_\mu^B
+	\ =\ \sum_{\mu,\nu,\rho} \frac{\partial}{\partial x^A_\nu} \bigg|_p \,
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^B(p)} \,
+	\frac{\partial x^B_\mu}{\partial x^A_\rho} \bigg|_{x^A(p)} \,
+	v^A_\rho
+	\ =\ \sum_{\nu,\rho} \frac{\partial}{\partial x^A_\nu} \bigg|_p \,
+	\delta_{\nu\rho} \,
+	v^A_\rho
+	\ =\ \sum_\nu \frac{\partial}{\partial x^A_\nu} \bigg|_p v_\nu^A
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{پایه‌های مختصاتی به عنوان تریویالیزاسیون‌های محلی کلاف}
+\label{apx:correspondences_bundle_trivializations}
+
+قوانین تبدیل القا شده توسط نگاشت گذار چارت در بخش~\ref{apx:chart_transition_induced_gauge_trafos} با تبدیلات پیمانه همانطور که در بخش~\ref{sec:21_main} فرمول‌بندی شده است، هنگام یکی گرفتن ژاکوبین‌ها
+$\frac{\partial x^B}{\partial x^A} \big|_{x^A(p)}$ با $g_p^{BA}$ منطبق هستند.
+در بخش~\ref{apx:correspondences_chart_gauge_ptwise} ما این ارتباطات را با فهرست کردن تمام تناظرات دقیق می‌کنیم.
+بخش~\ref{apx:correspondences_chart_gauge_local} این نتایج را با استخراج عبارات برای تریویالیزاسیون‌های کلاف القا شده توسط چارت روی دامنه‌های گسترده~$U \subseteq M$ همانطور که در بخش~\ref{sec:bundles_fields} معرفی شد، گسترش می‌دهد.
+یک فرهنگ لغت که تناظرات را خلاصه می‌کند در جدول~\ref{tab:coord_charts_gauge_trafos} ارائه شده است.
+
+
+
+\subsubsection[تناظرات با تریویالیزاسیون‌های نقطه‌ای \texorpdfstring{$ \TpM$}{TpM}]%
+{تناظرات با تریویالیزاسیون‌های نقطه‌ای \texorpdfstring{$\TpM$}{TpM}}
+\label{apx:correspondences_chart_gauge_ptwise}
+
+
+\paragraph{پیمانه‌ها و دیفرانسیل‌های چارت:}
+فرمالیسم کلاف بر تعریف پیمانه‌ها (معادله~\eqref{eq:gauge_definition})
+\begin{align}
+	\psiTMp^A: \TpM \to \R^d \,,
+\end{align}
+تکیه دارد، که ایزومورفیسم‌های کلاف برداری هستند و مختصات را به فضاهای مماس با $p\in U^A$ اختصاص می‌دهند.
+در فرمالیسم چارت، پیمانه‌ها روی $U^A$ به عنوان دیفرانسیل‌های چارت \emph{القا} می‌شوند (معادله~\eqref{eq:chart_differential_via_gradients}):
+\begin{align}
+	\hat{d}x^A_p: \TpM \to \R^d
+\end{align}
+پیمانه‌های مختلف با تبدیلات پیمانه به هم مرتبط هستند (معادله~\eqref{eq:gauge_trafo_local_def_21})
+\begin{align}
+	\psiTMp^B\ =\ g^{BA}_p\, \psiTMp^A \,\ \qquad
+	\qquad &\textup{with} \qquad
+	g^{BA}_p\ :=\ \psiTMp^B \circ \big(\psiTMp^A\big)^{-1} \ \ \in\ G \,.
+	\intertext{
+		همین تعریف برای پیمانه‌های القا شده توسط چارت نیز برقرار است، که در آن تبدیلات پیمانه با ژاکوبین نگاشت‌های گذار چارت منطبق می‌شوند (معادله~\eqref{eq:chart_differential_trafo_law}):
+	}
+	\hat{d}x^B_p\ =\ \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} \hat{d}x^A_p
+	\qquad &\textup{with} \qquad
+	\frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)}
+	\!=\ \hat{d}x^B_p \circ \big( \hat{d}x^A_p \big)^{-1}
+	\ \   \in\ \GL{d}
+\end{align}
+
+
+
+\paragraph{مؤلفه‌های برداری:}
+از آنجا که مؤلفه‌های برداری $v^A = \psiTMp^A(v)$ یا $v^A = \hat{d}x^A|_p(v)$ با عمل پیمانه‌ها داده می‌شوند، آنها همان رفتار تبدیل کوواریانت را نشان می‌دهند
+\begin{align}
+	v^B = g_p^{BA} v^A
+	\qquad &\textup{and} \qquad
+	v^B = \frac{\partial x^B}{\partial x^A} \bigg|_{x^A(p)} v^A \,.
+	\intertext{بر حسب مؤلفه‌ها، این روابط به صورت زیر نوشته می‌شوند}
+	v^B_i = \sum_{j=1}^d \big(g_p^{BA}\big)_{ij}\, v^A_j
+	\qquad &\textup{and} \qquad
+	v^B_\mu = \sum_{\nu=1}^d \frac{\partial x^B_\mu}{\partial x^A_\nu} \bigg|_{x^A(p)} v^A_\nu \,.
+\end{align}
+
+
+
+
+\paragraph{چارچوب‌های مرجع القا شده:}
+
+چارچوب‌های مرجع در فرمالیسم کلاف با نگاشت بردارهای~$\epsilon_i$ از چارچوب استاندارد $e\in G$ از $\R^d$ از طریق نگاشت پیمانه به $\TpM$ القا می‌شوند (معادله~\ref{eq:framefield_gauge_equivalence}):
+\begin{align}
+	\big[ e_i^A \big]_{i=1}^d\ =\ \Big[ \big(\psiTMp^A \big)^{-1} (\epsilon_i) \Big]_{i=1}^d
+\end{align}
+رابطه متناظر در فرمالیسم چارت طبق معادله~\eqref{eq:coord_basis_vector_via_chart_differential} با 
+\begin{align}
+	\bigg[ \frac{\partial}{\partial x^A_\mu} \bigg|_p \bigg]_{\mu=1}^d\ =\ \Big[ \big(\hat{d}x_p^A \big)^{-1} (\epsilon_\mu) \Big]_{\mu=1}^d
+\end{align}
+داده می‌شود. معادله~\eqref{eq:frame_rightaction} نشان می‌دهد که قوانین تبدیل چارچوب‌های مرجع با عمل راست
+\begin{align}\label{eq:trafo_law_comparison_basis_gauge}
+	\left[e_{i}^B\right]_{i=1}^d
+	\  =\ \left[ e_{i}^A \right]_{i=1}^d \!\lhd \left(g_p^{BA}\right)^{-1}
+	\ :=\ \left[ \sum\nolimits_{j=1}^d e_{j}^A\, \big(g_p^{BA}\big)^{-1}_{ji} \right]_{i=1}^d
+	\ =\ \left[ \sum\nolimits_{j=1}^d e_{j}^A\, \big(g_p^{AB}\big)_{ji} \right]_{i=1}^d \,.
+\end{align}
+داده می‌شود. به طور مشابه، قانون تبدیل پایه‌های مختصاتی از معادله~\eqref{eq:coord_bases_trafo_law_with_inv} به صورت
+\begin{align}\label{eq:trafo_law_comparison_basis_chart}
+	\bigg[\frac{\partial}{\partial x^B_\mu} \bigg|_p \bigg]_{\mu=1}^d
+	=\ \bigg[\frac{\partial}{\partial x^A_\mu} \bigg|_p \bigg]_{\mu=1}^d \mkern-6mu\lhd \frac{\partial x^B}{\partial x^A} \bigg|_{x^{\mkern-1muA}\mkern-1mu(p)}^{\;-1}
+	&=\ \Bigg[ \sum_{\nu=1}^d \,
+	\frac{\partial        }{\partial x^A_\nu} \bigg|_p \ 
+	\bigg( \frac{\partial x^B}{\partial x^A} \bigg|_{x^{\mkern-1muA}\mkern-1mu(p)} \bigg)^{-1}_{\nu\mu}
+	\Bigg]_{\mu=1}^d 
+	\notag \\
+	&=\ \Bigg[ \sum_{\nu=1}^d \,
+	\frac{\partial        }{\partial x^A_\nu} \bigg|_p \ 
+	\frac{\partial x^A_\nu}{\partial x^B_\mu} \bigg|_{x^{\mkern-1muB}\mkern-1mu(p)}
+	\Bigg]_{\mu=1}^d 
+\end{align}
+دیده می‌شود.
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection[تریویالیزاسیون‌های محلی القا شده توسط چارت از \texorpdfstring{$ \pi_{\TM}^{-1}(U) $}{TU}]%
+{تریویالیزاسیون‌های محلی القا شده توسط چارت از \texorpdfstring{$\pi_{\TM}^{-1}(U)$}{TU}}
+\label{apx:correspondences_chart_gauge_local}
+
+تناظراتی که در بخش قبل بیان شدند، تریویالیزاسیون‌های \emph{نقطه‌ای} $\psiTMp$ از $\TpM$ را به دیفرانسیل‌های چارت $\hat{d}x_p$ مرتبط می‌کردند.
+برای تکمیل این تصویر، این بخش عباراتی را برای تریویالیزاسیون‌های محلی
+\begin{align}
+	\PsiTM: \piTM^{-1}(U) \to U \times \R^d
+\end{align}
+که توسط چارت‌ها القا می‌شوند، اضافه می‌کند.
+
+یک کاندیدای خوب برای ساخت $\PsiTM$ از آن، دیفرانسیل چارت
+\begin{align}
+	dx: \piTM^{-1}(U) \to TV
+\end{align}
+است که یک ایزومورفیسم کلاف برداری است که از ایزومورفیسم‌های فضای برداری $dx_p$ با عدم محدودیت به یک نقطه منفرد $p \in U$ متفاوت است.
+برای ادامه، ما ایزومورفیسم کانونی $\iota_{\R^d}$ را در معادله~\eqref{eq:canonical_iso_TRk_Rk} از یک نقطه منفرد به تمام فضاهای مماس $T_xV \cong \R^d$ روی $V \subseteq \R^d$ تعمیم می‌دهیم، که منجر به \emph{تریویالیزاسیون محلی کانونی} زیر از $TV$ می‌شود:
+\begin{align}
+	\iota_{TV}: TV \to V\times\R^d,\ \ v \mapsto \big( \piTV(v),\, \iota_{\R^d}(v) \big) \,.
+\end{align}
+این اجازه می‌دهد تا $\hat{d}x_p$ را از یک نقطه منفرد به یک نگاشت
+\begin{align}
+	\hat{d}x\, :=\, \iota_{V\times\R^d} \circ dx \,:\ \piTM^{-1}(U) \to V \times \R^d \,,
+\end{align}
+تعمیم دهیم، که با این حال، هنوز تریویالیزاسیون محلی مورد نظر نیست.
+با نگاشت عامل اول از طریق چارت وارون از $V$ به $U$ ما \emph{تریویالیزاسیون محلی کلاف القا شده توسط چارت} را به دست می‌آوریم:
+\begin{align}
+	\PsiTM\ :=\ \big(x^{-1} \times \id \big) \circ \hat{d}x
+\end{align}
+طبق معمول، ما تعاریف انجام شده را در یک نمودار جابجایی به تصویر می‌کشیم:
+\begin{equation}\label{cd:coordinate_basis_bundle_trivialization}
+	\begin{tikzcd}[row sep=3.5em, column sep=6em]
+		V \times \R^d
+		\arrow[rrr, rounded corners, to path={ 
+			([xshift=-1ex]\tikztostart.north)
+			|- node[above, pos=.75]{\small$\big( x^{-1} \times \id \big)$} ([yshift=10ex]\tikztotarget.north)
+			-- (\tikztotarget.north)
+		}]
+		\arrow[dr, "\proj_1"']
+		&
+		TV  \arrow[d, "\piTV"]
+		\arrow[l, "\iota_{V \times \R^d}"']
+		&
+		\piTM^{-1}(U)
+		\arrow[d, "\piTM"']
+		\arrow[r, "\PsiTM"]
+		\arrow[l, "dx"']
+		\arrow[ll, rounded corners, to path={ 
+			|- node[above, pos=.75]{\small$\hat{d}x$} ([yshift=4ex, xshift=1ex]\tikztotarget.north)
+			-- ([xshift=1ex]\tikztotarget.north)
+		}]
+		&
+		U \times \R^d
+		\arrow[ld, "\proj_1"]
+		\\
+		&
+		V
+		&
+		U
+		\arrow[l, "x"]
+	\end{tikzcd}
+\end{equation}
+
+با در نظر گرفتن دو چارت همپوشان $x^A: U^A \to V^A$ و $x^B: U^B \to V^B$ و با نشان دادن $U^{AB} = U^A \cap U^B$ نگاشت‌های گذار
+\begin{align}
+	\hat{d}x^B \circ \big( \hat{d}x^A \big)^{-1} \,=\,
+	\left( x^B \mkern-5mu\circ\mkern-3mu (x^A)^{-1} \times \frac{\partial x^B}{\partial x^A} \right)
+	\,:\ x^A\big( U^{AB}\big) \times \R^d \to x^A\big( U^{AB}\big) \times \R^d
+\end{align}
+و
+\begin{align}
+	\PsiTM^B \circ \big( \PsiTM^A \big)^{-1} \,=\,
+	\left( \id \times \frac{\partial x^B}{\partial x^A} \right)
+	\,:\ U^{AB} \times \R^d \to U^{AB} \times \R^d \,.
+\end{align}
+به دست می‌آیند. این تعاریف و رابطه متقابل آنها در نمودار جابجایی زیر نشان داده شده است:
+\begin{equation}\label{cd:coordinate_basis_bundle_trivialization_transition}
+	\begin{tikzcd}[row sep=3.5em, column sep=4em]
+		x^B\big(U^{AB}\big) \times \R^d
+		\arrow[rr, "{\big( (x^B)^{-1} \times \id \,\big)}"]
+		& &
+		U^{AB} \times \R^d
+		\\
+		&
+		\piTM^{-1}\big(U^{AB}\big)
+		\arrow[ul, "{\hat{d}x^B}"]
+		\arrow[dl, "{\hat{d}x^A}"']
+		\arrow[ur, "{\PsiTM^B}"']
+		\arrow[dr, "{\PsiTM^A}"]
+		\\
+		x^A\big(U^{AB}\big) \times \R^d
+		\arrow[rr, "{\big( (x^A)^{-1} \times \id \,\big)}"']
+		\arrow[uu, "{\pig( x^B \mkern-5mu\circ\mkern-3mu (x^A)^{-1} \times \frac{\partial x^B}{\partial x^A} \pig)}"]
+		&&
+		U^{AB} \times \R^d
+		\arrow[uu, "{
+			$\begin{array}{l}
+				\hspace*{10pt}
+				\big(\id \times g^{BA} \big)
+				\\ \rule{0pt}{16pt}
+				= \pig( \id \times \frac{\partial x^B}{\partial x^A} \pig)
+			\end{array}$
+		}"' align = left]
+	\end{tikzcd}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{$G$-ساختارها و میدان‌های ویل‌باین}
+\label{apx:vielbein_fields}
+
+
+همانطور که در بخش‌های~\ref{sec:G_associated_bundles} و~\ref{sec:bundle_trivializations} بحث شد، هر $G$-اطلس $\{(\PsiTM^X, U^X)\}$ از تریویالیزاسیون‌های محلی کلاف مماس، یک $G$-ساختار متناظر را مشخص می‌کند، یعنی یک زیرکلاف~$\GM$ از چارچوب‌های مرجع متمایز که به یک ساختار هندسی روی~$M$ احترام می‌گذارند (یا آن را تعریف می‌کنند).
+بنا به تعریف، نگاشت‌های گذار $g^{BA}$ از کلاف‌های همبسته $G$ مقادیری در یک گروه ساختاری کاهش یافته $G\leq\GL{d}$ می‌گیرند.
+این سؤال را مطرح می‌کند که آیا می‌توان به طور مشابه «$G$-اطلس‌هایی از چارت‌ها» $\{(x^X, U^X)\}$ را یافت، که ژاکوبین‌های آنها $\frac{\partial x^B}{\partial x^A}$ مقادیری در یک گروه ساختاری کاهش یافته $G \leq \GL{d}$ بگیرند و بنابراین یک $G$-ساختار را کدگذاری کنند.
+برای برخی گروه‌های ساختاری این قطعاً ممکن است؛ به عنوان مثال، یک جهت‌گیری از یک منیفلد جهت‌پذیر همیشه می‌تواند با مشخص کردن یک اطلس $\operatorname{GL}^+(d)$ از چارت‌های با جهت‌گیری مثبت، که ژاکوبین‌های گذار آنها مقادیری در $\operatorname{GL}^+(d)$ می‌گیرند، ثابت شود.
+با این حال، به طور کلی، یافتن چارت‌های مختصاتی که پایه‌های مختصاتی را القا کنند که در یک $G$-ساختار داده شده قرار گیرند، غیرممکن است.
+بنابراین به \emph{تبدیلات پیمانه صریح از پایه‌های مختصاتی به $G$-ساختار}، که به عنوان \emph{میدان‌های ویل‌باین} شناخته می‌شوند، متوسل می‌شویم~\cite{yepez2011einstein, zhou2016gauge, nakahara2003geometry, carroll2004spacetime}.
+پس از تبدیل اولیه از پایه‌های مختصاتی به $G$-ساختار، آزادی پیمانه در داخل $G$-ساختار به تبدیلات پیمانه با مقادیر $G$ که $G$-ساختار را حفظ می‌کنند، اجازه می‌دهد.
+
+
+یک مثال مهم در فیزیک، $\O{d}$-ساختارها (یا $\O{1,\, d-1}$-ساختارها برای فضازمان‌ها) هستند، که از چارچوب‌های مرجع راست‌هنجار نسبت به متریک (شبه) ریمانی $\eta$ از~$M$ تشکیل شده‌اند.%
+\footnote{
+	نماد $\eta$ در ادبیات فیزیک معمولاً برای متریک مینکوفسکی $\operatorname{diag}(+1,\, -1,\, \dots,\, -1)$ حفظ می‌شود در حالی که متریک (شبه) ریمانی~$M$ با~$g$ نشان داده می‌شود.
+	در مقابل، ما اعضای گروه را در گروه ساختاری به صورت $g\in G$ می‌نویسیم و بنابراین از $\eta$ برای متریک (شبه) ریمانی~$M$ استفاده می‌کنیم.
+}
+چنین چارچوب‌های راست‌هنجاری، چارچوب‌های آزمایشگاهی ممکن یک ناظر لخت را نمایش می‌دهند.
+آنها به عنوان مثال برای فرمول‌بندی نظریه‌های میدان کوانتومی نسبیتی، به ویژه معادله دیراک، در فضازمان‌های خمیده استفاده می‌شوند.
+به یاد بیاورید که یک $G$-ساختار داده شده باید توسط تریویالیزاسیون‌های محلی کلاف مورد احترام قرار گیرد، که به این معنی است که نگاشت‌های پیمانه $\psiGMp$ باید $G$-ساختار $\GpM$ را در~$p\in M$ به $G$-ساختار استاندارد کانونی $G$ از $\R^d$ نگاشت دهند.
+برای مورد خاص $\O{d}$-ساختارها، این معادل این الزام است که تریویالیزاسیون‌های کلاف متریک را حفظ کنند، یعنی $\eta_p(v,w) = \langle \psiTMp(v), \psiTMp(w) \rangle$ برای هر $p\in M$ و $v,w \in \TpM$ که این در فرمالیسم کلاف بدون مشکل انجام می‌شود.
+با توجه به یک چارت مختصاتی $x: U \to V$ پیمانه‌های القا شده در $p\in U$ در بخش‌های قبلی نشان داده شد که با $\psiTMp = \hat{d}x_p: \TpM \to \R^d$ داده می‌شوند.
+بنابراین الزام بر روی آنها برای حفظ متریک به
+\begin{align}
+	\eta_p(v,w) = \pig\langle \hat{d}x_p(v) \,,\, \hat{d}x_p(w) \pig\rangle \,,
+\end{align}
+تبدیل می‌شود، که دقیقاً ویژگی تعریف‌کننده برای~$x$ به عنوان یک \emph{ایزومتری} است.
+این نتیجه دلالت بر این دارد که \emph{پایه‌های مختصاتی فقط در صورتی یک $\O{d}$-ساختار را تعریف می‌کنند که $U$ و $V$ ایزومتریک باشند} -- که فقط در صورتی است که $M$ به صورت محلی روی $U$ تخت باشد.
+بنابراین برای هر ناحیه غیرتخت از $M$ توصیف مستقیم یک $\O{d}$-ساختار از طریق پایه‌های مختصاتی غیرممکن است.
+این ناسازگاری به عنوان مثال در این واقعیت بیان می‌شود که مؤلفه‌های~$\eta_{\mu\nu}$ از متریک ریمانی روی~$M$ نسبت به پایه مختصاتی انتخاب شده با $\delta_{\mu\nu}$ (یا $\operatorname{diag}(+1,-1,\dots,-1)_{\mu\nu}$) متفاوت هستند.
+
+همانطور که قبلاً ذکر شد، چارچوب‌های راست‌هنجار یک $\O{d}$-ساختار $\OM$ در ادبیات فیزیک معمولاً از طریق یک تبدیل پیمانه نسبت به یک میدان چارچوب القا شده توسط چارت $\big[ \frac{\partial}{\partial x_\mu} \big]_{\mu=1}^d$ تعریف می‌شوند.
+با نشان دادن این تبدیل پیمانه، که \emph{میدان ویل‌باین} نامیده می‌شود، با
+\begin{align}
+	\mathfrak{e}^A: U \to \GL{d} \,,
+\end{align}
+میدان چارچوب راست‌هنجار با%
+\footnote{
+	در ادبیات فیزیک این رابطه به صورت
+	$e^A_i = (\mathfrak{e}^A)^{\mu}_{\,\ i} \frac{\partial}{\partial x^\mu}$
+	بیان می‌شود. وارون در اینجا صرفاً با موقعیت مخالف اندیس‌ها
+	$(\mathfrak{e}^A)^\mu_{\,\ i} := (\mathfrak{e}^A)^{-1}_{\mu i}$ 
+	در مقایسه با
+	$(\mathfrak{e}^A)_\mu^{\,\ i} := \mathfrak{e}^A_{\mu i}$
+	نشان داده می‌شود.
+}
+\begin{align}
+	\big[e^A_i\big]_{i=1}^d
+	\ :=\ \bigg[ \frac{\partial}{\partial x_\mu} \bigg]_{i=1}^d \lhd \big(\mathfrak{e}^A\big)^{-1}
+	\  =\ \bigg[ \sum_\mu \frac{\partial}{\partial x_\mu} \big(\mathfrak{e}^A\big)^{-1}_{\mu i} \bigg]_{i=1}^d
+	\ \ \in\ \Gamma(U, \OM) \,.
+\end{align}
+تعریف می‌شود. راست‌هنجاری میدان چارچوب حاصل معمولاً به صورت%
+\footnote{
+	در ادبیات فیزیک این رابطه معمولاً به صورت
+	$\eta_{\mu\nu}\ (\mathfrak{e}^A)^\mu_{\,\ i}\ (\mathfrak{e}^A)^\nu_{\,\ j}\, =\, \delta_{ij}$ نوشته می‌شود.
+}
+\begin{align}
+	\delta_{ij}
+	\ &=\ \eta\big( e_i^A,\, e_j^A \big) \notag \\
+	\ &=\ \eta\bigg( \sum_\mu \frac{\partial}{\partial x_\mu} \big(\mathfrak{e}^A\big)^{-1}_{\mu i}  \,,\; \sum_\nu \frac{\partial}{\partial x_\nu} \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \bigg) \notag \\
+	\ &=\ \sum_{\mu\nu} \eta\bigg( \frac{\partial}{\partial x_\mu} \,,\, \frac{\partial}{\partial x_\nu} \bigg)\, \big(\mathfrak{e}^A\big)^{-1}_{\mu i}\, \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \notag \\
+	\ &=\ \sum_{\mu\nu} \eta_{\mu\nu}\, \big(\mathfrak{e}^A\big)^{-1}_{\mu i}\, \big(\mathfrak{e}^A\big)^{-1}_{\nu j} \,,
+\end{align}
+بیان می‌شود، که توضیح می‌دهد چرا میدان ویل‌باین گاهی اوقات «ریشه دوم متریک» نامیده می‌شود.
+طبق معمول، مؤلفه‌های برداری از طریق تبدیل پیمانه غیروارون ترجمه می‌شوند، یعنی:%
+\footnote{
+	دوباره، در نمادگذاری معمول در فیزیک این رابطه به صورت $(v^A)^i\, =\, (\mathfrak{e}^A)_\mu^{\,\ i} v^\mu$ خوانده می‌شود.
+}
+\begin{align}
+	v^A_i\ =\ \sum_\mu \mathfrak{e}^A_{i\mu}\, v_\mu
+\end{align}
+
+یک استدلال ساده شمارش ابعاد، آزادی پیمانه را در $\O{d}$-ساختار نشان می‌دهد:%
+\footnote{
+	در فیزیک، بیشتر تبدیلات لورنتس محلی $\Lambda \in \O{1,3}$ را در نظر می‌گیرند، که دوران‌ها و بوست‌های چارچوب‌های مرجع محلی را توصیف می‌کنند.
+}
+یک ویل‌باین $\mathfrak{e}^A(p) \in \GL{d}$ به عنوان عضوی از گروه خطی عمومی دارای $d^2$ درجه آزادی است، در حالی که متریک $\eta$ به عنوان یک فرم دوخطی متقارن، دارای $d(d+1)/2$ درجه آزادی است.
+$d(d-1)/2$ درجه آزادی گمشده دقیقاً متناظر با تبدیلات پیمانه با اعضای گروه ساختاری $g^{BA} \in \O{d}$ است.
+به طور جایگزین، از دیدگاه $G$-ساختارها، $\FpM \cong \GL{d}$ دارای $d^2$ درجه آزادی است در حالی که $\OpM \cong \O{d}$ دارای $d(d-1)/2$ درجه آزادی است، که $d(d+1)/2$ درجه آزادی را که متناظر با انتخاب متریک است، ثابت می‌کند.
+
+
+تمام ساختارها به وضوح به $G$-ساختارهای دلخواه با میدان‌های ویل‌باین با مقادیر $\GL{d}$ که پایه‌های مختصاتی را به $\GM$ نگاشت می‌دهند و آزادی اعمال تبدیلات پیمانه با مقادیر $G$ پس از آن، تعمیم می‌یابند.
+
+
+
+\begin{landscape}
+	\begin{table}[h!]
+		\vspace*{8ex}
+		\centering%
+		\scalebox{1.}{%
+			\input{chapters/tab_coord_basis_comparison.tex}
+		}%
+		\vspace*{4ex}%
+		\captionsetup{width=.9\linewidth}
+		\caption{
+			یک نمای کلی از انواع مختلف مختصاتی‌سازی روی منیفلدها.
+			فرمالیسم کلاف (ستون سوم)، که در این کار استفاده می‌شود، مختصات را مستقیماً به فضاهای مماس اختصاص می‌دهد، در حالی که به نقاط~$p$ از فضای پایه~$M$ به روشی مستقل از مختصات اشاره می‌کند.
+			در مقابل، فرمالیسم چارت (ستون چهارم) مختصات را به زیرمجموعه‌های محلی $U^X \subseteq M$ از منیفلد اختصاص می‌دهد.
+			تریویالیزاسیون‌های محلی کلاف مماس و نگاشت‌های گذار کلاف بین آنها به عنوان دیفرانسیل‌های چارت‌ها و نگاشت‌های گذار آنها، که دومی معمولاً به عنوان ژاکوبین‌ها نامیده می‌شوند، القا می‌شوند.
+			ردیف ماقبل آخر عباراتی را برای چارچوب‌های مرجعی که به عنوان مقاطع همانی از تریویالیزاسیون‌های محلی $\TM$ (ستون سوم) یا به عنوان پایه‌های مختصاتی القا شده توسط چارت (ستون چهارم) القا می‌شوند، ارائه می‌دهد.
+			به طور مشابه، ردیف آخر تعاریف $G$-ساختارها -- به عنوان مثال چارچوب‌های راست‌هنجار -- را از طریق یک $G$-اطلس برای $\TM$ (ستون سوم) و از طریق میدان‌های ویل‌باین به عنوان تبدیلات پیمانه نسبت به پایه‌های مختصاتی (ستون چهارم) مقایسه می‌کند.
+			طبق معمول، ما $U^A \cap U^B$ را با $U^{AB}$ مخفف می‌کنیم و فرض می‌کنیم $p\in U^{AB}$.
+		}
+		\label{tab:coord_charts_gauge_trafos}
+	\end{table}
+\end{landscape}
