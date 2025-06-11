@@ -1,0 +1,528 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection%
+[بدیهی‌سازی‌های محلی کلاف \texorpdfstring{\lr{\textit{TM}}، \lr{\textit{FM}}، \lr{\textit{GM}} و $ \A $}{TM, GM and A}]%
+{بدیهی‌سازی‌های محلی کلاف \texorpdfstring{\lr{\textit{TM}}، \lr{\textit{FM}}، \lr{\textit{GM}} و $\A$}{TM, GM and A}}
+\label{sec:bundle_trivializations}
+
+درحالی‌که نظریه سراسری شبکه‌های کانولوشنی مستقل از مختصات به شیوایی بر حسب کلاف‌های تاری مستقل از مختصات فرمول‌بندی می‌شود، پیاده‌سازی عددی نیازمند آن است که بردارهای ویژگی مستقل از مختصات $f(p)\in\A_p$ توسط بردارهای ضریب ${f^A(p):=\psiAp^A\big(f(p)\big)\in\R^c}$ نسبت به یک انتخاب قاب مرجع $\big[e_{i}^A\big]_{i=1}^d\in \GpM$ بیان شوند، همان‌طور که در بخش~\ref{sec:feature_fields} شرح داده شد.
+در زبان کلاف‌های تاری، این معادل با انتخاب بدیهی‌سازی‌های محلی یا پیمانه‌های $\PsiGM^A$، $\PsiTM^A$، $\PsiFM^A$ و $\PsiA^A$ است که اگر $\GM$، $\TM$، $\FM$ و $\A$ به صورت \lr{G}-الحاقی با یکدیگر در نظر گرفته شوند، همگی به طور همزمان تبدیل می‌شوند.
+به یاد بیاورید که توصیف محلی و در نتیجه پیاده‌سازی از طریق یک \lr{G}-اطلس، متشکل از بدیهی‌سازی‌های محلی که \lr{M} را می‌پوشانند و سه شرط~\eqref{eq:transition_condition_1}، \eqref{eq:transition_condition_2} و~\eqref{eq:transition_condition_3} را برآورده می‌کنند، کاملاً معادل با نظریه سراسری و مستقل از مختصات است.
+
+
+در این بخش، ما بدیهی‌سازی‌های الحاقی $\TM$، $\FM$، $\GM$ و $\A$ و تبدیلات پیمانه همزمان آن‌ها را بررسی می‌کنیم.
+برای حفظ سازگاری با بخش~\ref{sec:21_main}، با فرض داده‌شده بودن بدیهی‌سازی‌های $\TM$ شروع کرده و بحث می‌کنیم که چگونه آن‌ها بدیهی‌سازی‌های $\FM$ و میدان‌های قاب محلی متناظر را القا می‌کنند.
+اگر یک \lr{G}-اطلس برای $\TM$ و در نتیجه برای $\FM$ انتخاب شود، این به یک \lr{G}-ساختار $\GM$ منجر می‌شود که \lr{G}-اطلس آن با \lr{G}-اطلس $\FM$ منطبق است.
+بدیهی‌سازی‌های محلی هر کلاف \lr{G}-الحاقی، به ویژه کلاف‌های بردار ویژگی $\A$، از بدیهی‌سازی‌های $\GM$ به دست می‌آیند.
+این بدیهی‌سازی‌ها قانون تبدیل میدان‌های ویژگی از بخش~\ref{sec:feature_fields} را بازیابی می‌کنند.
+
+
+
+
+
+
+
+\paragraph{بدیهی‌سازی‌های \lr{\textit{TM}}:}
+
+از آنجا که کلاف مماس، $\R^d$ را به عنوان تار نمونه‌ای خود دارد، بدیهی‌سازی‌های محلی آن توسط نگاشت‌هایی به شکل زیر داده می‌شوند:
+\begin{align}\label{eq:trivialization_TM}
+	{\PsiTM: \piTM^{-1}\!\left(U\right) \to U\times\R^d} .
+\end{align}
+این بدیهی‌سازی‌ها با پیمانه‌های نقطه‌ای (که به صورت هموار در فضا تغییر می‌کنند)
+\begin{align}\label{eq:def_psiTMp}
+	\psiTMp: \TpM \to \R^d
+\end{align}
+از معادله~\eqref{eq:gauge_definition} با شناسایی $\PsiTM(v) = \left(\piTM(v),\, \psiTMp(v) \right)$ برای $p=\piTM(v)$ مطابقت دارند.
+به منظور رعایت ساختارهای فضای برداری تار $\R^d$ و فضاهای مماس $\TpM$، بدیهی‌سازی‌های $\PsiTM$ به عنوان \emph{ایزومورفیسم‌های کلاف برداری} بین $\piTM^{-1}(U)$ و $U\times\R^d$ تعریف می‌شوند، یعنی نگاشت‌های $\psiTMp$ باید خطی و معکوس‌پذیر باشند (یعنی ایزومورفیسم‌های فضای برداری باشند).
+نگاشت‌های گذار بین بدیهی‌سازی‌های مختلف $\TM$ به طور کلی در گروه خطی عام $\GL{d}$، یعنی گروه خودریختی‌های (خطی) $\R^d$، مقدار می‌گیرند.
+
+
+اگر ساختار بیشتری روی کلاف مماس مشخص شود، بدیهی‌سازی‌ها باید این ساختار را رعایت کنند.
+به عنوان مثال، اگر یک متریک روی \lr{M} و در نتیجه روی $\TM$ تعریف شود، نگاشت‌های $\psiTMp$ باید ایزومتریک باشند، یعنی بردارها را در $\TpM$ به گونه‌ای به بردارهای در $\R^d$ نگاشت کنند که نرم‌ها و زوایا حفظ شوند.
+از آنجا که در این حالت بدیهی‌سازی‌ها فقط در جهت و سوگیری خود می‌توانند متفاوت باشند، تضمین می‌شود که بدیهی‌سازی‌های مختلف توسط یک گروه ساختار کاهش‌یافته $\O{d}$ به یکدیگر مرتبط باشند که متناظر با متریک به عنوان یک \lr{O(d)}-ساختار است.
+به طور کلی‌تر، یک \lr{G}-ساختار روی $\TM$ نیازمند - یا القا شده توسط - یک انتخاب از \lr{G}-اطلس $\big\{ \big(U^X, \PsiTM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$ است.
+دو بدیهی‌سازی مختلف $\PsiTM^A$ و $\PsiTM^B$ از چنین \lr{G}-اطلسی روی $U^A\cap U^B$ توسط ${\PsiTM^B\circ\big(\PsiTM^A\big)^{-1}}$ همان‌طور که در معادله~\eqref{eq:transition_function_general_bdl} تعریف شده است، با توابع گذار با مقدار در \lr{G} به یکدیگر مرتبط می‌شوند:
+\begin{align}\label{eq:transition_fct_TM_gAB}
+	g^{BA}: U^A\mkern-1mu \cap\mkern-1mu U^B \to G,\ \ \ p \mapsto \psiTMp^B\circ \big(\psiTMp^A\big)^{-1} \,,
+\end{align}
+که عمل چپ $\btr: G\times \R^d \to \R^d,\ \ (g,\mathscr{v}) \mapsto g\cdot \mathscr{v}$ را روی تار نمونه‌ای تعریف می‌کنند.
+برای درک شهودی گرافیکی از عمل نقطه‌ای توابع گذار بر روی تارهای منفرد، به شکل~\ref{fig:gauge_trafos} بازمی‌گردیم.
+یک نمایش نموداری از بدیهی‌سازی‌های محلی $\TM$ و گذارهای آن‌ها در شکل~\ref{fig:trivialization_TM} آورده شده است.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{.4\textwidth}
+		\centering
+		\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+			% ROW 1
+			& U\times \R^d
+			\\
+			% ROW 2
+			\piTM^{-1}(U) \arrow[d, swap, "\piTM"]
+			\arrow[r, "\PsiTM^A"]
+			\arrow[ru, "\PsiTM^B"]
+			& U\times \R^d  \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+			\arrow[ld, "\proj_1"]
+			\\
+			% ROW 3
+			U
+		\end{tikzcd}
+		\caption{\small
+			بدیهی‌سازی‌های
+			$\TM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\TM$}}\,$}}} M$.
+		}
+		\label{fig:trivialization_TM}
+	\end{subfigure}
+	\hspace*{7ex}
+	\begin{subfigure}[b]{.4\textwidth}
+		\centering
+		\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+			% ROW 1
+			& U \!\times\mkern-2mu \GL{d} 
+			\\
+			% ROW 2
+			\piFM^{-1}(U) \arrow[d, swap, "\piFM"]
+			\arrow[r, "\PsiFM^A"]
+			\arrow[ru, "\PsiFM^B"]
+			& U \!\times\mkern-2mu \GL{d}
+			\arrow[u, swap, "(\id\times g^{BA}\cdot)\ "]
+			\arrow[ld, "\proj_1"]
+			\\
+			% ROW 3
+			U
+		\end{tikzcd}
+		\caption{\small
+			بدیهی‌سازی‌های
+			$\FM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\FM$}}\,$}}} M$.
+		}
+		\label{fig:trivialization_FM_simplified}
+	\end{subfigure}
+	\\[3ex]
+	\begin{subfigure}[b]{.4\textwidth}
+		\centering
+		\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+			% ROW 1
+			& U\times G 
+			\\
+			% ROW 2
+			\piGM^{-1}(U) \arrow[d, swap, "\piGM"]
+			\arrow[r, "\PsiGM^A"]
+			\arrow[ru, "\PsiGM^B"]
+			& U\times G     \arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+			\arrow[ld, "\proj_1"]
+			\\
+			% ROW 3
+			U
+		\end{tikzcd}
+		\caption{\small
+			بدیهی‌سازی‌های
+			$\GM {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\GM$}}\,$}}} M$.
+		}
+		\label{fig:trivialization_GM_simplified}
+	\end{subfigure}
+	\hspace*{7ex}
+	\begin{subfigure}[b]{.4\textwidth}
+		\centering
+		\begin{tikzcd}[row sep=3.5em, column sep=5.em]
+			% ROW 1
+			& U\times \R^c
+			\\
+			% ROW 2
+			\piA^{-1}(U)  \arrow[d, swap, "\piA"]
+			\arrow[r, "\PsiA^A"]
+			\arrow[ru, "\PsiA^B"]
+			& U\times \R^c  \arrow[u, swap, "(\id\times \rho\big(g^{BA}\big)\cdot)"]
+			\arrow[ld, "\proj_1"]
+			\\
+			% ROW 3
+			U
+		\end{tikzcd}
+		\caption{\small
+			بدیهی‌سازی‌های
+			$\A {\xrightarrow{\scalebox{1}{$\,\pi_{\scalebox{.55}{$\A$}}\,$}}} M$.
+		}
+		\label{fig:trivialization_A}
+	\end{subfigure}
+	\vspace*{1ex}
+	\caption{\small
+		نمایش تصویری بدیهی‌سازی‌های محلی کلاف‌های \lr{G}-الحاقی $\TM$، $\FM$، $\GM$ و $\A$ در قالب نمودارهای جابجایی که در آن‌ها $U=U^A\cap U^B$ را به اختصار نشان می‌دهیم.
+		یک \lr{G}-اطلس $\big\{ U^X, \PsiTM^X \big\}$ از کلاف مماس با نگاشت‌های گذار $g^{BA}: U \to G$ یک \lr{G}-ساختار $\GM$ را القا می‌کند و \lr{G}-اطلس‌هایی برای $\FM$، $\GM$ و $\A$ با توابع گذار سازگار به وجود می‌آورد.
+		نمودارهای جابجایی دقیق‌تری که مقاطع $\sigma:U\to\pi_{\scriptstyle\!F\!M}^{-1}(U)$ و عمل راست $\lhd$ روی کلاف قاب را نشان می‌دهند در شکل‌های~\ref{fig:trivialization_FM_non-collapsed} و~\ref{fig:trivialization_FM_section} آورده شده‌اند.
+		میدان‌های ویژگی، که به عنوان مقاطع $f:M\to\A$ از کلاف بردار ویژگی الحاقی $\A$ مدل‌سازی شده‌اند، و بدیهی‌سازی‌های محلی آن‌ها $f^A:U^A\to\R^c$ در شکل~\ref{fig:trivialization_A_sections} نشان داده شده‌اند.
+		تفسیری گرافیکی از نمودار جابجایی برای $\TM$، که به یک فضای مماس منفرد $\TpM$ محدود شده است، در شکل~\ref{fig:gauge_trafos} ارائه شده است.
+	}
+	\label{fig:trivializations_TM_FM_A}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{بدیهی‌سازی‌های القایی \lr{\textit{FM}} و میدان‌های قاب:}
+
+هر اطلس
+$\big\{ \big(U^X, \PsiTM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$
+از کلاف مماس در تناظر یک به یک با یک اطلس
+$\big\{ \big(U^X, \PsiFM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$
+از کلاف قاب است.
+به طور خاص، با داشتن یک بدیهی‌سازی محلی $\PsiTM^A$ از $\TM$، یک بدیهی‌سازی محلی متناظر
+\begin{align}\label{eq:trivialization_FM}
+	\PsiFM^A: \piFM^{-1}\big(U^A\big)\to U^A\times \GL{d}, \quad
+	[e_{i}]_{i=1}^d \mapsto \pig(p,\ \psiFMp^A\big([e_{i}]_{i=1}^d\big) \pig) \,,
+\end{align}
+از $\FM$، که در آن $p=\piFM\left( [e_{i}]_{i=1}^d\right)$ را به اختصار آورده‌ایم، با تعریف زیر القا می‌شود:
+\begin{align}\label{eq:trivialization_FM_p}
+	\psiFMp^A: \FpM\to \GL{d}, \quad
+	[e_{i}]_{i=1}^d \mapsto\, \psiFMp^A \big([e_{i}]_{i=1}^d\big) := \big(\psiTMp^A(e_{i})\big)_{i=1}^d
+\end{align}
+به عنوان یک نگاشت از قاب‌های مماس به ماتریس‌های $d\!\times\!d$ معکوس‌پذیر که ستون \emph{i}-ام آن توسط $\psiTMp^A(e_{i})\in\R^d$ داده شده است.
+همان‌طور که برای کلاف‌های الحاقی لازم است، بدیهی‌سازی‌های $\TM$ و $\FM$ از \emph{توابع گذار یکسانی} استفاده می‌کنند،
+\begin{align}\label{eq:transition_functions_FM}
+	\psiFMp^B\big([e_{i}]_{i=1}^d\big)
+	\ &=\ \big(\psiTMp^B(e_{i}) \big)_{i=1}^d \notag \\
+	\ &=\ \big(g_p^{BA} \psiTMp^A(e_{i}) \big)_{i=1}^d \notag \\
+	\ &=\ g_p^{BA} \big(\psiTMp^A(e_{i}) \big)_{i=1}^d \notag \\
+	\ &=\ g_p^{BA} \psiFMp^A\big([e_{i}]_{i=1}^d \big) \ ,
+\end{align}
+زیرا عمل $g^{BA}$ روی محورهای قاب بدیهی‌شده منفرد در خط دوم با عمل آن روی ماتریس قاب بدیهی‌شده در خط سوم یکسان است.
+علاوه بر این، همان‌طور که برای کلاف‌های اصلی در معادله~\eqref{eq:right_G_equiv_principal_bdl_general} ادعا شد، بدیهی‌سازی‌های کلاف قاب \emph{راست-$\GL{d}$-هم‌متغیر} هستند، یعنی برای هر $h\in \GL{d}$ داریم:
+\begin{align}\label{eq:right_equivariance_FM}
+	\psiFMp^A\big([e_{i}]_{i=1}^d \lhd h\big)
+	\ &=\ \psiFMp^A\left(\left(\sum\nolimits_j e_{j}\, h_{ji} \right)_{i=1}^d\right) \notag \\
+	\ &=\ \left(\psiTMp^A\left(\sum\nolimits_j e_{j}\, h_{ji} \right)\right)_{i=1}^d \notag \\
+	\ &=\ \left(\sum\nolimits_j \psiTMp^A\left(e_{j}\right) h_{ji} \right)_{i=1}^d \notag \\
+	\ &=\ \left( \psiTMp^A\left(e_{i}\right) \right)_{i=1}^d  \cdot h \notag \\
+	\ &=\ \psiFMp^A\big( [e_{i}]_{i=1}^d \big) \cdot h
+\end{align}
+در اینجا از خطی بودن $\psiTMp^A$ در مرحله سوم استفاده کردیم و عبارت اندیسی را به عنوان ضرب ماتریسی از راست در مرحله چهارم شناسایی کردیم.
+شکل~\ref{fig:trivialization_FM_non-collapsed} عمل چپ روی بدیهی‌سازی را از طریق توابع گذار $\PsiFM^B \circ \left(\PsiFM^A\right)^{-1} = (\id\times g^{BA}\cdot)$ که در معادله~\eqref{eq:transition_functions_FM} مشتق شده و هم‌متغیری راست $\PsiFM^A\circ(\lhd\, h) = (\id\times\cdot h)\circ\PsiFM^A$ بدیهی‌سازی‌ها را که در معادله~\eqref{eq:right_equivariance_FM} مشتق شده، خلاصه می‌کند.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+		\begin{tikzcd}[row sep=3.5em, column sep=3.5em]
+			% ROW 1
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\\
+			% ROW 2
+			\piFM^{-1}(U) \arrow[r, "\PsiFM^A"]
+			\arrow[ru, "\PsiFM^B"]
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+			\\
+			% ROW 3
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\arrow[uu, swap, "(\id\times \cdot\,h)", bend right=90, looseness=1.6]
+			\\
+			% ROW 4
+			\piFM^{-1}(U)   \arrow[d, swap, "\piFM"]
+			\arrow[r, "\PsiFM^A"]
+			\arrow[ru, "\PsiFM^B"]
+			\arrow[uu, "\lhd\,h"]
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\arrow[u, swap, "(\id\times g^{BA}\cdot)"]
+			\arrow[ld, "\proj_1"]
+			\arrow[uu, swap, "(\id\times \cdot\,h)", bend right=90, looseness=1.6]
+			\\
+			% ROW 5
+			U
+		\end{tikzcd}
+		\hfill
+		\caption{\small
+			بدیهی‌سازی‌های کلاف قاب راست-هم‌متغیر هستند، یعنی برای هر $h\in \GL{d}$ در رابطه
+			$\PsiFM\circ\lhd\, h\, =\, (\id\times\cdot h)\circ\PsiFM$ صدق می‌کنند.
+		}
+		\label{fig:trivialization_FM_non-collapsed}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+		\hfill
+		\begin{tikzcd}[row sep=5em, column sep=4em,
+			execute at end picture={
+				\node [] at (-1.83, -1.4) {$\noncommutative$};
+			}]
+			% ROW 1
+			\piFM^{-1}(U)
+			\arrow[r, "\PsiFM^A"]
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\\
+			% ROW 2
+			\piFM^{-1}(U) \arrow[d, "\piFM", bend left=0]
+			\arrow[r, "\PsiFM^A"]
+			\arrow[ru, "\PsiFM^B"]
+			\arrow[u, "\lhd\,g^{BA}"]
+			& U\mkern-3mu\times\mkern-2.5mu \GL{d}
+			\arrow[u, swap, "$\phantom{=}\,(\id\times g^{BA}\cdot)$\\$=\!(\id\times \cdot\,g^{BA})$" align=left]
+			\arrow[ld, "\proj_1"]
+			\\
+			% ROW 3
+			U             \arrow[u,  "\sigma^B", pos=0.5, shift left=.5, bend left=22.5]
+			\arrow[uu, "\sigma^A", pos=0.45, bend left=80, looseness=.8]
+		\end{tikzcd}
+		\vspace*{8ex}
+		\caption{\small
+			اگر مقاطع همانی $\sigma^A$ و $\sigma^B$ به نمودار اضافه شوند، اعمال چپ و راست با یکدیگر منطبق می‌شوند
+			زیرا $\psiFMp^A\circ\sigma^A(p)=e$ و $g\cdot e=e\cdot g\ \ \forall g\in \GL{d}$.
+		}
+		\label{fig:trivialization_FM_section}
+	\end{subfigure}
+	\caption{\small
+		نمودارهای گسترش‌یافته بدیهی‌سازی‌های کلاف قاب که تعامل توابع گذار $g^{BA}\cdot$ ، اعمال راست $\lhd\,h$ و $\,\cdot\,h$ و مقاطع همانی $\sigma^A$ و $\sigma^B$ را نشان می‌دهند.
+		مانند قبل، $U=U^{AB}=U^A\cap U^B$ را به اختصار نشان می‌دهیم.
+		به جز $\sigma^A\circ\piFM \neq \id_{\FM}$ و $\sigma^B\circ\piFM \neq \id_{\FM}$، نمودارها جابجا می‌شوند.
+		اگر بدیهی‌سازی‌ها بخشی از یک \lr{G}-اطلس باشند، نمودارهای مشابهی، با جایگزینی $\FM$ و $\GL{d}$ با $\GM$ و $G$، برای \lr{G}-ساختار متناظر اعمال می‌شوند.
+	}
+	\label{fig:trivializations_FM_complete}
+\end{figure}
+
+
+همان‌طور که در معادله~\eqref{eq:framefield_gauge_equivalence} اشاره شد و در شکل‌های~\ref{fig:gauge_trafos} و~\ref{fig:gauge_trafos_manifold} نمایش داده شد، یک بدیهی‌سازی محلی هموار $\PsiTM^A$ روی $U^A$ از کلاف مماس یک \emph{میدان قاب} را روی $U^A$ القا می‌کند.
+این به عنوان یک \emph{مقطع محلی} هموار
+\begin{align}\label{eq:section_FM}
+	\sigma^A:U^A\to \piFM^{-1}\!\left(U^A\right),\ \ p\mapsto \left[\big(\psiTMp^A\big)^{-1}(\epsilon_i)\right]_{i=1}^d
+\end{align}
+از کلاف قاب فرمول‌بندی می‌شود که با نگاشت بردارهای قاب استاندارد $\epsilon_i$ از $\R^d$ به فضاهای مماس در $\piTM^{-1}\big(U^A\big)\subseteq \TM$ تعریف می‌شود.
+پیرو معادله~\ref{eq:frame_rightaction}، یک تبدیل پیمانه از $\PsiTM^A$ به $\PsiTM^B = (\id\times g^{BA}\cdot)\PsiTM^A$ متناظر است با یک تبدیل
+\begin{align}\label{eq:section_FM_rightaction}
+	\sigma^B(p)\ =\ \sigma^A(p) \lhd \left(g^{BA}_p\right)^{-1}
+\end{align}
+از مقاطع روی $U^{AB}$.
+بدیهی‌سازی‌های $\PsiFM^A$ از $\FM$ که بر حسب $\PsiTM^A$ تعریف شده‌اند، این ویژگی خوب را دارند که مقاطع متناظر $\sigma^A$ را به قاب همانی $e \in \GL{d} \subset \R^{d\times d}$ از $\R^d$ نگاشت می‌کنند، که با جایگذاری هر دو تعریف می‌توان آن را مشاهده کرد:
+\begin{align}\label{eq:identity_section_prop}
+	\psiFMp^A\circ\sigma^A(p)
+	\ =\ \psiFMp^A \Big(\Big[ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big]_{i=1}^d \Big)
+	\ =\ \Big(\psiTMp^A \circ \big(\psiTMp^A\big)^{-1} (\epsilon_i) \Big)_{i=1}^d
+	\ =\ (\epsilon_i)_{i=1}^d
+	\ =\ e
+\end{align}
+این ویژگی اغلب برای تعریف مقاطع $\FM$ با داشتن بدیهی‌سازی‌های $\PsiFM^A$ به صورت زیر استفاده می‌شود:
+\begin{align}\label{eq:identity_section_def}
+	\sigma^A\!:U^A\to\piFM^{-1}\big(U^A\big),\ \ \ p \mapsto \big(\PsiFM^A\big)^{-1}(p,e) = \big(\psiFMp^A\big)^{-1}(e) \,,
+\end{align}
+که در نهایت با تعریف ما در معادله~\eqref{eq:section_FM} منطبق است.
+از آنجا که $\sigma^A$ و $\PsiFM^A$ که به این روش ساخته شده‌اند یکدیگر را القا می‌کنند، گاهی اوقات به آن‌ها \emph{مقطع‌های همانی} و \emph{بدیهی‌سازی‌های محلی کانونی} گفته می‌شود.
+گسترش نمودار در شکل~\ref{fig:trivialization_FM_non-collapsed} با مقاطع همانی $\sigma^A$ و $\sigma^B$ که با معادله~\ref{eq:section_FM_rightaction} مرتبط هستند، $h=g^{BA}$ را ثابت می‌کند و بنابراین به نمودار جابجایی در شکل~\ref{fig:trivialization_FM_section} منجر می‌شود.
+ضرب‌های چپ و راست با $g^{BA}$ روی تار نمونه‌ای $\GL{d}$ در اینجا فقط به این دلیل منطبق هستند که $\psiFMp^A\circ\sigma^A = \psiFMp^B\circ\sigma^B = e$ که برای آن $g^{BA}\cdot e = g^{BA} = e\cdot g^{BA}$ است.
+شکل~\ref{fig:trivialization_FM_section} را با شکل~\ref{fig:frame_bundle} مقایسه کنید که عمل پیمانه چپ $g_p^{BA}\cdot$ روی $\GL{d}$ و عمل راست $\lhd\big( g_p^{BA} \big)^{-1}$ از عنصر گروه معکوس را نشان می‌دهد که بین قاب‌های مقطع همانی متناظر تبدیل می‌کند.
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{\lr{\textit{G}}-اطلس القاکننده \lr{\textit{G}}-ساختار \lr{\textit{GM}}:}
+
+انطباق توابع گذار کلاف مماس و کلاف قاب در معادله~\eqref{eq:transition_functions_FM} نشان می‌دهد که یک \lr{G}-اطلس از $\TM$ یک \lr{G}-اطلس برای $\FM$ القا می‌کند.
+همانطور که در ادامه استنتاج خواهیم کرد، چنین \lr{G}-اطلس‌هایی یک \lr{G}-ساختار متناظر $\GM$ را مشخص می‌کنند، یعنی یک زیرکلاف اصلی \lr{G} از $\FM$ که از قاب‌های ممتاز تشکیل شده است.
+
+برای توجیه تعریف $\GM$ بر اساس یک \lr{G}-اطلس داده شده $\big\{ \big(U^X, \PsiFM^X \big) \big\}_{\!X\in\mathfrak{X}}\,$ از $\FM$، دو بدیهی‌سازی محلی آن $\PsiFM^A$ و $\PsiFM^B$ را با دامنه‌های همپوشان در نظر بگیرید و فرض کنید $p \in U^A\cap U^B$.
+بدیهی‌سازی‌ها قاب‌های مرجع $\sigma^A(p)$ و $\sigma^B(p)$ را در $\FpM$ تعریف می‌کنند که طبق معادله~\eqref{eq:section_FM_rightaction} توسط عمل راست عنصری مانند $g_p^{BA}$ از گروه ساختار کاهش‌یافته $G \leq \GL{d}$ به یکدیگر مرتبط هستند.
+بنابراین، هر قاب تعریف شده به این شکل، عنصری از یک \lr{G}-مدار $\GpM \cong G$ در $\FpM \cong \GL{d}$ است.
+به طور خاص، با بیان مقاطع همانی از طریق معادله~\eqref{eq:identity_section_def} به صورت $\sigma^A(p) = \big( \psiFMp^A \big)^{-1} (e)$ و
+$
+\sigma^B(p)
+= \big( \psiFMp^B \big)^{-1} (e)
+= \big( g_p^{BA} \psiFMp^A \big)^{-1} (e)
+= \big( \psiFMp^A \big)^{-1} \pig( \big( g_p^{BA} \big)^{-1} \pig)
+$
+تعریف نقطه‌ای \lr{G}-ساختار بر اساس تصاویر معکوس \lr{G} توسط نگاشت‌های پیمانه (دلخواه) پیشنهاد می‌شود:
+\begin{align}\label{eq:G_atlas_induced_G_structure_GM_def_ptwise}
+	\GpM\ :=\ \pig\{ \big(\psiFMp^A \big)^{-1}(g) \;\pig|\; g\in G\, \pig\} \ =\ \big( \psiFMp^A \big)^{-1} (G)
+\end{align}
+استقلال از پیمانه انتخاب شده از \lr{G}-اطلس واضح است زیرا هر انتخاب دیگری
+$
+\big( \psiFMp^B \big)^{-1} (G)
+= \big( \psiFMp^A \big)^{-1} \pig( \big(g_p^{BA}\big)^{-1} G \pig)
+= \big( \psiFMp^A \big)^{-1} (G)
+$
+نتیجه یکسانی به دست می‌دهد.
+همانطور که به راحتی می‌توان بررسی کرد، $\GpM$ در واقع یک تورسور راست \lr{G} است زیرا \lr{G} یک تورسور راست \lr{G} است و $\psiFMp^A$ طبق معادله~\eqref{eq:right_equivariance_FM} یک ایزومورفیسم راست-$\GL{d}$-هم‌متغیر - و بنابراین به طور خاص راست-\lr{G}-هم‌متغیر - است.
+همواری مورد نیاز $\GM = \coprod_{p\in M} \GpM$ از همواری بدیهی‌سازی‌های $\PsiFM^A$ ناشی می‌شود.
+
+یک \lr{G}-اطلس از بدیهی‌سازی‌های محلی $\GM$ با محدود کردن بدیهی‌سازی‌ها در \lr{G}-اطلس $\FM$ به قاب‌های موجود در $\GM$ به دست می‌آید، یعنی،
+\begin{align}
+	\PsiGM^A := \PsiFM^A \big|_{\piGM^{-1}(U^A)} :\ \ \piGM^{-1} \big(U^A\big) \to U^A \times G \,,
+\end{align}
+یا، به صورت محلی،
+\begin{align}
+	\psiGMp^A := \psiFMp^A \big|_{\GpM} :\ \ \GpM \to G \,.
+\end{align}
+بلافاصله نتیجه می‌شود که توابع گذار با مقدار در \lr{G} با توابع گذار $\TM$ و $\FM$ منطبق هستند، یعنی،
+\begin{align}\label{eq:transition_functions_GM}
+	\psiGMp^B\big([e_{i}]_{i=1}^d\big)
+	\ =\ g_p^{BA} \psiGMp^A\big([e_{i}]_{i=1}^d \big) \,,
+\end{align}
+و اینکه بدیهی‌سازی‌ها راست-\lr{G}-هم‌متغیر هستند:
+\begin{align}\label{eq:right_equivariance_GM}
+	\psiGMp^A\big([e_{i}]_{i=1}^d \lhd h\big)
+	\ =\ \psiGMp^A\big( [e_{i}]_{i=1}^d \big) \cdot h \qquad \forall h \in G
+\end{align}
+میدان‌های قاب نیز با یک عبارت معادل
+\begin{align}\label{eq:GM_section_psi_inverse_def}
+	\sigma^A(p)\ =\ \big( \psiGMp^A \big)^{-1}(e)
+\end{align}
+با عبارت معادله~\eqref{eq:identity_section_def} داده می‌شوند.
+نمودارهای جابجایی در شکل‌های~\ref{fig:trivialization_FM_non-collapsed} و~\ref{fig:trivialization_FM_section} نیز هنگام جایگزینی $\FM$ با $\GM$ و $\GL{d}$ با \lr{G} معتبر هستند.
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{بدیهی‌سازی‌های القایی کلاف‌های الحاقی $\A$:}
+
+یک \lr{G}-اطلس
+$\big\{ \big(U^X, \PsiA^X \big) \big\}_{\!X\in\mathfrak{X}}\,$,
+شامل بدیهی‌سازی‌های محلی
+$\PsiA^X:\piA^{-1}\big(U^X\big)\to U^X\times\R^c$
+از کلاف‌های بردار ویژگی الحاقی
+$\A=(\GM\times\R^c)/\!\sim_{\!\rho}$
+از بدیهی‌سازی‌های متناظر $\PsiGM^X$ از \lr{G}-ساختار القا می‌شود.
+برای ساختن این بدیهی‌سازی‌ها، به یاد بیاورید که $\A$ بر اساس کلاس‌های هم‌ارزی
+$\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]$
+تعریف می‌شود که شامل زوج‌هایی از قاب‌های مرجع و بردارهای ضریب ویژگی است که توسط رابطه هم‌ارزی $\sim_{\!\rho}$ تعریف شده در معادله~\eqref{eq:equiv_relation_A} به هم مرتبط هستند.
+یک ایده طبیعی این است که
+$\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\in\A_p$
+را با انتخاب یک نماینده از بردارهای ضریب هم‌ارز آن در $\R^c$ بدیهی‌سازی کنیم.
+یک انتخاب ممتاز از نماینده در اینجا توسط آن بردار ضریبی داده می‌شود که به قاب مقطع همانی $\sigma^A(p)$ متناظر با $\PsiGM^A$ تعلق دارد.
+
+فرض کنید $[e_{i}]_{i=1}^d := \sigma^A(p)\lhd h\ \in \GpM$ قابی باشد که توسط یک جابجایی $h\in G$ نسبت به مقطع $\sigma^A$ تعریف شده است.
+این جابجایی را می‌توان با بدیهی‌سازی \lr{G}-ساختار بازیابی کرد:
+\begin{align}
+	\psiGMp^A \!\left([e_{i}]_{i=1}^d\right)
+	\ =\ \psiGMp^A \!\left( \sigma^A(p)\lhd h \right)
+	\ =\ \psiGMp^A \!\left( \sigma^A(p) \right) \cdot h
+	\ =\ h
+\end{align}
+در اینجا از هم‌متغیری راست-\lr{G} $\psiGMp^A$ و اینکه $\sigma^A$ به عنوان مقطع همانی تعریف شده است، استفاده کردیم؛ به معادلات~\eqref{eq:right_equivariance_GM} و~\eqref{eq:identity_section_prop} که دومی برای $\psiGMp^A$ تطبیق داده شده است، مراجعه کنید.
+بنابراین می‌توانیم هر قاب را از طریق جابجایی آن بازنویسی کنیم:
+\begin{align}
+	[e_{i}]_{i=1}^d
+	\ =\ \sigma^A(p) \lhd \psiGMp^A \!\left([e_{i}]_{i=1}^d\right)
+\end{align}
+به طور مشابه، می‌توانیم هر بردار ویژگی $\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\in\A_p$ را با نمایندگان مختلف کلاس هم‌ارزی بازنویسی کنیم:
+\begin{align}
+	\left[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\right]
+	\ =\ \left[ \sigma^A(p) \lhd \psiGMp^A\big([e_{i}]_{i=1}^d\big),\,\ \mathscr{f}\,\right]
+	\ =\ \left[ \sigma^A(p),\ \rho\left(\psiGMp^A\big([e_{i}]_{i=1}^d\big)\right) \mathscr{f}\,\right]
+\end{align}
+
+بر اساس این بینش‌ها، بدیهی‌سازی‌های القایی $\A$ را با قرار دادن زیر تعریف می‌کنیم:
+\begin{align}\label{eq:trivialization_A}
+	\PsiA^A: \piA^{-1}\big(U^A\big)\to U^A\times\R^c,\quad
+	\big[[e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\ \mapsto\ 
+	\Big(\piGM \big([e_{i}]_{i=1}^d \big),\ \psiAp^A \pig(\big[ [e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]\pig) \Big) \ ,
+\end{align}
+با
+\begin{align}\label{eq:trivialization_A_p}
+	\psiAp^A:\A_p\to\R^c,\quad
+	\big[[e_{i}]_{i=1}^d,\ \mathscr{f}\,\big]
+	\, =\, \Big[\sigma^A(p),\ \rho\pig( \psiGMp^A \big([e_{i}]_{i=1}^d \big)\pig) \mathscr{f}\,\Big]
+	\ \mapsto\ \rho\pig(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\pig)\, \mathscr{f} \,,
+\end{align}
+که آن بردار ضریب نماینده خاص
+$f^A = \rho\left(\psiGMp^A \left([e_{i}]_{i=1}^d\right)\right) \mathscr{f}\in\R^c$
+را انتخاب می‌کند که توسط قاب مرجع $\sigma^A(p)$ متناظر با پیمانه انتخاب‌شده، متمایز می‌شود.
+برای راحتی در آینده، توجه می‌کنیم که این به طور خاص دلالت بر این دارد که معکوس معادله~\eqref{eq:trivialization_A_p} توسط
+\begin{align}\label{eq:trivialization_A_p_inv}
+	\big(\psiAp^A\big)^{-1}\!: \R^c \to \A_p:\ \ 
+	\mathscr{f} \,\mapsto \big[\sigma^A(p),\; \mathscr{f}\,\big] \ .
+\end{align}
+داده می‌شود. بدیهی‌سازی تعریف‌شده به این شکل مستقل از نماینده انتخاب‌شده است زیرا برای هر $k\in G$ داریم:
+\begin{align}
+	\psiAp^A \pig(\big[ [e_{i}]_{i=1}^d \!\lhd k^{-1},\,\ \rho(k)\mathscr{f} \,\big]\pig)
+	\ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \!\lhd k^{-1} \big)\big) \rho(k)\mathscr{f} \notag\\
+	\ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big) \cdot k^{-1}\big) \rho(k)\mathscr{f} \notag\\
+	\ &=\ \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+	\ &=\ \psiAp^A \pig(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\,\big]\pig)
+\end{align}
+بر اساس ساختار، توابع گذار توسط $\rho\big(g_p^{BA}\big)$ داده می‌شوند:
+\begin{align}\label{eq:transition_fct_A}
+	\psiAp^B \pig(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\, \big]\pig)
+	\ &=\ \rho\big(\psiGMp^B \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+	\ &=\ \rho\big(g_p^{BA}\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+	\ &=\ \rho\big(g_p^{BA}\big) \rho\big(\psiGMp^A \big([e_{i}]_{i=1}^d \big)\big) \mathscr{f} \notag\\
+	\ &=\ \rho\big(g_p^{BA}\big) \psiAp^A \big(\big[ [e_{i}]_{i=1}^d,\,\ \mathscr{f}\,\big]\big)
+\end{align}
+اگر کلاف مماس به عنوان یک کلاف برداری \lr{G}-الحاقی $\TM\cong(\GM\times\R^d)/G$ در نظر گرفته شود، بدیهی‌سازی‌های آن از معادله~\eqref{eq:trivialization_A} برای انتخاب خاص $\rho(g)=g$ بازیابی می‌شوند.
+
+
+\begin{figure}
+	\centering
+	\begin{tikzcd}[row sep=4.em, column sep=7.em, crossing over clearance=.6ex,
+		execute at end picture={
+			\node [] at (-4.27, -1.1) {$\noncommutative$};
+		}]
+		% ROW 1
+		& U\times \R^c  \arrow[r, "\proj_2"]
+		&[7ex] \R^c
+		\\
+		% ROW 2
+		\piA^{-1}(U)  \arrow[d, "\piA"] \arrow[r, "\PsiA^A"] \arrow[ru, "\PsiA^B"]
+		& U\times \R^c  \arrow[u, swap, "\big(\id\times \rho\big(g^{BA}\big)\cdot\big)"]
+		\arrow[ld, "\proj_1"']
+		\arrow[r, "\proj_2"']
+		& \R^c          \arrow[u, "\rho\big(g^{BA}\big)\cdot"']
+		\\
+		% ROW 3
+		U           \arrow[u, bend left=25, shift left=.6, "f"]
+		\arrow[rru, bend right=13, "f^A"']
+		\arrow[rruu, bend right=12, "f^B"', crossing over]
+	\end{tikzcd}
+	\caption{\small
+		میدان‌های ویژگی مستقل از مختصات به عنوان مقاطع سراسری $f\in\Gamma(\A)$ تعریف می‌شوند.
+		در همسایگی‌های محلی $U^A$ و $U^B$، آن‌ها به میدان‌های بردارهای ضریب ویژگی $f^A:U^A\mapsto\R^c$ و $f^B:U^B\mapsto\R^c$ بدیهی‌سازی می‌شوند که روی $U=U^A\cap U^B$ با رابطه $f^B(p)=\rho\big(g_p^{BA}\big)f^A(p)$ به هم مرتبط هستند.
+		به جز $f\circ\piA \neq \id_{\A}$، نمودار جابجایی‌پذیر است.
+	}
+	\label{fig:trivialization_A_sections}
+\end{figure}
+
+
+فرض کنید یک میدان ویژگی مستقل از مختصات $f\in\Gamma(\A)$ داده شده باشد.
+نسبت به پیمانه $\PsiA^A$، می‌توان آن را به صورت محلی به عنوان یک میدان بردار ضریب $f^A:U^A\to\R^c$ با تعریف زیر نمایش داد:
+\begin{align}
+	f^A\ :=\ \proj_2 \circ\mkern2mu \PsiA^A \circ f
+\end{align}
+که معادل با تعریف نقطه‌ای زیر است:
+\begin{align}
+	f^A(p)\ =\ \psiAp^A \circ f(p) \,.
+\end{align}
+همانطور که از نمودار جابجایی در شکل~\ref{fig:trivialization_A_sections} پیداست، توابع گذار در معادله~\eqref{eq:transition_fct_A} به میدان‌های ضریب محلی منتقل می‌شوند به طوری که داریم:
+\begin{align}
+	f^B(p)\ =\ \rho\left(g_p^{BA}\right) f^A(p)
+\end{align}
+برای $p\in U^A\cap U^B$.
+این با تعریف ما از تبدیلات پیمانه بردارهای ضریب ویژگی در معادله~\eqref{eq:gauge_trafo_features} موافق است و آن را توجیه می‌کند.
+
+
+
+
+
+
+\paragraph{ملاحظات پایانی:}
+
+بدیهی‌سازی‌های محلی و توابع گذار تعریف‌شده در اینجا، تعاریف پیمانه‌ها و تبدیلات پیمانه از بخش~\ref{sec:feature_fields} را رسمی‌سازی و توجیه می‌کنند.
+نشان داده شد که بدیهی‌سازی‌های محلی $\TM$ و $\FM$ یکدیگر را القا می‌کنند.
+اگر یک \lr{G}-اطلس برای هر یک از این دو انتخاب شود، یک \lr{G}-ساختار $\GM$ تعریف می‌کند که \lr{G}-اطلس آن اساساً با \lr{G}-اطلس $\FM$ منطبق است.
+علاوه بر این، یک \lr{G}-اطلس برای هر کلاف الحاقی دیگر، از جمله $\A$، القا می‌کند.
+همانطور که در شکل~\ref{fig:trivializations_TM_FM_A} به تصویر کشیده شده است، توابع گذار تمام \lr{G}-اطلس‌ها برای $\TM$، $\FM$، $\GM$ و $\A$ با هم منطبق هستند، که این کلاف‌ها را \lr{G}-الحاقی با یکدیگر می‌سازد.
+به طور خاص، هنگام تغییر از پیمانه \lr{A} به پیمانه \lr{B}، بدیهی‌سازی‌های $\TM$، $\FM$ و $\GM$ مطابق با یک ضرب چپ با $g^{BA}$ تبدیل می‌شوند در حالی که بدیهی‌سازی‌های کلاف بردار ویژگی مطابق با یک ضرب چپ با $\rho\big(g^{BA}\big)$ تبدیل می‌شوند؛ به معادلات~\eqref{eq:transition_fct_TM_gAB}، \eqref{eq:transition_functions_FM}، \eqref{eq:transition_functions_GM} و~(معادله~\eqref{eq:transition_fct_A}) مراجعه کنید.
+در عین حال، میدان‌های قاب مطابق با عمل راست $\lhd \big( g^{BA} \big)^{-1}$ (معادله~\eqref{eq:section_FM_rightaction}) تبدیل می‌شوند.

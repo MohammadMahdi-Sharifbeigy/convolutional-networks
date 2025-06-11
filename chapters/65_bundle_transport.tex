@@ -1,0 +1,266 @@
+%!TEX root=../GaugeCNNTheory.tex
+
+
+\subsection{منتقل‌کننده‌های موازی روی کلاف‌های الحاقی}
+\label{sec:bundle_transport}
+
+بخش~\ref{sec:transport_local} مقدمه‌ای شهودی بر انتقال موازی بردارهای مماس و بردارهای ویژگی در امتداد یک مسیر~$\gamma$ از $q\in M$ به $p\in M$ ارائه داد.
+در اینجا به طور خلاصه بحث می‌کنیم که چگونه منتقل‌کننده‌های موازی مستقل از مختصات روی کلاف‌های تاری یکدیگر را القا می‌کنند و عبارات مختصاتی آن‌ها را نسبت به بدیهی‌سازی‌های داده‌شده استخراج می‌کنیم.
+ما با فرض \emph{داده‌شده} بودن منتقل‌کننده‌های مستقل از مختصات
+\begin{alignat}{2}
+	\PTMgamma:&\ &\TqM &\to \TpM \\
+	\intertext{
+		روی کلاف مماس $\TM$ شروع می‌کنیم و توضیح می‌دهیم که چگونه آن‌ها منتقل‌کننده‌های
+	}
+	\PFMgamma:&\ &\FqM &\to \FpM \\
+	\intertext{
+		روی کلاف قاب $\FM$ را \emph{القا} می‌کنند.
+		اگر این منتقل‌کننده‌ها، همانطور که در ادامه بحث می‌شود، با \lr{G}-ساختار انتخاب‌شده \lr{G}-\emph{سازگار} باشند، در ادامه منتقل‌کننده‌های
+	}
+	\PGMgamma:&\ &\GqM &\to \GpM \\
+	\PAgamma:&\  &\A_q &\to \A_p
+\end{alignat}
+را روی کلاف‌های \lr{G}-الحاقی $\GM$ و $\A$ القا می‌کنند.
+در عمل، یعنی در مرور ادبیات ما در بخش~\ref{part:literature_review}، اکثر شبکه‌های کانولوشنی یا منتقل‌کننده‌هایی را فرض می‌کنند که بر اساس اتصال لوی-چیویتا هستند یا یک اتصال بدیهی.
+
+یک تعریف رسمی‌تر از منتقل‌کننده‌های کلاف ممکن است مسیر متفاوتی را در پیش بگیرد، که با معرفی یک اتصال به اصطلاح اصلی ارسمان روی کلاف اصلی \lr{G} یعنی $\GM$ شروع می‌شود (که بنا به تعریف، \lr{G}-سازگار خواهد بود).
+چنین اتصال ارسمانی می‌تواند یا با انتخاب یک زیرکلاف افقی $HGM$ از کلاف مماس $TGM$ از $\GM$ تعریف شود یا، به طور معادل، با یک ۱-فرم اتصال با مقدار در جبر لی $\omega:TGM\to\mathfrak{g}$ روی $\GM$.
+انتقال روی $\GM$ متعاقباً از طریق بالابر افقی $\gamma^\uparrow:[0,1]\to \GM$ از منحنی‌های $\gamma:[0,1]\to M$ روی فضای پایه تعریف می‌شود، به طوری که بردارهای مماس بالابر در $\GM$ افقی هستند، یعنی~$\dot{\gamma}^\uparrow \in HGM$.
+سپس تمام منتقل‌کننده‌ها روی $\TM$، $\FM$ و $\A$ به عنوان کلاف‌های \lr{G}-الحاقی از منتقل‌کننده‌های روی \lr{G}-ساختار القا می‌شوند.
+به جای دنبال کردن این رویکرد رسمی، که نسبتاً فنی خواهد بود و می‌توان آن را در ادبیات یافت~\cite{schullerGeometricalAnatomy2016,wendlLectureNotesBundles2008,husemollerFibreBundles1994a,nakahara2003geometry,marshGaugeTheoriesFiber2016,shoshichikobayashiFoundationsDifferentialGeometry1963}،
+ما بر چگونگی ارتباط متقابل منتقل‌کننده‌های مختلف از طریق القای یکدیگر تمرکز می‌کنیم.
+
+
+
+
+
+
+
+
+
+\paragraph{انتقال روی \lr{\textit{TM}}:}
+برای این منظور، با فرض داده‌شده بودن منتقل‌کننده‌های مستقل از مختصات $\PTMgamma$ روی $\TM$، یک راه میان‌بر را انتخاب می‌کنیم.
+به یاد بیاورید که، با داشتن پیمانه‌های $\PsiTM^{\widetilde{A}}$ روی یک همسایگی $U^{\widetilde{A}}$ از $q$ و $\PsiTM^A$ روی یک همسایگی $U^A$ از $p$، منتقل‌کننده بردار مماس طبق معادله~\eqref{eq:transporter_gauge} مختصاتی می‌شود، یعنی،
+\begin{align}\label{eq:transporter_gauge_copy}
+	g_\gamma^{A\widetilde{A}} \ :=\ \psiTMp^A \circ \PTMgamma \circ \Big( \psiTMq^{\widetilde{A}} \Big)^{-1} \ \in\, \GL{d} \,,
+\end{align}
+و اینکه مختصاتی‌سازی‌های آن تحت تبدیلات پیمانه در $q$ و $p$ طبق معادله~\eqref{eq:transporter_gauge_trafo} تبدیل می‌شوند:
+\begin{align}\label{eq:transporter_gauge_trafo_copy}
+	g_\gamma^{B\widetilde{B}} \ =\ g_p^{BA}\, g_\gamma^{A\widetilde{A}} \Big(g_q^{\widetilde{B}\widetilde{A}}\Big)^{-1}
+\end{align}
+برای نمایش تصویری این تعاریف در قالب یک نمودار جابجایی، به معادله~\eqref{cd:transporter_trivialization} بازمی‌گردیم.
+
+
+
+
+
+
+
+
+\paragraph{انتقال روی \lr{\textit{FM}}:}
+با داشتن منتقل‌کننده روی کلاف مماس، منتقل‌کننده روی کلاف قاب بلافاصله از انتقال محورهای قاب منفرد به دست می‌آید.
+در معادلات، فرض کنید $[e_i]_{i=1}^d \in \FqM$ یک قاب در $q$ باشد، سپس محورهای منفرد $e_i$ برای $i=1,\dots,d$ بردارهای مماس در $\TqM$ هستند که می‌توانند از طریق $\PTMgamma$ منتقل شوند.
+بنابراین منتقل‌کننده روی کلاف قاب را به صورت زیر تعریف می‌کنیم:%
+\footnote{
+	انتقال یک قاب در امتداد $\gamma$ یک منحنی $\gamma^\uparrow$ (بالابر افقی) را در $\FM$ توصیف می‌کند.
+	فضای تولید شده توسط تمام بردارهای مماس $\dot{\gamma}^\uparrow$ در $TFM$ در امتداد چنین منحنی‌هایی، زیرکلاف افقی $HFM$ از $TFM$ است که در بالا ذکر شد.
+}
+\begin{align}\label{eq:transporter_FM_def}
+	\PFMgamma\!:\ \FqM \to \FpM, \quad
+	[e_i]_{i=1}^d \mapsto \PFMgamma\big([e_i]_{i=1}^d\big) := \big[\PTMgamma(e_i)\big]_{i=1}^d
+\end{align}
+برای استخراج شکل صریح مختصاتی‌سازی آن
+$\psiFMp^A \circ \PFMgamma \circ \big(\psiFMq^{\widetilde{A}}\big)^{-1}\! \in \GL{d}$،
+عمل آن را بر روی یک عنصر گروهی $h\in \GL{d}$ در نظر بگیرید که نماینده یک قاب بدیهی‌شده از $\R^d$ است که توسط ستون‌های ماتریس $h_{:,i}\in\R^d,\ i=1,\dots,d$ تولید می‌شود:
+\begin{alignat}{3}\label{eq:transporter_gauge_FM}
+	\Big[ \psiFMp^A \circ \PFMgamma \circ \big(\psiFMq^{\widetilde{A}}\big)^{-1} \Big](h)
+	\ &=\ \Big[ \psiFMp^A \circ \PFMgamma \Big] \Big(\! \big[\big(\psiTMq^{\widetilde{A}}\big)^{-1}(h_{:,i})\big]_{i=1}^d \Big)
+	\qquad && \big( \text{\small تعریف $\psiFMp^{\widetilde{A}}$، معادلۀ~\eqref{eq:trivialization_FM_p}} \big) \notag \\
+	\ &=\ \psiFMp^A \Big( \big[\PTMgamma \circ \big(\psiTMq^{\widetilde{A}}\big)^{-1}(h_{:,i})\big]_{i=1}^d \Big)
+	\qquad && \big( \text{\small تعریف $\PFMgamma$، معادلۀ~\eqref{eq:transporter_FM_def}} \big) \notag \\
+	\ &=\ \Big( \psiTMp^A \circ \PTMgamma \circ \big(\psiTMq^{\widetilde{A}}\big)^{-1}(h_{:,i}) \Big)_{i=1}^d
+	\qquad && \big( \text{\small تعریف $\psiFMp^{\widetilde{A}}$، معادلۀ~\eqref{eq:trivialization_FM_p}} \big) \notag \\
+	\ &=\ \Big( g_\gamma^{A\widetilde{A}} (h_{:,i}) \Big)_{i=1}^d
+	\qquad && \big( \text{\small بدیهی‌سازی $\PTMgamma$، معادلۀ~\eqref{eq:transporter_gauge_copy}} \big) \notag \\
+	\ &=\ g_\gamma^{A\widetilde{A}} \, h
+\end{alignat}
+بنابراین، مختصاتی‌سازی‌های منتقل‌کننده‌های قاب معادل با مختصاتی‌سازی‌های منتقل‌کننده‌های بردار مماس در معادله~\eqref{eq:transporter_gauge_copy} هستند اما به جای عمل بر روی بردارهای ضریب در $\R^{d}$، بر روی قاب‌های بدیهی‌شده در $\GL{d}$ عمل می‌کنند.
+تبدیلات پیمانۀ آن‌ها از نمودار جابجایی
+\begin{equation}\label{cd:FM_transport_trivialization}
+	\begin{tikzcd}[column sep=53pt, row sep=30, font=\normalsize]
+		\GL{d}
+		\arrow[dd, "g_q^{\widetilde{B}\widetilde{A}}\cdot\ "']
+		\arrow[rrr, "g_\gamma^{A\widetilde{A}}\cdot"]
+		& &[-3ex] &
+		\GL{d}
+		\arrow[dd, "\ g_p^{BA}\cdot"]
+		\\
+		&
+		\FqM
+		\arrow[ul, "\psiFMq^{\widetilde{A}}", pos=.45]
+		\arrow[dl, "\psiFMq^{\widetilde{B}}"', pos=.45]
+		\arrow[r, "\PFMgamma"]
+		&
+		\FpM
+		\arrow[ur, "\psiFMp^A"', pos=.45]
+		\arrow[dr, "\psiFMp^B", pos=.45]
+		\\
+		\GL{d}
+		\arrow[rrr, "g_\gamma^{B\widetilde{B}}\cdot"']
+		& & &
+		\GL{d}
+	\end{tikzcd}
+	\quad
+\end{equation}
+دیده می‌شود که با تبدیلات پیمانۀ منتقل‌کننده‌های مختصاتی‌شده روی $\TM$ در معادله~\eqref{eq:transporter_gauge_trafo_copy} منطبق هستند.
+
+
+
+
+
+\paragraph{سازگاری اتصالات و \lr{\textit{G}}-ساختارها:}
+
+هر انتخابی از اتصال یا تعریف منتقل‌کننده‌ها روی کلاف‌های $\GL{d}$ یعنی $\TM$ و $\FM$ با هر \lr{G}-ساختاری سازگار نیست.
+به طور خاص، یک \lr{G}-ساختار ممکن است تحت انتقال قاب‌ها بسته نباشد، یعنی،
+درحالی‌که یک قاب در $\GqM \subseteq \FqM$ توسط $\PFMgamma$ به یک قاب در $\FpM$ منتقل می‌شود، این قاب \emph{لزوماً} در $\GpM$ قرار ندارد.%
+\footnote{
+	بر حسب یک اتصال اصلی ارسمان روی $\FM$، این حالت زمانی رخ می‌دهد که زیرکلاف افقی $HFM \subseteq TFM$ در $TGM \subseteq TFM$ قرار نداشته باشد.
+	یک تعریف فوری از انتقال موازی بر حسب انتخاب یک زیرکلاف افقی $HGM$ روی \lr{G}-ساختار، همیشه (بنا به تعریف) منجر به یک انتقال خوش‌تعریف روی $\GM$ خواهد شد.
+}
+نسبت به بدیهی‌سازی‌های $\GM$، چنین ناسازگاری در منتقل‌کننده‌های مختصاتی‌شده ${g_\gamma^{A\widetilde{A}} \notin G}$ منعکس می‌شود، که ضرب چپ آن‌ها روی تارهای $\R^d$ و $\GL{d}$ از کلاف‌های $\GL{d}$ یعنی $\TM$ و $\FM$ خوش‌تعریف است، اما روی تار $G$ از $\GM$ خوش‌تعریف نیست.
+اگر زیرکلاف $\GM$ تحت انتقال موازی روی $\FM$ بسته نباشد، این به معنای آن است که هیچ انتقال متناظر خوش‌تعریفی روی $\GM$ -- و در نتیجه روی هیچ کلاف \lr{G}-الحاقی $\A$ -- وجود ندارد.
+
+به عنوان مثال، اتصال لوی-چیویتا را در فضاهای اقلیدسی در نظر بگیرید، که منتقل‌کننده‌های آن بردارهای مماس و قاب‌ها را به معنای معمول در $\Euc_d$ موازی نگه می‌دارند.
+$\{e\}$-ساختار (میدان قاب) در شکل~\ref{fig:frame_field_automorphism_1} تحت این انتقال بسته است و بنابراین سازگار است.
+از سوی دیگر، $\{e\}$-ساختار در شکل~\ref{fig:frame_field_automorphism_2} تحت این انتقال بسته نیست و بنابراین با اتصال لوی-چیویتا ناسازگار است.
+به طور مشابه، $\SO2$-ساختار روی $S^2$ در شکل~\ref{fig:G_structure_S2_1} با اتصال لوی-چیویتا روی کره سازگار است، در حالی که $\{e\}$-ساختار در شکل~\ref{fig:G_structure_S2_2} سازگار نیست.
+
+خواننده ممکن است بپرسد چه گزاره‌های کلی در مورد سازگاری اتصالات (یا منتقل‌کننده‌ها) و \lr{G}-ساختارها می‌توان بیان کرد.
+به طور کلی، اتصال لوی-چیویتا، یا هر اتصال متریک دیگری، با $\O{d}$-ساختار $\OM$ که متناظر با متریک است، سازگار هستند.%
+\footnote{
+	این گزاره بنا به تعریف برقرار است زیرا اتصالات متریک زوایا و طول‌ها بین بردارها و در نتیجه اورتونرمال بودن قاب‌ها را حفظ می‌کنند.
+	علاوه بر این، می‌توان اتصالات متریک را به عنوان اتصالات اصلی ارسمان روی $\OM$ \emph{تعریف} کرد.
+}
+اگر منیفلد جهت‌پذیر باشد، اتصال لوی-چیویتا علاوه بر این با هر $\SO{d}$-ساختاری که متناظر با متریک باشد، سازگار است.
+یک مثال، $\SO2$-ساختار روی $S^2$ در شکل~\ref{fig:G_structure_S2_1} است.
+یک شرط لازم (اما نه کافی) برای اینکه یک \lr{G}-ساختار با یک اتصال داده‌شده سازگار باشد این است که گروه هولونومی اتصال، زیرگروهی از گروه ساختار $G$ باشد.
+
+یک مورد خاص مهم، $\{e\}$-ساختارها هستند، زیرا آن‌ها یک \emph{اتصال بدیهی منحصر به فرد} را القا می‌کنند.%
+\footnote{
+	یک اتصال \emph{بدیهی} است اگر گروه هولونومی آن، یعنی انتقال موازی آن حول هر حلقه بسته، بدیهی باشد~\cite{craneTrivialConnectionsDiscrete2010}.
+}%
+\footnote{
+	فقط یک اتصال اصلی ارسمان $H\eM = T\eM$ را می‌توان روی $\eM$ انتخاب کرد زیرا زیرکلاف عمودی $V\eM$ مقطع صفر از $T\eM$ است.
+}
+منتقل‌کننده‌های متناظر، قاب‌ها را به گونه‌ای حرکت می‌دهند که با قاب‌های $\{e\}$-ساختار موازی باقی بمانند.
+اتصالات بدیهی ممکن است برای نظریه کانولوشن‌های $\GM$ اهمیت خاصی نداشته باشند، با این حال، در واقع توسط بسیاری از شبکه‌های کانولوشنی استفاده می‌شوند.
+به طور خاص، هر شبکه‌ای که به یک $\{e\}$-ساختار متکی است، به طور ضمنی یک اتصال بدیهی را فرض می‌کند.
+این شامل تمام مدل‌های جدول~\ref{tab:network_instantiations} با $G=\{e\}$ می‌شود، به ویژه آن‌هایی که در بخش‌های~\ref{sec:spherical_CNNs_azimuthal_equivariant} و~\ref{sec:e_surface_conv} بررسی شده‌اند.%
+\footnote{
+	این مدل‌ها با مدل‌سازی نکردن منتقل‌کننده‌های غیربدیهی بردارهای ویژگی، به طور \emph{ضمنی} یک اتصال بدیهی را فرض می‌کنند:
+	آن‌ها ضرایب بردار ویژگی را بدون تبدیل آن‌ها انباشت می‌کنند.
+}
+توجه داشته باشید که این مدل‌ها اتصال بدیهی را فقط برای انتقال بردار ویژگی خود فرض می‌کنند اما ژئودزیک‌ها را برای پول‌بک منتقل‌کننده، معادله~\eqref{eq:transporter_pullback_in_coords}، بر اساس اتصال اصلی لوی-چیویتا محاسبه می‌کنند.
+
+
+
+\paragraph{انتقال روی \lr{\textit{GM}}:}
+با فرض اینکه $\GM$ با انتقال روی $\FM$ سازگار است (یعنی تحت آن بسته است)، یک منتقل‌کننده خوش‌تعریف با محدود کردن منتقل‌کننده کلاف قاب به \lr{G}-ساختار داده می‌شود:
+\begin{align}\label{eq:transporter_GM_def}
+	\PGMgamma := \PFMgamma \big|_{\scalebox{.62}{$\GM$}}:\ \ \GqM \to \GpM
+\end{align}
+توابع گذار بین مختصاتی‌سازی‌های مختلف $\PGMgamma$ سپس با توابع گذار $\PFMgamma$ و در نتیجه با $\PTMgamma$ نیز منطبق خواهند بود.
+ما نمودار جابجایی زیر را به دست می‌آوریم که محدودسازی نمودار در معادله~\eqref{cd:FM_transport_trivialization} از $\FqM$، $\FpM$ و $\GL{d}$ به $\GqM$، $\GpM$ و $G$ را به تصویر می‌کشد:
+\begin{equation}\label{cd:transport_GM_triv}
+	\begin{tikzcd}[column sep=60pt, row sep=30, font=\normalsize]
+		G
+		\arrow[dd, "g_q^{\widetilde{B}\widetilde{A}}\cdot\ "']
+		\arrow[rrr, "g_\gamma^{A\widetilde{A}}\cdot"]
+		& &[-3ex] &
+		G
+		\arrow[dd, "\ g_p^{BA}\cdot"]
+		\\
+		&
+		\GqM
+		\arrow[ul, "\psiGMq^{\widetilde{A}}", pos=.45]
+		\arrow[dl, "\psiGMq^{\widetilde{B}}"', pos=.45]
+		\arrow[r, "\PGMgamma"]
+		&
+		\GpM
+		\arrow[ur, "\psiGMp^A"', pos=.45]
+		\arrow[dr, "\psiGMp^B", pos=.45]
+		\\
+		G
+		\arrow[rrr, "g_\gamma^{B\widetilde{B}}\cdot"']
+		& & &
+		G
+	\end{tikzcd}
+	\quad
+\end{equation}
+ما در ادامه این کار فرض می‌کنیم که انتقال روی $\GM$ خوش‌تعریف است.
+
+
+
+
+
+\paragraph{انتقال روی $\A$:}
+اگر منتقل‌کننده‌های یک اتصال روی $\GM$ خوش‌تعریف باشند، آن‌ها منتقل‌کننده‌هایی را روی هر کلاف \lr{G}-الحاقی، از جمله کلاف‌های بردار ویژگی $\A=(\GM\times\R^c)/\!\sim_\rho$ القا می‌کنند.
+فرض کنید $f_q := \big[[e_i]_{i=1}^d,\,\mathscr{f}\:\!\big]$ یک بردار ویژگی مستقل از مختصات در $\A_q$ باشد.
+انتقال موازی آن توسط آن کلاس هم‌ارزی داده می‌شود که با ثابت نگه داشتن برخی ضرایب نماینده $\mathscr{f}\in \R^c$ و انتقال قاب متناظر $[e_i]_{i=1}^d$ تعریف می‌شود:
+\begin{align}\label{eq:transporter_A_def}
+	\PAgamma: \A_q &\to \A_p, \quad
+	f_q \,\mapsto\, \PAgamma(f_q) \,:=\, \pig[\PGMgamma\big([e_i]_{i=1}^d),\: \mathscr{f} \,\pig]
+\end{align}
+در بخش~\ref{sec:transport_local} ما ادعا کردیم که منتقل‌کننده ضرایب عددی بردار ویژگی توسط $\rho\big(g_\gamma^{A\widetilde{A}}\big)$ داده می‌شود به شرطی که $g_\gamma^{A\widetilde{A}}\in G$ باشد، که این حالت زمانی است که انتقال روی $\GM$ خوش‌تعریف باشد.
+این عبارت مختصاتی از $\PAgamma$ را می‌توان با ارزیابی گام به گام عمل
+$\psiAp^A \circ \PAgamma \circ \big(\psiAq^{\widetilde{A}}\big)^{-1} \in\, \rho(G)\, \leq\, \GL{c}$
+روی یک بردار ضریب ویژگی $\mathscr{f}\in\R^c$ استخراج کرد:
+
+\begin{alignat}{3}\label{eq:transporter_gauge_A}
+	\Big[\psiAp^A \circ \PAgamma \circ \big(\psiAq^{\widetilde{A}}\big)^{-1}\Big] (\mathscr{f})
+	\ &=\ \Big[\psiAp^A \circ \PAgamma\Big] \big(\big[\sigma^{\widetilde{A}}(q),\, \mathscr{f}\,\big]\big)
+	\qquad && \big( \text{\small تعریف $\big(\psiAp^{\widetilde{A}}\big)^{-1}$، معادلۀ~\eqref{eq:trivialization_A_p_inv}} \big) \\
+	\ &=\ \psiAp^A  \Big(\big[\PGMgamma\big(\sigma^{\widetilde{A}}(q)\big),\, \mathscr{f}\,\big]\Big)
+	\qquad && \big( \text{\small تعریف $\PAgamma$، معادلۀ~\eqref{eq:transporter_A_def}} \big) \notag \\
+	\ &=\ \rho\Big(\psiGMp^A \circ \PGMgamma \circ \sigma^{\widetilde{A}}(q)\Big) \cdot \mathscr{f}
+	\qquad && \big( \text{\small تعریف $\psiAp^A$، معادلۀ~\eqref{eq:trivialization_A_p}} \big) \notag \\
+	\ &=\ \rho\Big(\psiGMp^A \circ \PGMgamma \circ \big(\psiGMq^{\widetilde{A}}\big)^{-1}(e)\Big) \cdot \mathscr{f}
+	\qquad && \big( \text{\small تعریف مقطع همانی $\sigma^{\widetilde{A}}$، معادلۀ~\eqref{eq:identity_section_def}} \big) \notag \\
+	\ &=\ \rho\big(g_\gamma^{A\widetilde{A}}\big) \!\cdot\! \mathscr{f}
+	\qquad && \big( \text{\small $\PGMgamma$ در مختصات، معادلۀ~\eqref{cd:transport_GM_triv}} \big) \notag
+\end{alignat}
+نمودار جابجایی
+\begin{equation}
+	\begin{tikzcd}[column sep=65pt, row sep=30, font=\normalsize]
+		\R^c
+		\arrow[dd, "\rho\big(g_q^{\widetilde{B}\widetilde{A}}\big)\ "']
+		\arrow[rrr, "\rho\big(g_\gamma^{A\widetilde{A}}\big)"]
+		& &[-3ex] &
+		\R^c
+		\arrow[dd, "\ \rho\big(g_p^{BA}\big)"]
+		\\
+		&
+		\A_q
+		\arrow[ul, "\psiAq^{\widetilde{A}}"]
+		\arrow[dl, "\psiAq^{\widetilde{B}}"']
+		\arrow[r, "\PAgamma"]
+		&
+		\A_p
+		\arrow[ur, "\psiAp^A"']
+		\arrow[dr, "\psiAp^B"]
+		\\
+		\R^c
+		\arrow[rrr, "\rho\big(g_\gamma^{B\widetilde{B}}\big)"']
+		& & &
+		\R^c
+	\end{tikzcd}
+\end{equation}
+نشان می‌دهد که تبدیلات پیمانه منتقل‌کننده‌های بردار ویژگی مختصاتی‌شده به صورت زیر است:
+\begin{align}
+	\rho\big(g_\gamma^{B\widetilde{B}}\big)
+	\ =\
+	\rho\big(g_p^{BA}\big)
+	\rho\big(g_\gamma^{A\widetilde{A}}\big)
+	\rho\big(g_q^{\widetilde{B}\widetilde{A}}\big)^{-1}
+\end{align}
+توجه داشته باشید که این قانون تبدیل با قانون تبدیل در معادله~\eqref{eq:transporter_gauge_trafo_copy} سازگار است.
