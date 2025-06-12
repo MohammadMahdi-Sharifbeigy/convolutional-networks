@@ -1,7 +1,10 @@
 \documentclass{article}
 \usepackage{arxiv} 
 
-\usepackage[quiet]{fontspec} % Suppress font warnings
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%\usepackage[quiet]{fontspec} % Suppress font warnings
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -111,9 +114,10 @@
 
 \usepackage{sectsty}
 \partfont{\fontsize{16.2}{19.2}\bfseries}
-\renewcommand\part{%
-	\markboth{}{}\secdef\@part\@spart
-}
+% We redefine the standard \part command to do nothing, as we now have a custom one.
+% This prevents accidental use of the old command.
+\renewcommand\part[2][]{}
+
 
 % Load hyperref AFTER xepersian
 \usepackage[unicode]{hyperref}
@@ -122,6 +126,47 @@
 \usepackage{xepersian}
 \settextfont{B Zar}
 \setdigitfont{B Zar}
+
+% --- UPDATED CUSTOM PART COMMAND ---
+\makeatletter
+% This command formats a part title with rules and spacing.
+% It now supports a starred version, \mypart*{Title}, for unnumbered parts
+% such as the appendix.
+\def\mypart{\@ifstar\mypart@star\mypart@nostar}
+
+\newcommand{\mypart@nostar}[1]{%
+    \par\cleardoublepage\pagestyle{plain}%
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{\partname~\thepart: #1}%
+    % --- Custom Title Formatting (Numbered) ---
+    \hrule height 1pt
+    \vskip 0.2in \vskip -\parskip
+    \noindent{\partfont \partname~\thepart\par}%
+    \vskip 0.15in %
+    \noindent{\partfont #1\par}%
+    \vskip -0.03in
+    \hrule height 1pt
+    \vskip 0.5in \vskip -\parskip
+}
+
+\newcommand{\mypart@star}[1]{%
+    \par\cleardoublepage\pagestyle{plain}%
+    % Add the unnumbered part to the table of contents
+    \addcontentsline{toc}{part}{#1}%
+    % --- Custom Title Formatting (Unnumbered) ---
+    \hrule height 1pt
+    \vskip 0.2in \vskip -\parskip
+    % The part title, formatted using \partfont, without a number.
+    \noindent{\partfont #1\par}%
+    % Keep vertical spacing consistent with the numbered version.
+    \vskip 0.15in
+    \vskip -0.03in
+    \hrule height 1pt
+    \vskip 0.5in \vskip -\parskip
+}
+\makeatother
+% --- END UPDATED COMMAND ---
+
 
 % Fallback for small caps
 \newcommand{\fakesc}[1]{{\footnotesize #1}}
@@ -211,21 +256,21 @@
 	\newpage
 	
 	\appendix
-		\par
-		\part{پیوست}
+		% Use the starred version for the unnumbered appendix part
+		\mypart*{پیوست}
 		
 	
-	\input{chapters/apx01_coordinate_bases}
-	\input{chapters/apx02_kernel_figures}
-	\input{chapters/apx03_tangent_integral}
-	\input{chapters/apx04_homogeneous_conv}
-	\input{chapters/apx05_lifting_iso_proof}
-	\input{chapters/apx06_spherical_kernels}
-	\input{chapters/apx07_smoothness_kernel_field_trafo}
-	\input{chapters/apx08_regular_fields_as_GM_functions}
+		\input{chapters/apx01_coordinate_bases}
+		\input{chapters/apx02_kernel_figures}
+		\input{chapters/apx03_tangent_integral}
+		\input{chapters/apx04_homogeneous_conv}
+		\input{chapters/apx05_lifting_iso_proof}
+		\input{chapters/apx06_spherical_kernels}
+		\input{chapters/apx07_smoothness_kernel_field_trafo}
+		\input{chapters/apx08_regular_fields_as_GM_functions}
 	
 	\newpage
-	\renewcommand{\bibname}{مراجع}
+	%\renewcommand{\bibname}{مراجع}
 	\bibliographystyle{plainnat}
 	\bibliography{refs}
 	

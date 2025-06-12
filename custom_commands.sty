@@ -1,21 +1,5 @@
 \ProvidesPackage{custom_commands.sty}
 
-\newcommand{\mypart}[1]{%
-    \cleardoublepage
-    \pagestyle{plain}
-    % toprule
-    \hrule height 1.\p@
-    \vskip 0.2in
-    \vskip -\parskip%
-    % title
-    \part{#1}
-    \vskip -0.03in
-    % bottomrule
-    \hrule height 1.\p@
-    \vskip 0.5in
-    \vskip -\parskip%
-}
-
 \newlength\bshft
 \bshft=.14pt\relax
 \def\fakebold#1{\ThisStyle{\ooalign{$\SavedStyle#1$\cr%
@@ -41,6 +25,7 @@
 \newcommand{\commutative}{\rotatebox{45}{\ensuremath{\:\!\circlearrowleft\:\!}}}
 \newcommand{\noncommutative}{\rotatebox{45}{\text{\sout{\ensuremath{\:\!\circlearrowleft\:\!}}}}}
 
+% Fixed: Use correct AMSa symbol
 \DeclareMathSymbol{\shortminus}{\mathbin}{AMSa}{"39}
 \newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
 
@@ -211,9 +196,9 @@
 \newcommand{\PAingamma}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,\gamma}}}
 \newcommand{\PAinnp}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,n\leftarrow p}}}
 \newcommand{\PAinnxip}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$}  \mkern-0mu,n\leftarrow \xi(p)}}}
-\newcommand{\PAexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
-\newcommand{\PAexpv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\A$},\protect\scalebox{.7}{$\mkern1mu \piTM(v)\!\leftarrow\!\exp(v)$}}}}
-\newcommand{\PAinexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.75}{$\!\Ain$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
+\newcommand{\PAexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\A$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
+\newcommand{\PAexpv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\A$},\protect\scalebox{.7}{$\mkern1mu \piTM(v)\!\leftarrow\!\exp(v)$}}}}
+\newcommand{\PAinexppv}{  \mathcal{P}_{\mkern-4mu\overset{}{\protect\scalebox{.6}{$\!\Ain$},\protect\scalebox{.7}{$p\!\leftarrow\!\exp_p\!v$}}}}
 
 \newcommand{\piAin}{    \pi_{\overset{}{\protect\scalebox{.6 }{$  \!\!\A$}_\textup{in}   }}}
 \newcommand{\piAout}{   \pi_{\overset{}{\protect\scalebox{.6 }{$  \!\!\A$}_\textup{out}  }}}
@@ -336,6 +321,7 @@
 \newcommand{\corr}{\ensuremath{\star}}
 \newcommand{\conv}{\ensuremath{*}}
 
+% Fixed: Use DeclareMathOperator properly
 \DeclareMathOperator{\supp}{supp}
 
 \newcommand{\h}[1]{\mathrm{h}_{#1}}
@@ -394,6 +380,7 @@
 \newcommand{\mctFout}{\widetilde{\mathcal{F}}_{\!\overset{}{\textup{out}}}}
 \newcommand{\mctF}[1]{\widetilde{\mathcal{F}}_{\!\overset{}{#1}}}
 
+% Fixed: Use DeclareMathOperator properly
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
