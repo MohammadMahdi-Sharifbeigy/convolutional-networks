@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1749639232 "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf" "GaugeCNNTheory" 1749639233
-  "GaugeCNNTheory.tex" 1749638293 6866 d903ea5a0126a1c01c077b7ae1d5af0f ""
+["pdflatex"] 1749735043 "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf" "GaugeCNNTheory" 1749735043
+  "GaugeCNNTheory.tex" 1749735041 6859 aa3292dfd3d2069ebb976141f5df87a3 ""
   "arxiv.sty" 1623356302 8449 095b20f4a28999786495d264344fc554 ""
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.aux" 1749639148 105139 e135adadec9f369b30d4f8c3d15c9c6c ""
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" 1749638293 6866 d903ea5a0126a1c01c077b7ae1d5af0f ""
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.aux" 1749735043 4674 f2fdda4bff4a3e7777c45ea8b8baa3ca ""
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" 1749735041 6859 aa3292dfd3d2069ebb976141f5df87a3 ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1735320733 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1735320469 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1735320857 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -26,6 +26,7 @@
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1735322056 4216519 1dc2624572b0032d70e8e0c7a8c9400a ""
   "c:/texlive/2018/texmf.cnf" 1735321870 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf"
+  "GaugeCNNTheory.aux"
   "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.log"
   "GaugeCNNTheory.log"
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf"
