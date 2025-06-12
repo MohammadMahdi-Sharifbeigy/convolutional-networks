@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1749755311 "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf" "GaugeCNNTheory" 1749755313
-  "GaugeCNNTheory.tex" 1749754818 8647 c041cd8616ef691845273397ca6a18a4 ""
+["pdflatex"] 1749763579 "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf" "GaugeCNNTheory" 1749763581
+  "GaugeCNNTheory.tex" 1749760739 9095 26fd85ea7756e467d2f38aff76d03dd4 ""
   "arxiv.sty" 1623356302 8449 095b20f4a28999786495d264344fc554 ""
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.aux" 1749755311 9 a94a2480d3289e625eea47cd1b285758 ""
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" 1749754818 8647 c041cd8616ef691845273397ca6a18a4 ""
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.aux" 1749763232 431876 bf5854db156ab6e9f435be54ecf03593 ""
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.tex" 1749760739 9095 26fd85ea7756e467d2f38aff76d03dd4 ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1735320733 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1735320627 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1735320469 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -184,6 +184,8 @@
   "c:/texlive/2018/texmf.cnf" 1735321870 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   "custom_commands.sty" 1749754702 27008 1b7aab48cbd256ea5c5ed6be2a4eef4f ""
   (generated)
-  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.log"
-  "GaugeCNNTheory.log"
+  "GaugeCNNTheory.out"
   "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.pdf"
+  "GaugeCNNTheory.aux"
+  "GaugeCNNTheory.log"
+  "c:/Users/The_Death/Documents/GitHub/convolutional-networks/GaugeCNNTheory.log"

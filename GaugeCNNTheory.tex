@@ -113,7 +113,8 @@
 \newcommand{\toclesslab}[3]{\bgroup\let\addcontentsline=\nocontentsline#1{#2\label{#3}}\egroup}
 
 \usepackage{sectsty}
-\partfont{\fontsize{16.2}{19.2}\bfseries}
+% Updated part font to be bigger, bold, and italic
+\partfont{\fontsize{16.2}{19.2}\bfseries\itshape} 
 % We redefine the standard \part command to do nothing, as we now have a custom one.
 % This prevents accidental use of the old command.
 \renewcommand\part[2][]{}
@@ -124,8 +125,17 @@
 
 % Load xepersian BEFORE other packages that might conflict
 \usepackage{xepersian}
-\settextfont{B Zar}
-\setdigitfont{B Zar}
+\settextfont{B Nazanin}
+\setdigitfont{B Nazanin}
+
+% --- FONT DEFINITION FOR PARTS ---
+% Define the part font to be bigger and italic
+% Current size is 14pt, making it bigger and italic
+\renewcommand{\partfont}{\fontsize{20}{24}\selectfont\itshape\bfseries}
+% Alternative sizes you can try:
+% \newcommand{\partfont}{\fontsize{16}{20}\selectfont\itshape}  % 16pt
+% \newcommand{\partfont}{\fontsize{20}{24}\selectfont\itshape}  % 20pt
+% \newcommand{\partfont}{\fontsize{24}{28}\selectfont\itshape}  % 24pt
 
 % --- UPDATED CUSTOM PART COMMAND ---
 \makeatletter
@@ -133,40 +143,37 @@
 % It now supports a starred version, \mypart*{Title}, for unnumbered parts
 % such as the appendix.
 \def\mypart{\@ifstar\mypart@star\mypart@nostar}
-
 \newcommand{\mypart@nostar}[1]{%
-    \par\cleardoublepage\pagestyle{plain}%
-    \refstepcounter{part}%
-    \addcontentsline{toc}{part}{\partname~\thepart: #1}%
-    % --- Custom Title Formatting (Numbered) ---
-    \hrule height 1pt
-    \vskip 0.2in \vskip -\parskip
-    \noindent{\partfont \partname~\thepart\par}%
-    \vskip 0.15in %
-    \noindent{\partfont #1\par}%
-    \vskip -0.03in
-    \hrule height 1pt
-    \vskip 0.5in \vskip -\parskip
+	\par\cleardoublepage\pagestyle{plain}%
+	\refstepcounter{part}%
+	\addcontentsline{toc}{part}{\partname~\thepart: #1}%
+	% --- Custom Title Formatting (Numbered) ---
+	\hrule height 1pt
+	\vskip 0.2in \vskip -\parskip
+	\noindent{\partfont \partname~\thepart\par}%
+	\vskip 0.15in %
+	\noindent{\partfont #1\par}%
+	\vskip 0.05in
+	\hrule height 1pt
+	\vskip 0.5in \vskip -\parskip
 }
-
 \newcommand{\mypart@star}[1]{%
-    \par\cleardoublepage\pagestyle{plain}%
-    % Add the unnumbered part to the table of contents
-    \addcontentsline{toc}{part}{#1}%
-    % --- Custom Title Formatting (Unnumbered) ---
-    \hrule height 1pt
-    \vskip 0.2in \vskip -\parskip
-    % The part title, formatted using \partfont, without a number.
-    \noindent{\partfont #1\par}%
-    % Keep vertical spacing consistent with the numbered version.
-    \vskip 0.15in
-    \vskip -0.03in
-    \hrule height 1pt
-    \vskip 0.5in \vskip -\parskip
+	\par\cleardoublepage\pagestyle{plain}%
+	% Add the unnumbered part to the table of contents
+	\addcontentsline{toc}{part}{#1}%
+	% --- Custom Title Formatting (Unnumbered) ---
+	\hrule height 1pt
+	\vskip 0.2in \vskip -\parskip
+	% The part title, formatted using \partfont, without a number.
+	\noindent{\partfont #1\par}%
+	% Keep vertical spacing consistent with the numbered version.
+	\vskip 0.15in
+	\vskip 0.05in
+	\hrule height 1pt
+	\vskip 0.5in \vskip -\parskip
 }
 \makeatother
 % --- END UPDATED COMMAND ---
-
 
 % Fallback for small caps
 \newcommand{\fakesc}[1]{{\footnotesize #1}}
@@ -270,7 +277,7 @@
 		\input{chapters/apx08_regular_fields_as_GM_functions}
 	
 	\newpage
-	%\renewcommand{\bibname}{مراجع}
+	\renewcommand{\bibname}{مراجع}
 	\bibliographystyle{plainnat}
 	\bibliography{refs}
 	
