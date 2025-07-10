@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1}مقدمه}{2}{section.1}%
 \contentsline {paragraph}{بخش~\ref {part:local_theory}:}{7}{section*.6}%
 \contentsline {paragraph}{بخش~\ref {part:bundle_theory}:}{7}{section*.7}%
-\contentsline {paragraph}{بخش~\ref {part:literature_review}:}{7}{section*.8}%
+\contentsline {paragraph}{بخش~\ref {part:literature_review}:}{8}{section*.8}%
 \contentsline {paragraph}{پیوست:}{8}{section*.9}%
 \contentsline {section}{\numberline {2}مرور کلی و شهود بصری}{10}{section.2}%
 \contentsline {subsubsection}{\numberline {2.1.1}ساختارهای \lr {\textit {G}}}{11}{subsubsection.2.1.1}%
