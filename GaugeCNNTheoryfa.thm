@@ -1,62 +1,62 @@
-\contentsline {dfn}{{تعریف}{7.{1}}{\onexoneGM }}{88}{pro.7.1}%
-\contentsline {dfn}{{تعریف}{7.{2}}{میدان کرنل}}{91}{pro.7.2}%
-\contentsline {dfn}{{تعریف}{7.{3}}{کرنل \lr {G}-هدایت‌پذیر}}{92}{pro.7.3}%
-\contentsline {dfn}{{تعریف}{7.{4}}{میدان کرنل کانولوشنی $\GM $}}{92}{pro.7.4}%
-\contentsline {dfn}{{تعریف}{7.{5}}{پول‌بک منتقل‌کننده میدان ویژگی به \lr {TM}}}{94}{pro.7.5}%
-\contentsline {dfn}{{تعریف}{7.{6}}{تبدیل میدان کرنل}}{94}{pro.7.6}%
-\contentsline {thm}{{قضیه}{7.{7}}{وجود تبدیل میدان کرنل برای کرنل‌های با تکیه‌گاه فشرده}}{95}{pro.7.7}%
-\contentsline {proof}{{اثبات}{1}{}}{95}{proof.1}%
-\contentsline {dfn}{{تعریف}{7.{8}}{کانولوشن $\GM $}}{95}{pro.7.8}%
-\contentsline {thm}{{قضیه}{7.{9}}{تبدیل میدان کرنل در مختصات}}{96}{pro.7.9}%
-\contentsline {proof}{{اثبات}{2}{}}{96}{proof.2}%
-\contentsline {thm}{{قضیه}{7.{10}}{کانولوشن‌های $\GM $ در مختصات}}{97}{pro.7.10}%
-\contentsline {proof}{{اثبات}{3}{}}{97}{proof.3}%
-\contentsline {dfn}{{تعریف}{8.{1}}{ایزومتری‌های حافظ \lr {G}-ساختار}}{102}{pro.8.1}%
-\contentsline {dfn}{{تعریف}{8.{2}}{پیش‌ران ایزومتری میدان ویژگی:}}{104}{pro.8.2}%
-\contentsline {thm}{{قضیه}{8.{3}}{$\IsomGM $ در بدیهی‌سازی‌های محلی}}{107}{pro.8.3}%
-\contentsline {proof}{{اثبات}{4}{}}{107}{proof.4}%
-\contentsline {thm}{{قضیه}{8.{4}}{عمل ایزومتری بر روی پول‌بک‌های منتقل‌کننده میدان‌های ویژگی}}{110}{pro.8.4}%
-\contentsline {proof}{{اثبات}{5}{}}{110}{proof.5}%
-\contentsline {dfn}{{تعریف}{8.{5}}{تبدیل میدان کرنل هم‌متغیر نسبت به ایزومتری}}{111}{pro.8.5}%
-\contentsline {dfn}{{تعریف}{8.{6}}{عمل ایزومتری بر روی میدان‌های کرنل}}{111}{pro.8.6}%
-\contentsline {dfn}{{تعریف}{8.{7}}{میدان‌های کرنل نامتغیر نسبت به ایزومتری}}{112}{pro.8.7}%
-\contentsline {thm}{{قضیه}{8.{8}}{تبدیل میدان کرنل هم‌متغیر $\Leftrightarrow $ میدان کرنل نامتغیر}}{112}{pro.8.8}%
-\contentsline {proof}{{اثبات}{6}{}}{113}{proof.6}%
-\contentsline {thm}{{قضیه}{8.{9}}{هم‌متغیری ایزومتری کانولوشن‌های $\GM $}}{115}{pro.8.9}%
-\contentsline {proof}{{اثبات}{7}{}}{115}{proof.7}%
-\contentsline {thm}{{قضیه}{8.{10}}{هم‌متغیری کامل ایزومتری کانولوشن‌های $\OM $}}{116}{pro.8.10}%
-\contentsline {proof}{{اثبات}{8}{}}{116}{proof.8}%
-\contentsline {thm}{{قضیه}{8.{11}}{هم‌متغیری $\IsomplusM $ کانولوشن‌های $\SOM $}}{116}{pro.8.11}%
-\contentsline {proof}{{اثبات}{9}{}}{116}{proof.9}%
-\contentsline {thm}{{قضیه}{8.{12}}{میدان‌های کرنل نماینده خارج‌قسمتی مماس}}{123}{pro.8.12}%
-\contentsline {proof}{{اثبات}{10}{}}{123}{proof.10}%
-\contentsline {thm}{{قضیه}{8.{13}}{میدان‌های کرنل نماینده خارج‌قسمتی منیفلد}}{123}{pro.8.13}%
-\contentsline {proof}{{اثبات}{11}{}}{124}{proof.11}%
-\contentsline {thm}{{قضیه}{8.{14}}{هم‌متغیری بر روی \textit {M} همگن به معنای کانولوشن است}}{124}{pro.8.14}%
-\contentsline {proof}{{اثبات}{12}{}}{125}{proof.12}%
-\contentsline {dfn}{{تعریف}{9.{1}}{اطلس $\Aff (G)$ از فضای اقلیدسی}}{135}{pro.9.1}%
-\contentsline {thm}{{قضیه}{9.{2}}{اطلس‌های $\Aff (G)$ از چارت‌ها، $G$-اطلس‌هایی از پیمانه‌ها را القا می‌کنند}}{136}{pro.9.2}%
-\contentsline {proof}{{اثبات}{13}{}}{136}{proof.13}%
-\contentsline {thm}{{قضیه}{9.{3}}{ایزومورفیسم کلاف اصلی بین \lr {Aff(G)} و \textit {GM}}}{136}{pro.9.3}%
-\contentsline {proof}{{اثبات}{14}{}}{137}{proof.14}%
-\contentsline {dfn}{{تعریف}{9.{4}}{تبدیلات آفین حافظ \textit {G}-ساختار}}{138}{pro.9.4}%
-\contentsline {thm}{{قضیه}{9.{5}}{$\AffGM $ در تrivializationهای محلی}}{138}{pro.9.5}%
-\contentsline {proof}{{اثبات}{15}{}}{138}{proof.15}%
-\contentsline {thm}{{قضیه}{9.{6}}{$\AffGM $ در چارت‌های آفین سراسری}}{138}{pro.9.6}%
-\contentsline {proof}{{اثبات}{16}{}}{139}{proof.16}%
-\contentsline {thm}{{قضیه}{9.{7}}{کانولوشن‌های $\GM $ در فضاهای اقلیدسی، کانولوشن‌های روی $\R ^d$ را بازیابی می‌کنند}}{141}{pro.9.7}%
-\contentsline {proof}{{اثبات}{17}{}}{141}{proof.17}%
-\contentsline {thm}{{قضیه}{9.{8}}{هموردایی آفین کانولوشن‌های $\GM $ اقلیدسی}}{142}{pro.9.8}%
-\contentsline {proof}{{اثبات}{18}{}}{142}{proof.18}%
-\contentsline {thm}{{قضیه}{11.{1}}{کرنل‌های راهبری‌پذیر کروی در مختصات ژئودزیک}}{160}{pro.11.1}%
-\contentsline {proof}{{اثبات}{19}{}}{161}{proof.19}%
-\contentsline {thm}{{قضیه}{11.{2}}{کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit {GM}}}{161}{pro.11.2}%
-\contentsline {proof}{{اثبات}{20}{}}{161}{proof.20}%
-\contentsline {thm}{{قضیه}{11.{3}}{تصویرهای نومونیک به عنوان نگاشت‌های نمایی دارای تاب}}{162}{pro.11.3}%
-\contentsline {proof}{{اثبات}{21}{}}{163}{proof.21}%
-\contentsline {proof}{{اثبات}{22}{}}{220}{proof.22}%
-\contentsline {proof}{{اثبات}{23}{}}{222}{proof.23}%
-\contentsline {thm}{{قضیه}{چ.{1}}{لم مشتق‌گیری~\cite {forster2012analysis3}}}{224}{pro.Alph7.1}%
-\contentsline {proof}{{اثبات}{24}{}}{225}{proof.24}%
-\contentsline {thm}{{قضیه}{ح.{1}}{میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}}{226}{pro.Alph8.1}%
-\contentsline {proof}{{اثبات}{25}{}}{226}{proof.25}%
+\contentsline {dfn}{{تعریف}{7.{1}}{\onexoneGM }}{89}{pro.7.1}%
+\contentsline {dfn}{{تعریف}{7.{2}}{میدان کرنل}}{92}{pro.7.2}%
+\contentsline {dfn}{{تعریف}{7.{3}}{کرنل \lr {G}-هدایت‌پذیر}}{93}{pro.7.3}%
+\contentsline {dfn}{{تعریف}{7.{4}}{میدان کرنل کانولوشنی $\GM $}}{93}{pro.7.4}%
+\contentsline {dfn}{{تعریف}{7.{5}}{پول‌بک منتقل‌کننده میدان ویژگی به \lr {TM}}}{95}{pro.7.5}%
+\contentsline {dfn}{{تعریف}{7.{6}}{تبدیل میدان کرنل}}{95}{pro.7.6}%
+\contentsline {thm}{{قضیه}{7.{7}}{وجود تبدیل میدان کرنل برای کرنل‌های با تکیه‌گاه فشرده}}{96}{pro.7.7}%
+\contentsline {proof}{{اثبات}{1}{}}{96}{proof.1}%
+\contentsline {dfn}{{تعریف}{7.{8}}{کانولوشن $\GM $}}{96}{pro.7.8}%
+\contentsline {thm}{{قضیه}{7.{9}}{تبدیل میدان کرنل در مختصات}}{97}{pro.7.9}%
+\contentsline {proof}{{اثبات}{2}{}}{97}{proof.2}%
+\contentsline {thm}{{قضیه}{7.{10}}{کانولوشن‌های $\GM $ در مختصات}}{98}{pro.7.10}%
+\contentsline {proof}{{اثبات}{3}{}}{98}{proof.3}%
+\contentsline {dfn}{{تعریف}{8.{1}}{ایزومتری‌های حافظ \lr {G}-ساختار}}{103}{pro.8.1}%
+\contentsline {dfn}{{تعریف}{8.{2}}{پیش‌ران ایزومتری میدان ویژگی:}}{105}{pro.8.2}%
+\contentsline {thm}{{قضیه}{8.{3}}{$\IsomGM $ در بدیهی‌سازی‌های محلی}}{108}{pro.8.3}%
+\contentsline {proof}{{اثبات}{4}{}}{108}{proof.4}%
+\contentsline {thm}{{قضیه}{8.{4}}{عمل ایزومتری بر روی پول‌بک‌های منتقل‌کننده میدان‌های ویژگی}}{111}{pro.8.4}%
+\contentsline {proof}{{اثبات}{5}{}}{111}{proof.5}%
+\contentsline {dfn}{{تعریف}{8.{5}}{تبدیل میدان کرنل هم‌متغیر نسبت به ایزومتری}}{112}{pro.8.5}%
+\contentsline {dfn}{{تعریف}{8.{6}}{عمل ایزومتری بر روی میدان‌های کرنل}}{112}{pro.8.6}%
+\contentsline {dfn}{{تعریف}{8.{7}}{میدان‌های کرنل نامتغیر نسبت به ایزومتری}}{113}{pro.8.7}%
+\contentsline {thm}{{قضیه}{8.{8}}{تبدیل میدان کرنل هم‌متغیر $\Leftrightarrow $ میدان کرنل نامتغیر}}{113}{pro.8.8}%
+\contentsline {proof}{{اثبات}{6}{}}{114}{proof.6}%
+\contentsline {thm}{{قضیه}{8.{9}}{هم‌متغیری ایزومتری کانولوشن‌های $\GM $}}{116}{pro.8.9}%
+\contentsline {proof}{{اثبات}{7}{}}{116}{proof.7}%
+\contentsline {thm}{{قضیه}{8.{10}}{هم‌متغیری کامل ایزومتری کانولوشن‌های $\OM $}}{117}{pro.8.10}%
+\contentsline {proof}{{اثبات}{8}{}}{117}{proof.8}%
+\contentsline {thm}{{قضیه}{8.{11}}{هم‌متغیری $\IsomplusM $ کانولوشن‌های $\SOM $}}{117}{pro.8.11}%
+\contentsline {proof}{{اثبات}{9}{}}{117}{proof.9}%
+\contentsline {thm}{{قضیه}{8.{12}}{میدان‌های کرنل نماینده خارج‌قسمتی مماس}}{124}{pro.8.12}%
+\contentsline {proof}{{اثبات}{10}{}}{124}{proof.10}%
+\contentsline {thm}{{قضیه}{8.{13}}{میدان‌های کرنل نماینده خارج‌قسمتی منیفلد}}{124}{pro.8.13}%
+\contentsline {proof}{{اثبات}{11}{}}{125}{proof.11}%
+\contentsline {thm}{{قضیه}{8.{14}}{هم‌متغیری بر روی \textit {M} همگن به معنای کانولوشن است}}{125}{pro.8.14}%
+\contentsline {proof}{{اثبات}{12}{}}{126}{proof.12}%
+\contentsline {dfn}{{تعریف}{9.{1}}{اطلس $\Aff (G)$ از فضای اقلیدسی}}{136}{pro.9.1}%
+\contentsline {thm}{{قضیه}{9.{2}}{اطلس‌های $\Aff (G)$ از چارت‌ها، $G$-اطلس‌هایی از پیمانه‌ها را القا می‌کنند}}{137}{pro.9.2}%
+\contentsline {proof}{{اثبات}{13}{}}{137}{proof.13}%
+\contentsline {thm}{{قضیه}{9.{3}}{ایزومورفیسم کلاف اصلی بین \lr {Aff(G)} و \textit {GM}}}{137}{pro.9.3}%
+\contentsline {proof}{{اثبات}{14}{}}{138}{proof.14}%
+\contentsline {dfn}{{تعریف}{9.{4}}{تبدیلات آفین حافظ \textit {G}-ساختار}}{139}{pro.9.4}%
+\contentsline {thm}{{قضیه}{9.{5}}{$\AffGM $ در تrivializationهای محلی}}{139}{pro.9.5}%
+\contentsline {proof}{{اثبات}{15}{}}{139}{proof.15}%
+\contentsline {thm}{{قضیه}{9.{6}}{$\AffGM $ در چارت‌های آفین سراسری}}{139}{pro.9.6}%
+\contentsline {proof}{{اثبات}{16}{}}{140}{proof.16}%
+\contentsline {thm}{{قضیه}{9.{7}}{کانولوشن‌های $\GM $ در فضاهای اقلیدسی، کانولوشن‌های روی $\R ^d$ را بازیابی می‌کنند}}{142}{pro.9.7}%
+\contentsline {proof}{{اثبات}{17}{}}{142}{proof.17}%
+\contentsline {thm}{{قضیه}{9.{8}}{هموردایی آفین کانولوشن‌های $\GM $ اقلیدسی}}{143}{pro.9.8}%
+\contentsline {proof}{{اثبات}{18}{}}{143}{proof.18}%
+\contentsline {thm}{{قضیه}{11.{1}}{کرنل‌های راهبری‌پذیر کروی در مختصات ژئودزیک}}{161}{pro.11.1}%
+\contentsline {proof}{{اثبات}{19}{}}{162}{proof.19}%
+\contentsline {thm}{{قضیه}{11.{2}}{کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit {GM}}}{162}{pro.11.2}%
+\contentsline {proof}{{اثبات}{20}{}}{162}{proof.20}%
+\contentsline {thm}{{قضیه}{11.{3}}{تصویرهای نومونیک به عنوان نگاشت‌های نمایی دارای تاب}}{163}{pro.11.3}%
+\contentsline {proof}{{اثبات}{21}{}}{164}{proof.21}%
+\contentsline {proof}{{اثبات}{22}{}}{221}{proof.22}%
+\contentsline {proof}{{اثبات}{23}{}}{223}{proof.23}%
+\contentsline {thm}{{قضیه}{چ.{1}}{لم مشتق‌گیری~\cite {forster2012analysis3}}}{225}{pro.Alph7.1}%
+\contentsline {proof}{{اثبات}{24}{}}{226}{proof.24}%
+\contentsline {thm}{{قضیه}{ح.{1}}{میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}}{227}{pro.Alph8.1}%
+\contentsline {proof}{{اثبات}{25}{}}{227}{proof.25}%

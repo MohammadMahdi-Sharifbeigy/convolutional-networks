@@ -1,0 +1,1379 @@
+\begin{thebibliography}{213}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agrawala(1980)]{agrawalla1980WignerEckart}
+Vishnu Agrawala.
+\newblock Wigner-eckart theorem for an arbitrary group or lie algebra.
+\newblock \emph{Journal of Mathematical Physics}, 21, 1980.
+\newblock \doi{10.1063/1.524639}.
+
+\bibitem[Anderson et~al.(2019)Anderson, Hy, and Kondor]{anderson2019cormorant}
+Brandon Anderson, Truong-Son Hy, and Risi Kondor.
+\newblock Cormorant: Covariant molecular neural networks.
+\newblock \emph{arXiv preprint arXiv:1906.04015}, 2019.
+
+\bibitem[Andrearczyk et~al.(2019)Andrearczyk, Fageot, Oreiller, Montet, and
+  Depeursinge]{andrearczyk2019exploring}
+Vincent Andrearczyk, Julien Fageot, Valentin Oreiller, Xavier Montet, and
+  Adrien Depeursinge.
+\newblock Exploring local rotation invariance in 3d cnns with steerable
+  filters.
+\newblock In \emph{International Conference on Medical Imaging with Deep
+  Learning}, pages 15--26. PMLR, 2019.
+
+\bibitem[Azulay and Weiss(2019)]{azulay2018shift}
+Aharon Azulay and Yair Weiss.
+\newblock Why do deep convolutional networks generalize so poorly to small
+  image transformations?
+\newblock \emph{Journal of Machine Learning Research}, 20\penalty0
+  (184):\penalty0 1--25, 2019.
+
+\bibitem[Batzner et~al.(2021)Batzner, Smidt, Sun, Mailoa, Kornbluth, Molinari,
+  and Kozinsky]{batzner2021se3equivariant}
+Simon Batzner, Tess Smidt, Lixin Sun, Jonathan Mailoa, Mordechai Kornbluth,
+  Nicola Molinari, and Boris Kozinsky.
+\newblock Se(3)-equivariant graph neural networks for data-efficient and
+  accurate interatomic potentials.
+\newblock \emph{arXiv preprint arXiv:2101.03164}, 2021.
+
+\bibitem[Bekkers(2020)]{bekkers2020bspline}
+Erik Bekkers.
+\newblock B-spline cnns on lie groups.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2020.
+
+\bibitem[Bekkers et~al.(2018)Bekkers, Lafarge, Veta, Eppenhof, Pluim, and
+  Duits]{bekkers2018roto}
+Erik Bekkers, Maxime~W Lafarge, Mitko Veta, Koen~AJ Eppenhof, Josien~PW Pluim,
+  and Remco Duits.
+\newblock Roto-translation covariant convolutional networks for medical image
+  analysis.
+\newblock In \emph{International Conference on Medical Image Computing and
+  Computer-Assisted Intervention (MICCAI)}, 2018.
+
+\bibitem[Ben-Hamu et~al.(2018)Ben-Hamu, Maron, Kezurer, Avineri, and
+  Lipman]{benhamu2018multichart}
+Heli Ben-Hamu, Haggai Maron, Itay Kezurer, Gal Avineri, and Yaron Lipman.
+\newblock Multi-chart generative surface modeling.
+\newblock \emph{arXiv preprint arXiv:1806.02143}, 2018.
+
+\bibitem[Blatt and Rubinstein(1994)]{blatt1994canonical}
+Naomi Blatt and Jacob Rubinstein.
+\newblock The canonical coordinates method for pattern recognition- ii.
+  isomorphisms with affine transformations.
+\newblock \emph{Pattern recognition}, 27\penalty0 (1):\penalty0 99--107, 1994.
+
+\bibitem[Bogatskiy et~al.(2020)Bogatskiy, Anderson, Offermann, Roussi, Miller,
+  and Kondor]{alex2020lorentz}
+Alexander Bogatskiy, Brandon Anderson, Jan Offermann, Marwah Roussi, David
+  Miller, and Risi Kondor.
+\newblock Lorentz group equivariant neural network for particle physics.
+\newblock \emph{International Conference on Machine Learning}, 2020.
+
+\bibitem[Boomsma and Frellsen(2017)]{boomsma2017spherical}
+Wouter Boomsma and Jes Frellsen.
+\newblock Spherical convolutions and their application in molecular modelling.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2017.
+
+\bibitem[Boscaini et~al.(2015)Boscaini, Masci, Melzi, Bronstein, Castellani,
+  and Vandergheynst]{boscaini2015learning}
+Davide Boscaini, Jonathan Masci, Simone Melzi, Michael~M Bronstein, Umberto
+  Castellani, and Pierre Vandergheynst.
+\newblock Learning class-specific descriptors for deformable shapes using
+  localized spectral convolutional networks.
+\newblock In \emph{Computer Graphics Forum}, volume~34, pages 13--23. Wiley
+  Online Library, 2015.
+
+\bibitem[Boscaini et~al.(2016)Boscaini, Masci, Rodolà, and
+  Bronstein]{boscaini2016learning}
+Davide Boscaini, Jonathan Masci, Emanuele Rodolà, and Michael Bronstein.
+\newblock Learning shape correspondence with anisotropic convolutional neural
+  networks.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, pages 3189--3197, 2016.
+
+\bibitem[Boyle(2016)]{boyle2016should}
+Michael Boyle.
+\newblock How should spin-weighted spherical functions be defined?
+\newblock \emph{Journal of Mathematical Physics}, 57\penalty0 (9):\penalty0
+  092504, 2016.
+
+\bibitem[Bronstein et~al.(2017)Bronstein, Bruna, LeCun, Szlam, and
+  Vandergheynst]{bronstein2017geometric}
+Michael~M Bronstein, Joan Bruna, Yann LeCun, Arthur Szlam, and Pierre
+  Vandergheynst.
+\newblock Geometric deep learning: going beyond euclidean data.
+\newblock \emph{IEEE Signal Processing Magazine}, 34\penalty0 (4):\penalty0
+  18--42, 2017.
+
+\bibitem[Bruna and Mallat(2013)]{bruna2013invariant}
+Joan Bruna and Stéphane Mallat.
+\newblock Invariant scattering convolution networks.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 35\penalty0 (8):\penalty0 1872--1886, 2013.
+
+\bibitem[Bruna et~al.(2013)Bruna, Zaremba, Szlam, and LeCun]{bruna2013spectral}
+Joan Bruna, Wojciech Zaremba, Arthur Szlam, and Yann LeCun.
+\newblock Spectral networks and locally connected networks on graphs.
+\newblock \emph{arXiv preprint arXiv:1312.6203}, 2013.
+
+\bibitem[Budninskiy et~al.(2018)Budninskiy, Yin, Feng, Tong, and
+  Desbrun]{budninskiy2018parallel}
+Max Budninskiy, Glorian Yin, Leman Feng, Yiying Tong, and Mathieu Desbrun.
+\newblock Parallel transport unfolding: A connection-based manifold learning
+  approach.
+\newblock \emph{ACM Transactions on Graphics}, 37\penalty0 (6):\penalty0 1--13,
+  2018.
+
+\bibitem[Carroll(2004)]{carroll2004spacetime}
+Sean~M Carroll.
+\newblock \emph{Spacetime and geometry. An introduction to general relativity}.
+\newblock Addison Wesley, 2004.
+
+\bibitem[Casasent et~al.(1987)Casasent, Xia, Lee, and Song]{casasent1987real}
+David Casasent, Shao-Feng Xia, Andrew~J Lee, and Jian-Zhong Song.
+\newblock Real-time deformation invariant optical pattern recognition using
+  coordinate transformations.
+\newblock \emph{Applied optics}, 26\penalty0 (5):\penalty0 938--942, 1987.
+
+\bibitem[Ceccherini-Silberstein et~al.(2009)Ceccherini-Silberstein, Machì,
+  Scarabotti, and Tolli]{ceccherini2009induced}
+Tullio Ceccherini-Silberstein, A~Machì, Fabio Scarabotti, and Filippo Tolli.
+\newblock Induced representations and mackey theory.
+\newblock \emph{Journal of Mathematical Sciences}, 156\penalty0 (1):\penalty0
+  11--28, 2009.
+
+\bibitem[Chakraborty et~al.(2018)Chakraborty, Banerjee, and
+  Vemuri]{chakraborty2018H-CNNs}
+Rudrasis Chakraborty, Monami Banerjee, and Baba Vemuri.
+\newblock H-cnns: convolutional neural networks for riemannian homogeneous
+  spaces.
+\newblock \emph{arXiv preprint arXiv:1805.05487}, 2018.
+
+\bibitem[Chavan et~al.(2021)Chavan, Bamba, Tiwari, and
+  Gupta]{chavan2021rescaling}
+Arnav Chavan, Udbhav Bamba, Rishabh Tiwari, and Deepak Gupta.
+\newblock Rescaling cnn through learnable repetition of network parameters.
+\newblock \emph{arXiv preprint arXiv:2101.05650}, 2021.
+
+\bibitem[Chidester et~al.(2019)Chidester, Zhou, Do, and
+  Ma]{chidester2019rotation}
+Benjamin Chidester, Tianming Zhou, Minh~N Do, and Jian Ma.
+\newblock Rotation equivariant and invariant neural networks for microscopy
+  image analysis.
+\newblock \emph{Bioinformatics}, 35\penalty0 (14):\penalty0 i530--i537, 2019.
+
+\bibitem[Chirikjian and Kyatkin(2001)]{chirikjian2001engineering}
+Gregory Chirikjian and Alexander Kyatkin.
+\newblock \emph{Engineering applications of noncommutative harmonic analysis
+  with emphasis on rotation and motion groups}.
+\newblock CRC press, 2001.
+
+\bibitem[Chirikjian and Ebert-Uphoff(1998)]{chirikjian1998numerical}
+Gregory~S Chirikjian and Imme Ebert-Uphoff.
+\newblock Numerical convolution on the euclidean group with applications to
+  workspace generation.
+\newblock \emph{IEEE Transactions on Robotics and Automation}, 14\penalty0
+  (1):\penalty0 123--136, 1998.
+
+\bibitem[Cohen and Welling(2016)]{Cohen2016-GCNN}
+Taco~S Cohen and Max Welling.
+\newblock Group equivariant convolutional networks.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2016.
+
+\bibitem[Cohen and Welling(2017)]{Cohen2017-STEER}
+Taco~S Cohen and Max Welling.
+\newblock Steerable cnns.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2017.
+
+\bibitem[Cohen et~al.(2018{\natexlab{a}})Cohen, Geiger, Köhler, and
+  Welling]{Cohen2018-S2CNN}
+Taco~S Cohen, Mario Geiger, Jonas Köhler, and Max Welling.
+\newblock Spherical cnns.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2018{\natexlab{a}}.
+
+\bibitem[Cohen et~al.(2018{\natexlab{b}})Cohen, Geiger, and
+  Weiler]{Cohen2018-intertwiners}
+Taco~S Cohen, Mario Geiger, and Maurice Weiler.
+\newblock Intertwiners between induced representations (with applications to
+  the theory of equivariant neural networks).
+\newblock \emph{arXiv preprint arXiv:1803.10743}, 2018{\natexlab{b}}.
+
+\bibitem[Cohen et~al.(2019{\natexlab{a}})Cohen, Geiger, and
+  Weiler]{Cohen2019-generaltheory}
+Taco~S Cohen, Mario Geiger, and Maurice Weiler.
+\newblock A general theory of equivariant cnns on homogeneous spaces.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2019{\natexlab{a}}.
+
+\bibitem[Cohen et~al.(2019{\natexlab{b}})Cohen, Weiler, Kicanaoglu, and
+  Welling]{gaugeIco2019}
+Taco~S Cohen, Maurice Weiler, Berkay Kicanaoglu, and Max Welling.
+\newblock Gauge equivariant convolutional networks and the icosahedral cnn.
+\newblock In \emph{International Conference on Machine Learning (ICML)},
+  2019{\natexlab{b}}.
+
+\bibitem[Coors et~al.(2018)Coors, Paul, and Geiger]{coors2018spherenet}
+Benjamin Coors, Alexandru Paul, and Andreas Geiger.
+\newblock Spherenet: Learning spherical representations for detection and
+  classification in omnidirectional images.
+\newblock In \emph{Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 518--533, 2018.
+
+\bibitem[Crainic and Pasquotto(2013)]{crainic2013GStructuresExamples}
+Marius Crainic and Federica Pasquotto.
+\newblock Linear g-structures by examples, 2013.
+\newblock URL \url{http://www.few.vu.nl/~pasquott/course16.pdf}.
+
+\bibitem[Crane(2014)]{craneDiscreteDifferentialGeometry2014}
+Keenan Crane.
+\newblock \emph{Discrete Differential Geometry: An Applied Introduction}.
+\newblock Carnegie Mellon University, 2014.
+
+\bibitem[Crane(2020)]{Crane2020DiscreteConformalGeometry}
+Keenan Crane.
+\newblock Discrete conformal geometry.
+\newblock In \emph{Proceedings of Symposia in Applied Mathematics}. American
+  Mathematical Society, 2020.
+
+\bibitem[Crane et~al.(2010)Crane, Desbrun, and
+  Schröder]{craneTrivialConnectionsDiscrete2010}
+Keenan Crane, Mathieu Desbrun, and Peter Schröder.
+\newblock Trivial connections on discrete surfaces.
+\newblock \emph{Computer Graphics Forum}, 29\penalty0 (5):\penalty0 1525--1533,
+  2010.
+\newblock \doi{10.1111/j.1467-8659.2010.01761.x}.
+
+\bibitem[Crane et~al.(2017)Crane, Weischedel, and
+  Wardetzky]{Crane2017HeatMethodDistance}
+Keenan Crane, Clarisse Weischedel, and Max Wardetzky.
+\newblock The heat method for distance computation.
+\newblock \emph{Communications of the ACM}, 60\penalty0 (11):\penalty0 90--99,
+  2017.
+
+\bibitem[de~Goes et~al.(2016)de~Goes, Desbrun, and
+  Tong]{deGoes2016VectorFieldProcessing}
+Fernando de~Goes, Mathieu Desbrun, and Yiying Tong.
+\newblock Vector field processing on triangle meshes.
+\newblock In \emph{ACM SIGGRAPH 2016 Courses}, pages 1--49, 2016.
+
+\bibitem[de~Haan et~al.(2021)de~Haan, Weiler, Cohen, and
+  Welling]{deHaan2020meshCNNs}
+Pim de~Haan, Maurice Weiler, Taco Cohen, and Max Welling.
+\newblock Gauge equivariant mesh cnns: Anisotropic convolutions on geometric
+  graphs.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
+\bibitem[Desbrun et~al.(2005)Desbrun, Hirani, Leok, and
+  Marsden]{desbrun2005DiscreteExteriorCalculus}
+Mathieu Desbrun, Anil~N Hirani, Melvin Leok, and Jerrold~E Marsden.
+\newblock Discrete exterior calculus.
+\newblock \emph{arXiv preprint math/0508341}, 2005.
+
+\bibitem[Dey et~al.(2020)Dey, Chen, and Ghafurian]{dey2020groupGANs}
+Neel Dey, Antong Chen, and Soheil Ghafurian.
+\newblock Group equivariant generative adversarial networks.
+\newblock \emph{arXiv preprint arXiv:2005.01683}, 2020.
+
+\bibitem[Dieleman et~al.(2016)Dieleman, De~Fauw, and
+  Kavukcuoglu]{Dieleman2016-CYC}
+Sander Dieleman, Jeffrey De~Fauw, and Koray Kavukcuoglu.
+\newblock Exploiting cyclic symmetry in convolutional neural networks.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2016.
+
+\bibitem[Dundas(2018)]{dundas2018differentialTopology}
+Bjørn~Ian Dundas.
+\newblock \emph{A Short Course in Differential Topology}.
+\newblock Cambridge University Press, 2018.
+
+\bibitem[Eder and Frahm(2019)]{eder2019convolutions}
+Marc Eder and Jan-Michael Frahm.
+\newblock Convolutions on spherical images.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition Workshops}, 2019.
+
+\bibitem[Eder et~al.(2020)Eder, Shvets, Lim, and Frahm]{eder2020tangent}
+Marc Eder, Mykhailo Shvets, John Lim, and Jan-Michael Frahm.
+\newblock Tangent images for mitigating spherical distortion.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2020.
+
+\bibitem[Einstein(1916{\natexlab{a}})]{Einstein1916English}
+Albert Einstein.
+\newblock The foundation of the general theory of relativity (english
+  translation).
+\newblock \emph{Annalen der Physik}, 354\penalty0 (7):\penalty0 769--822,
+  1916{\natexlab{a}}.
+
+\bibitem[Einstein(1916{\natexlab{b}})]{Einstein1916German}
+Albert Einstein.
+\newblock Die grundlage der allgemeinen relativitätstheorie.
+\newblock \emph{Annalen der Physik}, 354\penalty0 (7):\penalty0 769--822,
+  1916{\natexlab{b}}.
+\newblock \doi{https://doi.org/10.1002/andp.19163540702}.
+
+\bibitem[Elcott and Schröder(2005)]{elcott2005building}
+Sharif Elcott and Peter Schröder.
+\newblock Building your own dec at home.
+\newblock In \emph{ACM SIGGRAPH 2005 Courses}, pages 8--es, 2005.
+
+\bibitem[Esteves(2020)]{esteves2020theoretical}
+Carlos Esteves.
+\newblock Theoretical aspects of group equivariant neural networks.
+\newblock \emph{arXiv preprint arXiv:2004.05154}, 2020.
+
+\bibitem[Esteves et~al.(2018{\natexlab{a}})Esteves, Allen-Blanchette, Makadia,
+  and Daniilidis]{esteves2018zonalSpherical}
+Carlos Esteves, Christine Allen-Blanchette, Ameesh Makadia, and Kostas
+  Daniilidis.
+\newblock Learning so(3) equivariant representations with spherical cnns.
+\newblock In \emph{European Conference on Computer Vision (ECCV)},
+  2018{\natexlab{a}}.
+
+\bibitem[Esteves et~al.(2018{\natexlab{b}})Esteves, Allen-Blanchette, Zhou, and
+  Daniilidis]{esteves2017polar}
+Carlos Esteves, Christine Allen-Blanchette, Xiaowei Zhou, and Kostas
+  Daniilidis.
+\newblock Polar transformer networks.
+\newblock \emph{arXiv preprint arXiv:1709.01889}, 2018{\natexlab{b}}.
+
+\bibitem[Esteves et~al.(2019)Esteves, Xu, Allen-Blanchette, and
+  Daniilidis]{esteves2019multiView}
+Carlos Esteves, Yinshuang Xu, Christine Allen-Blanchette, and Kostas
+  Daniilidis.
+\newblock Equivariant multi-view networks.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 1568--1577, 2019.
+
+\bibitem[Esteves et~al.(2020)Esteves, Makadia, and
+  Daniilidis]{esteves2020spinweighted}
+Carlos Esteves, Ameesh Makadia, and Kostas Daniilidis.
+\newblock Spin-weighted spherical cnns.
+\newblock \emph{Conference on Neural Information Processing Systems}, 2020.
+
+\bibitem[Finzi et~al.(2020)Finzi, Stanton, Izmailov, and
+  Wilson]{finzi2020generalizing}
+Marc Finzi, Samuel Stanton, Pavel Izmailov, and Andrew~Gordon Wilson.
+\newblock Generalizing convolutional neural networks for equivariance to lie
+  groups on arbitrary continuous data.
+\newblock \emph{International Conference on Machine Learning}, 2020.
+
+\bibitem[Forster(2012)]{forster2012analysis3}
+Otto Forster.
+\newblock \emph{Analysis 3- Maß- und Integrationstheorie, Integralsätze im
+  $\mathbb{R}^n$ und Anwendungen}.
+\newblock Springer, 2012.
+
+\bibitem[Freeman and Adelson(1991)]{freeman1991design}
+William Freeman and Edward Adelson.
+\newblock The design and use of steerable filters.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 13\penalty0 (9):\penalty0 891--906, 1991.
+
+\bibitem[Gallier(2011)]{gallier2011geomMethods}
+Jean Gallier.
+\newblock \emph{Geometric Methods and Applications for Computer Science and
+  Engineering}.
+\newblock Springer, 2011.
+
+\bibitem[Gallier and Quaintance(2019{\natexlab{a}})]{gallier2019diffgeom1}
+Jean Gallier and Jocelyn Quaintance.
+\newblock \emph{Differential Geometry and Lie Groups- A Computational
+  Perspective}.
+\newblock Springer, 2019{\natexlab{a}}.
+
+\bibitem[Gallier and Quaintance(2019{\natexlab{b}})]{gallier2019diffgeom2}
+Jean Gallier and Jocelyn Quaintance.
+\newblock \emph{Differential Geometry and Lie Groups: A Second Course}.
+\newblock Springer, 2019{\natexlab{b}}.
+
+\bibitem[Gallier and Quaintance(2019{\natexlab{c}})]{gallier2019harmonicRepr}
+Jean Gallier and Jocelyn Quaintance.
+\newblock \emph{Aspects of harmonic analysis and representation theory}.
+\newblock World Scientific, 2019{\natexlab{c}}.
+
+\bibitem[Ghosh and Gupta(2019)]{ghosh2019scale}
+Rohan Ghosh and Anupam~K Gupta.
+\newblock Scale steerable filters for locally scale-invariant convolutional
+  neural networks.
+\newblock \emph{arXiv preprint arXiv:1906.03861}, 2019.
+
+\bibitem[Gong et~al.(2019)Gong, Chen, Bronstein, and
+  Zafeiriou]{gong2019spiralnet++}
+Shunwang Gong, Lei Chen, Michael Bronstein, and Stefanos Zafeiriou.
+\newblock Spiralnet++: A fast and highly efficient mesh convolution operator.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision Workshops}, pages 0--0, 2019.
+
+\bibitem[Graham et~al.(2020)Graham, Epstein, and Rajpoot]{graham2020dense}
+Simon Graham, David Epstein, and Nasir Rajpoot.
+\newblock Dense steerable filter cnns for exploiting rotational symmetry in
+  histology images.
+\newblock \emph{arXiv preprint arXiv:2004.03037}, 2020.
+
+\bibitem[Guo et~al.(2020)Guo, Wang, Hu, Liu, Liu, and Bennamoun]{guo2020deep}
+Yulan Guo, Hanyun Wang, Qingyong Hu, Hao Liu, Li~Liu, and Mohammed Bennamoun.
+\newblock Deep learning for 3d point clouds: A survey.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 2020.
+
+\bibitem[Gupta et~al.(2020)Gupta, Arya, and Gavves]{gupta2020rotation}
+Deepak~K Gupta, Devanshu Arya, and Efstratios Gavves.
+\newblock Rotation equivariant siamese networks for tracking.
+\newblock \emph{arXiv preprint arXiv:2012.13078}, 2020.
+
+\bibitem[Gurarie(1992)]{gurarie1992symmetries}
+David Gurarie.
+\newblock \emph{Symmetries and Laplacians: introduction to harmonic analysis,
+  group representations and applications}.
+\newblock Elsevier science publishers B.V., 1992.
+
+\bibitem[Haim et~al.(2018)Haim, Segol, Ben-Hamu, Maron, and
+  Lipman]{haim2018surface}
+Niv Haim, Nimrod Segol, Heli Ben-Hamu, Haggai Maron, and Yaron Lipman.
+\newblock Surface networks via general covers.
+\newblock \emph{arXiv preprint arXiv:1812.10705}, 2018.
+
+\bibitem[Han et~al.(2021)Han, Ding, Xue, and Xia]{han2021ReDet}
+Jiaming Han, Jian Ding, Nan Xue, and Gui-Song Xia.
+\newblock Redet: A rotation-equivariant detector for aerial object detection.
+\newblock \emph{arXiv preprint arXiv:2103.07733}, 2021.
+
+\bibitem[Hanocka et~al.(2019)Hanocka, Hertz, Fish, Giryes, Fleishman, and
+  Cohen-Or]{hanocka2019meshcnn}
+Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, and Daniel
+  Cohen-Or.
+\newblock Meshcnn: a network with an edge.
+\newblock \emph{ACM Transactions on Graphics}, 38\penalty0 (4):\penalty0 1--12,
+  2019.
+
+\bibitem[Hel-Or and Teo(1998)]{hel1998canonical}
+Yacov Hel-Or and Patrick~C Teo.
+\newblock Canonical decomposition of steerable functions.
+\newblock \emph{Journal of Mathematical Imaging and Vision}, 9\penalty0
+  (1):\penalty0 83--95, 1998.
+
+\bibitem[Hertz et~al.(2020)Hertz, Hanocka, Giryes, and
+  Cohen-Or]{hertz2020GeomTextureSynthesis}
+Amir Hertz, Rana Hanocka, Raja Giryes, and Daniel Cohen-Or.
+\newblock Deep geometric texture synthesis.
+\newblock \emph{ACM Transactions on Graphics (TOG)}, 39\penalty0 (4):\penalty0
+  108--1, 2020.
+
+\bibitem[Holderrieth et~al.(2020)Holderrieth, Hutchinson, and
+  Teh]{holderrieth2020steerableCNP}
+Peter Holderrieth, Michael Hutchinson, and Yee~Whye Teh.
+\newblock Equivariant conditional neural processes.
+\newblock \emph{arXiv preprint arXiv:2011.12916}, 2020.
+
+\bibitem[Hoogeboom et~al.(2018)Hoogeboom, Peters, Cohen, and
+  Welling]{Hoogeboom2018-HEX}
+Emiel Hoogeboom, Jorn~WT Peters, Taco~S Cohen, and Max Welling.
+\newblock Hexaconv.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2018.
+
+\bibitem[Horie et~al.(2020)Horie, Morita, Ihara, and
+  Mitsume]{horie2020isometric}
+Masanobu Horie, Naoki Morita, Yu~Ihara, and Naoto Mitsume.
+\newblock Isometric transformation invariant and equivariant graph
+  convolutional networks.
+\newblock \emph{arXiv preprint arXiv:2005.06316}, 2020.
+
+\bibitem[Hsu and Arsenault(1982)]{Hsu1982optical}
+Yuan-Neng Hsu and H~Arsenault.
+\newblock Optical pattern recognition using circular harmonic expansion.
+\newblock \emph{Applied Optics}, 21\penalty0 (22):\penalty0 4016--4019, 1982.
+
+\bibitem[Hu et~al.(2017)Hu, Lin, Liu, Cheng, Chang, and Sun]{hu2017spherical}
+Hou-Ning Hu, Yen-Chen Lin, Ming-Yu Liu, Hsien-Tzu Cheng, Yung-Ju Chang, and Min
+  Sun.
+\newblock Deep 360 pilot: Learning a deep agent for piloting through 360◦
+  sports videos.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017.
+
+\bibitem[Huang et~al.(2018)Huang, Zhou, Niessner, Shewchuk, and
+  Guibas]{Huang2018QuadriFlow}
+Jingwei Huang, Yichao Zhou, Matthias Niessner, Jonathan~Richard Shewchuk, and
+  Leonidas~J Guibas.
+\newblock Quadriflow: A scalable and robust method for quadrangulation.
+\newblock \emph{Computer Graphics Forum}, 37\penalty0 (5):\penalty0 147--160,
+  2018.
+\newblock \doi{10.1111/cgf.13498}.
+
+\bibitem[Huang et~al.(2019)Huang, Zhang, Yi, Funkhouser, Nießner, and
+  Guibas]{huang2019texturenet}
+Jingwei Huang, Haotian Zhang, Li~Yi, Thomas Funkhouser, Matthias Nießner, and
+  Leonidas~J Guibas.
+\newblock Texturenet: Consistent local parametrizations for learning from
+  high-resolution signals on meshes.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2019.
+
+\bibitem[Husemöller(1994)]{husemollerFibreBundles1994a}
+Dale Husemöller.
+\newblock \emph{Fibre Bundles}.
+\newblock Number~20 in Graduate Texts in Mathematics. Springer-Verlag, New
+  York, 3rd ed edition, 1994.
+\newblock ISBN 978-0-387-94087-8.
+
+\bibitem[Janssen et~al.(2018)Janssen, Janssen, Bekkers, Bescós, and
+  Duits]{janssen2018design}
+Michiel Janssen, Augustus Janssen, Erik Bekkers, Javier~Oliván Bescós, and
+  Remco Duits.
+\newblock Design and processing of invertible orientation scores of 3d images.
+\newblock \emph{Journal of Mathematical Imaging and Vision}, 60\penalty0
+  (9):\penalty0 1427--1458, 2018.
+
+\bibitem[Jeevanjee(2011)]{jeevanjee2011reprOp}
+Nadir Jeevanjee.
+\newblock \emph{An introduction to tensors and group theory for physicists}.
+\newblock Birkhäuser, New York, NY, 2011.
+\newblock \doi{10.1007/978-0-8176-4715-5}.
+
+\bibitem[Jiang et~al.(2019)Jiang, Huang, Kashinath, Prabhat, Marcus, and
+  Niessner]{jiang2019spherical}
+Chiyu Jiang, Jingwei Huang, Karthik Kashinath, Prabhat, Philip Marcus, and
+  Matthias Niessner.
+\newblock Spherical cnns on unstructured grids.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2019.
+
+\bibitem[Jin et~al.(2018)Jin, Lian, and Hua]{jin2018learning}
+Hai Jin, Yuanfeng Lian, and Jing Hua.
+\newblock Learning facial expressions with 3d mesh convolutional neural
+  network.
+\newblock \emph{ACM Transactions on Intelligent Systems and Technology (TIST)},
+  10\penalty0 (1):\penalty0 1--22, 2018.
+
+\bibitem[Jin et~al.(2019)Jin, Lai, Lai, and Dong]{jin2019NPTCnet}
+Pengfei Jin, Tianhao Lai, Rongjie Lai, and Bin Dong.
+\newblock Nptc-net: Narrow-band parallel transport convolutional neural network
+  on point clouds.
+\newblock \emph{arXiv preprint arXiv:1905.12218}, 2019.
+
+\bibitem[Khasanova and Frossard(2018)]{khasanova2018isometric}
+Renata Khasanova and Pascal Frossard.
+\newblock Isometric transformation invariant graph-based deep neural network.
+\newblock \emph{arXiv preprint arXiv:1808.07366}, 2018.
+
+\bibitem[Kicanaoglu et~al.(2019)Kicanaoglu, de~Haan, and
+  Cohen]{kicanaoglu2019gaugeSphere}
+Berkay Kicanaoglu, Pim de~Haan, and Taco Cohen.
+\newblock Gauge equivariant spherical cnns.
+\newblock \emph{arXiv preprint arXiv:1906.04132}, 2019.
+
+\bibitem[Kimmel and Sethian(1998)]{kimmel1998computingGeodesics}
+Ron Kimmel and James~A Sethian.
+\newblock Computing geodesic paths on manifolds.
+\newblock \emph{Proceedings of the national academy of Sciences}, 95\penalty0
+  (15):\penalty0 8431--8435, 1998.
+
+\bibitem[Kingma and Ba(2015)]{Kingma2015-yq}
+Diederik Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2015.
+
+\bibitem[Kipf and Welling(2017)]{kipf2016semi}
+Thomas Kipf and Max Welling.
+\newblock Semi-supervised classification with graph convolutional networks.
+\newblock \emph{International Conference on Learning Representations}, 2017.
+
+\bibitem[Klenke(2006)]{klenke2006probability}
+Achim Klenke.
+\newblock \emph{Probability theory: a comprehensive course}.
+\newblock Springer Science \& Business Media, 2006.
+
+\bibitem[Klimyk and Vilenkin(2013)]{vilenkin2013representation}
+Anatolii~Ulianovich Klimyk and Ja~Vilenkin.
+\newblock \emph{Representation of Lie groups and special functions: Volume 3:
+  Classical and quantum groups and special functions}, volume~75.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem[Knöppel et~al.(2013)Knöppel, Crane, Pinkall, and
+  Schröder]{Knoppel:2013:GOD}
+Felix Knöppel, Keenan Crane, Ulrich Pinkall, and Peter Schröder.
+\newblock Globally optimal direction fields.
+\newblock \emph{ACM Trans. Graph.}, 32\penalty0 (4), 2013.
+
+\bibitem[Kobayashi and
+  Nomizu(1963)]{shoshichikobayashiFoundationsDifferentialGeometry1963}
+Shoshichi Kobayashi and Katsumi Nomizu.
+\newblock \emph{Foundations of Differential Geometry (Volume 1)}.
+\newblock Interscience Publishers, 1963.
+
+\bibitem[Kondor(2018)]{Kondor2018-NBN}
+Risi Kondor.
+\newblock N-body networks: a covariant hierarchical neural network architecture
+  for learning atomic potentials.
+\newblock \emph{arXiv preprint arXiv:1803.01588}, 2018.
+
+\bibitem[Kondor and Trivedi(2018)]{Kondor2018-GENERAL}
+Risi Kondor and Shubhendu Trivedi.
+\newblock On the generalization of equivariance and convolution in neural
+  networks to the action of compact groups.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2018.
+
+\bibitem[Kondor et~al.(2018)Kondor, Lin, and Trivedi]{kondor2018ClebschGordan}
+Risi Kondor, Zhen Lin, and Shubhendu Trivedi.
+\newblock Clebsch–gordan nets: A fully fourier space spherical convolutional
+  neural network.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2018.
+
+\bibitem[Kowalski(2010)]{kowalski2010introduction}
+Emmanuel Kowalski.
+\newblock \emph{An introduction to the representation theory of groups}, volume
+  155.
+\newblock American Mathematical Society, 2010.
+
+\bibitem[Lafarge et~al.(2021)Lafarge, Bekkers, Pluim, Duits, and
+  Veta]{lafarge2020rototranslation}
+Maxime Lafarge, Erik Bekkers, Josien Pluim, Remco Duits, and Mitko Veta.
+\newblock Roto-translation equivariant convolutional networks: Application to
+  histopathology image analysis.
+\newblock \emph{Medical Image Analysis}, 68:\penalty0 101849, 2021.
+
+\bibitem[Lai et~al.(2017)Lai, Huang, Joshi, Buehler, Yang, and
+  Kang]{lai2017semantic}
+Wei-Sheng Lai, Yujia Huang, Neel Joshi, Christopher Buehler, Ming-Hsuan Yang,
+  and Sing~Bing Kang.
+\newblock Semantic-driven generation of hyperlapse from 360 degree video.
+\newblock \emph{IEEE transactions on visualization and computer graphics},
+  24\penalty0 (9):\penalty0 2610--2621, 2017.
+
+\bibitem[Lai et~al.(2010)Lai, Jin, Xie, He, Palacios, Zhang, Hu, and
+  Gu]{lai2009metric}
+Yu-Kun Lai, Miao Jin, Xuexiang Xie, Ying He, Jonathan Palacios, Eugene Zhang,
+  Shi-Min Hu, and Xianfeng Gu.
+\newblock Metric-driven rosy fields design and remeshing.
+\newblock \emph{IEEE Transactions on Visualization and Computer Graphics},
+  16\penalty0 (1):\penalty0 95--108, 2010.
+
+\bibitem[Lang and Weiler(2020)]{lang2020WignerEckart}
+Leon Lang and Maurice Weiler.
+\newblock A wigner-eckart theorem for group equivariant convolution kernels.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2020.
+\newblock URL \url{https://arxiv.org/abs/2010.10952}.
+
+\bibitem[Laptev et~al.(2016)Laptev, Savinov, Buhmann, and
+  Pollefeys]{Laptev_2016_CVPR}
+Dmitry Laptev, Nikolay Savinov, Joachim~M Buhmann, and Marc Pollefeys.
+\newblock Ti-pooling: Transformation-invariant pooling for feature learning in
+  convolutional neural networks.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2016.
+
+\bibitem[LeCun et~al.(1990)LeCun, Boser, Denker, Henderson, Howard, Hubbard,
+  and Jackel]{LeCun1990CNNs}
+Yann LeCun, Bernhard~E Boser, John~S Denker, Donnie Henderson, R~E Howard,
+  Wayne~E Hubbard, and Lawrence~D Jackel.
+\newblock Handwritten digit recognition with a back-propagation network.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 1990.
+
+\bibitem[Lee et~al.(2019)Lee, Jeong, Yun, Cho, and Yoon]{lee2019spherephd}
+Yeonkun Lee, Jaeseok Jeong, Jongseob Yun, Wonjune Cho, and Kuk-Jin Yoon.
+\newblock Spherephd: Applying cnns on a spherical polyhedron representation of
+  360deg images.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 9181--9189, 2019.
+
+\bibitem[Li et~al.(2019)Li, Luo, Zhen, Yao, Shen, Fang, and
+  Quan]{li2019crossAtlas}
+Shiwei Li, Zixin Luo, Mingmin Zhen, Yao Yao, Tianwei Shen, Tian Fang, and Long
+  Quan.
+\newblock Cross-atlas convolution for parameterization invariant learning on
+  textured mesh surface.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2019.
+
+\bibitem[Li et~al.(2006)Li, Vallet, Ray, and Levy]{li2006representing}
+Wan-Chiu Li, Bruno Vallet, Nicolas Ray, and Bruno Levy.
+\newblock Representing higher-order singularities in vector fields on piecewise
+  linear surfaces.
+\newblock \emph{IEEE Transactions on Visualization and Computer Graphics},
+  12\penalty0 (5):\penalty0 1315--1322, 2006.
+
+\bibitem[Lim et~al.(2018)Lim, Dielen, Campen, and Kobbelt]{lim2018simple}
+Isaak Lim, Alexander Dielen, Marcel Campen, and Leif Kobbelt.
+\newblock A simple approach to intrinsic correspondence learning on
+  unstructured 3d meshes.
+\newblock In \emph{Proceedings of the European Conference on Computer Vision
+  (ECCV) Workshops}, pages 0--0, 2018.
+
+\bibitem[Lipman et~al.(2005)Lipman, Sorkine, Levin, and
+  Cohen-Or]{lipman2005linear}
+Yaron Lipman, Olga Sorkine, David Levin, and Daniel Cohen-Or.
+\newblock Linear rotation-invariant coordinates for meshes.
+\newblock \emph{ACM Transactions on Graphics (TOG)}, 24\penalty0 (3):\penalty0
+  479--487, 2005.
+
+\bibitem[Liu et~al.(2016)Liu, Tong, De~Goes, and
+  Desbrun]{liu2016discreteConnection}
+Beibei Liu, Yiying Tong, Fernando De~Goes, and Mathieu Desbrun.
+\newblock Discrete connection and covariant derivative for vector field
+  analysis and design.
+\newblock \emph{ACM Transactions on Graphics (TOG)}, 35\penalty0 (3):\penalty0
+  1--17, 2016.
+
+\bibitem[Liu et~al.(2019)Liu, Yao, Choi, Ayan, and Ramani]{liu2018icoAltAz}
+Min Liu, Fupin Yao, Chiho Choi, Sinha Ayan, and Karthik Ramani.
+\newblock Deep learning 3d shapes using alt-az anisotropic 2-sphere
+  convolution.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2019.
+
+\bibitem[Makadia and Daniilidis(2006)]{makadia2006rotation}
+Ameesh Makadia and Kostas Daniilidis.
+\newblock Rotation recovery from spherical images without correspondences.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 28\penalty0 (7):\penalty0 1170--1175, 2006.
+
+\bibitem[Mallat(2012)]{mallat2012group}
+Stéphane Mallat.
+\newblock Group invariant scattering.
+\newblock \emph{Communications on Pure and Applied Mathematics}, 65\penalty0
+  (10):\penalty0 1331--1398, 2012.
+
+\bibitem[Marcos et~al.(2016)Marcos, Volpi, and Tuia]{marcos2016learning}
+Diego Marcos, Michele Volpi, and Devis Tuia.
+\newblock Learning rotation invariant convolutional filters for texture
+  classification.
+\newblock In \emph{International Conference on Pattern Recognition (ICPR)},
+  2016.
+
+\bibitem[Marcos et~al.(2017)Marcos, Volpi, Komodakis, and Tuia]{Marcos2017-VFN}
+Diego Marcos, Michele Volpi, Nikos Komodakis, and Devis Tuia.
+\newblock Rotation equivariant vector field networks.
+\newblock In \emph{International Conference on Computer Vision (ICCV)}, 2017.
+
+\bibitem[Marcos et~al.(2018)Marcos, Kellenberger, Lobry, and
+  Tuia]{marcos2018scale}
+Diego Marcos, Benjamin Kellenberger, Sylvain Lobry, and Devis Tuia.
+\newblock Scale equivariance in cnns with vector fields.
+\newblock \emph{arXiv preprint arXiv:1807.11783}, 2018.
+
+\bibitem[Maron et~al.(2017)Maron, Galun, Aigerman, Trope, Dym, Yumer, Kim, and
+  Lipman]{maron2017convolutional}
+Haggai Maron, Meirav Galun, Noam Aigerman, Miri Trope, Nadav Dym, Ersin Yumer,
+  Vladimir~G Kim, and Yaron Lipman.
+\newblock Convolutional neural networks on surfaces via seamless toric covers.
+\newblock \emph{ACM Trans. Graph.}, 36\penalty0 (4):\penalty0 71--1, 2017.
+
+\bibitem[Marsh(2016)]{marshGaugeTheoriesFiber2016}
+Adam Marsh.
+\newblock Gauge theories and fiber bundles: Definitions, pictures, and results.
+\newblock \emph{arXiv preprint arXiv:1607.03089}, 2016.
+
+\bibitem[Martin et~al.(2020)Martin, Serrano, and Masia]{martin2020panoramic}
+Daniel Martin, Ana Serrano, and Belen Masia.
+\newblock Panoramic convolutions for 360◦ single-image saliency prediction.
+\newblock \emph{arXiv preprint arXiv:2008.02996}, 2020.
+
+\bibitem[Masci et~al.(2015{\natexlab{a}})Masci, Boscaini, Bronstein, and
+  Vandergheynst]{masci2015geodesic}
+Jonathan Masci, Davide Boscaini, Michael Bronstein, and Pierre Vandergheynst.
+\newblock Geodesic convolutional neural networks on riemannian manifolds.
+\newblock In \emph{Proceedings of the IEEE international conference on computer
+  vision workshops}, 2015{\natexlab{a}}.
+
+\bibitem[Masci et~al.(2015{\natexlab{b}})Masci, Boscaini, Bronstein, and
+  Vandergheynst]{masci2015shapenet}
+Jonathan Masci, Davide Boscaini, Michael Bronstein, and Pierre Vandergheynst.
+\newblock Shapenet: Convolutional neural networks on non-euclidean manifolds.
+\newblock Technical report, IDIAP, 2015{\natexlab{b}}.
+
+\bibitem[Melzi et~al.(2018)Melzi, Rodolà, Castellani, and
+  Bronstein]{melzi2018localized}
+Simone Melzi, Emanuele Rodolà, Umberto Castellani, and Michael~M Bronstein.
+\newblock Localized manifold harmonics for spectral shape analysis.
+\newblock In \emph{Computer Graphics Forum}, volume~37, pages 20--34. Wiley
+  Online Library, 2018.
+
+\bibitem[Mescheder et~al.(2019)Mescheder, Oechsle, Niemeyer, Nowozin, and
+  Geiger]{mescheder2019occupancyNets}
+Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and
+  Andreas Geiger.
+\newblock Occupancy networks: Learning 3d reconstruction in function space.
+\newblock \emph{Conference on Computer Vision and Pattern Recognition}, 2019.
+
+\bibitem[Meyer et~al.(2003)Meyer, Desbrun, Schröder, and
+  Barr]{meyer2003discrete}
+Mark Meyer, Mathieu Desbrun, Peter Schröder, and Alan~H Barr.
+\newblock Discrete differential-geometry operators for triangulated
+  2-manifolds.
+\newblock In \emph{Visualization and mathematics III}, pages 35--57. Springer,
+  2003.
+
+\bibitem[Milano et~al.(2020)Milano, Loquercio, Rosinol, Scaramuzza, and
+  Carlone]{milano2020primaldual}
+Francesco Milano, Antonio Loquercio, Antoni Rosinol, Davide Scaramuzza, and
+  Luca Carlone.
+\newblock Primal-dual mesh convolutional neural networks.
+\newblock \emph{Conference on Neural Information Processing Systems}, 2020.
+
+\bibitem[Miller et~al.(2020)Miller, Geiger, Smidt, and
+  Noé]{miller2020relevance}
+Benjamin~Kurt Miller, Mario Geiger, Tess~E Smidt, and Frank Noé.
+\newblock Relevance of rotationally equivariant convolutions for predicting
+  molecular properties.
+\newblock \emph{arXiv preprint arXiv:2008.08461}, 2020.
+
+\bibitem[Mitchell et~al.(1987)Mitchell, Mount, and
+  Papadimitriou]{mitchell1987discrete}
+Joseph~SB Mitchell, David~M Mount, and Christos~H Papadimitriou.
+\newblock The discrete geodesic problem.
+\newblock \emph{SIAM Journal on Computing}, 16\penalty0 (4):\penalty0 647--668,
+  1987.
+
+\bibitem[Mohamed et~al.(2020)Mohamed, Cesa, Cohen, and
+  Welling]{mohamed2020data}
+Mirgahney Mohamed, Gabriele Cesa, Taco Cohen, and Max Welling.
+\newblock A data and compute efficient design for limited-resources deep
+  learning.
+\newblock \emph{arXiv preprint arXiv:2004.09691}, 2020.
+
+\bibitem[Mondal et~al.(2020)Mondal, Nair, and Siddiqi]{mondal2020group}
+Arnab~Kumar Mondal, Pratheeksha Nair, and Kaleem Siddiqi.
+\newblock Group equivariant deep reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2007.03437}, 2020.
+
+\bibitem[Monti et~al.(2017)Monti, Boscaini, Masci, Rodola, Svoboda, and
+  Bronstein]{monti2017geometric}
+Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodola, Jan Svoboda,
+  and Michael Bronstein.
+\newblock Geometric deep learning on graphs and manifolds using mixture model
+  cnns.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017.
+
+\bibitem[Naderi et~al.(2020)Naderi, Goli, and Kasaei]{naderi2020scalesteerable}
+H~Naderi, L~Goli, and S~Kasaei.
+\newblock Scale equivariant cnns with scale steerable filters.
+\newblock In \emph{2020 International Conference on Machine Vision and Image
+  Processing (MVIP)}, 2020.
+
+\bibitem[Nakahara(2003)]{nakahara2003geometry}
+Mikio Nakahara.
+\newblock \emph{Geometry, topology and physics}.
+\newblock CRC Press, 2003.
+
+\bibitem[Neeb(2010)]{neeb2010differential}
+Karl-Hermann Neeb.
+\newblock Differential topology of fiber bundles.
+\newblock \emph{FAU Erlangen-Nuernberg}, 2010.
+
+\bibitem[Oyallon and Mallat(2015)]{oyallon2015scattering}
+Edouard Oyallon and Stéphane Mallat.
+\newblock Deep roto-translation scattering for object classification.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2015.
+
+\bibitem[Paulsen et~al.(2018)Paulsen, Juhl, Haspang, Hansen, Ganz, and
+  Einarsson]{paulsen2018multi}
+Rasmus~R Paulsen, Kristine~Aavild Juhl, Thilde~Marie Haspang, Thomas Hansen,
+  Melanie Ganz, and Gudmundur Einarsson.
+\newblock Multi-view consensus cnn for 3d facial landmark placement.
+\newblock In \emph{Asian Conference on Computer Vision}, pages 706--719.
+  Springer, 2018.
+
+\bibitem[Peng et~al.(2020)Peng, Niemeyer, Mescheder, Pollefeys, and
+  Geiger]{peng2020occupancyCNNs}
+Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas
+  Geiger.
+\newblock Convolutional occupancy networks.
+\newblock \emph{arXiv preprint arXiv:2003.04618}, 2020.
+
+\bibitem[Perraudin et~al.(2018)Perraudin, Defferrard, Kacprzak, and
+  Sgier]{perraudin2018DeepSphere}
+Nathanaël Perraudin, Michaël Defferrard, Tomasz Kacprzak, and Raphael Sgier.
+\newblock Deepsphere: Efficient spherical convolutional neural network with
+  healpix sampling for cosmological applications.
+\newblock \emph{arXiv:1810.12186 [astro-ph]}, 2018.
+
+\bibitem[Piccione and Tausk(2006)]{piccione2006theory}
+Paolo Piccione and Daniel~V Tausk.
+\newblock \emph{The theory of connections and G-structures: applications to
+  affine and isometric immersions}.
+\newblock IMPA, 2006.
+
+\bibitem[Polthier and Schmies(1998)]{polthier1998straightest}
+Konrad Polthier and Markus Schmies.
+\newblock Straightest geodesics on polyhedral surfaces.
+\newblock \emph{Mathematical visualization. Heidelberg: Springer Verlag}, pages
+  135--50, 1998.
+
+\bibitem[Poulenard and Ovsjanikov(2018)]{poulenard2018multi}
+Adrien Poulenard and Maks Ovsjanikov.
+\newblock Multi-directional geodesic neural networks via equivariant
+  convolution.
+\newblock In \emph{SIGGRAPH Asia 2018 Technical Papers}, page 236. ACM, 2018.
+
+\bibitem[Poulenard et~al.(2019)Poulenard, Rakotosaona, Ponty, and
+  Ovsjanikov]{poulenard2019effective}
+Adrien Poulenard, Marie-Julie Rakotosaona, Yann Ponty, and Maks Ovsjanikov.
+\newblock Effective rotation-invariant point cnn with spherical harmonics
+  kernels.
+\newblock In \emph{2019 International Conference on 3D Vision (3DV)}, pages
+  47--56. IEEE, 2019.
+
+\bibitem[Qi et~al.(2017{\natexlab{a}})Qi, Su, Mo, and Guibas]{qi2017pointnet}
+Charles Qi, Hao Su, Kaichun Mo, and Leonidas Guibas.
+\newblock Pointnet: Deep learning on point sets for 3d classification and
+  segmentation.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017{\natexlab{a}}.
+
+\bibitem[Qi et~al.(2017{\natexlab{b}})Qi, Yi, Su, and Guibas]{qi2017pointnet++}
+Charles Qi, Li~Yi, Hao Su, and Leonidas Guibas.
+\newblock Pointnet++: Deep hierarchical feature learning on point sets in a
+  metric space.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2017{\natexlab{b}}.
+
+\bibitem[Qi et~al.(2016)Qi, Su, Nießner, Dai, Yan, and
+  Guibas]{qi2016volumetric}
+Charles~R Qi, Hao Su, Matthias Nießner, Angela Dai, Mengyuan Yan, and
+  Leonidas~J Guibas.
+\newblock Volumetric and multi-view cnns for object classification on 3d data.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 5648--5656, 2016.
+
+\bibitem[Ramasinghe et~al.(2019)Ramasinghe, Khan, Barnes, and
+  Gould]{ramasinghe2019representation}
+Sameera Ramasinghe, Salman Khan, Nick Barnes, and Stephen Gould.
+\newblock Representation learning on unit ball with 3d roto-translational
+  equivariance.
+\newblock \emph{International Journal of Computer Vision}, pages 1--23, 2019.
+
+\bibitem[Ravanbakhsh et~al.(2017)Ravanbakhsh, Schneider, and
+  Poczos]{ravanbakhsh2017EquivarianceParameterSharing}
+Siamak Ravanbakhsh, Jeff Schneider, and Barnabas Poczos.
+\newblock Equivariance through parameter-sharing.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2017.
+
+\bibitem[Ray et~al.(2008)Ray, Vallet, Li, and
+  Lévy]{ray2008nSymmDirectionField}
+Nicolas Ray, Bruno Vallet, Wan~Chiu Li, and Bruno Lévy.
+\newblock N-symmetry direction field design.
+\newblock \emph{ACM Transactions on Graphics (TOG)}, 27\penalty0 (2):\penalty0
+  1--13, 2008.
+
+\bibitem[Romero et~al.(2020{\natexlab{a}})Romero, Bekkers, Tomczak, and
+  Hoogendoorn]{romero2020attentive}
+David Romero, Erik Bekkers, Jakub Tomczak, and Mark Hoogendoorn.
+\newblock Attentive group equivariant convolutional networks.
+\newblock \emph{International Conference on Machine Learning},
+  2020{\natexlab{a}}.
+
+\bibitem[Romero et~al.(2020{\natexlab{b}})Romero, Bekkers, Tomczak, and
+  Hoogendoorn]{romero2020wavelet}
+David Romero, Erik Bekkers, Jakub Tomczak, and Mark Hoogendoorn.
+\newblock Wavelet networks: Scale equivariant learning from raw waveforms.
+\newblock \emph{arXiv preprint arXiv:2006.05259}, 2020{\natexlab{b}}.
+
+\bibitem[Rosen and Shamir(1988)]{Rosen1988circularHarmonic}
+Joseph Rosen and Joseph Shamir.
+\newblock Circular harmonic phase filters for efficient rotation-invariant
+  pattern recognition.
+\newblock \emph{Applied Optics}, 27\penalty0 (14):\penalty0 2895--2899, 1988.
+
+\bibitem[Rudin(1976)]{rudin1976analysis}
+Walter Rudin.
+\newblock \emph{Principles of mathematical analysis}.
+\newblock McGraw-hill, Inc. New York, 1976.
+
+\bibitem[Saff and Kuijlaars(1997)]{saff1997distributing}
+Edward Saff and Arno Kuijlaars.
+\newblock Distributing many points on a sphere.
+\newblock \emph{The mathematical intelligencer}, 19\penalty0 (1):\penalty0
+  5--11, 1997.
+
+\bibitem[Saito et~al.(1983)Saito, Komatsu, and Ohzu]{saito1983scale}
+Yoshiharu Saito, Shin-ichi Komatsu, and Hitoshi Ohzu.
+\newblock Scale and rotation invariant real time optical correlator using
+  computer generated hologram.
+\newblock \emph{Optics Communications}, 47\penalty0 (1):\penalty0 8--11, 1983.
+
+\bibitem[Scaife and Porter(2021)]{scaife2021RadioGalaxy}
+Anna~MM Scaife and Fiona Porter.
+\newblock Fanaroff-riley classification of radio galaxies using group
+  equivariant convolutional neural networks.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society},
+  503\penalty0 (2):\penalty0 2369--2379, 2021.
+
+\bibitem[Schonsheck et~al.(2018)Schonsheck, Dong, and
+  Lai]{schonsheck2018parallel}
+Stefan~C Schonsheck, Bin Dong, and Rongjie Lai.
+\newblock Parallel transport convolution: A new tool for convolutional neural
+  networks on manifolds.
+\newblock \emph{arXiv preprint arXiv:1805.07857}, 2018.
+
+\bibitem[Schröder and Sweldens(1995)]{schroder1995spherical}
+Peter Schröder and Wim Sweldens.
+\newblock Spherical wavelets: Efficiently representing functions on the sphere.
+\newblock In \emph{Proceedings of the 22nd annual conference on Computer
+  graphics and interactive techniques}, pages 161--172, 1995.
+
+\bibitem[Schuller(2016)]{schullerGeometricalAnatomy2016}
+Frederic Schuller.
+\newblock Lectures on the geometrical anatomy of theoretical physics, 2016.
+
+\bibitem[Serre(1977)]{serre1977linear}
+Jean-Pierre Serre.
+\newblock \emph{Linear representations of finite groups}.
+\newblock Springer, 1977.
+
+\bibitem[Sharp et~al.(2019)Sharp, Soliman, and
+  Crane]{Sharp2019VectorHeatMethod}
+Nicholas Sharp, Yousuf Soliman, and Keenan Crane.
+\newblock The vector heat method.
+\newblock \emph{ACM Trans. Graph.}, 38\penalty0 (3), 2019.
+
+\bibitem[Sharp et~al.(2020)Sharp, Attaiki, Crane, and
+  Ovsjanikov]{sharp2020diffusion}
+Nicholas Sharp, Souhaib Attaiki, Keenan Crane, and Maks Ovsjanikov.
+\newblock Diffusion is all you need for learning on surfaces.
+\newblock \emph{arXiv preprint arXiv:2012.00888}, 2020.
+
+\bibitem[Shen et~al.(2020)Shen, He, Lin, and Ma]{shen2020PDOeConvs}
+Zhengyang Shen, Lingshen He, Zhouchen Lin, and Jinwen Ma.
+\newblock Pdo-econvs: Partial differential operator based equivariant
+  convolutions.
+\newblock \emph{International Conference on Machine Learning}, 2020.
+
+\bibitem[Shutty and Wierzynski(2020)]{shutty2020learning}
+Noah Shutty and Casimir Wierzynski.
+\newblock Learning irreducible representations of noncommutative lie groups.
+\newblock \emph{arXiv preprint arXiv:2006.00724}, 2020.
+
+\bibitem[Sifre and Mallat(2012)]{sifre2012combined}
+Laurent Sifre and Stéphane Mallat.
+\newblock Combined scattering for rotation invariant texture analysis.
+\newblock In \emph{European Symposium on Artificial Neural Networks,
+  Computational Intelligence and Machine Learning (ESANN)}, volume~44, pages
+  68--81, 2012.
+
+\bibitem[Sifre and Mallat(2013)]{Sifre2013-GSCAT}
+Laurent Sifre and Stéphane Mallat.
+\newblock Rotation, scaling and deformation invariant scattering for texture
+  discrimination.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2013.
+
+\bibitem[Sifre and Mallat(2014)]{sifre2014rigid}
+Laurent Sifre and Stéphane Mallat.
+\newblock Rigid-motion scattering for texture classification.
+\newblock \emph{arXiv preprint arXiv:1403.1687}, 2014.
+
+\bibitem[Sinha et~al.(2016)Sinha, Bai, and Ramani]{sinha2016deep}
+Ayan Sinha, Jing Bai, and Karthik Ramani.
+\newblock Deep learning 3d shape surfaces using geometry images.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2016.
+
+\bibitem[Smets et~al.(2020)Smets, Portegies, Bekkers, and Duits]{smets2020pde}
+Bart Smets, Jim Portegies, Erik Bekkers, and Remco Duits.
+\newblock Pde-based group equivariant convolutional neural networks.
+\newblock \emph{arXiv preprint arXiv:2001.09046}, 2020.
+
+\bibitem[Sommer and Bronstein(2019)]{sommer2019horizontal}
+Stefan Sommer and Alex Bronstein.
+\newblock Horizontal flows and manifold stochastics in geometric deep learning.
+\newblock \emph{arXiv preprint arXiv:1910.14216}, 2019.
+
+\bibitem[Sosnovik et~al.(2020)Sosnovik, Szmaja, and
+  Smeulders]{Sosnovik2020scale}
+Ivan Sosnovik, Michał Szmaja, and Arnold Smeulders.
+\newblock Scale-equivariant steerable networks.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2020.
+
+\bibitem[Spivak(2019)]{spivak2019calculus}
+Michael Spivak.
+\newblock \emph{Calculus}.
+\newblock Reverté, 2019.
+
+\bibitem[Steenrod(1951)]{steenrodTopologyFibreBundles}
+Norman Steenrod.
+\newblock \emph{The Topology of Fibre Bundles}.
+\newblock Princeton University Press, 1951.
+
+\bibitem[Sternberg(1999)]{sternberg1999lectures}
+Shlomo Sternberg.
+\newblock \emph{Lectures on differential geometry}, volume 316.
+\newblock American Mathematical Soc., 1999.
+
+\bibitem[Su et~al.(2015)Su, Maji, Kalogerakis, and Learned-Miller]{su2015multi}
+Hang Su, Subhransu Maji, Evangelos Kalogerakis, and Erik Learned-Miller.
+\newblock Multi-view convolutional neural networks for 3d shape recognition.
+\newblock In \emph{Proceedings of the IEEE international conference on computer
+  vision}, pages 945--953, 2015.
+
+\bibitem[Su and Grauman(2017)]{su2017spherical}
+Yu-Chuan Su and Kristen Grauman.
+\newblock Learning spherical convolution for fast features from 360 imagery.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2017.
+
+\bibitem[Su and Grauman(2019)]{su2019kernel}
+Yu-Chuan Su and Kristen Grauman.
+\newblock Kernel transformer networks for compact spherical convolution.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2019.
+
+\bibitem[Su et~al.(2020)Su, Tan, Chow, Wu, Cheong, and Wang]{su2020dv}
+Zhaoyu Su, Pin~Siang Tan, Junkang Chow, Jimmy Wu, Yehur Cheong, and Yu-Hsing
+  Wang.
+\newblock Dvconvnet: Fully convolutional deep learning on point clouds with
+  dynamic voxelization and 3d group convolution.
+\newblock \emph{arXiv preprint arXiv:2009.02918}, 2020.
+
+\bibitem[Sun et~al.(2018)Sun, Rooke, Charton, He, Lu, and Baek]{sun2018zernet}
+Zhiyu Sun, Ethan Rooke, Jerome Charton, Yusen He, Jia Lu, and Stephen Baek.
+\newblock Zernet: Convolutional neural networks on arbitrary surfaces via
+  zernike local tangent space estimation.
+\newblock \emph{Computer Graphics Forum}, 37\penalty0 (5):\penalty0 204--215,
+  2018.
+
+\bibitem[Tatarchenko et~al.(2018)Tatarchenko, Park, Koltun, and
+  Zhou]{tatarchenko2018tangent}
+Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian-Yi Zhou.
+\newblock Tangent convolutions for dense prediction in 3d.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2018.
+
+\bibitem[Tateno et~al.(2018)Tateno, Navab, and Tombari]{tateno2018distortion}
+Keisuke Tateno, Nassir Navab, and Federico Tombari.
+\newblock Distortion-aware convolutional filters for dense prediction in
+  panoramic images.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2018.
+
+\bibitem[Thomas et~al.(2019)Thomas, Qi, Deschaud, Marcotegui, Goulette, and
+  Guibas]{thomas2019kpconv}
+Hugues Thomas, Charles~R Qi, Jean-Emmanuel Deschaud, Beatriz Marcotegui,
+  François Goulette, and Leonidas~J Guibas.
+\newblock Kpconv: Flexible and deformable convolution for point clouds.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 6411--6420, 2019.
+
+\bibitem[Thomas et~al.(2018)Thomas, Smidt, Kearnes, Yang, Li, Kohlhoff, and
+  Riley]{Thomas2018-TFN}
+Nathaniel Thomas, Tess Smidt, Steven Kearnes, Lusann Yang, Li~Li, Kai Kohlhoff,
+  and Patrick Riley.
+\newblock Tensor field networks: Rotation-and translation-equivariant neural
+  networks for 3d point clouds.
+\newblock \emph{arXiv preprint arXiv:1802.08219}, 2018.
+
+\bibitem[Tomboulis(2015)]{tomboulis2015nonlocal}
+ET~Tomboulis.
+\newblock Nonlocal and quasilocal field theories.
+\newblock \emph{Physical Review D}, 92\penalty0 (12):\penalty0 125037, 2015.
+
+\bibitem[Turk(2001)]{turk2001texture}
+Greg Turk.
+\newblock Texture synthesis on surfaces.
+\newblock In \emph{Proceedings of the 28th annual conference on Computer
+  graphics and interactive techniques}, pages 347--354, 2001.
+
+\bibitem[van~der Pol et~al.(2020)van~der Pol, Worrall, van Hoof, Oliehoek, and
+  Welling]{vanderPol2020MDP2}
+Elise van~der Pol, Daniel~E Worrall, Herke van Hoof, Frans~A Oliehoek, and Max
+  Welling.
+\newblock Mdp homomorphic networks: Group symmetries in reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2006.16908}, 2020.
+
+\bibitem[Verma et~al.(2018)Verma, Boyer, and Verbeek]{verma2018feastnet}
+Nitika Verma, Edmond Boyer, and Jakob Verbeek.
+\newblock Feastnet: Feature-steered graph convolutions for 3d shape analysis.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2018.
+
+\bibitem[Vouga(2014)]{vouga2014lectures}
+Etienne Vouga.
+\newblock Lectures in discrete differential geometry 3– discrete surfaces,
+  2014.
+
+\bibitem[Walters et~al.(2020)Walters, Li, and Yu]{walters2020trajectory}
+Robin Walters, Jinxi Li, and Rose Yu.
+\newblock Trajectory prediction using equivariant continuous convolution.
+\newblock \emph{arXiv preprint arXiv:2010.11344}, 2020.
+
+\bibitem[Wang et~al.(2020)Wang, Walters, and Yu]{wang2020incorporating}
+Rui Wang, Robin Walters, and Rose Yu.
+\newblock Incorporating symmetry into deep dynamics models for improved
+  generalization.
+\newblock \emph{arXiv preprint arXiv:2002.03061}, 2020.
+
+\bibitem[Wang et~al.(2012)Wang, Liu, and Tong]{wang2012surfaceReconstruction}
+Yuanzhen Wang, Beibei Liu, and Yiying Tong.
+\newblock Linear surface reconstruction from discrete fundamental forms on
+  triangle meshes.
+\newblock In \emph{Computer Graphics Forum}, volume~31, pages 2277--2287. Wiley
+  Online Library, 2012.
+
+\bibitem[Weiler and Cesa(2019)]{Weiler2019_E2CNN}
+Maurice Weiler and Gabriele Cesa.
+\newblock General e(2)-equivariant steerable cnns.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2019.
+
+\bibitem[Weiler et~al.(2018{\natexlab{a}})Weiler, Geiger, Welling, Boomsma, and
+  Cohen]{3d_steerableCNNs}
+Maurice Weiler, Mario Geiger, Max Welling, Wouter Boomsma, and Taco~S Cohen.
+\newblock 3d steerable cnns: Learning rotationally equivariant features in
+  volumetric data.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2018{\natexlab{a}}.
+
+\bibitem[Weiler et~al.(2018{\natexlab{b}})Weiler, Hamprecht, and
+  Storath]{Weiler2018SFCNN}
+Maurice Weiler, Fred~A Hamprecht, and Martin Storath.
+\newblock Learning steerable filters for rotation equivariant cnns.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2018{\natexlab{b}}.
+
+\bibitem[Wendl(2008)]{wendlLectureNotesBundles2008}
+Chris Wendl.
+\newblock Lecture notes on bundles and connections, 2008.
+\newblock URL
+  \url{https://www.mathematik.hu-berlin.de/~wendl/connections.html}.
+
+\bibitem[Wiersma et~al.(2020)Wiersma, Eisemann, and Hildebrandt]{Wiersma2020}
+Ruben Wiersma, Elmar Eisemann, and Klaus Hildebrandt.
+\newblock Cnns on surfaces using rotation-equivariant features.
+\newblock \emph{Transactions on Graphics}, 39\penalty0 (4), July 2020.
+\newblock \doi{10.1145/3386569.3392437}.
+
+\bibitem[Wigner(1931)]{wigner1931gruppentheorie}
+Eugene~Paul Wigner.
+\newblock \emph{Gruppentheorie und ihre Anwendung auf die Quantenmechanik der
+  Atomspektren}.
+\newblock Springer, 1931.
+
+\bibitem[Wigner(1993)]{wigner1993matrices}
+Eugene~Paul Wigner.
+\newblock On the matrices which reduce the kronecker products of
+  representations of s.r. groups.
+\newblock In \emph{The Collected Works of Eugene Paul Wigner}, pages 608--654.
+  Springer, 1993.
+
+\bibitem[Winkels and Cohen(2018)]{winkels3DGCNNsPulmonary2018}
+Marysia Winkels and Taco~S Cohen.
+\newblock 3d g-cnns for pulmonary nodule detection.
+\newblock In \emph{Conference on Medical Imaging with Deep Learning (MIDL)},
+  2018.
+
+\bibitem[Worrall and Brostow(2018)]{Worrall2018-CUBENET}
+Daniel~E Worrall and Gabriel~J Brostow.
+\newblock Cubenet: Equivariance to 3d rotation and translation.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2018.
+
+\bibitem[Worrall and Welling(2019)]{Worrall2019DeepScaleSpaces}
+Daniel~E Worrall and Max Welling.
+\newblock Deep scale-spaces: Equivariance over scale.
+\newblock In \emph{Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2019.
+
+\bibitem[Worrall et~al.(2017)Worrall, Garbin, Turmukhambetov, and
+  Brostow]{Worrall2017-HNET}
+Daniel~E Worrall, Stephan~J Garbin, Daniyar Turmukhambetov, and Gabriel~J
+  Brostow.
+\newblock Harmonic networks: Deep translation and rotation equivariance.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017.
+
+\bibitem[Yang et~al.(2020{\natexlab{a}})Yang, Li, Dai, Zou, Qi, and
+  Xiong]{yang2020rotation}
+Qin Yang, Chenglin Li, Wenrui Dai, Junni Zou, Guo-Jun Qi, and Hongkai Xiong.
+\newblock Rotation equivariant graph convolutional network for spherical image
+  classification.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2020{\natexlab{a}}.
+
+\bibitem[Yang et~al.(2020{\natexlab{b}})Yang, Liu, Pan, Liu, and
+  Tong]{Yang2020parallelFrameCNN}
+Yuqi Yang, Shilin Liu, Hao Pan, Yang Liu, and Xin Tong.
+\newblock Pfcnn: Convolutional neural networks on 3d surfaces using parallel
+  frames.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, June 2020{\natexlab{b}}.
+
+\bibitem[Yepez(2011)]{yepez2011einstein}
+Jeffrey Yepez.
+\newblock Einstein's vierbein field theory of curved space.
+\newblock \emph{arXiv preprint arXiv:1106.2037}, 2011.
+
+\bibitem[Ying et~al.(2001)Ying, Hertzmann, Biermann, and
+  Zorin]{ying2001texture}
+Lexing Ying, Aaron Hertzmann, Henning Biermann, and Denis Zorin.
+\newblock Texture and shape synthesis on surfaces.
+\newblock In \emph{Eurographics Workshop on Rendering Techniques}, pages
+  301--312. Springer, 2001.
+
+\bibitem[Yom~Din(2017)]{din2017reprLectureNotes}
+Alexander Yom~Din.
+\newblock Representation theory of compact groups- lecture notes, 2017.
+\newblock URL
+  \url{http://www.math.caltech.edu/~2016-17/2term/ma145b/notes/RepCptGroups.pdf}.
+
+\bibitem[Zhang et~al.(2019{\natexlab{a}})Zhang, Shen, Huang, Wei, and
+  Zhang]{zhang2019quaternion}
+Binbin Zhang, Wen Shen, Shikun Huang, Zhihua Wei, and Quanshi Zhang.
+\newblock 3d-rotation-equivariant quaternion neural networks.
+\newblock \emph{arXiv preprint arXiv:1911.09040}, 2019{\natexlab{a}}.
+
+\bibitem[Zhang et~al.(2019{\natexlab{b}})Zhang, Liwicki, Smith, and
+  Cipolla]{zhang2019orientation}
+Chao Zhang, Stephan Liwicki, William Smith, and Roberto Cipolla.
+\newblock Orientation-aware semantic segmentation on icosahedron spheres.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2019{\natexlab{b}}.
+
+\bibitem[Zhang et~al.(2006)Zhang, Mischaikow, and
+  Turk]{zhang2006vectorFieldDesign}
+Eugene Zhang, Konstantin Mischaikow, and Greg Turk.
+\newblock Vector field design on surfaces.
+\newblock \emph{ACM Transactions on Graphics (ToG)}, 25\penalty0 (4):\penalty0
+  1294--1326, 2006.
+
+\bibitem[Zhang(2019)]{zhang2019CNNsShiftInvariant}
+Richard Zhang.
+\newblock Making convolutional networks shift-invariant again.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2019.
+
+\bibitem[Zhao et~al.(2018)Zhao, Zhu, Dai, Ma, Jin, and
+  Zhang]{zhao2018distortion}
+Qiang Zhao, Chen Zhu, Feng Dai, Yike Ma, Guoqing Jin, and Yongdong Zhang.
+\newblock Distortion-aware cnns for spherical images.
+\newblock In \emph{IJCAI}, 2018.
+
+\bibitem[Zhou(2016)]{zhou2016gauge}
+Tao Zhou.
+\newblock Gauge aspect of tetrad field in gravity.
+\newblock \emph{arXiv preprint arXiv:1603.07571}, 2016.
+
+\bibitem[Zhou et~al.(2017)Zhou, Ye, Qiu, and Jiao]{zhou2017oriented}
+Yanzhao Zhou, Qixiang Ye, Qiang Qiu, and Jianbin Jiao.
+\newblock Oriented response networks.
+\newblock In \emph{Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017.
+
+\bibitem[Zhu et~al.(2019)Zhu, Qiu, Calderbank, Sapiro, and Cheng]{zhu2019scale}
+Wei Zhu, Qiang Qiu, Robert Calderbank, Guillermo Sapiro, and Xiuyuan Cheng.
+\newblock Scale-equivariant neural networks with decomposed convolutional
+  filters.
+\newblock \emph{arXiv preprint arXiv:1909.11193}, 2019.
+
+\end{thebibliography}

@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: GaugeCNNTheoryfa.aux
+The style file: plainnat.bst
+Reallocated field_info (elt_size=4) to 10964 items from 5000.
+Database file #1: refs.bib
+You've used 213 entries,
+            2773 wiz_defined-function locations,
+            1597 strings with 41321 characters,
+and the built_in function-call counts, 100064 in all, are:
+= -- 8363
+> -- 6701
+< -- 118
++ -- 2271
+- -- 2046
+* -- 8010
+:= -- 15460
+add.period$ -- 657
+call.type$ -- 213
+change.case$ -- 1299
+chr.to.int$ -- 201
+cite$ -- 426
+duplicate$ -- 4752
+empty$ -- 8072
+format.name$ -- 2351
+if$ -- 20943
+int.to.chr$ -- 13
+int.to.str$ -- 1
+missing$ -- 231
+newline$ -- 1079
+num.names$ -- 852
+pop$ -- 2954
+preamble$ -- 1
+purify$ -- 1108
+quote$ -- 0
+skip$ -- 3565
+stack$ -- 0
+substring$ -- 2123
+swap$ -- 536
+text.length$ -- 34
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 2223
+warning$ -- 0
+while$ -- 794
+width$ -- 0
+write$ -- 2667
