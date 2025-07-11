@@ -110,7 +110,7 @@ $K: \R^d \to \R^{\cout\times\cin}$
 \end{align}
 بنابراین کرنل‌های الگوی معتبر توسط نامتغیرهای تحت عمل پیمانه همزمان $\detg^{-1}$، $\rhoHom(g)$ و $g^{-1}$ داده می‌شوند.
 با نوشتن نمایش $\rhoHom$ که بر روی $\R^{\cout\times\cin}$ از طریق ضرب با $\rhoout$ و $\rhoin^{-1}$ به ترتیب از چپ و راست عمل می‌کند، دیده می‌شود که قید در معادله~\eqref{eq:kernel_constraint_rhohom} معادل با قید در معادله~\eqref{eq:kernel_constraint} است، یعنی
-$K(g\mkern1mu\mathscr{v}) = \detg^{-1} \rho_\text{out}(g)\, K(\mathscr{v})\, \rho_\text{in}(g)^{-1} \ \ \forall\, g\in G,\ \mathscr{v}\in\R^d$.
+$K(g\mkern1mu\mathscr{v}) = \detg^{-1} \rho_\text{\lr{out}}(g)\, K(\mathscr{v})\, \rho_\text{\lr{in}}(g)^{-1} \ \ \forall\, g\in G,\ \mathscr{v}\in\R^d$.
 
 ما این بینش‌ها را در قالب تعاریف زیر بیان می‌کنیم:
 \begin{dfn}[کرنل \lr{G}-هدایت‌پذیر]
@@ -147,7 +147,7 @@ $K(g\mkern1mu\mathscr{v}) = \detg^{-1} \rho_\text{out}(g)\, K(\mathscr{v})\, \rh
     \end{align}
     همواری $\KK$ از همواری پیمانه‌ها، متریک و کرنل الگو ناشی می‌شود.
 \end{dfn}
-همانند مورد \onexoneGMs، اختیاری بودن انتخاب خاص پیمانه در معادله~\eqref{eq:conv_kernel_field_def_ptwise} -- و بنابراین استقلال از مختصات $\GM$ تعریف -- با \lr{G}-هدایت‌پذیری $K\in\KG\!$ تضمین می‌شود.
+همانند مورد \onexoneGMsfarsi، اختیاری بودن انتخاب خاص پیمانه در معادله~\eqref{eq:conv_kernel_field_def_ptwise} -- و بنابراین استقلال از مختصات $\GM$ تعریف -- با \lr{G}-هدایت‌پذیری $K\in\KG\!$ تضمین می‌شود.
 برای نشان دادن این موضوع به طور صریح، می‌توان میدان کرنل را نسبت به یک پیمانه $B$ تعریف کرد و سپس یک تبدیل به هر پیمانه دیگر $A$ اعمال کرد، که حذف می‌شود و بنابراین به یک عبارت معادل منجر می‌شود:
 \begin{align}\label{eq:arbitrariness_gauge_GM_kernel_field_def}
     \KKp
@@ -216,14 +216,14 @@ $K(g\mkern1mu\mathscr{v}) = \detg^{-1} \rho_\text{out}(g)\, K(\mathscr{v})\, \rh
 \end{figure}
 
 
-توجه داشته باشید که قید \lr{G}-هدایت‌پذیری در معادله~\eqref{eq:G_steerable_space_in_dfn_classical} یا~\eqref{eq:G_steerable_space_in_dfn_Hom} هنگام ارزیابی در مبدأ $\mathscr{v}=0$ از $\R^d$ که تحت عمل هر $g\in G$ نامتغیر است، به قید روی کرنل‌های \onexoneGM\ در معادله~\eqref{eq:onexone_kernel_constraint} یا~\eqref{eq:onexone_intertwiner_constraint_rhoHom} کاهش می‌یابد.
-بنابراین، نتایج مربوط به \onexoneGMs که در بخش قبل استخراج شدند، به عنوان یک مورد خاص برای انتخاب کرنل‌های نقطه‌مانند دیده می‌شوند.%
+توجه داشته باشید که قید \lr{G}-هدایت‌پذیری در معادله~\eqref{eq:G_steerable_space_in_dfn_classical} یا~\eqref{eq:G_steerable_space_in_dfn_Hom} هنگام ارزیابی در مبدأ $\mathscr{v}=0$ از $\R^d$ که تحت عمل هر $g\in G$ نامتغیر است، به قید روی کرنل‌های \onexoneGMfarsi\ در معادله~\eqref{eq:onexone_kernel_constraint} یا~\eqref{eq:onexone_intertwiner_constraint_rhoHom} کاهش می‌یابد.
+بنابراین، نتایج مربوط به \onexoneGMsfarsi که در بخش قبل استخراج شدند، به عنوان یک مورد خاص برای انتخاب کرنل‌های نقطه‌مانند دیده می‌شوند.%
 \footnote{
-    برای دقیق کردن این گزاره، باید تعریف~\ref{dfn:G-steerable_kernel_def_43} را به توزیع‌های با مقدار عملگری تعمیم داد و کرنل‌های \onexoneGM\ را به عنوان دلتاهای دیراک با مقدار عملگری تعریف کرد.
+    برای دقیق کردن این گزاره، باید تعریف~\ref{dfn:G-steerable_kernel_def_43} را به توزیع‌های با مقدار عملگری تعمیم داد و کرنل‌های \onexoneGMfarsi\ را به عنوان دلتاهای دیراک با مقدار عملگری تعریف کرد.
     ما در اینجا برای اختصار از این تعمیم صرف نظر می‌کنیم.
 }
 ما همچنین می‌خواهیم ذکر کنیم که قید روی کرنل‌های با گستره فضایی به طور کلی نیازی ندارد که هم‌دامنه آنها به $\Hom_G(\rhoin,\rhoout)$، یعنی فضای درهم‌تننده‌ها، محدود شود.
-برخلاف \onexoneGMs، این به کانولوشن‌های $\GM$ با کرنل‌های با گستره فضایی اجازه می‌دهد تا بین میدان‌هایی که طبق نمایش‌های کاهش‌ناپذیر غیرایزومورف تبدیل می‌شوند، نگاشت انجام دهند.
+برخلاف \onexoneGMsfarsi، این به کانولوشن‌های $\GM$ با کرنل‌های با گستره فضایی اجازه می‌دهد تا بین میدان‌هایی که طبق نمایش‌های کاهش‌ناپذیر غیرایزومورف تبدیل می‌شوند، نگاشت انجام دهند.
 
 
 

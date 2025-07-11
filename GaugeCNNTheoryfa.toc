@@ -60,52 +60,52 @@
 \contentsline {subsubsection}{\numberline {5.3.2}غیرخطی‌های مستقل از جهت‌گیری}{58}{subsubsection.5.3.2}%
 \contentsline {subsubsection}{\numberline {5.3.3}کانولوشن‌های مستقل از جهت‌گیری}{59}{subsubsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.4}پیاده‌سازی عددی و ارزیابی کانولوشن‌های موبیوس}{61}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}پیاده‌سازی عددی}{61}{subsubsection.5.4.1}%
-\contentsline {paragraph}{فضاهای ویژگی:}{61}{section*.49}%
-\contentsline {paragraph}{جمع بایاس:}{62}{section*.51}%
-\contentsline {paragraph}{غیرخطی‌ها:}{63}{section*.52}%
-\contentsline {paragraph}{کانولوشن‌های \textit {GM}:}{63}{section*.53}%
-\contentsline {paragraph}{\lr {Pooling}:}{63}{section*.54}%
-\contentsline {paragraph}{تست‌های واحد:}{64}{section*.55}%
+\contentsline {subsubsection}{\numberline {5.4.1}پیاده‌سازی عددی}{62}{subsubsection.5.4.1}%
+\contentsline {paragraph}{فضاهای ویژگی:}{62}{section*.49}%
+\contentsline {paragraph}{جمع بایاس:}{62}{section*.52}%
+\contentsline {paragraph}{غیرخطی‌ها:}{63}{section*.53}%
+\contentsline {paragraph}{کانولوشن‌های \textit {\lr {GM}}:}{63}{section*.54}%
+\contentsline {paragraph}{\lr {Pooling}:}{64}{section*.55}%
+\contentsline {paragraph}{تست‌های واحد:}{64}{section*.56}%
 \contentsline {subsubsection}{\numberline {5.4.2}ارزیابی تجربی}{64}{subsubsection.5.4.2}%
 \contentsline {part}{بخش~دوم: نظریه شبکه‌های کانولوشنی مستقل از مختصات}{67}{part.2}%
 \etoc@startlocaltoc {6}
-\contentsline {section}{\numberline {6}بندل‌های مرتبط و میدان‌های ویژگی مستقل از مختصات}{67}{section.6}%
+\contentsline {section}{\numberline {6}کلاف‌های مرتبط و میدان‌های ویژگی مستقل از مختصات}{67}{section.6}%
 \contentsline {subsection}{\numberline {6.1}مقدمه‌ای کوتاه بر کلاف‌های تاری}{68}{subsection.6.1}%
-\contentsline {paragraph}{کلاف‌های تاری به طور کلی:}{68}{section*.59}%
-\contentsline {paragraph}{کلاف‌های برداری:}{70}{section*.60}%
-\contentsline {paragraph}{\lr {\textit {G}}-کلاف‌ها}{70}{section*.61}%
-\contentsline {paragraph}{کلاف‌های \lr {\textit {G}} وابسته:}{71}{section*.63}%
-\contentsline {paragraph}{کلاف‌های اصلی \lr {\textit {G}}:}{71}{section*.64}%
-\contentsline {paragraph}{برش‌ها و میدان‌ها:}{72}{section*.65}%
-\contentsline {paragraph}{ریخت‌های کلاف:}{72}{section*.66}%
+\contentsline {paragraph}{کلاف‌های تاری به طور کلی:}{68}{section*.60}%
+\contentsline {paragraph}{کلاف‌های برداری:}{70}{section*.61}%
+\contentsline {paragraph}{\lr {\textit {G}}-کلاف‌ها}{70}{section*.62}%
+\contentsline {paragraph}{کلاف‌های \lr {\textit {G}} وابسته:}{71}{section*.64}%
+\contentsline {paragraph}{کلاف‌های اصلی \lr {\textit {G}}:}{71}{section*.65}%
+\contentsline {paragraph}{برش‌ها و میدان‌ها:}{72}{section*.66}%
+\contentsline {paragraph}{ریخت‌های کلاف:}{72}{section*.67}%
 \contentsline {subsection}{\numberline {6.2}کلاف مماس \lr {\textit {TM}} و کلاف چارچوب \lr {\textit {FM}}}{73}{subsection.6.2}%
-\contentsline {paragraph}{کلاف مماس \lr {\textit {TM}}:}{73}{section*.67}%
-\contentsline {paragraph}{کلاف چارچوب \lr {\textit {FM}}:}{74}{section*.69}%
-\contentsline {paragraph}{کلاف \lr {\textit {TM}} به عنوان کلاف برداری وابسته به \lr {GL(\textit {d})} ($(F\mkern -1.5muM\times \mathds {R}^d)/$ \lr {GL(\textit {d})}):}{75}{section*.70}%
+\contentsline {paragraph}{کلاف مماس \lr {\textit {TM}}:}{73}{section*.68}%
+\contentsline {paragraph}{کلاف چارچوب \lr {\textit {FM}}:}{74}{section*.70}%
+\contentsline {paragraph}{کلاف \lr {\textit {TM}} به عنوان کلاف برداری وابسته به \lr {GL(\textit {d})} ($(F\mkern -1.5muM\times \mathds {R}^d)/$ \lr {GL(\textit {d})}):}{75}{section*.71}%
 \contentsline {subsection}{\numberline {6.3}ساختارهای \lr {\textit {G}} \lr {\textit {GM}} و کلاف‌های برداری ویژگی وابسته $\mathcal {A}$}{76}{subsection.6.3}%
-\contentsline {paragraph}{\lr {\textit {G}}-ساختارها \lr {\textit {GM}}:}{76}{section*.71}%
-\contentsline {paragraph}{کلاف \lr {\textit {TM}} به عنوان کلاف برداری \lr {\textit {G}}-وابسته ($(G\mkern -1.4muM\times \mathds {R}^d)/$\lr {\textit {G}}):}{77}{section*.72}%
-\contentsline {paragraph}{کلاف‌های برداری ویژگی وابسته $\mathcal {A}$:}{77}{section*.73}%
-\contentsline {paragraph}{میدان برداری ویژگی وابسته و فضاهای ویژگی:}{78}{section*.74}%
+\contentsline {paragraph}{\lr {\textit {G}}-ساختارها \lr {\textit {GM}}:}{76}{section*.72}%
+\contentsline {paragraph}{کلاف \lr {\textit {TM}} به عنوان کلاف برداری \lr {\textit {G}}-وابسته ($(G\mkern -1.4muM\times \mathds {R}^d)/$\lr {\textit {G}}):}{77}{section*.73}%
+\contentsline {paragraph}{کلاف‌های برداری ویژگی وابسته $\mathcal {A}$:}{77}{section*.74}%
+\contentsline {paragraph}{میدان برداری ویژگی وابسته و فضاهای ویژگی:}{78}{section*.75}%
 \contentsline {subsection}{\numberline {6.4}بدیهی‌سازی‌های محلی کلاف \lr {\textit {TM}}، \lr {\textit {FM}}، \lr {\textit {GM}} و $ \mathcal {A}$}{78}{subsection.6.4}%
-\contentsline {paragraph}{بدیهی‌سازی‌های \lr {\textit {TM}}:}{79}{section*.75}%
-\contentsline {paragraph}{بدیهی‌سازی‌های القایی \lr {\textit {FM}} و میدان‌های قاب:}{79}{section*.77}%
-\contentsline {paragraph}{\lr {\textit {G}}-اطلس القاکننده \lr {\textit {G}}-ساختار \lr {\textit {GM}}:}{81}{section*.79}%
-\contentsline {paragraph}{بدیهی‌سازی‌های القایی کلاف‌های الحاقی $\mathcal {A}$:}{82}{section*.80}%
-\contentsline {paragraph}{ملاحظات پایانی:}{84}{section*.82}%
+\contentsline {paragraph}{بدیهی‌سازی‌های \lr {\textit {TM}}:}{79}{section*.76}%
+\contentsline {paragraph}{بدیهی‌سازی‌های القایی \lr {\textit {FM}} و میدان‌های قاب:}{79}{section*.78}%
+\contentsline {paragraph}{\lr {\textit {G}}-اطلس القاکننده \lr {\textit {G}}-ساختار \lr {\textit {GM}}:}{81}{section*.80}%
+\contentsline {paragraph}{بدیهی‌سازی‌های القایی کلاف‌های الحاقی $\mathcal {A}$:}{82}{section*.81}%
+\contentsline {paragraph}{ملاحظات پایانی:}{84}{section*.83}%
 \contentsline {subsection}{\numberline {6.5}منتقل‌کننده‌های موازی روی کلاف‌های الحاقی}{84}{subsection.6.5}%
-\contentsline {paragraph}{انتقال روی \lr {\textit {TM}}:}{84}{section*.83}%
-\contentsline {paragraph}{انتقال روی \lr {\textit {FM}}:}{84}{section*.84}%
-\contentsline {paragraph}{سازگاری اتصالات و \lr {\textit {G}}-ساختارها:}{85}{section*.85}%
-\contentsline {paragraph}{انتقال روی \lr {\textit {GM}}:}{86}{section*.86}%
-\contentsline {paragraph}{انتقال روی $\mathcal {A}$:}{86}{section*.87}%
+\contentsline {paragraph}{انتقال روی \lr {\textit {TM}}:}{84}{section*.84}%
+\contentsline {paragraph}{انتقال روی \lr {\textit {FM}}:}{84}{section*.85}%
+\contentsline {paragraph}{سازگاری اتصالات و \lr {\textit {G}}-ساختارها:}{85}{section*.86}%
+\contentsline {paragraph}{انتقال روی \lr {\textit {GM}}:}{86}{section*.87}%
+\contentsline {paragraph}{انتقال روی $\mathcal {A}$:}{86}{section*.88}%
 \contentsline {section}{\numberline {7}تبدیلات میدان کرنل مستقل از مختصات و کانولوشن‌های \lr {GM}}{87}{section.7}%
 \etoc@startlocaltoc {7}
 \contentsline {subsection}{\numberline {7.1}کانولوشن‌های \lr {GM} با اندازه ${1\kern -2.7pt\times \kern -2.9pt1}$ }{88}{subsection.7.1}%
 \contentsline {subsubsection}{\numberline {7.1.1}کانولوشن‌های \lr {GM} با اندازه ${1\kern -2.7pt\times \kern -2.9pt1}$ به عنوان \lr {M}-مورفیسم‌های کلاف برداری}{88}{subsubsection.7.1.1}%
 \contentsline {subsubsection}{\numberline {7.1.2}کانولوشن‌های \lr {GM} با اندازه ${1\kern -2.7pt\times \kern -2.9pt1}$ به عنوان مقاطع کلاف هومومورفیسم}{89}{subsubsection.7.1.2}%
-\contentsline {paragraph}{ملاحظات پایانی:}{91}{section*.90}%
+\contentsline {paragraph}{ملاحظات پایانی:}{91}{section*.91}%
 \contentsline {subsection}{\numberline {7.2}تبدیلات میدان کرنل و کانولوشن‌های \lr {GM}}{92}{subsection.7.2}%
 \contentsline {subsubsection}{\numberline {7.2.1}میدان‌های کرنل}{92}{subsubsection.7.2.1}%
 \contentsline {subsubsection}{\numberline {7.2.2}تبدیلات میدان کرنل و کانولوشن‌های \lr {GM}}{94}{subsubsection.7.2.2}%
@@ -115,101 +115,101 @@
 \contentsline {subsection}{\numberline {8.1}ایزومتری‌ها و عمل آنها بر منیفلدها، کلاف‌ها و میدان‌ها}{100}{subsection.8.1}%
 \contentsline {subsubsection}{\numberline {8.1.1}گروه‌های ایزومتری}{100}{subsubsection.8.1.1}%
 \contentsline {subsubsection}{\numberline {8.1.2}عمل ایزومتری بر روی کلاف‌های تاری}{101}{subsubsection.8.1.2}%
-\contentsline {paragraph}{عمل ایزومتری بر روی کلاف مماس \lr {\textit {TM}}:}{101}{section*.94}%
-\contentsline {paragraph}{عمل ایزومتری بر روی کلاف قاب \lr {\textit {FM}}:}{102}{section*.95}%
-\contentsline {paragraph}{عمل ایزومتری بر روی \lr {G}-ساختارها \lr {\textit {GM}}:}{102}{section*.96}%
-\contentsline {paragraph}{عمل ایزومتری بر روی کلاف‌های برداری الحاقی $\mathcal {A}$:}{104}{section*.99}%
-\contentsline {paragraph}{عمل ایزومتری بر روی میدان‌های ویژگی:}{105}{section*.100}%
+\contentsline {paragraph}{عمل ایزومتری بر روی کلاف مماس \lr {\textit {TM}}:}{101}{section*.95}%
+\contentsline {paragraph}{عمل ایزومتری بر روی کلاف قاب \lr {\textit {FM}}:}{102}{section*.96}%
+\contentsline {paragraph}{عمل ایزومتری بر روی \lr {G}-ساختارها \lr {\textit {GM}}:}{102}{section*.97}%
+\contentsline {paragraph}{عمل ایزومتری بر روی کلاف‌های برداری الحاقی $\mathcal {A}$:}{104}{section*.100}%
+\contentsline {paragraph}{عمل ایزومتری بر روی میدان‌های ویژگی:}{105}{section*.101}%
 \contentsline {subsubsection}{\numberline {8.1.3}عمل ایزومتری در مختصات محلی}{106}{subsubsection.8.1.3}%
-\contentsline {paragraph}{پیش‌ران روی \lr {\textit {TM}} در مختصات:}{106}{section*.101}%
-\contentsline {paragraph}{پیش‌ران روی \lr {\textit {FM}} در مختصات:}{106}{section*.102}%
-\contentsline {paragraph}{پیش‌ران روی \lr {\textit {GM}} در مختصات:}{108}{section*.103}%
-\contentsline {paragraph}{پیش‌ران روی $\mathcal {A}$ در مختصات:}{109}{section*.104}%
+\contentsline {paragraph}{پیش‌ران روی \lr {\textit {TM}} در مختصات:}{106}{section*.102}%
+\contentsline {paragraph}{پیش‌ران روی \lr {\textit {FM}} در مختصات:}{106}{section*.103}%
+\contentsline {paragraph}{پیش‌ران روی \lr {\textit {GM}} در مختصات:}{108}{section*.104}%
+\contentsline {paragraph}{پیش‌ران روی $\mathcal {A}$ در مختصات:}{109}{section*.105}%
 \contentsline {subsubsection}{\numberline {8.1.4}جابجایی‌پذیری اعمال ایزومتری با نگاشت نمایی و منتقل‌کننده‌ها}{110}{subsubsection.8.1.4}%
-\contentsline {paragraph}{ایزومتری‌ها و نگاشت نمایی:}{110}{section*.105}%
-\contentsline {paragraph}{ایزومتری‌ها و منتقل‌کننده‌های موازی:}{110}{section*.107}%
-\contentsline {paragraph}{ایزومتری‌ها و پول‌بک‌های منتقل‌کننده میدان‌های ویژگی:}{111}{section*.108}%
+\contentsline {paragraph}{ایزومتری‌ها و نگاشت نمایی:}{110}{section*.106}%
+\contentsline {paragraph}{ایزومتری‌ها و منتقل‌کننده‌های موازی:}{110}{section*.108}%
+\contentsline {paragraph}{ایزومتری‌ها و پول‌بک‌های منتقل‌کننده میدان‌های ویژگی:}{111}{section*.109}%
 \contentsline {subsection}{\numberline {8.2}هم‌متغیری ایزومتری تبدیلات میدان کرنل و کانولوشن‌های \lr {GM}}{112}{subsection.8.2}%
 \contentsline {subsubsection}{\numberline {8.2.1}هم‌متغیری ایزومتری تبدیلات میدان کرنل عمومی}{112}{subsubsection.8.2.1}%
 \contentsline {subsubsection}{\numberline {8.2.2}هم‌متغیری ایزومتری کانولوشن‌های \lr {GM}}{115}{subsubsection.8.2.2}%
 \contentsline {subsection}{\numberline {8.3}میدان‌های کرنل خارج‌قسمتی}{117}{subsection.8.3}%
 \contentsline {subsubsection}{\numberline {8.3.1}فضاهای خارج‌قسمتی القاشده از ایزومتری}{117}{subsubsection.8.3.1}%
-\contentsline {paragraph}{خارج‌قسمت‌های منیفلد:}{118}{section*.110}%
-\contentsline {paragraph}{خارج‌قسمت‌های کلاف:}{119}{section*.112}%
+\contentsline {paragraph}{خارج‌قسمت‌های منیفلد:}{118}{section*.111}%
+\contentsline {paragraph}{خارج‌قسمت‌های کلاف:}{119}{section*.113}%
 \contentsline {subsubsection}{\numberline {8.3.2}میدان‌های کرنل نماینده خارج‌قسمتی و قیود پایدارساز}{120}{subsubsection.8.3.2}%
-\contentsline {paragraph}{ایزومتری‌های بازسازی:}{121}{section*.114}%
-\contentsline {paragraph}{میدان‌های کرنل نماینده خارج‌قسمتی:}{122}{section*.115}%
-\contentsline {paragraph}{رابطه با کانولوشن‌های \lr {\emph {GM}}:}{125}{section*.116}%
+\contentsline {paragraph}{ایزومتری‌های بازسازی:}{121}{section*.115}%
+\contentsline {paragraph}{میدان‌های کرنل نماینده خارج‌قسمتی:}{122}{section*.116}%
+\contentsline {paragraph}{رابطه با کانولوشن‌های \lr {\emph {GM}}:}{125}{section*.117}%
 \contentsline {part}{بخش~سوم: مروری بر مقالات مرتبط با شبکه‌های کانولوشنی مستقل از مختصات}{127}{part.3}%
 \etoc@startlocaltoc {9}
-\contentsline {paragraph}{گسسته‌سازی منیفلدها و میدان‌های ویژگی:}{129}{section*.119}%
-\contentsline {paragraph}{\textit {G}-ساختارها \textit {GM} و گروه‌های ساختاری \textit {G}:}{129}{section*.120}%
-\contentsline {paragraph}{اتصالات \textit {G}-سازگار:}{130}{section*.121}%
-\contentsline {paragraph}{پول‌بک‌های انتقال‌دهنده و تصویرهای جایگزین به $\bm {T_{\mkern -1.5mu p}\mkern -.5muM}$:}{130}{section*.122}%
-\contentsline {paragraph}{نمایش‌های \textit {G} و غیرخطی‌ها:}{131}{section*.123}%
-\contentsline {paragraph}{فضاهای کرنل \textit {G}-راهبری‌پذیر:}{131}{section*.124}%
+\contentsline {paragraph}{گسسته‌سازی منیفلدها و میدان‌های ویژگی:}{129}{section*.120}%
+\contentsline {paragraph}{\textit {G}-ساختارها \textit {GM} و گروه‌های ساختاری \textit {G}:}{129}{section*.121}%
+\contentsline {paragraph}{اتصالات \textit {G}-سازگار:}{130}{section*.122}%
+\contentsline {paragraph}{پول‌بک‌های انتقال‌دهنده و تصویرهای جایگزین به $\bm {T_{\mkern -1.5mu p}\mkern -.5muM}$:}{130}{section*.123}%
+\contentsline {paragraph}{نمایش‌های \textit {G} و غیرخطی‌ها:}{131}{section*.124}%
+\contentsline {paragraph}{فضاهای کرنل \textit {G}-راهبری‌پذیر:}{131}{section*.125}%
 \contentsline {section}{\numberline {9}شبکه‌های کانولوشنی مستقل از مختصات اقلیدسی}{131}{section.9}%
 \etoc@startlocaltoc {10}
 \contentsline {subsection}{\numberline {9.1}فرمول‌بندی کلاسیک \lr {CNN}های $G$-هدایت‌پذیر بر روی $\mathbb {R}^d$}{133}{subsection.9.1}%
-\contentsline {paragraph}{\lr {CNN}های هدایت‌پذیر اقلیدسی:}{133}{section*.126}%
-\contentsline {paragraph}{رابطه با کانولوشن‌های \lr {GM} اقلیدسی:}{134}{section*.127}%
+\contentsline {paragraph}{\lr {CNN}های هدایت‌پذیر اقلیدسی:}{133}{section*.127}%
+\contentsline {paragraph}{رابطه با کانولوشن‌های \lr {GM} اقلیدسی:}{134}{section*.128}%
 \contentsline {subsection}{\numberline {9.2}هندسه‌ی آفین فضاهای اقلیدسی $\mathbb {E}_d$}{135}{subsection.9.2}%
 \contentsline {subsubsection}{\numberline {9.2.1}چارت‌های آفین و اطلس‌های \lr {Aff(G)}}{135}{subsubsection.9.2.1}%
 \contentsline {subsubsection}{\numberline {9.2.2}\textit {G}-اطلس‌ها و \textit {G}-ساختارهای القا شده}{136}{subsubsection.9.2.2}%
 \contentsline {subsubsection}{\numberline {9.2.3}تبدیلات آفین مستقل از مختصات}{139}{subsubsection.9.2.3}%
 \contentsline {subsection}{\numberline {9.3}\lr {CNN}های هموردای گروه آفین در فضاهای اقلیدسی $\mathbb {E}_d$}{141}{subsection.9.3}%
-\contentsline {paragraph}{بازیابی کانولوشن‌های متعارف روی $\mathbb {R}^d$:}{141}{section*.130}%
-\contentsline {paragraph}{هموردایی گروه آفین}{142}{section*.131}%
+\contentsline {paragraph}{بازیابی کانولوشن‌های متعارف روی $\mathbb {R}^d$:}{141}{section*.131}%
+\contentsline {paragraph}{هموردایی گروه آفین}{142}{section*.132}%
 \contentsline {subsection}{\numberline {9.4}\lr {CNN}های اقلیدسی در مقالات}{144}{subsection.9.4}%
-\contentsline {paragraph}{ویژگی‌های نمایش تحویل‌ناپذیر \lr {(Irrep)}:}{144}{section*.132}%
-\contentsline {paragraph}{ویژگی‌های منظم و کانولوشن‌های گروهی:}{145}{section*.133}%
-\contentsline {paragraph}{تجمیع از منظم به اسکالر و بردار:}{146}{section*.134}%
-\contentsline {paragraph}{ویژگی‌های خارج‌قسمتی:}{146}{section*.135}%
-\contentsline {paragraph}{نمایش‌های القایی:}{146}{section*.136}%
+\contentsline {paragraph}{ویژگی‌های نمایش تحویل‌ناپذیر \lr {(Irrep)}:}{144}{section*.133}%
+\contentsline {paragraph}{ویژگی‌های منظم و کانولوشن‌های گروهی:}{145}{section*.134}%
+\contentsline {paragraph}{تجمیع از منظم به اسکالر و بردار:}{146}{section*.135}%
+\contentsline {paragraph}{ویژگی‌های خارج‌قسمتی:}{146}{section*.136}%
+\contentsline {paragraph}{نمایش‌های القایی:}{146}{section*.137}%
 \contentsline {section}{\numberline {10}\lr {CNN}های هموردای دورانی در فضاهای اقلیدسی سوراخ‌دار}{147}{section.10}%
 \contentsline {section}{\numberline {11}\lr {CNN}های کروی مستقل از مختصات}{153}{section.11}%
 \etoc@startlocaltoc {11}
 \contentsline {subsection}{\numberline {11.1}هندسه‌ی کره ۲-بعدی $S^2$}{154}{subsection.11.1}%
 \contentsline {subsection}{\numberline {11.2}\lr {CNN}های کروی کاملاً هموردای دورانی}{158}{subsection.11.2}%
-\contentsline {paragraph}{کانولوشن‌های \textit {GM} کروی:}{158}{section*.148}%
-\contentsline {paragraph}{کانولوشن‌های گراف کروی:}{159}{section*.149}%
-\contentsline {paragraph}{کانولوشن‌های کروی با کرنل‌های روی $S^2$:}{159}{section*.150}%
+\contentsline {paragraph}{کانولوشن‌های \textit {GM} کروی:}{158}{section*.149}%
+\contentsline {paragraph}{کانولوشن‌های گراف کروی:}{159}{section*.150}%
+\contentsline {paragraph}{کانولوشن‌های کروی با کرنل‌های روی $S^2$:}{159}{section*.151}%
 \contentsline {subsection}{\numberline {11.3}\lr {CNN}های کروی هموردای دوران سمتی در توپولوژی‌های استوانه‌ای}{163}{subsection.11.3}%
 \contentsline {subsection}{\numberline {11.4}تقریب‌های بیست‌وجهی از \lr {CNN}های کروی}{167}{subsection.11.4}%
-\contentsline {paragraph}{هندسه‌ی بیست‌وجهی:}{167}{section*.155}%
-\contentsline {paragraph}{$G$-ساختارهای بیست‌وجهی:}{168}{section*.157}%
-\contentsline {paragraph}{پیاده‌سازی‌ها:}{169}{section*.159}%
+\contentsline {paragraph}{هندسه‌ی بیست‌وجهی:}{167}{section*.156}%
+\contentsline {paragraph}{$G$-ساختارهای بیست‌وجهی:}{168}{section*.158}%
+\contentsline {paragraph}{پیاده‌سازی‌ها:}{169}{section*.160}%
 \contentsline {section}{\numberline {12}\lr {CNN}های مستقل از مختصات روی سطوح عمومی}{171}{section.12}%
 \etoc@startlocaltoc {12}
-\contentsline {paragraph}{CNNهای سطوح فراتر از کانولوشن‌های \textit {GM}:}{171}{section*.160}%
+\contentsline {paragraph}{CNNهای سطوح فراتر از کانولوشن‌های \textit {GM}:}{171}{section*.161}%
 \contentsline {subsection}{\numberline {12.1}هندسه‌ی سطوح جایگذاری‌شده}{172}{subsection.12.1}%
 \contentsline {subsubsection}{\numberline {12.1.1}هندسه‌ی دیفرانسیل کلاسیک سطوح جایگذاری‌شده}{173}{subsubsection.12.1.1}%
 \contentsline {subsubsection}{\numberline {12.1.2}هندسه‌ی گسسته‌سازی شده‌ی مش‌های سطحی}{174}{subsubsection.12.1.2}%
-\contentsline {paragraph}{توپولوژی، هندسه و جایگذاری مش‌های مثلثی:}{175}{section*.162}%
-\contentsline {paragraph}{فضاهای مماس و میدان‌های برداری:}{176}{section*.163}%
-\contentsline {paragraph}{متریک ریمانی و ایزومتری‌ها:}{177}{section*.164}%
-\contentsline {paragraph}{اتصالات، انتقال‌دهنده‌ها و ژئودزیک‌ها روی مش‌های مثلثی:}{177}{section*.165}%
+\contentsline {paragraph}{توپولوژی، هندسه و جایگذاری مش‌های مثلثی:}{175}{section*.163}%
+\contentsline {paragraph}{فضاهای مماس و میدان‌های برداری:}{176}{section*.164}%
+\contentsline {paragraph}{متریک ریمانی و ایزومتری‌ها:}{177}{section*.165}%
+\contentsline {paragraph}{اتصالات، انتقال‌دهنده‌ها و ژئودزیک‌ها روی مش‌های مثلثی:}{177}{section*.166}%
 \contentsline {subsection}{\numberline {12.2}کانولوشن‌های سطحی راهبری‌پذیر-دورانی}{180}{subsection.12.2}%
-\contentsline {paragraph}{ملاحظات کلی و نمای کلی:}{180}{section*.167}%
-\contentsline {paragraph}{شبکه‌های هارمونیک سطحی:}{181}{section*.168}%
-\contentsline {paragraph}{\lr {CNN}های ژئودزیک چندجهته:}{181}{section*.170}%
-\contentsline {paragraph}{CNNهای چارچوب موازی:}{183}{section*.171}%
-\contentsline {paragraph}{\lr {CNN}های مش هموردای پیمانه:}{184}{section*.174}%
-\contentsline {paragraph}{\lr {CNN}های ژئودزیک:}{184}{section*.175}%
-\contentsline {paragraph}{ZerNet:}{184}{section*.176}%
-\contentsline {paragraph}{TextureNet:}{186}{section*.177}%
+\contentsline {paragraph}{ملاحظات کلی و نمای کلی:}{180}{section*.168}%
+\contentsline {paragraph}{شبکه‌های هارمونیک سطحی:}{181}{section*.169}%
+\contentsline {paragraph}{\lr {CNN}های ژئودزیک چندجهته:}{181}{section*.171}%
+\contentsline {paragraph}{CNNهای چارچوب موازی:}{183}{section*.172}%
+\contentsline {paragraph}{\lr {CNN}های مش هموردای پیمانه:}{184}{section*.175}%
+\contentsline {paragraph}{\lr {CNN}های ژئودزیک:}{184}{section*.176}%
+\contentsline {paragraph}{ZerNet:}{184}{section*.177}%
+\contentsline {paragraph}{TextureNet:}{186}{section*.178}%
 \contentsline {subsection}{\numberline {12.3}\{e\}-کانولوشن‌های سطحی راهبری‌پذیر}{186}{subsection.12.3}%
-\contentsline {paragraph}{MoNetهای ژئودزیک:}{186}{section*.179}%
-\contentsline {paragraph}{3DMCNN:}{187}{section*.180}%
-\contentsline {paragraph}{کانولوشن‌های انتقال موازی:}{187}{section*.181}%
-\contentsline {paragraph}{کانولوشن‌های مماس:}{188}{section*.182}%
-\contentsline {paragraph}{NPTC-net:}{188}{section*.183}%
-\contentsline {paragraph}{کانولوشن‌های بین-اطلسی:}{189}{section*.184}%
+\contentsline {paragraph}{MoNetهای ژئودزیک:}{186}{section*.180}%
+\contentsline {paragraph}{3DMCNN:}{187}{section*.181}%
+\contentsline {paragraph}{کانولوشن‌های انتقال موازی:}{187}{section*.182}%
+\contentsline {paragraph}{کانولوشن‌های مماس:}{188}{section*.183}%
+\contentsline {paragraph}{NPTC-net:}{188}{section*.184}%
+\contentsline {paragraph}{کانولوشن‌های بین-اطلسی:}{189}{section*.185}%
 \contentsline {subsection}{\numberline {12.4}تقریب‌های بیست‌وجهی از \lr {CNN}های کروی}{190}{subsection.12.4}%
-\contentsline {paragraph}{هندسه‌ی بیست‌وجهی:}{190}{section*.186}%
-\contentsline {paragraph}{$G$-ساختارهای بیست‌وجهی:}{191}{section*.188}%
-\contentsline {paragraph}{پیاده‌سازی‌ها:}{192}{section*.190}%
-\contentsline {part}{پیوست}{195}{section*.190}%
+\contentsline {paragraph}{هندسه‌ی بیست‌وجهی:}{190}{section*.187}%
+\contentsline {paragraph}{$G$-ساختارهای بیست‌وجهی:}{191}{section*.189}%
+\contentsline {paragraph}{پیاده‌سازی‌ها:}{192}{section*.191}%
+\contentsline {part}{پیوست}{195}{section*.191}%
 \contentsline {section}{\numberline {آ}ارتباط با فرمالیسم چارت مختصاتی در هندسه دیفرانسیل}{195}{appendix.Alph1}%
 \etoc@startlocaltoc {13}
 \contentsline {subsection}{\numberline {آ.1}فضاهای مماس، فضاهای هم‌مماس و پایه‌های دوگان}{196}{subsection.Alph1.1}%
@@ -217,39 +217,39 @@
 \contentsline {subsubsection}{\numberline {آ.1.2}فضاهای هم‌مماس}{196}{subsubsection.Alph1.1.2}%
 \contentsline {subsubsection}{\numberline {آ.1.3}پایه‌های دوگان}{196}{subsubsection.Alph1.1.3}%
 \contentsline {subsection}{\numberline {آ.2}دیفرانسیل‌ها، گرادیان‌ها و ژاکوبین‌ها}{197}{subsection.Alph1.2}%
-\contentsline {paragraph}{دیفرانسیل‌ها به طور کلی:}{197}{section*.191}%
-\contentsline {paragraph}{گرادیان‌ها:}{198}{section*.192}%
-\contentsline {paragraph}{ژاکوبین‌ها:}{198}{section*.193}%
+\contentsline {paragraph}{دیفرانسیل‌ها به طور کلی:}{197}{section*.192}%
+\contentsline {paragraph}{گرادیان‌ها:}{198}{section*.193}%
+\contentsline {paragraph}{ژاکوبین‌ها:}{198}{section*.194}%
 \contentsline {subsection}{\numberline {آ.3}پایه‌های مختصاتی القا شده توسط چارت}{199}{subsection.Alph1.3}%
 \contentsline {subsubsection}{\numberline {آ.3.1}چارت‌ها و پایه‌های مختصاتی القا شده}{199}{subsubsection.Alph1.3.1}%
-\contentsline {paragraph}{پایه‌های مختصاتی برای $T_{\mkern -1.5mu p}\mkern -.5muM$:}{199}{section*.194}%
-\contentsline {paragraph}{پایه‌های مختصاتی دوگان برای $T_{\mkern -1.5mu p}^{\mkern -0mu *}\mkern -1muM$:}{200}{section*.195}%
-\contentsline {paragraph}{دیفرانسیل‌های چارت به عنوان تریویالیزاسیون محلی کانونی:}{200}{section*.196}%
+\contentsline {paragraph}{پایه‌های مختصاتی برای $T_{\mkern -1.5mu p}\mkern -.5muM$:}{199}{section*.195}%
+\contentsline {paragraph}{پایه‌های مختصاتی دوگان برای $T_{\mkern -1.5mu p}^{\mkern -0mu *}\mkern -1muM$:}{200}{section*.196}%
+\contentsline {paragraph}{دیفرانسیل‌های چارت به عنوان تریویالیزاسیون محلی کانونی:}{200}{section*.197}%
 \contentsline {subsubsection}{\numberline {آ.3.2}نگاشت‌های گذار چارت و تبدیلات پیمانه القا شده}{200}{subsubsection.Alph1.3.2}%
-\contentsline {paragraph}{تبدیل پایه‌های مختصاتی مماس:}{201}{section*.197}%
-\contentsline {paragraph}{تبدیل پایه‌های مختصاتی هم‌مماس:}{202}{section*.198}%
-\contentsline {paragraph}{تبدیل دیفرانسیل‌های چارت:}{202}{section*.199}%
-\contentsline {paragraph}{تبدیل ضرایب برداری:}{202}{section*.200}%
+\contentsline {paragraph}{تبدیل پایه‌های مختصاتی مماس:}{201}{section*.198}%
+\contentsline {paragraph}{تبدیل پایه‌های مختصاتی هم‌مماس:}{202}{section*.199}%
+\contentsline {paragraph}{تبدیل دیفرانسیل‌های چارت:}{202}{section*.200}%
+\contentsline {paragraph}{تبدیل ضرایب برداری:}{202}{section*.201}%
 \contentsline {subsection}{\numberline {آ.4}پایه‌های مختصاتی به عنوان تریویالیزاسیون‌های محلی کلاف}{203}{subsection.Alph1.4}%
 \contentsline {subsubsection}{\numberline {آ.4.1}تناظرات با تریویالیزاسیون‌های نقطه‌ای $ T_{\mkern -1.5mu p}\mkern -.5muM$}{203}{subsubsection.Alph1.4.1}%
-\contentsline {paragraph}{پیمانه‌ها و دیفرانسیل‌های چارت:}{203}{section*.201}%
-\contentsline {paragraph}{مؤلفه‌های برداری:}{203}{section*.202}%
-\contentsline {paragraph}{چارچوب‌های مرجع القا شده:}{203}{section*.203}%
+\contentsline {paragraph}{پیمانه‌ها و دیفرانسیل‌های چارت:}{203}{section*.202}%
+\contentsline {paragraph}{مؤلفه‌های برداری:}{203}{section*.203}%
+\contentsline {paragraph}{چارچوب‌های مرجع القا شده:}{203}{section*.204}%
 \contentsline {subsubsection}{\numberline {آ.4.2}تریویالیزاسیون‌های محلی القا شده توسط چارت از $ \pi _{T\mkern -1.5muM}^{-1}(U) $}{204}{subsubsection.Alph1.4.2}%
 \contentsline {subsection}{\numberline {آ.5}$G$-ساختارها و میدان‌های ویل‌باین}{205}{subsection.Alph1.5}%
 \contentsline {section}{\numberline {ب}اشتراک وزن مستقل از مختصات و کرنل‌های $G$-راهبری‌پذیر}{208}{appendix.Alph2}%
 \contentsline {section}{\numberline {پ}انتگرال‌گیری روی فضاهای مماس}{209}{appendix.Alph3}%
 \contentsline {section}{\numberline {ت}کانولوشن‌های هموردا روی فضاهای همگن}{210}{appendix.Alph4}%
-\contentsline {paragraph}{فضاهای همگن:}{211}{section*.207}%
-\contentsline {paragraph}{کانولوشن‌های گروهی و همبستگی‌های گروهی:}{212}{section*.208}%
-\contentsline {paragraph}{\citet {Kondor2018-GENERAL}:}{214}{section*.209}%
-\contentsline {paragraph}{\citet {bekkers2020bspline}:}{214}{section*.210}%
-\contentsline {paragraph}{ارتباط با کانولوشن‌های \emph {GM}:}{215}{section*.211}%
+\contentsline {paragraph}{فضاهای همگن:}{211}{section*.208}%
+\contentsline {paragraph}{کانولوشن‌های گروهی و همبستگی‌های گروهی:}{212}{section*.209}%
+\contentsline {paragraph}{\citet {Kondor2018-GENERAL}:}{214}{section*.210}%
+\contentsline {paragraph}{\citet {bekkers2020bspline}:}{214}{section*.211}%
+\contentsline {paragraph}{ارتباط با کانولوشن‌های \emph {GM}:}{215}{section*.212}%
 \contentsline {section}{\numberline {ث}میدان‌های کرنل نماینده خارج‌قسمتی -- اثبات‌ها}{215}{appendix.Alph5}%
-\contentsline {paragraph}{بخش ۱) -- ساخت \textit {H}, \textit {HM} و Isom\textsubscript {\textit {HM}}:}{218}{section*.212}%
-\contentsline {paragraph}{بخش ۲) -- هم‌ارزی تبدیلات میدان کرنل $\mathcal {I}$-هموردا و کانولوشن‌های \textit {HM}:}{220}{section*.213}%
+\contentsline {paragraph}{بخش ۱) -- ساخت \textit {H}, \textit {HM} و Isom\textsubscript {\textit {HM}}:}{218}{section*.213}%
+\contentsline {paragraph}{بخش ۲) -- هم‌ارزی تبدیلات میدان کرنل $\mathcal {I}$-هموردا و کانولوشن‌های \textit {HM}:}{220}{section*.214}%
 \contentsline {section}{\numberline {ج}کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit {GM} -- اثبات‌ها}{221}{appendix.Alph6}%
 \contentsline {section}{\numberline {چ}وجود و همواری تبدیلات میدان کرنل}{224}{appendix.Alph7}%
-\contentsline {paragraph}{وجود:}{224}{section*.214}%
-\contentsline {paragraph}{همواری:}{225}{section*.215}%
+\contentsline {paragraph}{وجود:}{225}{section*.215}%
+\contentsline {paragraph}{همواری:}{225}{section*.216}%
 \contentsline {section}{\numberline {ح}میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}{227}{appendix.Alph8}%

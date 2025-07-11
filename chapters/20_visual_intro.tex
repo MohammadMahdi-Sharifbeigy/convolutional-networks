@@ -452,7 +452,7 @@
 	\begin{subfigure}[b]{0.24\textwidth}
 		\includegraphics[width=.92\textwidth]{figures/isometry_egg_intro_symmetric.pdf}
 		\vspace*{-.5ex}
-		\captionsetup{format=hang, width=.7\textwidth}
+		\captionsetup{format=hang, width=.8\textwidth}
 		\caption{\small
 			میدان کرنل ثابت \lr{$\mathrm{SO}(2)$}
 		}
@@ -462,54 +462,35 @@
 	\begin{subfigure}[b]{0.24\textwidth}
 		\includegraphics[width=.92\textwidth]{figures/isometry_egg_intro_antisymmetric.pdf}
 		\vspace*{-.5ex}
-		\captionsetup{format=hang, width=.7\textwidth}
+		\captionsetup{format=hang, width=.8\textwidth}
 		\caption{\small
 			میدان کرنل ثابت \lr{$\mathrm{O}(2)$}
 		}
 		\label{fig:isom_invariant_kernel_field_intro_O2}
 	\end{subfigure}
-	\par
-	\vspace*{\dimexpr-\parskip-158.pt\relax}% Skip backwards over last left-aligned image
-	\parshape 17 % Set flow of caption: N lines...
-	.55\textwidth .45\textwidth % First N-1 start @ .55\textwidth with a width of .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.55\textwidth .45\textwidth
-	.01\textwidth .98\textwidth % the last (N-th) line flows from 0 to .99 = .62+.37 = .01+.98 ad infinitum
-	\makeatletter
-	\setcounter{\@captype}{\value{\@captype}-1} % \setcounter{CounterName}{number}
-	\refstepcounter{\@captype}% Increase float/caption counter
-	\addcontentsline{\csname ext@\@captype\endcsname}{\@captype}% Add content to "List of..."
-	{\protect\numberline{\csname the\@captype\endcsname}{ToC entry}}%
-	\small % switch to small font for caption and Figure XX:
-	\csname fnum@\@captype\endcsname: % Float caption + #
-	\makeatother
-	\hyphenpenalty = 300 % default should be 50, however, without setting this parameter no hyphens occurred
-	% Actual caption
-	\emph{تبدیل‌های میدان کرنل} شبیه کانولوشن‌های \lr{$\GM$} هستند اما ممکن است کرنل متفاوتی در هر نقطه اعمال کنند.
-	قضیه~\ref{thm:isometry_equivariant_kernel_field_trafos} ثابت می‌کند که \emph{تبدیل‌های میدان کرنل هم‌متغیر ایزومتری} در تناظر یک به یک با \emph{میدان‌های کرنل ثابت ایزومتری} هستند.
-	این امر شامل
-	۱) اشتراک وزن روی \emph{مدارهای ایزومتری} (حلقه‌های رنگی) و
-	۲) محدودیت روی کرنل‌ها برای قابل هدایت بودن نسبت به \emph{زیرگروه تثبیت‌کننده} مدار مربوطه‌شان است.
-	شکل~\ref{fig:isom_invariant_kernel_field_intro_SO2} میدان کرنل ثابت \lr{$\mathrm{SO}(2)$} روی منیفولد تخم‌مرغی‌شکل را نشان می‌دهد.
-	مدارهای مختلف آزادند که کرنل‌های متفاوت را بدون به خطر انداختن هم‌متغیری \lr{$\mathrm{SO}(2)$} استفاده کنند.
-	کرنل‌ها خود محدود نیستند چون زیرگروه‌های تثبیت‌کننده عمل \lr{$\mathrm{SO}(2)$} روی مدارها بدیهی هستند (به جز در قطب‌ها).
-	شکل~\ref{fig:isom_invariant_kernel_field_intro_O2} مورد میدان کرنل ثابت \lr{$\mathrm{O}(2)$} را تجسم می‌کند.
-	مدارها یکسان هستند، با این حال، زیرگروه‌های تثبیت‌کننده محدودیت هم‌متغیری انعکاسی تحمیل می‌کنند.
-	توجه کنید که مفهوم تناوب به عمل گروه روی کرنل، تعریف~\ref{dfn:isometry_action_kernel_fields}، بستگی دارد که به نوبه خود به نمایش‌های میدان ویژگی انتخاب شده وابسته است.
-	کرنل‌های نامتقارن به این معنی تحت انعکاس‌ها ثابت هستند.
+	\hfill
+	\begin{minipage}[b]{0.48\textwidth}
+		\small % switch to small font for caption
+		\makeatletter
+		\setcounter{\@captype}{\value{\@captype}-1} % \setcounter{CounterName}{number}
+		\refstepcounter{\@captype}% Increase float/caption counter
+		\addcontentsline{\csname ext@\@captype\endcsname}{\@captype}% Add content to "List of..."
+		{\protect\numberline{\csname the\@captype\endcsname}{ToC entry}}%
+		\csname fnum@\@captype\endcsname: % Float caption + #
+		\makeatother
+		\emph{تبدیل‌های میدان کرنل} شبیه کانولوشن‌های \lr{$\GM$} هستند اما ممکن است کرنل متفاوتی در هر نقطه اعمال کنند.
+		قضیه~\ref{thm:isometry_equivariant_kernel_field_trafos} ثابت می‌کند که \emph{تبدیل‌های میدان کرنل هم‌متغیر ایزومتری} در تناظر یک به یک با \emph{میدان‌های کرنل ثابت ایزومتری} هستند.
+		این امر شامل
+		۱) اشتراک وزن روی \emph{مدارهای ایزومتری} (حلقه‌های رنگی) و
+		۲) محدودیت روی کرنل‌ها برای قابل هدایت بودن نسبت به \emph{زیرگروه تثبیت‌کننده} مدار مربوطه‌شان است.
+		شکل~\ref{fig:isom_invariant_kernel_field_intro_SO2} میدان کرنل ثابت \lr{$\mathrm{SO}(2)$} روی منیفولد تخم‌مرغی‌شکل را نشان می‌دهد.
+		مدارهای مختلف آزادند که کرنل‌های متفاوت را بدون به خطر انداختن هم‌متغیری \lr{$\mathrm{SO}(2)$} استفاده کنند.
+		کرنل‌ها خود محدود نیستند چون زیرگروه‌های تثبیت‌کننده عمل \lr{$\mathrm{SO}(2)$} روی مدارها بدیهی هستند (به جز در قطب‌ها).
+		شکل~\ref{fig:isom_invariant_kernel_field_intro_O2} مورد میدان کرنل ثابت \lr{$\mathrm{O}(2)$} را تجسم می‌کند.
+		مدارها یکسان هستند، با این حال، زیرگروه‌های تثبیت‌کننده محدودیت هم‌متغیری انعکاسی تحمیل می‌کنند.
+		توجه کنید که مفهوم تناوب به عمل گروه روی کرنل، تعریف~\ref{dfn:isometry_action_kernel_fields}، بستگی دارد که به نوبه خود به نمایش‌های میدان ویژگی انتخاب شده وابسته است.
+		کرنل‌های نامتقارن به این معنی تحت انعکاس‌ها ثابت هستند.
+	\end{minipage}
 	\label{fig:isom_invariant_kernel_field_intro}
 \end{figure}
 

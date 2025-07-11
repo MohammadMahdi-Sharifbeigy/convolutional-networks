@@ -1,8 +1,8 @@
 \documentclass{article}
 \usepackage{arxiv} 
 
-%\usepackage[T1]{fontenc}
-%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 %\usepackage[quiet]{fontspec} % Suppress font warnings
 \usepackage{amsmath}
@@ -137,6 +137,16 @@
 % \newcommand{\partfont}{\fontsize{20}{24}\selectfont\itshape}  % 20pt
 % \newcommand{\partfont}{\fontsize{24}{28}\selectfont\itshape}  % 24pt
 
+% Redefine abstract title to Persian
+\renewenvironment{abstract}
+{
+	\centerline
+  	{\fontsize{20}{24}\selectfont\bfseries چکیده}
+	\begin{quote}
+		{}
+	\end{quote}
+}
+
 % --- UPDATED CUSTOM PART COMMAND ---
 \makeatletter
 % This command formats a part title with rules and spacing.
@@ -177,6 +187,8 @@
 
 % Fallback for small caps
 \newcommand{\fakesc}[1]{{\footnotesize #1}}
+
+\newcommand{\farsiitem}[1]{\item[\it #1)]}
 
 % Address Underfull \vbox
 \raggedbottom
