@@ -9,7 +9,7 @@
 \label{sec:gauges_gauge_trafos}
 
 
-یک منیفولد هموار \lr{d}-بعدی $M$ دارای یک فضای مماس $\TpM\cong\R^d$ متصل به هر نقطه $p\in M$ است. فضاهای مماس، فضاهای برداری \lr{d}-بعدی هستند، با این حال، برخلاف $\R^d$، آن‌ها به طور کلی با هیچ انتخاب ارجح چارچوب مرجع همراه نیستند. یک بردار مماس $v\in \TpM$ یک شی \emph{مستقل از مختصات} است و بنابراین بلافاصله به صورت عددی با یک تاپل مختصاتی $(v_1,\dots,v_d)\in\R^d$ نمایش داده نمی‌شود. به طور انتزاعی‌تر، هر فضای مماس $\TpM$ با~$\R^d$ هم‌ریخت است اما به طور کلی هیچ هم‌ریختی کانونی بین آن‌ها وجود ندارد. بنابراین هر دو فضا از نظر ساختاری معادل هستند اما به هیچ روش ارجح به یکدیگر شناسایی نمی‌شوند.
+یک منیفولد هموار $d$ -بعدی $M$ دارای یک فضای مماس $\TpM\cong\R^d$ متصل به هر نقطه $p\in M$ است. فضاهای مماس، فضاهای برداری $d$-بعدی هستند، با این حال، برخلاف $\R^d$، آن‌ها به طور کلی با هیچ انتخاب ارجح چارچوب مرجع همراه نیستند. یک بردار مماس $v\in \TpM$ یک شی \emph{مستقل از مختصات} است و بنابراین بلافاصله به صورت عددی با یک تاپل مختصاتی $(v_1,\dots,v_d)\in\R^d$ نمایش داده نمی‌شود. به طور انتزاعی‌تر، هر فضای مماس $\TpM$ با~$\R^d$ هم‌ریخت است اما به طور کلی هیچ هم‌ریختی کانونی بین آن‌ها وجود ندارد. بنابراین هر دو فضا از نظر ساختاری معادل هستند اما به هیچ روش ارجح به یکدیگر شناسایی نمی‌شوند.
 
 
 یک \emph{گیج} (تسهیم محلی بندل مماس) بر روی $U^A\subseteq M$ به عنوان مجموعه‌ای از نگاشت‌های خطی معکوس‌پذیر که به صورت هموار وابسته به موقعیت هستند، تعریف می‌شود:
@@ -131,9 +131,9 @@
 	\qquad
 	\left[e_{i}^B\right]_{i=1}^d\ \notag
 	:=&\ \left[ \left(\psi_p^B\right)^{-1} (\epsilon_i) \right]_{i=1}^d
-	\qquad\quad && \big( \text{\small چارچوب القا شده توسط گیج، Eq.~\eqref{eq:framefield_gauge_equivalence} } \big) \notag\\
+	\qquad\quad && \big( \text{\small چارچوب القا شده توسط گیج، معادله~\eqref{eq:framefield_gauge_equivalence} } \big) \notag\\
 	=&\ \left[ \left(g_p^{BA} \cdot \psi_p^A\right)^{-1} \left(\epsilon_i\right) \right]_{i=1}^d
-	\qquad\quad && \big( \text{\small تبدیل گیج، Eq.~\eqref{eq:gauge_trafo_local_def_21}} \big) \notag\\
+	\qquad\quad && \big( \text{\small تبدیل گیج، معادله~\eqref{eq:gauge_trafo_local_def_21}} \big) \notag\\
 	=&\ \left[ \left(\psi_p^A\right)^{-1} \left(\left(g_p^{BA}\right)^{-1} \epsilon_i\right) \right]_{i=1}^d
 	\qquad\quad && \big( \text{\small معکوس گسترش یافته} \big) \notag\\
 	=&\ \left[ \left(\psi_p^A\right)^{-1} \left(\sum\nolimits_j \epsilon_j \epsilon_j^\top \left(g_p^{BA}\right)^{-1} \epsilon_i\right) \right]_{i=1}^d
@@ -143,7 +143,7 @@
 	=&\ \left[ \sum\nolimits_j \left(\psi_p^A\right)^{-1}\! (\epsilon_j)\ \left(\!\left(g_p^{BA}\right)^{-1}\right)_{ji} \right]_{i=1}^d
 	\qquad\quad && \big( \text{\small خطی بودن $\psi_p^A$} \big) \notag\\
 	=&\ \left[ \sum\nolimits_j e_{j}^A \left(\!\left(g_p^{BA}\right)^{-1}\right)_{ji} \right]_{i=1}^d
-	\qquad\quad && \big( \text{\small چارچوب القا شده توسط گیج، Eq.~\eqref{eq:framefield_gauge_equivalence} } \big) \notag\\
+	\qquad\quad && \big( \text{\small چارچوب القا شده توسط گیج، معادله~\eqref{eq:framefield_gauge_equivalence} } \big) \notag\\
 	=&\mkern-6mu: \left[ e_{i}^A \right]_{i=1}^d \btr \left(g_p^{BA}\right)^{-1}
 	\qquad\qquad &&
 \end{alignat}
@@ -262,9 +262,9 @@
 \begin{align}
 	\mathcal{M}:\TpM\to \TpM \,.
 \end{align}
-فرض کنید $v_\text{in}\in \TpM$ یک بردار مماس باشد که توسط $\mathcal{M}$ به $v_\text{out} = \mathcal{M} v_\text{in} \in \TpM$ نگاشت می‌شود.
+فرض کنید $v_\text{\lr{in}}\in \TpM$ یک بردار مماس باشد که توسط $\mathcal{M}$ به $v_\text{\lr{out} }= \mathcal{M} v_\text{\lr{in}} \in \TpM$ نگاشت می‌شود.
 نگاشت‌های خطی در پیاده‌سازی‌های عددی معمولاً توسط \emph{ماتریس‌های ضریب} مدل می‌شوند که بین \emph{بردارهای ضریب} نسبت به یک انتخاب از چارچوب مرجع نگاشت می‌کنند.
-برای دقیق کردن این موضوع، فرض کنید گیج $\psi_p^A$ داده شده باشد به طوری که بردارهای مستقل از مختصات $v_\textup{in}$ و $v_\textup{out}$ در $\TpM$ با بردارهای ضریب $v_\text{in}^A=\psi_p^A(v_\text{in})$ و $v_\text{out}^A=\psi_p^A(v_\text{out})$ در~$\R^d$ نمایش داده شوند.
+برای دقیق کردن این موضوع، فرض کنید گیج $\psi_p^A$ داده شده باشد به طوری که بردارهای مستقل از مختصات $v_\textup{\lr{in}}$ و $v_\textup{\lr{out}}$ در $\TpM$ با بردارهای ضریب $v_\text{\lr{in}}^A=\psi_p^A(v_\text{\lr{in}})$ و $v_\text{\lr{out}}^A=\psi_p^A(v_\text{\lr{out}})$ در~$\R^d$ نمایش داده شوند.
 نگاشت خطی $\mathcal{M}$ در این گیج توسط ماتریس نمایش داده می‌شود:
 \begin{align}\label{eq:matrix_trivialization}
 	\MAA\ :=\ \psi_p^A \circ \mathcal{M} \circ \big(\psi_p^A\big)^{-1} \ \ \in\ \R^{d\times d}
@@ -288,11 +288,11 @@
 \end{equation}
 ماتریس با نگاشت مستقل از مختصات سازگار است زیرا هر دو یکدیگر را نتیجه می‌دهند:
 \begin{align}
-	\MAA v^A_\text{in}
-	\ &=\ \pig[ \psi_p^A \circ \mathcal{M} \circ \big(\psi_p^A\big)^{-1} \pig] \circ \pig[ \psi_p^A(v_\text{in}) \pig] \notag \\
-	\ &=\ \psi_p^A \big( \mathcal{M}\mkern2mu v_\text{in} \big) \notag \\
-	\ &=\ \psi_p^A (v_\text{out}) \notag \\
-	\ &=\ v_\text{out}^A
+	\MAA v^A_\text{\lr{in}}
+	\ &=\ \pig[ \psi_p^A \circ \mathcal{M} \circ \big(\psi_p^A\big)^{-1} \pig] \circ \pig[ \psi_p^A(v_\text{\lr{in}}) \pig] \notag \\
+	\ &=\ \psi_p^A \big( \mathcal{M}\mkern2mu v_\text{\lr{in}} \big) \notag \\
+	\ &=\ \psi_p^A (v_\text{\lr{out}}) \notag \\
+	\ &=\ v_\text{\lr{out}}^A
 \end{align}
 البته می‌توان $\mathcal{M}$ را نسبت به هر انتخاب دیگری از گیج $\psi_p^B$ نیز نمایش داد.
 ما از معادله~\eqref{eq:components_leftaction} می‌دانیم که بردارهای ضریب در گیج‌های مختلف با $v^B = g_p^{BA} v^A$ مرتبط هستند.
@@ -309,11 +309,11 @@
 }
 این قانون تبدیل دوباره سازگار است زیرا تبدیل‌های متقابل یکدیگر را خنثی می‌کنند:
 \begin{align}
-	\MBB v^B_\text{in}
-	\ &=\ \pig[ g_p^{BA} \MAA \big(g_p^{BA}\big)^{-1} \pig]\, \pig[ g_p^{BA} v_\text{in}^A \pig] \notag \\
-	\ &=\ g_p^{BA} \MAA v_\text{in}^A \notag \\
-	\ &=\ g_p^{BA} v_\text{out}^A \notag \\
-	\ &=\ v_\text{out}^B
+	\MBB v^B_\text{\lr{in}}
+	\ &=\ \pig[ g_p^{BA} \MAA \big(g_p^{BA}\big)^{-1} \pig]\, \pig[ g_p^{BA} v_\text{\lr{in}}^A \pig] \notag \\
+	\ &=\ g_p^{BA} \MAA v_\text{\lr{in}}^A \notag \\
+	\ &=\ g_p^{BA} v_\text{\lr{out}}^A \notag \\
+	\ &=\ v_\text{\lr{out}}^B
 \end{align}
 تبدیل‌های گیج استخراج شده بنابراین تأیید می‌کنند که تمام محاسبات مختصات‌بندی شده در نهایت مستقل از مختصات هستند.
 روابط بین نگاشت مستقل از مختصات و مختصات‌بندی‌های آن توسط نمودار جابجایی زیر خلاصه می‌شود:
@@ -355,7 +355,7 @@
 این سؤال را مطرح می‌کند که انتخاب چارچوب‌های مرجع در یک منیفولد تا چه حد دلخواه است.
 در بخش‌های~\ref{sec:gauges_gauge_trafos} و~\ref{sec:gauges_TpM_functions} قبلی ما هر انتخاب ممکن از گیج یا چارچوب مرجع را مجاز می‌دانستیم، که بنابراین توسط تبدیل‌های گیج با مقدار کلی $\GL{d}$ مرتبط بودند.
 با این حال، در بسیاری از کاربردها، منیفولد دارای ساختار اضافی است که امکان تشخیص یک \emph{زیرمجموعه ارجح از چارچوب‌های مرجع} یا گیج‌ها را می‌دهد که توابع گذار آن‌ها مقادیری در یک \emph{گروه ساختار کاهش یافته} $G\leq\GL{d}$ می‌گیرند.
-چنین ساختارهای هندسی -- یا بلکه خود زیرمجموعه‌های چارچوب‌های مرجع ترجیحی، که اطلاعات معادل را کدگذاری می‌کنند -- به عنوان \emph{$G$-ساختارها} نامیده می‌شوند.
+چنین ساختارهای هندسی ـ یا بلکه خود زیرمجموعه‌های چارچوب‌های مرجع ترجیحی، که اطلاعات معادل را کدگذاری می‌کنند ـ به عنوان \emph{$G$-ساختارها} نامیده می‌شوند.
 
 
 $G$-ساختارها با در نظر گرفتن چند مثال خاص بهتر درک می‌شوند.
@@ -389,8 +389,7 @@ $G$-ساختارها با در نظر گرفتن چند مثال خاص بهتر
 	\end{enumerate}
 \end{samepage}
 چنین زیرمجموعه‌هایی از چارچوب‌های مرجع که به صورت هموار تغییر می‌کنند به عنوان \emph{$G$-ساختارها}~$\GM$ بر روی~$M$ نامیده می‌شوند
-و گروه~$G$ به عنوان \emph{گروه ساختار} (کاهش یافته) نامیده می‌شود
--- برای تعریفی دقیق‌تر به بخش~\ref{sec:G_associated_bundles} مراجعه کنید.%
+و گروه~$G$ به عنوان \emph{گروه ساختار} (کاهش یافته) نامیده می‌شود ـ برای تعریفی دقیق‌تر به بخش~\ref{sec:G_associated_bundles} مراجعه کنید.%
 \footnote{
 	به طور رسمی، $\GM$ به عنوان یک زیربندل اصلی $G$ از بندل چارچوب $\FM$ تعریف می‌شود، که یک بندل اصلی $\GL{d}$ است.
 }
@@ -446,7 +445,7 @@ $G$-ساختارها با در نظر گرفتن چند مثال خاص بهتر
 		به طور مشابه، یک تناظر یک به یک بین فرم‌های حجم و چارچوب‌های واحد حجم وجود دارد.
 		توجه داشته باشید که انتخاب یک گروه ساختار $G$ به طور منحصر به فرد یک $G$-ساختار را مشخص نمی‌کند.
 		به عنوان مثال، متریک‌های ریمانی مختلف می‌توانند به عنوان ساختار $\OO{d}$، فرم‌های حجم مختلف به عنوان ساختار $\operatorname{SL}(d)$ یا میدان‌های چارچوب سراسری مختلف به عنوان ساختار $\{e\}$ انتخاب شوند.
-		\CNN{}های مستقل از مختصات برای رعایت یک $G$-ساختار داده شده طراحی شده‌اند -- اینکه کدام ساختار خاص است به وظیفه یادگیری بستگی دارد.
+		\CNN{}های مستقل از مختصات برای رعایت یک $G$-ساختار داده شده طراحی شده‌اند ـ اینکه کدام ساختار خاص است به وظیفه یادگیری بستگی دارد.
 	}
 	\label{tab:G_structures}
 \end{table}
@@ -466,10 +465,12 @@ $G$-ساختارها با در نظر گرفتن چند مثال خاص بهتر
 ما بنابراین بدون از دست دادن کلیت، اصطلاح "استقلال از مختصات" را به \emph{استقلال از مختصات} $\GM$ تصحیح خواهیم کرد، یعنی استقلال نسبت به انتخاب چارچوب‌های مرجع در $G$-ساختار داده شده در~$M$.
 در طول این کار ما فرض خواهیم کرد که گیج‌ها بخشی از یک $G$-اطلس هستند:
 \begin{align}\label{eq:G_atlas_dfn}
+ 	\ \ p\in U^A\cap U^B \,,
+ 	\ \ \ \psi_p^A, \psi_p^B \in \mathscr{A}^G,
+ 	\quad \textup{برای هر}
+	\quad g_p^{BA} \in G 
+	\quad\ \textup{چنان که} \quad
 	\mathscr{A}^G \,=\, \big\{\! \big(U^X, \psi^X\big) \!\big\}_{X\in \mathfrak{X}}
-	\quad\ \textup{such that} \quad
-	g_p^{BA} \in G
-	\quad \textup{for any}\ \ \ \psi_p^A, \psi_p^B \in \mathscr{A}^G,\ \ p\in U^A\cap U^B \,,
 \end{align}
 مطابق با $G$-ساختار داده شده.
 هر کمیت یا تابع می‌تواند نسبت به هر گیجی از این اطلس بیان شود%

@@ -30,9 +30,9 @@
 \contentsline {subsubsection}{\numberline {3.3.3}سازگاری اتصال‌ها و \textit {$G$}-ساختارها}{35}{subsubsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.4}عمل ایزومتری‌ها و تبدیل‌های گیج القا شده}{36}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}پیش‌برنده بردارهای مماس}{36}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}پیش‌برنده چارچوب‌های مرجع و تقارن‌های \textit {G}-ساختار}{37}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2}پیش‌برنده چارچوب‌های مرجع و تقارن‌های \textit {\lr {G}}-ساختار}{37}{subsubsection.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.3}پیش‌برنده بردارهای ویژگی}{38}{subsubsection.3.4.3}%
-\contentsline {section}{\numberline {4}شبکه‌های مستقل از مختصات و \textit {GM}-کانولوشن‌ها}{38}{section.4}%
+\contentsline {section}{\numberline {4}شبکه‌های مستقل از مختصات و \textit {\lr {GM}}-کانولوشن‌ها}{38}{section.4}%
 \etoc@startlocaltoc {4}
 \contentsline {subsection}{\numberline {4.1}عملیات نقطه‌ای تناوب‌پذیر گیج}{39}{subsection.4.1}%
 \contentsline {subsubsection}{\numberline {4.1.1}کانولوشن‌های $1\times 1$ تناوب‌پذیر گیج}{39}{subsubsection.4.1.1}%
@@ -43,9 +43,9 @@
 \contentsline {subsubsection}{\numberline {4.2.2}کرنل‌های مستقل از مختصات و تبدیلات میدان کرنل}{45}{subsubsection.4.2.2}%
 \contentsline {paragraph}{کرنل‌های مستقل از مختصات:}{45}{section*.34}%
 \contentsline {paragraph}{تبدیلات میدان کرنل مستقل از مختصات:}{46}{section*.36}%
-\contentsline {subsubsection}{\numberline {4.2.3}کانولوشن‌های \textit {GM} و کرنل‌های \textit {G}-راهبر}{47}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3}کانولوشن‌های \textit {\lr {GM}} و کرنل‌های \textit {\lr {G}}-راهبر}{47}{subsubsection.4.2.3}%
 \contentsline {paragraph}{اشتراک‌گذاری وزن کانولوشنی:}{47}{section*.37}%
-\contentsline {paragraph}{کانولوشن‌های مستقل از مختصات \textit {GM}:}{49}{section*.39}%
+\contentsline {paragraph}{کانولوشن‌های مستقل از مختصات \textit {\lr {GM}}:}{49}{section*.39}%
 \contentsline {subsection}{\numberline {4.3}تناوب‌پذیری ایزومتری}{51}{subsection.4.3}%
 \contentsline {paragraph}{میدان‌های کرنل ناوردا:}{53}{section*.42}%
 \contentsline {paragraph}{فضاهای همگن:}{53}{section*.43}%
@@ -55,17 +55,17 @@
 \etoc@startlocaltoc {5}
 \contentsline {subsection}{\numberline {5.1}هندسه نوار موبیوس}{54}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}میدان‌های ویژگی مستقل از جهت‌گیری}{56}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}شبکه‌های کانولوشنی مستقل از جهت‌گیری}{58}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}شبکه‌های کانولوشنی مستقل از جهت‌گیری}{57}{subsection.5.3}%
 \contentsline {subsubsection}{\numberline {5.3.1}جمع بایاس مستقل از جهت‌گیری}{58}{subsubsection.5.3.1}%
 \contentsline {subsubsection}{\numberline {5.3.2}غیرخطی‌های مستقل از جهت‌گیری}{58}{subsubsection.5.3.2}%
 \contentsline {subsubsection}{\numberline {5.3.3}کانولوشن‌های مستقل از جهت‌گیری}{59}{subsubsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.4}پیاده‌سازی عددی و ارزیابی کانولوشن‌های موبیوس}{61}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}پیاده‌سازی عددی}{62}{subsubsection.5.4.1}%
-\contentsline {paragraph}{فضاهای ویژگی:}{62}{section*.49}%
+\contentsline {subsubsection}{\numberline {5.4.1}پیاده‌سازی عددی}{61}{subsubsection.5.4.1}%
+\contentsline {paragraph}{فضاهای ویژگی:}{61}{section*.49}%
 \contentsline {paragraph}{جمع بایاس:}{62}{section*.51}%
 \contentsline {paragraph}{غیرخطی‌ها:}{63}{section*.52}%
 \contentsline {paragraph}{کانولوشن‌های \textit {GM}:}{63}{section*.53}%
-\contentsline {paragraph}{\lr {Pooling}:}{64}{section*.54}%
+\contentsline {paragraph}{\lr {Pooling}:}{63}{section*.54}%
 \contentsline {paragraph}{تست‌های واحد:}{64}{section*.55}%
 \contentsline {subsubsection}{\numberline {5.4.2}ارزیابی تجربی}{64}{subsubsection.5.4.2}%
 \contentsline {part}{بخش~دوم: نظریه شبکه‌های کانولوشنی مستقل از مختصات}{67}{part.2}%
