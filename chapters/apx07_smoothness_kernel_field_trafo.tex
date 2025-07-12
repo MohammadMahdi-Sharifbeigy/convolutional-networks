@@ -129,9 +129,9 @@ $\psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{
 \label{thm:differentiation_lemma}
     فرض کنید $\mathscr{V}$ یک فضای اندازه، $T\subset\R$ یک بازه غیرتبهگن و $I: \mathscr{V} \times T \to \R$ یک نگاشت با ویژگی‌های زیر باشد:
     \begin{itemize}
-        \item[(i)] برای هر $t\in T$ ثابت، نگاشت $\mathscr{v} \mapsto I(\mathscr{v},t)$ روی $\mathscr{V}$ لبگ-انتگرال‌پذیر است.
-        \item[(ii)] برای هر $\mathscr{v} \in \mathscr{V}$ ثابت، نگاشت $t\mapsto I(\mathscr{v},t)$ در $T$ مشتق‌پذیر است.
-        \item[(iii)] یک تابع لبگ-انتگرال‌پذیر $\mathscr{B}: \mathscr{V} \to \R$ وجود دارد به طوری که
+        \item[$(i)$] برای هر $t\in T$ ثابت، نگاشت $\mathscr{v} \mapsto I(\mathscr{v},t)$ روی $\mathscr{V}$ لبگ-انتگرال‌پذیر است.
+        \item[$(ii)$] برای هر $\mathscr{v} \in \mathscr{V}$ ثابت، نگاشت $t\mapsto I(\mathscr{v},t)$ در $T$ مشتق‌پذیر است.
+        \item[$(iii)$] یک تابع لبگ-انتگرال‌پذیر $\mathscr{B}: \mathscr{V} \to \R$ وجود دارد به طوری که
                 $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
                 برای هر $(\mathscr{v},t) \in \mathscr{V} \times T$ برقرار است.
     \end{itemize}
@@ -157,18 +157,18 @@ $\psi_{\protect\scalebox{.65}{$T\!M\mkern-1mu,\mkern2mu$}\protect\scalebox{.75}{
 \toclesslab\subsection{اثبات قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} (کفایت تکیه‌گاه فشرده کرنل روی گوی‌های مماس)}{apx:proof_sufficiency_ball_kernel_support}
 
 فرض کنید
-$B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\TpM \,\big|\, \lVert v\rVert \leq R \big\}$
+$B_{\TpM}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) := \big\{ v\in\TpM \,\big|\, \lVert v\rVert \leq R \big\}$
 گوی بسته با شعاع $R>0$ حول مبدأ $\TpM$ و
-$B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\R^d \,\big|\, \lVert v\rVert \leq R \big\}$
+$B_{\R^d}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) := \big\{ v\in\R^d \,\big|\, \lVert v\rVert \leq R \big\}$
 گوی متناظر حول مبدأ $\R^d$ باشد.
-توجه داشته باشید که هر پیمانه ایزومتریک $\psiTMp\big(B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R)\big) = B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R)$ را برآورده می‌کند.
+توجه داشته باشید که هر پیمانه ایزومتریک $\psiTMp\big(B_{\TpM}^{\mkern1.5mu\textup{\lr{closed}}}(0,R)\big) = B_{\R^d}^{\mkern1.5mu\textup{\lr{closed}}}(0,R)$ را برآورده می‌کند.
 فرض کنید $\widetilde{\K}$ یک میدان کرنل باشد که تکیه‌گاه آن در داخل گوی‌هایی با شعاع یکسان $R$ در هر فضای مماس قرار دارد، یعنی
 \begin{align}
-    \supp\!\big(\widetilde{\K}_p\big) \subseteq B_{\TpM}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+    \supp\!\big(\widetilde{\K}_p\big) \subseteq B_{\TpM}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) \quad \forall p\in M
 \end{align}
 و در نتیجه، برای هر پیمانه ایزومتریک $\psiTMp$:
 \begin{align}
-    \supp\! \pig(\widetilde{\K}_p \circ \big(\psiTMp\big)^{-1} \pig) \subseteq B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \quad \forall p\in M
+    \supp\! \pig(\widetilde{\K}_p \circ \big(\psiTMp\big)^{-1} \pig) \subseteq B_{\R^d}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) \quad \forall p\in M
 \end{align}
 را برآورده می‌کند. طبق قضیه~\ref{thm:existence_kernel_field_trafo_compact_kernels} این ویژگی برای تضمین اینکه تبدیل میدان کرنل متناظر $\mathscr{T}_{\mathcal{K}_{\mkern-1muR}}$ خوش‌تعریف است، کافی است.
 اثبات این گزاره در ادامه ارائه می‌شود.
@@ -194,8 +194,8 @@ $B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) := \big\{ v\in\R^d \,\big|\, \lVert 
     این لم ویژگی $(i)$ را با فرض وجود تبدیل میدان کرنل همانطور که قبلاً بحث شد، برآورده می‌کند.
     ویژگی $(ii)$ به دلیل همواری کل انتگرال‌دهنده در معادله~\eqref{eq:integrand_smoothness_full} برقرار است.
     برای ویژگی $(iii)$ مشاهده کنید که هم $I_{i,x_0,\mu}$ و هم مشتق آن هموار هستند به طوری که قدر مطلق $\big| \frac{\partial}{\partial t} I_{i,x_0,\mu} \big|$ پیوسته است.
-    از آنجا که علاوه بر این دارای تکیه‌گاه فشرده روی $B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]$ است، با (تعمیمی از) قضیه مقدار اکسترمم با یک عدد $b\geq0$ کران‌دار است.
-    بنابراین ما $\mathscr{B}(\mathscr{v}) = b\cdot \mathbb{I}_{B_{\R^d}^{\mkern1.5mu\textup{closed}}(0,R) \times [-\varepsilon,\varepsilon]}$ را قرار می‌دهیم که در آن $\mathbb{I}$ تابع مشخصه است.
+    از آنجا که علاوه بر این دارای تکیه‌گاه فشرده روی $B_{\R^d}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) \times [-\varepsilon,\varepsilon]$ است، با (تعمیمی از) قضیه مقدار اکسترمم با یک عدد $b\geq0$ کران‌دار است.
+    بنابراین ما $\mathscr{B}(\mathscr{v}) = b\cdot \mathbb{I}_{B_{\R^d}^{\mkern1.5mu\textup{\lr{closed}}}(0,R) \times [-\varepsilon,\varepsilon]}$ را قرار می‌دهیم که در آن $\mathbb{I}$ تابع مشخصه است.
     این انتخاب
     $\big| \frac{\partial}{\partial t} I(\mathscr{v},t) \big| \leq \mathscr{B}(\mathscr{v})$
     را برای هر $(\mathscr{v},t) \in \mathscr{V} \times T$

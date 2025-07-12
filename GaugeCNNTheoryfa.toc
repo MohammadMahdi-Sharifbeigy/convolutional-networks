@@ -143,10 +143,10 @@
 \contentsline {part}{بخش~سوم: مروری بر مقالات مرتبط با شبکه‌های کانولوشنی مستقل از مختصات}{127}{part.3}%
 \etoc@startlocaltoc {9}
 \contentsline {paragraph}{گسسته‌سازی منیفلدها و میدان‌های ویژگی:}{129}{section*.120}%
-\contentsline {paragraph}{\textit {G}-ساختارها \textit {GM} و گروه‌های ساختاری \textit {G}:}{129}{section*.121}%
-\contentsline {paragraph}{اتصالات \textit {G}-سازگار:}{130}{section*.122}%
+\contentsline {paragraph}{\textit {\lr {G}}-ساختارها \textit {\lr {GM}} و گروه‌های ساختاری \textit {\lr {G}}:}{129}{section*.121}%
+\contentsline {paragraph}{اتصالات \textit {\lr {G}}-سازگار:}{130}{section*.122}%
 \contentsline {paragraph}{پول‌بک‌های انتقال‌دهنده و تصویرهای جایگزین به $\bm {T_{\mkern -1.5mu p}\mkern -.5muM}$:}{130}{section*.123}%
-\contentsline {paragraph}{نمایش‌های \textit {G} و غیرخطی‌ها:}{131}{section*.124}%
+\contentsline {paragraph}{نمایش‌های \textit {\lr {G}} و غیرخطی‌ها:}{131}{section*.124}%
 \contentsline {paragraph}{فضاهای کرنل \textit {G}-راهبری‌پذیر:}{131}{section*.125}%
 \contentsline {section}{\numberline {9}شبکه‌های کانولوشنی مستقل از مختصات اقلیدسی}{131}{section.9}%
 \etoc@startlocaltoc {10}
@@ -155,7 +155,7 @@
 \contentsline {paragraph}{رابطه با کانولوشن‌های \lr {GM} اقلیدسی:}{134}{section*.128}%
 \contentsline {subsection}{\numberline {9.2}هندسه‌ی آفین فضاهای اقلیدسی $\mathbb {E}_d$}{135}{subsection.9.2}%
 \contentsline {subsubsection}{\numberline {9.2.1}چارت‌های آفین و اطلس‌های \lr {Aff(G)}}{135}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}\textit {G}-اطلس‌ها و \textit {G}-ساختارهای القا شده}{136}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.2}\textit {\lr {G}}-اطلس‌ها و \textit {\lr {G}}-ساختارهای القا شده}{136}{subsubsection.9.2.2}%
 \contentsline {subsubsection}{\numberline {9.2.3}تبدیلات آفین مستقل از مختصات}{139}{subsubsection.9.2.3}%
 \contentsline {subsection}{\numberline {9.3}\lr {CNN}های هموردای گروه آفین در فضاهای اقلیدسی $\mathbb {E}_d$}{141}{subsection.9.3}%
 \contentsline {paragraph}{بازیابی کانولوشن‌های متعارف روی $\mathbb {R}^d$:}{141}{section*.131}%
@@ -171,7 +171,7 @@
 \etoc@startlocaltoc {11}
 \contentsline {subsection}{\numberline {11.1}هندسه‌ی کره ۲-بعدی $S^2$}{154}{subsection.11.1}%
 \contentsline {subsection}{\numberline {11.2}\lr {CNN}های کروی کاملاً هموردای دورانی}{158}{subsection.11.2}%
-\contentsline {paragraph}{کانولوشن‌های \textit {GM} کروی:}{158}{section*.149}%
+\contentsline {paragraph}{کانولوشن‌های \textit {\lr {GM}} کروی:}{158}{section*.149}%
 \contentsline {paragraph}{کانولوشن‌های گراف کروی:}{159}{section*.150}%
 \contentsline {paragraph}{کانولوشن‌های کروی با کرنل‌های روی $S^2$:}{159}{section*.151}%
 \contentsline {subsection}{\numberline {11.3}\lr {CNN}های کروی هموردای دوران سمتی در توپولوژی‌های استوانه‌ای}{163}{subsection.11.3}%
@@ -181,7 +181,7 @@
 \contentsline {paragraph}{پیاده‌سازی‌ها:}{169}{section*.160}%
 \contentsline {section}{\numberline {12}\lr {CNN}های مستقل از مختصات روی سطوح عمومی}{171}{section.12}%
 \etoc@startlocaltoc {12}
-\contentsline {paragraph}{CNNهای سطوح فراتر از کانولوشن‌های \textit {GM}:}{171}{section*.161}%
+\contentsline {paragraph}{سطوح فراتر از کانولوشن‌های \textit {\lr {GM}}:}{172}{section*.161}%
 \contentsline {subsection}{\numberline {12.1}هندسه‌ی سطوح جایگذاری‌شده}{172}{subsection.12.1}%
 \contentsline {subsubsection}{\numberline {12.1.1}هندسه‌ی دیفرانسیل کلاسیک سطوح جایگذاری‌شده}{173}{subsubsection.12.1.1}%
 \contentsline {subsubsection}{\numberline {12.1.2}هندسه‌ی گسسته‌سازی شده‌ی مش‌های سطحی}{174}{subsubsection.12.1.2}%
@@ -193,17 +193,17 @@
 \contentsline {paragraph}{ملاحظات کلی و نمای کلی:}{180}{section*.168}%
 \contentsline {paragraph}{شبکه‌های هارمونیک سطحی:}{181}{section*.169}%
 \contentsline {paragraph}{\lr {CNN}های ژئودزیک چندجهته:}{181}{section*.171}%
-\contentsline {paragraph}{CNNهای چارچوب موازی:}{183}{section*.172}%
+\contentsline {paragraph}{چارچوب موازی:}{183}{section*.172}%
 \contentsline {paragraph}{\lr {CNN}های مش هموردای پیمانه:}{184}{section*.175}%
 \contentsline {paragraph}{\lr {CNN}های ژئودزیک:}{184}{section*.176}%
-\contentsline {paragraph}{ZerNet:}{184}{section*.177}%
-\contentsline {paragraph}{TextureNet:}{186}{section*.178}%
-\contentsline {subsection}{\numberline {12.3}\{e\}-کانولوشن‌های سطحی راهبری‌پذیر}{186}{subsection.12.3}%
-\contentsline {paragraph}{MoNetهای ژئودزیک:}{186}{section*.180}%
-\contentsline {paragraph}{3DMCNN:}{187}{section*.181}%
+\contentsline {paragraph}{\lr {ZerNet}:}{184}{section*.177}%
+\contentsline {paragraph}{\lr {TextureNet}:}{186}{section*.178}%
+\contentsline {subsection}{\numberline {12.3}\{\lr {e}\}-کانولوشن‌های سطحی راهبری‌پذیر}{186}{subsection.12.3}%
+\contentsline {paragraph}{\lr {MoNet}های ژئودزیک:}{186}{section*.180}%
+\contentsline {paragraph}{\lr {3DMCNN}:}{187}{section*.181}%
 \contentsline {paragraph}{کانولوشن‌های انتقال موازی:}{187}{section*.182}%
 \contentsline {paragraph}{کانولوشن‌های مماس:}{188}{section*.183}%
-\contentsline {paragraph}{NPTC-net:}{188}{section*.184}%
+\contentsline {paragraph}{\lr {NPTC-net}:}{188}{section*.184}%
 \contentsline {paragraph}{کانولوشن‌های بین-اطلسی:}{189}{section*.185}%
 \contentsline {subsection}{\numberline {12.4}تقریب‌های بیست‌وجهی از \lr {CNN}های کروی}{190}{subsection.12.4}%
 \contentsline {paragraph}{هندسه‌ی بیست‌وجهی:}{190}{section*.187}%
@@ -242,14 +242,14 @@
 \contentsline {section}{\numberline {ت}کانولوشن‌های هموردا روی فضاهای همگن}{210}{appendix.Alph4}%
 \contentsline {paragraph}{فضاهای همگن:}{211}{section*.208}%
 \contentsline {paragraph}{کانولوشن‌های گروهی و همبستگی‌های گروهی:}{212}{section*.209}%
-\contentsline {paragraph}{\citet {Kondor2018-GENERAL}:}{214}{section*.210}%
-\contentsline {paragraph}{\citet {bekkers2020bspline}:}{214}{section*.211}%
-\contentsline {paragraph}{ارتباط با کانولوشن‌های \emph {GM}:}{215}{section*.212}%
-\contentsline {section}{\numberline {ث}میدان‌های کرنل نماینده خارج‌قسمتی -- اثبات‌ها}{215}{appendix.Alph5}%
-\contentsline {paragraph}{بخش ۱) -- ساخت \textit {H}, \textit {HM} و Isom\textsubscript {\textit {HM}}:}{218}{section*.213}%
-\contentsline {paragraph}{بخش ۲) -- هم‌ارزی تبدیلات میدان کرنل $\mathcal {I}$-هموردا و کانولوشن‌های \textit {HM}:}{220}{section*.214}%
-\contentsline {section}{\numberline {ج}کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit {GM} -- اثبات‌ها}{221}{appendix.Alph6}%
+\contentsline {paragraph}{\lr {\citet {Kondor2018-GENERAL}}:}{213}{section*.210}%
+\contentsline {paragraph}{\lr {\citet {bekkers2020bspline}}:}{214}{section*.211}%
+\contentsline {paragraph}{ارتباط با کانولوشن‌های \emph {\lr {GM}}:}{215}{section*.212}%
+\contentsline {section}{\numberline {ث}میدان‌های کرنل نماینده خارج‌قسمتی ـ اثبات‌ها}{215}{appendix.Alph5}%
+\contentsline {paragraph}{بخش ۱) ـ ساخت \textit {\lr {H}}, \textit {\lr {HM}} و \lr {Isom}\textsubscript {\textit {\lr {HM}}}:}{218}{section*.213}%
+\contentsline {paragraph}{بخش ۲) -- هم‌ارزی تبدیلات میدان کرنل $\mathcal {I}$-هموردا و کانولوشن‌های \textit {\lr {HM}}:}{220}{section*.214}%
+\contentsline {section}{\numberline {ج}کانولوشن‌های راهبری‌پذیر کروی به عنوان کانولوشن‌های \textit {\lr {GM}} ـاثبات‌ها}{221}{appendix.Alph6}%
 \contentsline {section}{\numberline {چ}وجود و همواری تبدیلات میدان کرنل}{224}{appendix.Alph7}%
-\contentsline {paragraph}{وجود:}{225}{section*.215}%
+\contentsline {paragraph}{وجود:}{224}{section*.215}%
 \contentsline {paragraph}{همواری:}{225}{section*.216}%
 \contentsline {section}{\numberline {ح}میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}{227}{appendix.Alph8}%

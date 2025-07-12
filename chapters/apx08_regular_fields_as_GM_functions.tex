@@ -5,9 +5,9 @@
 \label{apx:regular_field_scalar_GM}
 
 
-توابع با مقادیر حقیقی $\digamma: \GM \to \R$ روی $G$-ساختار با میدان‌های ویژگی منظم $f: M \to \A_{\textup{reg}}$ روی منیفلد معادل هستند، یعنی یک ایزومورفیسم وجود دارد
+توابع با مقادیر حقیقی $\digamma: \GM \to \R$ روی $G$-ساختار با میدان‌های ویژگی منظم $f: M \to \A_{\textup{\lr{reg}}}$ روی منیفلد معادل هستند، یعنی یک ایزومورفیسم وجود دارد
 \begin{align}
-    C^\infty(\GM)\ \cong\ \Gamma(\A_{\textup{reg}}) \,.
+    C^\infty(\GM)\ \cong\ \Gamma(\A_{\textup{\lr{reg}}}) \,.
 \end{align}
 این پیوست اثباتی برای این ادعا برای مورد گروه‌های ساختاری متناهی~$G$ ارائه می‌دهد.
 ما با تعریف معمول نمایش‌های منظم (حقیقی) از گروه‌های ساختاری متناهی شروع می‌کنیم، که بر روی فضاهای برداری (آزاد) $\R^{|G|}$ عمل می‌کنند.
@@ -15,35 +15,35 @@
 سپس عمل نمایش منظم (چپ) روی $\R^{|G|}$ بر حسب عمل آن بر روی این بردارهای پایه تعریف می‌شود، که با انتقال چپ داده می‌شود.
 به طور خاص، برای هر $h,g\in G$ نمایش منظم به صورت زیر عمل می‌کند:
 \begin{align}\label{eq:finite_regular_rep_action}
-    \rho_{\textup{reg}}(h)\, \epsilon_g\ :=\ \epsilon_{hg} \,.
+    \rho_{\textup{\lr{reg}}}(h)\, \epsilon_g\ :=\ \epsilon_{hg} \,.
 \end{align}
 توجه داشته باشید که عمل بر روی \emph{ضرایب} یک بردار، وارون است
 \begin{align}\label{eq:finite_regular_rep_action_coeffs}
-    \rho_{\textup{reg}}(h)\, \sum_{g\in G} \mathscr{f}_g\, \epsilon_g
+    \rho_{\textup{\lr{reg}}}(h)\, \sum_{g\in G} \mathscr{f}_g\, \epsilon_g
     \ =\ \sum_{g\in G} \mathscr{f}_g\, \epsilon_{hg}
     \ =\ \sum_{{\widetilde{g}}\in G} \mathscr{f}_{h^{-1}\widetilde{g}}\ \epsilon_{\widetilde{g}} \,,
 \end{align}
 که دانستن آن مفید است، با این حال، ما در ادامه به این ویژگی نیازی نخواهیم داشت.
 از آنجا که نمایش منظم بردارهای پایه $\R^{|G|}$ را جایگشت می‌کند، یک \emph{نمایش جایگشتی} است.
-برخی از تصاویر برای گروه دوری $G=\operatorname{C}_4$ در پیوست~B از~\cite{Weiler2019_E2CNN} یافت می‌شود.
+برخی از تصاویر برای گروه دوری $G=\operatorname{C}_4$ در پیوست~ب از~\cite{Weiler2019_E2CNN} یافت می‌شود.
 میدان‌های ویژگی منظم به عنوان مقاطع هموار از کلاف $G$-همبسته
 \begin{align}
-    \A_{\textup{reg}}\ =\ \big(\GM \times \R^{|G|}) /\! \sim_{\rho_\textup{reg}} \,.
+    \A_{\textup{\lr{reg}}}\ =\ \big(\GM \times \R^{|G|}) /\! \sim_{\rho_\textup{\lr{reg}}} \,.
 \end{align}
 تعریف می‌شوند.
 
 
-ایزومورفیسم $C^\infty(\GM) \cong \Gamma(\A_{\textup{reg}})$ ادعای ما را در بخش~\ref{sec:instantiations_mesh} مبنی بر اینکه \emph{\lr{CNN}های چارچوب موازی} توسط~\citet{Yang2020parallelFrameCNN} کانولوشن‌های $\GM$ خاصی بین میدان‌های ویژگی منظم هستند، اثبات می‌کند.
+ایزومورفیسم $C^\infty(\GM) \cong \Gamma(\A_{\textup{\lr{reg}}})$ ادعای ما را در بخش~\ref{sec:instantiations_mesh} مبنی بر اینکه \emph{\lr{CNN}های چارچوب موازی} توسط یانگ و همکاران~\cite{Yang2020parallelFrameCNN} کانولوشن‌های $\GM$ خاصی بین میدان‌های ویژگی منظم هستند، اثبات می‌کند.
 این علاوه بر این، ارتباط بین \emph{کانولوشن‌های گروهی} (به بخش~\ref{apx:homogeneous_preliminaries} مراجعه کنید) و \emph{کانولوشن‌های $\GM$ منظم} را که در بخش~\ref{sec:euclidean_literature} و~\cite{Weiler2019_E2CNN} ادعا شده بود، برقرار می‌کند.
 
 
 با این مقدمات و ملاحظات، ما آماده فرمول‌بندی قضیه هستیم:
 \begin{thm}[میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار]
 \label{thm:regular_field_scalar_GM}
-    فرض کنید $G \leq \GL{d}$ یک گروه ساختاری متناهی، $\GM$ یک $G$-ساختار روی $M$ و $\A_{\textup{reg}}$ کلافی باشد که با عمل نمایش منظم $\rho_\textup{reg}$ از $G$ همبسته است.
+    فرض کنید $G \leq \GL{d}$ یک گروه ساختاری متناهی، $\GM$ یک $G$-ساختار روی $M$ و $\A_{\textup{\lr{reg}}}$ کلافی باشد که با عمل نمایش منظم $\rho_\textup{\lr{reg}}$ از $G$ همبسته است.
     آنگاه میدان‌های ویژگی منظم با توابع هموار و با مقادیر حقیقی روی $G$-ساختار یکسان هستند، یعنی یک ایزومورفیسم
     \begin{align}\label{eq:regular_field_associated_bundle_def}
-        \Lambda: C^\infty(\GM) \xrightarrow{\sim} \Gamma(\A_{\textup{reg}}) \,.
+        \Lambda: C^\infty(\GM) \xrightarrow{\sim} \Gamma(\A_{\textup{\lr{reg}}}) \,.
     \end{align}
     وجود دارد. این ایزومورفیسم با
     \begin{align}

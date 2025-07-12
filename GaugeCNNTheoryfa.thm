@@ -37,10 +37,10 @@
 \contentsline {dfn}{{تعریف}{9.{1}}{اطلس $\Aff (G)$ از فضای اقلیدسی}}{136}{pro.9.1}%
 \contentsline {thm}{{قضیه}{9.{2}}{اطلس‌های $\Aff (G)$ از چارت‌ها، $G$-اطلس‌هایی از پیمانه‌ها را القا می‌کنند}}{137}{pro.9.2}%
 \contentsline {proof}{{اثبات}{13}{}}{137}{proof.13}%
-\contentsline {thm}{{قضیه}{9.{3}}{ایزومورفیسم کلاف اصلی بین \lr {Aff(G)} و \textit {GM}}}{137}{pro.9.3}%
+\contentsline {thm}{{قضیه}{9.{3}}{ایزومورفیسم کلاف اصلی بین \lr {Aff(G)} و \textit {\lr {GM}}}}{137}{pro.9.3}%
 \contentsline {proof}{{اثبات}{14}{}}{138}{proof.14}%
-\contentsline {dfn}{{تعریف}{9.{4}}{تبدیلات آفین حافظ \textit {G}-ساختار}}{139}{pro.9.4}%
-\contentsline {thm}{{قضیه}{9.{5}}{$\AffGM $ در تrivializationهای محلی}}{139}{pro.9.5}%
+\contentsline {dfn}{{تعریف}{9.{4}}{تبدیلات آفین حافظ \textit {\lr {G}}-ساختار}}{139}{pro.9.4}%
+\contentsline {thm}{{قضیه}{9.{5}}{$\AffGM $ در بدیهی سازی های محلی}}{139}{pro.9.5}%
 \contentsline {proof}{{اثبات}{15}{}}{139}{proof.15}%
 \contentsline {thm}{{قضیه}{9.{6}}{$\AffGM $ در چارت‌های آفین سراسری}}{139}{pro.9.6}%
 \contentsline {proof}{{اثبات}{16}{}}{140}{proof.16}%
@@ -56,7 +56,7 @@
 \contentsline {proof}{{اثبات}{21}{}}{164}{proof.21}%
 \contentsline {proof}{{اثبات}{22}{}}{221}{proof.22}%
 \contentsline {proof}{{اثبات}{23}{}}{223}{proof.23}%
-\contentsline {thm}{{قضیه}{چ.{1}}{لم مشتق‌گیری~\cite {forster2012analysis3}}}{226}{pro.Alph7.1}%
+\contentsline {thm}{{قضیه}{چ.{1}}{لم مشتق‌گیری~\cite {forster2012analysis3}}}{225}{pro.Alph7.1}%
 \contentsline {proof}{{اثبات}{24}{}}{226}{proof.24}%
 \contentsline {thm}{{قضیه}{ح.{1}}{میدان‌های ویژگی منظم به عنوان توابع اسکالر روی $G$-ساختار}}{227}{pro.Alph8.1}%
-\contentsline {proof}{{اثبات}{25}{}}{228}{proof.25}%
+\contentsline {proof}{{اثبات}{25}{}}{227}{proof.25}%
